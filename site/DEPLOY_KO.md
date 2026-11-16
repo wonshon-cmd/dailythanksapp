@@ -1,31 +1,37 @@
-# dailyjourney.org에 웹사이트 올리기
+# dailyjourney.org에 웹사이트 올리기 — GitHub Pages + Squarespace 도메인
 
-올릴 파일: `site/dailyjourney-website.zip` (압축을 풀면 `index.html`, `privacy/`, `terms/`, `support/`, `delete-account/` …)
-다시 만들기:
+`main` 브랜치에 사이트·약관·`content/content.json`이 바뀌면 GitHub가 자동으로 사이트를 다시 만들어 올려요 (`.github/workflows/website.yml`).
 
-```bash
-python3 tools/build-site.py
-```
+## 1. GitHub에서 (한 번만)
 
-## 추천: Netlify (무료, HTTPS 자동)
+1. 저장소 **Settings › Pages**
+   - **Source:** `GitHub Actions`
+   - **Custom domain:** `dailyjourney.org` → Save
+2. 이 작업 브랜치를 `main`에 합치면(merge) 첫 배포가 시작돼요. **Actions** 탭에서 "Website"가 초록색이 되면 완료예요.
+3. DNS가 연결된 뒤 Settings › Pages에서 **Enforce HTTPS**를 켜요.
 
-1. https://app.netlify.com/drop 에 들어가 무료 가입을 해요.
-2. zip을 푼 **폴더**를 화면에 끌어다 놓아요. 몇 초 뒤 `xxxx.netlify.app` 주소로 사이트가 열려요.
-3. **Site configuration › Domain management › Add a domain**에서 `dailyjourney.org`를 넣어요.
-4. 도메인을 산 곳(Squarespace Domains, GoDaddy 등)의 **DNS 설정**에서:
-   - `A` 레코드 · 호스트 `@` · 값 `75.2.60.5`
-   - `CNAME` 레코드 · 호스트 `www` · 값 `xxxx.netlify.app`
-   - 기존에 `@`나 `www`를 가리키던 A/CNAME 레코드는 지워요.
-   - ⚠️ **MX · TXT 레코드는 절대 건드리지 마세요.** hi@dailyjourney.org 메일이 끊겨요.
-5. 몇 분~몇 시간 뒤 https://dailyjourney.org 가 열리고, Netlify가 HTTPS를 자동으로 켜요.
+## 2. Squarespace에서 (Domains › dailyjourney.org › DNS › DNS Settings)
 
-나중에 내용을 바꾸면: zip을 다시 만들어 Netlify의 **Deploys** 화면에 폴더를 다시 끌어다 놓으면 끝이에요.
+**Custom records**에 추가:
+
+| Host | Type | Data |
+|---|---|---|
+| @ | A | 185.199.108.153 |
+| @ | A | 185.199.109.153 |
+| @ | A | 185.199.110.153 |
+| @ | A | 185.199.111.153 |
+| www | CNAME | wonshon-cmd.github.io |
+
+- **Squarespace Defaults** 묶음(Squarespace 사이트용 A/CNAME 레코드)이 있으면 휴지통 아이콘으로 지워요. 그래야 GitHub로 연결돼요.
+- ⚠️ **MX · TXT 레코드(메일, Google Workspace 등)는 그대로 두세요.** hi@dailyjourney.org 메일이 끊기지 않아요.
+- 반영까지 보통 몇 분, 길면 24시간.
 
 ## 확인할 주소
 
 - https://dailyjourney.org
-- https://dailyjourney.org/privacy/
-- https://dailyjourney.org/terms/
-- https://dailyjourney.org/support/
-- https://dailyjourney.org/delete-account/
-- https://dailyjourney.org/content.json  ← 앱이 글을 내려받는 파일 (앱의 `DT_CONTENT_URL`에 이 주소를 넣으면 돼요)
+- https://dailyjourney.org/privacy/ · /terms/ · /support/ · /delete-account/
+- https://dailyjourney.org/content.json ← 앱이 글을 내려받는 파일 (네이티브 앱의 `DT_CONTENT_URL`)
+
+## 나중에 내용을 바꾸면
+
+`store/legal/*.md`나 `content/content.json`, `site/template.html`을 고쳐서 main에 올리면 1~2분 뒤 사이트에 반영돼요.
