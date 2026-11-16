@@ -789,3 +789,7 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 .hw-stage{background:linear-gradient(160deg,#EDEEEF,#E2E4E6)}
 .hw{background:#FFFFFF}
 .hw-light{display:block;width:30px;height:30px;margin:-4px 0 0 -4px;border-radius:50%;background:radial-gradient(circle,#F6D77A 0 3px,#F9E3A2cc 5px,#FBEFC566 9px,#FFFFFF00 15px)}
+/* reader: no chapter title on top; the reference under each verse opens the book list */
+.reader-top{border-bottom:0}
+.reader-gap{flex:1}
+.vs-ref-btn{border:0;background:none;padding:6px 0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:#E4E6E7;text-underline-offset:4px}

@@ -1103,7 +1103,7 @@ function openReader(opts = {}) {
   if (!readerEl) { readerEl = document.createElement('div'); readerEl.className = 'reader'; readerEl.id = 'reader'; sheet.parentElement.appendChild(readerEl); }
   readerEl.innerHTML = `<header class="reader-top">
       <button class="reader-x" data-action="reader-close" aria-label="${t('aria.close')}">${icon('x')}</button>
-      <button class="reader-title" data-action="reader-pick" id="reader-title">${esc(refText({ b: start.b, c: start.c }))}</button>
+      <span class="reader-gap"></span>
       <span class="reader-tr">${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
     <div class="reader-scroll" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>
     ${opts.group ? `<footer class="reader-foot"><button class="primary block" data-action="devo-share" data-id="${esc(opts.group)}">${icon('pencil')}${t('devo.share')}</button></footer>` : ''}`;
@@ -1125,7 +1125,7 @@ async function loadChapter(b, c, first) {
   const last = verses[verses.length - 1].v;
   // One verse per page; swipe up for the next one (same feel as the thanks feed).
   const pages = verses.map(x => `<article class="vs-page${hl(x) ? ' hl' : ''}" id="v-${b}-${c}-${x.v}" data-b="${b}" data-c="${c}" data-v="${x.v}" data-last="${last}">
-    <div class="vs-body"><p class="vs-text">${esc(x.text)}</p><p class="vs-ref">${esc(refText({ b, c, v: x.v, v2: x.v }))}${hl(x) && r.group ? ` · ${t('devo.kicker')}` : ''}</p></div></article>`).join('');
+    <div class="vs-body"><p class="vs-text">${esc(x.text)}</p><p class="vs-ref"><button class="vs-ref-btn" data-action="reader-pick">${esc(refText({ b, c, v: x.v, v2: x.v }))}</button>${hl(x) && r.group ? ` · ${t('devo.kicker')}` : ''}</p></div></article>`).join('');
   const sc = $('#reader-scroll');
   const onLoadingPage = sc && sc.scrollTop >= more.offsetTop - 2; // waiting on the "loading" page
   more.insertAdjacentHTML('beforebegin', pages);
@@ -1148,7 +1148,6 @@ function trackReading() {
   const b = +cur.dataset.b, c = +cur.dataset.c, v = +cur.dataset.v;
   data.reading = { b, c, v };
   if (v === +cur.dataset.last && !data.readDone.includes(readKey(b, c))) data.readDone.push(readKey(b, c)); // reached the chapter's last verse
-  const title = $('#reader-title'); if (title) title.textContent = refText({ b, c });
   clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600);
 }
 function closeReader() {
