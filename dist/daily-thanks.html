@@ -680,6 +680,34 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 }
 @media (prefers-reduced-motion:reduce){.link-btn[data-action="challenges"] .ico{animation:none}}
 
+/* visibility picker */
+.vis{display:flex;flex-direction:column;gap:10px}
+.vis .chip{display:inline-flex;align-items:center;gap:5px}
+.vis .chip .ico{font-size:13px}
+.vis-note{margin:0}
+.card-inner .vis{width:100%}
+
+/* home-screen widget preview (very simple: question + one button) */
+.wg{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.hw-stage{display:flex;gap:12px;justify-content:center;align-items:flex-start;padding:18px 12px;border-radius:24px;background:linear-gradient(160deg,#E9EAEA,#DCDEDF);width:100%}
+.hw{display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:#FCFCFA;border-radius:22px;padding:14px;box-shadow:0 6px 18px #2a303614}
+.hw-small{width:132px;height:132px}
+.hw-medium{flex:1;max-width:190px;height:132px}
+.hw-mark{font-family:var(--serif);font-size:13px;color:var(--faint)}
+.hw-q{font-size:13.5px;line-height:1.45;color:var(--ink);font-weight:400;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hw-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:4px;background:#F0F0EE;border-radius:999px;padding:5px 10px;font-size:12px;color:var(--ink)}
+.hw-btn .ico{font-size:13px}
+.hw-row{display:flex;align-items:center;justify-content:space-between}
+.wg .seg{width:100%}
+.wg-steps{text-align:left;margin:4px 0 0;padding-left:20px;font-size:14px;line-height:1.9;color:var(--sub);width:100%}
+.fine-print.center{text-align:center}
+@media (max-width:360px){.hw-medium{display:none}}
+
+/* language switch on the first screens: faint, top right, recognisable by anyone */
+.imm-lang{position:absolute;top:calc(36px + var(--safe-top));right:20px;z-index:3;display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3}
+.imm-lang .ico{font-size:14px}
+@media (max-height:700px){.imm-lang{top:calc(22px + var(--safe-top))}}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -715,6 +743,13 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'wg.title': '홈 화면에 감사 한 줄', 'wg.sub': '위젯을 두면 앱을 찾지 않고 바로 오늘의 감사를 쓸 수 있어요. 매일 쓰는 습관이 훨씬 쉬워져요.',
+    'wg.ios': '아이폰', 'wg.android': '안드로이드', 'wg.write': '한 줄 쓰기', 'wg.done': '오늘 감사 완료',
+    'wg.iosSteps': '홈 화면 빈 곳을 길게 누르기|왼쪽 위 「+」 누르기|「Daily Thanks」 찾기|원하는 크기를 골라 「위젯 추가」',
+    'wg.androidSteps': '홈 화면 빈 곳을 길게 누르기|「위젯」 누르기|「Daily Thanks」 찾기|위젯을 길게 눌러 홈 화면에 놓기',
+    'wg.ok': '추가했어요', 'wg.later': '나중에 할게요', 'wg.okToast': '이제 홈 화면에서 바로 감사를 남길 수 있어요.', 'wg.laterToast': '설정 › 홈 위젯에서 언제든 다시 볼 수 있어요.',
+    'wg.note': '시안에서는 미리보기예요. 실제 위젯은 앱을 설치하면 추가할 수 있어요.',
+    'vis.public': '모두', 'vis.private': '비공개', 'vis.me': '나만 보기', 'vis.privateHint': '나만 보거나, 고른 소그룹 사람들만 볼 수 있어요.',
     'inf.people': '{n}명에게 닿았어요', 'inf.peopleBig': '{n}명', 'inf.peopleSub': '나의 감사가 닿은 사람', 'inf.peopleNote': '좋아요·저장·공유로 마음을 표현한 사람 수예요. 실제 앱에서는 카카오톡·인스타그램으로 공유된 링크를 열어 본 사람도 더해져요.',
     'ft.title': '기능 (켜서 쓰기)', 'ft.hint': '기본은 감사만이에요. 필요한 기능만 켜서 쓰세요.',
     'ft.groupShare': '소그룹 나눔', 'ft.groupShareSub': '소그룹에서 이번 주 질문에 함께 답해요.',
@@ -821,6 +856,13 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'wg.title': 'A line of thanks on your home screen', 'wg.sub': 'With the widget you can write today’s thanks without looking for the app. The daily habit gets much easier.',
+    'wg.ios': 'iPhone', 'wg.android': 'Android', 'wg.write': 'Write a line', 'wg.done': 'Done for today',
+    'wg.iosSteps': 'Touch and hold an empty spot on the Home Screen|Tap “+” at the top left|Find “Daily Thanks”|Pick a size and tap “Add Widget”',
+    'wg.androidSteps': 'Touch and hold an empty spot on the home screen|Tap “Widgets”|Find “Daily Thanks”|Touch and hold the widget, then place it',
+    'wg.ok': 'Added it', 'wg.later': 'Maybe later', 'wg.okToast': 'Now you can leave thanks right from your home screen.', 'wg.laterToast': 'You can find it anytime in Settings › Home widget.',
+    'wg.note': 'This is a preview. The real widget can be added once the app is installed.',
+    'vis.public': 'Everyone', 'vis.private': 'Private', 'vis.me': 'Only me', 'vis.privateHint': 'Only you, or only the group you pick, can see it.',
     'inf.people': 'Reached {n} people', 'inf.peopleBig': '{n}', 'inf.peopleSub': 'people your thanks reached', 'inf.peopleNote': 'People who liked, saved or shared your posts. In the app, people who open your KakaoTalk / Instagram links are added too.',
     'ft.title': 'Features (turn on to use)', 'ft.hint': 'The app is just thanks by default. Turn on only what you need.',
     'ft.groupShare': 'Group sharing', 'ft.groupShareSub': 'Answer a weekly question together in your group.',
@@ -1138,7 +1180,9 @@ function showSheet({ title, body }) {
 }
 function close() {
   sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = '';
-  if (state.pendingPrime) { state.pendingPrime = false; maybePrime(); }
+  // Habit onboarding, one step at a time: (after sign-in) reminders → home-screen widget.
+  if (state.pendingPrime) { state.pendingPrime = false; if (maybePrime()) return; }
+  if (state.pendingWidget) { state.pendingWidget = false; maybeWidget(); }
 }
 
 function dayRow(ch) {
@@ -1232,7 +1276,7 @@ function composeCard() {
     <label class="card-title" for="gate-text">${t('gate.q')}</label>
     ${dailyQLine()}
     <textarea id="gate-text" class="card-input" maxlength="1500" rows="3" placeholder="${esc(t('gate.ph'))}"></textarea>
-    ${seg([['public', t('gate.public'), 'globe'], ['private', t('gate.private'), 'lock']], 'gate-scope', state.composeScope)}
+    ${visPicker('gate')}
     <div class="card-actions"><button class="primary" type="submit">${t('gate.save')}</button><button class="subtle-link" type="button" data-action="gate-later">${t('gate.later')}</button></div>
   </form></article>`;
 }
@@ -1253,13 +1297,14 @@ function bindGateForm() {
   f.addEventListener('submit', e => {
     e.preventDefault();
     const text = $('#gate-text').value.trim(); if (!text) { $('#gate-text').focus(); return; }
-    const post = scope => ({ id: 'p' + Date.now(), mine: true, scope, kind: 'today', text, date: today(), likes: 0 });
+    const vis = visScope('gate');
+    const post = (v = vis) => ({ id: 'p' + Date.now(), mine: true, ...v, kind: 'today', text, date: today(), likes: 0 });
     const done = msg => { state.justWrote = true; save(); close(); renderKeep('#compose-card'); cheer(msg); };
-    if (passesFilter(text, state.composeScope, (choice, terms) => {
+    if (passesFilter(text, vis.scope, (choice, terms) => {
       if (choice === 'edit') { close(); $('#gate-text')?.focus(); return; }
-      if (choice === 'private') { data.posts.unshift(post('private')); return done(t('toast.saved')); }
-      const p = post(state.composeScope); requestReview(p, terms); data.posts.unshift(p); done(t('mod.appealed'));
-    })) { data.posts.unshift(post(state.composeScope)); done(t('toast.saved')); }
+      if (choice === 'private') { data.posts.unshift(post({ scope: 'private' })); return done(t('toast.saved')); }
+      const p = post(); requestReview(p, terms); data.posts.unshift(p); done(t('mod.appealed'));
+    })) { data.posts.unshift(post()); done(t('toast.saved')); }
   });
 }
 // Re-render and keep the given card in view (its index can shift when posts change).
@@ -1287,7 +1332,7 @@ function postTemplate(p, i, count) {
       ${p.reflection ? `<div class="post-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</div>` : ''}
     </div>
     <aside class="post-rail">
-      ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>`}
+      ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
       <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
@@ -1389,7 +1434,7 @@ function renderImmersive(keepIndex = 0) {
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(L(p.name))} · ${p.scope === 'group' ? esc(groupName(p.group)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       <aside class="post-rail">
-        <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
+        <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
@@ -1397,6 +1442,7 @@ function renderImmersive(keepIndex = 0) {
       </aside></article>`;
   }).join('')}</div>
   <div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>
+  <button class="imm-lang" data-action="toggle-lang" aria-label="${t('aria.lang')}">${icon('globe')}<span>${lang() === 'ko' ? 'English' : '한국어'}</span></button>
   ${showNudge() ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
@@ -1432,6 +1478,32 @@ function render(keepIndex) {
   requestAnimationFrame(markClamped);
 }
 
+/* ---------------- visibility: Everyone | Private (→ Only me or one of my groups) ---------------- */
+const visOf = key => { state.vis = state.vis || {}; return state.vis[key] = state.vis[key] || { mode: 'public', target: 'me' }; };
+function visPicker(key) {
+  const v = visOf(key);
+  return `<div class="vis" data-vis="${key}">
+    <div class="seg">${[['public', t('vis.public'), 'globe'], ['private', t('vis.private'), 'lock']].map(([m, label, ic]) => `<button type="button" class="${v.mode === m ? 'active' : ''}" data-action="vis-mode" data-id="${key}|${m}">${icon(ic)}<span>${label}</span></button>`).join('')}</div>
+    <div class="chips vis-targets" ${v.mode === 'private' ? '' : 'hidden'}>${[['me', t('vis.me'), 'lock'], ...data.groups.map(g => [g.id, L(g.name), 'people'])].map(([id, label, ic]) => `<button type="button" class="chip ${v.target === id ? 'active' : ''}" data-action="vis-target" data-id="${key}|${esc(id)}">${icon(ic)}${esc(label)}</button>`).join('')}</div>
+    <p class="hint vis-note">${v.mode === 'public' ? t('compose.publicNote') : t('vis.privateHint')}</p>
+  </div>`;
+}
+// → { scope: 'public' } | { scope: 'private' } | { scope: 'group', group }
+function visScope(key) {
+  const v = visOf(key);
+  if (v.mode === 'public') return { scope: 'public' };
+  if (v.target === 'me' || !data.groups.some(g => g.id === v.target)) return { scope: 'private' };
+  return { scope: 'group', group: v.target };
+}
+function updateVis(key) {
+  const box = document.querySelector(`[data-vis="${key}"]`); if (!box) return;
+  const v = visOf(key);
+  box.querySelectorAll('[data-action="vis-mode"]').forEach(b => b.classList.toggle('active', b.dataset.id.endsWith('|' + v.mode)));
+  box.querySelectorAll('[data-action="vis-target"]').forEach(b => b.classList.toggle('active', b.dataset.id === key + '|' + v.target));
+  box.querySelector('.vis-targets').hidden = v.mode !== 'private';
+  box.querySelector('.vis-note').textContent = v.mode === 'public' ? t('compose.publicNote') : t('vis.privateHint');
+}
+
 /* ---------------- sheets ---------------- */
 const seg = (items, action, current, extra = '') => `<div class="seg ${extra}">${items.map(([id, label, ic]) => `<button type="button" class="${current === id ? 'active' : ''}" data-action="${action}" data-id="${id}">${ic ? icon(ic) : ''}<span>${label}</span></button>`).join('')}</div>`;
 
@@ -1441,7 +1513,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
   const ahead = kind === 'ahead';
   const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send'], ...(featureOn('prayer') ? [['prayer', t('kind.prayer'), 'pray']] : [])], 'pick-kind', kind, 'seg-kinds' + (featureOn('prayer') ? ' four' : ''));
-  if (kind === 'prayer' && !state.prayerScopeSet) { state.sheetScope = 'group'; state.prayerScopeSet = true; }
+  if (kind === 'prayer' && !state.prayerScopeSet) { Object.assign(visOf('compose'), { mode: 'private', target: data.groups[0]?.id || 'me' }); state.prayerScopeSet = true; }
   if (kind === 'thanks') {
     showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">${kinds}${thanksForm({ text: keepText, name: state.tyName })}</form>` });
     $('#compose-form').addEventListener('submit', e => {
@@ -1460,22 +1532,21 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
     <p class="field-label">${t('compose.who')}</p>
-    ${seg([['public', t('scope.all'), 'globe'], ['group', t('scope.groupShort'), 'people'], ['private', t('scope.me'), 'lock']], 'pick-scope', state.sheetScope)}
-    <div class="chips" id="group-chips" ${state.sheetScope === 'group' ? '' : 'hidden'}>${data.groups.map(g => `<button type="button" class="chip ${state.sheetGroup === g.id ? 'active' : ''}" data-action="pick-group" data-id="${esc(g.id)}">${esc(L(g.name))}</button>`).join('')}</div>
-    <p class="hint" id="public-note" ${state.sheetScope === 'public' ? '' : 'hidden'}>${t('compose.publicNote')}</p>
+    ${visPicker('compose')}
     <button class="primary block" type="submit">${t('compose.submit')}</button>
   </form>` });
   $('#compose-form').addEventListener('submit', e => {
     e.preventDefault();
     const text = $('#gratitude-text').value.trim(); if (!text) { $('#gratitude-text').focus(); return; }
     const kind = state.composeKind;
-    const post = scope => ({ id: 'p' + Date.now(), mine: true, scope, group: scope === 'group' ? state.sheetGroup : undefined, kind, text, date: today(), likes: 0 });
-    if (!passesFilter(text, state.sheetScope, (choice, terms) => {
+    const vis = visScope('compose');
+    const post = (v = vis) => ({ id: 'p' + Date.now(), mine: true, ...v, kind, text, date: today(), likes: 0 });
+    if (!passesFilter(text, vis.scope, (choice, terms) => {
       if (choice === 'edit') return compose(kind, state.challenge, text);
-      if (choice === 'private') { data.posts.unshift(post('private')); return finishCompose(t('toast.saved')); }
-      const p = post(state.sheetScope); requestReview(p, terms); data.posts.unshift(p); finishCompose(t('mod.appealed'));
+      if (choice === 'private') { data.posts.unshift(post({ scope: 'private' })); return finishCompose(t('toast.saved')); }
+      const p = post(); requestReview(p, terms); data.posts.unshift(p); finishCompose(t('mod.appealed'));
     })) return;
-    data.posts.unshift(post(state.sheetScope));
+    data.posts.unshift(post());
     finishCompose(t('toast.saved'));
   });
 }
@@ -1571,7 +1642,8 @@ function notifications() {
     <button class="primary block" data-action="save-notifications">${t('n.save')}</button></div>` });
 }
 
-function widget() {
+function widget() { return widgetGuide(true); }
+function widgetOld() {
   const ch = data.challenges[0];
   showSheet({ title: t('w.title'), body: `<div class="widget-surface">
     <div class="widget-card"><h3>${icon('sun')}${t('w.today')}</h3><div class="question">${t('w.q')}</div><button class="primary block" data-action="compose">${t('w.write')}</button></div>
@@ -1748,9 +1820,11 @@ const recapText = () => `${t('rc.shareHead')}\n\n${weekNotes().filter(p => p.sco
 
 /* ---------------- optional features (Settings › Features) ---------------- */
 // Prayer requests: others tap "I prayed"; the author sees who prayed (quietly, no ranking).
+// Counts are private: in feeds a heart shows no number; only the author sees counts on their own posts.
+const countLabel = (p, n) => p.mine ? `<span>${n}</span>` : '';
 function prayBtn(p) {
   const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
-  return `<button class="rail-btn ${on ? 'prayed' : ''}" data-action="pray" data-id="${esc(p.id)}" aria-pressed="${on}" aria-label="${t('pr.prayed')}">${icon('pray')}<span>${n}</span></button>`;
+  return `<button class="rail-btn ${on ? 'prayed' : ''}" data-action="pray" data-id="${esc(p.id)}" aria-pressed="${on}" aria-label="${t('pr.prayed')}">${icon('pray')}${countLabel(p, n)}</button>`;
 }
 function prayerSection() {
   const list = data.posts.filter(p => p.kind === 'prayer' && p.scope === 'group' && visible(p));
@@ -1758,7 +1832,7 @@ function prayerSection() {
     ${list.length ? `<div class="list">${list.map(p => {
       const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
       return `<div class="list-row static prayer-row"><span class="row-main"><span class="row-title">${esc(L(p.text))}</span>
-        <span class="row-sub">${esc(p.mine ? t('me') : L(p.name))} · ${esc(groupName(p.group))}${n ? ' · <button class="link-inline" data-action="prayed-who" data-id="' + esc(p.id) + '">' + t('pr.count').replace('{n}', n) + '</button>' : ''}</span></span>
+        <span class="row-sub">${esc(p.mine ? t('me') : L(p.name))} · ${esc(groupName(p.group))}${n && p.mine ? ' · <button class="link-inline" data-action="prayed-who" data-id="' + esc(p.id) + '">' + t('pr.count').replace('{n}', n) + '</button>' : ''}</span></span>
         <button class="pray-pill ${on ? 'on' : ''}" data-action="pray" data-id="${esc(p.id)}">${icon('pray')}${t('pr.prayed')}</button></div>`;
     }).join('')}</div>` : `<p class="hint">${t('pr.empty')}</p>`}`;
 }
@@ -1851,6 +1925,8 @@ function smOpen(id) {
    on the web; UNUserNotificationCenter.requestAuthorization in the native iOS app). */
 const NOTIFY_TIMES = [['dawn', '06:00', 'sunrise'], ['morning', '08:00', 'sun'], ['evening', '21:00', 'moon']];
 function notifyPrime() {
+  data.settings.notifyAsked = data.settings.notifyAsked || today(); save(); // asked once, even if closed with ✕
+  if (!data.settings.widgetAsked) state.pendingWidget = true;              // the widget guide follows when this closes
   state.primeTime = state.primeTime || 'evening';
   const tile = ([id, time, ic]) => `<button type="button" class="time-tile ${state.primeTime === id ? 'active' : ''}" data-action="prime-time" data-id="${id}">${icon(ic)}<strong>${t('np.' + id)}</strong><span>${time.replace(/^0/, '')}</span><small>${t('np.' + id + 'Sub')}</small></button>`;
   showSheet({ title: '', body: `<div class="prime">
@@ -1879,9 +1955,37 @@ async function primeAllow() {
   } catch { /* some embedded viewers block the permission request; the preference is still saved */ }
   toast((granted || !('Notification' in window) ? t('np.on') : t('np.blocked')).replace('{time}', time));
 }
+// Reminders are offered once, only after someone has written and signed in (habit order: read → write → sign in → remind → widget).
 function maybePrime() {
-  if (data.settings.notifyAsked || data.settings.notificationEnabled) return false;
+  if (!session || data.settings.notifyAsked || data.settings.notificationEnabled) return false;
   setTimeout(notifyPrime, 350); return true;
+}
+function maybeWidget() {
+  if (!session || data.settings.widgetAsked) return false;
+  setTimeout(widgetGuide, 350); return true;
+}
+// The home-screen widget, kept very simple: today's question and one button that opens the writing sheet.
+function widgetPreview() {
+  const done = wroteToday();
+  return `<div class="hw-stage">
+    <div class="hw hw-small"><span class="hw-mark">daily <em>thanks</em></span><span class="hw-q">${done ? t('wg.done') : esc(dailyQ())}</span><span class="hw-btn">${icon(done ? 'check' : 'plus')}${done ? '' : t('wg.write')}</span></div>
+    <div class="hw hw-medium"><span class="hw-mark">daily <em>thanks</em></span><span class="hw-q">${esc(dailyQ())}</span>
+      <span class="hw-row"><span class="mini-dots">${weekDots().map(on => `<i class="${on ? 'on' : ''}"></i>`).join('')}</span><span class="hw-btn">${icon('plus')}${t('wg.write')}</span></span></div>
+  </div>`;
+}
+function widgetGuide(fromSettings = false) {
+  data.settings.widgetAsked = data.settings.widgetAsked || today(); save();
+  const android = /Android/i.test(navigator.userAgent);
+  state.wgOs = state.wgOs || (android ? 'android' : 'ios');
+  const steps = os => `<ol class="wg-steps">${t(os === 'ios' ? 'wg.iosSteps' : 'wg.androidSteps').split('|').map(x => `<li>${esc(x)}</li>`).join('')}</ol>`;
+  showSheet({ title: '', body: `<div class="wg">
+    <p class="prime-title">${t('wg.title')}</p><p class="hint center">${t('wg.sub')}</p>
+    ${widgetPreview()}
+    <div class="seg">${[['ios', t('wg.ios')], ['android', t('wg.android')]].map(([id, label]) => `<button type="button" class="${state.wgOs === id ? 'active' : ''}" data-action="wg-os" data-id="${id}"><span>${label}</span></button>`).join('')}</div>
+    <div id="wg-steps">${steps(state.wgOs)}</div>
+    ${fromSettings ? '' : `<button class="primary block" data-action="wg-ok">${t('wg.ok')}</button><button class="subtle-link" data-action="wg-later">${t('wg.later')}</button>`}
+    <p class="fine-print center">${t('wg.note')}</p></div>` });
+  state.wgSteps = steps;
 }
 
 // After saving a note: celebrate a full week, cheer at 3 and 5 days. Shown once per day reached.
@@ -1941,7 +2045,7 @@ function influenceSheet() {
     <div class="stats">${stat('heart', t('inf.likes'), f.given.likes)}${stat('bookmark', t('inf.saves'), f.given.saves)}${stat('upload', t('inf.shares'), f.given.shares)}</div>
     ${f.given.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.given.ext)}</p>` : ''}
     <p class="field-label">${t('inf.top')}</p>
-    <div class="list">${topPosts(5).map((p, i) => `<div class="list-row static rank-row"><span class="rank">${i + 1}</span><span class="row-main"><span class="row-title clamp">${esc(L(p.text))}</span><span class="row-sub">${esc(p.mine ? t('me') : L(p.name))} · ♡ ${likesOf(p)} · ${t('inf.saves')} ${savesOf(p)} · ${t('inf.shares')} ${sharesOf(p)}</span></span></div>`).join('')}</div>
+    <div class="list">${topPosts(5).map((p, i) => `<div class="list-row static rank-row"><span class="rank">${i + 1}</span><span class="row-main"><span class="row-title clamp">${esc(L(p.text))}</span><span class="row-sub">${esc(p.mine ? t('me') : L(p.name))}${p.mine ? ` · ♡ ${likesOf(p)} · ${t('inf.saves')} ${savesOf(p)} · ${t('inf.shares')} ${sharesOf(p)}` : ''}</span></span></div>`).join('')}</div>
     <p class="about">${icon('info')}<span>${t('inf.peopleNote')} ${t('inf.how')}</span></p>` });
 }
 function countShare(id, external = false) {
@@ -2050,6 +2154,7 @@ function completeLogin(method, extra = {}) {
   close(); render(); toast(t('login.done'));
   const sc = $('#feed-scroll'); // land on the post that comes right after the cards
   if (sc && state.tab === 'feed' && state.feed === 'public') sc.scrollTop = (GATE_AFTER + (hadCompose ? 1 : 0)) * sc.clientHeight;
+  if (wroteToday()) setTimeout(() => { if (!maybePrime()) maybeWidget(); }, 900); // habit order: write → sign in → reminders → widget
 }
 function phoneLogin() {
   showSheet({ title: t('phone.title'), body: `<form id="phone-form">
@@ -2116,6 +2221,8 @@ const actions = {
   'set-lang': id => setLang(id),
   like, share, 'send-group': sendToGroup, reflect,
   'pick-kind': id => { state.tyName = $('#ty-name')?.value || state.tyName; compose(id, state.challenge, $('#gratitude-text')?.value || ''); },
+  'vis-mode': pair => { const [key, m] = pair.split('|'); visOf(key).mode = m; updateVis(key); },
+  'vis-target': pair => { const [key, id] = pair.split('|'); visOf(key).target = id; updateVis(key); },
   'pick-scope': id => {
     state.sheetScope = id;
     document.querySelectorAll('[data-action="pick-scope"]').forEach(b => b.classList.toggle('active', b.dataset.id === id));
@@ -2124,6 +2231,9 @@ const actions = {
   'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   note: noteSheet,
+  'wg-os': id => { state.wgOs = id; document.querySelectorAll('[data-action="wg-os"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); $('#wg-steps').innerHTML = state.wgSteps(id); },
+  'wg-ok': () => { close(); toast(t('wg.okToast')); },
+  'wg-later': () => { close(); toast(t('wg.laterToast')); },
   pray: togglePray,
   'prayed-who': prayedWho,
   'gs-write': gsWrite,
@@ -2272,6 +2382,8 @@ document.addEventListener('dt:render', updateFsButton);
 applyStatic();
 applyTextSize();
 render();
+// Widget / notification deep link: daily-thanks://write → #write opens the writing sheet straight away.
+if (location.hash === '#write') { document.getElementById('splash')?.remove(); setTimeout(() => compose('today', null), 50); }
 
 /* Splash: white screen with the wordmark only, then fades into the app (tap to skip). */
 const splash = $('#splash');

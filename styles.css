@@ -667,3 +667,31 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
   6%{opacity:.6;transform:scale(1.02) rotate(5deg)}
 }
 @media (prefers-reduced-motion:reduce){.link-btn[data-action="challenges"] .ico{animation:none}}
+
+/* visibility picker */
+.vis{display:flex;flex-direction:column;gap:10px}
+.vis .chip{display:inline-flex;align-items:center;gap:5px}
+.vis .chip .ico{font-size:13px}
+.vis-note{margin:0}
+.card-inner .vis{width:100%}
+
+/* home-screen widget preview (very simple: question + one button) */
+.wg{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.hw-stage{display:flex;gap:12px;justify-content:center;align-items:flex-start;padding:18px 12px;border-radius:24px;background:linear-gradient(160deg,#E9EAEA,#DCDEDF);width:100%}
+.hw{display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:#FCFCFA;border-radius:22px;padding:14px;box-shadow:0 6px 18px #2a303614}
+.hw-small{width:132px;height:132px}
+.hw-medium{flex:1;max-width:190px;height:132px}
+.hw-mark{font-family:var(--serif);font-size:13px;color:var(--faint)}
+.hw-q{font-size:13.5px;line-height:1.45;color:var(--ink);font-weight:400;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hw-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:4px;background:#F0F0EE;border-radius:999px;padding:5px 10px;font-size:12px;color:var(--ink)}
+.hw-btn .ico{font-size:13px}
+.hw-row{display:flex;align-items:center;justify-content:space-between}
+.wg .seg{width:100%}
+.wg-steps{text-align:left;margin:4px 0 0;padding-left:20px;font-size:14px;line-height:1.9;color:var(--sub);width:100%}
+.fine-print.center{text-align:center}
+@media (max-width:360px){.hw-medium{display:none}}
+
+/* language switch on the first screens: faint, top right, recognisable by anyone */
+.imm-lang{position:absolute;top:calc(36px + var(--safe-top));right:20px;z-index:3;display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3}
+.imm-lang .ico{font-size:14px}
+@media (max-height:700px){.imm-lang{top:calc(22px + var(--safe-top))}}
