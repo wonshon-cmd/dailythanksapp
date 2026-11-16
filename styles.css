@@ -203,3 +203,9 @@ html[lang="en"] .share-preview p{font-size:19px}
   .fs-btn[hidden]{display:none!important}
   :fullscreen body{background:#E9EAEA}
 }
+
+/* ---------- full-screen feed (opens first): only the thanks text + right rail ---------- */
+.app-shell.immersive .topbar,.app-shell.immersive .bottom-nav{display:none}
+.post.imm{padding:0}
+.post.imm .post-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 72px 24px 40px}
+.post.imm .post-rail{bottom:calc(56px + var(--safe-bottom));gap:26px}

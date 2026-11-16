@@ -46,7 +46,7 @@ const STR = {
     'j.kicker': 'MY GRATITUDE', 'j.title': '나의 감사가<br>쌓이는 곳.', 'j.desc': '오늘 받은 은혜와 앞으로의 시간을 맡기며 드린 미리 감사를 함께 돌아봐요.', 'j.all': '전체', 'j.new': '＋ 새로운 감사 쓰기', 'j.empty': '아직 기록된 감사가 없어요.', 'j.reflect': '돌아보며 감사 쓰기', 'j.delete': '삭제', 'j.confirmDelete': '이 감사 기록을 삭제할까요?',
     'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림 사용 (설정 시안)', 'n.group': '그룹 반응 모아 보기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 고마웠던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '알림 설정 저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
     'w.title': '홈 화면 위젯', 'w.desc': '실제 iPhone 위젯이 아닌 홈 화면 디자인 미리보기예요.', 'w.today': '오늘의 감사', 'w.q': '오늘 나를 웃게 한 일은?', 'w.write': '＋ 한 줄 쓰기', 'w.sub': '함께하는 7일', 'w.view': '챌린지 보기', 'w.fine': '실제 위젯 설치·위젯에서 앱 열기는 iOS/Android 네이티브 개발 단계에서 구현해야 합니다.',
-    's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
+    's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.close': '닫기', 'fs.closeAria': '전체 화면 닫기', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
     'doc.title': 'Daily Thanks · A day that carries gratitude',
@@ -87,7 +87,7 @@ const STR = {
     'j.kicker': 'MY GRATITUDE', 'j.title': 'Where my thanks<br>gathers.', 'j.desc': 'Look back on today’s grace and the thanks you offered ahead for the days to come.', 'j.all': 'All', 'j.new': '＋ Write new thanks', 'j.empty': 'No thanks recorded yet.', 'j.reflect': 'Look back with thanks', 'j.delete': 'Delete', 'j.confirmDelete': 'Delete this note?',
     'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder (design preview)', 'n.group': 'Bundle group reactions', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save reminder', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
     'w.title': 'Home screen widget', 'w.desc': 'A design preview — not a real iPhone widget.', 'w.today': 'Today’s thanks', 'w.q': 'What made you smile today?', 'w.write': '＋ Write a line', 'w.sub': '7 days together', 'w.view': 'View challenge', 'w.fine': 'Installing a real widget and opening the app from it is built in the native iOS/Android phase.',
-    's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
+    's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.close': 'Close', 'fs.closeAria': 'Close full screen', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   }
 };
 
@@ -155,7 +155,7 @@ try { const stored = JSON.parse(localStorage.getItem(KEY)); data = stored && Arr
 catch { data = clone(seed); }
 if (!data.settings.lang) data.settings.lang = (navigator.language || 'ko').toLowerCase().startsWith('ko') ? 'ko' : 'en';
 
-const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all' };
+const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true }; // immersive: the app opens on a full-screen feed of people's thanks
 
 const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
@@ -308,7 +308,26 @@ function renderJournal() {
   </div></div>`;
 }
 
+/* Full-screen feed: only the gratitude text, with ♡ count, share and close on the right. */
+function renderImmersive(keepIndex = 0) {
+  const posts = data.posts.filter(p => p.scope === 'public');
+  main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${posts.map(p => {
+    const liked = data.liked.includes(p.id), text = L(p.text);
+    return `<article class="post imm" data-post="${esc(p.id)}">
+      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p></div>
+      <aside class="post-rail">
+        <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
+        <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
+        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button>
+      </aside></article>`;
+  }).join('')}</div>`;
+  const sc = $('#feed-scroll');
+  if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
+}
+
 function render(keepIndex) {
+  $('#app').classList.toggle('immersive', state.immersive);
+  if (state.immersive) { renderImmersive(keepIndex); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
   document.querySelectorAll('[data-tab]').forEach(b => {
     const on = b.dataset.tab === state.tab;
     b.classList.toggle('active', on);
@@ -439,7 +458,7 @@ function settings() {
       <button data-action="notification">${icon('bell')}${t('s.notify')}</button>
       <button data-action="widget">${icon('phone')}${t('s.widget')}</button>
       <button data-action="export">${icon('download')}${t('s.export')}</button>
-      <button data-action="fullscreen">${icon(isFull() ? 'minimize' : 'maximize')}${isFull() ? t('fs.exit') : t('fs.enter')}</button>
+      <button data-action="fullscreen">${icon('maximize')}${t('fs.enter')}</button>
       <button data-action="reset">${icon('reset')}${t('s.reset')}</button>
     </div><p class="fine-print">${t('s.fine')}</p>` });
 }
@@ -545,23 +564,32 @@ window.DailyThanks = {
 const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement;
 const isFull = () => !!fsElement();
 const fsSupported = () => !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+// "Full screen" = the in-app full-screen feed; where the browser allows it, the browser bars hide too.
 async function toggleFullscreen() {
   close();
-  if (!fsSupported()) { toast(t(/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'fs.ios' : 'fs.blocked')); return; }
+  const sc = $('#feed-scroll'), idx = sc ? Math.round(sc.scrollTop / sc.clientHeight) : 0;
+  const entering = !state.immersive;
+  state.immersive = entering;
+  if (entering) { state.tab = 'feed'; state.feed = 'public'; }
+  render(state.tab === 'feed' && state.feed === 'public' ? idx : 0);
+  if (!fsSupported()) return;
   const root = document.documentElement;
   try {
-    if (isFull()) await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-    else await (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
-  } catch { toast(t('fs.blocked')); }
+    if (!entering && isFull()) await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    else if (entering && !isFull()) await (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+  } catch { /* browser full screen is optional; the in-app full screen already applies */ }
 }
 function updateFsButton() {
   const b = $('#fs-btn'); if (!b) return;
-  b.hidden = !fsSupported();
-  b.innerHTML = `${icon(isFull() ? 'minimize' : 'maximize')}<span>${isFull() ? t('fs.exit') : t('fs.enter')}</span>`;
-  b.setAttribute('aria-pressed', String(isFull()));
+  b.hidden = false;
+  b.innerHTML = `${icon(state.immersive ? 'minimize' : 'maximize')}<span>${state.immersive ? t('fs.exit') : t('fs.enter')}</span>`;
+  b.setAttribute('aria-pressed', String(state.immersive));
 }
-document.addEventListener('fullscreenchange', updateFsButton);
-document.addEventListener('webkitfullscreenchange', updateFsButton);
+// Leaving browser full screen with Esc also closes the in-app full-screen feed.
+const onFsChange = () => { if (!isFull() && state.immersive && fsWasOn) { state.immersive = false; render(); } fsWasOn = isFull(); updateFsButton(); };
+let fsWasOn = false;
+document.addEventListener('fullscreenchange', onFsChange);
+document.addEventListener('webkitfullscreenchange', onFsChange);
 document.addEventListener('dt:render', updateFsButton);
 
 applyStatic();
