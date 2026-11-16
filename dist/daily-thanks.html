@@ -359,6 +359,16 @@ main{position:relative}
 .post-rail{gap:24px}
 .post.imm .post-rail{gap:22px}
 
+/* ---------- reading position: start text in the upper part of the screen, not the middle ---------- */
+.post-body{padding-top:7cqh}
+.post.imm .post-body{justify-content:flex-start;padding-top:clamp(84px,15cqh,140px)}
+.card-inner{justify-content:flex-start;padding-top:clamp(84px,15cqh,140px)}
+.post-kind{margin-bottom:18px}
+/* small phones (iPhone SE etc.): keep only the author line under the text in the normal feed */
+@media (max-height:700px){.post-scope,.post-nav{display:none}.post{padding-bottom:28px}.post-author{margin-bottom:0}}
+@media (max-height:700px){.post{min-height:0}.post-body{padding-top:4cqh}.post-rail{gap:16px;bottom:64px}.post.imm .post-rail{gap:16px}}
+@media (max-height:700px){.next-fab{display:none}}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
