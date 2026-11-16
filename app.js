@@ -779,8 +779,8 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
-const LEGAL_BASE = 'https://dailythanks.app';  // TODO: replace with the real domain (e.g. a GitHub Pages site)
-const SUPPORT_EMAIL = 'hello@dailythanks.app'; // TODO: replace with the real support address
+const LEGAL_BASE = 'https://dailyapp.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
+const SUPPORT_EMAIL = 'support@dailyapp.org';    // TODO: confirm the real support address
 const APP_VERSION = '1.0.0';
 let session = null;
 try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
@@ -1270,9 +1270,7 @@ async function renderCard(p, kind = 'feed') {
   const [W, H] = CARD[kind], c = document.createElement('canvas'); c.width = W; c.height = H;
   const x = c.getContext('2d'), M = Math.round(W * .11), maxW = W - M * 2;
   const serif = '"Newsreader", Georgia, serif', sans = '"Noto Sans KR", "Apple SD Gothic Neo", sans-serif';
-  x.fillStyle = '#FCFCFA'; x.fillRect(0, 0, W, H);
-  // faint warm light in the corner, very subtle
-  const g = x.createRadialGradient(W * .82, H * .12, 0, W * .82, H * .12, W * .7); g.addColorStop(0, 'rgba(255,233,170,.10)'); g.addColorStop(1, 'rgba(255,233,170,0)'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H); // pure white card
   // wordmark
   x.fillStyle = '#9BA0A3'; x.textBaseline = 'alphabetic';
   x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30);

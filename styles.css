@@ -716,3 +716,14 @@ html:is([lang="en"],[lang="es"]) .post-text{font-size:calc(var(--read) * .92);li
 
 a.list-row{text-decoration:none}
 .selectable{user-select:text;-webkit-user-select:text}
+
+/* ================= Backgrounds: pure white, no warm/yellow cast (the only yellow is the reach light) ================= */
+:root{--paper:#FFFFFF;--card:#F6F6F6;--soft:#F1F1F1}
+html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
+.hw,.ty-card,.share-preview,.ch-card,.mem-card,.cal-card,.inf-card,.share-q,.panel,.note-card,.widget-card{background:#FFFFFF}
+.hw-stage{background:linear-gradient(160deg,#EDEEEF,#E2E4E6)}
+.write-pill,.primary,.next-fab,.round-btn,.close,.hw-btn,.seg,.time-input,.lock-preview{background:#F1F1F1}
+.chip.active,.pray-pill.on,.cal-day.on{background:#E8E8E8;border-color:#E8E8E8}
+.inf-hero-icon,.cel-mark{background:#F1F1F1}
+.card-frame{background:#EEEEEE}
+@media (min-width:700px){body{background:#ECEDEE}.device{background:#FFFFFF;border-color:#F1F1F1}}
