@@ -16,7 +16,7 @@ const STR = {
     'wg.androidSteps': '홈 화면 빈 곳을 길게 누르기|「위젯」 누르기|「Daily Thanks」 찾기|위젯을 길게 눌러 홈 화면에 놓기',
     'wg.ok': '추가했어요', 'wg.later': '나중에 할게요', 'wg.okToast': '이제 홈 화면에서 바로 감사를 남길 수 있어요.', 'wg.laterToast': '설정 › 홈 위젯에서 언제든 다시 볼 수 있어요.',
     'wg.note': '시안에서는 미리보기예요. 실제 위젯은 앱을 설치하면 추가할 수 있어요.',
-    'vis.public': '모두', 'vis.private': '비공개', 'vis.me': '나만 보기', 'vis.privateHint': '나만 보거나, 고른 소그룹 사람들만 볼 수 있어요.',
+    'vis.public': '모두', 'vis.private': '비공개', 'vis.me': '나만 보기', 'vis.privateHint': "나만 보거나, 고른 소그룹 사람들만 볼 수 있어요. 소그룹은 여러 개 고를 수 있어요.",
     'inf.people': '{n}명에게 닿았어요', 'inf.peopleBig': '{n}명', 'inf.peopleSub': '나의 감사가 닿은 사람', 'inf.peopleNote': '좋아요·저장·공유로 마음을 표현한 사람 수예요. 실제 앱에서는 카카오톡·인스타그램으로 공유된 링크를 열어 본 사람도 더해져요.',
     'ft.title': '기능 (켜서 쓰기)', 'ft.hint': '기본은 감사만이에요. 필요한 기능만 켜서 쓰세요.',
     'ft.groupShare': '소그룹 나눔', 'ft.groupShareSub': '소그룹에서 이번 주 질문에 함께 답해요.',
@@ -117,7 +117,7 @@ const STR = {
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
-    'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -131,7 +131,7 @@ const STR = {
     'wg.androidSteps': 'Touch and hold an empty spot on the home screen|Tap “Widgets”|Find “Daily Thanks”|Touch and hold the widget, then place it',
     'wg.ok': 'Added it', 'wg.later': 'Maybe later', 'wg.okToast': 'Now you can leave thanks right from your home screen.', 'wg.laterToast': 'You can find it anytime in Settings › Home widget.',
     'wg.note': 'This is a preview. The real widget can be added once the app is installed.',
-    'vis.public': 'Everyone', 'vis.private': 'Private', 'vis.me': 'Only me', 'vis.privateHint': 'Only you, or only the group you pick, can see it.',
+    'vis.public': 'Everyone', 'vis.private': 'Private', 'vis.me': 'Only me', 'vis.privateHint': "Only you, or only the groups you pick. You can pick more than one group.",
     'inf.people': 'Reached {n} people', 'inf.peopleBig': '{n}', 'inf.peopleSub': 'people your thanks reached', 'inf.peopleNote': 'People who liked, saved or shared your posts. In the app, people who open your KakaoTalk / Instagram links are added too.',
     'ft.title': 'Features (turn on to use)', 'ft.hint': 'The app is just thanks by default. Turn on only what you need.',
     'ft.groupShare': 'Group sharing', 'ft.groupShareSub': 'Answer a weekly question together in your group.',
@@ -232,7 +232,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -259,7 +259,7 @@ const STR = {
     'vis.public': 'Todos',
     'vis.private': 'Privado',
     'vis.me': 'Solo yo',
-    'vis.privateHint': 'Solo tú, o solo el grupo que elijas, puede verlo.',
+    'vis.privateHint': "Solo tú, o solo los grupos que elijas. Puedes elegir más de uno.",
     'inf.people': 'Llegó a {n} personas',
     'inf.peopleBig': '{n}',
     'inf.peopleSub': 'personas a las que llegó tu gratitud',
@@ -605,7 +605,7 @@ const STR = {
     'login.apple': 'Continuar con Apple',
     'login.google': 'Continuar con Google',
     'login.phone': 'Continuar con número de teléfono',
-    'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
+    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -869,11 +869,14 @@ try { applyContent(JSON.parse(localStorage.getItem(CONTENT_KEY)), false); } catc
 function toast(text) { const el = $('#toast'); el.textContent = text; el.hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => el.hidden = true, 2600); }
 
 /* ---------------- helpers ---------------- */
+const postGroups = p => Array.isArray(p.groups) && p.groups.length ? p.groups : (p.group ? [p.group] : []);
+const inGroup = (p, gid) => p.scope === 'group' && postGroups(p).includes(gid);
+const groupNames = p => postGroups(p).map(groupName).filter(Boolean).join(', ');
 const groupName = id => id === 'pair' ? t('ch.pairShort') : L(data.groups.find(g => g.id === id)?.name) || id || '';
 const authorName = p => p.mine ? t('me') : L(p.name);
 const kindLabel = p => p.kind === 'ahead' ? t('kind.ahead') : p.kind === 'thanks' ? t('kind.thanks') : p.kind === 'prayer' ? t('kind.prayer') : p.kind === 'share' ? t('gs.section') : t('kind.today');
 const kindIcon = p => p.kind === 'ahead' ? 'sunrise' : p.kind === 'thanks' ? 'send' : p.kind === 'prayer' ? 'pray' : p.kind === 'share' ? 'people' : 'sun';
-const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === 'private' ? t('scope.private') : groupName(p.group) || t('scope.group');
+const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === 'private' ? t('scope.private') : groupNames(p) || t('scope.group');
 const scopeIcon = p => p.scope === 'public' ? 'globe' : p.scope === 'private' ? 'lock' : 'people';
 // Same visual line count in both languages: Latin text holds roughly 1.4x the characters per line.
 // One reading size for every post (set in Settings › Text size). Very long posts are clamped with "Read more".
@@ -931,7 +934,7 @@ function dayRow(ch) {
 const daysOld = p => Math.max(0, Math.round((new Date(today()) - new Date(p.date)) / 864e5));
 function closeAuthors() {
   const set = new Set();
-  data.posts.filter(p => p.scope === 'group' && !p.mine && data.groups.some(g => g.id === p.group)).forEach(p => set.add(authorKey(p)));
+  data.posts.filter(p => p.scope === 'group' && !p.mine && data.groups.some(g => inGroup(p, g.id))).forEach(p => set.add(authorKey(p)));
   [...data.liked, ...data.saved, ...(data.prayed || [])].forEach(id => { const p = data.posts.find(x => x.id === id); if (p && !p.mine) set.add(authorKey(p)); });
   return set;
 }
@@ -1047,7 +1050,7 @@ const featureAvailable = k => CONTENT.features?.[k] !== false;
 const featureOn = k => featureAvailable(k) && !!data.settings.features?.[k];
 const visible = p => !p.status && !(p.kind === 'prayer' && !featureOn('prayer')) && p.kind !== 'share' && !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p)); // 'review' / 'rejected' posts stay off feeds
 function feedPosts() {
-  return data.posts.filter(visible).filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
+  return data.posts.filter(visible).filter(p => state.feed === 'public' ? p.scope === 'public' : inGroup(p, state.group));
 }
 
 function postTemplate(p, i, count) {
@@ -1083,7 +1086,7 @@ function renderFeed(keepIndex = 0) {
     </div>
     <div class="feed-sub">
       ${isGroup
-        ? `<select class="group-select" data-action="change-group" aria-label="${t('compose.groupLabel')}">${data.groups.map(g => `<option value="${esc(g.id)}" ${state.group === g.id ? 'selected' : ''}>${esc(L(g.name))}</option>`).join('')}</select>`
+        ? `<select class="group-select" data-action="change-group" aria-label="${t('compose.groupLabel')}">${data.groups.map(g => `<option value="${esc(g.id)}" ${state.group === g.id ? 'selected' : ''}>${esc(L(g.name))}</option>`).join('')}</select><button class="link-btn" data-action="invite-group" data-id="${esc(state.group || '')}">${icon('plus')}${t('inv.btn')}</button>`
         : `<span>${t('feed.subPublic')}</span>`}
       <button class="link-btn" data-action="challenges">${icon('sparkle')}${t('feed.together')}</button>
     </div>
@@ -1105,11 +1108,12 @@ function renderGroups() {
   main.innerHTML = `<div class="screen"><div class="page">
     ${pageHead(t('gr.title'), t('gr.desc'), roundBtn('new-group', 'plus', t('gr.new')))}
     <div class="list">${data.groups.map(g => {
-      const n = data.posts.filter(p => p.scope === 'group' && p.group === g.id).length;
-      return `<button class="list-row" data-action="open-group" data-id="${esc(g.id)}">
+      const n = data.posts.filter(p => inGroup(p, g.id)).length;
+      return `<div class="group-row"><button class="list-row" data-action="open-group" data-id="${esc(g.id)}">
         <span class="row-icon">${icon('people')}</span>
         <span class="row-main"><span class="row-title">${esc(L(g.name))}</span><span class="row-sub">${t('gr.count').replace('{n}', n)}</span></span>
-        <span class="row-end">${icon('chevron')}</span></button>`;
+        <span class="row-end">${icon('chevron')}</span></button>
+        <button class="secondary invite-btn" data-action="invite-group" data-id="${esc(g.id)}">${t('inv.btn')}</button></div>`;
     }).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
     ${featureOn('prayer') ? prayerSection() : ''}
@@ -1153,14 +1157,14 @@ function renderJournal() {
 
 /* Full-screen feed: only the gratitude text, with ♡ count, share and close on the right. */
 function renderImmersive(keepIndex = 0) {
-  const pool = data.posts.filter(p => !p.mine && visible(p) && (p.scope === 'public' || (p.scope === 'group' && data.groups.some(g => g.id === p.group))));
+  const pool = data.posts.filter(p => !p.mine && visible(p) && (p.scope === 'public' || (p.scope === 'group' && data.groups.some(g => inGroup(p, g.id)))));
   const posts = rankedOnce('imm', pool);
   main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${feedSequence(posts).map(it => {
     if (it.type !== 'post') return cardFor(it);
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
-        <p class="imm-by">${esc(L(p.name))} · ${p.scope === 'group' ? esc(groupName(p.group)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
+        <p class="imm-by">${esc(L(p.name))} · ${p.scope === 'group' ? esc(groupNames(p)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
@@ -1207,27 +1211,30 @@ function render(keepIndex) {
 }
 
 /* ---------------- visibility: Everyone | Private (→ Only me or one of my groups) ---------------- */
-const visOf = key => { state.vis = state.vis || {}; return state.vis[key] = state.vis[key] || { mode: 'public', target: 'me' }; };
+const visOf = key => { state.vis = state.vis || {}; return state.vis[key] = state.vis[key] || { mode: 'public', targets: [] }; };
+// Private = Only me, or any number of my groups (empty list = Only me).
+const visTargets = v => (v.targets || []).filter(id => data.groups.some(g => g.id === id));
 function visPicker(key) {
   const v = visOf(key);
   return `<div class="vis" data-vis="${key}">
     <div class="seg">${[['public', t('vis.public'), 'globe'], ['private', t('vis.private'), 'lock']].map(([m, label, ic]) => `<button type="button" class="${v.mode === m ? 'active' : ''}" data-action="vis-mode" data-id="${key}|${m}">${icon(ic)}<span>${label}</span></button>`).join('')}</div>
-    <div class="chips vis-targets" ${v.mode === 'private' ? '' : 'hidden'}>${[['me', t('vis.me'), 'lock'], ...data.groups.map(g => [g.id, L(g.name), 'people'])].map(([id, label, ic]) => `<button type="button" class="chip ${v.target === id ? 'active' : ''}" data-action="vis-target" data-id="${key}|${esc(id)}">${icon(ic)}${esc(label)}</button>`).join('')}</div>
+    <div class="chips vis-targets" ${v.mode === 'private' ? '' : 'hidden'}>${[['me', t('vis.me'), 'lock'], ...data.groups.map(g => [g.id, L(g.name), 'people'])].map(([id, label, ic]) => `<button type="button" class="chip ${(id === 'me' ? !visTargets(v).length : visTargets(v).includes(id)) ? 'active' : ''}" data-action="vis-target" data-id="${key}|${esc(id)}" aria-pressed="${id === 'me' ? !visTargets(v).length : visTargets(v).includes(id)}">${icon(ic)}${esc(label)}</button>`).join('')}</div>
     <p class="hint vis-note">${v.mode === 'public' ? t('compose.publicNote') : t('vis.privateHint')}</p>
   </div>`;
 }
-// → { scope: 'public' } | { scope: 'private' } | { scope: 'group', group }
+// → { scope: 'public' } | { scope: 'private' } | { scope: 'group', group, groups: [...] }
 function visScope(key) {
   const v = visOf(key);
   if (v.mode === 'public') return { scope: 'public' };
-  if (v.target === 'me' || !data.groups.some(g => g.id === v.target)) return { scope: 'private' };
-  return { scope: 'group', group: v.target };
+  const groups = visTargets(v);
+  if (!groups.length) return { scope: 'private' };
+  return { scope: 'group', group: groups[0], groups };
 }
 function updateVis(key) {
   const box = document.querySelector(`[data-vis="${key}"]`); if (!box) return;
   const v = visOf(key);
   box.querySelectorAll('[data-action="vis-mode"]').forEach(b => b.classList.toggle('active', b.dataset.id.endsWith('|' + v.mode)));
-  box.querySelectorAll('[data-action="vis-target"]').forEach(b => b.classList.toggle('active', b.dataset.id === key + '|' + v.target));
+  box.querySelectorAll('[data-action="vis-target"]').forEach(b => { const id = b.dataset.id.split('|')[1], on = id === 'me' ? !visTargets(v).length : visTargets(v).includes(id); b.classList.toggle('active', on); b.setAttribute('aria-pressed', on); });
   box.querySelector('.vis-targets').hidden = v.mode !== 'private';
   box.querySelector('.vis-note').textContent = v.mode === 'public' ? t('compose.publicNote') : t('vis.privateHint');
 }
@@ -1241,7 +1248,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
   const ahead = kind === 'ahead';
   const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send'], ...(featureOn('prayer') ? [['prayer', t('kind.prayer'), 'pray']] : [])], 'pick-kind', kind, 'seg-kinds' + (featureOn('prayer') ? ' four' : ''));
-  if (kind === 'prayer' && !state.prayerScopeSet) { Object.assign(visOf('compose'), { mode: 'private', target: data.groups[0]?.id || 'me' }); state.prayerScopeSet = true; }
+  if (kind === 'prayer' && !state.prayerScopeSet) { Object.assign(visOf('compose'), { mode: 'private', targets: data.groups[0] ? [data.groups[0].id] : [] }); state.prayerScopeSet = true; }
   if (kind === 'thanks') {
     showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">${kinds}${thanksForm({ text: keepText, name: state.tyName })}</form>` });
     $('#compose-form').addEventListener('submit', e => {
@@ -1392,13 +1399,43 @@ function sendToGroup(id) {
     <div class="list">${data.groups.map(g => `<button class="list-row" data-action="send-to" data-id="${esc(id)}|${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name))}</span></span><span class="row-end">${icon('chevron')}</span></button>`).join('')}</div>` });
 }
 
+/* ---------------- group invites ----------------
+   Each group has an invite code. The link opens dailyjourney.org/join/, which hands over to the app
+   (daily-thanks://join?c=…&n=…); with the server, the code is checked there (POST /api/groups/join). */
+const INVITE_BASE = () => `${LEGAL_BASE}/join/`;
+const newCode = () => Array.from(crypto.getRandomValues(new Uint8Array(6)), b => 'abcdefghjkmnpqrstuvwxyz23456789'[b % 31]).join('');
+function inviteLink(g) {
+  if (!g.invite) { g.invite = newCode(); save(); }
+  return `${INVITE_BASE()}?c=${encodeURIComponent(g.invite)}&n=${encodeURIComponent(L(g.name))}`;
+}
+function inviteSheet(id) {
+  const g = data.groups.find(x => x.id === id); if (!g) return;
+  const link = inviteLink(g), name = L(g.name);
+  const msg = `${t('inv.msg').replace('{name}', name)}\n${link}`;
+  showSheet({ title: t('inv.title'), body: `<p class="hint">${esc(t('inv.desc').replace('{name}', name))}</p>
+    <div class="invite-link selectable">${esc(decodeURIComponent(link))}</div>
+    <div class="sheet-actions"><button class="primary" data-action="invite-share" data-id="${esc(id)}">${icon('share')}${t('inv.share')}</button>
+    <button class="secondary" data-action="invite-copy" data-id="${esc(id)}">${t('inv.copy')}</button></div>` });
+  state.inviteMsg = msg;
+}
+function joinGroup(code, name) {
+  code = String(code || '').replace(/[^a-z0-9]/gi, '').slice(0, 24); name = String(name || '').trim().slice(0, 30);
+  if (!code) return;
+  const have = data.groups.find(g => g.invite === code);
+  if (have) { state.tab = 'feed'; state.feed = 'group'; state.group = have.id; render(); toast(t('join.already')); return; }
+  showSheet({ title: t('join.title'), body: `<p class="hint">${esc(t('join.body').replace('{name}', name || t('scope.group')))}</p>
+    <div class="sheet-actions"><button class="primary" data-action="join-ok">${t('join.ok')}</button><button class="secondary" data-action="close">${t('cancel')}</button></div>` });
+  state.pendingJoin = { code, name: name || t('scope.group') };
+}
 function createGroup() {
   showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
     <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
     <button class="primary block" type="submit">${t('gr.create')}</button></form>` });
   $('#group-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#group-name').value.trim(); if (!name) return;
-    data.groups.push({ id: 'g' + Date.now(), name }); save(); close(); renderGroups(); toast(t('toast.grCreated'));
+    const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true }; data.groups.push(g); save(); close(); renderGroups();
+    document.dispatchEvent(new CustomEvent('dt:group-created', { detail: g })); // server add-on registers the invite code
+    toast(t('toast.grCreated')); setTimeout(() => inviteSheet(g.id), 350); // invite people right away
   });
 }
 
@@ -2029,7 +2066,11 @@ const actions = {
   like, share, 'send-group': sendToGroup, reflect,
   'pick-kind': id => { state.tyName = $('#ty-name')?.value || state.tyName; compose(id, state.challenge, $('#gratitude-text')?.value || ''); },
   'vis-mode': pair => { const [key, m] = pair.split('|'); visOf(key).mode = m; updateVis(key); },
-  'vis-target': pair => { const [key, id] = pair.split('|'); visOf(key).target = id; updateVis(key); },
+  'vis-target': pair => {
+    const [key, id] = pair.split('|'), v = visOf(key), cur = visTargets(v);
+    v.targets = id === 'me' ? [] : cur.includes(id) ? cur.filter(x => x !== id) : [...cur, id]; // groups toggle; "Only me" clears them
+    updateVis(key);
+  },
   'pick-scope': id => {
     state.sheetScope = id;
     document.querySelectorAll('[data-action="pick-scope"]').forEach(b => b.classList.toggle('active', b.dataset.id === id));
@@ -2118,6 +2159,15 @@ const actions = {
     else toast(t('toast.noShare'));
   },
   'new-group': createGroup,
+  'invite-group': id => inviteSheet(id || state.group),
+  'invite-share': id => { const msg = state.inviteMsg; if (navigator.share) navigator.share({ title: 'daily thanks', text: msg }).catch(() => {}); else copyText(msg); },
+  'invite-copy': id => { const g = data.groups.find(x => x.id === id); if (g) copyText(inviteLink(g)); },
+  'join-ok': () => {
+    const j = state.pendingJoin; if (!j) return close();
+    const g = { id: 'g' + j.code, name: j.name, invite: j.code }; data.groups.push(g); state.pendingJoin = null;
+    document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code } }));
+    save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
+  },
   'open-group': id => { state.tab = 'feed'; state.feed = 'group'; state.group = id; render(); },
   'new-challenge': createChallenge,
   'challenge-write': id => { close(); compose('today', id); },
@@ -2168,6 +2218,7 @@ window.DailyThanks = {
   // remote content: the server add-on (or the native shell) passes the downloaded content.json here
   applyContent: c => { if (applyContent(c)) { save(); render(); afterContent(); } }, getContent: () => CONTENT,
   // native shell: a reminder tap or the home-screen widget opens the writing sheet
+  joinGroup: (code, name) => joinGroup(code, name),
   openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); }
 };
 if (CONTENT_URL) fetch(CONTENT_URL, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(c => window.DailyThanks.applyContent(c)).catch(() => {});
@@ -2210,6 +2261,8 @@ applyStatic();
 applyTextSize();
 render();
 // Widget / notification deep link: daily-thanks://write → #write opens the writing sheet straight away.
+// Invite link opened in the web app: #join?c=CODE&n=NAME
+if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n')), 80); }
 if (location.hash === '#write') { document.getElementById('splash')?.remove(); setTimeout(() => compose('today', null), 50); }
 
 /* Splash: white screen with the wordmark only, then fades into the app (tap to skip). */

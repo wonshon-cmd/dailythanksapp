@@ -135,3 +135,18 @@ test('serves editable app content without the _help/_examples keys', async () =>
   assert.equal(res.body.supportEmail, 'hi@dailyjourney.org');
   assert.ok(!('_help' in res.body) && !('_examples' in res.body));
 });
+
+test('group invite: create with a code, preview it, join from another account', async () => {
+  const call = await start({});
+  const made = await call('POST', '/api/groups', { name: 'Wednesday study', code: 'abcd2345' }, { 'x-user-id': 'owner' });
+  assert.equal(made.status, 201);
+  assert.equal(made.body.group.inviteCode, 'abcd2345');
+  const preview = await call('GET', '/api/invites/abcd2345');
+  assert.deepEqual(preview.body, { name: 'Wednesday study', members: 1 });
+  const joined = await call('POST', '/api/groups/join', { code: 'abcd2345' }, { 'x-user-id': 'friend' });
+  assert.equal(joined.body.group.members, 2);
+  const mine = await call('GET', '/api/groups', null, { 'x-user-id': 'friend' });
+  assert.equal(mine.body.groups[0].name, 'Wednesday study');
+  assert.equal((await call('POST', '/api/groups/join', { code: 'nope9999' }, { 'x-user-id': 'friend' })).status, 404);
+  assert.equal((await call('POST', '/api/groups', { name: ' ' }, { 'x-user-id': 'owner' })).status, 400);
+});

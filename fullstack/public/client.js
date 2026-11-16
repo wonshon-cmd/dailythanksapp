@@ -49,6 +49,10 @@
   /* ---------- 0) remote content (content/content.json) ---------- */
   if (DT.applyContent) api('GET', '/api/content').then(c => DT.applyContent(c)).catch(() => {});
 
+  /* ---------- groups: register invite codes and joins with the server ---------- */
+  document.addEventListener('dt:group-created', e => { api('POST', '/api/groups', { name: e.detail.name, code: e.detail.invite }).catch(() => {}); });
+  document.addEventListener('dt:group-join', e => { api('POST', '/api/groups/join', { code: e.detail.code }).catch(() => DT.toast('Invite not found')); });
+
   /* ---------- 1) server sync ---------- */
   let syncTimer;
   document.addEventListener('dt:save', e => {

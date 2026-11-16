@@ -738,3 +738,10 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 /* sign-in: terms consent (Guideline 1.2) */
 .login-terms{margin-top:14px;text-align:center}
 .login-terms a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+
+/* groups: invite button beside each group, invite link box */
+.group-row{display:flex;align-items:center;gap:8px}
+.group-row .list-row{flex:1;min-width:0}
+.invite-btn{flex:none;white-space:nowrap}
+.invite-link{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:#F6F6F6;color:#303438;font-size:13px;line-height:1.5;word-break:break-all;user-select:all}
+.feed-sub .link-btn + .link-btn{margin-left:0}

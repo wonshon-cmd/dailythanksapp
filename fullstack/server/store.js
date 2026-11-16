@@ -7,7 +7,7 @@ import path from 'node:path';
  * the route handlers only call the methods below.
  */
 export function createStore(file) {
-  const empty = { states: {}, passages: [], sermons: [], reports: [], reviews: [] };
+  const empty = { states: {}, passages: [], sermons: [], reports: [], reviews: [], groups: [] };
   let db = empty;
   try { db = { ...empty, ...JSON.parse(fs.readFileSync(file, 'utf8')) }; } catch { /* first run */ }
   let timer = null;
@@ -42,7 +42,17 @@ export function createStore(file) {
     addReview: r => { db.reviews.push(r); persist(); return r; },
     listReviews: ({ status, userId } = {}) => db.reviews.filter(r => (!status || r.status === status) && (!userId || r.userId === userId)),
     updateReview: (id, patch) => { const r = db.reviews.find(x => x.id === id); if (r) { Object.assign(r, patch); persist(); } return r; },
+    // Groups and invite codes: anyone with the code can join (the code is the invitation).
+    addGroup: g => { db.groups.push(g); persist(); return g; },
+    groupByCode: code => db.groups.find(g => g.inviteCode === code) || null,
+    listGroups: userId => db.groups.filter(g => g.members.includes(userId)),
+    joinGroup: (code, userId) => {
+      const g = db.groups.find(x => x.inviteCode === code); if (!g) return null;
+      if (!g.members.includes(userId)) { g.members.push(userId); persist(); }
+      return g;
+    },
     deleteUser: userId => {
+      db.groups.forEach(g => { g.members = g.members.filter(m => m !== userId); });
       delete db.states[userId];
       db.passages = db.passages.filter(p => p.createdBy !== userId);
       db.sermons = db.sermons.filter(x => x.ownerId !== userId);

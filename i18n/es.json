@@ -19,7 +19,7 @@
 "vis.public": "Todos",
 "vis.private": "Privado",
 "vis.me": "Solo yo",
-"vis.privateHint": "Solo tú, o solo el grupo que elijas, puede verlo.",
+"vis.privateHint": "Solo tú, o solo los grupos que elijas. Puedes elegir más de uno.",
 "inf.people": "Llegó a {n} personas",
 "inf.peopleBig": "{n}",
 "inf.peopleSub": "personas a las que llegó tu gratitud",
@@ -388,5 +388,16 @@
 "login.terms": "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
 "upd.title": "Hay una nueva versión",
 "upd.body": "Actualiza daily thanks para seguir usándola sin problemas.",
-"upd.go": "Actualizar"
+"upd.go": "Actualizar",
+"inv.btn": "Invitar",
+"inv.title": "Enlace de invitación",
+"inv.desc": "Quien tenga este enlace puede unirse a “{name}”.",
+"inv.share": "Enviar enlace",
+"inv.msg": "Únete a “{name}” en daily thanks y compartamos gratitud:",
+"join.title": "Invitación al grupo",
+"join.body": "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.",
+"join.ok": "Unirme",
+"join.done": "Te uniste a “{name}”.",
+"join.already": "Ya estás en este grupo.",
+"inv.copy": "Copiar enlace"
 }

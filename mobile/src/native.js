@@ -89,9 +89,15 @@
     if (e?.notification?.extra?.route === 'write') ready(DT => DT.openWrite());
   });
 
-  /* ---------- deep links: daily-thanks://write (home-screen widget) ---------- */
-  P.App.addListener('appUrlOpen', e => { if (/write/.test(e.url || '')) ready(DT => DT.openWrite()); });
-  P.App.getLaunchUrl().then(r => { if (r && /write/.test(r.url || '')) ready(DT => setTimeout(() => DT.openWrite(), 600)); }).catch(() => {});
+  /* ---------- deep links: widget, reminders, group invites ---------- */
+  // daily-thanks://write → writing sheet; daily-thanks://join?c=CODE&n=NAME (group invite) → join sheet
+  const route = url => {
+    if (!url) return;
+    if (/join/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n')), 300)); }
+    else if (/write/.test(url)) ready(DT => setTimeout(() => DT.openWrite(), 300));
+  };
+  P.App.addListener('appUrlOpen', e => route(e.url));
+  P.App.getLaunchUrl().then(r => route(r && r.url)).catch(() => {});
   P.App.addListener('resume', () => scheduleReminders());
 
   /* ---------- Android back button: close a sheet first, otherwise leave the app ---------- */

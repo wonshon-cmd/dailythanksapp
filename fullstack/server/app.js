@@ -73,6 +73,30 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   });
 
   // Account deletion (required by the App Store and Google Play): removes the user's data everywhere.
+  // Groups & invites. Invite link: https://dailyjourney.org/join/?c=CODE&n=NAME → app → POST /api/groups/join.
+  const CODE_RE = /^[a-z0-9]{4,24}$/;
+  const newCode = () => Array.from(crypto.randomBytes(6), b => 'abcdefghjkmnpqrstuvwxyz23456789'[b % 31]).join('');
+  const publicGroup = g => ({ id: g.id, name: g.name, inviteCode: g.inviteCode, members: g.members.length });
+  route('POST', '/api/groups', async ({ req, user }) => {
+    const { name, code } = await readJson(req);
+    const clean = String(name || '').trim().slice(0, 30);
+    if (!clean) throw new HttpError(400, 'name_required');
+    let inviteCode = CODE_RE.test(code || '') && !store.groupByCode(code) ? code : newCode();
+    while (store.groupByCode(inviteCode)) inviteCode = newCode();
+    const g = store.addGroup({ id: crypto.randomUUID(), name: clean, inviteCode, ownerId: user, members: [user], createdAt: new Date().toISOString() });
+    return { status: 201, body: { group: publicGroup(g) } };
+  });
+  route('GET', '/api/groups', ({ user }) => ({ groups: store.listGroups(user).map(publicGroup) }));
+  route('GET', '/api/invites/:code', ({ params }) => {
+    const g = store.groupByCode(params.code); if (!g) throw new HttpError(404, 'invite_not_found');
+    return { name: g.name, members: g.members.length };
+  });
+  route('POST', '/api/groups/join', async ({ req, user }) => {
+    const { code } = await readJson(req);
+    if (!CODE_RE.test(code || '')) throw new HttpError(400, 'bad_code');
+    const g = store.joinGroup(code, user); if (!g) throw new HttpError(404, 'invite_not_found');
+    return { group: publicGroup(g) };
+  });
   route('DELETE', '/api/account', ({ user }) => { store.deleteUser(user); return { ok: true }; });
 
   /* ---------- 표현 필터 + 검토 요청 ----------
