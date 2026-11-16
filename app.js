@@ -217,7 +217,6 @@ function postTemplate(p, i, count) {
     <aside class="post-rail">
       <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
-      <button class="rail-btn" data-action="send-group" data-id="${esc(p.id)}">${icon('userplus')}<span>${t('act.group')}</span></button>
     </aside>
     <footer class="post-foot">
       <div class="post-author"><span class="avatar">${esc(name[0] || '·')}</span><div><div class="author-name">${esc(name)}${p.sharedFrom ? ' · ' + esc(L(p.sharedFrom)) : ''}</div><div class="author-meta">${esc(meta)} · ${esc(p.date)}</div></div></div>
@@ -285,7 +284,7 @@ function renderJournal() {
   let mine = data.posts.filter(p => p.mine);
   if (state.filter !== 'all') mine = mine.filter(p => p.kind === state.filter);
   main.innerHTML = `<div class="screen"><div class="section">
-    <span class="section-kicker">${t('j.kicker')}</span>
+    <div class="section-head"><span class="section-kicker">${t('j.kicker')}</span><span class="section-tools"><button class="chip-btn" data-action="toggle-lang" aria-label="${t('aria.lang')}">${t('lang.other')}</button><button class="chip-btn" data-action="settings" aria-label="${t('aria.settings')}">⋯</button></span></div>
     <h1 class="section-title">${t('j.title')}</h1>
     <p class="section-desc">${t('j.desc')}</p>
     <div class="mini-tabs">${[['all', t('j.all')], ['today', t('kind.today')], ['ahead', t('kind.ahead')]].map(([k, label]) => `<button class="${state.filter === k ? 'active' : ''}" data-action="journal-filter" data-id="${k}">${label}</button>`).join('')}</div>
@@ -361,7 +360,7 @@ function share(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
   showSheet({ title: t('share.title'), body: `<p class="hint">${t('share.hint')}</p>
     <div class="share-preview"><span class="wordmark">daily <em>thanks</em></span><p>${esc(L(p.text))}</p><small>${esc(authorName(p))} · ${esc(kindLabel(p))}</small></div>
-    <div class="btn-row"><button class="primary" data-action="copy-share" data-id="${esc(id)}">${t('share.copy')}</button><button class="secondary" data-action="native-share" data-id="${esc(id)}">${t('share.native')}</button></div>
+    <div class="btn-row"><button class="primary" data-action="copy-share" data-id="${esc(id)}">${t('share.copy')}</button><button class="secondary" data-action="send-group" data-id="${esc(id)}">${icon('userplus')} ${t('send.title')}</button><button class="secondary" data-action="native-share" data-id="${esc(id)}">${t('share.native')}</button></div>
     <p class="hint">${t('share.hint2')}</p>` });
 }
 
