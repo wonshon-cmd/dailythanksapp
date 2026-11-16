@@ -47,7 +47,7 @@ const STR = {
     'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림 사용 (설정 시안)', 'n.group': '그룹 반응 모아 보기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 고마웠던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '알림 설정 저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
     'w.title': '홈 화면 위젯', 'w.desc': '실제 iPhone 위젯이 아닌 홈 화면 디자인 미리보기예요.', 'w.today': '오늘의 감사', 'w.q': '오늘 나를 웃게 한 일은?', 'w.write': '＋ 한 줄 쓰기', 'w.sub': '함께하는 7일', 'w.view': '챌린지 보기', 'w.fine': '실제 위젯 설치·위젯에서 앱 열기는 iOS/Android 네이티브 개발 단계에서 구현해야 합니다.',
     's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.close': '닫기', 'fs.closeAria': '전체 화면 닫기',
-    'gate.kicker': '오늘의 감사', 'gate.q': '오늘 고마웠던 순간은?', 'gate.ph': '한 줄이면 충분해요.', 'gate.private': '나만 보기', 'gate.public': '모두의 감사', 'gate.save': '감사 남기기', 'gate.later': '나중에 쓸게요',
+    'nudge': '아래로 넘겨 보기', 'gate.kicker': '오늘의 감사', 'gate.q': '오늘 고마웠던 순간은?', 'gate.ph': '한 줄이면 충분해요.', 'gate.private': '나만 보기', 'gate.public': '모두의 감사', 'gate.save': '감사 남기기', 'gate.later': '나중에 쓸게요',
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
@@ -96,7 +96,7 @@ const STR = {
     'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder (design preview)', 'n.group': 'Bundle group reactions', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save reminder', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
     'w.title': 'Home screen widget', 'w.desc': 'A design preview — not a real iPhone widget.', 'w.today': 'Today’s thanks', 'w.q': 'What made you smile today?', 'w.write': '＋ Write a line', 'w.sub': '7 days together', 'w.view': 'View challenge', 'w.fine': 'Installing a real widget and opening the app from it is built in the native iOS/Android phase.',
     's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.close': 'Close', 'fs.closeAria': 'Close full screen',
-    'gate.kicker': 'Today’s thanks', 'gate.q': 'What were you grateful for today?', 'gate.ph': 'One line is enough.', 'gate.private': 'Only me', 'gate.public': 'Everyone', 'gate.save': 'Save my thanks', 'gate.later': 'Maybe later',
+    'nudge': 'Scroll for more', 'gate.kicker': 'Today’s thanks', 'gate.q': 'What were you grateful for today?', 'gate.ph': 'One line is enough.', 'gate.private': 'Only me', 'gate.public': 'Everyone', 'gate.save': 'Save my thanks', 'gate.later': 'Maybe later',
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
@@ -400,16 +400,34 @@ function renderImmersive(keepIndex = 0) {
     if (it.type !== 'post') return cardFor(it);
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
-      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p></div>
+      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>
+        <p class="imm-by">${esc(L(p.name))} · ${esc(kindLabel(p))}</p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
         <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button>
       </aside></article>`;
-  }).join('')}</div>`;
+  }).join('')}</div>
+  <div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>
+  ${showNudge() ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
   bindGateForm();
+  if (sc && $('#imm-nudge')) sc.addEventListener('scroll', hideNudge, { passive: true });
+}
+
+/* First visit only: a faint "scroll for more" hint that goes away after the first scroll, for good. */
+const NUDGE_KEY = 'daily-thanks-nudged';
+let nudged = false;
+try { nudged = localStorage.getItem(NUDGE_KEY) === '1'; } catch {}
+const showNudge = () => !nudged;
+function hideNudge() {
+  const sc = $('#feed-scroll');
+  if (!sc || sc.scrollTop < 40 || nudged) return;
+  nudged = true;
+  try { localStorage.setItem(NUDGE_KEY, '1'); } catch {}
+  const n = $('#imm-nudge'); if (n) { n.classList.add('out'); setTimeout(() => n.remove(), 500); }
+  sc.removeEventListener('scroll', hideNudge);
 }
 
 function render(keepIndex) {

@@ -226,3 +226,14 @@ html[lang="en"] .share-preview p{font-size:19px}
 .login-btn.apple{background:#000;border-color:#000;color:#fff}
 .subtle-link{border:0;background:none;color:var(--sub);font-size:13px;padding:10px 4px}
 html[lang="en"] .card-title{font-size:24px}
+
+/* ---------- full-screen feed: faint logo, author line and first-visit nudge ---------- */
+main{position:relative}
+.imm-brand{position:absolute;top:18px;left:27px;z-index:3;pointer-events:none;display:flex;align-items:center}
+.imm-brand .wordmark{font-size:20px;color:#B4B8BA}
+.imm-by{margin:22px 0 0;font-size:13px;line-height:18px;color:#A9AEB1;letter-spacing:.01em}
+.imm-nudge{position:absolute;left:0;right:0;bottom:calc(18px + var(--safe-bottom));z-index:3;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:4px;color:#A9AEB1;font-size:12px;transition:opacity .4s ease}
+.imm-nudge .ico{font-size:18px;animation:nudge-bob 1.8s ease-in-out infinite}
+.imm-nudge.out{opacity:0}
+@keyframes nudge-bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(5px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.imm-nudge .ico{animation:none}}
