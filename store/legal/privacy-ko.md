@@ -1,6 +1,6 @@
 # Daily Thanks 개인정보처리방침
 
-> Squarespace 붙여넣기용: dailyapp.org/privacy 페이지에 그대로 붙여 넣으세요.
+> Squarespace 붙여넣기용: dailyjourney.org/privacy 페이지에 그대로 붙여 넣으세요.
 > `[대괄호]` 부분은 실제 정보로 바꿔야 합니다. 출시 전 개인정보·법률 전문가 검토를 권장합니다.
 
 **시행일: [2026년 12월 1일]**
@@ -64,7 +64,7 @@ Daily Journey, Inc.(이하 "운영자")는 Daily Thanks 앱과 웹사이트(이�
 
 - 이용자는 언제든지 자신의 개인정보를 열람·정정·삭제하거나 처리 정지를 요청할 수 있습니다.
 - **앱에서:** 설정 › 정보 › 계정 삭제를 누르면 계정과 작성한 글이 삭제됩니다.
-- **웹에서:** dailyapp.org/delete-account 에서 삭제를 요청할 수 있습니다.
+- **웹에서:** dailyjourney.org/delete-account 에서 삭제를 요청할 수 있습니다.
 - 기타 요청: hi@dailyjourney.org
 
 ## 8. 안전성 확보 조치

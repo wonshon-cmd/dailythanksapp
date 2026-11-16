@@ -1,6 +1,6 @@
 # Política de privacidad de Daily Thanks
 
-> Para Squarespace: pega este texto en dailyapp.org/privacy (versión en español).
+> Para Squarespace: pega este texto en dailyjourney.org/privacy (versión en español).
 > Reemplaza todo lo que esté entre `[corchetes]`. Pide una revisión profesional antes del lanzamiento.
 
 **Fecha de vigencia: [1 de diciembre de 2026]**
@@ -48,7 +48,7 @@ Daily Journey, Inc. ("nosotros") opera la app y el sitio web Daily Thanks (el "S
 Puedes acceder, corregir o eliminar tus datos:
 
 - **En la app:** Ajustes › Acerca de › Eliminar cuenta
-- **En la web:** dailyapp.org/delete-account
+- **En la web:** dailyjourney.org/delete-account
 - **Por correo:** hi@dailyjourney.org
 
 ## 6. Contacto

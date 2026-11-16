@@ -60,7 +60,7 @@ function posts(t) {
       `.h{font-size:76px;letter-spacing:-.02em;line-height:1.3}.d{margin-top:90px;display:flex;justify-content:space-between}.d div{display:flex;flex-direction:column;align-items:center;gap:22px}
        .d i{width:74px;height:74px;border-radius:50%;background:#F1F1F1}.d i.on{background:#E4E6E7}.d div:last-child i{background:radial-gradient(circle,#F6D77A 0 9px,#FBE7A6aa 14px,#FFFFFF00 37px)}
        .d span{font-size:30px;color:#9BA0A3}.s{margin-top:80px;font-size:36px;color:#8A9094;line-height:1.6}`),
-    page(`<div class="c"><span class="wm">${WM}</span><p>${t.soon}</p><div class="pills"><span>App Store</span><span>Google Play</span></div><small>dailyapp.org</small></div>`,
+    page(`<div class="c"><span class="wm">${WM}</span><p>${t.soon}</p><div class="pills"><span>App Store</span><span>Google Play</span></div><small>dailyjourney.org</small></div>`,
       `.c{width:1080px;height:1350px;display:flex;flex-direction:column;align-items:center;justify-content:center}.wm{font-size:120px;color:#383D42}
        p{margin-top:70px;font-size:44px;color:#686E73}.pills{margin-top:50px;display:flex;gap:20px}.pills span{background:#F1F1F1;border-radius:999px;padding:22px 44px;font-size:34px;font-weight:400;color:#303438}
        small{margin-top:60px;font-size:30px;color:#A9AEB1}`),

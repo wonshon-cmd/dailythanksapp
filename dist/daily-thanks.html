@@ -1562,7 +1562,7 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
-let LEGAL_BASE = 'https://dailyapp.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
+let LEGAL_BASE = 'https://dailyjourney.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
 let SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
@@ -1595,7 +1595,7 @@ function save() {
    links, minimum app version) lives in content/content.json on the server. At launch the app uses the copy it
    saved last time, then downloads a fresh one from CONTENT_URL. Anything missing falls back to built-in text. */
 const CONTENT_KEY = 'daily-thanks-content';
-const CONTENT_URL = window.DT_CONTENT_URL || null; // native build: e.g. 'https://api.dailyapp.org/api/content'
+const CONTENT_URL = window.DT_CONTENT_URL || null; // native build: e.g. 'https://api.dailyjourney.org/api/content'
 let CONTENT = {};
 const bootAt = Date.now();
 const verNum = v => String(v || '0').split('.').slice(0, 3).reduce((a, n) => a * 1000 + (parseInt(n, 10) || 0), 0);

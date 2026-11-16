@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the dailyapp.org website (home, privacy, terms, support, delete-account)
+"""Build the dailyjourney.org website (home, privacy, terms, support, delete-account)
 in the app's design, from the Markdown in store/legal/. Output: site/index.html
 
 Usage: python3 tools/build-site.py
@@ -20,7 +20,7 @@ def inline(s):
     s = re.sub(r'\[([^\]]+)\]\((https?://[^)]+)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', s)
     # bracketed placeholders still to be filled in: show them softly marked
     s = re.sub(r'\[([^\]<>]{1,60})\]', r'<mark>\1</mark>', s)
-    s = re.sub(r'(?<![\w@/.])((?:dailyapp|dailyjourney)\.org(?:/[\w-]+)?)', r'<a href="https://\1" target="_blank" rel="noopener">\1</a>', s)
+    s = re.sub(r'(?<![\w@/.])(dailyjourney\.org(?:/[\w-]+)?)', r'<a href="https://\1" target="_blank" rel="noopener">\1</a>', s)
     s = re.sub(r'(?<![\w.])([\w.]+@[\w.-]+\.\w+)', r'<span class="mail">\1</span>', s)
     return s
 

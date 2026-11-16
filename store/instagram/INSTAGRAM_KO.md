@@ -14,7 +14,7 @@ node tools/make-insta.js
 | 사용자 이름 | @dailythanks.app (또는 사용 가능한 이름) |
 | 이름 | daily thanks · 감사 일기 |
 | 소개 | Give thanks daily. Live fully. Share the joy.<br>매일 한 줄의 감사 🤍 곧 출시 |
-| 링크 | dailyapp.org |
+| 링크 | dailyjourney.org |
 
 - 계정 종류는 **비즈니스/크리에이터**로 바꾸세요. 게시물 통계를 볼 수 있어요.
 - 연락처 이메일에는 hi@dailyjourney.org를 넣으세요.

@@ -4,10 +4,10 @@
 
 | 항목 | 파일 | 쓰는 곳 |
 |---|---|---|
-| 개인정보처리방침 (한/영/스페인어) | `store/legal/privacy-ko.md`, `privacy-en.md`, `privacy-es.md` | dailyapp.org/privacy |
-| 이용약관 (3개 언어) | `store/legal/terms.md` | dailyapp.org/terms |
-| 고객 문의 페이지 | `store/legal/support-and-delete.md` 위쪽 | dailyapp.org/support |
-| 계정 삭제 요청 페이지 | `store/legal/support-and-delete.md` 아래쪽 | dailyapp.org/delete-account |
+| 개인정보처리방침 (한/영/스페인어) | `store/legal/privacy-ko.md`, `privacy-en.md`, `privacy-es.md` | dailyjourney.org/privacy |
+| 이용약관 (3개 언어) | `store/legal/terms.md` | dailyjourney.org/terms |
+| 고객 문의 페이지 | `store/legal/support-and-delete.md` 위쪽 | dailyjourney.org/support |
+| 계정 삭제 요청 페이지 | `store/legal/support-and-delete.md` 아래쪽 | dailyjourney.org/delete-account |
 | 앱 이름·부제·설명·키워드 (3개 언어, 글자 수 검사 완료) | `store/listing/LISTING.md` | App Store Connect / Play Console |
 | 개인정보 항목 답변 | `store/PRIVACY_LABELS_AND_REVIEW.md` 1–2번 | Apple App Privacy / Google Data safety |
 | 심사 메모, 연령 등급, 암호화 답변 | 같은 문서 4–7번 | App Store Connect / Play Console |

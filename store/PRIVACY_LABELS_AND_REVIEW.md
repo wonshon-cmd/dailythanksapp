@@ -28,7 +28,7 @@
 ## 2. Google Play — Data safety (데이터 보안)
 
 - 데이터 수집: **예** · 데이터 공유(제3자에게 전달): **아니요** (처리 위탁은 '공유'가 아님)
-- 전송 중 암호화: **예** · 데이터 삭제 요청 방법 제공: **예** (앱 안 + dailyapp.org/delete-account)
+- 전송 중 암호화: **예** · 데이터 삭제 요청 방법 제공: **예** (앱 안 + dailyjourney.org/delete-account)
 
 | 데이터 | 수집 | 필수/선택 | 목적 |
 |---|---|---|---|
@@ -66,7 +66,7 @@ User content safety (Guideline 1.2):
 - Report (8 reasons), hide post, and block user from the ⋯ menu on every post.
 - Reports go to a moderation queue reviewed within 24 hours; self-harm reports are prioritised
   and the reporter is shown crisis lines.
-- Published contact: hi@dailyjourney.org, dailyapp.org/support.
+- Published contact: hi@dailyjourney.org, dailyjourney.org/support.
 
 Notifications are optional, requested after a short in-app explanation, at a time the user picks.
 No tracking, no ads.
@@ -92,10 +92,10 @@ No tracking, no ads.
 | 항목 | 값 |
 |---|---|
 | 카테고리 | Apple: 라이프스타일 (보조: 건강 및 피트니스) / Google: 라이프스타일 |
-| 지원 URL | https://dailyapp.org/support |
-| 마케팅 URL | https://dailyapp.org |
-| 개인정보처리방침 URL | https://dailyapp.org/privacy |
-| 계정 삭제 URL (Google) | https://dailyapp.org/delete-account |
+| 지원 URL | https://dailyjourney.org/support |
+| 마케팅 URL | https://dailyjourney.org |
+| 개인정보처리방침 URL | https://dailyjourney.org/privacy |
+| 계정 삭제 URL (Google) | https://dailyjourney.org/delete-account |
 | 저작권 | © 2026 Daily Journey, Inc. |
 | 가격 | 무료 |
 | 지원 언어 | 한국어, 영어, 스페인어 |

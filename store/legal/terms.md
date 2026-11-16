@@ -1,6 +1,6 @@
 # 이용약관 · Terms of Use · Términos de uso
 
-> Squarespace 붙여넣기용: dailyapp.org/terms. `[대괄호]`를 채우고, 출시 전 전문가 검토를 권장합니다.
+> Squarespace 붙여넣기용: dailyjourney.org/terms. `[대괄호]`를 채우고, 출시 전 전문가 검토를 권장합니다.
 
 ---
 
@@ -28,7 +28,7 @@
    - 신고된 글은 검토 후 숨기거나 삭제할 수 있고, 반복해서 위반한 계정은 이용을 제한할 수 있습니다.
    - 잘못 걸러졌다고 생각하면 검토를 요청할 수 있습니다.
 6. **설교 요약(선택 기능):** 설교는 설교자의 저작물입니다. 요약은 개인 묵상용으로 사용하고, 다른 사람과 나누려면 교회나 설교자의 동의를 받아 주세요.
-7. **계정 삭제:** 앱의 설정 › 정보 › 계정 삭제, 또는 dailyapp.org/delete-account에서 언제든 삭제할 수 있습니다.
+7. **계정 삭제:** 앱의 설정 › 정보 › 계정 삭제, 또는 dailyjourney.org/delete-account에서 언제든 삭제할 수 있습니다.
 8. **책임의 한계:** 서비스는 있는 그대로 제공됩니다. 운영자는 법이 허용하는 범위에서 간접적인 손해에 책임지지 않습니다.
 9. **변경:** 약관이 바뀌면 시행 7일 전에 알립니다.
 10. **문의:** hi@dailyjourney.org
@@ -59,7 +59,7 @@
    - We may remove reported content after review and limit accounts that repeatedly break these rules.
    - You can ask for a review if you think a decision was wrong.
 6. **Sermon notes (optional):** Sermons belong to their preachers. Use summaries for personal reflection, and get permission from the church or preacher before sharing them.
-7. **Deleting your account:** Settings › About › Delete account, or dailyapp.org/delete-account.
+7. **Deleting your account:** Settings › About › Delete account, or dailyjourney.org/delete-account.
 8. **Disclaimer:** The Service is provided "as is". To the extent the law allows, we are not liable for indirect damages.
 9. **Changes:** We will notify you at least 7 days before changes take effect.
 10. **Contact:** hi@dailyjourney.org
@@ -89,5 +89,5 @@
    - Podemos filtrar lenguaje ofensivo y retirar contenido reportado tras revisarlo.
    - Puedes pedir una revisión si crees que la decisión fue un error.
 6. **Notas de sermón (opcional):** Los sermones pertenecen a quienes los predican. Úsalas para tu reflexión personal y pide permiso antes de compartirlas.
-7. **Eliminar tu cuenta:** Ajustes › Acerca de › Eliminar cuenta, o dailyapp.org/delete-account.
+7. **Eliminar tu cuenta:** Ajustes › Acerca de › Eliminar cuenta, o dailyjourney.org/delete-account.
 8. **Contacto:** hi@dailyjourney.org

@@ -2,8 +2,8 @@
 
 두 페이지를 만들어 주세요.
 
-- **dailyapp.org/support:** App Store "지원 URL"과 Google Play "웹사이트"에 입력합니다.
-- **dailyapp.org/delete-account:** Google Play "계정 삭제 URL"에 입력합니다. **필수**입니다.
+- **dailyjourney.org/support:** App Store "지원 URL"과 Google Play "웹사이트"에 입력합니다.
+- **dailyjourney.org/delete-account:** Google Play "계정 삭제 URL"에 입력합니다. **필수**입니다.
 
 ---
 
@@ -32,7 +32,7 @@
   - 같은 메뉴에서 그 글을 숨기거나 그 사람을 차단할 수도 있어요.
 - **계정을 삭제하고 싶어요.**
   - 앱의 설정 › 정보 › 계정 삭제에서 바로 삭제할 수 있어요.
-  - 앱 없이도 dailyapp.org/delete-account 에서 요청할 수 있어요.
+  - 앱 없이도 dailyjourney.org/delete-account 에서 요청할 수 있어요.
 
 **도움이 필요하다면**
 지금 위험한 상황이라면 자살예방상담전화 109(24시간), 긴급 상황은 112 · 119로 연락해 주세요.
@@ -56,7 +56,7 @@ Questions or problems? Email hi@dailyjourney.org. We usually reply within 2 busi
   - You can also hide the post or block the person.
 - **How do I delete my account?**
   - In the app: Settings › About › Delete account.
-  - Or request it at dailyapp.org/delete-account.
+  - Or request it at dailyjourney.org/delete-account.
 
 **If you or someone else is in danger,** call or text 988 (US) or your local emergency number.
 
@@ -68,7 +68,7 @@ Escríbenos a hi@dailyjourney.org. Respondemos en unos 2 días hábiles.
 
 - **Eliminar la cuenta:**
   - En la app: Ajustes › Acerca de › Eliminar cuenta.
-  - O en dailyapp.org/delete-account.
+  - O en dailyjourney.org/delete-account.
 - **Reportar contenido:** Toca ⋯ junto a la publicación › Reportar.
 
 ---

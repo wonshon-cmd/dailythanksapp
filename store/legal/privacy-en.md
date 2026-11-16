@@ -1,6 +1,6 @@
 # Daily Thanks Privacy Policy
 
-> For Squarespace: paste into the dailyapp.org/privacy page.
+> For Squarespace: paste into the dailyjourney.org/privacy page.
 > Replace every `[bracket]`. Have it reviewed by a privacy professional before launch.
 
 **Effective date: [December 1, 2026]**
@@ -60,7 +60,7 @@ Data is encrypted in transit.
 You can access, correct, or delete your data, or ask us to stop processing it:
 
 - **In the app:** Settings › About › Delete account
-- **On the web:** dailyapp.org/delete-account
+- **On the web:** dailyjourney.org/delete-account
 - **By email:** hi@dailyjourney.org
 
 Depending on where you live (for example, under the GDPR in the EU/UK or the CCPA in California), you may have additional rights, including data portability and the right to complain to a supervisory authority. We honor these rights for all users.
