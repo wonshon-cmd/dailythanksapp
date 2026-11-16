@@ -224,7 +224,7 @@ function postTemplate(p, i, count) {
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
     </aside>
     <footer class="post-foot">
-      <div class="post-author"><span class="avatar">${esc(name[0] || '·')}</span><div><div class="author-name">${esc(name)}${p.sharedFrom ? ' · ' + esc(L(p.sharedFrom)) : ''}</div><div class="author-meta">${esc(meta)} · ${esc(p.date)}</div></div></div>
+      <div class="post-author"><div><div class="author-name">${esc(name)}${p.sharedFrom ? ' · ' + esc(L(p.sharedFrom)) : ''}</div><div class="author-meta">${esc(meta)} · ${esc(p.date)}</div></div></div>
       <div class="post-scope">${icon(scopeIcon(p))}<span>${esc(scopeLabel(p))}</span></div>
       <div class="post-nav"><span>${icon('chevrons')}${t('feed.swipe')}</span><span class="count">${i + 1} / ${count} ${icon('down')}</span></div>
     </footer>
