@@ -8,7 +8,7 @@
 
 **시행일: [2026년 12월 1일]**
 
-1. **서비스:** Daily Thanks는 감사를 기록하고 나누는 서비스입니다. [운영자 이름]이 운영합니다.
+1. **서비스:** Daily Thanks는 감사를 기록하고 나누는 서비스입니다. Daily Journey, Inc.이 운영합니다.
 2. **가입:** 만 14세 이상만 가입할 수 있습니다. Apple, Google, 휴대폰 번호로 로그인합니다.
 3. **내가 쓴 글:**
    - 글의 권리는 작성자에게 있습니다.
@@ -38,7 +38,7 @@
 
 **Effective date: [December 1, 2026]**
 
-1. **The Service:** Daily Thanks is a place to record and share gratitude. It is operated by [Operator name].
+1. **The Service:** Daily Thanks is a place to record and share gratitude. It is operated by Daily Journey, Inc..
 2. **Eligibility:** You must be at least 14. In the U.S., you must be at least 13. You sign in with Apple, Google, or your phone number.
 3. **Your content:**
    - You own what you write.

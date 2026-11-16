@@ -5,7 +5,7 @@
 
 **Effective date: [December 1, 2026]**
 
-[Operator name] ("we") runs the Daily Thanks app and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
+Daily Journey, Inc. ("we") runs the Daily Thanks app and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
 
 ## 1. What we collect
 
@@ -80,4 +80,4 @@ We will post changes in the app or on our website at least 7 days before they ta
 
 ## 9. Contact
 
-[Operator name] · [support@dailyapp.org] · [mailing address]
+Daily Journey, Inc. · [support@dailyapp.org] · [mailing address]
