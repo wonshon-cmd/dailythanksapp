@@ -63,6 +63,9 @@ test/                   단위·API 테스트
 | POST | `/api/sermons/text` | sermon | 받아쓴 원고로 요약 |
 | GET | `/api/sermons`, `/api/sermons/:id` | sermon | 요약 목록·상세 (기본은 나만 보기) |
 | PATCH | `/api/sermons/:id/visibility` | sermon | 공유하려면 `churchConsent: true` 필요 |
+| POST | `/api/reports` | | 글 신고 (사유 8종). 자해·자살 신고는 `urgent`로 맨 앞에 쌓임 |
+| GET | `/api/moderation/reports?status=open` | moderation | 운영자 검토 목록 |
+| PATCH | `/api/moderation/reports/:id` | moderation | `actioned` / `dismissed` 처리 |
 
 기능 플래그가 꺼져 있으면 해당 API는 404를 반환하고, 앱 화면에도 나타나지 않습니다.
 
@@ -106,4 +109,8 @@ test/                   단위·API 테스트
    - 녹음을 분할 업로드하세요(Whisper는 요청당 약 25MB 제한).
    - 휴대폰 백그라운드 녹음은 네이티브 앱에서 구현해야 합니다.
    - 처리 작업은 큐(작업 대기열)로 옮기세요.
-5. **설교 요약 공유:** 교회 동의 구조를 확정하세요(B2B 교회 계정).
+5. **신고 처리 운영:**
+   - 운영자 화면과 권한(모더레이터 계정)을 만드세요.
+   - 처리 기준(커뮤니티 규칙)을 정하세요.
+   - 자해·자살 신고에 빠르게 대응할 절차를 마련하세요.
+6. **설교 요약 공유:** 교회 동의 구조를 확정하세요(B2B 교회 계정).

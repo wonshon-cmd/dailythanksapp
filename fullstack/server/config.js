@@ -9,7 +9,8 @@ export function loadConfig(env = process.env) {
     uploadDir: env.UPLOAD_DIR || new URL('../data/uploads/', import.meta.url).pathname,
     features: {
       passage: on(env.FEATURE_PASSAGE),   // 오늘의 본문 (user / leader-entered references)
-      sermon: on(env.FEATURE_SERMON)      // 설교 녹음 → 전사 → 요약
+      sermon: on(env.FEATURE_SERMON),     // 설교 녹음 → 전사 → 요약
+      moderation: on(env.FEATURE_MODERATION) // 신고 검토 API (운영자용)
     },
     stt: {
       provider: env.STT_PROVIDER || 'mock', // mock | openai | clova | rtzr

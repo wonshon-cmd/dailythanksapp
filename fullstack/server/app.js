@@ -64,6 +64,32 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     return { ok: true };
   });
 
+  /* ---------- 신고 (moderation queue) ----------
+     Users report a post with a reason; reports wait in a queue for a moderator. The reporter is never shown
+     to the reported person. Hiding and blocking are per-viewer and live in the user's own state. */
+  const REPORT_REASONS = ['spam', 'hate', 'violence', 'sexual', 'false', 'privacy', 'selfharm', 'other'];
+  route('POST', '/api/reports', async ({ req, user }) => {
+    const body = await readJson(req, 8 * 1024);
+    if (!REPORT_REASONS.includes(body.reason)) throw new HttpError(422, 'invalid_reason');
+    if (!body.postId) throw new HttpError(422, 'missing_post');
+    return store.addReport({
+      id: crypto.randomUUID(), postId: String(body.postId).slice(0, 80), author: String(body.author || '').slice(0, 80),
+      reason: body.reason, note: String(body.note || '').slice(0, 500), reporter: user,
+      // self-harm reports go to the front of the queue
+      priority: body.reason === 'selfharm' ? 'urgent' : 'normal', status: 'open', createdAt: new Date().toISOString()
+    });
+  });
+  // TODO(auth): restrict to moderators once real accounts exist.
+  route('GET', '/api/moderation/reports', ({ url }) => ({ reports: store.listReports({ status: url.searchParams.get('status') || 'open' })
+    .sort((a, b) => (a.priority === 'urgent' ? -1 : 0) - (b.priority === 'urgent' ? -1 : 0)) }), 'moderation');
+  route('PATCH', '/api/moderation/reports/:id', async ({ req, params }) => {
+    const body = await readJson(req, 4096);
+    if (!['open', 'actioned', 'dismissed'].includes(body.status)) throw new HttpError(422, 'invalid_status');
+    const r = store.updateReport(params.id, { status: body.status, resolvedAt: new Date().toISOString() });
+    if (!r) throw new HttpError(404, 'not_found');
+    return { report: r };
+  }, 'moderation');
+
   /* ---------- 오늘의 본문 (feature: passage) ----------
      The app never ships a publisher's reading plan. A user types today's reference, or a small-group
      leader assigns one to the group; the app only parses it and shows licensed/public-domain text. */
@@ -181,7 +207,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
         if (r.feature && !config.features[r.feature]) throw new HttpError(404, 'not_found'); // hidden until switched on
         const params = Object.fromEntries(r.keys.map((k, i) => [k, decodeURIComponent(m[i + 1])]));
         const out = await r.handler({ req, url, params, user: userIdOf(req) });
-        return out && out.status ? send(res, out.status, out.body) : send(res, 200, out);
+        return out && typeof out.status === 'number' && 'body' in out ? send(res, out.status, out.body) : send(res, 200, out);
       }
       throw new HttpError(404, 'not_found');
     } catch (err) {

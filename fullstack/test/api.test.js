@@ -30,7 +30,7 @@ after(() => { servers.forEach(s => s.close()); fs.rmSync(tmp, { recursive: true,
 
 test('features are hidden by default', async () => {
   const call = await start({});
-  assert.deepEqual((await call('GET', '/api/config')).body.features, { passage: false, sermon: false });
+  assert.deepEqual((await call('GET', '/api/config')).body.features, { passage: false, sermon: false, moderation: false });
   assert.equal((await call('GET', '/api/passages')).status, 404);
   assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 404);
   const html = (await call('GET', '/')).body;
@@ -87,4 +87,18 @@ test('sermons: audio upload goes through STT (mock provider)', async () => {
   }
   assert.equal(sermon.status, 'done');
   assert.match(sermon.transcript, /니고데모/);
+});
+
+test('reports: queued, self-harm first, moderation API hidden by default', async () => {
+  const call = await start({ FEATURE_MODERATION: '1' });
+  assert.equal((await call('POST', '/api/reports', { postId: 'pub1', reason: 'nonsense' })).status, 422);
+  assert.equal((await call('POST', '/api/reports', { postId: 'pub1', reason: 'spam', author: '서연' })).status, 200);
+  assert.equal((await call('POST', '/api/reports', { postId: 'pub3', reason: 'selfharm' })).status, 200);
+  const queue = (await call('GET', '/api/moderation/reports')).body.reports;
+  assert.deepEqual(queue.map(r => r.reason), ['selfharm', 'spam']);
+  assert.equal((await call('PATCH', `/api/moderation/reports/${queue[0].id}`, { status: 'actioned' })).status, 200);
+  assert.equal((await call('GET', '/api/moderation/reports')).body.reports.length, 1);
+  const off = await start({});
+  assert.equal((await off('GET', '/api/moderation/reports')).status, 404);
+  assert.equal((await off('POST', '/api/reports', { postId: 'x', reason: 'spam' })).status, 200);
 });

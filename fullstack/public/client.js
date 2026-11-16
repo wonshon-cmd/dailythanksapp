@@ -53,6 +53,9 @@
     syncTimer = setTimeout(() => api('PUT', '/api/state', { state: e.detail }).catch(() => DT.toast('Server sync failed')), 400);
   });
 
+  // Reports go to the server's moderation queue.
+  document.addEventListener('dt:report', e => { const { postId, author, reason, note } = e.detail; api('POST', '/api/reports', { postId, author, reason, note }).catch(() => {}); });
+
   // After sign-in, attach what the guest wrote before signing in to the account.
   document.addEventListener('dt:session', e => { if (e.detail) api('PUT', '/api/state', { state: DT.getData() }).catch(() => {}); });
 

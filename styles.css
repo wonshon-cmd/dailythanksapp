@@ -329,3 +329,20 @@ main{position:relative}
 .time-input{border:0;background:#F0F0EE;border-radius:10px;height:36px;padding:0 10px;font-size:14px;color:var(--ink)}
 .lock-preview{display:flex;flex-direction:column;gap:3px;padding:14px 16px;border-radius:18px;background:#F0F0EE;font-size:13px;color:var(--sub)}
 .lock-preview strong{font-weight:500;color:var(--ink);font-size:14px}
+
+/* ---------- save · report ---------- */
+.rail-btn.saved .ico{fill:var(--ink)}
+.rail-more{gap:0;padding-top:2px}
+.post.imm .post-rail{gap:20px}
+.report-done{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:8px 8px 14px}
+.report-done > .ico{font-size:30px;color:var(--ink);stroke-width:1.6;margin-bottom:4px}
+.report-done .row-title{font-size:17px;font-weight:500;margin:0}
+.report-done .hint{margin:0}
+.help-box{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:16px;background:#F0F0EE;font-size:13px;color:var(--sub);margin-bottom:6px}
+.help-box p{margin:0}
+.help-box strong{color:var(--ink);font-weight:500;font-size:15px}
+.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.list-row .secondary{height:34px;padding:0 14px;font-size:13px;flex:none}
+.post-body{padding-right:72px}
+.post-rail{gap:24px}
+.post.imm .post-rail{gap:22px}

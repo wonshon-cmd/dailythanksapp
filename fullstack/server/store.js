@@ -7,7 +7,7 @@ import path from 'node:path';
  * the route handlers only call the methods below.
  */
 export function createStore(file) {
-  const empty = { states: {}, passages: [], sermons: [] };
+  const empty = { states: {}, passages: [], sermons: [], reports: [] };
   let db = empty;
   try { db = { ...empty, ...JSON.parse(fs.readFileSync(file, 'utf8')) }; } catch { /* first run */ }
   let timer = null;
@@ -36,6 +36,9 @@ export function createStore(file) {
     updateSermon: (id, patch) => { const s = db.sermons.find(x => x.id === id); if (s) { Object.assign(s, patch); persist(); } return s; },
     getSermon: id => db.sermons.find(x => x.id === id) || null,
     listSermons: userId => db.sermons.filter(s => s.ownerId === userId).map(({ transcript, ...rest }) => rest),
+    addReport: r => { db.reports.push(r); persist(); return r; },
+    listReports: ({ status } = {}) => db.reports.filter(r => !status || r.status === status),
+    updateReport: (id, patch) => { const r = db.reports.find(x => x.id === id); if (r) { Object.assign(r, patch); persist(); } return r; },
     flush: () => new Promise(r => setTimeout(r, 80))
   };
 }

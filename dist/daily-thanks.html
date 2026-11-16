@@ -342,6 +342,23 @@ main{position:relative}
 .lock-preview{display:flex;flex-direction:column;gap:3px;padding:14px 16px;border-radius:18px;background:#F0F0EE;font-size:13px;color:var(--sub)}
 .lock-preview strong{font-weight:500;color:var(--ink);font-size:14px}
 
+/* ---------- save · report ---------- */
+.rail-btn.saved .ico{fill:var(--ink)}
+.rail-more{gap:0;padding-top:2px}
+.post.imm .post-rail{gap:20px}
+.report-done{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:8px 8px 14px}
+.report-done > .ico{font-size:30px;color:var(--ink);stroke-width:1.6;margin-bottom:4px}
+.report-done .row-title{font-size:17px;font-weight:500;margin:0}
+.report-done .hint{margin:0}
+.help-box{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:16px;background:#F0F0EE;font-size:13px;color:var(--sub);margin-bottom:6px}
+.help-box p{margin:0}
+.help-box strong{color:var(--ink);font-weight:500;font-size:15px}
+.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.list-row .secondary{height:34px;padding:0 14px;font-size:13px;flex:none}
+.post-body{padding-right:72px}
+.post-rail{gap:24px}
+.post.imm .post-rail{gap:22px}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -377,6 +394,15 @@ const KEY = 'daily-thanks-v2';
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'save': '저장', 'saved.on': '저장했어요. 내 감사 › 저장에서 볼 수 있어요.', 'saved.off': '저장을 취소했어요.', 'j.saved': '저장', 'j.savedEmpty': '저장한 감사가 없어요. 마음에 남는 글에서 저장을 눌러 보세요.',
+    'more': '더 보기', 'menu.report': '신고하기', 'menu.hide': '이 글 숨기기', 'menu.block': '이 사람 차단하기', 'menu.unsave': '저장 취소',
+    'report.title': '신고', 'report.q': '이 글을 신고하는 이유를 골라 주세요.', 'report.anon': '신고한 사람은 상대방에게 알리지 않아요.',
+    'report.spam': '스팸 또는 광고', 'report.hate': '혐오 표현 또는 괴롭힘', 'report.violence': '폭력적이거나 위험한 내용', 'report.sexual': '성적인 내용', 'report.false': '거짓 정보', 'report.privacy': '다른 사람의 개인정보 노출', 'report.selfharm': '자해 또는 자살 관련', 'report.other': '기타',
+    'report.otherPh': '어떤 점이 문제인지 알려 주세요 (선택)', 'report.send': '신고하기',
+    'report.done': '신고가 접수되었어요', 'report.doneSub': '검토 후 운영 정책에 따라 조치할게요. 함께 이 공간을 지켜 주셔서 고마워요.',
+    'report.help': '지금 위험한 상황이라면 바로 도움을 받을 수 있어요.', 'report.help1': '자살예방상담전화 109 (24시간)', 'report.help2': '긴급 상황 112 · 119',
+    'hidden.done': '이 글을 숨겼어요.', 'blocked.done': '{name} 님을 차단했어요. 이 사람의 글이 더 이상 보이지 않아요.', 'block.confirm': '{name} 님을 차단할까요? 이 사람의 글이 보이지 않게 되고, 상대방에게는 알리지 않아요.', 'block.ok': '차단',
+    's.blocked': '숨긴 글 · 차단 관리', 'blocked.none': '숨긴 글이나 차단한 사람이 없어요.', 'blocked.users': '차단한 사람', 'blocked.posts': '숨긴 글', 'unblock': '해제', 'restore': '다시 보기', 'done': '완료',
     'note.delete': '삭제',
     'note.reflect': '돌아보며 감사 쓰기',
     'note.share': '공유',
@@ -441,6 +467,15 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'save': 'Save', 'saved.on': 'Saved. Find it in My Thanks › Saved.', 'saved.off': 'Removed from saved.', 'j.saved': 'Saved', 'j.savedEmpty': 'Nothing saved yet. Tap Save on a post that stays with you.',
+    'more': 'More', 'menu.report': 'Report', 'menu.hide': 'Hide this post', 'menu.block': 'Block this person', 'menu.unsave': 'Remove from saved',
+    'report.title': 'Report', 'report.q': 'Why are you reporting this post?', 'report.anon': 'The person won’t be told who reported them.',
+    'report.spam': 'Spam or advertising', 'report.hate': 'Hate speech or bullying', 'report.violence': 'Violent or dangerous content', 'report.sexual': 'Sexual content', 'report.false': 'False information', 'report.privacy': 'Someone’s private information', 'report.selfharm': 'Self-harm or suicide', 'report.other': 'Something else',
+    'report.otherPh': 'Tell us what’s wrong (optional)', 'report.send': 'Report',
+    'report.done': 'Thanks for letting us know', 'report.doneSub': 'We’ll review it and act under our community rules. Thank you for helping keep this space kind.',
+    'report.help': 'If someone is in danger right now, help is available.', 'report.help1': 'Call or text 988 (US) · 109 (Korea)', 'report.help2': 'In an emergency, call your local emergency number',
+    'hidden.done': 'Post hidden.', 'blocked.done': 'You blocked {name}. Their posts won’t appear anymore.', 'block.confirm': 'Block {name}? You won’t see their posts, and they won’t be told.', 'block.ok': 'Block',
+    's.blocked': 'Hidden posts & blocked people', 'blocked.none': 'No hidden posts or blocked people.', 'blocked.users': 'Blocked people', 'blocked.posts': 'Hidden posts', 'unblock': 'Unblock', 'restore': 'Show again', 'done': 'Done',
     'note.delete': 'Delete',
     'note.reflect': 'Look back with thanks',
     'note.share': 'Share',
@@ -527,6 +562,10 @@ const ICONS = {
   apple: '<path fill="currentColor" stroke="none" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-4.1zM14 5.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/>',
   google: '<path fill="#4285F4" stroke="none" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" stroke="none" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" stroke="none" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" stroke="none" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>',
   phoneMsg: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/>',
+  bookmark: '<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>',
+  flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/>',
+  eyeOff: '<path d="M9.88 9.88a3 3 0 1 0 4.24 4.24M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61M2 2l20 20"/>',
+  ban: '<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   x: '<path d="M18 6 6 18M6 6l12 12"/>',
   more: '<circle cx="5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/>',
@@ -566,7 +605,7 @@ const seed = {
     { id: 'mine1', mine: true, scope: 'private', kind: 'today', date: '2026-11-15', likes: 0,
       text: { ko: '오늘도 새롭게 시작할 수 있는 아침을 주셔서 감사합니다.', en: 'Thank you for a morning to begin again today.' } }
   ],
-  liked: [],
+  liked: [], saved: [], hidden: [], blocked: [], reports: [],
   groups: [{ id: 'g1', name: { ko: '은혜 소그룹', en: 'Grace Group' } }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family' } }],
   challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together' }, group: 'g1',
     members: [{ ko: '나', en: 'Me' }, { ko: '지은', en: 'Jieun' }, { ko: '민서', en: 'Minseo' }], start: '2026-11-14', days: [1, 2] }],
@@ -583,6 +622,7 @@ const clone = x => JSON.parse(JSON.stringify(x));
 let data;
 try { const stored = JSON.parse(localStorage.getItem(KEY)); data = stored && Array.isArray(stored.posts) ? stored : clone(seed); }
 catch { data = clone(seed); }
+for (const k of ['liked', 'saved', 'hidden', 'blocked', 'reports']) if (!Array.isArray(data[k])) data[k] = [];
 if (!data.settings.lang) data.settings.lang = (navigator.language || 'ko').toLowerCase().startsWith('ko') ? 'ko' : 'en';
 
 /* Sign-in session. Saved once, kept until the user signs out ("always signed in").
@@ -635,6 +675,7 @@ function showSheet({ title, body }) {
   sheet.innerHTML = `<div class="sheet-top"><h2>${title}</h2><button class="close" data-action="close" aria-label="${t('aria.close')}">${icon('x')}</button></div>${body}`;
   sheet.setAttribute('aria-label', title);
   sheet.hidden = false; backdrop.hidden = false;
+  if (!sheet.dataset.keepToast) { clearTimeout(toast.timer); $('#toast').hidden = true; }
   setTimeout(() => sheet.querySelector('textarea, input.field')?.focus(), 30); // only text fields get focus
 }
 function close() { sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = ''; }
@@ -699,8 +740,11 @@ function renderKeep(selector) {
   if (sc && el) sc.scrollTop = el.offsetTop;
 }
 
+// Posts the viewer hid, or whose author they blocked, never appear in any feed.
+const authorKey = p => p.mine ? 'me' : String(L(p.name) && (p.name.ko || p.name));
+const visible = p => !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p));
 function feedPosts() {
-  return data.posts.filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
+  return data.posts.filter(visible).filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
 }
 
 function postTemplate(p, i, count) {
@@ -714,7 +758,9 @@ function postTemplate(p, i, count) {
     </div>
     <aside class="post-rail">
       <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
+      <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
+      <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
     </aside>
     <footer class="post-foot">
       <div class="post-author"><div><div class="author-name">${esc(name)}${p.sharedFrom ? ' · ' + esc(L(p.sharedFrom)) : ''}</div><div class="author-meta">${esc(meta)} · ${esc(p.date)}</div></div></div>
@@ -779,16 +825,18 @@ function renderChallenges() {
 }
 
 function renderJournal() {
-  let mine = data.posts.filter(p => p.mine);
-  if (state.filter !== 'all') mine = mine.filter(p => p.kind === state.filter);
+  const savedView = state.filter === 'saved';
+  let mine = savedView ? data.saved.map(id => data.posts.find(p => p.id === id)).filter(p => p && visible(p)) : data.posts.filter(p => p.mine);
+  if (!savedView && state.filter !== 'all') mine = mine.filter(p => p.kind === state.filter);
   main.innerHTML = `<div class="screen"><div class="page">
     ${pageHead(t('j.title'), t('j.desc'), roundBtn('settings', 'more', t('aria.settings')))}
-    <div class="seg seg-page">${[['all', t('j.all')], ['today', t('kind.today')], ['ahead', t('kind.aheadShort')]].map(([k, label]) => `<button class="${state.filter === k ? 'active' : ''}" data-action="journal-filter" data-id="${k}">${label}</button>`).join('')}</div>
-    ${mine.length ? `<div class="notes">${mine.map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}">
-      <span class="note-meta">${icon(kindIcon(p))}<span>${esc(kindLabel(p))}</span><span class="dot">·</span><span>${esc(p.date)}</span><span class="note-scope">${icon(scopeIcon(p))}</span></span>
+    <div class="seg seg-page">${[['all', t('j.all')], ['today', t('kind.today')], ['ahead', t('kind.aheadShort')], ['saved', t('j.saved')]].map(([k, label]) => `<button class="${state.filter === k ? 'active' : ''}" data-action="journal-filter" data-id="${k}">${label}</button>`).join('')}</div>
+    ${mine.length ? `<div class="notes">${mine.map(p => `<button class="note" data-action="${savedView ? 'post-menu' : 'note'}" data-id="${esc(p.id)}">
+      <span class="note-meta">${icon(kindIcon(p))}<span>${savedView ? esc(authorName(p)) + ' · ' : ''}${esc(kindLabel(p))}</span><span class="dot">·</span><span>${esc(p.date)}</span><span class="note-scope">${icon(scopeIcon(p))}</span></span>
       <span class="note-text">${esc(L(p.text))}</span>
       ${p.reflection ? `<span class="note-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</span>` : ''}
     </button>`).join('')}</div>`
+      : savedView ? `<div class="empty-state">${icon('bookmark')}<p>${t('j.savedEmpty')}</p></div>`
       : `<div class="empty-state">${icon('pencil')}<p>${t('j.empty')}</p><button class="primary" data-action="compose">${t('top.write')}</button></div>`}
     <div id="slot-journal"></div>
   </div></div>`;
@@ -796,7 +844,7 @@ function renderJournal() {
 
 /* Full-screen feed: only the gratitude text, with ♡ count, share and close on the right. */
 function renderImmersive(keepIndex = 0) {
-  const posts = data.posts.filter(p => p.scope === 'public' && !p.mine);
+  const posts = data.posts.filter(p => p.scope === 'public' && !p.mine && visible(p));
   main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${feedSequence(posts).map(it => {
     if (it.type !== 'post') return cardFor(it);
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
@@ -805,7 +853,9 @@ function renderImmersive(keepIndex = 0) {
         <p class="imm-by">${esc(L(p.name))} · ${esc(kindLabel(p))}</p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
-        <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
+        <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
+      <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
+      <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button>
       </aside></article>`;
   }).join('')}</div>
@@ -972,12 +1022,87 @@ function settings() {
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
       ${row('notification', 'bell', t('s.notify'), `<span class="row-sub">${esc(data.settings.notificationTime)}</span>${icon('chevron')}`)}
+      ${row('blocked', 'eyeOff', t('s.blocked'))}
       ${row('widget', 'phone', t('s.widget'))}
       ${row('fullscreen', 'maximize', t('fs.enter'))}
       ${row('export', 'copy', t('s.export'), '')}
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
     <p class="about">${icon('info')}<span>${t('s.about')}</span></p>` });
+}
+
+/* ---------------- save · report · hide · block ---------------- */
+const listRow = (action, id, ic, title, cls = '', end = '') => `<button class="list-row ${cls}" data-action="${action}" data-id="${esc(id)}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${title}</span></span>${end ? `<span class="row-end">${end}</span>` : ''}</button>`;
+
+function keepPlace() { const sc = $('#feed-scroll'); return sc ? Math.round(sc.scrollTop / sc.clientHeight) : 0; }
+
+function toggleSave(id) {
+  const i = data.saved.indexOf(id);
+  i >= 0 ? data.saved.splice(i, 1) : data.saved.unshift(id);
+  save(); render(keepPlace()); toast(t(i >= 0 ? 'saved.off' : 'saved.on'));
+}
+
+function postMenu(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  if (p.mine) return noteSheet(id);
+  const saved = data.saved.includes(id);
+  showSheet({ title: esc(L(p.name)), body: `<p class="quote">${esc(L(p.text))}</p>
+    <div class="list">
+      ${listRow('save-post', id, 'bookmark', saved ? t('menu.unsave') : t('save'))}
+      ${listRow('share', id, 'upload', t('note.share'))}
+      ${listRow('hide-post', id, 'eyeOff', t('menu.hide'))}
+      ${listRow('block-author', id, 'ban', t('menu.block'), 'danger')}
+      ${listRow('report', id, 'flag', t('menu.report'), 'danger', icon('chevron'))}
+    </div>` });
+}
+
+const REPORT_REASONS = ['spam', 'hate', 'violence', 'sexual', 'false', 'privacy', 'selfharm', 'other'];
+function reportSheet(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  showSheet({ title: t('report.title'), body: `<p class="page-desc" style="margin:0 0 6px">${t('report.q')}</p>
+    <div class="list">${REPORT_REASONS.map(r => listRow('report-reason', `${id}|${r}`, r === 'selfharm' ? 'info' : 'flag', t('report.' + r), '', icon('chevron'))).join('')}</div>
+    <p class="hint">${t('report.anon')}</p>` });
+}
+function reportReason(pair) {
+  const [id, reason] = pair.split('|');
+  if (reason !== 'other') return submitReport(id, reason, '');
+  showSheet({ title: t('report.other'), body: `<form id="report-form" class="sheet-form">
+    <textarea id="report-text" class="big-input" rows="4" maxlength="500" placeholder="${esc(t('report.otherPh'))}"></textarea>
+    <button class="primary block" type="submit">${t('report.send')}</button></form>` });
+  $('#report-form').addEventListener('submit', e => { e.preventDefault(); submitReport(id, 'other', $('#report-text').value.trim()); });
+}
+function submitReport(id, reason, note) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const report = { id: 'r' + Date.now(), postId: id, author: authorKey(p), reason, note, at: new Date().toISOString() };
+  data.reports.push(report); save();
+  document.dispatchEvent(new CustomEvent('dt:report', { detail: report })); // full-stack client forwards this to the server
+  showSheet({ title: t('report.title'), body: `<div class="report-done">${icon('check')}<p class="row-title">${t('report.done')}</p><p class="hint">${t('report.doneSub')}</p></div>
+    ${reason === 'selfharm' ? `<div class="help-box"><p>${t('report.help')}</p><strong>${t('report.help1')}</strong><span>${t('report.help2')}</span></div>` : ''}
+    <div class="list">
+      ${listRow('hide-post', id, 'eyeOff', t('menu.hide'))}
+      ${listRow('block-author', id, 'ban', t('menu.block'), 'danger')}
+    </div>
+    <button class="secondary block" data-action="close" style="margin-top:12px">${t('done')}</button>` });
+}
+function hidePost(id) {
+  if (!data.hidden.includes(id)) data.hidden.push(id);
+  save(); close(); render(keepPlace()); toast(t('hidden.done'));
+}
+function blockAuthor(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const name = L(p.name);
+  confirmSheet(t('menu.block'), esc(t('block.confirm').replace('{name}', name)), t('block.ok'), () => {
+    const key = authorKey(p);
+    if (!data.blocked.includes(key)) data.blocked.push(key);
+    save(); render(keepPlace()); toast(t('blocked.done').replace('{name}', name));
+  });
+}
+function blockedSheet() {
+  const posts = data.hidden.map(id => data.posts.find(p => p.id === id)).filter(Boolean);
+  const nameOf = key => { const p = data.posts.find(x => authorKey(x) === key); return p ? L(p.name) : key; };
+  showSheet({ title: t('s.blocked'), body: !posts.length && !data.blocked.length ? `<p class="hint">${t('blocked.none')}</p>` : `
+    ${data.blocked.length ? `<p class="field-label">${t('blocked.users')}</p><div class="list">${data.blocked.map(k => `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${esc(nameOf(k))}</span></span><button class="secondary" data-action="unblock" data-id="${esc(k)}">${t('unblock')}</button></div>`).join('')}</div>` : ''}
+    ${posts.length ? `<p class="field-label">${t('blocked.posts')}</p><div class="list">${posts.map(p => `<div class="list-row static"><span class="row-main"><span class="row-title clamp">${esc(L(p.text))}</span><span class="row-sub">${esc(L(p.name))}</span></span><button class="secondary" data-action="unhide" data-id="${esc(p.id)}">${t('restore')}</button></div>`).join('')}</div>` : ''}` });
 }
 
 /* ---------------- sign-in ---------------- */
@@ -1061,6 +1186,15 @@ const actions = {
   'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   note: noteSheet,
+  'save-post': toggleSave,
+  'post-menu': postMenu,
+  report: reportSheet,
+  'report-reason': reportReason,
+  'hide-post': hidePost,
+  'block-author': blockAuthor,
+  blocked: blockedSheet,
+  unblock: key => { data.blocked = data.blocked.filter(k => k !== key); save(); render(); blockedSheet(); },
+  unhide: id => { data.hidden = data.hidden.filter(x => x !== id); save(); render(); blockedSheet(); },
   'send-to': pair => {
     const [id, g] = pair.split('|'); const p = data.posts.find(x => x.id === id); if (!p) return;
     data.posts.unshift({ ...clone(p), id: 'repost' + Date.now(), scope: 'group', group: g, mine: false, name: p.mine ? { ko: '나', en: 'Me' } : p.name, sharedFrom: { ko: '공유', en: 'shared' }, likes: 0 });
