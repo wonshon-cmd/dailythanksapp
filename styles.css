@@ -587,3 +587,16 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .glow-wrap{width:30px;height:30px}
 .glow{box-shadow:0 0 calc((3px + var(--g) * 22px) * var(--s)) calc((1px + var(--g) * 9px) * var(--s)) rgba(255,214,90,calc(.10 + var(--g) * .38)),
   0 0 calc((8px + var(--g) * 48px) * var(--s)) calc(var(--g) * 20px * var(--s)) rgba(255,226,140,calc(.04 + var(--g) * .30))}
+
+/* reach light v3: one continuous soft light (no separate dot / ring) that gently grows */
+.glow{--size:calc((10px + var(--g) * 52px) * var(--s));width:var(--size);height:var(--size);border-radius:50%;box-shadow:none;
+  background:radial-gradient(circle closest-side,
+    rgba(255,198,58,calc(.50 + var(--g) * .40)) 0%,
+    rgba(255,208,82,calc(.34 + var(--g) * .34)) 22%,
+    rgba(255,220,120,calc(.16 + var(--g) * .22)) 50%,
+    rgba(255,232,160,calc(.05 + var(--g) * .08)) 75%,
+    rgba(255,240,190,0) 100%);
+  animation:glow-breathe 6s ease-in-out infinite}
+@keyframes glow-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.glow-wrap{width:34px;height:34px;overflow:visible}
+.glow-stage{width:140px;height:140px}
