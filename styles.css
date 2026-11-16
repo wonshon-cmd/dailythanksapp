@@ -650,3 +650,20 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 /* splash: "thanks" in italic like the logo; both screens a little softer than full ink */
 .splash-tag em{font-style:italic}
 .splash .wordmark,.splash-tag{color:#4E5459}
+
+/* the star next to "7 Days": a quiet, colourless twinkle */
+.link-btn[data-action="challenges"] .ico{animation:twinkle 3.2s ease-in-out infinite;transform-origin:50% 50%}
+@keyframes twinkle{
+  0%,100%{opacity:.55;transform:scale(1) rotate(0deg)}
+  45%{opacity:1;transform:scale(1.14) rotate(8deg);filter:drop-shadow(0 0 2px rgba(48,52,56,.22))}
+  60%{opacity:.8;transform:scale(1.04) rotate(4deg)}
+}
+@media (prefers-reduced-motion:reduce){.link-btn[data-action="challenges"] .ico{animation:none;opacity:1}}
+/* twinkle only now and then: still most of the time, a brief shimmer about every 9 s */
+.link-btn[data-action="challenges"] .ico{animation:twinkle-rare 9s ease-in-out infinite 2s}
+@keyframes twinkle-rare{
+  0%,10%,100%{opacity:1;transform:scale(1) rotate(0deg);filter:none}
+  4%{opacity:1;transform:scale(1.16) rotate(10deg);filter:drop-shadow(0 0 2px rgba(48,52,56,.25))}
+  6%{opacity:.6;transform:scale(1.02) rotate(5deg)}
+}
+@media (prefers-reduced-motion:reduce){.link-btn[data-action="challenges"] .ico{animation:none}}
