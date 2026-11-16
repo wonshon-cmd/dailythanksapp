@@ -93,6 +93,6 @@ No tracking, no ads.
 | 마케팅 URL | https://dailyapp.org |
 | 개인정보처리방침 URL | https://dailyapp.org/privacy |
 | 계정 삭제 URL (Google) | https://dailyapp.org/delete-account |
-| 저작권 | © 2026 [운영자 이름] |
+| 저작권 | © 2026 Daily Journey, Inc. |
 | 가격 | 무료 |
 | 지원 언어 | 한국어, 영어, 스페인어 |
