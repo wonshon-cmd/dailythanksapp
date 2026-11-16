@@ -600,3 +600,9 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 @keyframes glow-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .glow-wrap{width:34px;height:34px;overflow:visible}
 .glow-stage{width:140px;height:140px}
+
+/* button colour back to the original prototype: soft charcoal #444C53 (not near-black) */
+:root{--dark:#444C53}
+.next-fab{background:var(--dark);box-shadow:0 4px 12px #444C5326}
+.primary{background:var(--dark)}
+.toast{background:#444C53}
