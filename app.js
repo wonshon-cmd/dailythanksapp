@@ -46,7 +46,7 @@ const STR = {
     'j.kicker': 'MY GRATITUDE', 'j.title': '나의 감사가<br>쌓이는 곳.', 'j.desc': '오늘 받은 은혜와 앞으로의 시간을 맡기며 드린 미리 감사를 함께 돌아봐요.', 'j.all': '전체', 'j.new': '＋ 새로운 감사 쓰기', 'j.empty': '아직 기록된 감사가 없어요.', 'j.reflect': '돌아보며 감사 쓰기', 'j.delete': '삭제', 'j.confirmDelete': '이 감사 기록을 삭제할까요?',
     'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림 사용 (설정 시안)', 'n.group': '그룹 반응 모아 보기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 고마웠던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '알림 설정 저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
     'w.title': '홈 화면 위젯', 'w.desc': '실제 iPhone 위젯이 아닌 홈 화면 디자인 미리보기예요.', 'w.today': '오늘의 감사', 'w.q': '오늘 나를 웃게 한 일은?', 'w.write': '＋ 한 줄 쓰기', 'w.sub': '함께하는 7일', 'w.view': '챌린지 보기', 'w.fine': '실제 위젯 설치·위젯에서 앱 열기는 iOS/Android 네이티브 개발 단계에서 구현해야 합니다.',
-    's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 내보내기', 's.reset': '데모 초기화', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
+    's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
     'doc.title': 'Daily Thanks · A day that carries gratitude',
@@ -87,7 +87,7 @@ const STR = {
     'j.kicker': 'MY GRATITUDE', 'j.title': 'Where my thanks<br>gathers.', 'j.desc': 'Look back on today’s grace and the thanks you offered ahead for the days to come.', 'j.all': 'All', 'j.new': '＋ Write new thanks', 'j.empty': 'No thanks recorded yet.', 'j.reflect': 'Look back with thanks', 'j.delete': 'Delete', 'j.confirmDelete': 'Delete this note?',
     'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder (design preview)', 'n.group': 'Bundle group reactions', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save reminder', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
     'w.title': 'Home screen widget', 'w.desc': 'A design preview — not a real iPhone widget.', 'w.today': 'Today’s thanks', 'w.q': 'What made you smile today?', 'w.write': '＋ Write a line', 'w.sub': '7 days together', 'w.view': 'View challenge', 'w.fine': 'Installing a real widget and opening the app from it is built in the native iOS/Android phase.',
-    's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Export my demo data (JSON)', 's.reset': 'Reset demo', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
+    's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   }
 };
 
@@ -458,11 +458,14 @@ async function copyText(text) {
   toast(t('toast.copied'));
 }
 
-function exportData() {
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-  a.download = 'daily-thanks-demo-data.json'; document.body.append(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+// Copies the demo data as JSON (file downloads are blocked in some embedded viewers).
+function exportData() { copyText(JSON.stringify(data, null, 2)); }
+
+// In-app confirmation (browser confirm() dialogs are suppressed in some embedded viewers).
+function confirmSheet(title, message, okLabel, onOk) {
+  showSheet({ title, body: `<p class="hint" style="font-size:14px">${message}</p>
+    <div class="btn-row" style="margin-top:18px"><button class="primary" id="confirm-ok">${okLabel}</button><button class="secondary" data-action="close">${t('cancel')}</button></div>` });
+  $('#confirm-ok').addEventListener('click', () => { close(); onOk(); });
 }
 
 const actions = {
@@ -480,7 +483,7 @@ const actions = {
   'kind-ahead': () => compose('ahead', state.challenge, $('#gratitude-text')?.value || ''),
   sample: id => { const ta = $('#gratitude-text'); ta.value = SAMPLES[lang()][id]; ta.focus(); },
   'journal-filter': id => { state.filter = id; renderJournal(); },
-  delete: id => { if (confirm(t('j.confirmDelete'))) { data.posts = data.posts.filter(p => p.id !== id); save(); render(); } },
+  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
   'copy-share': id => { const p = data.posts.find(x => x.id === id); if (p) copyText(`${L(p.text)}\n\n— ${authorName(p)} · Daily Thanks`); },
   'native-share': id => {
     const p = data.posts.find(x => x.id === id);
@@ -503,11 +506,10 @@ const actions = {
     save(); close(); toast(t('toast.nSaved'));
   },
   export: exportData,
-  reset: () => {
-    if (!confirm(t('s.confirmReset'))) return;
+  reset: () => confirmSheet(t('s.reset'), t('s.confirmReset'), t('s.reset'), () => {
     const l = lang(); data = clone(seed); data.settings.lang = l; state.group = data.groups[0].id;
-    save(); close(); state.tab = 'feed'; render(); toast(t('toast.reset'));
-  }
+    save(); state.tab = 'feed'; render(); toast(t('toast.reset'));
+  })
 };
 
 document.addEventListener('click', e => {
@@ -524,4 +526,13 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
 applyStatic();
 render();
+
+/* Splash: white screen with the wordmark only, then fades into the app (tap to skip). */
+const splash = $('#splash');
+if (splash) {
+  let gone = false;
+  const hide = () => { if (gone) return; gone = true; splash.classList.add('out'); setTimeout(() => splash.remove(), 600); };
+  splash.addEventListener('click', hide);
+  setTimeout(hide, 1800);
+}
 })();

@@ -27,3 +27,9 @@
 - `index.html`, `styles.css`, `app.js` — 앱
 - `docs/` — 제품 명세(`PRODUCT_BRIEF_KO.md`), 다음 개발용 프롬프트(`HANDOFF_PROMPT_KO.md`)
 - `reference/` — 원본 디자인 사진, 이전 오프라인 프로토타입, 알림·위젯 레퍼런스 이미지
+
+## 온라인 미리보기 / Hosted preview
+
+- `python3 tools/build-single.py` → `dist/daily-thanks.html` (CSS·JS를 한 파일로 묶은 버전, 오프라인에서도 열림)
+- 이 파일을 claude.ai Artifact로 올려 휴대폰에서 클릭해 볼 수 있습니다.
+- 첫 화면: 흰 바탕에 `daily thanks` 워드마크만 보이는 스플래시 → 1.8초 후(또는 탭하면) 앱으로 전환
