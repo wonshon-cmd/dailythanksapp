@@ -1,0 +1,31 @@
+{
+  "name": "daily-thanks-mobile",
+  "private": true,
+  "version": "1.0.0",
+  "description": "iOS and Android app for Daily Thanks (Capacitor shell around the web app in the repo root).",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-web.mjs",
+    "sync": "npm run build && cap sync",
+    "assets": "capacitor-assets generate --iconBackgroundColor '#FFFFFF' --iconBackgroundColorDark '#FFFFFF' --splashBackgroundColor '#FFFFFF' --splashBackgroundColorDark '#FFFFFF'",
+    "android": "npm run sync && cap open android",
+    "ios": "npm run sync && cap open ios",
+    "apk": "npm run sync && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/filesystem": "^8.1.5",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/share": "^8.0.3",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.2",
+    "@capacitor/ios": "^8.6.2"
+  }
+}

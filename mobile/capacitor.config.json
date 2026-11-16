@@ -1,0 +1,13 @@
+{
+  "appId": "org.dailyjourney.dailythanks",
+  "appName": "Daily Thanks",
+  "webDir": "www",
+  "backgroundColor": "#FFFFFF",
+  "ios": { "contentInset": "never", "backgroundColor": "#FFFFFF", "scheme": "Daily Thanks" },
+  "android": { "backgroundColor": "#FFFFFF" },
+  "plugins": {
+    "SplashScreen": { "launchShowDuration": 0, "launchAutoHide": false, "backgroundColor": "#FFFFFF", "showSpinner": false },
+    "StatusBar": { "style": "LIGHT", "backgroundColor": "#FFFFFF", "overlaysWebView": true },
+    "LocalNotifications": { "smallIcon": "ic_stat_sun", "iconColor": "#9BA0A3" }
+  }
+}

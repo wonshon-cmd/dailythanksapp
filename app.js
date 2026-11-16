@@ -2166,7 +2166,9 @@ window.DailyThanks = {
   replaceData: next => { if (next && Array.isArray(next.posts)) { data = next; try { localStorage.setItem(KEY, JSON.stringify(data)); } catch {} applyStatic(); render(); } },
   lang, t, esc, icon, showSheet, close, toast, render: () => render(), getSession: () => session,
   // remote content: the server add-on (or the native shell) passes the downloaded content.json here
-  applyContent: c => { if (applyContent(c)) { save(); render(); afterContent(); } }, getContent: () => CONTENT
+  applyContent: c => { if (applyContent(c)) { save(); render(); afterContent(); } }, getContent: () => CONTENT,
+  // native shell: a reminder tap or the home-screen widget opens the writing sheet
+  openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); }
 };
 if (CONTENT_URL) fetch(CONTENT_URL, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(c => window.DailyThanks.applyContent(c)).catch(() => {});
 afterContent();
