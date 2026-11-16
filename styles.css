@@ -554,3 +554,36 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .daily-q{color:var(--faint)}
 .cal-day.on{background:#ECEDEB;color:var(--ink)}
 .prime-reasons .ico,.time-tile.active .ico,.inf-level .ico{color:var(--sub)}
+
+/* ---------- optional features ---------- */
+.section-label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);margin:26px 0 6px}
+.section-label .ico{font-size:15px}
+.rail-btn.prayed .ico{color:var(--ink);stroke-width:1.9}
+.prayer-row{align-items:flex-start;gap:12px}
+.prayer-row .row-title{font-weight:300;line-height:1.6}
+.pray-pill{flex:none;display:inline-flex;align-items:center;gap:5px;height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12.5px;color:var(--ink);margin-top:2px}
+.pray-pill .ico{font-size:15px}
+.pray-pill.on{background:var(--dark);border-color:var(--dark);color:#fff}
+.link-inline{border:0;background:none;padding:0;font:inherit;color:var(--sub);text-decoration:underline;text-underline-offset:2px}
+.share-q{border:1px solid var(--line);background:#fff;border-radius:20px;padding:18px}
+.share-q-text{font-size:18px;font-weight:300;line-height:1.6;margin:0 0 14px;word-break:keep-all}
+.sm-main{background:#F4F4F2;border-radius:16px;padding:14px 16px;margin:12px 0 4px}
+.sm-main p{margin:4px 0 0;font-size:16px;line-height:1.7;color:var(--ink)}
+.sm-point{font-size:14px;line-height:1.75;color:var(--sub);margin:6px 0}
+.sm-point strong{color:var(--ink);font-weight:500}
+.sm-list{margin:4px 0;padding-left:18px;font-size:14px;line-height:1.8;color:var(--ink)}
+.file-btn{cursor:pointer}
+.seg-kinds{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.seg-kinds::-webkit-scrollbar{display:none}
+.inf-label{display:flex;flex-direction:column;gap:2px}.inf-people{font-size:16px;color:var(--ink)}
+.seg-kinds.four button .ico{display:none}.seg-kinds.four button{font-size:12px;padding:0 4px}
+
+/* reach light v2: a tiny faint core whose soft halo spreads outward as reach grows */
+.glow{--core:calc((3px + var(--g) * 6px) * var(--s));width:var(--core);height:var(--core);border-radius:50%;
+  background:color-mix(in srgb,#FFC93C calc(var(--g) * 100%),#FFEAB0);
+  box-shadow:0 0 calc((3px + var(--g) * 22px) * var(--s)) calc((1px + var(--g) * 9px) * var(--s)) rgba(255,214,90,calc(.10 + var(--g) * .35)),
+             0 0 calc((8px + var(--g) * 40px) * var(--s)) calc(var(--g) * 14px * var(--s)) rgba(255,226,140,calc(.05 + var(--g) * .18));
+  animation:glow-breathe 5s ease-in-out infinite}
+.glow-wrap{width:30px;height:30px}
+.glow{box-shadow:0 0 calc((3px + var(--g) * 22px) * var(--s)) calc((1px + var(--g) * 9px) * var(--s)) rgba(255,214,90,calc(.10 + var(--g) * .38)),
+  0 0 calc((8px + var(--g) * 48px) * var(--s)) calc(var(--g) * 20px * var(--s)) rgba(255,226,140,calc(.04 + var(--g) * .30))}

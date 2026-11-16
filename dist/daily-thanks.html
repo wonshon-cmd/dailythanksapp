@@ -567,6 +567,39 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .cal-day.on{background:#ECEDEB;color:var(--ink)}
 .prime-reasons .ico,.time-tile.active .ico,.inf-level .ico{color:var(--sub)}
 
+/* ---------- optional features ---------- */
+.section-label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);margin:26px 0 6px}
+.section-label .ico{font-size:15px}
+.rail-btn.prayed .ico{color:var(--ink);stroke-width:1.9}
+.prayer-row{align-items:flex-start;gap:12px}
+.prayer-row .row-title{font-weight:300;line-height:1.6}
+.pray-pill{flex:none;display:inline-flex;align-items:center;gap:5px;height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12.5px;color:var(--ink);margin-top:2px}
+.pray-pill .ico{font-size:15px}
+.pray-pill.on{background:var(--dark);border-color:var(--dark);color:#fff}
+.link-inline{border:0;background:none;padding:0;font:inherit;color:var(--sub);text-decoration:underline;text-underline-offset:2px}
+.share-q{border:1px solid var(--line);background:#fff;border-radius:20px;padding:18px}
+.share-q-text{font-size:18px;font-weight:300;line-height:1.6;margin:0 0 14px;word-break:keep-all}
+.sm-main{background:#F4F4F2;border-radius:16px;padding:14px 16px;margin:12px 0 4px}
+.sm-main p{margin:4px 0 0;font-size:16px;line-height:1.7;color:var(--ink)}
+.sm-point{font-size:14px;line-height:1.75;color:var(--sub);margin:6px 0}
+.sm-point strong{color:var(--ink);font-weight:500}
+.sm-list{margin:4px 0;padding-left:18px;font-size:14px;line-height:1.8;color:var(--ink)}
+.file-btn{cursor:pointer}
+.seg-kinds{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.seg-kinds::-webkit-scrollbar{display:none}
+.inf-label{display:flex;flex-direction:column;gap:2px}.inf-people{font-size:16px;color:var(--ink)}
+.seg-kinds.four button .ico{display:none}.seg-kinds.four button{font-size:12px;padding:0 4px}
+
+/* reach light v2: a tiny faint core whose soft halo spreads outward as reach grows */
+.glow{--core:calc((3px + var(--g) * 6px) * var(--s));width:var(--core);height:var(--core);border-radius:50%;
+  background:color-mix(in srgb,#FFC93C calc(var(--g) * 100%),#FFEAB0);
+  box-shadow:0 0 calc((3px + var(--g) * 22px) * var(--s)) calc((1px + var(--g) * 9px) * var(--s)) rgba(255,214,90,calc(.10 + var(--g) * .35)),
+             0 0 calc((8px + var(--g) * 40px) * var(--s)) calc(var(--g) * 14px * var(--s)) rgba(255,226,140,calc(.05 + var(--g) * .18));
+  animation:glow-breathe 5s ease-in-out infinite}
+.glow-wrap{width:30px;height:30px}
+.glow{box-shadow:0 0 calc((3px + var(--g) * 22px) * var(--s)) calc((1px + var(--g) * 9px) * var(--s)) rgba(255,214,90,calc(.10 + var(--g) * .38)),
+  0 0 calc((8px + var(--g) * 48px) * var(--s)) calc(var(--g) * 20px * var(--s)) rgba(255,226,140,calc(.04 + var(--g) * .30))}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -602,6 +635,16 @@ const KEY = 'daily-thanks-v3'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'inf.people': '{n}명에게 닿았어요', 'inf.peopleBig': '{n}명', 'inf.peopleSub': '내 감사가 닿은 사람', 'inf.peopleNote': '좋아요·저장·공유로 마음을 표현한 사람 수예요. 실제 앱에서는 카카오톡·인스타그램으로 공유된 링크를 열어 본 사람도 더해져요.',
+    'ft.title': '기능 (켜서 쓰기)', 'ft.hint': '기본은 감사만이에요. 필요한 기능만 켜서 쓰세요.',
+    'ft.groupShare': '소그룹 나눔', 'ft.groupShareSub': '소그룹에서 이번 주 질문에 함께 답해요.',
+    'ft.prayer': '기도제목 나눔', 'ft.prayerSub': '기도제목을 올리고 「기도했어요」로 함께 기도해요.',
+    'ft.sermon': 'AI 설교 요약', 'ft.sermonSub': '설교를 녹음하면 설교 노트로 정리해요.',
+    'ft.on': '{name}을(를) 켰어요.', 'ft.off': '{name}을(를) 껐어요.',
+    'kind.prayer': '기도제목', 'pr.ph': '함께 기도받고 싶은 것을 나눠 주세요.', 'pr.prayed': '기도했어요', 'pr.prayedToast': '함께 기도했어요.', 'pr.count': '{n}명이 기도했어요', 'pr.section': '기도제목', 'pr.empty': '아직 올라온 기도제목이 없어요.', 'pr.who': '기도한 사람',
+    'gs.section': '이번 주 나눔', 'gs.answers': '나눔 {n}개', 'gs.write': '나눔 쓰기', 'gs.view': '나눔 보기', 'gs.ph': '이번 주 질문에 대한 나의 생각을 나눠 주세요.', 'gs.saved': '소그룹에 나눴어요.', 'gs.empty': '아직 나눔이 없어요. 처음으로 나눠 보세요.',
+    'sm.section': '설교 노트', 'sm.new': '새 설교 노트', 'sm.empty': '설교를 녹음하거나 받아쓴 글을 붙여 넣으면 노트로 정리해 드려요.', 'sm.record': '녹음 파일 올리기', 'sm.paste': '받아쓴 글 붙여 넣기', 'sm.title': '설교 제목 (선택)', 'sm.preacher': '설교자 (선택)', 'sm.make': '요약 만들기', 'sm.demo': '시안에서는 예시 요약을 보여드려요. 실제 앱에서는 AI가 녹음을 글로 옮기고 요약해요.',
+    'sm.passages': '본문', 'sm.main': '핵심 메시지', 'sm.points': '말씀 요점', 'sm.apply': '삶의 적용', 'sm.prayer': '기도제목', 'sm.questions': '나눔 질문', 'sm.toGroup': '소그룹 나눔 질문으로 보내기',
     'np.title': '매일의 감사가<br>삶을 풍성하게 합니다.', 'np.sub': 'Daily gratitude makes life richer',
     'np.r1': '하루 한 번, 내가 고른 시간에만 알려드려요.', 'np.r2': '이미 감사를 쓴 날은 알리지 않아요.', 'np.r3': '소그룹 소식은 모아서 조용히 전해요.',
     'np.when': '언제 알려드릴까요?', 'np.dawn': '새벽', 'np.morning': '아침', 'np.evening': '저녁', 'np.dawnSub': '하루를 맡기며', 'np.morningSub': '하루를 열며', 'np.eveningSub': '하루를 돌아보며', 'np.other': '다른 시간',
@@ -698,6 +741,16 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'inf.people': 'Reached {n} people', 'inf.peopleBig': '{n}', 'inf.peopleSub': 'people your thanks reached', 'inf.peopleNote': 'People who liked, saved or shared your posts. In the app, people who open your KakaoTalk / Instagram links are added too.',
+    'ft.title': 'Features (turn on to use)', 'ft.hint': 'The app is just thanks by default. Turn on only what you need.',
+    'ft.groupShare': 'Group sharing', 'ft.groupShareSub': 'Answer a weekly question together in your group.',
+    'ft.prayer': 'Prayer requests', 'ft.prayerSub': 'Share prayer requests; others tap “I prayed”.',
+    'ft.sermon': 'AI sermon notes', 'ft.sermonSub': 'Record a sermon and get tidy notes.',
+    'ft.on': '{name} is on.', 'ft.off': '{name} is off.',
+    'kind.prayer': 'Prayer request', 'pr.ph': 'Share what you’d like prayer for.', 'pr.prayed': 'I prayed', 'pr.prayedToast': 'You prayed with them.', 'pr.count': '{n} people prayed', 'pr.section': 'Prayer requests', 'pr.empty': 'No prayer requests yet.', 'pr.who': 'Prayed',
+    'gs.section': 'This week’s sharing', 'gs.answers': '{n} answers', 'gs.write': 'Share', 'gs.view': 'Read answers', 'gs.ph': 'Share your thoughts on this week’s question.', 'gs.saved': 'Shared with your group.', 'gs.empty': 'No answers yet. Be the first.',
+    'sm.section': 'Sermon notes', 'sm.new': 'New sermon note', 'sm.empty': 'Record a sermon or paste a transcript and get tidy notes.', 'sm.record': 'Upload a recording', 'sm.paste': 'Paste a transcript', 'sm.title': 'Sermon title (optional)', 'sm.preacher': 'Preacher (optional)', 'sm.make': 'Make notes', 'sm.demo': 'This prototype shows a sample. In the app, AI transcribes the recording and writes the notes.',
+    'sm.passages': 'Passage', 'sm.main': 'Main message', 'sm.points': 'Points', 'sm.apply': 'Application', 'sm.prayer': 'Prayer', 'sm.questions': 'Discussion', 'sm.toGroup': 'Send questions to group sharing',
     'np.title': 'Daily gratitude<br>makes life richer.', 'np.sub': '',
     'np.r1': 'Once a day, only at the time you choose.', 'np.r2': 'No reminder on days you’ve already written.', 'np.r3': 'Group news is bundled and quiet.',
     'np.when': 'When should we remind you?', 'np.dawn': 'Dawn', 'np.morning': 'Morning', 'np.evening': 'Evening', 'np.dawnSub': 'Entrust the day', 'np.morningSub': 'Open the day', 'np.eveningSub': 'Look back', 'np.other': 'Other time',
@@ -821,6 +874,8 @@ const ICONS = {
   history: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/>',
   chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.3 9.3 0 0 1-3.6-.7L3 21l1.6-4.3A8 8 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>',
   camera: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>',
+  pray: '<path d="M11 21H7l-1.6-3.2a3 3 0 0 1-.3-1.3V10a1.5 1.5 0 0 1 3 0v4"/><path d="M11 21V6.5a1.5 1.5 0 0 0-3 0"/><path d="M13 21h4l1.6-3.2a3 3 0 0 0 .3-1.3V10a1.5 1.5 0 0 0-3 0v4"/><path d="M13 21V6.5a1.5 1.5 0 0 1 3 0"/>',
+  mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
   send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
   candle: '<path d="M12 2.5c1.4 1.8 1.9 3 1.9 3.9a1.9 1.9 0 0 1-3.8 0c0-.9.5-2.1 1.9-3.9z"/><rect x="9" y="10" width="6" height="11" rx="1"/><path d="M7 21h10"/>',
   lantern: '<path d="M9.5 3h5M12 3V1.5"/><path d="M8 6h8l1.2 3v8L16 20H8l-1.2-3V9z"/><path d="M12 10.5c1 1.1 1.4 1.9 1.4 2.6a1.4 1.4 0 0 1-2.8 0c0-.7.4-1.5 1.4-2.6z"/>',
@@ -866,6 +921,14 @@ const seed = {
       text: { ko: '평범하게 식탁에 앉아 이야기 나눌 수 있었던 저녁이 감사했어요.', en: 'Grateful for a simple evening of talking around the table.' } },
     { id: 'gr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'ahead', date: daysAgo(1), likes: 5, shares: 0, saves: 1,
       text: { ko: '하나님, 이번 한 주도 서로를 이해하는 마음을 주심에 감사합니다.', en: 'God, thank you for hearts that understand each other this week.' } },
+    { id: 'pr1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(0), likes: 0, prayedBy: [{ ko: '민서', en: 'Minseo' }, { ko: '하은', en: 'Haeun' }],
+      text: { ko: '이번 주 어머니 수술이 잘 마무리되도록 기도 부탁드려요.', en: 'Please pray that my mom’s surgery this week goes well.' } },
+    { id: 'pr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(1), likes: 0, prayedBy: [{ ko: '지은', en: 'Jieun' }],
+      text: { ko: '새 직장에서 좋은 동료들을 만나게 해 주세요.', en: 'Pray that I find good coworkers at my new job.' } },
+    { id: 'gs1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(1), likes: 3,
+      text: { ko: '바쁜 출근길에도 하늘을 올려다보는 여유를 주셔서 감사했어요.', en: 'I was grateful for a moment to look up at the sky on a busy commute.' } },
+    { id: 'gs2', name: { ko: '하은', en: 'Haeun' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(0), likes: 2,
+      text: { ko: '아이와 함께 저녁 기도를 드릴 수 있었던 순간이요.', en: 'The moment I could pray with my child at dinner.' } },
     { id: 'mine1', mine: true, scope: 'private', kind: 'today', date: daysAgo(1), likes: 0,
       text: { ko: '오늘도 새롭게 시작할 수 있는 아침을 주셔서 감사합니다.', en: 'Thank you for a morning to begin again today.' } },
     { id: 'mine2', mine: true, scope: 'public', kind: 'today', date: daysAgo(2), likes: 14, shares: 3, saves: 6, extShares: 2,
@@ -883,7 +946,7 @@ const seed = {
   groups: [{ id: 'g1', name: { ko: '은혜 소그룹', en: 'Grace Group' } }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family' } }],
   challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together' }, group: 'g1',
     members: [{ ko: '나', en: 'Me' }, { ko: '지은', en: 'Jieun' }, { ko: '민서', en: 'Minseo' }], start: '2026-11-14', days: [1, 2] }],
-  settings: { lang: null, notificationTime: '21:00', notificationEnabled: false, groupUpdates: false }
+  settings: { lang: null, notificationTime: '21:00', notificationEnabled: false, groupUpdates: false, features: { groupShare: false, prayer: false, sermon: false } }, prayed: [], sermons: []
 };
 
 const SAMPLES = {
@@ -897,6 +960,9 @@ let data;
 try { const stored = JSON.parse(localStorage.getItem(KEY)); data = stored && Array.isArray(stored.posts) ? stored : clone(seed); }
 catch { data = clone(seed); }
 if (typeof data.sharesGiven !== 'number') data.sharesGiven = 0;
+if (!data.settings.features) data.settings.features = { groupShare: false, prayer: false, sermon: false };
+if (!Array.isArray(data.prayed)) data.prayed = [];
+if (!Array.isArray(data.sermons)) data.sermons = [];
 if (typeof data.extSharesGiven !== 'number') data.extSharesGiven = 0;
 for (const k of ['liked', 'saved', 'hidden', 'blocked', 'reports', 'celebrated']) if (!Array.isArray(data[k])) data[k] = [];
 if (!data.settings.lang) data.settings.lang = (navigator.language || 'ko').toLowerCase().startsWith('ko') ? 'ko' : 'en';
@@ -932,8 +998,8 @@ function toast(text) { const el = $('#toast'); el.textContent = text; el.hidden 
 /* ---------------- helpers ---------------- */
 const groupName = id => id === 'pair' ? t('ch.pairShort') : L(data.groups.find(g => g.id === id)?.name) || id || '';
 const authorName = p => p.mine ? t('me') : L(p.name);
-const kindLabel = p => p.kind === 'ahead' ? t('kind.ahead') : p.kind === 'thanks' ? t('kind.thanks') : t('kind.today');
-const kindIcon = p => p.kind === 'ahead' ? 'sunrise' : p.kind === 'thanks' ? 'send' : 'sun';
+const kindLabel = p => p.kind === 'ahead' ? t('kind.ahead') : p.kind === 'thanks' ? t('kind.thanks') : p.kind === 'prayer' ? t('kind.prayer') : p.kind === 'share' ? t('gs.section') : t('kind.today');
+const kindIcon = p => p.kind === 'ahead' ? 'sunrise' : p.kind === 'thanks' ? 'send' : p.kind === 'prayer' ? 'pray' : p.kind === 'share' ? 'people' : 'sun';
 const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === 'private' ? t('scope.private') : groupName(p.group) || t('scope.group');
 const scopeIcon = p => p.scope === 'public' ? 'globe' : p.scope === 'private' ? 'lock' : 'people';
 // Same visual line count in both languages: Latin text holds roughly 1.4x the characters per line.
@@ -1031,7 +1097,8 @@ function renderKeep(selector) {
 
 // Posts the viewer hid, or whose author they blocked, never appear in any feed.
 const authorKey = p => p.mine ? 'me' : String(L(p.name) && (p.name.ko || p.name));
-const visible = p => !p.status && !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p)); // 'review' / 'rejected' posts stay off feeds
+const featureOn = k => !!data.settings.features?.[k];
+const visible = p => !p.status && !(p.kind === 'prayer' && !featureOn('prayer')) && p.kind !== 'share' && !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p)); // 'review' / 'rejected' posts stay off feeds
 function feedPosts() {
   return data.posts.filter(visible).filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
 }
@@ -1046,7 +1113,7 @@ function postTemplate(p, i, count) {
       ${p.reflection ? `<div class="post-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</div>` : ''}
     </div>
     <aside class="post-rail">
-      <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
+      ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>`}
       <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
@@ -1097,6 +1164,8 @@ function renderGroups() {
         <span class="row-main"><span class="row-title">${esc(L(g.name))}</span><span class="row-sub">${t('gr.count').replace('{n}', n)}</span></span>
         <span class="row-end">${icon('chevron')}</span></button>`;
     }).join('')}</div>
+    ${featureOn('groupShare') ? groupShareSection() : ''}
+    ${featureOn('prayer') ? prayerSection() : ''}
   </div></div>`;
 }
 
@@ -1130,6 +1199,7 @@ function renderJournal() {
     </button>`).join('')}</div>`
       : savedView ? `<div class="empty-state">${icon('bookmark')}<p>${t('j.savedEmpty')}</p></div>`
       : `<div class="empty-state">${icon('pencil')}<p>${t('j.empty')}</p><button class="primary" data-action="compose">${t('top.write')}</button></div>`}
+    ${featureOn('sermon') ? sermonSection() : ''}
     <div id="slot-journal"></div>
   </div></div>`;
 }
@@ -1193,7 +1263,8 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   state.sheetScope = state.sheetScope || 'public';
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
   const ahead = kind === 'ahead';
-  const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send']], 'pick-kind', kind, 'seg-kinds');
+  const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send'], ...(featureOn('prayer') ? [['prayer', t('kind.prayer'), 'pray']] : [])], 'pick-kind', kind, 'seg-kinds' + (featureOn('prayer') ? ' four' : ''));
+  if (kind === 'prayer' && !state.prayerScopeSet) { state.sheetScope = 'group'; state.prayerScopeSet = true; }
   if (kind === 'thanks') {
     showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">${kinds}${thanksForm({ text: keepText, name: state.tyName })}</form>` });
     $('#compose-form').addEventListener('submit', e => {
@@ -1208,8 +1279,8 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   }
   showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">
     ${kinds}
-    ${ahead ? '' : dailyQLine()}
-    <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
+    ${ahead || kind === 'prayer' ? '' : dailyQLine()}
+    <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
     <p class="field-label">${t('compose.who')}</p>
     ${seg([['public', t('scope.all'), 'globe'], ['group', t('scope.groupShort'), 'people'], ['private', t('scope.me'), 'lock']], 'pick-scope', state.sheetScope)}
@@ -1348,6 +1419,9 @@ function settings() {
       ${row('export', 'copy', t('s.export'), '')}
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
+    <p class="field-label">${t('ft.title')}</p>
+    <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic']].map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
+    <p class="hint">${t('ft.hint')}</p>
     <p class="about">${icon('info')}<span>${t('s.about')}</span></p>` });
 }
 
@@ -1420,7 +1494,8 @@ function influence() {
   const given = { likes: data.liked.length, saves: data.saved.length, shares: data.sharesGiven, ext: data.extSharesGiven };
   let li = 0; LEVELS.forEach((l, i) => { if (score >= l[1]) li = i; });
   const next = LEVELS[li + 1];
-  return { received, given, score, level: LEVELS[li], next, progress: next ? (score - LEVELS[li][1]) / (next[1] - LEVELS[li][1]) : 1 };
+  const people = received.likes + received.saves + received.shares; // people who responded to my thanks
+  return { received, given, score, people, level: LEVELS[li], next, progress: next ? (score - LEVELS[li][1]) / (next[1] - LEVELS[li][1]) : 1 };
 }
 // Top public posts this week by score; the top 3 get a quiet "reached many" mark in the feed.
 const weekAgo = () => daysAgo(7);
@@ -1494,6 +1569,105 @@ function recap() {
 }
 const recapText = () => `${t('rc.shareHead')}\n\n${weekNotes().filter(p => p.scope !== 'private').map(p => '· ' + L(p.text)).join('\n') || '·'}\n\n— Daily Thanks`;
 
+/* ---------------- optional features (Settings › Features) ---------------- */
+// Prayer requests: others tap "I prayed"; the author sees who prayed (quietly, no ranking).
+function prayBtn(p) {
+  const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
+  return `<button class="rail-btn ${on ? 'prayed' : ''}" data-action="pray" data-id="${esc(p.id)}" aria-pressed="${on}" aria-label="${t('pr.prayed')}">${icon('pray')}<span>${n}</span></button>`;
+}
+function prayerSection() {
+  const list = data.posts.filter(p => p.kind === 'prayer' && p.scope === 'group' && visible(p));
+  return `<p class="section-label">${icon('pray')}${t('pr.section')}</p>
+    ${list.length ? `<div class="list">${list.map(p => {
+      const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
+      return `<div class="list-row static prayer-row"><span class="row-main"><span class="row-title">${esc(L(p.text))}</span>
+        <span class="row-sub">${esc(p.mine ? t('me') : L(p.name))} · ${esc(groupName(p.group))}${n ? ' · <button class="link-inline" data-action="prayed-who" data-id="' + esc(p.id) + '">' + t('pr.count').replace('{n}', n) + '</button>' : ''}</span></span>
+        <button class="pray-pill ${on ? 'on' : ''}" data-action="pray" data-id="${esc(p.id)}">${icon('pray')}${t('pr.prayed')}</button></div>`;
+    }).join('')}</div>` : `<p class="hint">${t('pr.empty')}</p>`}`;
+}
+function togglePray(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const i = data.prayed.indexOf(id);
+  i >= 0 ? data.prayed.splice(i, 1) : data.prayed.push(id);
+  save(); render(keepPlace());
+  if (i < 0) toast(t('pr.prayedToast'));
+}
+function prayedWho(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const names = (p.prayedBy || []).map(L).concat(data.prayed.includes(id) ? [t('me')] : []);
+  showSheet({ title: t('pr.who'), body: `<p class="quote">${esc(L(p.text))}</p><div class="list">${names.map(n => `<div class="list-row static"><span class="row-icon">${icon('pray')}</span><span class="row-main"><span class="row-title">${esc(n)}</span></span></div>`).join('')}</div>` });
+}
+
+// Group sharing: one question per week, answered inside the group.
+const GROUP_Q = {
+  ko: ['이번 주 가장 감사했던 순간은 언제였나요?', '이번 주 하나님이 가까이 계심을 느낀 때는?', '요즘 마음을 지켜 준 말씀이 있나요?', '이번 주 누군가에게 받은 친절은?', '다음 주를 위해 미리 감사하고 싶은 것은?'],
+  en: ['When were you most grateful this week?', 'When did you sense God near this week?', 'Which verse has kept your heart lately?', 'What kindness did someone show you this week?', 'What would you thank God for ahead of next week?']
+};
+const weekQ = () => { const list = GROUP_Q[lang()] || GROUP_Q.ko; return list[Math.floor(dayOfYear() / 7) % list.length]; };
+function groupShareSection() {
+  const g = data.groups[0]; if (!g) return '';
+  const answers = data.posts.filter(p => p.kind === 'share' && p.group === g.id && !data.hidden.includes(p.id));
+  return `<p class="section-label">${icon('people')}${t('gs.section')} · ${esc(L(g.name))}</p>
+    <section class="share-q"><p class="share-q-text">${esc(weekQ())}</p>
+      <div class="btn-row"><button class="primary" data-action="gs-write" data-id="${esc(g.id)}">${t('gs.write')}</button><button class="secondary" data-action="gs-view" data-id="${esc(g.id)}">${t('gs.view')} · ${answers.length}</button></div></section>`;
+}
+function gsWrite(gid) {
+  showSheet({ title: t('gs.write'), body: `<form id="gs-form" class="sheet-form"><p class="quote">${esc(weekQ())}</p>
+    <textarea id="gs-text" class="big-input" rows="4" maxlength="1000" placeholder="${esc(t('gs.ph'))}"></textarea>
+    <button class="primary block" type="submit">${t('compose.submit')}</button></form>` });
+  $('#gs-form').addEventListener('submit', e => {
+    e.preventDefault(); const text = $('#gs-text').value.trim(); if (!text) return;
+    if (flaggedTerms(text).length) { toast(t('mod.title')); return; }
+    data.posts.unshift({ id: 'gs' + Date.now(), mine: true, scope: 'group', group: gid, kind: 'share', text, date: today(), likes: 0 });
+    save(); close(); render(); toast(t('gs.saved'));
+  });
+}
+function gsView(gid) {
+  const answers = data.posts.filter(p => p.kind === 'share' && p.group === gid && !data.hidden.includes(p.id));
+  showSheet({ title: t('gs.section'), body: `<p class="quote">${esc(weekQ())}</p>${answers.length ? `<div class="notes">${answers.map(p => `<div class="note static"><span class="note-meta">${icon('user')}<span>${esc(p.mine ? t('me') : L(p.name))}</span><span class="dot">·</span><span>${esc(p.date)}</span></span><span class="note-text">${esc(L(p.text))}</span></div>`).join('')}</div>` : `<p class="hint">${t('gs.empty')}</p>`}
+    <button class="primary block" data-action="gs-write" data-id="${esc(gid)}" style="margin-top:14px">${t('gs.write')}</button>` });
+}
+
+// AI sermon notes: the prototype shows a sample; the full-stack server does speech-to-text + Claude summary.
+const SAMPLE_SERMON = {
+  ko: { title: '다시 태어난다는 것', passages: ['요한복음 3:1~15'], main: '거듭남은 내 노력이 아니라 성령의 일하심이며, 십자가를 바라봄으로 시작되어 빛 가운데로 나아오게 합니다.',
+    points: [['성령의 일하심', '바람이 임의로 불듯, 거듭남은 우리의 노력이 아니라 성령께서 하시는 일입니다.'], ['십자가를 바라봄', '모세가 든 놋뱀처럼, 들리신 예수님을 믿음으로 바라볼 때 새 생명이 시작됩니다.'], ['빛 가운데로', '밤에 왔던 니고데모가 나중에는 공개적으로 나아왔듯, 믿음은 일상에서 드러납니다.']],
+    apply: ['이번 주 신앙을 숨기지 않고 한 가지 말과 행동으로 드러내기', '매일 아침 십자가를 묵상하며 하루 시작하기'], prayer: ['일상의 빛 가운데서 살아가게 하소서'], questions: ['나에게 "밤에 찾아가는 신앙"은 어떤 모습인가요?', '이번 주 빛 가운데로 나아갈 한 걸음은?'] },
+  en: { title: 'What it means to be born again', passages: ['John 3:1–15'], main: 'New birth is the Spirit’s work, not our effort; it begins by looking to the cross and leads us into the light.',
+    points: [['The Spirit’s work', 'Like the wind, new birth is something the Spirit does, not something we achieve.'], ['Looking to the cross', 'As Moses lifted the serpent, new life begins when we look in faith to Jesus lifted up.'], ['Into the light', 'Nicodemus came by night, but later stepped out openly — faith shows in daily life.']],
+    apply: ['Show your faith this week in one word or action', 'Start each morning by reflecting on the cross'], prayer: ['Help me live in the light every day'], questions: ['What does “coming by night” look like for me?', 'What is one step into the light this week?'] }
+};
+function sermonSection() {
+  return `<p class="section-label">${icon('mic')}${t('sm.section')}</p>
+    ${data.sermons.length ? `<div class="list">${data.sermons.map(n => `<button class="list-row" data-action="sm-open" data-id="${esc(n.id)}"><span class="row-icon">${icon('book')}</span><span class="row-main"><span class="row-title">${esc(n.title)}</span><span class="row-sub">${esc(n.date)}${n.preacher ? ' · ' + esc(n.preacher) : ''}</span></span><span class="row-end">${icon('chevron')}</span></button>`).join('')}</div>` : `<p class="hint">${t('sm.empty')}</p>`}
+    <button class="secondary block" data-action="sm-new" style="margin-top:10px">${icon('plus')}${t('sm.new')}</button>`;
+}
+function smNew() {
+  showSheet({ title: t('sm.new'), body: `<form id="sm-form" class="sheet-form">
+    <input id="sm-title" class="field" maxlength="80" placeholder="${esc(t('sm.title'))}">
+    <input id="sm-preacher" class="field" maxlength="40" placeholder="${esc(t('sm.preacher'))}">
+    <label class="secondary block file-btn">${icon('mic')}${t('sm.record')}<input id="sm-audio" type="file" accept="audio/*" hidden></label>
+    <textarea id="sm-text" class="big-input" rows="3" placeholder="${esc(t('sm.paste'))}"></textarea>
+    <button class="primary block" type="submit">${t('sm.make')}</button>
+    <p class="hint">${t('sm.demo')}</p></form>` });
+  $('#sm-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const sample = SAMPLE_SERMON[lang()] || SAMPLE_SERMON.ko;
+    const note = { id: 'sm' + Date.now(), date: today(), title: $('#sm-title').value.trim() || sample.title, preacher: $('#sm-preacher').value.trim(), summary: sample };
+    data.sermons.unshift(note); save(); render(); smOpen(note.id);
+  });
+}
+function smOpen(id) {
+  const n = data.sermons.find(x => x.id === id); if (!n) return;
+  const m = n.summary, list = items => `<ul class="sm-list">${items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
+  showSheet({ title: esc(n.title), body: `<p class="row-sub">${t('sm.passages')} · ${esc(m.passages.join(', '))}</p>
+    <div class="sm-main"><span class="row-sub">${t('sm.main')}</span><p>${esc(m.main)}</p></div>
+    <p class="field-label">${t('sm.points')}</p>${m.points.map(([h, d], i) => `<p class="sm-point"><strong>${i + 1}. ${esc(h)}</strong><br>${esc(d)}</p>`).join('')}
+    <p class="field-label">${t('sm.apply')}</p>${list(m.apply)}
+    <p class="field-label">${t('sm.prayer')}</p>${list(m.prayer)}
+    <p class="field-label">${t('sm.questions')}</p>${list(m.questions)}` });
+}
+
 /* ---------------- notification priming ----------------
    iOS / the browser show their own fixed permission popup. Right before it, this screen explains why reminders help
    and lets people pick a time; only "Turn on reminders" triggers the system popup (Notification.requestPermission
@@ -1566,13 +1740,14 @@ function celebrate() {
 }
 // The only yellow in the app: a small light that grows larger and deeper as reach grows (log scale, full at ~300 pts).
 function glow(score, scale = 1) {
-  const g = Math.min(1, Math.log10(1 + Math.max(0, score)) / Math.log10(301));
+  // starts as a tiny, faint point; spreads slowly (log scale, full glow around 1,000 pts)
+  const g = Math.pow(Math.min(1, Math.log10(1 + Math.max(0, score)) / Math.log10(1001)), 1.3);
   return `<span class="glow" style="--g:${g.toFixed(3)};--s:${scale}" aria-hidden="true"></span>`;
 }
 function influenceCard() {
   const f = influence(), dots = weekDots();
   return `<button class="inf-card" data-action="influence">
-    <span class="inf-top"><span class="glow-wrap">${glow(f.score)}</span><span class="inf-label">${t('inf.title')}</span><span class="inf-score">${f.score}<small>${t('inf.score')}</small></span><span class="row-end">${icon('chevron')}</span></span>
+    <span class="inf-top"><span class="glow-wrap">${glow(f.score)}</span><span class="inf-label"><span class="inf-people">${t('inf.people').replace('{n}', f.people)}</span><span class="row-sub">${t('inf.title')} · ${f.score}${t('inf.score')}</span></span><span class="row-end">${icon('chevron')}</span></span>
     <span class="inf-stats"><span>${icon('heart')}${f.received.likes}</span><span>${icon('bookmark')}${f.received.saves}</span><span>${icon('upload')}${f.received.shares}</span>
       <span class="inf-week">${t('inf.week')}<span class="mini-dots">${dots.map(on => `<i class="${on ? 'on' : ''}"></i>`).join('')}</span></span></span>
   </button>`;
@@ -1581,7 +1756,7 @@ function influenceSheet() {
   const f = influence();
   const stat = (ic, label, n) => `<div class="stat">${icon(ic)}<strong>${n}</strong><span>${label}</span></div>`;
   showSheet({ title: t('inf.title'), body: `
-    <div class="inf-hero"><span class="glow-stage">${glow(f.score, 2)}</span><p class="inf-hero-score">${f.score}<small>${t('inf.score')}</small></p><p class="row-sub">${t('inf.glow')}</p></div>
+    <div class="inf-hero"><span class="glow-stage">${glow(f.score, 2)}</span><p class="inf-hero-score">${t('inf.peopleBig').replace('{n}', f.people)}</p><p class="row-sub">${t('inf.peopleSub')}</p><p class="row-sub">${f.score}${t('inf.score')} · ${t('inf.glow')}</p></div>
     <p class="field-label">${t('inf.received')}</p>
     <div class="stats">${stat('heart', t('inf.likes'), f.received.likes)}${stat('bookmark', t('inf.saves'), f.received.saves)}${stat('upload', t('inf.shares'), f.received.shares)}</div>
     ${f.received.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.received.ext)}</p>` : ''}
@@ -1590,7 +1765,7 @@ function influenceSheet() {
     ${f.given.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.given.ext)}</p>` : ''}
     <p class="field-label">${t('inf.top')}</p>
     <div class="list">${topPosts(5).map((p, i) => `<div class="list-row static rank-row"><span class="rank">${i + 1}</span><span class="row-main"><span class="row-title clamp">${esc(L(p.text))}</span><span class="row-sub">${esc(p.mine ? t('me') : L(p.name))} · ♡ ${likesOf(p)} · ${t('inf.saves')} ${savesOf(p)} · ${t('inf.shares')} ${sharesOf(p)}</span></span></div>`).join('')}</div>
-    <p class="about">${icon('info')}<span>${t('inf.how')}</span></p>` });
+    <p class="about">${icon('info')}<span>${t('inf.peopleNote')} ${t('inf.how')}</span></p>` });
 }
 function countShare(id, external = false) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
@@ -1772,6 +1947,12 @@ const actions = {
   'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   note: noteSheet,
+  pray: togglePray,
+  'prayed-who': prayedWho,
+  'gs-write': gsWrite,
+  'gs-view': gsView,
+  'sm-new': smNew,
+  'sm-open': smOpen,
   'notify-prime': () => { close(); setTimeout(notifyPrime, 50); },
   'prime-time': id => { state.primeTime = id; document.querySelectorAll('.time-tile').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'prime-allow': primeAllow,
@@ -1857,6 +2038,12 @@ document.addEventListener('click', e => {
   if (b && b.tagName !== 'SELECT') actions[b.dataset.action]?.(b.dataset.id);
 });
 document.addEventListener('change', e => {
+  const f = e.target.dataset?.feature;
+  if (f) {
+    data.settings.features[f] = e.target.checked; save(); render();
+    toast(t(e.target.checked ? 'ft.on' : 'ft.off').replace('{name}', t('ft.' + f)));
+    return;
+  }
   if (e.target.matches('[data-action="change-group"]')) { state.group = e.target.value; renderFeed(); }
 });
 backdrop.addEventListener('click', close);
