@@ -112,3 +112,27 @@ for key, page in (('/support', 'support'), ('/delete-account', 'delete-account')
 template = (ROOT / 'site' / 'template.html').read_text()
 OUT.write_text(template.replace('/*__PAGES__*/null', json.dumps(pages, ensure_ascii=False)))
 print('wrote', OUT.relative_to(ROOT), f'{OUT.stat().st_size // 1024} KB')
+
+# Deployable website for dailyjourney.org: same page at /, /privacy/, /terms/, /support/, /delete-account/
+import shutil
+WEB = ROOT / 'site' / 'web'
+shutil.rmtree(WEB, ignore_errors=True); WEB.mkdir(parents=True)
+page_html = OUT.read_text()
+head, body = page_html.split('</style>', 1)
+doc = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
+       '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+       '<link rel="icon" type="image/png" href="/favicon.png">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
+       '<meta property="og:title" content="daily thanks">\n<meta property="og:description" content="Give thanks daily. Live fully. Share the joy.">\n'
+       '<meta property="og:image" content="https://dailyjourney.org/og.png">\n<meta name="theme-color" content="#FFFFFF">\n'
+       '<script>window.SITE_MODE = "web";</script>\n'
+       + head + '</style>\n</head>\n<body>' + body + '\n</body>\n</html>\n')
+for sub in ('', 'privacy', 'terms', 'support', 'delete-account'):
+    d = WEB / sub; d.mkdir(exist_ok=True); (d / 'index.html').write_text(doc)
+(WEB / '404.html').write_text(doc)
+(WEB / 'CNAME').write_text('dailyjourney.org\n')
+shutil.copy(ROOT / 'store' / 'icons' / 'play-512.png', WEB / 'favicon.png')
+shutil.copy(ROOT / 'store' / 'icons' / 'appstore-1024.png', WEB / 'apple-touch-icon.png')
+shutil.copy(ROOT / 'store' / 'instagram' / 'feed-en-1.png', WEB / 'og.png')
+content = ROOT / 'content' / 'content.json'
+if content.exists(): shutil.copy(content, WEB / 'content.json')   # the app can read its text from here too
+print('wrote', WEB.relative_to(ROOT), sorted(p.name for p in WEB.iterdir()))
