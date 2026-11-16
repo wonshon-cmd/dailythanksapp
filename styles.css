@@ -646,3 +646,7 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .splash.step2 .splash-tag span:nth-child(3){transition-delay:.9s}
 @media (prefers-reduced-motion:reduce){.splash-tag span{transition:none;transform:none}}
 .splash.step2 .splash-mark{animation:none;opacity:0}
+
+/* splash: "thanks" in italic like the logo; both screens a little softer than full ink */
+.splash-tag em{font-style:italic}
+.splash .wordmark,.splash-tag{color:#4E5459}
