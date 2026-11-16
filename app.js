@@ -8,6 +8,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'card.feed': '피드 4:5', 'card.story': '스토리 9:16', 'card.shareImg': '이미지로 공유', 'card.noShare': '이 화면에서는 이미지 공유가 막혀 있어요. 앱에서는 바로 인스타그램·카카오톡으로 보낼 수 있어요.',
     'wg.title': '홈 화면에 감사 한 줄', 'wg.sub': '위젯을 두면 앱을 찾지 않고 바로 오늘의 감사를 쓸 수 있어요. 매일 쓰는 습관이 훨씬 쉬워져요.',
     'wg.ios': '아이폰', 'wg.android': '안드로이드', 'wg.write': '한 줄 쓰기', 'wg.done': '오늘 감사 완료',
     'wg.iosSteps': '홈 화면 빈 곳을 길게 누르기|왼쪽 위 「+」 누르기|「Daily Thanks」 찾기|원하는 크기를 골라 「위젯 추가」',
@@ -121,6 +122,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'card.feed': 'Feed 4:5', 'card.story': 'Story 9:16', 'card.shareImg': 'Share as image', 'card.noShare': 'Image sharing is blocked on this screen. In the app it goes straight to Instagram or KakaoTalk.',
     'wg.title': 'A line of thanks on your home screen', 'wg.sub': 'With the widget you can write today’s thanks without looking for the app. The daily habit gets much easier.',
     'wg.ios': 'iPhone', 'wg.android': 'Android', 'wg.write': 'Write a line', 'wg.done': 'Done for today',
     'wg.iosSteps': 'Touch and hold an empty spot on the Home Screen|Tap “+” at the top left|Find “Daily Thanks”|Pick a size and tap “Add Widget”',
@@ -232,6 +234,394 @@ const STR = {
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
+  },
+  es: {
+    'card.feed': 'Feed 4:5',
+    'card.story': 'Historia 9:16',
+    'card.shareImg': 'Compartir como imagen',
+    'card.noShare': 'Esta pantalla no permite compartir imágenes. En la app se envía directo a Instagram o KakaoTalk.',
+    'wg.title': 'Una línea de gratitud en tu pantalla de inicio',
+    'wg.sub': 'Con el widget puedes escribir tu gratitud de hoy sin buscar la app. El hábito diario se vuelve mucho más fácil.',
+    'wg.ios': 'iPhone',
+    'wg.android': 'Android',
+    'wg.write': 'Escribir una línea',
+    'wg.done': 'Listo por hoy',
+    'wg.iosSteps': 'Mantén presionado un espacio vacío de la pantalla de inicio|Toca “+” arriba a la izquierda|Busca “Daily Thanks”|Elige un tamaño y toca “Agregar widget”',
+    'wg.androidSteps': 'Mantén presionado un espacio vacío de la pantalla de inicio|Toca “Widgets”|Busca “Daily Thanks”|Mantén presionado el widget y colócalo',
+    'wg.ok': 'Ya lo agregué',
+    'wg.later': 'Más tarde',
+    'wg.okToast': 'Ahora puedes dar gracias desde tu pantalla de inicio.',
+    'wg.laterToast': 'Lo encuentras cuando quieras en Ajustes › Widget de inicio.',
+    'wg.note': 'Esto es una vista previa. El widget real se agrega al instalar la app.',
+    'vis.public': 'Todos',
+    'vis.private': 'Privado',
+    'vis.me': 'Solo yo',
+    'vis.privateHint': 'Solo tú, o solo el grupo que elijas, puede verlo.',
+    'inf.people': 'Llegó a {n} personas',
+    'inf.peopleBig': '{n}',
+    'inf.peopleSub': 'personas a las que llegó tu gratitud',
+    'inf.peopleNote': 'Personas que dieron me gusta, guardaron o compartieron tus publicaciones. En la app también se suman quienes abren tus enlaces de KakaoTalk / Instagram.',
+    'ft.title': 'Funciones (actívalas para usarlas)',
+    'ft.hint': 'Por defecto la app es solo gratitud. Activa solo lo que necesites.',
+    'ft.groupShare': 'Compartir en grupo',
+    'ft.groupShareSub': 'Respondan juntos una pregunta semanal en su grupo.',
+    'ft.prayer': 'Peticiones de oración',
+    'ft.prayerSub': 'Comparte peticiones; otros tocan “Oré”.',
+    'ft.sermon': 'Notas de sermón con IA',
+    'ft.sermonSub': 'Graba un sermón y recibe notas ordenadas.',
+    'ft.on': '{name} está activado.',
+    'ft.off': '{name} está desactivado.',
+    'kind.prayer': 'Petición de oración',
+    'pr.ph': 'Comparte por qué te gustaría que oren.',
+    'pr.prayed': 'Oré',
+    'pr.prayedToast': 'Oraste con ellos.',
+    'pr.count': '{n} personas oraron',
+    'pr.section': 'Peticiones de oración',
+    'pr.empty': 'Aún no hay peticiones de oración.',
+    'pr.who': 'Oraron',
+    'gs.section': 'Lo que compartimos esta semana',
+    'gs.answers': '{n} respuestas',
+    'gs.write': 'Compartir',
+    'gs.view': 'Leer respuestas',
+    'gs.ph': 'Comparte lo que piensas sobre la pregunta de esta semana.',
+    'gs.saved': 'Compartido con tu grupo.',
+    'gs.empty': 'Aún no hay respuestas. Sé la primera persona.',
+    'sm.section': 'Notas de sermón',
+    'sm.new': 'Nueva nota de sermón',
+    'sm.empty': 'Graba un sermón o pega una transcripción y recibe notas ordenadas.',
+    'sm.record': 'Subir una grabación',
+    'sm.paste': 'Pegar una transcripción',
+    'sm.title': 'Título del sermón (opcional)',
+    'sm.preacher': 'Predicador (opcional)',
+    'sm.make': 'Crear notas',
+    'sm.demo': 'Este prototipo muestra un ejemplo. En la app, la IA transcribe la grabación y escribe las notas.',
+    'sm.passages': 'Pasaje',
+    'sm.main': 'Mensaje principal',
+    'sm.points': 'Puntos',
+    'sm.apply': 'Aplicación',
+    'sm.prayer': 'Oración',
+    'sm.questions': 'Para conversar',
+    'sm.toGroup': 'Enviar preguntas al grupo',
+    'np.title': 'La gratitud diaria<br>enriquece la vida.',
+    'np.sub': 'Daily gratitude makes life richer',
+    'np.r1': 'Una vez al día, solo a la hora que elijas.',
+    'np.r2': 'Sin recordatorio los días que ya escribiste.',
+    'np.r3': 'Las novedades del grupo llegan juntas y en calma.',
+    'np.when': '¿Cuándo te lo recordamos?',
+    'np.dawn': 'Madrugada',
+    'np.morning': 'Mañana',
+    'np.evening': 'Noche',
+    'np.dawnSub': 'Encomendar el día',
+    'np.morningSub': 'Abrir el día',
+    'np.eveningSub': 'Mirar atrás',
+    'np.other': 'Otra hora',
+    'np.allow': 'Activar recordatorios',
+    'np.later': 'Más tarde',
+    'np.on': 'Te lo recordaremos con suavidad cada día a las {time}.',
+    'np.blocked': 'Guardado a las {time}. Esta pantalla no puede pedir permiso de notificaciones; la app te lo pedirá de nuevo.',
+    'np.laterToast': 'Puedes activarlos cuando quieras en Ajustes › Hora del recordatorio.',
+    'np.test': 'Así se ven los recordatorios. ¿Dejas algo por lo que estás agradecido hoy?',
+    'dq.label': 'Pregunta de hoy',
+    'cal.title': '{mon} · {n} días de gratitud',
+    'cal.recap': 'Esta semana',
+    'cal.dayEmpty': 'No escribiste nada este día.',
+    'mem.label': 'Mirando atrás',
+    'mem.ago': 'Hace {n} días',
+    'mem.week': 'Hace una semana',
+    'mem.month': 'Hace un mes',
+    'mem.year': 'Hace un año',
+    'rc.title': 'Tu semana de gratitud',
+    'rc.count': 'Diste gracias {n} días esta semana',
+    'rc.notes': '{n} notas',
+    'rc.empty': 'Aún no escribiste nada esta semana.',
+    'rc.share': 'Compartir mi semana',
+    'rc.shareHead': 'Mi gratitud esta semana',
+    'ms.title': '{n} notas de gratitud',
+    'ms.body': 'Cada una es una pequeña luz en un día. Sigamos reuniéndolas, con calma.',
+    'share.kakao': 'Enviar por KakaoTalk',
+    'share.insta': 'Compartir en Instagram',
+    'share.outNote': 'Compartir en KakaoTalk o Instagram llega a más personas, por eso es lo que más aumenta tu alcance.',
+    'share.copied': 'Copiado. Pégalo en Instagram para compartir.',
+    'inf.ext': '{n} de ellas en KakaoTalk / Instagram',
+    'kind.thanks': 'Agradecer a alguien',
+    'ty.to': 'Su nombre',
+    'ty.ph': 'Escribe tu mensaje de agradecimiento.',
+    'ty.make': 'Crear tarjeta de agradecimiento',
+    'ty.card': 'Tarjeta de agradecimiento',
+    'ty.send': 'Enviar',
+    'ty.copy': 'Copiar texto',
+    'ty.toGroup': 'Compartir con un grupo',
+    'ty.saved': 'Tu tarjeta queda guardada en Mi gratitud.',
+    'ty.needName': 'Agrega su nombre.',
+    'inf.title': 'El alcance de mi gratitud',
+    'inf.received': 'Recibido',
+    'inf.given': 'Dado',
+    'inf.likes': 'Me gusta',
+    'inf.shares': 'Compartidos',
+    'inf.saves': 'Guardados',
+    'inf.score': 'pts',
+    'inf.candle': 'Vela',
+    'inf.lantern': 'Farol',
+    'inf.sunlight': 'Luz del sol',
+    'inf.starlight': 'Luz de estrellas',
+    'inf.glow': 'Cuanto más lejos llega tu gratitud, más brilla.',
+    'inf.next': '{n} pts para {level}',
+    'inf.max': 'Llegaste al nivel más alto',
+    'inf.top': 'Gratitud que más lejos llegó esta semana',
+    'inf.how': 'Los me gusta en tus publicaciones cuentan 1, los guardados 2, los compartidos en la app 3 y en KakaoTalk/Instagram 5. No es una competencia: muestra hasta dónde llegó tu gratitud.',
+    'inf.week': 'Esta semana',
+    'top.badge': 'Llegó a muchos',
+    'cel.title': 'Siete días seguidos de gratitud',
+    'cel.body': 'Pequeñas gracias, día tras día, se volvieron una semana entera. Es hermoso. Caminemos con calma hacia la próxima.',
+    'cel.ok': 'Seguir',
+    'cel.share': 'Compartir',
+    'cel.shareText': 'Esta semana escribí cada día algo por lo que estoy agradecido. — Daily Thanks',
+    'cel.mid': '{n} días seguidos de gratitud. ¡Qué lindo!',
+    'mod.title': 'No se puede publicar así',
+    'mod.body': 'Incluye palabras que podrían herir a otros.',
+    'mod.found': 'Marcado',
+    'mod.edit': 'Editar',
+    'mod.private': 'Guardarlo solo para mí',
+    'mod.appeal': '¿Se marcó por error? Pide una revisión',
+    'mod.appealNote': 'Un moderador lo revisará y lo publicará si está bien.',
+    'mod.appealed': 'Enviado a un moderador. Verás el resultado en Mi gratitud.',
+    'mod.review': 'En revisión',
+    'mod.rejected': 'No publicado',
+    'mod.privateOk': 'Siempre puedes guardar cualquier nota solo para ti.',
+    'size.title': 'Tamaño del texto',
+    'size.s': 'Pequeño',
+    'size.m': 'Mediano',
+    'size.l': 'Grande',
+    'readMore': 'Leer más',
+    'save': 'Guardar',
+    'saved.on': 'Guardado. Lo encuentras en Mi gratitud › Guardados.',
+    'saved.off': 'Quitado de guardados.',
+    'j.saved': 'Guardados',
+    'j.savedEmpty': 'Aún no guardaste nada. Toca Guardar en una publicación que te acompañe.',
+    'more': 'Más',
+    'menu.report': 'Reportar',
+    'menu.hide': 'Ocultar esta publicación',
+    'menu.block': 'Bloquear a esta persona',
+    'menu.unsave': 'Quitar de guardados',
+    'report.title': 'Reportar',
+    'report.q': '¿Por qué reportas esta publicación?',
+    'report.anon': 'No le diremos a la persona quién la reportó.',
+    'report.spam': 'Spam o publicidad',
+    'report.hate': 'Discurso de odio o acoso',
+    'report.violence': 'Contenido violento o peligroso',
+    'report.sexual': 'Contenido sexual',
+    'report.false': 'Información falsa',
+    'report.privacy': 'Información privada de alguien',
+    'report.selfharm': 'Autolesión o suicidio',
+    'report.other': 'Otra cosa',
+    'report.otherPh': 'Cuéntanos qué está mal (opcional)',
+    'report.send': 'Reportar',
+    'report.done': 'Gracias por avisarnos',
+    'report.doneSub': 'Lo revisaremos y actuaremos según nuestras normas. Gracias por ayudar a que este espacio sea amable.',
+    'report.help': 'Si alguien está en peligro ahora mismo, hay ayuda disponible.',
+    'report.help1': 'Llama o escribe al 988 (EE. UU.) · 109 (Corea)',
+    'report.help2': 'En una emergencia, llama al número de emergencias local',
+    'hidden.done': 'Publicación oculta.',
+    'blocked.done': 'Bloqueaste a {name}. Ya no verás sus publicaciones.',
+    'block.confirm': '¿Bloquear a {name}? No verás sus publicaciones y no se le avisará.',
+    'block.ok': 'Bloquear',
+    's.blocked': 'Publicaciones ocultas y personas bloqueadas',
+    'blocked.none': 'No hay publicaciones ocultas ni personas bloqueadas.',
+    'blocked.users': 'Personas bloqueadas',
+    'blocked.posts': 'Publicaciones ocultas',
+    'unblock': 'Desbloquear',
+    'restore': 'Mostrar de nuevo',
+    'done': 'Listo',
+    'note.delete': 'Eliminar',
+    'note.reflect': 'Mirar atrás con gratitud',
+    'note.share': 'Compartir',
+    's.about': 'Este prototipo guarda tus notas solo en este dispositivo. Las invitaciones, la sincronización y las notificaciones llegan en la versión final.',
+    's.guest': 'Sin iniciar sesión',
+    's.account': 'Cuenta',
+    'send.pick': '¿Con qué grupo?',
+    'share.note': 'Comparte solo publicaciones públicas o las que tienes permiso de compartir.',
+    'share.toGroup': 'Compartir con un grupo',
+    'compose.publicNote': 'Cualquiera puede leer y compartir las publicaciones para Todos.',
+    'scope.all': 'Todos',
+    'scope.groupShort': 'Grupo',
+    'scope.me': 'Solo yo',
+    'kind.aheadShort': 'Gracias de antemano',
+    'gr.count': '{n} gracias',
+    'doc.title': 'Daily Thanks · Un día que lleva gratitud',
+    'aria.home': 'Inicio de Daily Thanks',
+    'aria.settings': 'Ajustes',
+    'aria.nav': 'Menú principal',
+    'aria.lang': 'Cambiar idioma',
+    'aria.close': 'Cerrar',
+    'aria.next': 'Siguiente',
+    'lang.other': 'Idioma',
+    'top.write': 'Escribir',
+    'nav.today': 'Hoy',
+    'nav.group': 'Grupos',
+    'nav.challenge': '7 días',
+    'nav.journal': 'Mi gratitud',
+    'feed.mygroup': 'Mi grupo',
+    'feed.public': 'Todos',
+    'feed.subPublic': 'Gratitud encontrada en los días de otros',
+    'feed.subGroup': 'Gratitud compartida en nuestro grupo',
+    'feed.together': '7 días',
+    'feed.empty': 'Aún no hay gratitud aquí.<br>Sé la primera persona en compartir.',
+    'feed.swipe': 'Desliza para ver la siguiente',
+    'kind.today': 'Gratitud de hoy',
+    'kind.ahead': 'Gracias de antemano · Oración',
+    'meta.today': 'Nota de hoy',
+    'meta.ahead': 'Oración de esta semana',
+    'meta.shared': 'Compartido',
+    'scope.public': 'Todos',
+    'scope.private': 'Solo yo',
+    'scope.group': 'Grupo',
+    'act.share': 'Compartir',
+    'act.group': 'Grupo',
+    'me': 'Yo',
+    'reflect.prefix': 'Mirando atrás',
+    'toast.likeAhead': 'Orando contigo.',
+    'toast.likeToday': 'Agradecidos contigo.',
+    'compose.title': 'Una línea de gratitud',
+    'compose.qToday': '¿Por qué estás agradecido hoy?',
+    'compose.qAhead': '¿Qué le encomiendas a Dios con gratitud?',
+    'compose.phToday': 'Escribe un momento por el que diste gracias.',
+    'compose.phAhead': 'Dios, esta semana también…',
+    'compose.samples': 'Toca una frase y hazla tuya',
+    'sample.work': 'En el trabajo',
+    'sample.relationship': 'En las relaciones',
+    'sample.everyday': 'En lo cotidiano',
+    'compose.who': '¿Con quién lo compartes?',
+    'compose.private': 'Solo yo (predeterminado)',
+    'compose.group': 'Mi grupo',
+    'compose.public': 'Todos',
+    'compose.groupLabel': 'Grupo',
+    'compose.hint': 'Guarda tus oraciones personales con “Solo yo”. Las publicaciones públicas pueden leerlas y compartirlas otros.',
+    'compose.submit': 'Guardar',
+    'toast.saved': 'Tu gratitud quedó guardada.',
+    'reflect.title': 'Mirar atrás con gratitud',
+    'reflect.before': 'La gratitud que diste de antemano',
+    'reflect.q': '¿Qué gracia encontraste de verdad esta semana?',
+    'reflect.ph': 'Los momentos pequeños también cuentan.',
+    'reflect.submit': 'Agregar',
+    'toast.reflected': 'Una semana de gratitud, agregada.',
+    'share.title': 'Compartir gratitud',
+    'share.hint': 'Vista previa antes de integrar KakaoTalk/Instagram. Comparte solo publicaciones públicas o con permiso de su autor.',
+    'share.copy': 'Copiar texto',
+    'share.native': 'Compartir en otra app',
+    'share.hint2': 'Puedes usar el menú para compartir de tu teléfono con KakaoTalk o Instagram; las tarjetas propias necesitan una integración aparte.',
+    'toast.copied': 'Copiado.',
+    'toast.noShare': 'Aquí no se puede compartir desde el dispositivo.',
+    'send.title': 'Compartir con un grupo',
+    'send.hint': 'Mantén el nombre de quien escribió. Pide permiso antes de enviar una nota privada de alguien.',
+    'send.target': 'Grupo con el que compartir',
+    'send.submit': 'Compartir con este grupo',
+    'toast.sent': 'Compartido con el grupo.',
+    'ch.kicker': '7 DÍAS JUNTOS',
+    'ch.title': '7 días',
+    'ch.desc': 'Completen siete días de gratitud con un amigo o un grupo. Si faltas un día, simplemente sigue.',
+    'ch.new': 'Nuevo reto',
+    'ch.write': 'Escribir la gratitud de hoy',
+    'ch.detail': 'Detalles',
+    'ch.day': 'Día ',
+    'ch.fine': 'En esta demo sin conexión, los miembros y el progreso se guardan solo en este navegador. Las invitaciones reales necesitan un servidor y cuentas.',
+    'ch.createTitle': 'Empezar un reto de 7 días',
+    'ch.name': 'Nombre del reto',
+    'ch.defaultName': 'Siete días juntos',
+    'ch.with': '¿Quién te acompaña?',
+    'ch.pair': 'Un amigo y yo (enlaces de invitación tras el lanzamiento)',
+    'ch.pairShort': 'Un amigo y yo',
+    'ch.createHint': 'Faltar un día no reinicia tu semana. Las invitaciones y la sincronización llegan con el servidor.',
+    'ch.start': 'Empezar',
+    'toast.chStarted': 'Tu nuevo reto de 7 días comenzó.',
+    'ch.question': '¿A quién quieres agradecer hoy?',
+    'ch.detailHint': 'Para que la publicación de una persona no cuente por todos, el servicio real necesita registros por miembro.',
+    'ch.rest': 'Descansa un día y sigue.',
+    'gr.kicker': 'GRUPOS PEQUEÑOS',
+    'gr.title': 'Grupos',
+    'gr.desc': 'Gratitud compartida solo con personas cercanas.',
+    'gr.new': 'Nuevo grupo',
+    'gr.posts': ' publicaciones',
+    'gr.open': 'Abrir feed',
+    'gr.createTitle': 'Nuevo grupo',
+    'gr.name': 'Nombre del grupo',
+    'gr.ph': 'p. ej. Estudio bíblico del miércoles',
+    'gr.create': 'Crear',
+    'toast.grCreated': 'Grupo creado.',
+    'gr.fine': 'Las invitaciones, el ingreso y los permisos reales llegan con el servidor.',
+    'j.kicker': 'MI GRATITUD',
+    'j.title': 'Mi gratitud',
+    'j.desc': 'Tu gratitud de hoy y la que diste de antemano, todo en un lugar.',
+    'j.all': 'Todo',
+    'j.new': '＋ Escribir nueva gratitud',
+    'j.empty': 'Aún no registraste gratitud.',
+    'j.reflect': 'Mirar atrás con gratitud',
+    'j.delete': 'Eliminar',
+    'j.confirmDelete': '¿Eliminar esta nota?',
+    'n.title': 'Mi momento de gratitud',
+    'n.hint': 'Un recordatorio suave al día, a la hora que elijas, para que una sola línea nunca sea una carga.',
+    'n.time': 'Hora del recordatorio',
+    'n.enable': 'Recordatorio diario',
+    'n.group': 'Agrupar novedades del grupo',
+    'n.example': 'Vista en la pantalla bloqueada',
+    'n.ex1': 'Algo por lo que estás agradecido hoy',
+    'n.ex2': 'Las cosas pequeñas cuentan. ¿Dejas una línea?',
+    'n.save': 'Guardar',
+    'n.fine': 'Esta pantalla no programa notificaciones reales. Eso requiere permiso y configuración nativa o web push.',
+    'toast.nSaved': 'Ajustes de la demo guardados.',
+    'w.title': 'Widget de inicio',
+    'w.desc': 'Una vista previa del diseño, no un widget real de iPhone.',
+    'w.today': 'Gratitud de hoy',
+    'w.q': '¿Qué te hizo sonreír hoy?',
+    'w.write': '＋ Escribir una línea',
+    'w.sub': '7 días juntos',
+    'w.view': 'Ver reto',
+    'w.fine': 'Instalar un widget real y abrir la app desde él se hace en la fase nativa de iOS/Android.',
+    's.title': 'Ajustes',
+    's.lang': 'Idioma · Language · 언어',
+    's.notify': 'Hora del recordatorio',
+    's.widget': 'Widget de inicio',
+    's.export': 'Copiar mis datos de demo (JSON)',
+    'cancel': 'Cancelar',
+    's.reset': 'Reiniciar demo',
+    'fs.enter': 'Pantalla completa',
+    'fs.exit': 'Salir de pantalla completa',
+    'fs.close': 'Cerrar',
+    'fs.closeAria': 'Cerrar pantalla completa',
+    'nudge': 'Desliza para ver más',
+    'gate.kicker': 'Gratitud de hoy',
+    'gate.q': '¿Por qué estás agradecido hoy?',
+    'gate.ph': 'Una línea es suficiente.',
+    'gate.private': 'Solo yo',
+    'gate.public': 'Todos',
+    'gate.save': 'Guardar mi gratitud',
+    'gate.later': 'Más tarde',
+    'gate.saved': 'Tu gratitud de hoy quedó guardada.',
+    'gate.savedSub': 'Desliza para seguir leyendo la gratitud de otros.',
+    'login.title': 'Inicia sesión<br>para seguir leyendo.',
+    'login.sub': 'Inicia sesión una vez y la próxima vez la app se abre directo. Tu gratitud también queda a salvo.',
+    'login.apple': 'Continuar con Apple',
+    'login.google': 'Continuar con Google',
+    'login.phone': 'Continuar con número de teléfono',
+    'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
+    'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
+    'phone.title': 'Inicia sesión con tu teléfono',
+    'phone.number': 'Número de teléfono',
+    'phone.send': 'Enviar código',
+    'phone.code': 'Código de 6 dígitos',
+    'phone.verify': 'Verificar',
+    'phone.sent': 'Código enviado.',
+    'phone.demo': 'En este prototipo no se envía ningún mensaje. Escribe cualquier número de 6 dígitos.',
+    'phone.bad': 'Revisa el número.',
+    'phone.badCode': 'Escribe el código de 6 dígitos.',
+    'acct.signedIn': 'Sesión iniciada',
+    'acct.logout': 'Cerrar sesión',
+    'acct.loggedOut': 'Cerraste sesión.',
+    'fs.ios': 'En iPhone, ábrela desde el botón Compartir de Safari → “Agregar a inicio” para verla a pantalla completa como una app.',
+    'fs.blocked': 'Aquí no está disponible la pantalla completa.',
+    's.fine': 'Tus notas se guardan solo en este navegador y no se sincronizan con otros navegadores o dispositivos.',
+    's.confirmReset': '¿Reiniciar todas las notas y ajustes de esta demo?',
+    'toast.reset': 'Demo reiniciada.',
+    'toast.noStore': 'Este navegador no puede guardar datos ahora.'
   }
 };
 
@@ -293,53 +683,53 @@ const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return 
 const seed = {
   posts: [
     { id: 'pub1', name: { ko: '다은', en: 'Daeun' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 8, shares: 4, saves: 9,
-      text: { ko: '이번 한 주도 직장에서 기쁨으로 하루하루를 보내게 하심에 감사합니다.', en: 'Thank you for a week of joyful days at work.' } },
+      text: { ko: '이번 한 주도 직장에서 기쁨으로 하루하루를 보내게 하심에 감사합니다.', en: 'Thank you for a week of joyful days at work.', es: 'Gracias por una semana de días alegres en el trabajo.' } },
     { id: 'pub7', name: { ko: '민준', en: 'Minjun' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 31, shares: 2, saves: 6, extShares: 1,
-      text: { ko: '따뜻한 밥 한 끼. 그거면 충분한 날이었어요.', en: 'A warm meal. That was enough for today.' } },
+      text: { ko: '따뜻한 밥 한 끼. 그거면 충분한 날이었어요.', en: 'A warm meal. That was enough for today.', es: 'Una comida caliente. Eso fue suficiente hoy.' } },
     { id: 'pub8', name: { ko: '영숙', en: 'Youngsook' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 57, shares: 14, saves: 22, extShares: 5,
-      text: { ko: '오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en: 'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.' } },
+      text: { ko: '오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en: 'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.', es: 'Hoy mi nieto me dijo por primera vez, clarito, “Abuela, te quiero”. Fue lo más bonito que he escuchado en mi vida. Gracias por dejarme vivir tanto como para oírlo.' } },
     { id: 'pub9', name: { ko: '지훈', en: 'Jihoon' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 19, shares: 1, saves: 3,
-      text: { ko: '버스를 놓칠 뻔했는데 기사님이 기다려 주셨다. 감사합니다, 기사님.', en: 'I nearly missed the bus, but the driver waited for me. Thank you, sir.' } },
+      text: { ko: '버스를 놓칠 뻔했는데 기사님이 기다려 주셨다. 감사합니다, 기사님.', en: 'I nearly missed the bus, but the driver waited for me. Thank you, sir.', es: 'Casi pierdo el autobús, pero el conductor me esperó. Gracias, señor.' } },
     { id: 'pub2', name: { ko: '서연', en: 'Seoyeon' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 24, shares: 11, saves: 15, extShares: 6,
-      text: { ko: '잠깐 멈춰 보니, 집으로 돌아가는 길에도 예쁜 하늘이 있었어요. 평범한 하루를 아름답게 하심에 감사합니다.', en: 'I paused on my way home and found a lovely sky. Thank you for a beautiful ordinary day.' } },
+      text: { ko: '잠깐 멈춰 보니, 집으로 돌아가는 길에도 예쁜 하늘이 있었어요. 평범한 하루를 아름답게 하심에 감사합니다.', en: 'I paused on my way home and found a lovely sky. Thank you for a beautiful ordinary day.', es: 'Me detuve camino a casa y encontré un cielo precioso. Gracias por un día común tan bonito.' } },
     { id: 'pub10', name: { ko: '수아', en: 'Sua' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 26, shares: 3, saves: 11, extShares: 1,
-      text: { ko: '하나님, 내일 면접에서 떨지 않고 제 모습 그대로 보여 드리게 하실 줄 믿고 미리 감사드립니다.', en: 'God, I thank you ahead of time for helping me stay calm and simply be myself at tomorrow’s interview.' } },
+      text: { ko: '하나님, 내일 면접에서 떨지 않고 제 모습 그대로 보여 드리게 하실 줄 믿고 미리 감사드립니다.', en: 'God, I thank you ahead of time for helping me stay calm and simply be myself at tomorrow’s interview.', es: 'Dios, te doy gracias de antemano porque mañana en la entrevista estaré en calma y seré yo mismo.' } },
     { id: 'pub11', name: { ko: '현우', en: 'Hyunwoo' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 88, shares: 21, saves: 34, extShares: 9,
-      text: { ko: '항암 치료 여섯 번째 날. 몸은 힘들지만 매일 문자 보내 주는 친구들, 묵묵히 곁에 있어 주는 아내 덕분에 오늘도 버텼습니다. 아픈 중에도 감사할 게 이렇게 많네요.', en: 'Day six of chemo. My body is tired, but friends who text every day and my wife who quietly stays by me got me through today. Even in pain, there is so much to be thankful for.' } },
+      text: { ko: '항암 치료 여섯 번째 날. 몸은 힘들지만 매일 문자 보내 주는 친구들, 묵묵히 곁에 있어 주는 아내 덕분에 오늘도 버텼습니다. 아픈 중에도 감사할 게 이렇게 많네요.', en: 'Day six of chemo. My body is tired, but friends who text every day and my wife who quietly stays by me got me through today. Even in pain, there is so much to be thankful for.', es: 'Sexto día de quimioterapia. Mi cuerpo está cansado, pero los amigos que me escriben cada día y mi esposa, que está a mi lado en silencio, me sostuvieron hoy. Aun en el dolor, hay tanto que agradecer.' } },
     { id: 'pub12', name: { ko: '예준', en: 'Yejun' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 15, shares: 1, saves: 2,
-      text: { ko: '시험 끝! 끝까지 같이 공부해 준 친구들 고마워.', en: 'Exams done! Thanks to my friends who studied with me to the end.' } },
+      text: { ko: '시험 끝! 끝까지 같이 공부해 준 친구들 고마워.', en: 'Exams done! Thanks to my friends who studied with me to the end.', es: '¡Terminaron los exámenes! Gracias, amigos, por estudiar conmigo hasta el final.' } },
     { id: 'pub4', name: { ko: '하은', en: 'Haeun' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 12, shares: 3, saves: 5,
-      text: { ko: '오늘 마음이 무거웠는데 친구가 먼저 안부를 물어봐 주었어요. 함께할 사람이 있어 감사합니다.', en: 'My heart was heavy, but a friend checked in first. Thank you for people by my side.' } },
+      text: { ko: '오늘 마음이 무거웠는데 친구가 먼저 안부를 물어봐 주었어요. 함께할 사람이 있어 감사합니다.', en: 'My heart was heavy, but a friend checked in first. Thank you for people by my side.', es: 'Tenía el corazón pesado, pero un amigo me escribió primero. Gracias por las personas que están a mi lado.' } },
     { id: 'pub13', name: { ko: '은지', en: 'Eunji' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 42, shares: 6, saves: 18, extShares: 2,
-      text: { ko: '새벽 세 시에 깬 아기를 안고 창밖을 보다가, 이 작은 숨소리가 얼마나 큰 선물인지 다시 느꼈어요.', en: 'Holding my baby awake at 3 a.m. and looking out the window, I felt again what a great gift this tiny breathing is.' } },
+      text: { ko: '새벽 세 시에 깬 아기를 안고 창밖을 보다가, 이 작은 숨소리가 얼마나 큰 선물인지 다시 느꼈어요.', en: 'Holding my baby awake at 3 a.m. and looking out the window, I felt again what a great gift this tiny breathing is.', es: 'Con mi bebé despierto a las tres de la mañana, mirando por la ventana, volví a sentir el gran regalo que es esa respiración tan pequeña.' } },
     { id: 'pub14', name: { ko: '상철', en: 'Sangcheol' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 37, shares: 5, saves: 9, extShares: 1,
-      text: { ko: '삼십 년 다닌 회사에서 마지막 출근을 했습니다. 함께 일한 동료들, 버틸 힘을 주신 하나님께 감사합니다.', en: 'My last day at the company I worked at for thirty years. Thank you to my colleagues, and to God who gave me the strength to keep going.' } },
+      text: { ko: '삼십 년 다닌 회사에서 마지막 출근을 했습니다. 함께 일한 동료들, 버틸 힘을 주신 하나님께 감사합니다.', en: 'My last day at the company I worked at for thirty years. Thank you to my colleagues, and to God who gave me the strength to keep going.', es: 'Mi último día en la empresa donde trabajé treinta años. Gracias a mis compañeros, y a Dios, que me dio fuerzas para seguir.' } },
     { id: 'pub15', name: { ko: '소연', en: 'Soyeon' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 22, shares: 2, saves: 7,
-      text: { ko: '비 온 뒤 흙냄새.', en: 'The smell of earth after the rain.' } },
+      text: { ko: '비 온 뒤 흙냄새.', en: 'The smell of earth after the rain.', es: 'El olor de la tierra después de la lluvia.' } },
     { id: 'pub3', name: { ko: '지우', en: 'Jiwoo' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 17, shares: 6, saves: 8,
-      text: { ko: '하나님, 이번 주 만나는 사람들을 사랑과 인내로 대하게 하심에 감사합니다.', en: 'God, thank you for love and patience with everyone I meet this week.' } },
+      text: { ko: '하나님, 이번 주 만나는 사람들을 사랑과 인내로 대하게 하심에 감사합니다.', en: 'God, thank you for love and patience with everyone I meet this week.', es: 'Dios, gracias por el amor y la paciencia con cada persona que encuentre esta semana.' } },
     { id: 'pub16', name: { ko: '태호', en: 'Taeho' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 49, shares: 9, saves: 16, extShares: 3,
-      text: { ko: '아버지와 오랜만에 둘이서 낚시를 갔어요. 고기는 한 마리도 못 잡았지만, 아버지가 젊은 시절 이야기를 처음 들려주셨어요. 그 시간이 잡은 고기보다 훨씬 귀했어요.', en: 'I went fishing alone with my dad for the first time in years. We didn’t catch a single fish, but he told me stories from his youth for the first time. That time was worth far more than any catch.' } },
+      text: { ko: '아버지와 오랜만에 둘이서 낚시를 갔어요. 고기는 한 마리도 못 잡았지만, 아버지가 젊은 시절 이야기를 처음 들려주셨어요. 그 시간이 잡은 고기보다 훨씬 귀했어요.', en: 'I went fishing alone with my dad for the first time in years. We didn’t catch a single fish, but he told me stories from his youth for the first time. That time was worth far more than any catch.', es: 'Fui a pescar a solas con mi papá por primera vez en años. No pescamos nada, pero por primera vez me contó historias de su juventud. Ese tiempo valió mucho más que cualquier pesca.' } },
     { id: 'pub5', name: { ko: '준호', en: 'Junho' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 9, shares: 1, saves: 2,
-      text: { ko: '사소하지만 당연하지 않았던 일. 따뜻한 물로 하루를 시작할 수 있었던 아침에 감사합니다.', en: 'Small, but never a given: thankful for a morning that began with warm water.' } },
+      text: { ko: '사소하지만 당연하지 않았던 일. 따뜻한 물로 하루를 시작할 수 있었던 아침에 감사합니다.', en: 'Small, but never a given: thankful for a morning that began with warm water.', es: 'Pequeño, pero nunca obvio: gracias por una mañana que empezó con agua caliente.' } },
     { id: 'pub17', name: { ko: '미영', en: 'Miyoung' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 33, shares: 4, saves: 10, extShares: 1,
-      text: { ko: '가게에 오신 손님이 "덕분에 하루가 따뜻했다"는 쪽지를 남기고 가셨어요. 제가 오히려 감사해요.', en: 'A customer left a note: “You made my day warm.” I’m the one who’s grateful.' } },
+      text: { ko: '가게에 오신 손님이 "덕분에 하루가 따뜻했다"는 쪽지를 남기고 가셨어요. 제가 오히려 감사해요.', en: 'A customer left a note: “You made my day warm.” I’m the one who’s grateful.', es: 'Una clienta dejó una nota: “Gracias a ti mi día fue cálido”. La agradecida soy yo.' } },
     { id: 'pub6', name: { ko: '예린', en: 'Yerin' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 6, shares: 2, saves: 3,
-      text: { ko: '하나님, 평범한 하루 가운데서 작은 은혜를 발견하게 하심에 감사합니다.', en: 'God, thank you for small graces in an ordinary day.' } },
+      text: { ko: '하나님, 평범한 하루 가운데서 작은 은혜를 발견하게 하심에 감사합니다.', en: 'God, thank you for small graces in an ordinary day.', es: 'Dios, gracias por las pequeñas gracias en un día común.' } },
     { id: 'pub18', name: { ko: '도윤', en: 'Doyun' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 11, shares: 1, saves: 4,
-      text: { ko: '이번 주도 지켜 주실 줄 믿고, 미리 감사합니다.', en: 'Trusting you’ll keep me this week too — thank you in advance.' } },
+      text: { ko: '이번 주도 지켜 주실 줄 믿고, 미리 감사합니다.', en: 'Trusting you’ll keep me this week too — thank you in advance.', es: 'Confiando en que me cuidarás esta semana también: gracias de antemano.' } },
     { id: 'gr1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'today', date: daysAgo(0), likes: 8, shares: 1, saves: 2,
-      text: { ko: '평범하게 식탁에 앉아 이야기 나눌 수 있었던 저녁이 감사했어요.', en: 'Grateful for a simple evening of talking around the table.' } },
+      text: { ko: '평범하게 식탁에 앉아 이야기 나눌 수 있었던 저녁이 감사했어요.', en: 'Grateful for a simple evening of talking around the table.', es: 'Agradecida por una cena sencilla conversando alrededor de la mesa.' } },
     { id: 'gr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'ahead', date: daysAgo(1), likes: 5, shares: 0, saves: 1,
-      text: { ko: '하나님, 이번 한 주도 서로를 이해하는 마음을 주심에 감사합니다.', en: 'God, thank you for hearts that understand each other this week.' } },
+      text: { ko: '하나님, 이번 한 주도 서로를 이해하는 마음을 주심에 감사합니다.', en: 'God, thank you for hearts that understand each other this week.', es: 'Dios, gracias por corazones que se entienden esta semana.' } },
     { id: 'pr1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(0), likes: 0, prayedBy: [{ ko: '민서', en: 'Minseo' }, { ko: '하은', en: 'Haeun' }],
-      text: { ko: '이번 주 어머니 수술이 잘 마무리되도록 기도 부탁드려요.', en: 'Please pray that my mom’s surgery this week goes well.' } },
+      text: { ko: '이번 주 어머니 수술이 잘 마무리되도록 기도 부탁드려요.', en: 'Please pray that my mom’s surgery this week goes well.', es: 'Por favor, oren para que la cirugía de mi mamá salga bien esta semana.' } },
     { id: 'pr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(1), likes: 0, prayedBy: [{ ko: '지은', en: 'Jieun' }],
-      text: { ko: '새 직장에서 좋은 동료들을 만나게 해 주세요.', en: 'Pray that I find good coworkers at my new job.' } },
+      text: { ko: '새 직장에서 좋은 동료들을 만나게 해 주세요.', en: 'Pray that I find good coworkers at my new job.', es: 'Oren para que encuentre buenos compañeros en mi nuevo trabajo.' } },
     { id: 'gs1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(1), likes: 3,
-      text: { ko: '바쁜 출근길에도 하늘을 올려다보는 여유를 주셔서 감사했어요.', en: 'I was grateful for a moment to look up at the sky on a busy commute.' } },
+      text: { ko: '바쁜 출근길에도 하늘을 올려다보는 여유를 주셔서 감사했어요.', en: 'I was grateful for a moment to look up at the sky on a busy commute.', es: 'Agradecí un momento para mirar el cielo en un trayecto apurado.' } },
     { id: 'gs2', name: { ko: '하은', en: 'Haeun' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(0), likes: 2,
-      text: { ko: '아이와 함께 저녁 기도를 드릴 수 있었던 순간이요.', en: 'The moment I could pray with my child at dinner.' } },
+      text: { ko: '아이와 함께 저녁 기도를 드릴 수 있었던 순간이요.', en: 'The moment I could pray with my child at dinner.', es: 'El momento en que pude orar con mi hijo en la cena.' } },
     { id: 'mine1', mine: true, scope: 'private', kind: 'today', date: daysAgo(1), likes: 0,
       text: { ko: '오늘도 새롭게 시작할 수 있는 아침을 주셔서 감사합니다.', en: 'Thank you for a morning to begin again today.' } },
     { id: 'mine2', mine: true, scope: 'public', kind: 'today', date: daysAgo(2), likes: 14, shares: 3, saves: 6, extShares: 2,
@@ -354,13 +744,14 @@ const seed = {
       text: { ko: '천천히 걸으며 본 노을이 참 고마웠어요.', en: 'Grateful for the sunset I saw on a slow walk.' } }
   ],
   liked: [], seen: [], saved: [], hidden: [], blocked: [], reports: [], sharesGiven: 0, extSharesGiven: 0, celebrated: [],
-  groups: [{ id: 'g1', name: { ko: '은혜 소그룹', en: 'Grace Group' } }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family' } }],
-  challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together' }, group: 'g1',
+  groups: [{ id: 'g1', name: { ko: '은혜 소그룹', en: 'Grace Group', es: 'Grupo Gracia' } }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family', es: 'Nuestra familia' } }],
+  challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together', es: 'Encontrando gratitud juntos' }, group: 'g1',
     members: [{ ko: '나', en: 'Me' }, { ko: '지은', en: 'Jieun' }, { ko: '민서', en: 'Minseo' }], start: '2026-11-14', days: [1, 2] }],
   settings: { lang: null, notificationTime: '21:00', notificationEnabled: false, groupUpdates: false, features: { groupShare: false, prayer: false, sermon: false } }, prayed: [], sermons: []
 };
 
 const SAMPLES = {
+  es: { work: 'Dios, gracias por dejarme vivir cada día de trabajo de esta semana con alegría.', relationship: 'Dios, gracias por el amor y la paciencia con cada persona que encuentre esta semana.', everyday: 'Dios, gracias por las pequeñas gracias en un día común.' },
   ko: { work: '하나님, 이번 한 주도 직장에서 기쁨으로 하루하루를 보내게 하심에 감사합니다.', relationship: '하나님, 이번 주 만나는 사람들을 사랑과 인내로 대하게 하심에 감사합니다.', everyday: '하나님, 평범한 하루 가운데서 작은 은혜를 발견하게 하심에 감사합니다.' },
   en: { work: 'God, thank you for letting me spend each day at work this week with joy.', relationship: 'God, thank you for helping me meet everyone this week with love and patience.', everyday: 'God, thank you for helping me find small graces in an ordinary day.' }
 };
@@ -377,13 +768,16 @@ if (!Array.isArray(data.seen)) data.seen = [];
 if (!Array.isArray(data.sermons)) data.sermons = [];
 if (typeof data.extSharesGiven !== 'number') data.extSharesGiven = 0;
 for (const k of ['liked', 'saved', 'hidden', 'blocked', 'reports', 'celebrated']) if (!Array.isArray(data[k])) data[k] = [];
-if (!data.settings.lang) data.settings.lang = (navigator.language || 'ko').toLowerCase().startsWith('ko') ? 'ko' : 'en';
+const LANGS = [['ko', '한국어'], ['en', 'English'], ['es', 'Español']];
+const deviceLang = () => { const l = (navigator.language || 'en').toLowerCase(); return l.startsWith('ko') ? 'ko' : l.startsWith('es') ? 'es' : 'en'; };
+if (!data.settings.lang) data.settings.lang = deviceLang();
 
 /* Sign-in session. Saved once, kept until the user signs out ("always signed in").
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
 const SESSION_KEY = 'daily-thanks-session';
 let session = null;
 try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
+if (session?.lang) data.settings.lang = session.lang;
 function setSession(next) {
   session = next;
   try { next ? localStorage.setItem(SESSION_KEY, JSON.stringify(next)) : localStorage.removeItem(SESSION_KEY); } catch {}
@@ -397,8 +791,8 @@ const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const lang = () => data.settings.lang;
-const t = k => STR[lang()][k] ?? STR.ko[k] ?? k;
-const L = v => (v && typeof v === 'object') ? (v[lang()] ?? v.ko ?? v.en) : (v ?? '');
+const t = k => STR[lang()]?.[k] ?? STR.en[k] ?? STR.ko[k] ?? k;
+const L = v => (v && typeof v === 'object') ? (v[lang()] ?? (lang() === 'es' ? v.en : undefined) ?? v.ko ?? v.en) : (v ?? '');
 const today = () => new Date().toLocaleDateString('en-CA');
 
 function save() {
@@ -707,7 +1101,7 @@ function renderImmersive(keepIndex = 0) {
       </aside></article>`;
   }).join('')}</div>
   <div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>
-  <button class="imm-lang" data-action="toggle-lang" aria-label="${t('aria.lang')}">${icon('globe')}<span>${lang() === 'ko' ? 'English' : '한국어'}</span></button>
+  <button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button>
   ${showNudge() ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
@@ -844,16 +1238,85 @@ function reflect(id) {
   $('#reflect-form').addEventListener('submit', e => { e.preventDefault(); p.reflection = $('#reflect-text').value.trim(); save(); close(); renderJournal(); toast(t('toast.reflected')); });
 }
 
+/* ---------------- share card image (Instagram feed 4:5 / story 9:16) ----------------
+   Proportions: 11% side margins, text block centred slightly above the middle (42% / 45%),
+   faint wordmark top-left, author line under the text, "Give thanks daily." at the bottom. */
+const CARD = { feed: [1080, 1350], story: [1080, 1920] };
+function wrapLines(ctx, text, maxW) {
+  const lines = [];
+  for (const para of String(text).split('\n')) {
+    let line = '';
+    for (const word of para.split(' ')) {
+      const test = line ? line + ' ' + word : word;
+      if (ctx.measureText(test).width <= maxW) { line = test; continue; }
+      if (line) lines.push(line);
+      if (ctx.measureText(word).width <= maxW) { line = word; continue; }
+      line = '';
+      for (const ch of word) { if (ctx.measureText(line + ch).width > maxW) { lines.push(line); line = ch; } else line += ch; }
+    }
+    lines.push(line);
+  }
+  return lines;
+}
+async function renderCard(p, kind = 'feed') {
+  try { await document.fonts.ready; } catch {}
+  const [W, H] = CARD[kind], c = document.createElement('canvas'); c.width = W; c.height = H;
+  const x = c.getContext('2d'), M = Math.round(W * .11), maxW = W - M * 2;
+  const serif = '"Newsreader", Georgia, serif', sans = '"Noto Sans KR", "Apple SD Gothic Neo", sans-serif';
+  x.fillStyle = '#FCFCFA'; x.fillRect(0, 0, W, H);
+  // faint warm light in the corner, very subtle
+  const g = x.createRadialGradient(W * .82, H * .12, 0, W * .82, H * .12, W * .7); g.addColorStop(0, 'rgba(255,233,170,.10)'); g.addColorStop(1, 'rgba(255,233,170,0)'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  // wordmark
+  x.fillStyle = '#9BA0A3'; x.textBaseline = 'alphabetic';
+  x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30);
+  const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('thanks', M + dw, M + 30);
+  // body: shrink until it fits
+  const text = L(p.kind === 'thanks' ? `Thank you, ${p.to}\n\n${L(p.text)}` : p.text);
+  const maxH = H * (kind === 'story' ? .52 : .50);
+  let size = kind === 'story' ? 64 : 58, lines, lh;
+  for (; size >= 34; size -= 2) { x.font = `300 ${size}px ${sans}`; lines = wrapLines(x, text, maxW); lh = size * 1.72; if (lines.length * lh <= maxH) break; }
+  const blockH = lines.length * lh, centre = H * (kind === 'story' ? .45 : .42);
+  let y = centre - blockH / 2 + size;
+  x.fillStyle = '#303438';
+  lines.forEach(l => { x.fillText(l, M, y); y += lh; });
+  // author line
+  x.font = `400 30px ${sans}`; x.fillStyle = '#A9AEB1';
+  x.fillText(`${p.mine ? t('me') : L(p.name)} · ${kindLabel(p)}`, M, y - lh + size + 70);
+  // bottom tagline
+  x.font = `italic 400 34px ${serif}`; x.fillStyle = '#B4B8BA';
+  x.fillText('Give thanks daily.', M, H - M + 10);
+  return c;
+}
+async function showCardPreview(id) {
+  const p = data.posts.find(x => x.id === id), img = $('#card-img'); if (!p || !img) return;
+  const c = await renderCard(p, state.cardKind || 'feed');
+  img.src = c.toDataURL('image/png');
+  img.style.aspectRatio = (state.cardKind || 'feed') === 'story' ? '9 / 16' : '4 / 5';
+}
+async function shareImage(id, external = true) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const c = await renderCard(p, state.cardKind || 'feed');
+  const blob = await new Promise(res => c.toBlob(res, 'image/png'));
+  const file = new File([blob], 'daily-thanks.png', { type: 'image/png' });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Daily Thanks' }); countShare(id, external); return; }
+  } catch { return; }
+  toast(t('card.noShare'));
+}
+
 function share(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
-  showSheet({ title: t('share.title'), body: `<div class="share-preview"><span class="wordmark">daily <em>thanks</em></span><p>${esc(L(p.text))}</p><small>${esc(authorName(p))} · ${esc(kindLabel(p))}</small></div>
+  state.cardKind = state.cardKind || 'feed';
+  showSheet({ title: t('share.title'), body: `<div class="card-frame"><img id="card-img" alt="" class="card-img"></div>
+    <div class="seg card-seg">${[['feed', t('card.feed')], ['story', t('card.story')]].map(([k, label]) => `<button type="button" class="${state.cardKind === k ? 'active' : ''}" data-action="card-kind" data-id="${esc(id)}|${k}"><span>${label}</span></button>`).join('')}</div>
     <div class="list">
       <button class="list-row" data-action="share-kakao" data-id="${esc(id)}"><span class="row-icon">${icon('chat')}</span><span class="row-main"><span class="row-title">${t('share.kakao')}</span></span></button>
-      <button class="list-row" data-action="share-insta" data-id="${esc(id)}"><span class="row-icon">${icon('camera')}</span><span class="row-main"><span class="row-title">${t('share.insta')}</span></span></button>
+      <button class="list-row" data-action="share-insta-img" data-id="${esc(id)}"><span class="row-icon">${icon('camera')}</span><span class="row-main"><span class="row-title">${t('share.insta')}</span></span></button>
       <button class="list-row" data-action="copy-share" data-id="${esc(id)}"><span class="row-icon">${icon('copy')}</span><span class="row-main"><span class="row-title">${t('share.copy')}</span></span></button>
       <button class="list-row" data-action="send-group" data-id="${esc(id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${t('share.toGroup')}</span></span><span class="row-end">${icon('chevron')}</span></button>
       <button class="list-row" data-action="native-share" data-id="${esc(id)}"><span class="row-icon">${icon('upload')}</span><span class="row-main"><span class="row-title">${t('share.native')}</span></span></button>
     </div><p class="hint">${t('share.outNote')}</p><p class="hint">${t('share.note')}</p>` });
+  showCardPreview(id);
 }
 
 function sendToGroup(id) {
@@ -919,7 +1382,7 @@ function widgetOld() {
 function settings() {
   const row = (action, ic, title, end = icon('chevron'), cls = '') => `<button class="list-row ${cls}" data-action="${action}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${title}</span></span><span class="row-end">${end}</span></button>`;
   showSheet({ title: t('s.title'), body: `
-    ${seg([['ko', '한국어'], ['en', 'English']], 'set-lang', lang())}
+    ${seg(LANGS, 'set-lang', lang())}
     <p class="field-label">${t('size.title')}</p>
     ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
     <div class="list">
@@ -1030,11 +1493,13 @@ function weekDots() {
 const DAILY_Q = {
   ko: ['오늘 나를 웃게 한 사람은 누구였나요?', '사소하지만 당연하지 않았던 일은?', '오늘 먹은 것 중 감사한 음식은?', '오늘 들은 말 중 고마웠던 말은?', '내 몸에게 고마운 점 하나는?', '오늘 본 것 중 아름다웠던 것은?', '요즘 기도가 응답된 일이 있나요?',
        '오늘 누군가에게 도움을 받았나요?', '집에서 감사한 것 하나는?', '오늘 새로 배운 것은?', '힘들었지만 그 안에서 발견한 감사는?', '지금 이 순간 감사한 것은?', '내일이 기대되는 이유 하나는?', '오래 곁에 있어 준 사람은 누구인가요?'],
+  es: ['¿Quién te hizo sonreír hoy?', '¿Qué cosa pequeña no fue obvia hoy?', '¿Por qué comida estás agradecido hoy?', '¿Qué palabras amables escuchaste hoy?', '¿Qué hizo tu cuerpo por ti hoy?', '¿Qué cosa hermosa viste hoy?', '¿Se respondió alguna oración últimamente?',
+       '¿Alguien te ayudó hoy?', '¿Qué cosa de tu casa agradeces?', '¿Qué aprendiste hoy?', '¿Qué gratitud encontraste en algo difícil?', '¿Por qué estás agradecido ahora mismo?', '¿Qué razón tienes para esperar el mañana?', '¿Quién ha estado a tu lado por mucho tiempo?'],
   en: ['Who made you smile today?', 'What small thing wasn’t a given today?', 'What food are you grateful for today?', 'What kind words did you hear today?', 'What is one thing your body did for you?', 'What beautiful thing did you see today?', 'Has a prayer been answered lately?',
        'Did someone help you today?', 'What is one thing at home you’re thankful for?', 'What did you learn today?', 'What gratitude did you find in something hard?', 'What are you thankful for right now?', 'What is one reason to look forward to tomorrow?', 'Who has stayed by your side for a long time?']
 };
 const dayOfYear = () => { const d = new Date(), s0 = new Date(d.getFullYear(), 0, 0); return Math.floor((d - s0) / 864e5); };
-const dailyQ = () => { const list = DAILY_Q[lang()] || DAILY_Q.ko; return list[dayOfYear() % list.length]; };
+const dailyQ = () => { const list = DAILY_Q[lang()] || DAILY_Q.en; return list[dayOfYear() % list.length]; };
 const dailyQLine = () => `<p class="daily-q">${icon('sparkle')}<span>${t('dq.label')} · ${esc(dailyQ())}</span></p>`;
 
 // A past note resurfaces: exactly a week / month / year ago if there is one, otherwise the oldest of the last weeks.
@@ -1065,7 +1530,7 @@ function calendarCard() {
     const d = i + 1, on = written.has(iso(d)); if (on) count++;
     return `<button class="cal-day ${on ? 'on' : ''} ${iso(d) === today() ? 'today' : ''}" data-action="cal-day" data-id="${iso(d)}" aria-label="${iso(d)}">${d}</button>`;
   }));
-  const title = lang() === 'ko' ? t('cal.title').replace('{m}', m + 1).replace('{n}', count) : t('cal.title').replace('{mon}', now.toLocaleDateString('en', { month: 'long' })).replace('{n}', count);
+  const title = lang() === 'ko' ? t('cal.title').replace('{m}', m + 1).replace('{n}', count) : t('cal.title').replace('{mon}', now.toLocaleDateString(lang(), { month: 'long' })).replace('{n}', count);
   return `<section class="cal-card"><div class="cal-head"><span>${icon('calendar')}${title}</span><button class="row-link" data-action="recap">${t('cal.recap')} ›</button></div>
     <div class="cal-grid">${cells.join('')}</div></section>`;
 }
@@ -1117,9 +1582,10 @@ function prayedWho(id) {
 // Group sharing: one question per week, answered inside the group.
 const GROUP_Q = {
   ko: ['이번 주 가장 감사했던 순간은 언제였나요?', '이번 주 하나님이 가까이 계심을 느낀 때는?', '요즘 마음을 지켜 준 말씀이 있나요?', '이번 주 누군가에게 받은 친절은?', '다음 주를 위해 미리 감사하고 싶은 것은?'],
+  es: ['¿Cuándo estuviste más agradecido esta semana?', '¿Cuándo sentiste a Dios cerca esta semana?', '¿Qué versículo ha cuidado tu corazón últimamente?', '¿Qué bondad te mostró alguien esta semana?', '¿Por qué le darías gracias a Dios antes de la próxima semana?'],
   en: ['When were you most grateful this week?', 'When did you sense God near this week?', 'Which verse has kept your heart lately?', 'What kindness did someone show you this week?', 'What would you thank God for ahead of next week?']
 };
-const weekQ = () => { const list = GROUP_Q[lang()] || GROUP_Q.ko; return list[Math.floor(dayOfYear() / 7) % list.length]; };
+const weekQ = () => { const list = GROUP_Q[lang()] || GROUP_Q.en; return list[Math.floor(dayOfYear() / 7) % list.length]; };
 function groupShareSection() {
   const g = data.groups[0]; if (!g) return '';
   const answers = data.posts.filter(p => p.kind === 'share' && p.group === g.id && !data.hidden.includes(p.id));
@@ -1168,7 +1634,7 @@ function smNew() {
     <p class="hint">${t('sm.demo')}</p></form>` });
   $('#sm-form').addEventListener('submit', e => {
     e.preventDefault();
-    const sample = SAMPLE_SERMON[lang()] || SAMPLE_SERMON.ko;
+    const sample = SAMPLE_SERMON[lang()] || SAMPLE_SERMON.en;
     const note = { id: 'sm' + Date.now(), date: today(), title: $('#sm-title').value.trim() || sample.title, preacher: $('#sm-preacher').value.trim(), summary: sample };
     data.sermons.unshift(note); save(); render(); smOpen(note.id);
   });
@@ -1414,7 +1880,7 @@ function blockedSheet() {
 
 /* ---------------- sign-in ---------------- */
 function completeLogin(method, extra = {}) {
-  setSession({ method, since: new Date().toISOString(), ...extra });
+  setSession({ method, since: new Date().toISOString(), lang: lang(), ...extra });
   const hadCompose = !!$('#compose-card');
   close(); render(); toast(t('login.done'));
   const sc = $('#feed-scroll'); // land on the post that comes right after the cards
@@ -1447,6 +1913,7 @@ const methodName = m => ({ apple: 'Apple', google: 'Google', phone: lang() === '
 /* ---------------- actions ---------------- */
 function setLang(l) {
   data.settings.lang = l; save(); applyStatic();
+  if (session) setSession({ ...session, lang: l }); // remembered with the account for the next sign-in
   const wasSettings = !sheet.hidden && sheet.querySelector('.seg');
   render(); if (wasSettings) settings();
 }
@@ -1496,6 +1963,8 @@ const actions = {
   'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   note: noteSheet,
+  'lang-menu': () => showSheet({ title: '', body: `<div class="list">${LANGS.map(([id, label]) => `<button class="list-row" data-action="pick-lang" data-id="${id}"><span class="row-icon">${icon('globe')}</span><span class="row-main"><span class="row-title">${label}</span></span><span class="row-end">${lang() === id ? icon('check') : ''}</span></button>`).join('')}</div>` }),
+  'pick-lang': id => { close(); setLang(id); },
   'wg-os': id => { state.wgOs = id; document.querySelectorAll('[data-action="wg-os"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); $('#wg-steps').innerHTML = state.wgSteps(id); },
   'wg-ok': () => { close(); toast(t('wg.okToast')); },
   'wg-later': () => { close(); toast(t('wg.laterToast')); },
@@ -1519,6 +1988,9 @@ const actions = {
     if (navigator.share) navigator.share({ title: 'Daily Thanks', text }).then(() => countShare(id, true)).catch(() => {});
     else { countShare(id, true); copyText(text); }
   },
+  'card-kind': pair => { const [id, k] = pair.split('|'); state.cardKind = k; document.querySelectorAll('[data-action="card-kind"]').forEach(b => b.classList.toggle('active', b.dataset.id === pair)); showCardPreview(id); },
+  'share-image': id => shareImage(id),
+  'share-insta-img': id => shareImage(id, true),
   'share-insta': id => {
     // Native app: Instagram Stories sharing (instagram-stories:// with a rendered card image). Prototype: share sheet, or copy.
     const p = data.posts.find(x => x.id === id); if (!p) return;
