@@ -66,9 +66,40 @@ test/                   단위·API 테스트
 
 기능 플래그가 꺼져 있으면 해당 API는 404를 반환하고, 앱 화면에도 나타나지 않습니다.
 
+## 로그인 (Apple · Google · 휴대폰 번호)
+
+앱 화면의 흐름은 이미 만들어져 있습니다. 지금은 로그인 상태만 기기에 저장하는 시안이고, 실제 계정 연결은 아래 순서로 붙이면 됩니다.
+
+**화면 흐름 (`app.js`)**
+1. 처음 열면 "daily thanks" 첫 화면이 뜨고, 이어서 다른 사람들의 감사가 전체 화면으로 3개 나옵니다 (`GATE_AFTER = 3`).
+2. 다음 카드에서 오늘 나의 감사를 한 줄 씁니다. 기본은 나만 보기이고, "나중에"로 건너뛸 수 있습니다.
+3. 그다음 카드는 로그인입니다 (Apple / Google / 휴대폰 번호). 로그인하기 전에는 피드가 이 카드에서 멈춥니다.
+4. 로그인 정보는 로그아웃(설정 → 로그아웃)할 때까지 유지됩니다. 다음부터는 로그인 카드가 나오지 않습니다.
+
+**실제 연결 권장안: Firebase Authentication**
+- 한 서비스에서 Apple, Google, 휴대폰 문자 인증(한국 번호 포함)을 모두 지원합니다.
+- 기본 설정이 "기기에 로그인 유지"(refresh token)라서 "한 번 로그인하면 항상 로그인" 요구사항에 그대로 맞습니다.
+- 대안: Supabase Auth (Apple·Google 기본 지원, 문자는 Twilio 등 외부 업체 연결 필요)
+
+**연결 순서**
+1. Firebase 프로젝트를 만들고 Apple, Google, 전화번호 로그인을 켭니다.
+   - Apple은 Apple Developer에서 Services ID와 Key를 만들어야 합니다.
+2. `app.js`의 `completeLogin()` / `phoneLogin()`을 Firebase SDK 호출로 바꿉니다.
+   - `signInWithPopup(AppleProvider / GoogleProvider)`
+   - `signInWithPhoneNumber` + `RecaptchaVerifier`
+3. 서버 `server/app.js`의 `userIdOf()`를 바꿉니다.
+   - 지금은 `x-user-id` 헤더로 사용자를 구분합니다.
+   - 대신 `Authorization: Bearer <Firebase ID token>`을 `firebase-admin`의 `verifyIdToken()`으로 검증하고, 그 결과의 `uid`를 씁니다.
+4. 로그인 직후 그때까지 기기에 저장된 기록을 계정으로 옮깁니다. `public/client.js`의 `dt:session` 처리 부분에 이미 넣어 두었습니다.
+
+**미리 알아둘 점**
+- iOS 앱에서 Google 로그인을 제공하면 Apple 로그인도 함께 제공하는 것이 App Store 심사 기준입니다. 지금 화면은 둘 다 있습니다.
+- 휴대폰 인증은 문자 발송 비용이 들고, 웹에서는 reCAPTCHA가 필요합니다. 네이티브 앱에서는 기기 확인으로 대체됩니다.
+- 로그인 버튼의 모양은 각 회사 가이드라인을 따라야 합니다. 출시 때는 공식 SDK의 버튼을 쓰는 것이 안전합니다.
+
 ## 출시 전에 해야 할 일
 
-1. **인증:** 지금은 `x-user-id` 헤더(기본 `demo`)로 사용자를 구분합니다. Apple/Google 로그인으로 교체하세요.
+1. **인증:** 위 "로그인" 절차대로 실제 계정을 연결하세요. 지금은 `x-user-id` 헤더(기본 `demo`)로 사용자를 구분합니다.
 2. **데이터베이스:** JSON 파일 저장소를 실제 DB로 교체하세요. 서버 측 권한 검사를 넣고, 소그룹 리더만 그룹 본문을 지정할 수 있게 하세요.
 3. **번역본 라이선스와 본문 데이터 준비:** 자세한 내용은 [`../docs/LICENSING_AND_PARTNERS_KO.md`](../docs/LICENSING_AND_PARTNERS_KO.md)에 있습니다.
 4. **긴 설교 처리:**

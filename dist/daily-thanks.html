@@ -222,6 +222,23 @@ html[lang="en"] .share-preview p{font-size:19px}
 .post.imm .post-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 72px 24px 40px}
 .post.imm .post-rail{bottom:calc(56px + var(--safe-bottom));gap:26px}
 
+/* ---------- in-feed cards: today's thanks + sign-in ---------- */
+.card-page{padding:0}
+.card-inner{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:24px 40px calc(24px + var(--safe-bottom))}
+.card-title{font-size:26px;font-weight:300;line-height:1.55;margin:4px 0 0;color:var(--ink);word-break:keep-all;display:block}
+.card-sub{font-size:14px;line-height:1.75;color:var(--sub);margin:0;word-break:keep-all}
+.card-hint{color:var(--faint);font-size:20px;margin:6px 0 0}
+.card-input{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:10px 0;min-height:0;font-size:20px;font-weight:300;line-height:1.7;resize:none}
+.card-input:focus{outline:none;border-bottom-color:var(--ink)}
+.card-actions{display:flex;align-items:center;gap:10px;margin-top:6px}
+.card-mark{font-size:22px;color:var(--sub)}
+.login-buttons{display:grid;gap:10px;margin-top:10px}
+.login-btn{display:flex;align-items:center;justify-content:center;gap:10px;height:50px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:15px;font-weight:500}
+.login-btn .ico{font-size:19px}
+.login-btn.apple{background:#000;border-color:#000;color:#fff}
+.subtle-link{border:0;background:none;color:var(--sub);font-size:13px;padding:10px 4px}
+html[lang="en"] .card-title{font-size:24px}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -295,7 +312,15 @@ const STR = {
     'j.kicker': 'MY GRATITUDE', 'j.title': '나의 감사가<br>쌓이는 곳.', 'j.desc': '오늘 받은 은혜와 앞으로의 시간을 맡기며 드린 미리 감사를 함께 돌아봐요.', 'j.all': '전체', 'j.new': '＋ 새로운 감사 쓰기', 'j.empty': '아직 기록된 감사가 없어요.', 'j.reflect': '돌아보며 감사 쓰기', 'j.delete': '삭제', 'j.confirmDelete': '이 감사 기록을 삭제할까요?',
     'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림 사용 (설정 시안)', 'n.group': '그룹 반응 모아 보기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 고마웠던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '알림 설정 저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
     'w.title': '홈 화면 위젯', 'w.desc': '실제 iPhone 위젯이 아닌 홈 화면 디자인 미리보기예요.', 'w.today': '오늘의 감사', 'w.q': '오늘 나를 웃게 한 일은?', 'w.write': '＋ 한 줄 쓰기', 'w.sub': '함께하는 7일', 'w.view': '챌린지 보기', 'w.fine': '실제 위젯 설치·위젯에서 앱 열기는 iOS/Android 네이티브 개발 단계에서 구현해야 합니다.',
-    's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.close': '닫기', 'fs.closeAria': '전체 화면 닫기', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
+    's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.close': '닫기', 'fs.closeAria': '전체 화면 닫기',
+    'gate.kicker': '오늘의 감사', 'gate.q': '오늘 고마웠던 순간은?', 'gate.ph': '한 줄이면 충분해요.', 'gate.private': '나만 보기', 'gate.public': '모두의 감사', 'gate.save': '감사 남기기', 'gate.later': '나중에 쓸게요',
+    'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
+    'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
+    'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
+    'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
+    'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
+    'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
     'doc.title': 'Daily Thanks · A day that carries gratitude',
@@ -336,7 +361,15 @@ const STR = {
     'j.kicker': 'MY GRATITUDE', 'j.title': 'Where my thanks<br>gathers.', 'j.desc': 'Look back on today’s grace and the thanks you offered ahead for the days to come.', 'j.all': 'All', 'j.new': '＋ Write new thanks', 'j.empty': 'No thanks recorded yet.', 'j.reflect': 'Look back with thanks', 'j.delete': 'Delete', 'j.confirmDelete': 'Delete this note?',
     'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder (design preview)', 'n.group': 'Bundle group reactions', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save reminder', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
     'w.title': 'Home screen widget', 'w.desc': 'A design preview — not a real iPhone widget.', 'w.today': 'Today’s thanks', 'w.q': 'What made you smile today?', 'w.write': '＋ Write a line', 'w.sub': '7 days together', 'w.view': 'View challenge', 'w.fine': 'Installing a real widget and opening the app from it is built in the native iOS/Android phase.',
-    's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.close': 'Close', 'fs.closeAria': 'Close full screen', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
+    's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.close': 'Close', 'fs.closeAria': 'Close full screen',
+    'gate.kicker': 'Today’s thanks', 'gate.q': 'What were you grateful for today?', 'gate.ph': 'One line is enough.', 'gate.private': 'Only me', 'gate.public': 'Everyone', 'gate.save': 'Save my thanks', 'gate.later': 'Maybe later',
+    'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
+    'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
+    'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
+    'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
+    'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
+    'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   }
 };
 
@@ -358,6 +391,9 @@ const ICONS = {
   phone: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>',
   download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
   reset: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5"/>',
+  apple: '<path fill="currentColor" stroke="none" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-4.1zM14 5.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/>',
+  google: '<path fill="#4285F4" stroke="none" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" stroke="none" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" stroke="none" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" stroke="none" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>',
+  phoneMsg: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/>',
   maximize: '<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>',
   minimize: '<path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/>'
 };
@@ -404,7 +440,19 @@ try { const stored = JSON.parse(localStorage.getItem(KEY)); data = stored && Arr
 catch { data = clone(seed); }
 if (!data.settings.lang) data.settings.lang = (navigator.language || 'ko').toLowerCase().startsWith('ko') ? 'ko' : 'en';
 
-const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true }; // immersive: the app opens on a full-screen feed of people's thanks
+/* Sign-in session. Saved once, kept until the user signs out ("always signed in").
+   In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
+const SESSION_KEY = 'daily-thanks-session';
+let session = null;
+try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
+function setSession(next) {
+  session = next;
+  try { next ? localStorage.setItem(SESSION_KEY, JSON.stringify(next)) : localStorage.removeItem(SESSION_KEY); } catch {}
+  document.dispatchEvent(new CustomEvent('dt:session', { detail: next }));
+}
+const GATE_AFTER = 3; // posts shown before the "write today's thanks" card and the sign-in card
+
+const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'private' }; // immersive: the app opens on a full-screen feed of people's thanks
 
 const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
@@ -455,6 +503,58 @@ function dayRow(ch) {
 }
 
 /* ---------------- screens ---------------- */
+const wroteToday = () => data.posts.some(p => p.mine && p.date === today());
+/* Public feed order: 3 posts → "write today's thanks" card (until written today) → sign-in card (until signed in) → the rest. */
+function feedSequence(posts) {
+  const items = posts.slice(0, GATE_AFTER).map(p => ({ type: 'post', p }));
+  if (posts.length > GATE_AFTER || !session) {
+    if (!wroteToday() || state.justWrote) items.push({ type: 'compose' });
+    if (!session) return items.concat({ type: 'login' });
+  }
+  return items.concat(posts.slice(GATE_AFTER).map(p => ({ type: 'post', p })));
+}
+function composeCard() {
+  if (state.justWrote) return `<article class="post card-page" id="compose-card"><div class="card-inner">
+    <div class="post-kind">${icon('sun')}<span>${t('gate.kicker')}</span></div>
+    <p class="card-title">${t('gate.saved')}</p><p class="card-sub">${t('gate.savedSub')}</p>
+    <p class="card-hint">${icon('chevrons')}</p></div></article>`;
+  const priv = state.composeScope === 'private';
+  return `<article class="post card-page" id="compose-card"><form class="card-inner" id="gate-compose">
+    <div class="post-kind">${icon('sun')}<span>${t('gate.kicker')}</span></div>
+    <label class="card-title" for="gate-text">${t('gate.q')}</label>
+    <textarea id="gate-text" class="card-input" maxlength="1500" rows="3" placeholder="${esc(t('gate.ph'))}"></textarea>
+    <div class="radio-row"><button type="button" class="${priv ? 'active' : ''}" data-action="gate-scope" data-id="private">${icon('lock')}${t('gate.private')}</button><button type="button" class="${priv ? '' : 'active'}" data-action="gate-scope" data-id="public">${icon('globe')}${t('gate.public')}</button></div>
+    <div class="card-actions"><button class="primary" type="submit">${t('gate.save')}</button><button class="subtle-link" type="button" data-action="gate-later">${t('gate.later')}</button></div>
+  </form></article>`;
+}
+function loginCard() {
+  return `<article class="post card-page" id="login-card"><div class="card-inner">
+    <span class="wordmark card-mark">daily <em>thanks</em></span>
+    <p class="card-title">${t('login.title')}</p><p class="card-sub">${t('login.sub')}</p>
+    <div class="login-buttons">
+      <button class="login-btn apple" data-action="login" data-id="apple">${icon('apple')}<span>${t('login.apple')}</span></button>
+      <button class="login-btn" data-action="login" data-id="google">${icon('google')}<span>${t('login.google')}</span></button>
+      <button class="login-btn" data-action="login" data-id="phone">${icon('phoneMsg')}<span>${t('login.phone')}</span></button>
+    </div>
+    <p class="fine-print">${t('login.demo')}</p></div></article>`;
+}
+const cardFor = item => item.type === 'compose' ? composeCard() : loginCard();
+function bindGateForm() {
+  const f = $('#gate-compose'); if (!f) return;
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = $('#gate-text').value.trim(); if (!text) { $('#gate-text').focus(); return; }
+    data.posts.unshift({ id: 'p' + Date.now(), mine: true, scope: state.composeScope, kind: 'today', text, date: today(), likes: 0 });
+    state.justWrote = true; save(); renderKeep('#compose-card'); toast(t('toast.saved'));
+  });
+}
+// Re-render and keep the given card in view (its index can shift when posts change).
+function renderKeep(selector) {
+  render();
+  const sc = $('#feed-scroll'), el = selector && $(selector);
+  if (sc && el) sc.scrollTop = el.offsetTop;
+}
+
 function feedPosts() {
   return data.posts.filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
 }
@@ -495,12 +595,14 @@ function renderFeed(keepIndex = 0) {
       <button class="link-btn" data-action="challenges">${icon('sparkle')}${t('feed.together')}</button>
     </div>
     <div class="feed-scroll" id="feed-scroll">
-      ${posts.length ? posts.map((p, i) => postTemplate(p, i, posts.length)).join('')
+      ${posts.length ? (isGroup ? posts.map((p, i) => postTemplate(p, i, posts.length)).join('')
+        : feedSequence(posts).map(it => it.type === 'post' ? postTemplate(it.p, posts.indexOf(it.p), posts.length) : cardFor(it)).join(''))
         : `<div class="empty">${t('feed.empty')}<br><br><button class="primary" data-action="compose">${t('top.write')}</button></div>`}
     </div>
     ${posts.length > 1 ? `<button class="next-fab" data-action="next" aria-label="${t('aria.next')}">${icon('down')}</button>` : ''}`;
   const sc = $('#feed-scroll');
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
+  bindGateForm();
 }
 
 function renderGroups() {
@@ -559,9 +661,10 @@ function renderJournal() {
 
 /* Full-screen feed: only the gratitude text, with ♡ count, share and close on the right. */
 function renderImmersive(keepIndex = 0) {
-  const posts = data.posts.filter(p => p.scope === 'public');
-  main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${posts.map(p => {
-    const liked = data.liked.includes(p.id), text = L(p.text);
+  const posts = data.posts.filter(p => p.scope === 'public' && !p.mine);
+  main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${feedSequence(posts).map(it => {
+    if (it.type !== 'post') return cardFor(it);
+    const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p></div>
       <aside class="post-rail">
@@ -572,6 +675,7 @@ function renderImmersive(keepIndex = 0) {
   }).join('')}</div>`;
   const sc = $('#feed-scroll');
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
+  bindGateForm();
 }
 
 function render(keepIndex) {
@@ -703,6 +807,7 @@ function widget() {
 function settings() {
   showSheet({ title: t('s.title'), body: `<p class="field-label" style="margin-top:0">${t('s.lang')}</p>
     <div class="seg"><button class="${lang() === 'ko' ? 'active' : ''}" data-action="set-lang" data-id="ko">한국어</button><button class="${lang() === 'en' ? 'active' : ''}" data-action="set-lang" data-id="en">English</button></div>
+    ${session ? `<div class="row" style="margin-top:16px"><span class="muted">${t('acct.signedIn')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}</span><button class="secondary" data-action="logout">${t('acct.logout')}</button></div>` : ''}
     <hr class="divider"><div class="menu-list">
       <button data-action="notification">${icon('bell')}${t('s.notify')}</button>
       <button data-action="widget">${icon('phone')}${t('s.widget')}</button>
@@ -711,6 +816,37 @@ function settings() {
       <button data-action="reset">${icon('reset')}${t('s.reset')}</button>
     </div><p class="fine-print">${t('s.fine')}</p>` });
 }
+
+/* ---------------- sign-in ---------------- */
+function completeLogin(method, extra = {}) {
+  setSession({ method, since: new Date().toISOString(), ...extra });
+  const hadCompose = !!$('#compose-card');
+  close(); render(); toast(t('login.done'));
+  const sc = $('#feed-scroll'); // land on the post that comes right after the cards
+  if (sc && state.tab === 'feed' && state.feed === 'public') sc.scrollTop = (GATE_AFTER + (hadCompose ? 1 : 0)) * sc.clientHeight;
+}
+function phoneLogin() {
+  showSheet({ title: t('phone.title'), body: `<form id="phone-form">
+    <label class="field-label" for="phone-number">${t('phone.number')}</label>
+    <input id="phone-number" class="field" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-1234-5678" required>
+    <div id="code-step" hidden><label class="field-label" for="phone-code">${t('phone.code')}</label>
+    <input id="phone-code" class="field" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000"></div>
+    <p class="hint">${t('phone.demo')}</p>
+    <button class="primary block" type="submit" id="phone-submit">${t('phone.send')}</button></form>` });
+  let step = 1;
+  $('#phone-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const digits = $('#phone-number').value.replace(/\D/g, '');
+    if (step === 1) {
+      if (digits.length < 9) { toast(t('phone.bad')); return; }
+      step = 2; $('#code-step').hidden = false; $('#phone-submit').textContent = t('phone.verify'); $('#phone-code').focus(); toast(t('phone.sent'));
+    } else {
+      if (!/^\d{6}$/.test($('#phone-code').value)) { toast(t('phone.badCode')); return; }
+      completeLogin('phone', { phone: digits.slice(0, 3) + '****' + digits.slice(-4) });
+    }
+  });
+}
+const methodName = m => ({ apple: 'Apple', google: 'Google', phone: lang() === 'ko' ? '휴대폰' : 'Phone' })[m] || m;
 
 /* ---------------- actions ---------------- */
 function setLang(l) {
@@ -782,6 +918,10 @@ const actions = {
   },
   export: exportData,
   fullscreen: toggleFullscreen,
+  login: id => id === 'phone' ? phoneLogin() : completeLogin(id),
+  logout: () => { setSession(null); close(); render(); toast(t('acct.loggedOut')); },
+  'gate-scope': id => { state.composeScope = id; document.querySelectorAll('[data-action="gate-scope"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
+  'gate-later': () => { const sc = $('#feed-scroll'), card = $('#compose-card'); if (sc && card) sc.scrollTo({ top: card.offsetTop + sc.clientHeight, behavior: 'smooth' }); },
   reset: () => confirmSheet(t('s.reset'), t('s.confirmReset'), t('s.reset'), () => {
     const l = lang(); data = clone(seed); data.settings.lang = l; state.group = data.groups[0].id;
     save(); state.tab = 'feed'; render(); toast(t('toast.reset'));
@@ -805,7 +945,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 window.DailyThanks = {
   getData: () => data,
   replaceData: next => { if (next && Array.isArray(next.posts)) { data = next; try { localStorage.setItem(KEY, JSON.stringify(data)); } catch {} applyStatic(); render(); } },
-  lang, t, esc, icon, showSheet, close, toast, render: () => render()
+  lang, t, esc, icon, showSheet, close, toast, render: () => render(), getSession: () => session
 };
 
 /* Full screen: hides the browser's bars (Fullscreen API). iPhone Safari has no API for pages,

@@ -53,6 +53,9 @@
     syncTimer = setTimeout(() => api('PUT', '/api/state', { state: e.detail }).catch(() => DT.toast('Server sync failed')), 400);
   });
 
+  // After sign-in, attach what the guest wrote before signing in to the account.
+  document.addEventListener('dt:session', e => { if (e.detail) api('PUT', '/api/state', { state: DT.getData() }).catch(() => {}); });
+
   async function boot() {
     try {
       const [{ features: f }, { state }] = await Promise.all([api('GET', '/api/config'), api('GET', '/api/state')]);
