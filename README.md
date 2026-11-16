@@ -1,1 +1,29 @@
-# dailythanksapp
+# Daily Thanks
+
+매일 한 줄의 감사를 기록하고 소그룹과 나누는 모바일 웹 프로토타입 (한국어 / English).
+
+## 실행 / Run
+
+`index.html`을 브라우저에서 열면 됩니다. 빌드·서버 필요 없음. GitHub Pages 같은 정적 호스팅에 그대로 올릴 수 있습니다.
+
+- 언어: 첫 방문 시 브라우저 언어로 자동 선택 → 상단 `EN` / `한` 버튼 또는 `⋯ › 설정`에서 전환
+- 데이터: 이 브라우저의 `localStorage`에만 저장 (계정·서버·푸시·카카오/인스타 연동 없음)
+
+## 디자인 / Design
+
+원본 디자인(`reference/original-design-photo.jpg`)을 기준으로 맞췄습니다.
+
+| 요소 | 값 |
+|---|---|
+| 워드마크 | **Newsreader** serif — `daily` 정체 + `thanks` 이탤릭 |
+| 본문 (한/영 공통) | **Noto Sans KR** Light 300 (오프라인 시 Apple SD Gothic Neo / 맑은 고딕 / 시스템 폰트) |
+| 색상 | 배경 `#FCFCFA`, 카드 `#F6F6F4`, 본문 `#303438`, 보조 `#686E73`, 선 `#E5E6E3` |
+| 아이콘 | 얇은 라인 아이콘 (인라인 SVG) |
+
+영어 버전은 같은 폰트·줄 간격·아이콘 위치를 쓰고, 라틴 글자가 같은 px에서 더 크게 보이는 점을 감안해 본문 크기만 약 0.9배로 맞췄습니다.
+
+## 파일
+
+- `index.html`, `styles.css`, `app.js` — 앱
+- `docs/` — 제품 명세(`PRODUCT_BRIEF_KO.md`), 다음 개발용 프롬프트(`HANDOFF_PROMPT_KO.md`)
+- `reference/` — 원본 디자인 사진, 이전 오프라인 프로토타입, 알림·위젯 레퍼런스 이미지
