@@ -6,6 +6,7 @@ import { parseReference, formatReference, verseCount } from './bible/reference.j
 import { listTranslations, getPassageText } from './bible/translations.js';
 import { transcribe as defaultTranscribe } from './sermons/stt.js';
 import { summarizeSermon as defaultSummarize } from './sermons/summarize.js';
+import { flaggedTerms } from './moderation.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const FRONTEND_DIR = path.resolve(here, '../..');           // the front-end app at the repo root
@@ -63,6 +64,35 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     store.putState(user, body.state);
     return { ok: true };
   });
+
+  /* ---------- 표현 필터 + 검토 요청 ----------
+     Posts shared with others are checked before they go out. If the writer thinks the filter is wrong,
+     they ask for a review; a moderator approves (post goes out) or rejects (stays private to the writer). */
+  route('POST', '/api/moderation/check', async ({ req }) => {
+    const body = await readJson(req, 16 * 1024);
+    if (body.scope === 'private') return { ok: true, terms: [] };
+    const terms = flaggedTerms(String(body.text || ''));
+    return { ok: terms.length === 0, terms };
+  });
+  route('POST', '/api/reviews', async ({ req, user }) => {
+    const body = await readJson(req, 16 * 1024);
+    const text = String(body.text || '').trim();
+    if (!text || !body.postId) throw new HttpError(422, 'missing_fields');
+    return store.addReview({
+      id: crypto.randomUUID(), postId: String(body.postId).slice(0, 80), userId: user, text: text.slice(0, 1500),
+      scope: body.scope === 'group' ? 'group' : 'public', terms: flaggedTerms(text), status: 'pending', createdAt: new Date().toISOString()
+    });
+  });
+  route('GET', '/api/reviews', ({ user }) => ({ reviews: store.listReviews({ userId: user }) }));
+  // TODO(auth): moderators only.
+  route('GET', '/api/moderation/reviews', ({ url }) => ({ reviews: store.listReviews({ status: url.searchParams.get('status') || 'pending' }) }), 'moderation');
+  route('PATCH', '/api/moderation/reviews/:id', async ({ req, params }) => {
+    const body = await readJson(req, 4096);
+    if (!['approved', 'rejected'].includes(body.status)) throw new HttpError(422, 'invalid_status');
+    const r = store.updateReview(params.id, { status: body.status, decidedAt: new Date().toISOString(), note: String(body.note || '').slice(0, 300) });
+    if (!r) throw new HttpError(404, 'not_found');
+    return { review: r };
+  }, 'moderation');
 
   /* ---------- 신고 (moderation queue) ----------
      Users report a post with a reason; reports wait in a queue for a moderator. The reporter is never shown

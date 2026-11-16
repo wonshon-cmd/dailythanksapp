@@ -53,6 +53,20 @@
     syncTimer = setTimeout(() => api('PUT', '/api/state', { state: e.detail }).catch(() => DT.toast('Server sync failed')), 400);
   });
 
+  // Appeals ("wrongly flagged") go to the moderator review queue. On boot, decisions are applied to the post.
+  document.addEventListener('dt:review', e => { api('POST', '/api/reviews', e.detail).catch(() => {}); });
+  async function applyReviewDecisions() {
+    const { reviews } = await api('GET', '/api/reviews');
+    const data = DT.getData(); let changed = false;
+    for (const r of reviews) {
+      const p = data.posts.find(x => x.id === r.postId);
+      if (!p || p.status !== 'review' || r.status === 'pending') continue;
+      if (r.status === 'approved') delete p.status; else p.status = 'rejected';
+      changed = true;
+    }
+    if (changed) DT.replaceData(data);
+  }
+
   // Reports go to the server's moderation queue.
   document.addEventListener('dt:report', e => { const { postId, author, reason, note } = e.detail; api('POST', '/api/reports', { postId, author, reason, note }).catch(() => {}); });
 
@@ -64,6 +78,7 @@
       const [{ features: f }, { state }] = await Promise.all([api('GET', '/api/config'), api('GET', '/api/state')]);
       features = f;
       if (state) DT.replaceData(state); else await api('PUT', '/api/state', { state: DT.getData() });
+      await applyReviewDecisions().catch(() => {});
       DT.render();
     } catch { /* server unreachable: the app keeps working on local data */ }
   }

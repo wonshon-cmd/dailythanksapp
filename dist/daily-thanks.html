@@ -369,6 +369,32 @@ main{position:relative}
 @media (max-height:700px){.post{min-height:0}.post-body{padding-top:4cqh}.post-rail{gap:16px;bottom:64px}.post.imm .post-rail{gap:16px}}
 @media (max-height:700px){.next-fab{display:none}}
 
+/* ---------- one reading size, adjustable (Settings › Text size) ---------- */
+:root{--read:23px}
+html[data-size="s"]{--read:20px}
+html[data-size="l"]{--read:27px}
+.post-text,.post-text.long,.post-text.xlong,html[lang="en"] .post-text,html[lang="en"] .post-text.long,html[lang="en"] .post-text.xlong{font-size:var(--read);line-height:1.85}
+html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
+.post-text.clamped{display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+.read-more{border:0;background:none;padding:6px 0 0;font-size:13px;color:var(--sub);text-decoration:underline;text-underline-offset:3px}
+.note-text,.full-text{font-size:calc(var(--read) - 5px)}
+.full-text{font-weight:300;line-height:1.85;white-space:pre-wrap;word-break:keep-all;margin:0}
+.big-input,.card-input{font-size:calc(var(--read) - 3px)}
+.card-title{font-size:calc(var(--read) + 1px)}
+@media (max-height:700px){.post-text{font-size:calc(var(--read) - 2px)}}
+
+/* reading position: a little lower than before (upper quarter) */
+.post-body{padding-top:10cqh}
+.post.imm .post-body,.card-inner{padding-top:clamp(110px,23cqh,200px)}
+@media (max-height:700px){.post-body{padding-top:6cqh}.post.imm .post-body,.card-inner{padding-top:clamp(80px,16cqh,140px)}}
+
+/* language filter */
+.flagged{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;background:#F6EEEE;color:#9A4950;font-size:14px;margin:14px 0 18px}
+.flagged .row-sub{color:#B07C80}
+.badge{font-size:11px;padding:2px 8px;border-radius:999px;background:#F0F0EE;color:var(--sub)}
+.badge.rejected{background:#F6EEEE;color:#9A4950}
+.seg-size{margin-bottom:6px}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -404,6 +430,10 @@ const KEY = 'daily-thanks-v2';
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'mod.title': '이대로는 올릴 수 없어요', 'mod.body': '다른 사람에게 상처가 될 수 있는 표현이 있어요.', 'mod.found': '걸린 표현', 'mod.edit': '고쳐 쓰기', 'mod.private': '나만 보기로 남기기',
+    'mod.appeal': '잘못 걸렸다면 검토 요청하기', 'mod.appealNote': '관리자가 확인한 뒤 문제가 없으면 그대로 올라가요.', 'mod.appealed': '관리자에게 검토를 요청했어요. 결과는 내 감사에서 볼 수 있어요.',
+    'mod.review': '검토 중', 'mod.rejected': '올라가지 않음', 'mod.privateOk': '모든 글은 나만 보기로는 언제든 남길 수 있어요.',
+    'size.title': '글자 크기', 'size.s': '작게', 'size.m': '보통', 'size.l': '크게', 'readMore': '더 보기',
     'save': '저장', 'saved.on': '저장했어요. 내 감사 › 저장에서 볼 수 있어요.', 'saved.off': '저장을 취소했어요.', 'j.saved': '저장', 'j.savedEmpty': '저장한 감사가 없어요. 마음에 남는 글에서 저장을 눌러 보세요.',
     'more': '더 보기', 'menu.report': '신고하기', 'menu.hide': '이 글 숨기기', 'menu.block': '이 사람 차단하기', 'menu.unsave': '저장 취소',
     'report.title': '신고', 'report.q': '이 글을 신고하는 이유를 골라 주세요.', 'report.anon': '신고한 사람은 상대방에게 알리지 않아요.',
@@ -477,6 +507,10 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'mod.title': 'This can’t be posted as is', 'mod.body': 'It includes language that could hurt others.', 'mod.found': 'Flagged', 'mod.edit': 'Edit', 'mod.private': 'Keep it to myself',
+    'mod.appeal': 'Wrongly flagged? Ask for a review', 'mod.appealNote': 'A moderator will check it and post it if it’s fine.', 'mod.appealed': 'Sent to a moderator for review. You’ll see the result in My Thanks.',
+    'mod.review': 'In review', 'mod.rejected': 'Not posted', 'mod.privateOk': 'You can always keep any note to yourself.',
+    'size.title': 'Text size', 'size.s': 'Small', 'size.m': 'Medium', 'size.l': 'Large', 'readMore': 'Read more',
     'save': 'Save', 'saved.on': 'Saved. Find it in My Thanks › Saved.', 'saved.off': 'Removed from saved.', 'j.saved': 'Saved', 'j.savedEmpty': 'Nothing saved yet. Tap Save on a post that stays with you.',
     'more': 'More', 'menu.report': 'Report', 'menu.hide': 'Hide this post', 'menu.block': 'Block this person', 'menu.unsave': 'Remove from saved',
     'report.title': 'Report', 'report.q': 'Why are you reporting this post?', 'report.anon': 'The person won’t be told who reported them.',
@@ -671,7 +705,11 @@ const kindIcon = p => p.kind === 'ahead' ? 'sunrise' : 'sun';
 const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === 'private' ? t('scope.private') : groupName(p.group) || t('scope.group');
 const scopeIcon = p => p.scope === 'public' ? 'globe' : p.scope === 'private' ? 'lock' : 'people';
 // Same visual line count in both languages: Latin text holds roughly 1.4x the characters per line.
-const textClass = s => { const k = lang() === 'en' ? 1.4 : 1; return s.length > 110 * k ? 'xlong' : s.length > 50 * k ? 'long' : ''; };
+// One reading size for every post (set in Settings › Text size). Very long posts are clamped with "Read more".
+const isLong = s => s.length > (lang() === 'en' ? 230 : 150);
+const textClass = s => isLong(s) ? 'clamped' : '';
+const readMore = (p, text) => isLong(text) ? `<button class="read-more" data-action="read-more" data-id="${esc(p.id)}">${t('readMore')}</button>` : '';
+function applyTextSize() { document.documentElement.dataset.size = data.settings.textSize || 'm'; }
 
 function applyStatic() {
   document.documentElement.lang = lang();
@@ -739,8 +777,13 @@ function bindGateForm() {
   f.addEventListener('submit', e => {
     e.preventDefault();
     const text = $('#gate-text').value.trim(); if (!text) { $('#gate-text').focus(); return; }
-    data.posts.unshift({ id: 'p' + Date.now(), mine: true, scope: state.composeScope, kind: 'today', text, date: today(), likes: 0 });
-    state.justWrote = true; save(); renderKeep('#compose-card'); toast(t('toast.saved'));
+    const post = scope => ({ id: 'p' + Date.now(), mine: true, scope, kind: 'today', text, date: today(), likes: 0 });
+    const done = msg => { state.justWrote = true; save(); close(); renderKeep('#compose-card'); toast(msg); };
+    if (passesFilter(text, state.composeScope, (choice, terms) => {
+      if (choice === 'edit') { close(); $('#gate-text')?.focus(); return; }
+      if (choice === 'private') { data.posts.unshift(post('private')); return done(t('toast.saved')); }
+      const p = post(state.composeScope); requestReview(p, terms); data.posts.unshift(p); done(t('mod.appealed'));
+    })) { data.posts.unshift(post(state.composeScope)); done(t('toast.saved')); }
   });
 }
 // Re-render and keep the given card in view (its index can shift when posts change).
@@ -752,7 +795,7 @@ function renderKeep(selector) {
 
 // Posts the viewer hid, or whose author they blocked, never appear in any feed.
 const authorKey = p => p.mine ? 'me' : String(L(p.name) && (p.name.ko || p.name));
-const visible = p => !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p));
+const visible = p => !p.status && !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p)); // 'review' / 'rejected' posts stay off feeds
 function feedPosts() {
   return data.posts.filter(visible).filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
 }
@@ -763,7 +806,7 @@ function postTemplate(p, i, count) {
   return `<article class="post" data-post="${esc(p.id)}">
     <div class="post-body">
       <div class="post-kind">${icon(kindIcon(p))}<span>${esc(kindLabel(p))}</span></div>
-      <p class="post-text ${textClass(text)}">${esc(text)}</p>
+      <p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
       ${p.reflection ? `<div class="post-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</div>` : ''}
     </div>
     <aside class="post-rail">
@@ -842,7 +885,7 @@ function renderJournal() {
     ${pageHead(t('j.title'), t('j.desc'), roundBtn('settings', 'more', t('aria.settings')))}
     <div class="seg seg-page">${[['all', t('j.all')], ['today', t('kind.today')], ['ahead', t('kind.aheadShort')], ['saved', t('j.saved')]].map(([k, label]) => `<button class="${state.filter === k ? 'active' : ''}" data-action="journal-filter" data-id="${k}">${label}</button>`).join('')}</div>
     ${mine.length ? `<div class="notes">${mine.map(p => `<button class="note" data-action="${savedView ? 'post-menu' : 'note'}" data-id="${esc(p.id)}">
-      <span class="note-meta">${icon(kindIcon(p))}<span>${savedView ? esc(authorName(p)) + ' · ' : ''}${esc(kindLabel(p))}</span><span class="dot">·</span><span>${esc(p.date)}</span><span class="note-scope">${icon(scopeIcon(p))}</span></span>
+      <span class="note-meta">${icon(kindIcon(p))}<span>${savedView ? esc(authorName(p)) + ' · ' : ''}${esc(kindLabel(p))}</span><span class="dot">·</span><span>${esc(p.date)}</span>${p.status ? `<span class="badge ${p.status}">${t(p.status === 'review' ? 'mod.review' : 'mod.rejected')}</span>` : ''}<span class="note-scope">${icon(scopeIcon(p))}</span></span>
       <span class="note-text">${esc(L(p.text))}</span>
       ${p.reflection ? `<span class="note-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</span>` : ''}
     </button>`).join('')}</div>`
@@ -859,7 +902,7 @@ function renderImmersive(keepIndex = 0) {
     if (it.type !== 'post') return cardFor(it);
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
-      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>
+      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(L(p.name))} · ${esc(kindLabel(p))}</p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
@@ -924,16 +967,25 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   $('#compose-form').addEventListener('submit', e => {
     e.preventDefault();
     const text = $('#gratitude-text').value.trim(); if (!text) { $('#gratitude-text').focus(); return; }
-    const scope = state.sheetScope;
-    data.posts.unshift({ id: 'p' + Date.now(), mine: true, scope, group: scope === 'group' ? state.sheetGroup : undefined, kind: state.composeKind, text, date: today(), likes: 0 });
-    if (state.challenge) {
-      const ch = data.challenges.find(c => c.id === state.challenge);
-      const next = ch && Math.min(ch.days.length + 1, 7);
-      if (ch && !ch.days.includes(next)) ch.days.push(next);
-    }
-    state.challenge = null;
-    save(); close(); state.immersive = false; state.tab = 'journal'; render(); toast(t('toast.saved'));
+    const kind = state.composeKind;
+    const post = scope => ({ id: 'p' + Date.now(), mine: true, scope, group: scope === 'group' ? state.sheetGroup : undefined, kind, text, date: today(), likes: 0 });
+    if (!passesFilter(text, state.sheetScope, (choice, terms) => {
+      if (choice === 'edit') return compose(kind, state.challenge, text);
+      if (choice === 'private') { data.posts.unshift(post('private')); return finishCompose(t('toast.saved')); }
+      const p = post(state.sheetScope); requestReview(p, terms); data.posts.unshift(p); finishCompose(t('mod.appealed'));
+    })) return;
+    data.posts.unshift(post(state.sheetScope));
+    finishCompose(t('toast.saved'));
   });
+}
+function finishCompose(message) {
+  if (state.challenge) {
+    const ch = data.challenges.find(c => c.id === state.challenge);
+    const next = ch && Math.min(ch.days.length + 1, 7);
+    if (ch && !ch.days.includes(next)) ch.days.push(next);
+  }
+  state.challenge = null;
+  save(); close(); state.immersive = false; state.tab = 'journal'; render(); toast(message);
 }
 
 function noteSheet(id) {
@@ -1027,6 +1079,8 @@ function settings() {
   const row = (action, ic, title, end = icon('chevron'), cls = '') => `<button class="list-row ${cls}" data-action="${action}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${title}</span></span><span class="row-end">${end}</span></button>`;
   showSheet({ title: t('s.title'), body: `
     ${seg([['ko', '한국어'], ['en', 'English']], 'set-lang', lang())}
+    <p class="field-label">${t('size.title')}</p>
+    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
     <div class="list">
       ${session
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
@@ -1039,6 +1093,57 @@ function settings() {
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
     <p class="about">${icon('info')}<span>${t('s.about')}</span></p>` });
+}
+
+/* ---------------- language filter ----------------
+   Posts shared with others (group / everyone) are checked for strong or abusive language before posting.
+   Private notes are never filtered. The server repeats this check (fullstack/server/moderation.js) —
+   the client check is only for instant feedback. Wrongly flagged posts can be sent to a moderator. */
+const BLOCKED_TERMS = [
+  // Korean (matched after removing spaces, digits and symbols, so "씨 1발" is caught too)
+  '씨발', '시발', '씨팔', '쌍놈', '썅', 'ㅅㅂ', 'ㅆㅂ', 'ㅂㅅ', '병신', '븅신', '개새끼', '개색끼', '개쉐이', '좆', '존나', '졸라', 'ㅈㄴ', '지랄', 'ㅈㄹ',
+  '미친놈', '미친년', '미친새끼', '닥쳐', '꺼져', '엿먹어', '개같은', '염병', '니미', '느금마', '니애미', '애미뒤', '죽어버려', '뒤져라', '창녀', '걸레년',
+  // English
+  'fuck', 'fck', 'fuk', 'shit', 'bitch', 'asshole', 'bastard', 'cunt', 'dick', 'motherfucker', 'slut', 'whore', 'retard', 'nigger', 'nigga', 'faggot', 'killyourself', 'kys'
+];
+const LEET = { '0': 'o', '1': 'i', '3': 'e', '4': 'a', '5': 's', '7': 't', '@': 'a', '$': 's', '!': 'i', '*': '' };
+// Korean: keep only Hangul (so "씨 1발", "씨.발" match). English: undo leetspeak, keep only a-z.
+const flatKo = s => String(s).replace(/[^가-힣ㄱ-ㅎㅏ-ㅣ]/g, '');
+const flatEn = s => String(s).toLowerCase().replace(/[013457@$!*]/g, c => LEET[c]).replace(/[^a-z]/g, '');
+const isKo = term => /[가-힣ㄱ-ㅎ]/.test(term);
+const SHORT_EN = new Set(['dick', 'kys', 'fck', 'fuk']); // only as whole words, to avoid "dickens", "skys"…
+// Ordinary words that happen to contain a blocked term ("시발점" = starting point, "Scunthorpe").
+const ALLOWED_WORDS = ['시발점', '시발역', '시발택시', '기시발', 'scunthorpe', 'cocktail', 'shittake', 'dickens', 'hancock'];
+function flaggedTerms(raw) {
+  let text = String(raw).toLowerCase();
+  for (const w of ALLOWED_WORDS) text = text.split(w).join(' ');
+  const ko = flatKo(text), en = flatEn(text), words = String(text).toLowerCase().split(/[^a-z0-9@$!*]+/).map(flatEn);
+  return BLOCKED_TERMS.filter(term => isKo(term) ? ko.includes(term) : SHORT_EN.has(term) ? words.includes(term) : en.includes(term));
+}
+const mask = w => w.length <= 1 ? '*' : w[0] + '*'.repeat(Math.min(w.length - 1, 3));
+
+// Returns true when the post may go out now; otherwise shows the filter sheet and calls `onDecision`.
+function passesFilter(text, scope, onDecision) {
+  if (scope === 'private') return true;
+  const terms = flaggedTerms(text);
+  if (!terms.length) return true;
+  showSheet({ title: t('mod.title'), body: `<p class="page-desc" style="margin:0">${t('mod.body')}</p>
+    <div class="flagged"><span class="row-sub">${t('mod.found')}</span><span>${terms.map(mask).map(esc).join(', ')}</span></div>
+    <div class="sheet-form">
+      <button class="primary block" id="mod-edit">${t('mod.edit')}</button>
+      <button class="secondary block" id="mod-private">${icon('lock')}${t('mod.private')}</button>
+      <button class="subtle-link" id="mod-appeal">${t('mod.appeal')}</button>
+      <p class="hint center" style="margin:0">${t('mod.appealNote')}</p>
+    </div>` });
+  $('#mod-edit').addEventListener('click', () => onDecision('edit', terms));
+  $('#mod-private').addEventListener('click', () => onDecision('private', terms));
+  $('#mod-appeal').addEventListener('click', () => onDecision('appeal', terms));
+  return false;
+}
+function requestReview(post, terms) {
+  post.status = 'review';
+  post.review = { terms, requestedAt: new Date().toISOString() };
+  document.dispatchEvent(new CustomEvent('dt:review', { detail: { postId: post.id, text: L(post.text), scope: post.scope, terms } }));
 }
 
 /* ---------------- save · report · hide · block ---------------- */
@@ -1196,6 +1301,8 @@ const actions = {
   'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   note: noteSheet,
+  'set-size': id => { data.settings.textSize = id; save(); applyTextSize(); document.querySelectorAll('[data-action="set-size"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
+  'read-more': id => { const p = data.posts.find(x => x.id === id); if (p) showSheet({ title: esc(p.mine ? t('me') : L(p.name)), body: `<p class="full-text">${esc(L(p.text))}</p>` }); },
   'save-post': toggleSave,
   'post-menu': postMenu,
   report: reportSheet,
@@ -1295,6 +1402,7 @@ document.addEventListener('webkitfullscreenchange', onFsChange);
 document.addEventListener('dt:render', updateFsButton);
 
 applyStatic();
+applyTextSize();
 render();
 
 /* Splash: white screen with the wordmark only, then fades into the app (tap to skip). */

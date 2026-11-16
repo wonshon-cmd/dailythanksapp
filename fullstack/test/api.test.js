@@ -102,3 +102,18 @@ test('reports: queued, self-harm first, moderation API hidden by default', async
   assert.equal((await off('GET', '/api/moderation/reports')).status, 404);
   assert.equal((await off('POST', '/api/reports', { postId: 'x', reason: 'spam' })).status, 200);
 });
+
+test('language filter and review appeals', async () => {
+  const call = await start({ FEATURE_MODERATION: '1' });
+  assert.deepEqual((await call('POST', '/api/moderation/check', { text: '씨 1발 힘들었다', scope: 'public' })).body, { ok: false, terms: ['씨발'] });
+  assert.equal((await call('POST', '/api/moderation/check', { text: '씨발', scope: 'private' })).body.ok, true);
+  assert.equal((await call('POST', '/api/moderation/check', { text: '시발점이 된 하루, Scunthorpe', scope: 'public' })).body.ok, true);
+  const appeal = await call('POST', '/api/reviews', { postId: 'p1', text: '존나 감사한 하루', scope: 'public' });
+  assert.equal(appeal.body.status, 'pending');
+  assert.deepEqual(appeal.body.terms, ['존나']);
+  const queue = (await call('GET', '/api/moderation/reviews')).body.reviews;
+  assert.equal(queue.length, 1);
+  await call('PATCH', `/api/moderation/reviews/${queue[0].id}`, { status: 'approved' });
+  assert.equal((await call('GET', '/api/reviews')).body.reviews[0].status, 'approved');
+  assert.equal((await call('GET', '/api/reviews', null, { 'x-user-id': 'someone-else' })).body.reviews.length, 0);
+});
