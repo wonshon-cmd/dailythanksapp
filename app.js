@@ -1577,6 +1577,8 @@ if (splash) {
   // The splash never blocks input (pointer-events: none): the first swipe or wheel scrolls the feed
   // underneath right away, and any touch, scroll or key press fades the splash out immediately.
   ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev => window.addEventListener(ev, hide, { capture: true, passive: true }));
-  setTimeout(hide, 1800);
+  // 1) wordmark  2) "Give thanks daily. Live fully. Share the joy."  3) feed
+  setTimeout(() => { if (!gone) splash.classList.add('step2'); }, 1400);
+  setTimeout(hide, 4200);
 }
 })();
