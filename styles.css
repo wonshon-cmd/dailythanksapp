@@ -193,3 +193,13 @@ html[lang="en"] .share-preview p{font-size:19px}
 .splash.out{opacity:0;pointer-events:none}
 @keyframes splash-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.splash,.splash .wordmark{transition:none;animation:none}}
+
+/* ---------- full screen button: outside the phone frame on desktop; in Settings on phones ---------- */
+.fs-btn{display:none}
+@media (min-width:700px){
+  .fs-btn{position:fixed;top:18px;right:20px;z-index:50;display:flex;align-items:center;gap:7px;border:1px solid #D6D8D8;background:#FCFCFA;color:var(--ink);border-radius:999px;height:36px;padding:0 14px;font-size:13px;box-shadow:0 2px 8px #2a30360d}
+  .fs-btn:hover{background:#fff}
+  .fs-btn .ico{font-size:16px;stroke-width:1.5}
+  .fs-btn[hidden]{display:none!important}
+  :fullscreen body{background:#E9EAEA}
+}

@@ -7,7 +7,7 @@ css = (root / 'styles.css').read_text(encoding='utf-8')
 js = (root / 'app.js').read_text(encoding='utf-8')
 title = re.search(r'<title>.*?</title>', html, re.S).group(0)
 links = '\n'.join(re.findall(r'<link rel="(?:preconnect|stylesheet)" href="https://fonts[^>]*>', html))
-metas = '\n'.join(re.findall(r'<meta name="(?:theme-color|description)"[^>]*>', html))
+metas = '\n'.join(re.findall(r'<meta name="(?:viewport|theme-color|description|apple-mobile-web-app-[\w-]+|mobile-web-app-capable)"[^>]*>', html))
 body = re.search(r'<body>(.*)</body>', html, re.S).group(1)
 body = body.replace('<script src="app.js" defer></script>', '')
 out = f"{title}\n{metas}\n{links}\n<style>\n{css}\n</style>\n{body.strip()}\n<script>\n{js}\n</script>\n"
