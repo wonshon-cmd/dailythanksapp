@@ -621,3 +621,7 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .post-body{padding-bottom:5cqh}
 @media (max-height:700px){.post.imm .post-body,.card-inner{padding-bottom:8cqh}.post-body{padding-bottom:2cqh}}
 .read-more{align-self:flex-start;padding-left:0}
+/* buttons a little lighter (white text still well above 4.5:1 contrast) */
+:root{--dark:#5A6269}
+.toast{background:#5A6269}
+.next-fab{box-shadow:0 4px 12px #5A626926}
