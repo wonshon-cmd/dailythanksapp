@@ -402,9 +402,16 @@ const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === '
 const scopeIcon = p => p.scope === 'public' ? 'globe' : p.scope === 'private' ? 'lock' : 'people';
 // Same visual line count in both languages: Latin text holds roughly 1.4x the characters per line.
 // One reading size for every post (set in Settings › Text size). Very long posts are clamped with "Read more".
-const isLong = s => s.length > (lang() === 'en' ? 230 : 150);
-const textClass = s => isLong(s) ? 'clamped' : '';
-const readMore = (p, text) => isLong(text) ? `<button class="read-more" data-action="read-more" data-id="${esc(p.id)}">${t('readMore')}</button>` : '';
+// Every post shows at most 5 lines and ends with "…"; "Read more" appears only when a post is actually cut.
+const textClass = () => 'clamped';
+const readMore = p => `<button class="read-more" data-action="read-more" data-id="${esc(p.id)}" hidden>${t('readMore')}</button>`;
+function markClamped() {
+  document.querySelectorAll('.post-text.clamped').forEach(el => {
+    const btn = el.nextElementSibling; const cut = el.scrollHeight > el.clientHeight + 2;
+    if (btn && btn.classList.contains('read-more')) btn.hidden = !cut;
+    el.dataset.cut = cut ? '1' : '';
+  });
+}
 function applyTextSize() { document.documentElement.dataset.size = data.settings.textSize || 'm'; }
 
 function applyStatic() {
@@ -707,7 +714,7 @@ function hideNudge() {
 
 function render(keepIndex) {
   $('#app').classList.toggle('immersive', state.immersive);
-  if (state.immersive) { renderImmersive(keepIndex); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
+  if (state.immersive) { renderImmersive(keepIndex); requestAnimationFrame(markClamped); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
   document.querySelectorAll('[data-tab]').forEach(b => {
     const on = b.dataset.tab === state.tab;
     b.classList.toggle('active', on);
@@ -715,6 +722,7 @@ function render(keepIndex) {
   });
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
+  requestAnimationFrame(markClamped);
 }
 
 /* ---------------- sheets ---------------- */
@@ -1494,6 +1502,8 @@ const actions = {
 };
 
 document.addEventListener('click', e => {
+  const cut = e.target.closest('.post-text[data-cut="1"]');
+  if (cut) { const id = cut.closest('[data-post]')?.dataset.post; if (id) { actions['read-more'](id); return; } }
   const tab = e.target.closest('[data-tab]');
   if (tab) { state.tab = tab.dataset.tab; if (state.tab === 'feed') state.feed = 'public'; close(); render(); return; }
   const b = e.target.closest('[data-action]');

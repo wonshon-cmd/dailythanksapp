@@ -607,3 +607,17 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .primary{background:var(--dark)}
 .toast{background:#444C53}
 .imm-scroll .card-mark{display:none}
+
+/* full-screen feed spacing: logo a bit lower, author line further from the text */
+.imm-brand{top:calc(40px + var(--safe-top))}
+.imm-by{margin-top:34px}
+/* every post: up to 5 lines, then "…" */
+.post-text.clamped{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.post-text[data-cut="1"]{cursor:pointer}
+.read-more{display:inline-block;margin-top:8px}
+@media (max-height:700px){.imm-brand{top:calc(26px + var(--safe-top))}.post-text.clamped{-webkit-line-clamp:4}}
+/* body text a touch lower (block centred at ~44% of the screen) */
+.post.imm .post-body,.card-inner{padding-top:28px;padding-bottom:12cqh}
+.post-body{padding-bottom:5cqh}
+@media (max-height:700px){.post.imm .post-body,.card-inner{padding-bottom:8cqh}.post-body{padding-bottom:2cqh}}
+.read-more{align-self:flex-start;padding-left:0}

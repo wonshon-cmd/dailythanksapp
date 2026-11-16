@@ -620,6 +620,20 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .toast{background:#444C53}
 .imm-scroll .card-mark{display:none}
 
+/* full-screen feed spacing: logo a bit lower, author line further from the text */
+.imm-brand{top:calc(40px + var(--safe-top))}
+.imm-by{margin-top:34px}
+/* every post: up to 5 lines, then "…" */
+.post-text.clamped{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.post-text[data-cut="1"]{cursor:pointer}
+.read-more{display:inline-block;margin-top:8px}
+@media (max-height:700px){.imm-brand{top:calc(26px + var(--safe-top))}.post-text.clamped{-webkit-line-clamp:4}}
+/* body text a touch lower (block centred at ~44% of the screen) */
+.post.imm .post-body,.card-inner{padding-top:28px;padding-bottom:12cqh}
+.post-body{padding-bottom:5cqh}
+@media (max-height:700px){.post.imm .post-body,.card-inner{padding-bottom:8cqh}.post-body{padding-bottom:2cqh}}
+.read-more{align-self:flex-start;padding-left:0}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -1049,9 +1063,16 @@ const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === '
 const scopeIcon = p => p.scope === 'public' ? 'globe' : p.scope === 'private' ? 'lock' : 'people';
 // Same visual line count in both languages: Latin text holds roughly 1.4x the characters per line.
 // One reading size for every post (set in Settings › Text size). Very long posts are clamped with "Read more".
-const isLong = s => s.length > (lang() === 'en' ? 230 : 150);
-const textClass = s => isLong(s) ? 'clamped' : '';
-const readMore = (p, text) => isLong(text) ? `<button class="read-more" data-action="read-more" data-id="${esc(p.id)}">${t('readMore')}</button>` : '';
+// Every post shows at most 5 lines and ends with "…"; "Read more" appears only when a post is actually cut.
+const textClass = () => 'clamped';
+const readMore = p => `<button class="read-more" data-action="read-more" data-id="${esc(p.id)}" hidden>${t('readMore')}</button>`;
+function markClamped() {
+  document.querySelectorAll('.post-text.clamped').forEach(el => {
+    const btn = el.nextElementSibling; const cut = el.scrollHeight > el.clientHeight + 2;
+    if (btn && btn.classList.contains('read-more')) btn.hidden = !cut;
+    el.dataset.cut = cut ? '1' : '';
+  });
+}
 function applyTextSize() { document.documentElement.dataset.size = data.settings.textSize || 'm'; }
 
 function applyStatic() {
@@ -1354,7 +1375,7 @@ function hideNudge() {
 
 function render(keepIndex) {
   $('#app').classList.toggle('immersive', state.immersive);
-  if (state.immersive) { renderImmersive(keepIndex); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
+  if (state.immersive) { renderImmersive(keepIndex); requestAnimationFrame(markClamped); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
   document.querySelectorAll('[data-tab]').forEach(b => {
     const on = b.dataset.tab === state.tab;
     b.classList.toggle('active', on);
@@ -1362,6 +1383,7 @@ function render(keepIndex) {
   });
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
+  requestAnimationFrame(markClamped);
 }
 
 /* ---------------- sheets ---------------- */
@@ -2141,6 +2163,8 @@ const actions = {
 };
 
 document.addEventListener('click', e => {
+  const cut = e.target.closest('.post-text[data-cut="1"]');
+  if (cut) { const id = cut.closest('[data-post]')?.dataset.post; if (id) { actions['read-more'](id); return; } }
   const tab = e.target.closest('[data-tab]');
   if (tab) { state.tab = tab.dataset.tab; if (state.tab === 'feed') state.feed = 'public'; close(); render(); return; }
   const b = e.target.closest('[data-action]');
