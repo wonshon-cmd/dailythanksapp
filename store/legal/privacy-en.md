@@ -1,0 +1,83 @@
+# Daily Thanks Privacy Policy
+
+> For Squarespace: paste into the dailyjourney.org/privacy page.
+> Replace every `[bracket]`. Have it reviewed by a privacy professional before launch.
+
+**Effective date: [December 1, 2026]**
+
+Daily Journey, Inc. ("we") runs the Daily Thanks app and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
+
+## 1. What we collect
+
+| Category | Data | When |
+|---|---|---|
+| Account | Apple or Google account identifier, email and name (if you share them), or your phone number if you sign in with your phone | When you sign in |
+| Your content | Notes of thanks, thank-you cards (including the recipient name you type), reflections, visibility setting | When you write |
+| Activity | Likes, saves, shares, reports, blocks, hidden posts, posts viewed, dates written | When you use the Service |
+| Settings | Language, text size, reminder time, features turned on or off | When you change them |
+| Device | Push notification token, device type, OS version, app version | When you allow notifications or open the app |
+| Optional: sermon notes | Sermon recording or transcript, and the summary | Only if you turn on "AI sermon notes" and use it |
+
+- We do **not** track you across other apps or websites.
+- We do **not** collect location.
+- We do **not** use your data for advertising.
+- The Service is not for children under 14. In the U.S., it is not directed to children under 13.
+
+## 2. Why we use it
+
+1. Create and keep your account signed in
+2. Store your notes and show them only to the audience you choose (Only me, a group, or Everyone)
+3. Send one reminder at your chosen time (skipped on days you've already written)
+4. Keep the community safe: filtering abusive language, handling reports, blocking and hiding
+5. Fix bugs and improve the Service
+6. Optional: transcribe and summarize a sermon you submit
+
+## 3. How long we keep it
+
+- Your account and notes are **deleted when you delete your account**.
+- Report records are kept for one year after resolution, for safety and disputes. The reporter is anonymized when their account is deleted.
+- We keep data longer only where the law requires it.
+
+## 4. Sharing
+
+- We do not sell your personal information.
+- We do not share your personal information with third parties, except our service providers below or where required by law.
+
+## 5. Service providers (may process data outside your country)
+
+| Provider | Purpose |
+|---|---|
+| Google LLC (Firebase) | Sign-in, storage, push notifications |
+| Apple Inc. | Sign in with Apple, iOS notifications |
+| [SMS provider] | Phone verification codes |
+| Anthropic PBC (optional feature) | Sermon summaries |
+| [Speech-to-text provider] (optional feature) | Sermon transcription |
+
+Data is encrypted in transit.
+
+## 6. Your rights
+
+You can access, correct, or delete your data, or ask us to stop processing it:
+
+- **In the app:** Settings › About › Delete account
+- **On the web:** dailyjourney.org/delete-account
+- **By email:** hi@dailyjourney.org
+
+Depending on where you live (for example, under the GDPR in the EU/UK or the CCPA in California), you may have additional rights, including data portability and the right to complain to a supervisory authority. We honor these rights for all users.
+
+## 7. Security
+
+We protect your data with:
+
+- Encryption in transit (HTTPS)
+- Server-side access rules, so no one else can read your private notes
+- Access logging
+- Least-privilege access for operators
+
+## 8. Changes
+
+We will post changes in the app or on our website at least 7 days before they take effect, and 30 days before for significant changes.
+
+## 9. Contact
+
+Daily Journey, Inc. · hi@dailyjourney.org · [mailing address]

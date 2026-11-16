@@ -1,0 +1,204 @@
+<title>daily thanks</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Give thanks daily. Live fully. Share the joy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+/* Layout: the app itself, opened up — pure white, one centred reading column, serif wordmark, light sans text. */
+:root{
+  --paper:#FFFFFF; --ink:#16191C; --text:#303438; --sub:#686E73; --faint:#9BA0A3; --ghost:#B4B8BA;
+  --pill:#F1F1F1; --line:#EEEEEE; --light:#F6D77A;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--paper)}
+body{color:var(--text);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+.wordmark{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;line-height:1;white-space:nowrap;text-decoration:none}
+.wordmark em,.serif em{font-style:italic}
+.wrap{max-width:1040px;margin:0 auto}
+.col{max-width:640px;margin:0 auto}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
+.top .wordmark{font-size:21px;color:var(--ghost);transition:opacity .3s ease}
+body.home .top .wordmark{opacity:0;pointer-events:none}
+.top nav{display:flex;align-items:center;gap:22px;font-size:13px;color:var(--faint)}
+.top nav a{text-decoration:none}
+.top nav a:hover,.top nav a[aria-current="page"]{color:var(--text)}
+.lang{position:relative;display:flex;align-items:center;gap:5px;color:var(--faint);font-size:13px}
+.lang svg{width:15px;height:15px}
+.lang select{appearance:none;border:0;background:transparent;color:inherit;font:inherit;padding:4px 0;cursor:pointer}
+.lang select:focus-visible{outline:1px solid var(--faint);outline-offset:3px;border-radius:4px}
+@media (max-width:640px){.top nav .navlink{display:none}}
+
+/* hero */
+.hero{text-align:center;padding-block:clamp(72px,14vw,150px) clamp(56px,9vw,100px)}
+.hero .wordmark{display:block;font-size:clamp(48px,10.5vw,88px);color:#383D42}
+.tag{margin:clamp(40px,6vw,60px) 0 0;font-family:var(--serif);font-size:clamp(18px,2.4vw,21px);line-height:1.75;color:#80868A;display:flex;flex-direction:column;align-items:center;letter-spacing:.005em}
+.stores{margin-top:44px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--pill);color:var(--text);padding:11px 20px;font-size:14px;font-weight:400;text-decoration:none;border:0;font-family:inherit;cursor:pointer}
+.pill svg{width:16px;height:16px}
+.pill small{color:var(--faint);font-size:12px;font-weight:300}
+.pill:focus-visible{outline:2px solid var(--faint);outline-offset:2px}
+
+/* sample thanks, read like the feed */
+.reads{border-top:1px solid var(--line)}
+.read{min-height:clamp(320px,52vw,460px);display:flex;flex-direction:column;justify-content:center;padding-block:56px;border-bottom:1px solid var(--line)}
+.read p{margin:0;font-size:clamp(20px,3.2vw,25px);line-height:1.8;color:var(--text);letter-spacing:-.01em;text-wrap:pretty}
+.read .by{margin-top:22px;font-size:13px;color:var(--faint)}
+.label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+
+/* how it works */
+.how{padding-block:clamp(72px,11vw,120px)}
+.how h2,.legal h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5vw,42px);line-height:1.2;color:var(--ink);letter-spacing:-.02em;margin:0 0 40px;text-wrap:balance}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.steps h3{margin:0 0 8px;font-size:17px;font-weight:400;color:var(--ink)}
+.steps p{margin:0;font-size:15px;color:var(--sub)}
+@media (max-width:720px){.steps{grid-template-columns:1fr;gap:28px}}
+.reach{display:flex;align-items:center;gap:12px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);font-size:14px;color:var(--sub)}
+.glow{position:relative;width:34px;height:34px;flex:none}
+.glow::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#FBE7A6 0,#F8E3A0cc 18%,#FBEFC566 45%,#FFFFFF00 70%);animation:breathe 5s ease-in-out infinite}
+.glow::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--light)}
+@keyframes breathe{50%{transform:scale(1.18);opacity:.8}}
+
+/* legal pages */
+.legal{padding-block:clamp(48px,8vw,88px) 40px}
+.legal .back{display:inline-block;margin-bottom:28px;font-size:13px;color:var(--faint);text-decoration:none}
+.legal .back:hover{color:var(--text)}
+.legal h1{margin-bottom:12px}
+.legal h2{font-size:18px;font-weight:500;color:var(--ink);margin:44px 0 10px}
+.legal h3{font-size:16px;font-weight:500;color:var(--ink);margin:28px 0 8px}
+.legal h4{font-size:15px;font-weight:500;margin:22px 0 6px}
+.legal p,.legal li{font-size:15px;color:var(--text)}
+.legal p{margin:0 0 14px}
+.legal ul,.legal ol{padding-left:20px;margin:0 0 14px}
+.legal li{margin:4px 0}
+.legal strong{font-weight:500;color:var(--ink)}
+.legal code{font-size:.92em;background:var(--pill);border-radius:4px;padding:1px 5px}
+.legal a{text-underline-offset:3px;text-decoration-color:var(--ghost)}
+.legal mark{background:#FFF6D6;color:inherit;border-radius:3px;padding:0 3px}
+.table{overflow-x:auto;margin:6px 0 18px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+th{font-weight:500;color:var(--ink)}
+.mail{font-weight:400;color:var(--ink);user-select:all}
+
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding-block:40px 56px;font-size:13px;color:var(--faint)}
+footer .org{display:flex;flex-direction:column;gap:6px}
+footer .org strong{font-weight:400;color:var(--sub)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer nav a{text-decoration:none}
+footer nav a:hover{color:var(--text)}
+.copy{display:inline-flex;align-items:center;gap:8px}
+.copy button{border:0;background:var(--pill);color:var(--sub);border-radius:999px;font:inherit;font-size:12px;padding:3px 10px;cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){.glow::before{animation:none}}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="wordmark" href="#" aria-label="daily thanks">daily <em>thanks</em></a>
+  <nav>
+    <a class="navlink" href="#support" data-k="support"></a>
+    <a class="navlink" href="#privacy" data-k="privacy"></a>
+    <label class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg>
+      <select id="lang" aria-label="Language"><option value="ko">한국어</option><option value="en">English</option><option value="es">Español</option></select></label>
+  </nav>
+</div></header>
+
+<main id="view"></main>
+
+<footer><div class="wrap">
+  <div class="org">
+    <strong>Daily Journey, Inc.</strong>
+    <span data-k="nonprofit"></span>
+    <span class="copy"><span class="mail" id="mail">hi@dailyjourney.org</span><button type="button" id="copy-mail" data-k="copy"></button></span>
+  </div>
+  <div class="org" style="align-items:flex-end">
+    <nav>
+      <a href="#privacy" data-k="privacy"></a><a href="#terms" data-k="terms"></a><a href="#support" data-k="support"></a><a href="#delete-account" data-k="delete"></a>
+    </nav>
+    <span>© 2026 Daily Journey, Inc.</span>
+  </div>
+</div></footer>
+
+<script>
+const PAGES = /*__PAGES__*/null;
+const S = {
+  ko: { privacy:'개인정보처리방침', terms:'이용약관', support:'문의하기', delete:'계정 삭제', copy:'복사', copied:'복사됨', back:'← daily thanks',
+    nonprofit:'비영리 단체', soon:'곧 출시', read:'오늘의 감사', how:'하루 30초, 한 줄이면 충분해요.',
+    s1t:'읽어요', s1:'앱을 열면 다른 사람들의 일상적이고 따뜻한 감사가 한 장씩 보여요.',
+    s2t:'한 줄 남겨요', s2:'"오늘 감사한 것은?" 한 줄만 적으면 돼요. 모두에게 나누거나, 나만 볼 수 있어요.',
+    s3t:'기쁨을 나눠요', s3:'고마운 사람에게 감사 카드를 보내거나, 문자·WhatsApp·카카오톡·인스타그램으로 나눠요.',
+    reach:'내 감사가 닿을수록 작은 빛이 조금씩 퍼져요. <span style="color:var(--text)">12명에게 닿았어요</span>',
+    today:'오늘의 감사', titles:{privacy:'개인정보처리방침', terms:'이용약관', support:'문의하기', 'delete-account':'계정 삭제'} },
+  en: { privacy:'Privacy', terms:'Terms', support:'Support', delete:'Delete account', copy:'Copy', copied:'Copied', back:'← daily thanks',
+    nonprofit:'A nonprofit organization', soon:'Coming soon', read:'Today’s thanks', how:'Thirty seconds a day. One line is enough.',
+    s1t:'Read', s1:'Open the app and read warm, everyday thanks from others, one at a time.',
+    s2t:'Write one line', s2:'Answer “What are you thankful for today?” Share it with everyone, or keep it just for you.',
+    s3t:'Share the joy', s3:'Send a thank-you card to someone, or share via text, WhatsApp, KakaoTalk and Instagram.',
+    reach:'As your thanks reaches people, a small light slowly spreads. <span style="color:var(--text)">Reached 12 people</span>',
+    today:'Today’s thanks', titles:{privacy:'Privacy Policy', terms:'Terms of Use', support:'Support', 'delete-account':'Delete your account'} },
+  es: { privacy:'Privacidad', terms:'Términos', support:'Soporte', delete:'Eliminar cuenta', copy:'Copiar', copied:'Copiado', back:'← daily thanks',
+    nonprofit:'Organización sin fines de lucro', soon:'Muy pronto', read:'Gratitud de hoy', how:'Treinta segundos al día. Una línea es suficiente.',
+    s1t:'Lee', s1:'Abre la app y lee, una por una, gracias cotidianas y cálidas de otras personas.',
+    s2t:'Escribe una línea', s2:'Responde “¿Por qué estás agradecido hoy?”. Compártelo con todos o guárdalo solo para ti.',
+    s3t:'Comparte la alegría', s3:'Envía una tarjeta de agradecimiento o comparte por mensaje de texto, WhatsApp, KakaoTalk e Instagram.',
+    reach:'Cuanto más llega tu gratitud, más se extiende una pequeña luz. <span style="color:var(--text)">Llegó a 12 personas</span>',
+    today:'Gratitud de hoy', titles:{privacy:'Política de privacidad', terms:'Términos de uso', support:'Soporte', 'delete-account':'Eliminar tu cuenta'} }
+};
+const READS = [
+  { name:{ko:'영숙',en:'Margaret',es:'Carmen'}, text:{ko:'오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en:'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.', es:'Hoy mi nieto me dijo por primera vez, clarito, “Abuela, te quiero”. Fue lo más bonito que he escuchado en mi vida. Gracias por dejarme vivir tanto como para oírlo.'} },
+  { name:{ko:'서연',en:'Olivia',es:'Sofía'}, text:{ko:'잠깐 멈춰 보니, 집으로 돌아가는 길에도 예쁜 하늘이 있었어요. 평범한 하루를 아름답게 하심에 감사합니다.', en:'I paused on my way home and found a lovely sky. Thank you for a beautiful ordinary day.', es:'Me detuve camino a casa y encontré un cielo precioso. Gracias por un día común tan bonito.'} },
+  { name:{ko:'태호',en:'Daniel',es:'Pablo'}, text:{ko:'아버지와 오랜만에 둘이서 낚시를 갔어요. 고기는 한 마리도 못 잡았지만, 아버지가 젊은 시절 이야기를 처음 들려주셨어요. 그 시간이 잡은 고기보다 훨씬 귀했어요.', en:'I went fishing alone with my dad for the first time in years. We didn’t catch a single fish, but he told me stories from his youth for the first time. That time was worth far more than any catch.', es:'Fui a pescar a solas con mi papá por primera vez en años. No pescamos nada, pero por primera vez me contó historias de su juventud. Ese tiempo valió mucho más que cualquier pesca.'} }
+];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const APPLE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>';
+const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 2.8 13.6 12l-9.1 9.2c-.3-.2-.5-.6-.5-1V3.8c0-.4.2-.8.5-1zm10.2 10.3 2.2 2.2-10.6 6 8.4-8.2zm3.5-3.5 2.6 1.5c.8.5.8 1.3 0 1.8l-2.6 1.5-2.4-2.4 2.4-2.4zM6.3 2.7l10.6 6-2.2 2.2-8.4-8.2z"/></svg>';
+
+// On the real website (dailyjourney.org) pages live at /privacy/, /terms/ …; inside the preview they use #privacy.
+const WEB = window.SITE_MODE === 'web';
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch { return null; } }
+let lang = store('dt-site-lang') || ((navigator.language || 'en').slice(0, 2));
+if (!S[lang]) lang = 'en';
+
+function home(t) {
+  return `<section class="hero"><span class="wordmark">daily <em>thanks</em></span>
+    <p class="tag"><span>Give <em>thanks</em> daily.</span><span>Live fully.</span><span>Share the joy.</span></p>
+    <div class="stores"><span class="pill">${APPLE}App Store <small>${t.soon}</small></span><span class="pill">${PLAY}Google Play <small>${t.soon}</small></span></div></section>
+  <section class="reads">${READS.map(r => `<article class="read"><div class="col"><p>${esc(r.text[lang])}</p><div class="by">${esc(r.name[lang])} · ${t.today}</div></div></article>`).join('')}</section>
+  <section class="how wrap"><h2>${t.how}</h2>
+    <div class="steps"><div><h3>${t.s1t}</h3><p>${t.s1}</p></div><div><h3>${t.s2t}</h3><p>${t.s2}</p></div><div><h3>${t.s3t}</h3><p>${t.s3}</p></div></div>
+    <div class="reach"><span class="glow" aria-hidden="true"></span><span>${t.reach}</span></div></section>`;
+}
+function legal(t, page) {
+  return `<article class="legal col"><a class="back" href="#">${t.back}</a><h1>${t.titles[page]}</h1>${PAGES[page][lang] || PAGES[page].en}</article>`;
+}
+function render() {
+  const t = S[lang], page = WEB ? (location.pathname.split('/').filter(Boolean)[0] || '') : location.hash.slice(1);
+  document.documentElement.lang = lang;
+  document.getElementById('lang').value = lang;
+  document.querySelectorAll('[data-k]').forEach(el => { el.textContent = t[el.dataset.k]; });
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + page && !!page));
+  const isLegal = PAGES && PAGES[page];
+  document.body.classList.toggle('home', !isLegal);
+  document.getElementById('view').innerHTML = isLegal ? legal(t, page) : home(t);
+  if (WEB) document.querySelectorAll('a[href^="#"]').forEach(a => { const h = a.getAttribute('href').slice(1); a.setAttribute('href', h ? `/${h}/` : '/'); });
+  document.title = isLegal ? `${t.titles[page]} · daily thanks` : 'daily thanks';
+}
+document.getElementById('lang').addEventListener('change', e => { lang = e.target.value; store('dt-site-lang', lang); render(); });
+addEventListener('hashchange', () => { render(); scrollTo(0, 0); });
+document.getElementById('copy-mail').addEventListener('click', e => {
+  const b = e.currentTarget, done = () => { b.textContent = S[lang].copied; setTimeout(() => b.textContent = S[lang].copy, 1600); };
+  navigator.clipboard?.writeText('hi@dailyjourney.org').then(done, () => { getSelection().selectAllChildren(document.getElementById('mail')); });
+});
+render();
+</script>
