@@ -45,7 +45,7 @@ Daily Thanks - 감사 일기
 매일 한 줄의 감사. 따뜻한 감사를 읽고, 나의 감사를 남기고, 함께 나눠요.
 ```
 
-### description  (848/4000)
+### description  (861/4000)
 
 ```
 매일의 감사가 삶을 풍성하게 합니다.
@@ -59,7 +59,7 @@ Daily Thanks는 하루 30초, 오늘 감사한 것을 한 줄로 남기는 가�
 "오늘 감사한 것은?" 질문에 한 줄만 적어 보세요. 매일 바뀌는 오늘의 질문이 시작을 도와줘요. 모두에게 나누거나, 비공개로 나만 보거나 소그룹과만 나눌 수 있어요.
 
 ■ 미리 감사 · 감사 전하기
-다가올 한 주를 맡기며 미리 감사하고, 나중에 돌아보며 감사를 덧붙여요. 고마운 사람에게는 "Thank you" 카드를 만들어 카카오톡이나 인스타그램으로 보낼 수 있어요.
+다가올 한 주를 맡기며 미리 감사하고, 나중에 돌아보며 감사를 덧붙여요. 고마운 사람에게는 "Thank you" 카드를 만들어 문자, WhatsApp, 카카오톡, 인스타그램으로 보낼 수 있어요.
 
 ■ 습관이 되도록, 부담 없이
 · 내가 고른 시간(새벽·아침·저녁)에 하루 한 번만 알려드려요. 이미 쓴 날은 알리지 않아요.
@@ -123,7 +123,7 @@ Daily Thanks: Gratitude Diary
 One line of thanks a day. Read warm gratitude, write yours, share the joy.
 ```
 
-### description  (1478/4000)
+### description  (1494/4000)
 
 ```
 Give thanks daily. Live fully. Share the joy.
@@ -137,7 +137,7 @@ Open the app and read real, everyday thanks one at a time: a grandmother hearing
 Answer "What are you thankful for today?" A new daily question helps you start. Share with everyone, or keep it private: just for you, or only for your group.
 
 • Thanks ahead · Thank someone
-Offer thanks ahead for the week to come, then look back and add what you found. Make a "Thank you" card for someone and send it via KakaoTalk or Instagram.
+Offer thanks ahead for the week to come, then look back and add what you found. Make a "Thank you" card for someone and send it via text, WhatsApp, KakaoTalk or Instagram.
 
 • A habit without pressure
 - One reminder a day at the time you pick (dawn, morning, or evening), skipped on days you've written.
@@ -201,7 +201,7 @@ Daily Thanks · Gratitud diaria
 Una línea de gratitud al día. Lee, escribe la tuya y comparte la alegría.
 ```
 
-### description  (1095/4000)
+### description  (1123/4000)
 
 ```
 Da gracias cada día. Vive plenamente. Comparte la alegría.
@@ -215,7 +215,7 @@ Al abrir la app lees, una por una, gracias reales y cotidianas de otras personas
 Responde "¿Por qué estás agradecido hoy?". Una pregunta diaria te ayuda a empezar. Comparte con todos o guárdalo en privado: solo para ti o solo para tu grupo.
 
 • Gracias de antemano · Agradecer a alguien
-Da gracias por la semana que viene y luego mira atrás. Crea una tarjeta "Thank you" y envíala por KakaoTalk o Instagram.
+Da gracias por la semana que viene y luego mira atrás. Crea una tarjeta "Thank you" y envíala por mensaje de texto, WhatsApp, KakaoTalk o Instagram.
 
 • Un hábito sin presión
 - Un recordatorio al día a la hora que elijas; no llega si ya escribiste.
