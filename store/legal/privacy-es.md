@@ -5,7 +5,7 @@
 
 **Fecha de vigencia: [1 de diciembre de 2026]**
 
-[Nombre del operador] ("nosotros") opera la app y el sitio web Daily Thanks (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
+Daily Journey, Inc. ("nosotros") opera la app y el sitio web Daily Thanks (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
 
 ## 1. Qué recogemos
 
@@ -53,4 +53,4 @@ Puedes acceder, corregir o eliminar tus datos:
 
 ## 6. Contacto
 
-[Nombre del operador] · [support@dailyapp.org]
+Daily Journey, Inc. · [support@dailyapp.org]
