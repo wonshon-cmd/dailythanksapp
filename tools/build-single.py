@@ -10,7 +10,10 @@ links = '\n'.join(re.findall(r'<link rel="(?:preconnect|stylesheet)" href="https
 metas = '\n'.join(re.findall(r'<meta name="(?:viewport|theme-color|description|apple-mobile-web-app-[\w-]+|mobile-web-app-capable)"[^>]*>', html))
 body = re.search(r'<body>(.*)</body>', html, re.S).group(1)
 body = body.replace('<script src="app.js" defer></script>', '')
-out = f"{title}\n{metas}\n{links}\n<style>\n{css}\n</style>\n{body.strip()}\n<script>\n{js}\n</script>\n"
+# The claude.ai viewer already pads the page by the phone's safe areas (and its own top buttons),
+# so the hosted bundle must not add them again — otherwise the top and bottom gaps double.
+HOSTED_CSS = ":root{--safe-top:0px;--safe-bottom:0px}"
+out = f"{title}\n{metas}\n{links}\n<style>\n{css}\n{HOSTED_CSS}\n</style>\n{body.strip()}\n<script>\n{js}\n</script>\n"
 (root / 'dist').mkdir(exist_ok=True)
 (root / 'dist' / 'daily-thanks.html').write_text(out, encoding='utf-8')
 print('wrote dist/daily-thanks.html', len(out), 'bytes')
