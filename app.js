@@ -61,7 +61,7 @@ const STR = {
     'me': '나', 'reflect.prefix': '돌아보며',
     'toast.likeAhead': '함께 기도해요.', 'toast.likeToday': '함께 감사해요.',
     'compose.title': '감사 한 줄',
-    'compose.qToday': '오늘 감사했던 순간은?', 'compose.qAhead': '미리 감사하며 하나님께 맡기는 일은?',
+    'compose.qToday': '오늘 감사한 것은?', 'compose.qAhead': '미리 감사하며 하나님께 맡기는 일은?',
     'compose.phToday': '오늘 감사했던 순간을 적어보세요.', 'compose.phAhead': '하나님, 이번 한 주도…',
     'compose.samples': '문장을 눌러 수정해 보세요',
     'sample.work': '직장에서', 'sample.relationship': '관계에서', 'sample.everyday': '일상에서',
@@ -80,10 +80,10 @@ const STR = {
     'gr.kicker': 'SMALL GROUPS', 'gr.title': '소그룹', 'gr.desc': '가까운 사람들과만 나누는 감사예요.', 'gr.new': '새 소그룹', 'gr.posts': '개의 감사', 'gr.open': '피드 보기',
     'gr.createTitle': '새 소그룹', 'gr.name': '소그룹 이름', 'gr.ph': '예: 수요 성경공부', 'gr.create': '만들기', 'toast.grCreated': '소그룹이 만들어졌어요.', 'gr.fine': '실제 초대·가입·권한 관리는 서버 연동 후 제공됩니다.',
     'j.kicker': 'MY GRATITUDE', 'j.title': '내 감사', 'j.desc': '오늘의 감사와 미리 드린 감사가 여기에 쌓여요.', 'j.all': '전체', 'j.new': '＋ 새로운 감사 쓰기', 'j.empty': '아직 기록된 감사가 없어요.', 'j.reflect': '돌아보며 감사 쓰기', 'j.delete': '삭제', 'j.confirmDelete': '이 감사 기록을 삭제할까요?',
-    'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림', 'n.group': '그룹 소식 모아 받기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 감사했던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
+    'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림', 'n.group': '그룹 소식 모아 받기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 감사한 것 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
     'w.title': '홈 화면 위젯', 'w.desc': '실제 iPhone 위젯이 아닌 홈 화면 디자인 미리보기예요.', 'w.today': '오늘의 감사', 'w.q': '오늘 나를 웃게 한 일은?', 'w.write': '＋ 한 줄 쓰기', 'w.sub': '함께하는 7일', 'w.view': '챌린지 보기', 'w.fine': '실제 위젯 설치·위젯에서 앱 열기는 iOS/Android 네이티브 개발 단계에서 구현해야 합니다.',
     's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.close': '닫기', 'fs.closeAria': '전체 화면 닫기',
-    'nudge': '아래로 넘겨 보기', 'gate.kicker': '오늘의 감사', 'gate.q': '오늘 감사했던 순간은?', 'gate.ph': '한 줄이면 충분해요.', 'gate.private': '나만 보기', 'gate.public': '모두의 감사', 'gate.save': '감사 남기기', 'gate.later': '나중에 쓸게요',
+    'nudge': '아래로 넘겨 보기', 'gate.kicker': '오늘의 감사', 'gate.q': '오늘 감사한 것은?', 'gate.ph': '한 줄이면 충분해요.', 'gate.private': '나만 보기', 'gate.public': '모두의 감사', 'gate.save': '감사 남기기', 'gate.later': '나중에 쓸게요',
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
@@ -146,7 +146,7 @@ const STR = {
     'me': 'Me', 'reflect.prefix': 'Looking back',
     'toast.likeAhead': 'Praying with you.', 'toast.likeToday': 'Thankful with you.',
     'compose.title': 'A line of thanks',
-    'compose.qToday': 'What were you grateful for today?', 'compose.qAhead': 'What are you entrusting to God with thanks?',
+    'compose.qToday': 'What are you thankful for today?', 'compose.qAhead': 'What are you entrusting to God with thanks?',
     'compose.phToday': 'Write down a moment you were thankful for.', 'compose.phAhead': 'God, this week too…',
     'compose.samples': 'Tap a sentence and make it yours',
     'sample.work': 'At work', 'sample.relationship': 'In relationships', 'sample.everyday': 'In everyday life',
@@ -168,7 +168,7 @@ const STR = {
     'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder', 'n.group': 'Bundle group updates', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
     'w.title': 'Home screen widget', 'w.desc': 'A design preview — not a real iPhone widget.', 'w.today': 'Today’s thanks', 'w.q': 'What made you smile today?', 'w.write': '＋ Write a line', 'w.sub': '7 days together', 'w.view': 'View challenge', 'w.fine': 'Installing a real widget and opening the app from it is built in the native iOS/Android phase.',
     's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.close': 'Close', 'fs.closeAria': 'Close full screen',
-    'nudge': 'Scroll for more', 'gate.kicker': 'Today’s thanks', 'gate.q': 'What were you grateful for today?', 'gate.ph': 'One line is enough.', 'gate.private': 'Only me', 'gate.public': 'Everyone', 'gate.save': 'Save my thanks', 'gate.later': 'Maybe later',
+    'nudge': 'Scroll for more', 'gate.kicker': 'Today’s thanks', 'gate.q': 'What are you thankful for today?', 'gate.ph': 'One line is enough.', 'gate.private': 'Only me', 'gate.public': 'Everyone', 'gate.save': 'Save my thanks', 'gate.later': 'Maybe later',
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
@@ -291,7 +291,7 @@ function setSession(next) {
 }
 const GATE_AFTER = 3; // posts shown before the "write today's thanks" card and the sign-in card
 
-const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'private' }; // immersive: the app opens on a full-screen feed of people's thanks
+const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'public' }; // posts default to Everyone; switch to Only me any time // immersive: the app opens on a full-screen feed of people's thanks
 
 const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
@@ -366,7 +366,7 @@ function composeCard() {
     <div class="post-kind">${icon('sun')}<span>${t('gate.kicker')}</span></div>
     <label class="card-title" for="gate-text">${t('gate.q')}</label>
     <textarea id="gate-text" class="card-input" maxlength="1500" rows="3" placeholder="${esc(t('gate.ph'))}"></textarea>
-    ${seg([['private', t('gate.private'), 'lock'], ['public', t('gate.public'), 'globe']], 'gate-scope', state.composeScope)}
+    ${seg([['public', t('gate.public'), 'globe'], ['private', t('gate.private'), 'lock']], 'gate-scope', state.composeScope)}
     <div class="card-actions"><button class="primary" type="submit">${t('gate.save')}</button><button class="subtle-link" type="button" data-action="gate-later">${t('gate.later')}</button></div>
   </form></article>`;
 }
@@ -562,7 +562,7 @@ const seg = (items, action, current, extra = '') => `<div class="seg ${extra}">$
 
 function compose(kind = state.composeKind, chId = state.challenge, keepText = '') {
   state.composeKind = kind; state.challenge = chId;
-  state.sheetScope = state.sheetScope || 'private';
+  state.sheetScope = state.sheetScope || 'public';
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
   const ahead = kind === 'ahead';
   const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send']], 'pick-kind', kind, 'seg-kinds');
@@ -583,7 +583,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
     <p class="field-label">${t('compose.who')}</p>
-    ${seg([['private', t('scope.me'), 'lock'], ['group', t('scope.groupShort'), 'people'], ['public', t('scope.all'), 'globe']], 'pick-scope', state.sheetScope)}
+    ${seg([['public', t('scope.all'), 'globe'], ['group', t('scope.groupShort'), 'people'], ['private', t('scope.me'), 'lock']], 'pick-scope', state.sheetScope)}
     <div class="chips" id="group-chips" ${state.sheetScope === 'group' ? '' : 'hidden'}>${data.groups.map(g => `<button type="button" class="chip ${state.sheetGroup === g.id ? 'active' : ''}" data-action="pick-group" data-id="${esc(g.id)}">${esc(L(g.name))}</button>`).join('')}</div>
     <p class="hint" id="public-note" ${state.sheetScope === 'public' ? '' : 'hidden'}>${t('compose.publicNote')}</p>
     <button class="primary block" type="submit">${t('compose.submit')}</button>
