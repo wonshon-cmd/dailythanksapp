@@ -400,20 +400,20 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .inf-card{display:flex;flex-direction:column;gap:12px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px 16px 14px;margin:0 0 16px;font:inherit;color:var(--ink);cursor:pointer}
 .inf-top{display:flex;align-items:center;gap:10px}
 .inf-level{display:inline-flex;align-items:center;gap:8px;font-size:15px;flex:1}
-.inf-level .ico{font-size:22px;color:#6E8B74;stroke-width:1.4}
+.inf-level .ico{font-size:22px;color:#B08D57;stroke-width:1.4}
 .inf-score{font-size:22px;font-weight:300}
 .inf-score small{font-size:12px;color:var(--faint);margin-left:2px}
 .inf-bar{display:block;height:4px;border-radius:4px;background:#ECEDEB;overflow:hidden}
-.inf-bar span{display:block;height:100%;background:#6E8B74;border-radius:4px}
+.inf-bar span{display:block;height:100%;background:#B08D57;border-radius:4px}
 .inf-stats{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--sub)}
 .inf-stats > span{display:inline-flex;align-items:center;gap:4px}
 .inf-stats .ico{font-size:14px;stroke-width:1.4}
 .inf-week{margin-left:auto;gap:8px!important;font-size:12px;color:var(--faint)}
 .mini-dots{display:inline-flex;gap:3px}
 .mini-dots i{width:7px;height:7px;border-radius:50%;background:#E2E3E1;display:block}
-.mini-dots i.on{background:#6E8B74}
+.mini-dots i.on{background:#B08D57}
 .inf-hero{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.inf-hero-icon{width:52px;height:52px;border-radius:50%;background:#EEF2EE;display:grid;place-items:center;font-size:28px;color:#6E8B74}
+.inf-hero-icon{width:52px;height:52px;border-radius:50%;background:#F7F1E6;display:grid;place-items:center;font-size:28px;color:#B08D57}
 .inf-hero p{margin:0}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .stat{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border-radius:16px;background:#F4F4F2;color:var(--sub);font-size:12px}
@@ -421,18 +421,21 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .stat strong{font-size:20px;font-weight:400;color:var(--ink)}
 .rank-row{align-items:flex-start}
 .rank{width:22px;font-size:15px;color:var(--faint);padding-top:2px}
-.top-mark{display:inline-flex;align-items:center;gap:3px;color:#7C9482;margin-left:4px}
+.top-mark{display:inline-flex;align-items:center;gap:3px;color:#A88650;margin-left:4px}
 .top-mark .ico{font-size:12px}
 
 /* ---------- 7-day celebration ---------- */
 .celebrate{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:4px 4px 0}
-.cel-mark{width:64px;height:64px;border-radius:50%;background:#EEF2EE;display:grid;place-items:center;font-size:30px;color:#6E8B74;animation:cel-pop .6s ease both}
+.cel-mark{width:64px;height:64px;border-radius:50%;background:#F7F1E6;display:grid;place-items:center;font-size:30px;color:#B08D57;animation:cel-pop .6s ease both}
 .cel-title{font-size:22px;font-weight:400;margin:4px 0 0}
 .cel-dots{display:flex;gap:8px}
 .cel-dots span{width:30px;height:30px;border-radius:50%;border:1px solid #D9DCDC;display:grid;place-items:center;font-size:14px}
-.cel-dots span.on{background:#6E8B74;border-color:#6E8B74;color:#fff}
+.cel-dots span.on{background:#B08D57;border-color:#B08D57;color:#fff}
 .cel-dots .ico{stroke-width:2}
 .cel-body{font-size:14px;line-height:1.75;color:var(--sub);margin:0 0 6px;word-break:keep-all}
 @keyframes cel-pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
 @media (prefers-reduced-motion:reduce){.cel-mark{animation:none}}
 .stats{margin-top:12px}.sheet .stats + .field-label,.inf-bar + .field-label{margin-top:16px}
+
+/* light-level glow */
+.inf-hero-icon{box-shadow:0 0 0 6px #FBF7EF,0 0 24px #E9D8B566}

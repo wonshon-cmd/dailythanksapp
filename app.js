@@ -11,7 +11,7 @@ const STR = {
     'kind.thanks': '감사 전하기', 'ty.to': '받는 사람 이름', 'ty.ph': '전하고 싶은 감사 인사를 적어 보세요.', 'ty.make': '감사 카드 만들기', 'ty.card': '감사 카드', 'ty.send': '보내기',
     'ty.copy': '텍스트 복사', 'ty.toGroup': '소그룹에 나누기', 'ty.saved': '감사 카드를 내 감사에 남겨 두었어요.', 'ty.needName': '받는 사람 이름을 적어 주세요.',
     'inf.title': '나의 감사 영향력', 'inf.received': '받은 마음', 'inf.given': '건넨 마음', 'inf.likes': '좋아요', 'inf.shares': '공유', 'inf.saves': '저장', 'inf.score': '점',
-    'inf.seed': '씨앗', 'inf.sprout': '새싹', 'inf.tree': '나무', 'inf.forest': '숲', 'inf.next': '{level}까지 {n}점', 'inf.max': '가장 높은 단계예요',
+    'inf.candle': '촛불', 'inf.lantern': '등불', 'inf.sunlight': '햇살', 'inf.starlight': '별빛', 'inf.glow': '감사가 퍼질수록 빛이 밝아져요.', 'inf.next': '{level}까지 {n}점', 'inf.max': '가장 높은 단계예요',
     'inf.top': '이번 주 많이 닿은 감사', 'inf.how': '내 글이 받은 좋아요 1점 · 저장 2점 · 공유 3점으로 계산해요. 순위를 겨루기보다, 감사가 얼마나 멀리 퍼졌는지 보여주는 숫자예요.',
     'inf.week': '이번 주 감사', 'top.badge': '많이 닿은 감사',
     'cel.title': '일주일 동안 매일 감사했어요', 'cel.body': '작은 감사가 하루하루 쌓여 한 주가 되었어요. 정말 멋져요. 다음 한 주도 천천히 함께 걸어요.', 'cel.ok': '계속하기', 'cel.share': '공유하기',
@@ -62,7 +62,7 @@ const STR = {
     'toast.likeAhead': '함께 기도해요.', 'toast.likeToday': '함께 감사해요.',
     'compose.title': '감사 한 줄',
     'compose.qToday': '오늘 감사한 것은?', 'compose.qAhead': '미리 감사하며 하나님께 맡기는 일은?',
-    'compose.phToday': '오늘 감사했던 순간을 적어보세요.', 'compose.phAhead': '하나님, 이번 한 주도…',
+    'compose.phToday': '오늘 감사한 것을 적어보세요.', 'compose.phAhead': '하나님, 이번 한 주도…',
     'compose.samples': '문장을 눌러 수정해 보세요',
     'sample.work': '직장에서', 'sample.relationship': '관계에서', 'sample.everyday': '일상에서',
     'compose.who': '누구와 나눌까요?', 'compose.private': '나만 보기 (기본)', 'compose.group': '내 소그룹', 'compose.public': '전체 공개',
@@ -96,7 +96,7 @@ const STR = {
     'kind.thanks': 'Thank someone', 'ty.to': 'Their name', 'ty.ph': 'Write your thank-you message.', 'ty.make': 'Make a thank-you card', 'ty.card': 'Thank-you card', 'ty.send': 'Send',
     'ty.copy': 'Copy text', 'ty.toGroup': 'Share with a group', 'ty.saved': 'Your card is kept in My Thanks.', 'ty.needName': 'Add their name.',
     'inf.title': 'My gratitude reach', 'inf.received': 'Received', 'inf.given': 'Given', 'inf.likes': 'Likes', 'inf.shares': 'Shares', 'inf.saves': 'Saves', 'inf.score': 'pts',
-    'inf.seed': 'Seed', 'inf.sprout': 'Sprout', 'inf.tree': 'Tree', 'inf.forest': 'Forest', 'inf.next': '{n} pts to {level}', 'inf.max': 'Top level reached',
+    'inf.candle': 'Candle', 'inf.lantern': 'Lantern', 'inf.sunlight': 'Sunlight', 'inf.starlight': 'Starlight', 'inf.glow': 'The further your thanks travels, the brighter it glows.', 'inf.next': '{n} pts to {level}', 'inf.max': 'Top level reached',
     'inf.top': 'Thanks that reached most this week', 'inf.how': 'Likes on your posts count 1, saves 2, shares 3. It isn’t a contest — it shows how far your thanks travelled.',
     'inf.week': 'This week', 'top.badge': 'Reached many',
     'cel.title': 'Seven days of thanks in a row', 'cel.body': 'Small thanks, day after day, became a whole week. That’s wonderful. Let’s walk gently into the next one too.', 'cel.ok': 'Keep going', 'cel.share': 'Share',
@@ -201,9 +201,9 @@ const ICONS = {
   google: '<path fill="#4285F4" stroke="none" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" stroke="none" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" stroke="none" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" stroke="none" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>',
   phoneMsg: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/>',
   send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
-  sprout: '<path d="M7 20h10"/><path d="M12 20v-8"/><path d="M12 12c0-3-2-5-6-5 0 3 2 5 6 5z"/><path d="M12 12c0-4 2.5-6.5 7-6.5 0 4-2.5 6.5-7 6.5z"/>',
-  tree: '<path d="M12 22v-6"/><path d="M12 16c-4.4 0-7-2.2-7-5.5 0-2.6 1.8-4.2 3.6-4.7C9.2 3.6 10.4 2 12 2s2.8 1.6 3.4 3.8c1.8.5 3.6 2.1 3.6 4.7 0 3.3-2.6 5.5-7 5.5z"/>',
-  forest: '<path d="M8 22v-4M16 22v-5"/><path d="M8 18c-3 0-5-1.5-5-4 0-1.8 1.2-3 2.5-3.4C6 8.4 6.9 7 8 7s2 1.4 2.5 3.6"/><path d="M16 17c-3.4 0-5.5-1.8-5.5-4.5 0-2 1.4-3.4 2.9-3.8C14 6.2 15 4.5 16 4.5s2 1.7 2.6 4.2c1.5.4 2.9 1.8 2.9 3.8 0 2.7-2.1 4.5-5.5 4.5z"/>',
+  candle: '<path d="M12 2.5c1.4 1.8 1.9 3 1.9 3.9a1.9 1.9 0 0 1-3.8 0c0-.9.5-2.1 1.9-3.9z"/><rect x="9" y="10" width="6" height="11" rx="1"/><path d="M7 21h10"/>',
+  lantern: '<path d="M9.5 3h5M12 3V1.5"/><path d="M8 6h8l1.2 3v8L16 20H8l-1.2-3V9z"/><path d="M12 10.5c1 1.1 1.4 1.9 1.4 2.6a1.4 1.4 0 0 1-2.8 0c0-.7.4-1.5 1.4-2.6z"/>',
+  star: '<path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9z"/>',
   bookmark: '<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>',
   flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/>',
   eyeOff: '<path d="M9.88 9.88a3 3 0 1 0 4.24 4.24M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61M2 2l20 20"/>',
@@ -777,7 +777,8 @@ const likesOf = p => (p.likes || 0) + (data.liked.includes(p.id) ? 1 : 0);
 const savesOf = p => (p.saves || 0) + (data.saved.includes(p.id) ? 1 : 0);
 const sharesOf = p => p.shares || 0;
 const scoreOf = p => likesOf(p) + 2 * savesOf(p) + 3 * sharesOf(p);
-const LEVELS = [['seed', 0, 'sprout'], ['sprout', 10, 'sprout'], ['tree', 50, 'tree'], ['forest', 150, 'forest']];
+// Light theme: the more your thanks travels, the brighter it glows.
+const LEVELS = [['candle', 0, 'candle'], ['lantern', 10, 'lantern'], ['sunlight', 50, 'sun'], ['starlight', 150, 'star']];
 function influence() {
   const mine = data.posts.filter(p => p.mine && p.scope !== 'private' && !p.status);
   const received = { likes: mine.reduce((a, p) => a + (p.likes || 0), 0), saves: mine.reduce((a, p) => a + (p.saves || 0), 0), shares: mine.reduce((a, p) => a + sharesOf(p), 0) };
@@ -835,7 +836,7 @@ function influenceSheet() {
   const stat = (ic, label, n) => `<div class="stat">${icon(ic)}<strong>${n}</strong><span>${label}</span></div>`;
   showSheet({ title: t('inf.title'), body: `
     <div class="inf-hero"><span class="inf-hero-icon">${icon(f.level[2])}</span><div><p class="row-title">${t('inf.' + f.level[0])} · ${f.score}${t('inf.score')}</p>
-      <p class="row-sub">${f.next ? t('inf.next').replace('{level}', t('inf.' + f.next[0])).replace('{n}', f.next[1] - f.score) : t('inf.max')}</p></div></div>
+      <p class="row-sub">${t('inf.glow')}</p><p class="row-sub">${f.next ? t('inf.next').replace('{level}', t('inf.' + f.next[0])).replace('{n}', f.next[1] - f.score) : t('inf.max')}</p></div></div>
     <span class="inf-bar"><span style="width:${Math.round(f.progress * 100)}%"></span></span>
     <p class="field-label">${t('inf.received')}</p>
     <div class="stats">${stat('heart', t('inf.likes'), f.received.likes)}${stat('bookmark', t('inf.saves'), f.received.saves)}${stat('upload', t('inf.shares'), f.received.shares)}</div>
