@@ -117,7 +117,7 @@ const STR = {
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
-    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'verse.kicker': "말씀 한 구절", 'verse.title': "말씀 구절", 'verse.freq': "얼마나 자주", 'verse.hint': "감사 글 사이에 성경 한 구절이 보여요. 얼마나 자주 볼지 골라 주세요.", 'verse.often': "자주", 'verse.normal': "보통", 'verse.rare': "가끔", 'verse.off': "끄기", 'verse.note.often': "감사 4개쯤마다 한 구절", 'verse.note.normal': "감사 8개쯤마다 한 구절", 'verse.note.rare': "감사 15개쯤마다 한 구절", 'verse.note.off': "말씀 구절을 보여 주지 않아요", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'verse.kicker': "말씀 한 구절", 'verse.title': "말씀 구절", 'verse.freq': "얼마나 자주", 'verse.hint': "감사 글 사이에 성경 한 구절이 보여요. 얼마나 자주 볼지 골라 주세요.", 'verse.often': "자주", 'verse.normal': "보통", 'verse.rare': "가끔", 'verse.off': "끄기", 'verse.note.often': "감사 4개쯤마다 한 구절", 'verse.note.normal': "감사 8개쯤마다 한 구절", 'verse.note.rare': "감사 15개쯤마다 한 구절", 'verse.note.off': "말씀 구절을 보여 주지 않아요", 'verse.read': "통독 이어 읽기", 'rd.loading': "말씀을 불러오는 중…", 'rd.offline': "말씀을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.", 'rd.retry': "다시 시도", 'rd.end': "요한계시록까지 다 읽었어요. 정말 수고했어요.", 'rd.pick': "성경 통독", 'rd.progress': "통독 {n} / {total}장", 'rd.ot': "구약", 'rd.nt': "신약", 'devo.kicker': "오늘의 말씀", 'devo.sub': "말씀을 읽고, 받은 은혜를 소그룹과 나눠요.", 'devo.count': "오늘 묵상 {n}개", 'devo.read': "말씀 읽기", 'devo.share': "묵상 나누기", 'devo.change': "본문 바꾸기", 'devo.none': "오늘 함께 읽을 본문을 정해 주세요", 'devo.noneSub': "정한 본문은 소그룹 모두에게 보여요.", 'devo.set': "오늘 본문 정하기", 'devo.ph': "예: 요한복음 3:1-15", 'devo.hint': "책 이름과 장·절을 적어 주세요. 예: 시편 23, 빌 4:6-7", 'devo.bad': "본문을 알아보지 못했어요. 예: 요한복음 3:1-15", 'devo.save': "정하기", 'devo.ph2': "오늘 말씀에서 받은 은혜는?", 'kind.meditation': "묵상", 'ch.type': "무엇을 함께 할까요?", 'ch.t.thanks': "감사", 'ch.q.meditation': "오늘 말씀에서 받은 은혜는?", 'ch.q.prayer': "오늘 함께 기도할 제목은?", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -232,7 +232,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'verse.read': "Keep reading", 'rd.loading': "Loading…", 'rd.offline': "Couldn’t load the passage. Check your internet connection.", 'rd.retry': "Try again", 'rd.end': "You’ve read through to Revelation. Well done.", 'rd.pick': "Read through the Bible", 'rd.progress': "{n} of {total} chapters read", 'rd.ot': "Old Testament", 'rd.nt': "New Testament", 'devo.kicker': "Today’s passage", 'devo.sub': "Read it, then share what you received with your group.", 'devo.count': "{n} shared today", 'devo.read': "Read", 'devo.share': "Share a reflection", 'devo.change': "Change passage", 'devo.none': "Pick today’s passage for your group", 'devo.noneSub': "Everyone in the group will see it.", 'devo.set': "Set today’s passage", 'devo.ph': "e.g. John 3:1-15", 'devo.hint': "Type a book and chapter, e.g. Psalm 23 or Philippians 4:6-7.", 'devo.bad': "Couldn’t read that passage. e.g. John 3:1-15", 'devo.save': "Set", 'devo.ph2': "What did today’s passage give you?", 'kind.meditation': "Reflection", 'ch.type': "What will you do together?", 'ch.t.thanks': "Thanks", 'ch.q.meditation': "What did today’s passage give you?", 'ch.q.prayer': "What shall we pray for today?", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -605,7 +605,7 @@ const STR = {
     'login.apple': 'Continuar con Apple',
     'login.google': 'Continuar con Google',
     'login.phone': 'Continuar con número de teléfono',
-    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'verse.kicker': "Un versículo", 'verse.title': "Versículos", 'verse.freq': "Con qué frecuencia", 'verse.hint': "Entre las publicaciones aparece un versículo. Elige con qué frecuencia verlo.", 'verse.often': "A menudo", 'verse.normal': "Normal", 'verse.rare': "Poco", 'verse.off': "No", 'verse.note.often': "Un versículo cada 4 publicaciones aprox.", 'verse.note.normal': "Un versículo cada 8 publicaciones aprox.", 'verse.note.rare': "Un versículo cada 15 publicaciones aprox.", 'verse.note.off': "Sin versículos en el feed", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
+    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'verse.kicker': "Un versículo", 'verse.title': "Versículos", 'verse.freq': "Con qué frecuencia", 'verse.hint': "Entre las publicaciones aparece un versículo. Elige con qué frecuencia verlo.", 'verse.often': "A menudo", 'verse.normal': "Normal", 'verse.rare': "Poco", 'verse.off': "No", 'verse.note.often': "Un versículo cada 4 publicaciones aprox.", 'verse.note.normal': "Un versículo cada 8 publicaciones aprox.", 'verse.note.rare': "Un versículo cada 15 publicaciones aprox.", 'verse.note.off': "Sin versículos en el feed", 'verse.read': "Seguir leyendo", 'rd.loading': "Cargando…", 'rd.offline': "No se pudo cargar el pasaje. Revisa tu conexión a internet.", 'rd.retry': "Reintentar", 'rd.end': "Leíste hasta Apocalipsis. ¡Bien hecho!", 'rd.pick': "Leer toda la Biblia", 'rd.progress': "{n} de {total} capítulos leídos", 'rd.ot': "Antiguo Testamento", 'rd.nt': "Nuevo Testamento", 'devo.kicker': "Pasaje de hoy", 'devo.sub': "Léelo y comparte con tu grupo lo que recibiste.", 'devo.count': "{n} compartidos hoy", 'devo.read': "Leer", 'devo.share': "Compartir reflexión", 'devo.change': "Cambiar pasaje", 'devo.none': "Elige el pasaje de hoy para tu grupo", 'devo.noneSub': "Todo el grupo lo verá.", 'devo.set': "Elegir el pasaje de hoy", 'devo.ph': "p. ej. Juan 3:1-15", 'devo.hint': "Escribe libro y capítulo, p. ej. Salmos 23 o Filipenses 4:6-7.", 'devo.bad': "No se reconoció el pasaje. p. ej. Juan 3:1-15", 'devo.save': "Elegir", 'devo.ph2': "¿Qué te dio el pasaje de hoy?", 'kind.meditation': "Reflexión", 'ch.type': "¿Qué harán juntos?", 'ch.t.thanks': "Gratitud", 'ch.q.meditation': "¿Qué te dio el pasaje de hoy?", 'ch.q.prayer': "¿Por qué oramos hoy?", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -874,7 +874,7 @@ const inGroup = (p, gid) => p.scope === 'group' && postGroups(p).includes(gid);
 const groupNames = p => postGroups(p).map(groupName).filter(Boolean).join(', ');
 const groupName = id => id === 'pair' ? t('ch.pairShort') : L(data.groups.find(g => g.id === id)?.name) || id || '';
 const authorName = p => p.mine ? t('me') : L(p.name);
-const kindLabel = p => p.kind === 'ahead' ? t('kind.ahead') : p.kind === 'thanks' ? t('kind.thanks') : p.kind === 'prayer' ? t('kind.prayer') : p.kind === 'share' ? t('gs.section') : t('kind.today');
+const kindLabel = p => p.kind === 'meditation' ? t('kind.meditation') + (p.ref ? ' · ' + refText(p.ref) : '') : p.kind === 'ahead' ? t('kind.ahead') : p.kind === 'thanks' ? t('kind.thanks') : p.kind === 'prayer' ? t('kind.prayer') : p.kind === 'share' ? t('gs.section') : t('kind.today');
 const kindIcon = p => p.kind === 'ahead' ? 'sunrise' : p.kind === 'thanks' ? 'send' : p.kind === 'prayer' ? 'pray' : p.kind === 'share' ? 'people' : 'sun';
 const scopeLabel = p => p.scope === 'public' ? t('scope.public') : p.scope === 'private' ? t('scope.private') : groupNames(p) || t('scope.group');
 const scopeIcon = p => p.scope === 'public' ? 'globe' : p.scope === 'private' ? 'lock' : 'people';
@@ -991,6 +991,224 @@ function trackSeen() {
 
 const wroteToday = () => data.posts.some(p => p.mine && p.date === today());
 /* Public feed order: 3 posts → "write today's thanks" card (until written today) → sign-in card (until signed in) → the rest. */
+/* ---------------- Bible: references, read-through (통독), group passage ----------------
+   Text comes from public-domain translations: 개역한글 (ko), KJV (en), Reina-Valera 1909 (es).
+   Chapters load from dailyjourney.org/bible/… (copied there by the website build), falling back to the getBible API. */
+const BOOKS = [
+  ["창세기", "창", "Genesis", "Génesis", 50],
+  ["출애굽기", "출", "Exodus", "Éxodo", 40],
+  ["레위기", "레", "Leviticus", "Levítico", 27],
+  ["민수기", "민", "Numbers", "Números", 36],
+  ["신명기", "신", "Deuteronomy", "Deuteronomio", 34],
+  ["여호수아", "수", "Joshua", "Josué", 24],
+  ["사사기", "삿", "Judges", "Jueces", 21],
+  ["룻기", "룻", "Ruth", "Rut", 4],
+  ["사무엘상", "삼상", "1 Samuel", "1 Samuel", 31],
+  ["사무엘하", "삼하", "2 Samuel", "2 Samuel", 24],
+  ["열왕기상", "왕상", "1 Kings", "1 Reyes", 22],
+  ["열왕기하", "왕하", "2 Kings", "2 Reyes", 25],
+  ["역대상", "대상", "1 Chronicles", "1 Crónicas", 29],
+  ["역대하", "대하", "2 Chronicles", "2 Crónicas", 36],
+  ["에스라", "스", "Ezra", "Esdras", 10],
+  ["느헤미야", "느", "Nehemiah", "Nehemías", 13],
+  ["에스더", "에", "Esther", "Ester", 10],
+  ["욥기", "욥", "Job", "Job", 42],
+  ["시편", "시", "Psalms", "Salmos", 150],
+  ["잠언", "잠", "Proverbs", "Proverbios", 31],
+  ["전도서", "전", "Ecclesiastes", "Eclesiastés", 12],
+  ["아가", "아", "Song of Solomon", "Cantares", 8],
+  ["이사야", "사", "Isaiah", "Isaías", 66],
+  ["예레미야", "렘", "Jeremiah", "Jeremías", 52],
+  ["예레미야애가", "애", "Lamentations", "Lamentaciones", 5],
+  ["에스겔", "겔", "Ezekiel", "Ezequiel", 48],
+  ["다니엘", "단", "Daniel", "Daniel", 12],
+  ["호세아", "호", "Hosea", "Oseas", 14],
+  ["요엘", "욜", "Joel", "Joel", 3],
+  ["아모스", "암", "Amos", "Amós", 9],
+  ["오바댜", "옵", "Obadiah", "Abdías", 1],
+  ["요나", "욘", "Jonah", "Jonás", 4],
+  ["미가", "미", "Micah", "Miqueas", 7],
+  ["나훔", "나", "Nahum", "Nahúm", 3],
+  ["하박국", "합", "Habakkuk", "Habacuc", 3],
+  ["스바냐", "습", "Zephaniah", "Sofonías", 3],
+  ["학개", "학", "Haggai", "Hageo", 2],
+  ["스가랴", "슥", "Zechariah", "Zacarías", 14],
+  ["말라기", "말", "Malachi", "Malaquías", 4],
+  ["마태복음", "마", "Matthew", "Mateo", 28],
+  ["마가복음", "막", "Mark", "Marcos", 16],
+  ["누가복음", "눅", "Luke", "Lucas", 24],
+  ["요한복음", "요", "John", "Juan", 21],
+  ["사도행전", "행", "Acts", "Hechos", 28],
+  ["로마서", "롬", "Romans", "Romanos", 16],
+  ["고린도전서", "고전", "1 Corinthians", "1 Corintios", 16],
+  ["고린도후서", "고후", "2 Corinthians", "2 Corintios", 13],
+  ["갈라디아서", "갈", "Galatians", "Gálatas", 6],
+  ["에베소서", "엡", "Ephesians", "Efesios", 6],
+  ["빌립보서", "빌", "Philippians", "Filipenses", 4],
+  ["골로새서", "골", "Colossians", "Colosenses", 4],
+  ["데살로니가전서", "살전", "1 Thessalonians", "1 Tesalonicenses", 5],
+  ["데살로니가후서", "살후", "2 Thessalonians", "2 Tesalonicenses", 3],
+  ["디모데전서", "딤전", "1 Timothy", "1 Timoteo", 6],
+  ["디모데후서", "딤후", "2 Timothy", "2 Timoteo", 4],
+  ["디도서", "딛", "Titus", "Tito", 3],
+  ["빌레몬서", "몬", "Philemon", "Filemón", 1],
+  ["히브리서", "히", "Hebrews", "Hebreos", 13],
+  ["야고보서", "약", "James", "Santiago", 5],
+  ["베드로전서", "벧전", "1 Peter", "1 Pedro", 5],
+  ["베드로후서", "벧후", "2 Peter", "2 Pedro", 3],
+  ["요한일서", "요일", "1 John", "1 Juan", 5],
+  ["요한이서", "요이", "2 John", "2 Juan", 1],
+  ["요한삼서", "요삼", "3 John", "3 Juan", 1],
+  ["유다서", "유", "Jude", "Judas", 1],
+  ["요한계시록", "계", "Revelation", "Apocalipsis", 22]
+]; // [ko, ko short, en, es, chapters] — index + 1 = book number
+const BIBLE_TR = { ko: 'korean', en: 'kjv', es: 'valera' };
+const TOTAL_CHAPTERS = 1189;
+const bookName = b => { const x = BOOKS[b - 1]; return x ? (lang() === 'ko' ? x[0] : lang() === 'es' ? x[3] : x[2]) : ''; };
+const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[\s.]/g, '');
+// "요한복음 3:1-15", "요 3:16", "시편 23", "John 3:16-18", "1 Tesalonicenses 5:16-18" → { b, c, v, v2 }
+function parseRef(input) {
+  const str = String(input || '').trim(); if (!str) return null;
+  const m = str.match(/^(.*?)(\d+)\s*(?:장|:|\s)?\s*(?:(\d+)\s*(?:절)?\s*(?:[-~–]\s*(\d+)\s*(?:절)?)?)?\s*$/);
+  if (!m) return null;
+  const name = fold(m[1]); if (!name) return null;
+  let best = 0, bestLen = 0;
+  BOOKS.forEach((x, i) => [x[0], x[1], x[2], x[3]].forEach(n => { const f = fold(n); if (f && name === f && f.length > bestLen) { best = i + 1; bestLen = f.length; } }));
+  if (!best) BOOKS.forEach((x, i) => [x[0], x[2], x[3]].forEach(n => { const f = fold(n); if (f.length >= 3 && f.startsWith(name) && name.length >= 2 && !best) best = i + 1; }));
+  const c = +m[2]; if (!best || !c || c > BOOKS[best - 1][4]) return null;
+  const v = m[3] ? +m[3] : 0, v2 = m[4] ? +m[4] : v;
+  return { b: best, c, v, v2: Math.max(v, v2) };
+}
+const refText = r => r ? `${bookName(r.b)} ${r.c}${r.v ? `:${r.v}${r.v2 > r.v ? '-' + r.v2 : ''}` : (lang() === 'ko' ? '장' : '')}` : '';
+const chapterMem = {};
+async function fetchChapter(b, c) {
+  const tr = BIBLE_TR[lang()] || 'kjv', key = `${tr}/${b}/${c}`;
+  if (chapterMem[key]) return chapterMem[key];
+  const norm = j => (j && Array.isArray(j.verses) ? j.verses : []).map(x => ({ v: +(x.verse ?? x.v), text: String(x.text ?? x.t ?? '').replace(/\s+/g, ' ').trim() })).filter(x => x.v && x.text);
+  for (const url of [`${LEGAL_BASE}/bible/${key}.json`, `https://api.getbible.net/v2/${key}.json`]) {
+    try { const r = await fetch(url); if (r.ok) { const verses = norm(await r.json()); if (verses.length) return (chapterMem[key] = verses); } } catch { /* try the next source */ }
+  }
+  throw new Error('bible_unavailable');
+}
+const nextChapter = (b, c) => c < BOOKS[b - 1][4] ? [b, c + 1] : b < 66 ? [b + 1, 1] : null;
+const readKey = (b, c) => `${b}:${c}`;
+
+// Reader: one continuous page. It loads the next chapter as you scroll, remembers where you stopped,
+// and counts chapters you scrolled through toward the read-through (통독).
+let readerEl = null, readerObs = null;
+function openReader(opts = {}) {
+  data.reading = data.reading || { b: 1, c: 1 }; data.readDone = data.readDone || [];
+  const start = opts.b ? opts : { b: data.reading.b, c: data.reading.c };
+  state.reader = { ...start, group: opts.group || null, loaded: [] };
+  if (!readerEl) { readerEl = document.createElement('div'); readerEl.className = 'reader'; readerEl.id = 'reader'; sheet.parentElement.appendChild(readerEl); }
+  readerEl.innerHTML = `<header class="reader-top">
+      <button class="reader-x" data-action="reader-close" aria-label="${t('aria.close')}">${icon('x')}</button>
+      <button class="reader-title" data-action="reader-pick" id="reader-title">${esc(refText({ b: start.b, c: start.c }))}</button>
+      <span class="reader-tr">${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
+    <div class="reader-scroll" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>
+    ${opts.group ? `<footer class="reader-foot"><button class="primary block" data-action="devo-share" data-id="${esc(opts.group)}">${icon('pencil')}${t('devo.share')}</button></footer>` : ''}`;
+  readerEl.hidden = false; document.body.classList.add('reading');
+  readerObs?.disconnect();
+  readerObs = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) loadNextChapter(); }, { root: $('#reader-scroll'), rootMargin: '600px' });
+  loadChapter(start.b, start.c, true).then(() => readerObs.observe($('#reader-more')));
+  $('#reader-scroll').addEventListener('scroll', trackReading, { passive: true });
+}
+async function loadChapter(b, c, first) {
+  const r = state.reader; if (!r) return;
+  const more = $('#reader-more');
+  let verses;
+  try { verses = await fetchChapter(b, c); }
+  catch { if (more) more.innerHTML = `${t('rd.offline')}<button class="link-btn" data-action="reader-retry">${t('rd.retry')}</button>`; return false; }
+  if (!state.reader || r !== state.reader) return;
+  r.loaded.push([b, c]); r.last = [b, c];
+  const hl = x => first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v);
+  const sec = document.createElement('section');
+  sec.className = 'rd-ch'; sec.dataset.b = b; sec.dataset.c = c;
+  sec.innerHTML = `<h2>${esc(refText({ b, c }))}</h2><p>${verses.map(x => `<span class="vs${hl(x) ? ' hl' : ''}" id="v-${b}-${c}-${x.v}"><sup>${x.v}</sup>${esc(x.text)} </span>`).join('')}</p>`;
+  more.before(sec);
+  if (first && r.v) requestAnimationFrame(() => { const el = $(`#v-${b}-${c}-${r.v}`); if (el) $('#reader-scroll').scrollTop = el.offsetTop - 90; });
+  more.textContent = nextChapter(b, c) ? t('rd.loading') : t('rd.end');
+  return true;
+}
+function loadNextChapter() {
+  const r = state.reader; if (!r || r.busy || !r.last) return;
+  const n = nextChapter(...r.last); if (!n) return;
+  r.busy = true; loadChapter(n[0], n[1]).finally(() => { r.busy = false; });
+}
+let readSaveTimer;
+function trackReading() {
+  const sc = $('#reader-scroll'); if (!sc) return;
+  const top = sc.getBoundingClientRect().top;
+  let current = null;
+  sc.querySelectorAll('.rd-ch').forEach(sec => {
+    const box = sec.getBoundingClientRect(), key = readKey(sec.dataset.b, sec.dataset.c);
+    if (box.top - top < 140) current = sec;
+    if (box.bottom - top < sc.clientHeight * .55 && !data.readDone.includes(key)) data.readDone.push(key); // scrolled through
+  });
+  if (current) {
+    const b = +current.dataset.b, c = +current.dataset.c;
+    data.reading = { b, c };
+    const title = $('#reader-title'); if (title) title.textContent = refText({ b, c });
+  }
+  clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600);
+}
+function closeReader() {
+  if (!readerEl || readerEl.hidden) return false;
+  readerObs?.disconnect(); readerEl.hidden = true; readerEl.innerHTML = ''; state.reader = null;
+  document.body.classList.remove('reading'); save(); return true;
+}
+function readerPicker() {
+  const done = (data.readDone || []).length, cur = data.reading || { b: 1, c: 1 };
+  const testament = (from, to) => BOOKS.slice(from, to).map((x, i) => `<button class="chip book-chip ${cur.b === from + i + 1 ? 'active' : ''}" data-action="reader-book" data-id="${from + i + 1}">${esc(bookName(from + i + 1))}</button>`).join('');
+  showSheet({ title: t('rd.pick'), body: `<p class="hint">${t('rd.progress').replace('{n}', done).replace('{total}', TOTAL_CHAPTERS)}</p>
+    <div class="rd-bar"><span style="width:${Math.min(100, done / TOTAL_CHAPTERS * 100).toFixed(1)}%"></span></div>
+    <p class="field-label">${t('rd.ot')}</p><div class="chips books">${testament(0, 39)}</div>
+    <p class="field-label">${t('rd.nt')}</p><div class="chips books">${testament(39, 66)}</div>` });
+}
+function chapterPicker(b) {
+  showSheet({ title: esc(bookName(b)), body: `<div class="chips chapters">${Array.from({ length: BOOKS[b - 1][4] }, (_, i) => `<button class="chip ch-chip ${(data.readDone || []).includes(readKey(b, i + 1)) ? 'read' : ''}" data-action="reader-go" data-id="${b}:${i + 1}">${i + 1}</button>`).join('')}</div>` });
+}
+
+// Group passage of the day: the group's own choice, or the plan published in content.json (e.g. a QT plan used with permission).
+function todaysPassage(gid) {
+  const g = data.groups.find(x => x.id === gid);
+  const own = g?.passages?.[today()];
+  if (own) return { ref: own, source: '' };
+  const plan = CONTENT.qtPlan?.[today()];
+  return plan ? { ref: parseRef(plan), source: CONTENT.qtPlanName || '' } : null;
+}
+function devoCard(gid) {
+  const p = todaysPassage(gid), n = data.posts.filter(x => x.kind === 'meditation' && inGroup(x, gid) && x.date === today()).length;
+  return `<article class="post card-page devo-card"><div class="card-inner">
+    <div class="post-kind">${icon('book')}<span>${t('devo.kicker')}${p?.source ? ' · ' + esc(p.source) : ''}</span></div>
+    ${p?.ref ? `<p class="card-title">${esc(refText(p.ref))}</p><p class="card-sub">${t('devo.sub')}${n ? ' ' + t('devo.count').replace('{n}', n) : ''}</p>
+      <div class="card-actions"><button class="primary" data-action="devo-read" data-id="${esc(gid)}">${t('devo.read')}</button>
+      <button class="secondary" data-action="devo-share" data-id="${esc(gid)}">${t('devo.share')}</button></div>
+      <button class="subtle-link" data-action="devo-set" data-id="${esc(gid)}">${t('devo.change')}</button>`
+    : `<p class="card-title">${t('devo.none')}</p><p class="card-sub">${t('devo.noneSub')}</p>
+      <div class="card-actions"><button class="primary" data-action="devo-set" data-id="${esc(gid)}">${t('devo.set')}</button></div>`}
+  </div></article>`;
+}
+function devoSetSheet(gid) {
+  showSheet({ title: t('devo.set'), body: `<form id="devo-form" class="sheet-form">
+    <input id="devo-ref" class="field" placeholder="${esc(t('devo.ph'))}" aria-label="${esc(t('devo.set'))}" required>
+    <p class="hint" id="devo-msg">${t('devo.hint')}</p>
+    <button class="primary block" type="submit">${t('devo.save')}</button></form>` });
+  $('#devo-form').addEventListener('submit', e => {
+    e.preventDefault(); const r = parseRef($('#devo-ref').value);
+    if (!r) { $('#devo-msg').textContent = t('devo.bad'); return; }
+    const g = data.groups.find(x => x.id === gid); if (!g) return;
+    g.passages = { ...(g.passages || {}), [today()]: r }; save(); close(); render(); toast(refText(r));
+  });
+}
+function devoShare(gid) {
+  closeReader();
+  const p = todaysPassage(gid);
+  state.medRef = p?.ref || null;
+  Object.assign(visOf('compose'), { mode: 'private', targets: [gid] });
+  compose('meditation', state.challenge);
+}
+
 /* ---------------- a verse now and then ----------------
    Public-domain translations only: 개역한글 (ko), KJV (en), Reina-Valera 1909 (es).
    content.json "verses": { ko: [{ ref, text }], … } can replace the list without an app update. */
@@ -1030,11 +1248,12 @@ function withVerses(items) {
   return out;
 }
 function verseCard(v) {
-  return `<article class="post card-page verse-card"><div class="card-inner">
+  return `<article class="post card-page verse-card" data-ref="${esc(v.ref)}"><div class="card-inner">
     <div class="post-kind">${icon('book')}<span>${t('verse.kicker')}</span></div>
     <p class="verse-text">${esc(v.text)}</p>
     <p class="verse-ref">${esc(v.ref)}${v.tr ? ` · ${esc(v.tr)}` : ''}</p>
-    <div class="verse-actions"><button class="link-btn" data-action="verse-share" data-id="${esc(v.ref)}">${icon('share')}${t('act.share')}</button>
+    <div class="verse-actions"><button class="link-btn" data-action="verse-read" data-id="${esc(v.ref)}">${icon('book')}${t('verse.read')}</button>
+    <button class="link-btn" data-action="verse-share" data-id="${esc(v.ref)}">${icon('share')}${t('act.share')}</button>
     <button class="link-btn" data-action="verse-freq">${icon('sparkle')}${t('verse.freq')}</button></div></div></article>`;
 }
 function verseFreqSheet() {
@@ -1148,6 +1367,7 @@ function renderFeed(keepIndex = 0) {
       <button class="link-btn" data-action="challenges">${icon('sparkle')}${t('feed.together')}</button>
     </div>
     <div class="feed-scroll" id="feed-scroll">
+      ${isGroup && state.group ? devoCard(state.group) : ''}
       ${posts.length ? (isGroup ? posts.map((p, i) => postTemplate(p, i, posts.length)).join('')
         : feedSequence(rankedOnce('public', posts)).map(it => it.type === 'post' ? postTemplate(it.p, rankedOnce('public', posts).indexOf(it.p), posts.length) : cardFor(it)).join(''))
         : `<div class="empty">${t('feed.empty')}<br><br><button class="primary" data-action="compose">${t('top.write')}</button></div>`}
@@ -1182,7 +1402,7 @@ function renderChallenges() {
     ${pageHead(t('ch.title'), t('ch.desc'), roundBtn('new-challenge', 'plus', t('ch.new')))}
     ${data.challenges.map(ch => `<section class="ch-card">
       <button class="ch-head" data-action="challenge-detail" data-id="${esc(ch.id)}">
-        <span class="row-main"><span class="row-sub">${esc(groupName(ch.group))} · ${Math.min(7, ch.days.length)}/7</span><span class="ch-name">${esc(L(ch.name))}</span></span>
+        <span class="row-main"><span class="row-sub">${chTypeLabel(ch)} · ${esc(groupName(ch.group))} · ${Math.min(7, ch.days.length)}/7</span><span class="ch-name">${esc(L(ch.name))}</span></span>
         <span class="row-end">${icon('chevron')}</span></button>
       ${dayRow(ch)}
       <button class="primary block" data-action="challenge-write" data-id="${esc(ch.id)}">${t('ch.write')}</button>
@@ -1303,7 +1523,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   state.composeKind = kind; state.challenge = chId;
   state.sheetScope = state.sheetScope || 'public';
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
-  const ahead = kind === 'ahead';
+  const ahead = kind === 'ahead', med = kind === 'meditation';
   const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send'], ...(featureOn('prayer') ? [['prayer', t('kind.prayer'), 'pray']] : [])], 'pick-kind', kind, 'seg-kinds' + (featureOn('prayer') ? ' four' : ''));
   if (kind === 'prayer' && !state.prayerScopeSet) { Object.assign(visOf('compose'), { mode: 'private', targets: data.groups[0] ? [data.groups[0].id] : [] }); state.prayerScopeSet = true; }
   if (kind === 'thanks') {
@@ -1318,10 +1538,10 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     });
     return;
   }
-  showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">
-    ${kinds}
-    ${ahead || kind === 'prayer' ? '' : dailyQLine()}
-    <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
+  showSheet({ title: med ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form">
+    ${med ? `<p class="daily-q">${icon('book')}<span>${t('kind.meditation')}${state.medRef ? ' · ' + esc(refText(state.medRef)) : ''}</span></p>` : kinds}
+    ${ahead || med || kind === 'prayer' ? '' : dailyQLine()}
+    <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
     <p class="field-label">${t('compose.who')}</p>
     ${visPicker('compose')}
@@ -1332,7 +1552,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     const text = $('#gratitude-text').value.trim(); if (!text) { $('#gratitude-text').focus(); return; }
     const kind = state.composeKind;
     const vis = visScope('compose');
-    const post = (v = vis) => ({ id: 'p' + Date.now(), mine: true, ...v, kind, text, date: today(), likes: 0 });
+    const post = (v = vis) => ({ id: 'p' + Date.now(), mine: true, ...v, kind, text, date: today(), likes: 0, ...(kind === 'meditation' && state.medRef ? { ref: state.medRef } : {}) });
     if (!passesFilter(text, vis.scope, (choice, terms) => {
       if (choice === 'edit') return compose(kind, state.challenge, text);
       if (choice === 'private') { data.posts.unshift(post({ scope: 'private' })); return finishCompose(t('toast.saved')); }
@@ -1500,21 +1720,24 @@ function createChallenge() {
   state.sheetWith = state.sheetWith || 'pair';
   showSheet({ title: t('ch.createTitle'), body: `<form id="challenge-form" class="sheet-form">
     <input id="challenge-name" class="field" value="${esc(t('ch.defaultName'))}" maxlength="50" aria-label="${esc(t('ch.name'))}" required>
+    <p class="field-label">${t('ch.type')}</p>
+    ${seg([['thanks', t('ch.t.thanks'), 'sun'], ['meditation', t('kind.meditation'), 'book'], ['prayer', t('kind.prayer'), 'pray']], 'pick-chtype', state.chType || 'thanks')}
     <p class="field-label">${t('ch.with')}</p>
     <div class="chips">${[['pair', t('ch.pairShort')], ...data.groups.map(g => [g.id, L(g.name)])].map(([id, label]) => `<button type="button" class="chip ${state.sheetWith === id ? 'active' : ''}" data-action="pick-with" data-id="${esc(id)}">${esc(label)}</button>`).join('')}</div>
     <p class="hint">${t('ch.rest')}</p>
     <button class="primary block" type="submit">${t('ch.start')}</button></form>` });
   $('#challenge-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#challenge-name').value.trim(); if (!name) return;
-    data.challenges.unshift({ id: 'ch' + Date.now(), name, group: state.sheetWith, members: [{ ko: '나', en: 'Me', es: 'Yo' }], start: today(), days: [] });
+    data.challenges.unshift({ id: 'ch' + Date.now(), name, type: state.chType || 'thanks', group: state.sheetWith, members: [{ ko: '나', en: 'Me', es: 'Yo' }], start: today(), days: [] });
     save(); close(); state.tab = 'challenges'; render(); toast(t('toast.chStarted'));
   });
 }
 
+const chTypeLabel = ch => ch.type === 'meditation' ? t('kind.meditation') : ch.type === 'prayer' ? t('kind.prayer') : t('ch.t.thanks');
 function challengeDetail(id) {
   const ch = data.challenges.find(c => c.id === id); if (!ch) return;
   showSheet({ title: esc(L(ch.name)), body: `<p class="hint">${esc(groupName(ch.group))} · ${esc(ch.members.map(L).join(', '))}</p>${dayRow(ch)}
-    <p class="quote center">${t('ch.question')}</p>
+    <p class="quote center">${ch.type === 'meditation' ? t('ch.q.meditation') : ch.type === 'prayer' ? t('ch.q.prayer') : t('ch.question')}</p>
     <button class="primary block" data-action="challenge-write" data-id="${esc(ch.id)}">${t('ch.write')}</button>
     <p class="hint center">${t('ch.rest')}</p>` });
 }
@@ -2241,7 +2464,21 @@ const actions = {
   },
   'open-group': id => { state.tab = 'feed'; state.feed = 'group'; state.group = id; render(); },
   'new-challenge': createChallenge,
-  'challenge-write': id => { close(); compose('today', id); },
+  'challenge-write': id => {
+    const ch = data.challenges.find(c => c.id === id); close();
+    if (ch?.type === 'meditation') { state.medRef = ch.group && ch.group !== 'pair' ? todaysPassage(ch.group)?.ref || null : null; compose('meditation', id); }
+    else compose(ch?.type === 'prayer' ? 'prayer' : 'today', id);
+  },
+  'pick-chtype': id => { state.chType = id; document.querySelectorAll('[data-action="pick-chtype"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
+  'verse-read': ref => { const r = parseRef(ref); openReader(r ? { ...r } : {}); },
+  'reader-close': () => closeReader(),
+  'reader-pick': () => readerPicker(),
+  'reader-book': b => chapterPicker(+b),
+  'reader-go': bc => { const [b, c] = bc.split(':').map(Number); close(); openReader({ b, c, group: state.reader?.group }); },
+  'reader-retry': () => { const r = state.reader; if (r) openReader(r); },
+  'devo-read': gid => { const p = todaysPassage(gid); openReader(p?.ref ? { ...p.ref, group: gid } : { group: gid }); },
+  'devo-share': gid => devoShare(gid),
+  'devo-set': gid => devoSetSheet(gid),
   compose: () => compose('today', null),
   'challenge-detail': challengeDetail,
   'save-notifications': () => {
@@ -2290,6 +2527,8 @@ window.DailyThanks = {
   applyContent: c => { if (applyContent(c)) { save(); render(); afterContent(); } }, getContent: () => CONTENT,
   // native shell: a reminder tap or the home-screen widget opens the writing sheet
   joinGroup: (code, name) => joinGroup(code, name),
+  closeReader: () => closeReader(),
+  parseRef, refText,
   openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); }
 };
 if (CONTENT_URL) fetch(CONTENT_URL, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(c => window.DailyThanks.applyContent(c)).catch(() => {});
@@ -2332,6 +2571,16 @@ applyStatic();
 applyTextSize();
 render();
 // Widget / notification deep link: daily-thanks://write → #write opens the writing sheet straight away.
+(() => {
+  let sx = 0, sy = 0, card = null, inReader = false;
+  document.addEventListener('touchstart', e => { const tch = e.touches[0]; sx = tch.clientX; sy = tch.clientY; card = e.target.closest?.('.verse-card'); inReader = !!e.target.closest?.('#reader'); }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const tch = e.changedTouches[0], dx = tch.clientX - sx, dy = tch.clientY - sy;
+    if (Math.abs(dx) < 70 || Math.abs(dy) > 50) return;
+    if (inReader) { if (dx > 0) closeReader(); return; }
+    if (card) { const r = parseRef(card.dataset.ref); openReader(r ? { ...r } : {}); }
+  }, { passive: true });
+})();
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n')), 80); }
 if (location.hash === '#write') { document.getElementById('splash')?.remove(); setTimeout(() => compose('today', null), 50); }

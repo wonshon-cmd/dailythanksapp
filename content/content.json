@@ -1,20 +1,70 @@
 {
   "_help": "Text the app downloads at launch. Edit this file and the app shows it next time it opens, with no store update. Leave a field out (or null) to use the text built into the app.",
   "version": 1,
-  "tagline": ["Give <em>thanks</em> daily.", "Live fully.", "Share the joy."],
+  "tagline": [
+    "Give <em>thanks</em> daily.",
+    "Live fully.",
+    "Share the joy."
+  ],
   "copyright": "© 2026 Daily Journey, Inc.",
   "supportEmail": "hi@dailyjourney.org",
   "legalBase": "https://dailyjourney.org",
   "dailyQuestions": null,
   "notice": null,
   "featuredPosts": [],
-  "features": { "groupShare": true, "prayer": true, "sermon": true },
+  "features": {
+    "groupShare": true,
+    "prayer": true,
+    "sermon": true
+  },
+  "qtPlanName": null,
+  "qtPlan": {},
+  "verses": null,
   "minVersion": "1.0.0",
-  "storeLinks": { "ios": "", "android": "" },
-
+  "storeLinks": {
+    "ios": "",
+    "android": ""
+  },
   "_examples": {
-    "notice": { "id": "launch-2026-12", "until": "2026-12-31", "ko": "daily thanks가 정식으로 출시됐어요. 함께해 주셔서 고마워요.", "en": "daily thanks is officially here. Thank you for being with us.", "es": "daily thanks ya está aquí. Gracias por acompañarnos." },
-    "dailyQuestions": { "ko": ["오늘 나를 웃게 한 사람은 누구였나요?"], "en": ["Who made you smile today?"], "es": ["¿Quién te hizo sonreír hoy?"] },
-    "featuredPosts": [{ "id": "f-2026-12-01", "name": { "ko": "다은", "en": "Emma", "es": "Lucía" }, "text": { "ko": "첫눈이 왔어요.", "en": "The first snow came.", "es": "Cayó la primera nieve." }, "kind": "today", "date": "2026-12-01" }]
+    "notice": {
+      "id": "launch-2026-12",
+      "until": "2026-12-31",
+      "ko": "daily thanks가 정식으로 출시됐어요. 함께해 주셔서 고마워요.",
+      "en": "daily thanks is officially here. Thank you for being with us.",
+      "es": "daily thanks ya está aquí. Gracias por acompañarnos."
+    },
+    "dailyQuestions": {
+      "ko": [
+        "오늘 나를 웃게 한 사람은 누구였나요?"
+      ],
+      "en": [
+        "Who made you smile today?"
+      ],
+      "es": [
+        "¿Quién te hizo sonreír hoy?"
+      ]
+    },
+    "featuredPosts": [
+      {
+        "id": "f-2026-12-01",
+        "name": {
+          "ko": "다은",
+          "en": "Emma",
+          "es": "Lucía"
+        },
+        "text": {
+          "ko": "첫눈이 왔어요.",
+          "en": "The first snow came.",
+          "es": "Cayó la primera nieve."
+        },
+        "kind": "today",
+        "date": "2026-12-01"
+      }
+    ],
+    "qtPlan": {
+      "2026-12-01": "요한복음 3:1-15",
+      "2026-12-02": "요한복음 3:16-21"
+    },
+    "qtPlanName": "생명의 삶 (두란노 허락을 받은 뒤에만 이름과 일정을 넣으세요)"
   }
 }

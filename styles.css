@@ -752,3 +752,27 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 .verse-ref{margin:0;font-size:13px;color:#A9AEB1}
 .verse-actions{display:flex;gap:18px;margin-top:8px}
 .verse-actions .link-btn{color:#9BA0A3}
+
+/* Bible read-through: one continuous, quiet page */
+.reader{position:absolute;inset:0;z-index:8;background:#FFFFFF;display:flex;flex-direction:column}
+.reader[hidden]{display:none}
+.reader-top{display:flex;align-items:center;gap:10px;padding:calc(14px + var(--safe-top)) 18px 10px;border-bottom:1px solid #F1F1F1}
+.reader-x{border:0;background:#F1F1F1;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--ink);cursor:pointer}
+.reader-x svg{width:18px;height:18px}
+.reader-title{flex:1;border:0;background:none;text-align:left;font:inherit;font-size:16px;font-weight:400;color:var(--ink);cursor:pointer;padding:6px 0}
+.reader-title::after{content:" ▾";color:#B4B8BA;font-size:12px}
+.reader-tr{font-size:12px;color:#A9AEB1}
+.reader-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 28px 40px}
+.rd-ch h2{font-family:var(--serif);font-weight:400;font-size:22px;color:#383D42;margin:28px 0 14px;letter-spacing:-.01em}
+.rd-ch p{margin:0;font-size:var(--read, 18px);line-height:2;font-weight:300;color:var(--ink);word-break:keep-all}
+.rd-ch sup{font-size:.58em;color:#B4B8BA;margin-right:3px;vertical-align:.55em;font-weight:400}
+.vs.hl{background:linear-gradient(transparent 62%, #F1F1F1 62%)}
+.reader-more{padding:30px 0 60px;text-align:center;font-size:13px;color:#A9AEB1;display:flex;flex-direction:column;align-items:center;gap:10px}
+.reader-foot{padding:10px 24px calc(14px + var(--safe-bottom));border-top:1px solid #F1F1F1;background:#FFFFFF}
+.reader-foot .primary svg{width:16px;height:16px;margin-right:6px;vertical-align:-3px}
+.rd-bar{height:4px;border-radius:4px;background:#F1F1F1;overflow:hidden;margin:6px 0 4px}
+.rd-bar span{display:block;height:100%;background:#C9CDD0;border-radius:4px}
+.chips.books,.chips.chapters{gap:8px}
+.ch-chip{min-width:44px;justify-content:center}
+.ch-chip.read{color:#A9AEB1}
+.devo-card .card-actions{display:flex;gap:10px;flex-wrap:wrap}

@@ -104,6 +104,7 @@
   P.App.addListener('backButton', () => {
     const sheet = document.getElementById('sheet');
     if (sheet && !sheet.hidden) { window.DailyThanks?.close(); return; }
+    if (window.DailyThanks?.closeReader()) return; // Bible reader open → back to the feed
     P.App.minimizeApp();
   });
 

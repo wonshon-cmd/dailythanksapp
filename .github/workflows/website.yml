@@ -10,6 +10,10 @@ on:
       - 'tools/build-site.py'
       - 'store/legal/**'
       - 'content/**'
+      - 'tools/fetch-bible.py'
+      - 'index.html'
+      - 'styles.css'
+      - 'app.js'
       - '.github/workflows/website.yml'
   workflow_dispatch:
 
@@ -35,6 +39,10 @@ jobs:
           python-version: '3.12'
       - name: Build site
         run: python3 tools/build-site.py
+      # The app reads Bible chapters from dailyjourney.org/bible/… (falls back to the getBible API if this step fails).
+      - name: Copy public-domain Bible text
+        continue-on-error: true
+        run: python3 tools/fetch-bible.py site/web/bible
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
