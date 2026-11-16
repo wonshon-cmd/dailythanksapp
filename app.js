@@ -3,7 +3,7 @@
 (() => {
 'use strict';
 
-const KEY = 'daily-thanks-v3'; // v3: seeds include share/save counts and a week of my notes
+const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week of my notes
 
 /* ---------------- strings ---------------- */
 const STR = {
@@ -280,16 +280,40 @@ const seed = {
   posts: [
     { id: 'pub1', name: { ko: '다은', en: 'Daeun' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 8, shares: 4, saves: 9,
       text: { ko: '이번 한 주도 직장에서 기쁨으로 하루하루를 보내게 하심에 감사합니다.', en: 'Thank you for a week of joyful days at work.' } },
+    { id: 'pub7', name: { ko: '민준', en: 'Minjun' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 31, shares: 2, saves: 6, extShares: 1,
+      text: { ko: '따뜻한 밥 한 끼. 그거면 충분한 날이었어요.', en: 'A warm meal. That was enough for today.' } },
+    { id: 'pub8', name: { ko: '영숙', en: 'Youngsook' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 57, shares: 14, saves: 22, extShares: 5,
+      text: { ko: '오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en: 'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.' } },
+    { id: 'pub9', name: { ko: '지훈', en: 'Jihoon' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 19, shares: 1, saves: 3,
+      text: { ko: '버스를 놓칠 뻔했는데 기사님이 기다려 주셨다. 감사합니다, 기사님.', en: 'I nearly missed the bus, but the driver waited for me. Thank you, sir.' } },
     { id: 'pub2', name: { ko: '서연', en: 'Seoyeon' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 24, shares: 11, saves: 15, extShares: 6,
       text: { ko: '잠깐 멈춰 보니, 집으로 돌아가는 길에도 예쁜 하늘이 있었어요. 평범한 하루를 아름답게 하심에 감사합니다.', en: 'I paused on my way home and found a lovely sky. Thank you for a beautiful ordinary day.' } },
-    { id: 'pub3', name: { ko: '지우', en: 'Jiwoo' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 17, shares: 6, saves: 8,
-      text: { ko: '하나님, 이번 주 만나는 사람들을 사랑과 인내로 대하게 하심에 감사합니다.', en: 'God, thank you for love and patience with everyone I meet this week.' } },
+    { id: 'pub10', name: { ko: '수아', en: 'Sua' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 26, shares: 3, saves: 11, extShares: 1,
+      text: { ko: '하나님, 내일 면접에서 떨지 않고 제 모습 그대로 보여 드리게 하실 줄 믿고 미리 감사드립니다.', en: 'God, I thank you ahead of time for helping me stay calm and simply be myself at tomorrow’s interview.' } },
+    { id: 'pub11', name: { ko: '현우', en: 'Hyunwoo' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 88, shares: 21, saves: 34, extShares: 9,
+      text: { ko: '항암 치료 여섯 번째 날. 몸은 힘들지만 매일 문자 보내 주는 친구들, 묵묵히 곁에 있어 주는 아내 덕분에 오늘도 버텼습니다. 아픈 중에도 감사할 게 이렇게 많네요.', en: 'Day six of chemo. My body is tired, but friends who text every day and my wife who quietly stays by me got me through today. Even in pain, there is so much to be thankful for.' } },
+    { id: 'pub12', name: { ko: '예준', en: 'Yejun' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 15, shares: 1, saves: 2,
+      text: { ko: '시험 끝! 끝까지 같이 공부해 준 친구들 고마워.', en: 'Exams done! Thanks to my friends who studied with me to the end.' } },
     { id: 'pub4', name: { ko: '하은', en: 'Haeun' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 12, shares: 3, saves: 5,
       text: { ko: '오늘 마음이 무거웠는데 친구가 먼저 안부를 물어봐 주었어요. 함께할 사람이 있어 감사합니다.', en: 'My heart was heavy, but a friend checked in first. Thank you for people by my side.' } },
-    { id: 'pub5', name: { ko: '준호', en: 'Junho' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 9, shares: 1, saves: 2,
+    { id: 'pub13', name: { ko: '은지', en: 'Eunji' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 42, shares: 6, saves: 18, extShares: 2,
+      text: { ko: '새벽 세 시에 깬 아기를 안고 창밖을 보다가, 이 작은 숨소리가 얼마나 큰 선물인지 다시 느꼈어요.', en: 'Holding my baby awake at 3 a.m. and looking out the window, I felt again what a great gift this tiny breathing is.' } },
+    { id: 'pub14', name: { ko: '상철', en: 'Sangcheol' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 37, shares: 5, saves: 9, extShares: 1,
+      text: { ko: '삼십 년 다닌 회사에서 마지막 출근을 했습니다. 함께 일한 동료들, 버틸 힘을 주신 하나님께 감사합니다.', en: 'My last day at the company I worked at for thirty years. Thank you to my colleagues, and to God who gave me the strength to keep going.' } },
+    { id: 'pub15', name: { ko: '소연', en: 'Soyeon' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 22, shares: 2, saves: 7,
+      text: { ko: '비 온 뒤 흙냄새.', en: 'The smell of earth after the rain.' } },
+    { id: 'pub3', name: { ko: '지우', en: 'Jiwoo' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 17, shares: 6, saves: 8,
+      text: { ko: '하나님, 이번 주 만나는 사람들을 사랑과 인내로 대하게 하심에 감사합니다.', en: 'God, thank you for love and patience with everyone I meet this week.' } },
+    { id: 'pub16', name: { ko: '태호', en: 'Taeho' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 49, shares: 9, saves: 16, extShares: 3,
+      text: { ko: '아버지와 오랜만에 둘이서 낚시를 갔어요. 고기는 한 마리도 못 잡았지만, 아버지가 젊은 시절 이야기를 처음 들려주셨어요. 그 시간이 잡은 고기보다 훨씬 귀했어요.', en: 'I went fishing alone with my dad for the first time in years. We didn’t catch a single fish, but he told me stories from his youth for the first time. That time was worth far more than any catch.' } },
+    { id: 'pub5', name: { ko: '준호', en: 'Junho' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 9, shares: 1, saves: 2,
       text: { ko: '사소하지만 당연하지 않았던 일. 따뜻한 물로 하루를 시작할 수 있었던 아침에 감사합니다.', en: 'Small, but never a given: thankful for a morning that began with warm water.' } },
+    { id: 'pub17', name: { ko: '미영', en: 'Miyoung' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 33, shares: 4, saves: 10, extShares: 1,
+      text: { ko: '가게에 오신 손님이 "덕분에 하루가 따뜻했다"는 쪽지를 남기고 가셨어요. 제가 오히려 감사해요.', en: 'A customer left a note: “You made my day warm.” I’m the one who’s grateful.' } },
     { id: 'pub6', name: { ko: '예린', en: 'Yerin' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 6, shares: 2, saves: 3,
       text: { ko: '하나님, 평범한 하루 가운데서 작은 은혜를 발견하게 하심에 감사합니다.', en: 'God, thank you for small graces in an ordinary day.' } },
+    { id: 'pub18', name: { ko: '도윤', en: 'Doyun' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 11, shares: 1, saves: 4,
+      text: { ko: '이번 주도 지켜 주실 줄 믿고, 미리 감사합니다.', en: 'Trusting you’ll keep me this week too — thank you in advance.' } },
     { id: 'gr1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'today', date: daysAgo(0), likes: 8, shares: 1, saves: 2,
       text: { ko: '평범하게 식탁에 앉아 이야기 나눌 수 있었던 저녁이 감사했어요.', en: 'Grateful for a simple evening of talking around the table.' } },
     { id: 'gr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'ahead', date: daysAgo(1), likes: 5, shares: 0, saves: 1,
@@ -315,7 +339,7 @@ const seed = {
     { id: 'mine6', mine: true, scope: 'private', kind: 'today', date: daysAgo(6), likes: 0,
       text: { ko: '천천히 걸으며 본 노을이 참 고마웠어요.', en: 'Grateful for the sunset I saw on a slow walk.' } }
   ],
-  liked: [], saved: [], hidden: [], blocked: [], reports: [], sharesGiven: 0, extSharesGiven: 0, celebrated: [],
+  liked: [], seen: [], saved: [], hidden: [], blocked: [], reports: [], sharesGiven: 0, extSharesGiven: 0, celebrated: [],
   groups: [{ id: 'g1', name: { ko: '은혜 소그룹', en: 'Grace Group' } }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family' } }],
   challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together' }, group: 'g1',
     members: [{ ko: '나', en: 'Me' }, { ko: '지은', en: 'Jieun' }, { ko: '민서', en: 'Minseo' }], start: '2026-11-14', days: [1, 2] }],
@@ -335,6 +359,7 @@ catch { data = clone(seed); }
 if (typeof data.sharesGiven !== 'number') data.sharesGiven = 0;
 if (!data.settings.features) data.settings.features = { groupShare: false, prayer: false, sermon: false };
 if (!Array.isArray(data.prayed)) data.prayed = [];
+if (!Array.isArray(data.seen)) data.seen = [];
 if (!Array.isArray(data.sermons)) data.sermons = [];
 if (typeof data.extSharesGiven !== 'number') data.extSharesGiven = 0;
 for (const k of ['liked', 'saved', 'hidden', 'blocked', 'reports', 'celebrated']) if (!Array.isArray(data[k])) data[k] = [];
@@ -350,7 +375,7 @@ function setSession(next) {
   try { next ? localStorage.setItem(SESSION_KEY, JSON.stringify(next)) : localStorage.removeItem(SESSION_KEY); } catch {}
   document.dispatchEvent(new CustomEvent('dt:session', { detail: next }));
 }
-const GATE_AFTER = 3; // posts shown before the "write today's thanks" card and the sign-in card
+const GATE_AFTER = 5; // posts shown before the "write today's thanks" card and the sign-in card
 
 const state = { tab: 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'public' }; // posts default to Everyone; switch to Only me any time // immersive: the app opens on a full-screen feed of people's thanks
 
@@ -411,6 +436,68 @@ function dayRow(ch) {
 }
 
 /* ---------------- screens ---------------- */
+/* ---------------- feed algorithm ----------------
+   Mix three streams so people keep reading (and then write):
+     close   — people near me: members of my groups, and authors I liked / saved / prayed for
+     popular — reached many people (likes, saves, shares), weighted by freshness
+     fresh   — newest
+   Unseen posts come first in every stream; the same author never appears twice in a row and
+   short / long posts alternate. The order is fixed per app open so the feed doesn't jump while reading.
+   (In production this runs on the server with real signals; same idea.) */
+const daysOld = p => Math.max(0, Math.round((new Date(today()) - new Date(p.date)) / 864e5));
+function closeAuthors() {
+  const set = new Set();
+  data.posts.filter(p => p.scope === 'group' && !p.mine && data.groups.some(g => g.id === p.group)).forEach(p => set.add(authorKey(p)));
+  [...data.liked, ...data.saved, ...(data.prayed || [])].forEach(id => { const p = data.posts.find(x => x.id === id); if (p && !p.mine) set.add(authorKey(p)); });
+  return set;
+}
+function rankFeed(posts) {
+  const seen = new Set(data.seen || []), close = closeAuthors();
+  const unseenFirst = list => list.filter(p => !seen.has(p.id)).concat(list.filter(p => seen.has(p.id)));
+  const byDate = (a, b) => daysOld(a) - daysOld(b);
+  const streams = [
+    unseenFirst([...posts].sort((a, b) => scoreOf(b) * Math.pow(.8, daysOld(b)) - scoreOf(a) * Math.pow(.8, daysOld(a)))), // popular
+    unseenFirst(posts.filter(p => close.has(authorKey(p)) || p.scope === 'group').sort(byDate)),                          // close
+    unseenFirst([...posts].sort(byDate))                                                                                     // fresh
+  ];
+  const out = [], used = new Set(); let turn = 0;
+  const isLongPost = p => L(p.text).length > 60;
+  while (out.length < posts.length) {
+    const prev = out[out.length - 1];
+    let pick = null;
+    for (let k = 0; k < 3 && !pick; k++) {
+      const list = streams[(turn + k) % 3];
+      const ok = p => !used.has(p.id) && (!prev || (authorKey(p) !== authorKey(prev) && (out.length < 2 || isLongPost(p) !== isLongPost(prev) || list.filter(x => !used.has(x.id)).length < 3)));
+      pick = list.find(ok) || null;
+    }
+    if (!pick) pick = posts.find(p => !used.has(p.id)); // relax constraints at the end
+    out.push(pick); used.add(pick.id); turn++;
+  }
+  return out;
+}
+// Freeze the order for this app session; new posts (if any) are added at the front.
+function rankedOnce(key, posts) {
+  state.order = state.order || {};
+  const ids = new Set(posts.map(p => p.id));
+  if (!state.order[key]) state.order[key] = rankFeed(posts).map(p => p.id);
+  const known = new Set(state.order[key]);
+  const fresh = posts.filter(p => !known.has(p.id));
+  return fresh.concat(state.order[key].filter(id => ids.has(id)).map(id => posts.find(p => p.id === id)));
+}
+// Remember what has been seen (used to put unseen posts first next time).
+let seenTimer;
+function trackSeen() {
+  const sc = $('#feed-scroll'); if (!sc) return;
+  const mark = () => {
+      const el = sc.children[Math.round(sc.scrollTop / sc.clientHeight)];
+      const id = el?.dataset?.post; if (!id) return;
+      data.seen = data.seen || [];
+      if (!data.seen.includes(id)) { data.seen.push(id); if (data.seen.length > 500) data.seen.shift(); save(); }
+  };
+  sc.addEventListener('scroll', () => { clearTimeout(seenTimer); seenTimer = setTimeout(mark, 400); }, { passive: true });
+  setTimeout(() => { if (document.body.contains(sc)) mark(); }, 2500); // the first post counts once it has been on screen a moment
+}
+
 const wroteToday = () => data.posts.some(p => p.mine && p.date === today());
 /* Public feed order: 3 posts → "write today's thanks" card (until written today) → sign-in card (until signed in) → the rest. */
 function feedSequence(posts) {
@@ -515,7 +602,7 @@ function renderFeed(keepIndex = 0) {
     </div>
     <div class="feed-scroll" id="feed-scroll">
       ${posts.length ? (isGroup ? posts.map((p, i) => postTemplate(p, i, posts.length)).join('')
-        : feedSequence(posts).map(it => it.type === 'post' ? postTemplate(it.p, posts.indexOf(it.p), posts.length) : cardFor(it)).join(''))
+        : feedSequence(rankedOnce('public', posts)).map(it => it.type === 'post' ? postTemplate(it.p, rankedOnce('public', posts).indexOf(it.p), posts.length) : cardFor(it)).join(''))
         : `<div class="empty">${t('feed.empty')}<br><br><button class="primary" data-action="compose">${t('top.write')}</button></div>`}
     </div>
     ${posts.length > 1 ? `<button class="next-fab" data-action="next" aria-label="${t('aria.next')}">${icon('down')}</button>` : ''}`;
@@ -579,13 +666,14 @@ function renderJournal() {
 
 /* Full-screen feed: only the gratitude text, with ♡ count, share and close on the right. */
 function renderImmersive(keepIndex = 0) {
-  const posts = data.posts.filter(p => p.scope === 'public' && !p.mine && visible(p));
+  const pool = data.posts.filter(p => !p.mine && visible(p) && (p.scope === 'public' || (p.scope === 'group' && data.groups.some(g => g.id === p.group))));
+  const posts = rankedOnce('imm', pool);
   main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${feedSequence(posts).map(it => {
     if (it.type !== 'post') return cardFor(it);
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
-        <p class="imm-by">${esc(L(p.name))} · ${esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
+        <p class="imm-by">${esc(L(p.name))} · ${p.scope === 'group' ? esc(groupName(p.group)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}<span>${p.likes + (liked ? 1 : 0)}</span></button>
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
@@ -600,6 +688,7 @@ function renderImmersive(keepIndex = 0) {
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
   bindGateForm();
   if (sc && $('#imm-nudge')) sc.addEventListener('scroll', hideNudge, { passive: true });
+  trackSeen();
 }
 
 /* First visit only: a faint "scroll for more" hint that goes away after the first scroll, for good. */

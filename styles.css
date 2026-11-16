@@ -606,3 +606,4 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .next-fab{background:var(--dark);box-shadow:0 4px 12px #444C5326}
 .primary{background:var(--dark)}
 .toast{background:#444C53}
+.imm-scroll .card-mark{display:none}
