@@ -46,6 +46,9 @@
   const today = () => new Date().toLocaleDateString('en-CA');
   let features = { passage: false, sermon: false };
 
+  /* ---------- 0) remote content (content/content.json) ---------- */
+  if (DT.applyContent) api('GET', '/api/content').then(c => DT.applyContent(c)).catch(() => {});
+
   /* ---------- 1) server sync ---------- */
   let syncTimer;
   document.addEventListener('dt:save', e => {

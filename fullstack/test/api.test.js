@@ -126,3 +126,12 @@ test("account deletion removes the user's data", async () => {
   assert.equal((await call('GET', '/api/state', null, { 'x-user-id': 'gone' })).body.state, null);
   assert.equal((await call('GET', '/api/passages', null, { 'x-user-id': 'gone' })).body.passages.length, 0);
 });
+
+test('serves editable app content without the _help/_examples keys', async () => {
+  const call = await start({});
+  const res = await call('GET', '/api/content');
+  assert.equal(res.status, 200);
+  assert.ok(Array.isArray(res.body.tagline));
+  assert.equal(res.body.supportEmail, 'hi@dailyjourney.org');
+  assert.ok(!('_help' in res.body) && !('_examples' in res.body));
+});

@@ -117,7 +117,7 @@ const STR = {
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
-    'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -232,7 +232,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -605,6 +605,7 @@ const STR = {
     'login.apple': 'Continuar con Apple',
     'login.google': 'Continuar con Google',
     'login.phone': 'Continuar con número de teléfono',
+    'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -783,8 +784,8 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
-const LEGAL_BASE = 'https://dailyapp.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
-const SUPPORT_EMAIL = 'hi@dailyjourney.org';
+let LEGAL_BASE = 'https://dailyapp.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
+let SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
 try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
@@ -810,6 +811,61 @@ function save() {
   try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { toast(t('toast.noStore')); }
   document.dispatchEvent(new CustomEvent('dt:save', { detail: data }));
 }
+
+/* ---------------- remote content: change text without a store update ----------------
+   Text that changes often (tagline, daily questions, notices, featured posts, which optional features exist,
+   links, minimum app version) lives in content/content.json on the server. At launch the app uses the copy it
+   saved last time, then downloads a fresh one from CONTENT_URL. Anything missing falls back to built-in text. */
+const CONTENT_KEY = 'daily-thanks-content';
+const CONTENT_URL = window.DT_CONTENT_URL || null; // native build: e.g. 'https://api.dailyapp.org/api/content'
+let CONTENT = {};
+const bootAt = Date.now();
+const verNum = v => String(v || '0').split('.').slice(0, 3).reduce((a, n) => a * 1000 + (parseInt(n, 10) || 0), 0);
+const safeEm = html => esc(String(html)).replace(/&lt;(\/?)em&gt;/g, '<$1em>');
+function syncFeatured() {
+  const list = (Array.isArray(CONTENT.featuredPosts) ? CONTENT.featuredPosts : []).filter(f => f && f.id && f.text);
+  const ids = new Set(list.map(f => f.id));
+  data.posts = data.posts.filter(p => !p.featured || ids.has(p.id));
+  list.forEach(f => {
+    const ex = data.posts.find(p => p.id === f.id);
+    if (ex) { Object.assign(ex, { name: f.name, text: f.text, kind: f.kind || ex.kind }); return; }
+    data.posts.unshift({ likes: 0, shares: 0, saves: 0, kind: 'today', date: today(), ...f, scope: 'public', featured: true, mine: false });
+  });
+}
+function applyContent(c, persist = true) {
+  if (!c || typeof c !== 'object' || Array.isArray(c)) return false;
+  CONTENT = c;
+  if (persist) try { localStorage.setItem(CONTENT_KEY, JSON.stringify(c)); } catch {}
+  if (typeof c.legalBase === 'string' && /^https:\/\/\S+$/.test(c.legalBase)) LEGAL_BASE = c.legalBase.replace(/\/$/, '');
+  if (typeof c.supportEmail === 'string' && /^\S+@\S+\.\S+$/.test(c.supportEmail)) SUPPORT_EMAIL = c.supportEmail;
+  syncFeatured();
+  const tag = document.querySelector('#splash .splash-tag');
+  if (tag && Array.isArray(c.tagline) && c.tagline.length) tag.innerHTML = c.tagline.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join('');
+  const copy = document.querySelector('#splash .splash-copy');
+  if (copy && typeof c.copyright === 'string') copy.textContent = c.copyright;
+  return true;
+}
+// One-time messages from the content file: a notice (shown once per id) and "please update" when this build is too old.
+let contentPromptsDone = false;
+function contentPrompts() {
+  if (contentPromptsDone) return;
+  const c = CONTENT;
+  if (c.minVersion && verNum(APP_VERSION) < verNum(c.minVersion)) {
+    contentPromptsDone = true;
+    const ios = /iP(hone|ad|od)/.test(navigator.userAgent), link = c.storeLinks?.[ios ? 'ios' : 'android'];
+    showSheet({ title: t('upd.title'), body: `<p class="hint">${t('upd.body')}</p>${link ? `<div class="sheet-actions"><a class="primary" href="${esc(link)}" target="_blank" rel="noopener">${t('upd.go')}</a></div>` : ''}` });
+    return;
+  }
+  const n = c.notice;
+  if (n && n.id && (!n.until || n.until >= today())) {
+    let seen = null; try { seen = localStorage.getItem('daily-thanks-notice'); } catch {}
+    const text = n[lang()] || n.en;
+    if (seen !== n.id && text) { contentPromptsDone = true; toast(text); try { localStorage.setItem('daily-thanks-notice', n.id); } catch {} }
+  }
+}
+const afterContent = () => setTimeout(contentPrompts, Math.max(0, 4600 - (Date.now() - bootAt)));
+try { applyContent(JSON.parse(localStorage.getItem(CONTENT_KEY)), false); } catch {}
+
 function toast(text) { const el = $('#toast'); el.textContent = text; el.hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => el.hidden = true, 2600); }
 
 /* ---------------- helpers ---------------- */
@@ -987,7 +1043,8 @@ function renderKeep(selector) {
 
 // Posts the viewer hid, or whose author they blocked, never appear in any feed.
 const authorKey = p => p.mine ? 'me' : String(L(p.name) && (p.name.ko || p.name));
-const featureOn = k => !!data.settings.features?.[k];
+const featureAvailable = k => CONTENT.features?.[k] !== false;
+const featureOn = k => featureAvailable(k) && !!data.settings.features?.[k];
 const visible = p => !p.status && !(p.kind === 'prayer' && !featureOn('prayer')) && p.kind !== 'share' && !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p)); // 'review' / 'rejected' posts stay off feeds
 function feedPosts() {
   return data.posts.filter(visible).filter(p => state.feed === 'public' ? p.scope === 'public' : p.scope === 'group' && p.group === state.group);
@@ -1415,7 +1472,7 @@ function settings() {
       <div class="list-row static"><span class="row-icon">${icon('info')}</span><span class="row-main"><span class="row-title">${t('s.version')}</span></span><span class="row-end row-sub">${APP_VERSION}</span></div>
     </div>
     <p class="field-label">${t('ft.title')}</p>
-    <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic']].map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
+    <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic']].filter(([k]) => featureAvailable(k)).map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
     <p class="hint">${t('ft.hint')}</p>
     <p class="about">${icon('info')}<span>${t('s.about')}</span></p>` });
 }
@@ -1517,7 +1574,7 @@ const DAILY_Q = {
        'Did someone help you today?', 'What is one thing at home you’re thankful for?', 'What did you learn today?', 'What gratitude did you find in something hard?', 'What are you thankful for right now?', 'What is one reason to look forward to tomorrow?', 'Who has stayed by your side for a long time?']
 };
 const dayOfYear = () => { const d = new Date(), s0 = new Date(d.getFullYear(), 0, 0); return Math.floor((d - s0) / 864e5); };
-const dailyQ = () => { const list = DAILY_Q[lang()] || DAILY_Q.en; return list[dayOfYear() % list.length]; };
+const dailyQ = () => { const remote = CONTENT.dailyQuestions?.[lang()]; const list = Array.isArray(remote) && remote.length ? remote : (DAILY_Q[lang()] || DAILY_Q.en); return list[dayOfYear() % list.length]; };
 const dailyQLine = () => `<p class="daily-q">${icon('sparkle')}<span>${t('dq.label')} · ${esc(dailyQ())}</span></p>`;
 
 // A past note resurfaces: exactly a week / month / year ago if there is one, otherwise the oldest of the last weeks.
@@ -2107,8 +2164,12 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 window.DailyThanks = {
   getData: () => data,
   replaceData: next => { if (next && Array.isArray(next.posts)) { data = next; try { localStorage.setItem(KEY, JSON.stringify(data)); } catch {} applyStatic(); render(); } },
-  lang, t, esc, icon, showSheet, close, toast, render: () => render(), getSession: () => session
+  lang, t, esc, icon, showSheet, close, toast, render: () => render(), getSession: () => session,
+  // remote content: the server add-on (or the native shell) passes the downloaded content.json here
+  applyContent: c => { if (applyContent(c)) { save(); render(); afterContent(); } }, getContent: () => CONTENT
 };
+if (CONTENT_URL) fetch(CONTENT_URL, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(c => window.DailyThanks.applyContent(c)).catch(() => {});
+afterContent();
 
 /* Full screen: hides the browser's bars (Fullscreen API). iPhone Safari has no API for pages,
    so there we explain "Add to Home Screen", which opens the app full screen. */

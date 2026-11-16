@@ -11,6 +11,7 @@ import { flaggedTerms } from './moderation.js';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const FRONTEND_DIR = path.resolve(here, '../..');           // the front-end app at the repo root
 const PUBLIC_DIR = path.resolve(here, '../public');           // full-stack add-ons
+const CONTENT_FILE = path.resolve(here, '../../content/content.json'); // editable app text (no store update needed)
 const STATIC = {                                              // whitelist: nothing else on disk is served
   '/styles.css': [FRONTEND_DIR, 'styles.css', 'text/css; charset=utf-8'],
   '/app.js': [FRONTEND_DIR, 'app.js', 'text/javascript; charset=utf-8'],
@@ -57,6 +58,12 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   /* ---------- core ---------- */
   route('GET', '/api/health', () => ({ ok: true }));
   route('GET', '/api/config', () => ({ features: config.features }));
+  // Remote content: read on every request, so editing content/content.json takes effect at the next app launch.
+  route('GET', '/api/content', () => {
+    let c; try { c = JSON.parse(fs.readFileSync(config.contentFile || CONTENT_FILE, 'utf8')); } catch { throw new HttpError(503, 'content_unavailable'); }
+    for (const k of Object.keys(c)) if (k.startsWith('_')) delete c[k];
+    return c;
+  });
   route('GET', '/api/state', ({ user }) => ({ state: store.getState(user) }));
   route('PUT', '/api/state', async ({ req, user }) => {
     const body = await readJson(req);
