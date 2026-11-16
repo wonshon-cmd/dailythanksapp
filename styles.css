@@ -446,3 +446,28 @@ html[lang="en"] .post-text{font-size:calc(var(--read) * .92);line-height:1.7}
 .cel-mark{box-shadow:0 0 28px #FFD66B66}
 .mini-dots i.on{background:#EBB43C}
 .cel-dots span.on{background:#EBB43C;border-color:#EBB43C}
+
+/* ---------- reading position: a little above the middle (block centred at ~40% of the screen) ---------- */
+.post.imm .post-body,.card-inner{justify-content:center;padding-top:24px;padding-bottom:20cqh}
+.post-body{display:flex;flex-direction:column;justify-content:center;padding-top:12px;padding-bottom:8cqh}
+@media (max-height:700px){.post.imm .post-body,.card-inner{padding-top:16px;padding-bottom:14cqh}.post-body{padding-top:8px;padding-bottom:4cqh}}
+
+/* light accent v3: subtle and fresh — pale, clean butter-yellow, softer glow */
+.inf-bar span{background:linear-gradient(90deg,#F4E7B5,#E5CB75)}
+.inf-level .ico,.inf-hero-icon,.cel-mark{color:#D2AF4E}
+.inf-hero-icon,.cel-mark{background:#FBF6E6}
+.inf-hero-icon{box-shadow:0 0 0 6px #FDFAF1,0 0 18px #F3E2A84D}
+.cel-mark{box-shadow:0 0 20px #F3E2A84D}
+.mini-dots i.on{background:#E5CB75}
+.cel-dots span.on{background:#E2C56C;border-color:#E2C56C}
+.top-mark{color:#C2A24E}
+
+/* light accent v4: almost colourless — warm greys with only a hint of light */
+.inf-bar span{background:linear-gradient(90deg,#ECE7DA,#D9D1BA)}
+.inf-level .ico,.inf-hero-icon,.cel-mark{color:#8F8B80}
+.inf-hero-icon,.cel-mark{background:#F7F5EF}
+.inf-hero-icon{box-shadow:0 0 0 6px #FBFAF6,0 0 16px #F1E7C433}
+.cel-mark{box-shadow:0 0 18px #F1E7C433}
+.mini-dots i.on{background:#CFC7AF}
+.cel-dots span.on{background:#F2EFE6;border-color:#DDD7C6;color:var(--ink)}
+.top-mark{color:#A29B87}
