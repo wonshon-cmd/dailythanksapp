@@ -49,8 +49,8 @@ Puedes acceder, corregir o eliminar tus datos:
 
 - **En la app:** Ajustes › Acerca de › Eliminar cuenta
 - **En la web:** dailyapp.org/delete-account
-- **Por correo:** [support@dailyapp.org]
+- **Por correo:** hi@dailyjourney.org
 
 ## 6. Contacto
 
-Daily Journey, Inc. · [support@dailyapp.org]
+Daily Journey, Inc. · hi@dailyjourney.org

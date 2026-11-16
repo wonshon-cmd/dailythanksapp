@@ -117,7 +117,7 @@ const STR = {
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
-    'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -232,7 +232,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -605,6 +605,7 @@ const STR = {
     'login.apple': 'Continuar con Apple',
     'login.google': 'Continuar con Google',
     'login.phone': 'Continuar con número de teléfono',
+    'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
     'phone.title': 'Inicia sesión con tu teléfono',
@@ -685,53 +686,53 @@ const icon = name => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${
 const daysAgo = n => { const d = new Date(); d.setDate(d.getDate() - n); return d.toLocaleDateString('en-CA'); };
 const seed = {
   posts: [
-    { id: 'pub1', name: { ko: '다은', en: 'Daeun' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 8, shares: 4, saves: 9,
+    { id: 'pub1', name: { ko: '다은', en: 'Emma', es: 'Lucía' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 8, shares: 4, saves: 9,
       text: { ko: '이번 한 주도 직장에서 기쁨으로 하루하루를 보내게 하심에 감사합니다.', en: 'Thank you for a week of joyful days at work.', es: 'Gracias por una semana de días alegres en el trabajo.' } },
-    { id: 'pub7', name: { ko: '민준', en: 'Minjun' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 31, shares: 2, saves: 6, extShares: 1,
+    { id: 'pub7', name: { ko: '민준', en: 'Noah', es: 'Mateo' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 31, shares: 2, saves: 6, extShares: 1,
       text: { ko: '따뜻한 밥 한 끼. 그거면 충분한 날이었어요.', en: 'A warm meal. That was enough for today.', es: 'Una comida caliente. Eso fue suficiente hoy.' } },
-    { id: 'pub8', name: { ko: '영숙', en: 'Youngsook' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 57, shares: 14, saves: 22, extShares: 5,
+    { id: 'pub8', name: { ko: '영숙', en: 'Margaret', es: 'Carmen' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 57, shares: 14, saves: 22, extShares: 5,
       text: { ko: '오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en: 'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.', es: 'Hoy mi nieto me dijo por primera vez, clarito, “Abuela, te quiero”. Fue lo más bonito que he escuchado en mi vida. Gracias por dejarme vivir tanto como para oírlo.' } },
-    { id: 'pub9', name: { ko: '지훈', en: 'Jihoon' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 19, shares: 1, saves: 3,
+    { id: 'pub9', name: { ko: '지훈', en: 'Ethan', es: 'Diego' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 19, shares: 1, saves: 3,
       text: { ko: '버스를 놓칠 뻔했는데 기사님이 기다려 주셨다. 감사합니다, 기사님.', en: 'I nearly missed the bus, but the driver waited for me. Thank you, sir.', es: 'Casi pierdo el autobús, pero el conductor me esperó. Gracias, señor.' } },
-    { id: 'pub2', name: { ko: '서연', en: 'Seoyeon' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 24, shares: 11, saves: 15, extShares: 6,
+    { id: 'pub2', name: { ko: '서연', en: 'Olivia', es: 'Sofía' }, scope: 'public', kind: 'today', date: daysAgo(0), likes: 24, shares: 11, saves: 15, extShares: 6,
       text: { ko: '잠깐 멈춰 보니, 집으로 돌아가는 길에도 예쁜 하늘이 있었어요. 평범한 하루를 아름답게 하심에 감사합니다.', en: 'I paused on my way home and found a lovely sky. Thank you for a beautiful ordinary day.', es: 'Me detuve camino a casa y encontré un cielo precioso. Gracias por un día común tan bonito.' } },
-    { id: 'pub10', name: { ko: '수아', en: 'Sua' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 26, shares: 3, saves: 11, extShares: 1,
+    { id: 'pub10', name: { ko: '수아', en: 'Lily', es: 'Valentina' }, scope: 'public', kind: 'ahead', date: daysAgo(0), likes: 26, shares: 3, saves: 11, extShares: 1,
       text: { ko: '하나님, 내일 면접에서 떨지 않고 제 모습 그대로 보여 드리게 하실 줄 믿고 미리 감사드립니다.', en: 'God, I thank you ahead of time for helping me stay calm and simply be myself at tomorrow’s interview.', es: 'Dios, te doy gracias de antemano porque mañana en la entrevista estaré en calma y seré yo mismo.' } },
-    { id: 'pub11', name: { ko: '현우', en: 'Hyunwoo' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 88, shares: 21, saves: 34, extShares: 9,
+    { id: 'pub11', name: { ko: '현우', en: 'James', es: 'Andrés' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 88, shares: 21, saves: 34, extShares: 9,
       text: { ko: '항암 치료 여섯 번째 날. 몸은 힘들지만 매일 문자 보내 주는 친구들, 묵묵히 곁에 있어 주는 아내 덕분에 오늘도 버텼습니다. 아픈 중에도 감사할 게 이렇게 많네요.', en: 'Day six of chemo. My body is tired, but friends who text every day and my wife who quietly stays by me got me through today. Even in pain, there is so much to be thankful for.', es: 'Sexto día de quimioterapia. Mi cuerpo está cansado, pero los amigos que me escriben cada día y mi esposa, que está a mi lado en silencio, me sostuvieron hoy. Aun en el dolor, hay tanto que agradecer.' } },
-    { id: 'pub12', name: { ko: '예준', en: 'Yejun' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 15, shares: 1, saves: 2,
+    { id: 'pub12', name: { ko: '예준', en: 'Lucas', es: 'Tomás' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 15, shares: 1, saves: 2,
       text: { ko: '시험 끝! 끝까지 같이 공부해 준 친구들 고마워.', en: 'Exams done! Thanks to my friends who studied with me to the end.', es: '¡Terminaron los exámenes! Gracias, amigos, por estudiar conmigo hasta el final.' } },
-    { id: 'pub4', name: { ko: '하은', en: 'Haeun' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 12, shares: 3, saves: 5,
+    { id: 'pub4', name: { ko: '하은', en: 'Grace', es: 'Isabel' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 12, shares: 3, saves: 5,
       text: { ko: '오늘 마음이 무거웠는데 친구가 먼저 안부를 물어봐 주었어요. 함께할 사람이 있어 감사합니다.', en: 'My heart was heavy, but a friend checked in first. Thank you for people by my side.', es: 'Tenía el corazón pesado, pero un amigo me escribió primero. Gracias por las personas que están a mi lado.' } },
-    { id: 'pub13', name: { ko: '은지', en: 'Eunji' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 42, shares: 6, saves: 18, extShares: 2,
+    { id: 'pub13', name: { ko: '은지', en: 'Hannah', es: 'Camila' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 42, shares: 6, saves: 18, extShares: 2,
       text: { ko: '새벽 세 시에 깬 아기를 안고 창밖을 보다가, 이 작은 숨소리가 얼마나 큰 선물인지 다시 느꼈어요.', en: 'Holding my baby awake at 3 a.m. and looking out the window, I felt again what a great gift this tiny breathing is.', es: 'Con mi bebé despierto a las tres de la mañana, mirando por la ventana, volví a sentir el gran regalo que es esa respiración tan pequeña.' } },
-    { id: 'pub14', name: { ko: '상철', en: 'Sangcheol' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 37, shares: 5, saves: 9, extShares: 1,
+    { id: 'pub14', name: { ko: '상철', en: 'Robert', es: 'Javier' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 37, shares: 5, saves: 9, extShares: 1,
       text: { ko: '삼십 년 다닌 회사에서 마지막 출근을 했습니다. 함께 일한 동료들, 버틸 힘을 주신 하나님께 감사합니다.', en: 'My last day at the company I worked at for thirty years. Thank you to my colleagues, and to God who gave me the strength to keep going.', es: 'Mi último día en la empresa donde trabajé treinta años. Gracias a mis compañeros, y a Dios, que me dio fuerzas para seguir.' } },
-    { id: 'pub15', name: { ko: '소연', en: 'Soyeon' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 22, shares: 2, saves: 7,
+    { id: 'pub15', name: { ko: '소연', en: 'Chloe', es: 'Elena' }, scope: 'public', kind: 'today', date: daysAgo(1), likes: 22, shares: 2, saves: 7,
       text: { ko: '비 온 뒤 흙냄새.', en: 'The smell of earth after the rain.', es: 'El olor de la tierra después de la lluvia.' } },
-    { id: 'pub3', name: { ko: '지우', en: 'Jiwoo' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 17, shares: 6, saves: 8,
+    { id: 'pub3', name: { ko: '지우', en: 'Mia', es: 'Daniela' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 17, shares: 6, saves: 8,
       text: { ko: '하나님, 이번 주 만나는 사람들을 사랑과 인내로 대하게 하심에 감사합니다.', en: 'God, thank you for love and patience with everyone I meet this week.', es: 'Dios, gracias por el amor y la paciencia con cada persona que encuentre esta semana.' } },
-    { id: 'pub16', name: { ko: '태호', en: 'Taeho' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 49, shares: 9, saves: 16, extShares: 3,
+    { id: 'pub16', name: { ko: '태호', en: 'Daniel', es: 'Pablo' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 49, shares: 9, saves: 16, extShares: 3,
       text: { ko: '아버지와 오랜만에 둘이서 낚시를 갔어요. 고기는 한 마리도 못 잡았지만, 아버지가 젊은 시절 이야기를 처음 들려주셨어요. 그 시간이 잡은 고기보다 훨씬 귀했어요.', en: 'I went fishing alone with my dad for the first time in years. We didn’t catch a single fish, but he told me stories from his youth for the first time. That time was worth far more than any catch.', es: 'Fui a pescar a solas con mi papá por primera vez en años. No pescamos nada, pero por primera vez me contó historias de su juventud. Ese tiempo valió mucho más que cualquier pesca.' } },
-    { id: 'pub5', name: { ko: '준호', en: 'Junho' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 9, shares: 1, saves: 2,
+    { id: 'pub5', name: { ko: '준호', en: 'Ryan', es: 'Martín' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 9, shares: 1, saves: 2,
       text: { ko: '사소하지만 당연하지 않았던 일. 따뜻한 물로 하루를 시작할 수 있었던 아침에 감사합니다.', en: 'Small, but never a given: thankful for a morning that began with warm water.', es: 'Pequeño, pero nunca obvio: gracias por una mañana que empezó con agua caliente.' } },
-    { id: 'pub17', name: { ko: '미영', en: 'Miyoung' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 33, shares: 4, saves: 10, extShares: 1,
+    { id: 'pub17', name: { ko: '미영', en: 'Susan', es: 'Rosa' }, scope: 'public', kind: 'today', date: daysAgo(2), likes: 33, shares: 4, saves: 10, extShares: 1,
       text: { ko: '가게에 오신 손님이 "덕분에 하루가 따뜻했다"는 쪽지를 남기고 가셨어요. 제가 오히려 감사해요.', en: 'A customer left a note: “You made my day warm.” I’m the one who’s grateful.', es: 'Una clienta dejó una nota: “Gracias a ti mi día fue cálido”. La agradecida soy yo.' } },
-    { id: 'pub6', name: { ko: '예린', en: 'Yerin' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 6, shares: 2, saves: 3,
+    { id: 'pub6', name: { ko: '예린', en: 'Ava', es: 'Paula' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 6, shares: 2, saves: 3,
       text: { ko: '하나님, 평범한 하루 가운데서 작은 은혜를 발견하게 하심에 감사합니다.', en: 'God, thank you for small graces in an ordinary day.', es: 'Dios, gracias por las pequeñas gracias en un día común.' } },
-    { id: 'pub18', name: { ko: '도윤', en: 'Doyun' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 11, shares: 1, saves: 4,
+    { id: 'pub18', name: { ko: '도윤', en: 'Owen', es: 'Hugo' }, scope: 'public', kind: 'ahead', date: daysAgo(2), likes: 11, shares: 1, saves: 4,
       text: { ko: '이번 주도 지켜 주실 줄 믿고, 미리 감사합니다.', en: 'Trusting you’ll keep me this week too — thank you in advance.', es: 'Confiando en que me cuidarás esta semana también: gracias de antemano.' } },
-    { id: 'gr1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'today', date: daysAgo(0), likes: 8, shares: 1, saves: 2,
+    { id: 'gr1', name: { ko: '지은', en: 'Sarah', es: 'María' }, scope: 'group', group: 'g1', kind: 'today', date: daysAgo(0), likes: 8, shares: 1, saves: 2,
       text: { ko: '평범하게 식탁에 앉아 이야기 나눌 수 있었던 저녁이 감사했어요.', en: 'Grateful for a simple evening of talking around the table.', es: 'Agradecida por una cena sencilla conversando alrededor de la mesa.' } },
-    { id: 'gr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'ahead', date: daysAgo(1), likes: 5, shares: 0, saves: 1,
+    { id: 'gr2', name: { ko: '민서', en: 'Rachel', es: 'Laura' }, scope: 'group', group: 'g1', kind: 'ahead', date: daysAgo(1), likes: 5, shares: 0, saves: 1,
       text: { ko: '하나님, 이번 한 주도 서로를 이해하는 마음을 주심에 감사합니다.', en: 'God, thank you for hearts that understand each other this week.', es: 'Dios, gracias por corazones que se entienden esta semana.' } },
-    { id: 'pr1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(0), likes: 0, prayedBy: [{ ko: '민서', en: 'Minseo' }, { ko: '하은', en: 'Haeun' }],
+    { id: 'pr1', name: { ko: '지은', en: 'Sarah', es: 'María' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(0), likes: 0, prayedBy: [{ ko: '민서', en: 'Rachel', es: 'Laura' }, { ko: '하은', en: 'Grace', es: 'Isabel' }],
       text: { ko: '이번 주 어머니 수술이 잘 마무리되도록 기도 부탁드려요.', en: 'Please pray that my mom’s surgery this week goes well.', es: 'Por favor, oren para que la cirugía de mi mamá salga bien esta semana.' } },
-    { id: 'pr2', name: { ko: '민서', en: 'Minseo' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(1), likes: 0, prayedBy: [{ ko: '지은', en: 'Jieun' }],
+    { id: 'pr2', name: { ko: '민서', en: 'Rachel', es: 'Laura' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(1), likes: 0, prayedBy: [{ ko: '지은', en: 'Sarah', es: 'María' }],
       text: { ko: '새 직장에서 좋은 동료들을 만나게 해 주세요.', en: 'Pray that I find good coworkers at my new job.', es: 'Oren para que encuentre buenos compañeros en mi nuevo trabajo.' } },
-    { id: 'gs1', name: { ko: '지은', en: 'Jieun' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(1), likes: 3,
+    { id: 'gs1', name: { ko: '지은', en: 'Sarah', es: 'María' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(1), likes: 3,
       text: { ko: '바쁜 출근길에도 하늘을 올려다보는 여유를 주셔서 감사했어요.', en: 'I was grateful for a moment to look up at the sky on a busy commute.', es: 'Agradecí un momento para mirar el cielo en un trayecto apurado.' } },
-    { id: 'gs2', name: { ko: '하은', en: 'Haeun' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(0), likes: 2,
+    { id: 'gs2', name: { ko: '하은', en: 'Grace', es: 'Isabel' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(0), likes: 2,
       text: { ko: '아이와 함께 저녁 기도를 드릴 수 있었던 순간이요.', en: 'The moment I could pray with my child at dinner.', es: 'El momento en que pude orar con mi hijo en la cena.' } },
     { id: 'mine1', mine: true, scope: 'private', kind: 'today', date: daysAgo(1), likes: 0,
       text: { ko: '오늘도 새롭게 시작할 수 있는 아침을 주셔서 감사합니다.', en: 'Thank you for a morning to begin again today.' } },
@@ -749,7 +750,7 @@ const seed = {
   liked: [], seen: [], saved: [], hidden: [], blocked: [], reports: [], sharesGiven: 0, extSharesGiven: 0, celebrated: [],
   groups: [{ id: 'g1', name: { ko: '은혜 소그룹', en: 'Grace Group', es: 'Grupo Gracia' } }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family', es: 'Nuestra familia' } }],
   challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together', es: 'Encontrando gratitud juntos' }, group: 'g1',
-    members: [{ ko: '나', en: 'Me' }, { ko: '지은', en: 'Jieun' }, { ko: '민서', en: 'Minseo' }], start: '2026-11-14', days: [1, 2] }],
+    members: [{ ko: '나', en: 'Me', es: 'Yo' }, { ko: '지은', en: 'Sarah', es: 'María' }, { ko: '민서', en: 'Rachel', es: 'Laura' }], start: '2026-11-14', days: [1, 2] }],
   settings: { lang: null, notificationTime: '21:00', notificationEnabled: false, groupUpdates: false, features: { groupShare: false, prayer: false, sermon: false } }, prayed: [], sermons: []
 };
 
@@ -765,6 +766,9 @@ let data;
 try { const stored = JSON.parse(localStorage.getItem(KEY)); data = stored && Array.isArray(stored.posts) ? stored : clone(seed); }
 catch { data = clone(seed); }
 if (typeof data.sharesGiven !== 'number') data.sharesGiven = 0;
+// keep sample authors' names current (localized per language)
+data.posts.forEach(p => { const s = seed.posts.find(x => x.id === p.id); if (s && !p.mine) { p.name = clone(s.name); if (s.prayedBy) p.prayedBy = clone(s.prayedBy); } });
+(data.challenges || []).forEach(c => { const s = seed.challenges.find(x => x.id === c.id); if (s) c.members = clone(s.members); });
 if (!data.settings.features) data.settings.features = { groupShare: false, prayer: false, sermon: false };
 if (!Array.isArray(data.prayed)) data.prayed = [];
 if (!Array.isArray(data.seen)) data.seen = [];
@@ -780,7 +784,7 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
 const LEGAL_BASE = 'https://dailyapp.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
-const SUPPORT_EMAIL = 'support@dailyapp.org';    // TODO: confirm the real support address
+const SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
 try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
@@ -955,6 +959,7 @@ function loginCard() {
       <button class="login-btn" data-action="login" data-id="google">${icon('google')}<span>${t('login.google')}</span></button>
       <button class="login-btn" data-action="login" data-id="phone">${icon('phoneMsg')}<span>${t('login.phone')}</span></button>
     </div>
+    <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <p class="fine-print">${t('login.demo')}</p></div></article>`;
 }
 const cardFor = item => item.type === 'compose' ? composeCard() : loginCard();
@@ -1350,7 +1355,7 @@ function createChallenge() {
     <button class="primary block" type="submit">${t('ch.start')}</button></form>` });
   $('#challenge-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#challenge-name').value.trim(); if (!name) return;
-    data.challenges.unshift({ id: 'ch' + Date.now(), name, group: state.sheetWith, members: [{ ko: '나', en: 'Me' }], start: today(), days: [] });
+    data.challenges.unshift({ id: 'ch' + Date.now(), name, group: state.sheetWith, members: [{ ko: '나', en: 'Me', es: 'Yo' }], start: today(), days: [] });
     save(); close(); state.tab = 'challenges'; render(); toast(t('toast.chStarted'));
   });
 }
@@ -1893,7 +1898,7 @@ function blockedSheet() {
 
 /* ---------------- sign-in ---------------- */
 function completeLogin(method, extra = {}) {
-  setSession({ method, since: new Date().toISOString(), lang: lang(), ...extra });
+  setSession({ method, since: new Date().toISOString(), lang: lang(), termsAcceptedAt: new Date().toISOString(), termsVersion: '2026-12-01', ...extra });
   const hadCompose = !!$('#compose-card');
   close(); render(); toast(t('login.done'));
   const sc = $('#feed-scroll'); // land on the post that comes right after the cards
@@ -2043,7 +2048,7 @@ const actions = {
     const [id, g] = pair.split('|'); const p = data.posts.find(x => x.id === id); if (!p) return;
     if (flaggedTerms(L(p.text)).length) { toast(t('mod.title')); return; }
     countShare(id);
-    data.posts.unshift({ ...clone(p), id: 'repost' + Date.now(), scope: 'group', group: g, mine: false, name: p.mine ? { ko: '나', en: 'Me' } : p.name, sharedFrom: { ko: '공유', en: 'shared' }, likes: 0 });
+    data.posts.unshift({ ...clone(p), id: 'repost' + Date.now(), scope: 'group', group: g, mine: false, name: p.mine ? { ko: '나', en: 'Me', es: 'Yo' } : p.name, sharedFrom: { ko: '공유', en: 'shared' }, likes: 0 });
     save(); close(); state.immersive = false; state.tab = 'feed'; state.feed = 'group'; state.group = g; render(); toast(t('toast.sent'));
   },
   sample: id => { const ta = $('#gratitude-text'); ta.value = SAMPLES[lang()][id]; ta.focus(); },

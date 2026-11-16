@@ -45,7 +45,7 @@ Daily Thanks - 감사 일기
 매일 한 줄의 감사. 따뜻한 감사를 읽고, 나의 감사를 남기고, 함께 나눠요.
 ```
 
-### description  (849/4000)
+### description  (848/4000)
 
 ```
 매일의 감사가 삶을 풍성하게 합니다.
@@ -75,7 +75,7 @@ Daily Thanks는 하루 30초, 오늘 감사한 것을 한 줄로 남기는 가�
 
 한국어 · English · Español
 
-문의: support@dailyapp.org
+문의: hi@dailyjourney.org
 개인정보처리방침: dailyapp.org/privacy
 ```
 
@@ -123,7 +123,7 @@ Daily Thanks: Gratitude Diary
 One line of thanks a day. Read warm gratitude, write yours, share the joy.
 ```
 
-### description  (1479/4000)
+### description  (1478/4000)
 
 ```
 Give thanks daily. Live fully. Share the joy.
@@ -153,7 +153,7 @@ Abusive language is filtered; you can report, hide, and block. If something was 
 
 English · 한국어 · Español
 
-Support: support@dailyapp.org
+Support: hi@dailyjourney.org
 Privacy: dailyapp.org/privacy
 ```
 
@@ -201,7 +201,7 @@ Daily Thanks · Gratitud diaria
 Una línea de gratitud al día. Lee, escribe la tuya y comparte la alegría.
 ```
 
-### description  (1096/4000)
+### description  (1095/4000)
 
 ```
 Da gracias cada día. Vive plenamente. Comparte la alegría.
@@ -228,6 +228,6 @@ Se filtra el lenguaje ofensivo; puedes reportar, ocultar y bloquear.
 
 Español · English · 한국어
 
-Soporte: support@dailyapp.org
+Soporte: hi@dailyjourney.org
 Privacidad: dailyapp.org/privacy
 ```

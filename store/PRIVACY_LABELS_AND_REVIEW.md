@@ -1,7 +1,7 @@
 # 개인정보 항목 · 심사 메모 · 등급 답변
 
 > App Store Connect와 Google Play Console에 그대로 옮겨 적으면 되는 답변입니다.
-> **v1 기준**(감사 일기 + 운영자가 고른 감사 피드 + 카카오톡·인스타 공유)과, **나눔 기능을 연 업데이트**에서 바뀌는 항목을 함께 적었습니다.
+> **v1 범위: (B) 나눔 기능 포함으로 확정** — 감사 일기 + 모두에게 나누기 + 카카오톡·인스타 공유.
 > 제출 전에 앱이 실제로 하는 일과 답변이 일치하는지 한 번 더 확인하세요.
 
 ---
@@ -40,19 +40,22 @@
 | 기기 또는 기타 ID | 예 | 선택 (알림 허용 시) | 앱 기능 |
 | 앱 정보 및 성능 › 비정상 종료 로그 | (도구를 넣으면) 예 | 선택 | 분석 |
 
-## 3. 나눔 기능을 여는 업데이트에서 바뀌는 것
+## 3. 나눔 기능(사용자 생성 콘텐츠) 때문에 필요한 것 — v1에 포함
 
-- Apple 등급 설문에서 **"사용자 생성 콘텐츠: 예"**로 바꿉니다.
-- 심사 메모에 신고·차단·필터·운영자 검토 절차를 적습니다(아래 4번 참고).
-- Google Play 콘텐츠 등급 설문의 **"사용자 간 상호작용 / 사용자 생성 콘텐츠 공유"**를 '예'로 바꿉니다.
-- 신고 접수 후 **24시간 안에 확인**하는 운영 체계를 갖추세요. 운영자 화면과 알림이 필요합니다.
+- Apple 등급 설문: **"사용자 생성 콘텐츠: 예"**, Google 콘텐츠 등급 설문: **"사용자 간 상호작용 / 사용자 생성 콘텐츠 공유: 예"**.
+- **약관 동의(Guideline 1.2):** 로그인 화면에 "계속하면 이용약관과 개인정보처리방침에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요."가 있고, 동의 시각(`termsAcceptedAt`)을 계정에 저장합니다. 이용약관에 '부적절한 콘텐츠 무관용' 조항이 있어야 합니다.
+- 필터 · 신고(8가지 사유) · 숨기기 · 차단 · 공개 연락처 → 모두 앱에 있음.
+- 신고 접수 후 **24시간 안에 확인**할 담당자와 운영자 화면·알림이 출시 전에 있어야 합니다.
+- 심사 테스트 계정으로 로그인하면 다른 사람 글이 보이고, 신고·차단을 직접 눌러 볼 수 있어야 합니다.
 
 ## 4. App Review 메모 (App Store Connect › 앱 심사 정보 › 메모)
 
 ```
 Thank you for reviewing Daily Thanks, a simple gratitude journal.
 
-Sign-in: Sign in with Apple, Google, or phone number. Sign in with Apple is offered
+Sign-in: Sign in with Apple, Google, or phone number. Signing in requires agreeing to the
+Terms of Use, which state there is no tolerance for objectionable content or abusive users.
+ Sign in with Apple is offered
 alongside Google (Guideline 4.8).
 Demo account for review: [phone +1 555-0100, code 123456]  ← create a test number in Firebase Auth
 
@@ -63,7 +66,7 @@ User content safety (Guideline 1.2):
 - Report (8 reasons), hide post, and block user from the ⋯ menu on every post.
 - Reports go to a moderation queue reviewed within 24 hours; self-harm reports are prioritised
   and the reporter is shown crisis lines.
-- Published contact: support@dailyapp.org, dailyapp.org/support.
+- Published contact: hi@dailyjourney.org, dailyapp.org/support.
 
 Notifications are optional, requested after a short in-app explanation, at a time the user picks.
 No tracking, no ads.
@@ -74,10 +77,10 @@ No tracking, no ads.
 | 항목 | 답변 |
 |---|---|
 | 폭력, 성적 콘텐츠, 비속어, 약물, 도박, 공포 | 없음 |
-| 사용자 생성 콘텐츠 | v1: 아니요(운영자가 고른 글만) / 나눔 업데이트: 예 |
+| 사용자 생성 콘텐츠 | **예** (모두에게 나누기) |
 | 웹 브라우징 제한 없음 | 아니요 |
 | 의료·치료 정보 | 아니요 |
-| 예상 등급 | Apple 4+ (나눔 업데이트 후 13+ 권장), Google 전체이용가 (나눔 후 12세 권장) |
+| 예상 등급 | Apple 13+ 권장, Google 12세 이상 권장 |
 
 ## 6. 수출 규정 (암호화)
 

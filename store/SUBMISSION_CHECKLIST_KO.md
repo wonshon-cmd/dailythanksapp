@@ -34,13 +34,11 @@ node tools/make-screenshots.js dist/daily-thanks.html store/screenshots
 1. **Squarespace 페이지 4개 만들기**
    - `/privacy`, `/terms`, `/support`, `/delete-account`
    - 위 문서를 붙여 넣고, `[대괄호]` 부분(운영자 이름, 이메일, 주소, 시행일)을 채우세요.
-2. **문의 이메일 만들기**
-   - 예: support@dailyapp.org
-   - 다른 주소를 쓴다면 `app.js`의 `SUPPORT_EMAIL`도 바꿔 주세요.
-3. **개발자 계정**
-   - Apple Developer Program (연 $99)
-   - Google Play Console (1회 $25)
-   - Google 개인 계정은 출시 전 **테스터 12명 이상 · 14일 비공개 테스트**가 필요해요.
+2. **문의 이메일:** ✅ hi@dailyjourney.org (앱·방침·약관·스토어 문구에 반영됨)
+3. **개발자 계정 — 비영리 법인 Daily Journey, Inc.로 등록**
+   - Apple: 조직(Organization)으로 가입. **D-U-N-S 번호**가 필요해요(무료, 발급에 1–2주). 비영리 단체는 연회비 **$99 면제 신청**이 가능해요(Apple Developer Program Fee Waiver).
+   - Google Play: **조직 계정**으로 가입(1회 $25, D-U-N-S 필요). 조직 계정은 개인 계정의 '테스터 12명 · 14일 비공개 테스트' 의무가 **없어요**.
+   - 스토어의 판매자/개발자 이름이 **Daily Journey, Inc.**로 표시돼요.
 4. **실제 앱 빌드**
    - Capacitor로 iOS·Android 앱 만들기 (Mac + Xcode 필요)
    - Firebase 로그인·저장소 연결
@@ -53,11 +51,9 @@ node tools/make-screenshots.js dist/daily-thanks.html store/screenshots
 6. **최종 확인**
    - 출시 전 개인정보·법률 전문가에게 방침과 약관을 한 번 검토받기를 권장해요.
 
-## ⚠️ v1 범위에 따라 바꿀 것
+## ✅ v1 범위: (B) 나눔 기능 포함
 
-- **v1을 "감사 일기 + 운영자가 고른 피드"로 낼 경우:**
-  - 연령 등급의 "사용자 생성 콘텐츠"를 **아니요**로 답해요.
-  - 스크린샷 1번(다른 사람 글)은 운영자가 고른 글로 보이게 그대로 써도 돼요.
-- **나눔 기능을 함께 낼 경우:**
-  - 위 항목을 **예**로 답해요.
-  - 신고를 24시간 안에 처리할 운영자 화면과 담당자가 있어야 해요.
+- 연령 등급의 "사용자 생성 콘텐츠"는 **예**로 답해요 (Apple 13+, Google 12세 이상 권장).
+- 로그인 화면의 **약관 동의 문구**는 앱에 들어가 있어요. 이용약관에 '부적절한 글·사용자 무관용' 조항이 있는지 확인하세요.
+- **출시 전 꼭:** 신고를 24시간 안에 확인할 담당자, 운영자 화면, 신고 알림(이메일 등).
+- 심사 테스트 계정에서 다른 사람 글이 보이고 신고·차단이 실제로 동작하는지 확인하세요.

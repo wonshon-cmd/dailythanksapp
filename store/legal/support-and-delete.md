@@ -15,7 +15,7 @@
 
 궁금한 점이나 불편한 점이 있으면 언제든 알려 주세요. 보통 2영업일 안에 답장드려요.
 
-- 이메일: [support@dailyapp.org]
+- 이메일: hi@dailyjourney.org
 
 **자주 묻는 질문**
 
@@ -41,7 +41,7 @@
 
 **Daily Thanks Support**
 
-Questions or problems? Email [support@dailyapp.org]. We usually reply within 2 business days.
+Questions or problems? Email hi@dailyjourney.org. We usually reply within 2 business days.
 
 - **Who can see my notes?**
   - Choose "Everyone" or "Private" when you write.
@@ -64,7 +64,7 @@ Questions or problems? Email [support@dailyapp.org]. We usually reply within 2 b
 
 **Soporte de Daily Thanks**
 
-Escríbenos a [support@dailyapp.org]. Respondemos en unos 2 días hábiles.
+Escríbenos a hi@dailyjourney.org. Respondemos en unos 2 días hábiles.
 
 - **Eliminar la cuenta:**
   - En la app: Ajustes › Acerca de › Eliminar cuenta.
@@ -80,7 +80,7 @@ Escríbenos a [support@dailyapp.org]. Respondemos en unos 2 días hábiles.
 **Daily Thanks 계정 삭제 요청**
 
 - **앱에서 바로 삭제하기 (권장):** 앱을 열고 나의 감사 › ⋯(설정) › 정보 › **계정 삭제**를 누르세요.
-- **앱이 없을 때:** [support@dailyapp.org]로 아래 내용을 보내 주세요.
+- **앱이 없을 때:** hi@dailyjourney.org로 아래 내용을 보내 주세요.
   - 제목: 계정 삭제 요청
   - 로그인 방법: Apple / Google / 휴대폰 번호
   - Apple·Google 로그인이라면 그 계정의 이메일, 휴대폰 로그인이라면 휴대폰 번호
@@ -100,7 +100,7 @@ Escríbenos a [support@dailyapp.org]. Respondemos en unos 2 días hábiles.
 **Request account deletion — Daily Thanks**
 
 - **In the app (fastest):** My Thanks › ⋯ (Settings) › About › **Delete account**.
-- **Without the app:** email [support@dailyapp.org] with:
+- **Without the app:** email hi@dailyjourney.org with:
   - Subject: Delete my account
   - How you sign in: Apple, Google, or phone
   - Your account email or phone number
@@ -119,6 +119,6 @@ Escríbenos a [support@dailyapp.org]. Respondemos en unos 2 días hábiles.
 **Solicitar la eliminación de la cuenta**
 
 - **En la app:** Mi gratitud › ⋯ › Acerca de › **Eliminar cuenta**.
-- **Sin la app:** escribe a [support@dailyapp.org] con el asunto "Eliminar mi cuenta". Incluye cómo inicias sesión y tu correo o teléfono.
+- **Sin la app:** escribe a hi@dailyjourney.org con el asunto "Eliminar mi cuenta". Incluye cómo inicias sesión y tu correo o teléfono.
 
 Eliminamos tus datos en **7 días**. Los registros de reportes se guardan un año, de forma anónima.

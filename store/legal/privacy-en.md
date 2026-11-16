@@ -61,7 +61,7 @@ You can access, correct, or delete your data, or ask us to stop processing it:
 
 - **In the app:** Settings › About › Delete account
 - **On the web:** dailyapp.org/delete-account
-- **By email:** [support@dailyapp.org]
+- **By email:** hi@dailyjourney.org
 
 Depending on where you live (for example, under the GDPR in the EU/UK or the CCPA in California), you may have additional rights, including data portability and the right to complain to a supervisory authority. We honor these rights for all users.
 
@@ -80,4 +80,4 @@ We will post changes in the app or on our website at least 7 days before they ta
 
 ## 9. Contact
 
-Daily Journey, Inc. · [support@dailyapp.org] · [mailing address]
+Daily Journey, Inc. · hi@dailyjourney.org · [mailing address]

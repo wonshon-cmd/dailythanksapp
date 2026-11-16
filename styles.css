@@ -734,3 +734,7 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 /* first splash: copyright at the bottom */
 .splash-copy{position:absolute;left:0;right:0;bottom:calc(28px + var(--safe-bottom,0px));text-align:center;font-family:var(--sans,"Noto Sans KR",sans-serif);font-size:11px;font-weight:300;letter-spacing:.02em;color:#A4A9AC;transition:opacity .6s ease}
 .splash.step2 .splash-copy{opacity:0}
+
+/* sign-in: terms consent (Guideline 1.2) */
+.login-terms{margin-top:14px;text-align:center}
+.login-terms a{color:inherit;text-decoration:underline;text-underline-offset:2px}

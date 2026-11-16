@@ -384,5 +384,6 @@
 "s.fine": "Tus notas se guardan solo en este navegador y no se sincronizan con otros navegadores o dispositivos.",
 "s.confirmReset": "¿Reiniciar todas las notas y ajustes de esta demo?",
 "toast.reset": "Demo reiniciada.",
-"toast.noStore": "Este navegador no puede guardar datos ahora."
+"toast.noStore": "Este navegador no puede guardar datos ahora.",
+"login.terms": "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo."
 }
