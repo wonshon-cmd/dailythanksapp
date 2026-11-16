@@ -6,13 +6,13 @@
     android:background="@drawable/widget_bg"
     android:orientation="vertical"
     android:padding="16dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="daily thanks"
-        android:textColor="#9BA0A3"
-        android:textSize="13sp"
-        android:fontFamily="serif" />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="-4dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/widget_light" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"

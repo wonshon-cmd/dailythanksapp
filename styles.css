@@ -776,3 +776,16 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 .ch-chip{min-width:44px;justify-content:center}
 .ch-chip.read{color:#A9AEB1}
 .devo-card .card-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* reader, one verse per page (snap like the feed) */
+.reader-scroll{padding:0;scroll-snap-type:y mandatory;overscroll-behavior:contain}
+.vs-page{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(80px,20cqh,170px) 34px 40px;box-sizing:border-box}
+.vs-text{margin:0;font-size:calc(var(--read, 19px) + 2px);line-height:1.9;font-weight:300;color:var(--ink);word-break:keep-all;letter-spacing:-.005em}
+.vs-ref{margin:22px 0 0;font-size:13px;color:#A9AEB1}
+.vs-page.hl .vs-ref{color:#8A9094}
+.reader-scroll .reader-more{height:100%;scroll-snap-align:start;justify-content:center;padding:0 34px;box-sizing:border-box}
+.reader{container-type:size}
+/* widget: white, with the soft light */
+.hw-stage{background:linear-gradient(160deg,#EDEEEF,#E2E4E6)}
+.hw{background:#FFFFFF}
+.hw-light{display:block;width:30px;height:30px;margin:-4px 0 0 -4px;border-radius:50%;background:radial-gradient(circle,#F6D77A 0 3px,#F9E3A2cc 5px,#FBEFC566 9px,#FFFFFF00 15px)}

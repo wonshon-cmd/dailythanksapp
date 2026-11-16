@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The soft light: a small warm core fading into white. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <gradient android:type="radial" android:gradientRadius="15dp"
+        android:startColor="#F6D77A" android:centerColor="#80FBE7A6" android:endColor="#00FFFFFF" />
+    <size android:width="30dp" android:height="30dp" />
+</shape>

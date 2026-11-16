@@ -27,9 +27,14 @@ struct DailyThanksWidgetView: View {
     var entry: Entry
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            (Text("daily ") + Text("thanks").italic())
-                .font(.system(size: 13, design: .serif))
-                .foregroundColor(Color(red: 0.61, green: 0.63, blue: 0.64))
+            // the soft light: warm core fading into white
+            Circle()
+                .fill(RadialGradient(colors: [Color(red: 0.965, green: 0.843, blue: 0.478),
+                                              Color(red: 0.984, green: 0.906, blue: 0.651).opacity(0.5),
+                                              Color.white.opacity(0)],
+                                     center: .center, startRadius: 2, endRadius: 15))
+                .frame(width: 30, height: 30)
+                .padding(.leading, -4).padding(.top, -4)
             Spacer(minLength: 0)
             Text(t("오늘 감사한 것은?", "What are you thankful for today?", "¿Por qué estás agradecido hoy?"))
                 .font(.system(size: 16, weight: .light))
