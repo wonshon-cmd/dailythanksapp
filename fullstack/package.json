@@ -1,0 +1,16 @@
+{
+  "name": "daily-thanks-fullstack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Daily Thanks full-stack sample: same UI as the front-end app, plus a Node API with feature-flagged passage and sermon-summary features.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.9.0"
+  }
+}

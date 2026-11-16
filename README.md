@@ -2,6 +2,17 @@
 
 매일 한 줄의 감사를 기록하고 소그룹과 나누는 모바일 웹 프로토타입 (한국어 / English).
 
+## 두 가지 버전
+
+| | 일반 (이 폴더 루트) | 풀스택 ([`fullstack/`](fullstack/README.md)) |
+|---|---|---|
+| 실행 | `index.html` 열기 | `cd fullstack && npm install && npm start` |
+| 데이터 | 브라우저에만 저장 | 서버에 사용자별 저장 |
+| 준비 중인 숨김 기능 | — | 오늘의 본문, 설교 녹음 요약 (기능 플래그로 꺼 둠) |
+
+두 버전의 화면은 같습니다. 풀스택 버전도 기능 플래그를 켜기 전까지는 일반 버전과 똑같이 보입니다.
+본문·번역본·설교 요약의 권리 문제와 두란노 연락처는 [`docs/LICENSING_AND_PARTNERS_KO.md`](docs/LICENSING_AND_PARTNERS_KO.md)에 정리했습니다.
+
 ## 실행 / Run
 
 `index.html`을 브라우저에서 열면 됩니다. 빌드·서버 필요 없음. GitHub Pages 같은 정적 호스팅에 그대로 올릴 수 있습니다.

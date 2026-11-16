@@ -389,7 +389,10 @@ const t = k => STR[lang()][k] ?? STR.ko[k] ?? k;
 const L = v => (v && typeof v === 'object') ? (v[lang()] ?? v.ko ?? v.en) : (v ?? '');
 const today = () => new Date().toLocaleDateString('en-CA');
 
-function save() { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { toast(t('toast.noStore')); } }
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { toast(t('toast.noStore')); }
+  document.dispatchEvent(new CustomEvent('dt:save', { detail: data }));
+}
 function toast(text) { const el = $('#toast'); el.textContent = text; el.hidden = false; clearTimeout(toast.timer); toast.timer = setTimeout(() => el.hidden = true, 2600); }
 
 /* ---------------- helpers ---------------- */
@@ -525,6 +528,7 @@ function renderJournal() {
         ${p.kind === 'ahead' ? `<button data-action="reflect" data-id="${esc(p.id)}">${t('j.reflect')}</button>` : ''}
         <button data-action="delete" data-id="${esc(p.id)}">${t('j.delete')}</button>
       </div></section>`).join('') : `<p class="empty">${t('j.empty')}</p>`}
+    <div id="slot-journal"></div>
   </div></div>`;
 }
 
@@ -535,6 +539,7 @@ function render(keepIndex) {
     on ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current');
   });
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal })[state.tab]();
+  document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
 }
 
 /* ---------------- sheets ---------------- */
@@ -748,6 +753,14 @@ document.addEventListener('change', e => {
 });
 backdrop.addEventListener('click', close);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+/* Extension hook for optional add-ons (e.g. fullstack/public/client.js): server sync and
+   feature-flagged screens. The plain front-end app never uses it, so nothing changes visually. */
+window.DailyThanks = {
+  getData: () => data,
+  replaceData: next => { if (next && Array.isArray(next.posts)) { data = next; try { localStorage.setItem(KEY, JSON.stringify(data)); } catch {} applyStatic(); render(); } },
+  lang, t, esc, icon, showSheet, close, toast, render: () => render()
+};
 
 applyStatic();
 render();
