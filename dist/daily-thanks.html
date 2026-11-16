@@ -726,6 +726,9 @@ html:is([lang="en"],[lang="es"]) .post-text{font-size:calc(var(--read) * .92);li
 .hw-row{gap:6px}
 .hw-row .mini-dots i{width:5px;height:5px}
 
+a.list-row{text-decoration:none}
+.selectable{user-select:text;-webkit-user-select:text}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -761,6 +764,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    's.legal': '정보', 's.privacy': '개인정보처리방침', 's.terms': '이용약관', 's.support': '문의하기', 's.delete': '계정 삭제', 'del.body': '계정과 내가 쓴 감사, 저장·좋아요 기록이 모두 삭제돼요. 삭제하면 되돌릴 수 없어요.', 'del.ok': '삭제', 'del.done': '계정을 삭제했어요. 함께해 주셔서 고마웠어요.', 's.version': '버전',
     'card.feed': '피드 4:5', 'card.story': '스토리 9:16', 'card.shareImg': '이미지로 공유', 'card.noShare': '이 화면에서는 이미지 공유가 막혀 있어요. 앱에서는 바로 인스타그램·카카오톡으로 보낼 수 있어요.',
     'wg.title': '홈 화면에 감사 한 줄', 'wg.sub': '위젯을 두면 앱을 찾지 않고 바로 오늘의 감사를 쓸 수 있어요. 매일 쓰는 습관이 훨씬 쉬워져요.',
     'wg.ios': '아이폰', 'wg.android': '안드로이드', 'wg.write': '한 줄 쓰기', 'wg.done': '오늘 감사 완료',
@@ -875,6 +879,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    's.legal': 'About', 's.privacy': 'Privacy Policy', 's.terms': 'Terms of Use', 's.support': 'Contact support', 's.delete': 'Delete account', 'del.body': 'Your account, your notes, and your saves and likes will be deleted. This can’t be undone.', 'del.ok': 'Delete', 'del.done': 'Your account was deleted. Thank you for being here.', 's.version': 'Version',
     'card.feed': 'Feed 4:5', 'card.story': 'Story 9:16', 'card.shareImg': 'Share as image', 'card.noShare': 'Image sharing is blocked on this screen. In the app it goes straight to Instagram or KakaoTalk.',
     'wg.title': 'A line of thanks on your home screen', 'wg.sub': 'With the widget you can write today’s thanks without looking for the app. The daily habit gets much easier.',
     'wg.ios': 'iPhone', 'wg.android': 'Android', 'wg.write': 'Write a line', 'wg.done': 'Done for today',
@@ -989,6 +994,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    's.legal': 'Acerca de', 's.privacy': 'Política de privacidad', 's.terms': 'Términos de uso', 's.support': 'Contactar soporte', 's.delete': 'Eliminar cuenta', 'del.body': 'Se eliminarán tu cuenta, tus notas y tus guardados y me gusta. No se puede deshacer.', 'del.ok': 'Eliminar', 'del.done': 'Eliminamos tu cuenta. Gracias por estar aquí.', 's.version': 'Versión',
     'card.feed': 'Feed 4:5',
     'card.story': 'Historia 9:16',
     'card.shareImg': 'Compartir como imagen',
@@ -1528,6 +1534,10 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
 /* Sign-in session. Saved once, kept until the user signs out ("always signed in").
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
 const SESSION_KEY = 'daily-thanks-session';
+// Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
+const LEGAL_BASE = 'https://dailythanks.app';  // TODO: replace with the real domain (e.g. a GitHub Pages site)
+const SUPPORT_EMAIL = 'hello@dailythanks.app'; // TODO: replace with the real support address
+const APP_VERSION = '1.0.0';
 let session = null;
 try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
 if (session?.lang) data.settings.lang = session.lang;
@@ -2149,6 +2159,14 @@ function settings() {
       ${row('export', 'copy', t('s.export'), '')}
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
+    <p class="field-label">${t('s.legal')}</p>
+    <div class="list">
+      <a class="list-row" href="${LEGAL_BASE}/privacy" target="_blank" rel="noopener"><span class="row-icon">${icon('lock')}</span><span class="row-main"><span class="row-title">${t('s.privacy')}</span></span><span class="row-end">${icon('chevron')}</span></a>
+      <a class="list-row" href="${LEGAL_BASE}/terms" target="_blank" rel="noopener"><span class="row-icon">${icon('book')}</span><span class="row-main"><span class="row-title">${t('s.terms')}</span></span><span class="row-end">${icon('chevron')}</span></a>
+      <div class="list-row static"><span class="row-icon">${icon('chat')}</span><span class="row-main"><span class="row-title">${t('s.support')}</span><span class="row-sub selectable">${SUPPORT_EMAIL}</span></span><button class="secondary" data-action="copy-support">${t('share.copy')}</button></div>
+      ${session ? row('delete-account', 'trash', t('s.delete'), '', 'danger') : ''}
+      <div class="list-row static"><span class="row-icon">${icon('info')}</span><span class="row-main"><span class="row-title">${t('s.version')}</span></span><span class="row-end row-sub">${APP_VERSION}</span></div>
+    </div>
     <p class="field-label">${t('ft.title')}</p>
     <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic']].map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
     <p class="hint">${t('ft.hint')}</p>
@@ -2716,6 +2734,15 @@ const actions = {
   'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   note: noteSheet,
+  'copy-support': () => copyText(SUPPORT_EMAIL),
+  // Account deletion (App Store 5.1.1(v) / Google Play): removes the account and everything written by it.
+  'delete-account': () => confirmSheet(t('s.delete'), t('del.body'), t('del.ok'), () => {
+    document.dispatchEvent(new CustomEvent('dt:delete-account'));
+    data.posts = data.posts.filter(p => !p.mine);
+    Object.assign(data, { liked: [], saved: [], prayed: [], seen: [], sermons: [], reports: [], celebrated: [], sharesGiven: 0, extSharesGiven: 0 });
+    data.settings.notifyAsked = null; data.settings.widgetAsked = null; data.settings.notificationEnabled = false;
+    setSession(null); save(); state.immersive = true; state.order = null; render(); toast(t('del.done'));
+  }),
   'lang-menu': () => showSheet({ title: '', body: `<div class="list">${LANGS.map(([id, label]) => `<button class="list-row" data-action="pick-lang" data-id="${id}"><span class="row-icon">${icon('globe')}</span><span class="row-main"><span class="row-title">${label}</span></span><span class="row-end">${lang() === id ? icon('check') : ''}</span></button>`).join('')}</div>` }),
   'pick-lang': id => { close(); setLang(id); },
   'wg-os': id => { state.wgOs = id; document.querySelectorAll('[data-action="wg-os"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); $('#wg-steps').innerHTML = state.wgSteps(id); },

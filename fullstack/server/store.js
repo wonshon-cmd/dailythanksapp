@@ -42,6 +42,14 @@ export function createStore(file) {
     addReview: r => { db.reviews.push(r); persist(); return r; },
     listReviews: ({ status, userId } = {}) => db.reviews.filter(r => (!status || r.status === status) && (!userId || r.userId === userId)),
     updateReview: (id, patch) => { const r = db.reviews.find(x => x.id === id); if (r) { Object.assign(r, patch); persist(); } return r; },
+    deleteUser: userId => {
+      delete db.states[userId];
+      db.passages = db.passages.filter(p => p.createdBy !== userId);
+      db.sermons = db.sermons.filter(x => x.ownerId !== userId);
+      db.reviews = db.reviews.filter(x => x.userId !== userId);
+      db.reports = db.reports.map(r => r.reporter === userId ? { ...r, reporter: 'deleted' } : r);
+      persist();
+    },
     flush: () => new Promise(r => setTimeout(r, 80))
   };
 }

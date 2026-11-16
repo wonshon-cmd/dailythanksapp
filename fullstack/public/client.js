@@ -67,6 +67,9 @@
     if (changed) DT.replaceData(data);
   }
 
+  // Account deletion removes server data too.
+  document.addEventListener('dt:delete-account', () => { api('DELETE', '/api/account').catch(() => {}); });
+
   // Reports go to the server's moderation queue.
   document.addEventListener('dt:report', e => { const { postId, author, reason, note } = e.detail; api('POST', '/api/reports', { postId, author, reason, note }).catch(() => {}); });
 

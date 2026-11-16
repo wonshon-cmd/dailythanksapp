@@ -117,3 +117,12 @@ test('language filter and review appeals', async () => {
   assert.equal((await call('GET', '/api/reviews')).body.reviews[0].status, 'approved');
   assert.equal((await call('GET', '/api/reviews', null, { 'x-user-id': 'someone-else' })).body.reviews.length, 0);
 });
+
+test("account deletion removes the user's data", async () => {
+  const call = await start({ FEATURE_PASSAGE: '1' });
+  await call('PUT', '/api/state', { state: { posts: [{ id: 'a' }] } }, { 'x-user-id': 'gone' });
+  await call('POST', '/api/passages', { reference: '요 3:16' }, { 'x-user-id': 'gone' });
+  assert.equal((await call('DELETE', '/api/account', null, { 'x-user-id': 'gone' })).status, 200);
+  assert.equal((await call('GET', '/api/state', null, { 'x-user-id': 'gone' })).body.state, null);
+  assert.equal((await call('GET', '/api/passages', null, { 'x-user-id': 'gone' })).body.passages.length, 0);
+});

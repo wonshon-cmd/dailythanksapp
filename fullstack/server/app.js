@@ -65,6 +65,9 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     return { ok: true };
   });
 
+  // Account deletion (required by the App Store and Google Play): removes the user's data everywhere.
+  route('DELETE', '/api/account', ({ user }) => { store.deleteUser(user); return { ok: true }; });
+
   /* ---------- 표현 필터 + 검토 요청 ----------
      Posts shared with others are checked before they go out. If the writer thinks the filter is wrong,
      they ask for a review; a moderator approves (post goes out) or rejects (stays private to the writer). */

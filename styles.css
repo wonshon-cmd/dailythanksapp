@@ -713,3 +713,6 @@ html:is([lang="en"],[lang="es"]) .post-text{font-size:calc(var(--read) * .92);li
 .hw-btn{white-space:nowrap}
 .hw-row{gap:6px}
 .hw-row .mini-dots i{width:5px;height:5px}
+
+a.list-row{text-decoration:none}
+.selectable{user-select:text;-webkit-user-select:text}
