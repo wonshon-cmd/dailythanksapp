@@ -8,6 +8,21 @@ const KEY = 'daily-thanks-v2';
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'note.delete': '삭제',
+    'note.reflect': '돌아보며 감사 쓰기',
+    'note.share': '공유',
+    's.about': '이 시안은 기록을 이 기기에만 저장해요. 친구 초대, 실시간 동기화, 푸시 알림은 출시 버전에서 연결돼요.',
+    's.guest': '로그인 전',
+    's.account': '계정',
+    'send.pick': '어느 소그룹에 나눌까요?',
+    'share.note': '공개된 글이나 허락받은 글만 공유해 주세요.',
+    'share.toGroup': '소그룹에 나누기',
+    'compose.publicNote': '모두의 감사는 누구나 읽고 공유할 수 있어요.',
+    'scope.all': '모두',
+    'scope.groupShort': '소그룹',
+    'scope.me': '나만',
+    'kind.aheadShort': '미리 감사',
+    'gr.count': '감사 {n}개',
     'doc.title': 'Daily Thanks · 감사가 이어지는 하루',
     'aria.home': 'Daily Thanks 홈', 'aria.settings': '설정', 'aria.nav': '주요 메뉴', 'aria.lang': 'Switch to English', 'aria.close': '닫기', 'aria.next': '다음 감사',
     'lang.other': 'EN',
@@ -24,7 +39,7 @@ const STR = {
     'act.share': '공유', 'act.group': '소그룹',
     'me': '나', 'reflect.prefix': '돌아보며',
     'toast.likeAhead': '함께 기도해요.', 'toast.likeToday': '함께 감사해요.',
-    'compose.title': '감사 한 줄 남기기',
+    'compose.title': '감사 한 줄',
     'compose.qToday': '오늘 고마웠던 순간은?', 'compose.qAhead': '미리 감사하며 하나님께 맡기는 일은?',
     'compose.phToday': '오늘 감사했던 순간을 적어보세요.', 'compose.phAhead': '하나님, 이번 한 주도…',
     'compose.samples': '문장을 눌러 수정해 보세요',
@@ -32,19 +47,19 @@ const STR = {
     'compose.who': '누구와 나눌까요?', 'compose.private': '나만 보기 (기본)', 'compose.group': '내 소그룹', 'compose.public': '전체 공개',
     'compose.groupLabel': '소그룹',
     'compose.hint': '개인적인 기도는 나만 보기로 안전하게 남길 수 있어요. 공개하면 다른 사람도 읽고 공유할 수 있습니다.',
-    'compose.submit': '감사 남기기', 'toast.saved': '감사가 저장되었어요.',
-    'reflect.title': '돌아보며 감사 쓰기', 'reflect.before': '그때 드린 미리 감사', 'reflect.q': '이번 주에 실제로 발견한 감사는?', 'reflect.ph': '작은 순간도 좋아요.', 'reflect.submit': '기록에 덧붙이기', 'toast.reflected': '한 주의 감사가 더해졌어요.',
-    'share.title': '감사 공유', 'share.hint': '실제 카카오톡·인스타그램 연결 전 미리보기입니다. 공개 또는 본인이 허락한 내용만 공유하세요.', 'share.copy': '텍스트 복사', 'share.native': '기기 공유', 'share.hint2': '카카오톡·인스타그램 공유는 휴대폰의 기본 공유 기능을 사용할 수 있지만, 플랫폼별 전용 카드·게시 기능은 별도 연동이 필요합니다.', 'toast.copied': '글을 복사했어요.', 'toast.noShare': '이 환경에서는 기기 공유를 사용할 수 없어요.',
+    'compose.submit': '남기기', 'toast.saved': '감사가 저장되었어요.',
+    'reflect.title': '돌아보며 감사 쓰기', 'reflect.before': '그때 드린 미리 감사', 'reflect.q': '이번 주에 실제로 발견한 감사는?', 'reflect.ph': '작은 순간도 좋아요.', 'reflect.submit': '덧붙이기', 'toast.reflected': '한 주의 감사가 더해졌어요.',
+    'share.title': '감사 공유', 'share.hint': '실제 카카오톡·인스타그램 연결 전 미리보기입니다. 공개 또는 본인이 허락한 내용만 공유하세요.', 'share.copy': '텍스트 복사', 'share.native': '다른 앱으로 공유', 'share.hint2': '카카오톡·인스타그램 공유는 휴대폰의 기본 공유 기능을 사용할 수 있지만, 플랫폼별 전용 카드·게시 기능은 별도 연동이 필요합니다.', 'toast.copied': '글을 복사했어요.', 'toast.noShare': '이 환경에서는 기기 공유를 사용할 수 없어요.',
     'send.title': '소그룹에 나누기', 'send.hint': '원작자가 공유한 글은 작성자 표시를 유지하세요. 비공개 글은 다른 사람에게 보내기 전에 허락을 받으세요.', 'send.target': '공유할 소그룹', 'send.submit': '이 그룹에 나누기', 'toast.sent': '그룹에 나누었어요.',
-    'ch.kicker': '7 DAYS TOGETHER', 'ch.title': '함께 쌓아가는<br>일곱 번의 감사.', 'ch.desc': '친구 한 명이나 소그룹과 시작해요. 하루를 쉬어도 다시 이어갈 수 있어요.', 'ch.new': '＋ 새로운 7일 챌린지', 'ch.write': '오늘의 감사 쓰기', 'ch.detail': '자세히 보기', 'ch.day': '일',
+    'ch.kicker': '7 DAYS TOGETHER', 'ch.title': '함께 7일', 'ch.desc': '친구나 소그룹과 일곱 번의 감사를 채워요. 하루 쉬어도 이어갈 수 있어요.', 'ch.new': '새 챌린지', 'ch.write': '오늘의 감사 쓰기', 'ch.detail': '자세히 보기', 'ch.day': '일',
     'ch.fine': '오프라인 시안에서는 참여 인원과 완료 상태가 이 브라우저에만 저장됩니다. 실제 친구 초대는 서버와 사용자 계정 연동이 필요합니다.',
     'ch.createTitle': '7일 감사 챌린지 만들기', 'ch.name': '챌린지 이름', 'ch.defaultName': '함께 채우는 7일', 'ch.with': '누구와 함께하나요?', 'ch.pair': '친구와 둘이 (초대 링크는 출시 이후)', 'ch.pairShort': '친구와 둘이',
-    'ch.createHint': '한 주 중 하루를 놓쳐도 시작부터 다시 하지 않아요. 실제 친구 초대·실시간 동기화는 백엔드 구현 후 이용할 수 있습니다.', 'ch.start': '챌린지 시작하기', 'toast.chStarted': '새로운 7일 챌린지가 시작되었어요.',
+    'ch.createHint': '한 주 중 하루를 놓쳐도 시작부터 다시 하지 않아요. 실제 친구 초대·실시간 동기화는 백엔드 구현 후 이용할 수 있습니다.', 'ch.start': '시작하기', 'toast.chStarted': '새로운 7일 챌린지가 시작되었어요.',
     'ch.question': '오늘, 고마웠던 사람은 누구인가요?', 'ch.detailHint': '한 사람이 글을 썼을 때 모든 참가자의 참여로 계산하지 않도록, 실제 서비스에서는 사용자별 체크인 기록이 필요합니다.', 'ch.rest': '하루 쉬어도, 다시 이어가요.',
-    'gr.kicker': 'SMALL GROUPS', 'gr.title': '가까운 사람들과<br>나누는 감사.', 'gr.desc': '소그룹의 감사는 그룹 구성원에게만 보여요. 가족, 친구, 교회 소그룹을 따로 만들 수 있어요.', 'gr.new': '＋ 새 소그룹 만들기', 'gr.posts': '개의 감사', 'gr.open': '피드 보기',
+    'gr.kicker': 'SMALL GROUPS', 'gr.title': '소그룹', 'gr.desc': '가까운 사람들과만 나누는 감사예요.', 'gr.new': '새 소그룹', 'gr.posts': '개의 감사', 'gr.open': '피드 보기',
     'gr.createTitle': '새 소그룹', 'gr.name': '소그룹 이름', 'gr.ph': '예: 수요 성경공부', 'gr.create': '만들기', 'toast.grCreated': '소그룹이 만들어졌어요.', 'gr.fine': '실제 초대·가입·권한 관리는 서버 연동 후 제공됩니다.',
-    'j.kicker': 'MY GRATITUDE', 'j.title': '나의 감사가<br>쌓이는 곳.', 'j.desc': '오늘 받은 은혜와 앞으로의 시간을 맡기며 드린 미리 감사를 함께 돌아봐요.', 'j.all': '전체', 'j.new': '＋ 새로운 감사 쓰기', 'j.empty': '아직 기록된 감사가 없어요.', 'j.reflect': '돌아보며 감사 쓰기', 'j.delete': '삭제', 'j.confirmDelete': '이 감사 기록을 삭제할까요?',
-    'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림 사용 (설정 시안)', 'n.group': '그룹 반응 모아 보기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 고마웠던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '알림 설정 저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
+    'j.kicker': 'MY GRATITUDE', 'j.title': '내 감사', 'j.desc': '오늘의 감사와 미리 드린 감사가 여기에 쌓여요.', 'j.all': '전체', 'j.new': '＋ 새로운 감사 쓰기', 'j.empty': '아직 기록된 감사가 없어요.', 'j.reflect': '돌아보며 감사 쓰기', 'j.delete': '삭제', 'j.confirmDelete': '이 감사 기록을 삭제할까요?',
+    'n.title': '나의 감사 시간', 'n.hint': '매일 부담 없이 한 줄을 남기도록, 내가 정한 시간에 한 번만 알려주는 흐름을 설계했어요.', 'n.time': '감사 알림 시간', 'n.enable': '매일 감사 알림', 'n.group': '그룹 소식 모아 받기', 'n.example': '잠금 화면 알림 예시', 'n.ex1': '오늘 고마웠던 순간 하나', 'n.ex2': '작은 일도 좋아요. 한 줄로 남겨볼까요?', 'n.save': '저장', 'n.fine': '이 화면은 기기에 실제 푸시 알림을 예약하지 않습니다. 실제 알림은 권한 요청 및 네이티브 앱/웹 푸시 설정이 필요합니다.', 'toast.nSaved': '데모 설정이 저장되었어요.',
     'w.title': '홈 화면 위젯', 'w.desc': '실제 iPhone 위젯이 아닌 홈 화면 디자인 미리보기예요.', 'w.today': '오늘의 감사', 'w.q': '오늘 나를 웃게 한 일은?', 'w.write': '＋ 한 줄 쓰기', 'w.sub': '함께하는 7일', 'w.view': '챌린지 보기', 'w.fine': '실제 위젯 설치·위젯에서 앱 열기는 iOS/Android 네이티브 개발 단계에서 구현해야 합니다.',
     's.title': '설정', 's.lang': '언어 · Language', 's.notify': '알림 시간', 's.widget': '홈 위젯 미리보기', 's.export': '내 데모 데이터 JSON 복사', 'cancel': '취소', 's.reset': '데모 초기화', 'fs.enter': '전체 화면', 'fs.exit': '전체 화면 끄기', 'fs.close': '닫기', 'fs.closeAria': '전체 화면 닫기',
     'nudge': '아래로 넘겨 보기', 'gate.kicker': '오늘의 감사', 'gate.q': '오늘 고마웠던 순간은?', 'gate.ph': '한 줄이면 충분해요.', 'gate.private': '나만 보기', 'gate.public': '모두의 감사', 'gate.save': '감사 남기기', 'gate.later': '나중에 쓸게요',
@@ -57,6 +72,21 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'note.delete': 'Delete',
+    'note.reflect': 'Look back with thanks',
+    'note.share': 'Share',
+    's.about': 'This prototype keeps your notes on this device only. Invites, live sync and push notifications arrive in the release version.',
+    's.guest': 'Not signed in',
+    's.account': 'Account',
+    'send.pick': 'Which group?',
+    'share.note': 'Only share public posts or ones you have permission to share.',
+    'share.toGroup': 'Share with a group',
+    'compose.publicNote': 'Anyone can read and share posts to Everyone.',
+    'scope.all': 'Everyone',
+    'scope.groupShort': 'Group',
+    'scope.me': 'Only me',
+    'kind.aheadShort': 'Thanks ahead',
+    'gr.count': '{n} thanks',
     'doc.title': 'Daily Thanks · A day that carries gratitude',
     'aria.home': 'Daily Thanks home', 'aria.settings': 'Settings', 'aria.nav': 'Main menu', 'aria.lang': '한국어로 보기', 'aria.close': 'Close', 'aria.next': 'Next',
     'lang.other': '한',
@@ -73,7 +103,7 @@ const STR = {
     'act.share': 'Share', 'act.group': 'Group',
     'me': 'Me', 'reflect.prefix': 'Looking back',
     'toast.likeAhead': 'Praying with you.', 'toast.likeToday': 'Thankful with you.',
-    'compose.title': 'Leave a line of thanks',
+    'compose.title': 'A line of thanks',
     'compose.qToday': 'What were you grateful for today?', 'compose.qAhead': 'What are you entrusting to God with thanks?',
     'compose.phToday': 'Write down a moment you were thankful for.', 'compose.phAhead': 'God, this week too…',
     'compose.samples': 'Tap a sentence and make it yours',
@@ -81,19 +111,19 @@ const STR = {
     'compose.who': 'Who will you share it with?', 'compose.private': 'Only me (default)', 'compose.group': 'My group', 'compose.public': 'Everyone',
     'compose.groupLabel': 'Group',
     'compose.hint': 'Keep personal prayers safe with “Only me.” Public posts can be read and shared by others.',
-    'compose.submit': 'Save my thanks', 'toast.saved': 'Your thanks has been saved.',
-    'reflect.title': 'Look back with thanks', 'reflect.before': 'The thanks you gave ahead', 'reflect.q': 'What grace did you actually find this week?', 'reflect.ph': 'Small moments count too.', 'reflect.submit': 'Add to this note', 'toast.reflected': 'A week of thanks, added.',
-    'share.title': 'Share thanks', 'share.hint': 'A preview before KakaoTalk/Instagram integration. Only share public posts or ones the author allowed.', 'share.copy': 'Copy text', 'share.native': 'Share via device', 'share.hint2': 'You can use your phone’s share sheet for KakaoTalk or Instagram; dedicated cards and posting need separate integration.', 'toast.copied': 'Copied.', 'toast.noShare': 'Device sharing isn’t available here.',
+    'compose.submit': 'Save', 'toast.saved': 'Your thanks has been saved.',
+    'reflect.title': 'Look back with thanks', 'reflect.before': 'The thanks you gave ahead', 'reflect.q': 'What grace did you actually find this week?', 'reflect.ph': 'Small moments count too.', 'reflect.submit': 'Add', 'toast.reflected': 'A week of thanks, added.',
+    'share.title': 'Share thanks', 'share.hint': 'A preview before KakaoTalk/Instagram integration. Only share public posts or ones the author allowed.', 'share.copy': 'Copy text', 'share.native': 'Share to another app', 'share.hint2': 'You can use your phone’s share sheet for KakaoTalk or Instagram; dedicated cards and posting need separate integration.', 'toast.copied': 'Copied.', 'toast.noShare': 'Device sharing isn’t available here.',
     'send.title': 'Share with a group', 'send.hint': 'Keep the original author’s name on shared posts. Ask before sending someone’s private note.', 'send.target': 'Group to share with', 'send.submit': 'Share with this group', 'toast.sent': 'Shared with the group.',
-    'ch.kicker': '7 DAYS TOGETHER', 'ch.title': 'Seven days of thanks,<br>built together.', 'ch.desc': 'Start with one friend or a small group. Miss a day? You can always pick it back up.', 'ch.new': '＋ New 7-day challenge', 'ch.write': 'Write today’s thanks', 'ch.detail': 'Details', 'ch.day': 'Day ',
+    'ch.kicker': '7 DAYS TOGETHER', 'ch.title': '7 Days', 'ch.desc': 'Fill seven days of thanks with a friend or group. Miss a day and simply pick it back up.', 'ch.new': 'New challenge', 'ch.write': 'Write today’s thanks', 'ch.detail': 'Details', 'ch.day': 'Day ',
     'ch.fine': 'In this offline demo, members and progress are saved only in this browser. Real invitations need a server and user accounts.',
     'ch.createTitle': 'Start a 7-day challenge', 'ch.name': 'Challenge name', 'ch.defaultName': 'Seven days together', 'ch.with': 'Who’s joining you?', 'ch.pair': 'Just a friend and me (invite links after launch)', 'ch.pairShort': 'A friend and me',
-    'ch.createHint': 'Missing a day won’t reset your week. Real invites and live sync arrive once the backend is built.', 'ch.start': 'Start challenge', 'toast.chStarted': 'Your new 7-day challenge has begun.',
+    'ch.createHint': 'Missing a day won’t reset your week. Real invites and live sync arrive once the backend is built.', 'ch.start': 'Start', 'toast.chStarted': 'Your new 7-day challenge has begun.',
     'ch.question': 'Who are you thankful for today?', 'ch.detailHint': 'So one person’s post doesn’t count for everyone, the real service needs per-member check-ins.', 'ch.rest': 'Rest a day, then carry on.',
-    'gr.kicker': 'SMALL GROUPS', 'gr.title': 'Gratitude shared<br>with those close by.', 'gr.desc': 'Group posts are visible only to members. Make separate groups for family, friends, or church.', 'gr.new': '＋ New group', 'gr.posts': ' posts', 'gr.open': 'Open feed',
+    'gr.kicker': 'SMALL GROUPS', 'gr.title': 'Groups', 'gr.desc': 'Thanks shared only with people close to you.', 'gr.new': 'New group', 'gr.posts': ' posts', 'gr.open': 'Open feed',
     'gr.createTitle': 'New group', 'gr.name': 'Group name', 'gr.ph': 'e.g. Wednesday Bible study', 'gr.create': 'Create', 'toast.grCreated': 'Group created.', 'gr.fine': 'Real invites, joining and permissions come with the server.',
-    'j.kicker': 'MY GRATITUDE', 'j.title': 'Where my thanks<br>gathers.', 'j.desc': 'Look back on today’s grace and the thanks you offered ahead for the days to come.', 'j.all': 'All', 'j.new': '＋ Write new thanks', 'j.empty': 'No thanks recorded yet.', 'j.reflect': 'Look back with thanks', 'j.delete': 'Delete', 'j.confirmDelete': 'Delete this note?',
-    'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder (design preview)', 'n.group': 'Bundle group reactions', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save reminder', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
+    'j.kicker': 'MY GRATITUDE', 'j.title': 'My Thanks', 'j.desc': 'Your thanks for today and thanks offered ahead, all in one place.', 'j.all': 'All', 'j.new': '＋ Write new thanks', 'j.empty': 'No thanks recorded yet.', 'j.reflect': 'Look back with thanks', 'j.delete': 'Delete', 'j.confirmDelete': 'Delete this note?',
+    'n.title': 'My time for thanks', 'n.hint': 'One gentle reminder a day, at the time you choose, so a single line never feels like a chore.', 'n.time': 'Reminder time', 'n.enable': 'Daily reminder', 'n.group': 'Bundle group updates', 'n.example': 'Lock-screen preview', 'n.ex1': 'One moment you were thankful for', 'n.ex2': 'Small things count. Leave a single line?', 'n.save': 'Save', 'n.fine': 'This screen does not schedule real push notifications. That needs permission and native/web push setup.', 'toast.nSaved': 'Demo settings saved.',
     'w.title': 'Home screen widget', 'w.desc': 'A design preview — not a real iPhone widget.', 'w.today': 'Today’s thanks', 'w.q': 'What made you smile today?', 'w.write': '＋ Write a line', 'w.sub': '7 days together', 'w.view': 'View challenge', 'w.fine': 'Installing a real widget and opening the app from it is built in the native iOS/Android phase.',
     's.title': 'Settings', 's.lang': 'Language · 언어', 's.notify': 'Reminder time', 's.widget': 'Home widget preview', 's.export': 'Copy my demo data (JSON)', 'cancel': 'Cancel', 's.reset': 'Reset demo', 'fs.enter': 'Full screen', 'fs.exit': 'Exit full screen', 'fs.close': 'Close', 'fs.closeAria': 'Close full screen',
     'nudge': 'Scroll for more', 'gate.kicker': 'Today’s thanks', 'gate.q': 'What were you grateful for today?', 'gate.ph': 'One line is enough.', 'gate.private': 'Only me', 'gate.public': 'Everyone', 'gate.save': 'Save my thanks', 'gate.later': 'Maybe later',
@@ -128,6 +158,18 @@ const ICONS = {
   apple: '<path fill="currentColor" stroke="none" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-4.1zM14 5.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/>',
   google: '<path fill="#4285F4" stroke="none" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" stroke="none" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" stroke="none" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" stroke="none" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>',
   phoneMsg: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  more: '<circle cx="5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.2" fill="currentColor" stroke="none"/>',
+  chevron: '<path d="m9 6 6 6-6 6"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  copy: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+  upload: '<path d="M12 3v12M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/>',
+  trash: '<path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>',
+  pencil: '<path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+  languages: '<path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/>',
   maximize: '<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>',
   minimize: '<path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/>'
 };
@@ -221,10 +263,10 @@ function applyStatic() {
 }
 
 function showSheet({ title, body }) {
-  sheet.innerHTML = `<div class="sheet-top"><h2>${title}</h2><button class="close" data-action="close" aria-label="${t('aria.close')}">×</button></div>${body}`;
+  sheet.innerHTML = `<div class="sheet-top"><h2>${title}</h2><button class="close" data-action="close" aria-label="${t('aria.close')}">${icon('x')}</button></div>${body}`;
   sheet.setAttribute('aria-label', title);
   sheet.hidden = false; backdrop.hidden = false;
-  setTimeout(() => sheet.querySelector('textarea,input:not([type=checkbox]),select,button:not(.close)')?.focus(), 30);
+  setTimeout(() => sheet.querySelector('textarea, input.field')?.focus(), 30); // only text fields get focus
 }
 function close() { sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = ''; }
 
@@ -232,7 +274,7 @@ function dayRow(ch) {
   const next = Math.min(ch.days.length + 1, 7);
   return `<div class="days">${Array.from({ length: 7 }, (_, i) => {
     const n = i + 1, done = ch.days.includes(n);
-    return `<div class="day ${done ? 'done' : ''} ${n === next && !done ? 'today' : ''}"><span>${done ? '✓' : n}</span>${lang() === 'ko' ? n + t('ch.day') : t('ch.day') + n}</div>`;
+    return `<div class="day ${done ? 'done' : ''} ${n === next && !done ? 'today' : ''}"><span>${done ? icon('check') : n}</span>${lang() === 'ko' ? n + t('ch.day') : t('ch.day') + n}</div>`;
   }).join('')}</div>`;
 }
 
@@ -252,12 +294,11 @@ function composeCard() {
     <div class="post-kind">${icon('sun')}<span>${t('gate.kicker')}</span></div>
     <p class="card-title">${t('gate.saved')}</p><p class="card-sub">${t('gate.savedSub')}</p>
     <p class="card-hint">${icon('chevrons')}</p></div></article>`;
-  const priv = state.composeScope === 'private';
   return `<article class="post card-page" id="compose-card"><form class="card-inner" id="gate-compose">
     <div class="post-kind">${icon('sun')}<span>${t('gate.kicker')}</span></div>
     <label class="card-title" for="gate-text">${t('gate.q')}</label>
     <textarea id="gate-text" class="card-input" maxlength="1500" rows="3" placeholder="${esc(t('gate.ph'))}"></textarea>
-    <div class="radio-row"><button type="button" class="${priv ? 'active' : ''}" data-action="gate-scope" data-id="private">${icon('lock')}${t('gate.private')}</button><button type="button" class="${priv ? '' : 'active'}" data-action="gate-scope" data-id="public">${icon('globe')}${t('gate.public')}</button></div>
+    ${seg([['private', t('gate.private'), 'lock'], ['public', t('gate.public'), 'globe']], 'gate-scope', state.composeScope)}
     <div class="card-actions"><button class="primary" type="submit">${t('gate.save')}</button><button class="subtle-link" type="button" data-action="gate-later">${t('gate.later')}</button></div>
   </form></article>`;
 }
@@ -339,56 +380,47 @@ function renderFeed(keepIndex = 0) {
   bindGateForm();
 }
 
+const pageHead = (title, desc, tools = '') => `<header class="page-head"><h1 class="page-title">${title}</h1>${tools ? `<div class="page-tools">${tools}</div>` : ''}</header>${desc ? `<p class="page-desc">${desc}</p>` : ''}`;
+const roundBtn = (action, ic, label) => `<button class="round-btn" data-action="${action}" aria-label="${esc(label)}">${icon(ic)}</button>`;
+
 function renderGroups() {
-  main.innerHTML = `<div class="screen"><div class="section">
-    <span class="section-kicker">${t('gr.kicker')}</span>
-    <h1 class="section-title">${t('gr.title')}</h1>
-    <p class="section-desc">${t('gr.desc')}</p>
-    <button class="primary" data-action="new-group">${t('gr.new')}</button>
-    ${data.groups.map(g => {
+  main.innerHTML = `<div class="screen"><div class="page">
+    ${pageHead(t('gr.title'), t('gr.desc'), roundBtn('new-group', 'plus', t('gr.new')))}
+    <div class="list">${data.groups.map(g => {
       const n = data.posts.filter(p => p.scope === 'group' && p.group === g.id).length;
-      return `<section class="panel"><div class="row"><div><h3>${esc(L(g.name))}</h3><p>${n}${t('gr.posts')}</p></div><button class="secondary" data-action="open-group" data-id="${esc(g.id)}">${t('gr.open')}</button></div></section>`;
-    }).join('')}
-    <p class="fine-print">${t('gr.fine')}</p>
+      return `<button class="list-row" data-action="open-group" data-id="${esc(g.id)}">
+        <span class="row-icon">${icon('people')}</span>
+        <span class="row-main"><span class="row-title">${esc(L(g.name))}</span><span class="row-sub">${t('gr.count').replace('{n}', n)}</span></span>
+        <span class="row-end">${icon('chevron')}</span></button>`;
+    }).join('')}</div>
   </div></div>`;
 }
 
 function renderChallenges() {
-  main.innerHTML = `<div class="screen"><div class="section">
-    <span class="section-kicker">${t('ch.kicker')}</span>
-    <h1 class="section-title">${t('ch.title')}</h1>
-    <p class="section-desc">${t('ch.desc')}</p>
-    <button class="primary" data-action="new-challenge">${t('ch.new')}</button>
-    ${data.challenges.map(ch => `<section class="panel">
-      <div class="row"><span class="tag">${esc(groupName(ch.group))}</span><span class="muted">${Math.min(7, ch.days.length)}/7</span></div>
-      <h3 style="margin-top:12px">${esc(L(ch.name))}</h3>
-      <p>${esc(ch.members.map(L).join(' · '))}</p>
+  main.innerHTML = `<div class="screen"><div class="page">
+    ${pageHead(t('ch.title'), t('ch.desc'), roundBtn('new-challenge', 'plus', t('ch.new')))}
+    ${data.challenges.map(ch => `<section class="ch-card">
+      <button class="ch-head" data-action="challenge-detail" data-id="${esc(ch.id)}">
+        <span class="row-main"><span class="row-sub">${esc(groupName(ch.group))} · ${Math.min(7, ch.days.length)}/7</span><span class="ch-name">${esc(L(ch.name))}</span></span>
+        <span class="row-end">${icon('chevron')}</span></button>
       ${dayRow(ch)}
-      <div class="btn-row"><button class="primary" data-action="challenge-write" data-id="${esc(ch.id)}">${t('ch.write')}</button><button class="secondary" data-action="challenge-detail" data-id="${esc(ch.id)}">${t('ch.detail')}</button></div>
+      <button class="primary block" data-action="challenge-write" data-id="${esc(ch.id)}">${t('ch.write')}</button>
     </section>`).join('')}
-    <p class="fine-print">${t('ch.fine')}</p>
   </div></div>`;
 }
 
 function renderJournal() {
   let mine = data.posts.filter(p => p.mine);
   if (state.filter !== 'all') mine = mine.filter(p => p.kind === state.filter);
-  main.innerHTML = `<div class="screen"><div class="section">
-    <div class="section-head"><span class="section-kicker">${t('j.kicker')}</span><span class="section-tools"><button class="chip-btn" data-action="toggle-lang" aria-label="${t('aria.lang')}">${t('lang.other')}</button><button class="chip-btn" data-action="settings" aria-label="${t('aria.settings')}">⋯</button></span></div>
-    <h1 class="section-title">${t('j.title')}</h1>
-    <p class="section-desc">${t('j.desc')}</p>
-    <div class="mini-tabs">${[['all', t('j.all')], ['today', t('kind.today')], ['ahead', t('kind.ahead')]].map(([k, label]) => `<button class="${state.filter === k ? 'active' : ''}" data-action="journal-filter" data-id="${k}">${label}</button>`).join('')}</div>
-    <button class="primary" data-action="compose">${t('j.new')}</button>
-    ${mine.length ? mine.map(p => `<section class="note-card">
-      <div class="post-kind">${icon(kindIcon(p))}<span>${esc(kindLabel(p))} · ${esc(scopeLabel(p))}</span></div>
-      <p class="note-text">${esc(L(p.text))}</p>
-      ${p.reflection ? `<p class="muted">${t('reflect.prefix')}: ${esc(p.reflection)}</p>` : ''}
-      <footer>${esc(p.date)}</footer>
-      <div class="note-actions">
-        <button data-action="share" data-id="${esc(p.id)}">${t('act.share')}</button>
-        ${p.kind === 'ahead' ? `<button data-action="reflect" data-id="${esc(p.id)}">${t('j.reflect')}</button>` : ''}
-        <button data-action="delete" data-id="${esc(p.id)}">${t('j.delete')}</button>
-      </div></section>`).join('') : `<p class="empty">${t('j.empty')}</p>`}
+  main.innerHTML = `<div class="screen"><div class="page">
+    ${pageHead(t('j.title'), t('j.desc'), roundBtn('settings', 'more', t('aria.settings')))}
+    <div class="seg seg-page">${[['all', t('j.all')], ['today', t('kind.today')], ['ahead', t('kind.aheadShort')]].map(([k, label]) => `<button class="${state.filter === k ? 'active' : ''}" data-action="journal-filter" data-id="${k}">${label}</button>`).join('')}</div>
+    ${mine.length ? `<div class="notes">${mine.map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}">
+      <span class="note-meta">${icon(kindIcon(p))}<span>${esc(kindLabel(p))}</span><span class="dot">·</span><span>${esc(p.date)}</span><span class="note-scope">${icon(scopeIcon(p))}</span></span>
+      <span class="note-text">${esc(L(p.text))}</span>
+      ${p.reflection ? `<span class="note-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</span>` : ''}
+    </button>`).join('')}</div>`
+      : `<div class="empty-state">${icon('pencil')}<p>${t('j.empty')}</p><button class="primary" data-action="compose">${t('top.write')}</button></div>`}
     <div id="slot-journal"></div>
   </div></div>`;
 }
@@ -443,70 +475,76 @@ function render(keepIndex) {
 }
 
 /* ---------------- sheets ---------------- */
-function compose(kind = state.composeKind, chId = null, keepText = '') {
+const seg = (items, action, current, extra = '') => `<div class="seg ${extra}">${items.map(([id, label, ic]) => `<button type="button" class="${current === id ? 'active' : ''}" data-action="${action}" data-id="${id}">${ic ? icon(ic) : ''}<span>${label}</span></button>`).join('')}</div>`;
+
+function compose(kind = state.composeKind, chId = state.challenge, keepText = '') {
   state.composeKind = kind; state.challenge = chId;
+  state.sheetScope = state.sheetScope || 'private';
+  state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
   const ahead = kind === 'ahead';
-  showSheet({ title: t('compose.title'), body: `<form id="compose-form">
-    <div class="radio-row">
-      <button type="button" data-action="kind-today" class="${ahead ? '' : 'active'}">${icon('sun')}${t('kind.today')}</button>
-      <button type="button" data-action="kind-ahead" class="${ahead ? 'active' : ''}">${icon('sunrise')}${t('kind.ahead')}</button>
-    </div>
-    <label class="field-label" for="gratitude-text">${ahead ? t('compose.qAhead') : t('compose.qToday')}</label>
-    <textarea id="gratitude-text" maxlength="1500" placeholder="${esc(ahead ? t('compose.phAhead') : t('compose.phToday'))}" required>${esc(keepText)}</textarea>
-    <div ${ahead ? '' : 'hidden'}><p class="field-label">${t('compose.samples')}</p><div class="sample-grid">
-      ${['work', 'relationship', 'everyday'].map(k => `<button type="button" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}
-    </div></div>
-    <label class="field-label" for="post-scope">${t('compose.who')}</label>
-    <select id="post-scope"><option value="private">${t('compose.private')}</option><option value="group">${t('compose.group')}</option><option value="public">${t('compose.public')}</option></select>
-    <div id="group-picker" hidden><label class="field-label" for="post-group">${t('compose.groupLabel')}</label>
-      <select id="post-group">${data.groups.map(g => `<option value="${esc(g.id)}">${esc(L(g.name))}</option>`).join('')}</select></div>
-    <p class="hint">${t('compose.hint')}</p>
+  showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">
+    ${seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise']], 'pick-kind', kind)}
+    <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
+    ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
+    <p class="field-label">${t('compose.who')}</p>
+    ${seg([['private', t('scope.me'), 'lock'], ['group', t('scope.groupShort'), 'people'], ['public', t('scope.all'), 'globe']], 'pick-scope', state.sheetScope)}
+    <div class="chips" id="group-chips" ${state.sheetScope === 'group' ? '' : 'hidden'}>${data.groups.map(g => `<button type="button" class="chip ${state.sheetGroup === g.id ? 'active' : ''}" data-action="pick-group" data-id="${esc(g.id)}">${esc(L(g.name))}</button>`).join('')}</div>
+    <p class="hint" id="public-note" ${state.sheetScope === 'public' ? '' : 'hidden'}>${t('compose.publicNote')}</p>
     <button class="primary block" type="submit">${t('compose.submit')}</button>
   </form>` });
-  $('#post-scope').addEventListener('change', () => $('#group-picker').hidden = $('#post-scope').value !== 'group');
   $('#compose-form').addEventListener('submit', e => {
     e.preventDefault();
-    const text = $('#gratitude-text').value.trim(); if (!text) return;
-    const scope = $('#post-scope').value;
-    data.posts.unshift({ id: 'p' + Date.now(), mine: true, scope, group: scope === 'group' ? $('#post-group').value : undefined, kind: state.composeKind, text, date: today(), likes: 0 });
+    const text = $('#gratitude-text').value.trim(); if (!text) { $('#gratitude-text').focus(); return; }
+    const scope = state.sheetScope;
+    data.posts.unshift({ id: 'p' + Date.now(), mine: true, scope, group: scope === 'group' ? state.sheetGroup : undefined, kind: state.composeKind, text, date: today(), likes: 0 });
     if (state.challenge) {
       const ch = data.challenges.find(c => c.id === state.challenge);
       const next = ch && Math.min(ch.days.length + 1, 7);
       if (ch && !ch.days.includes(next)) ch.days.push(next);
     }
-    save(); close(); state.tab = 'journal'; render(); toast(t('toast.saved'));
+    state.challenge = null;
+    save(); close(); state.immersive = false; state.tab = 'journal'; render(); toast(t('toast.saved'));
   });
+}
+
+function noteSheet(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  showSheet({ title: t('j.title'), body: `<p class="quote">${esc(L(p.text))}</p>
+    <div class="list">
+      <button class="list-row" data-action="share" data-id="${esc(p.id)}"><span class="row-icon">${icon('upload')}</span><span class="row-main"><span class="row-title">${t('note.share')}</span></span></button>
+      ${p.kind === 'ahead' ? `<button class="list-row" data-action="reflect" data-id="${esc(p.id)}"><span class="row-icon">${icon('pencil')}</span><span class="row-main"><span class="row-title">${t('note.reflect')}</span></span></button>` : ''}
+      <button class="list-row danger" data-action="delete" data-id="${esc(p.id)}"><span class="row-icon">${icon('trash')}</span><span class="row-main"><span class="row-title">${t('note.delete')}</span></span></button>
+    </div>` });
 }
 
 function reflect(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
-  showSheet({ title: t('reflect.title'), body: `<p class="hint">${t('reflect.before')}</p><div class="panel panel-muted">${esc(L(p.text))}</div>
-    <form id="reflect-form"><label class="field-label" for="reflect-text">${t('reflect.q')}</label>
-    <textarea id="reflect-text" placeholder="${esc(t('reflect.ph'))}">${esc(p.reflection || '')}</textarea>
-    <button class="primary block" type="submit" style="margin-top:14px">${t('reflect.submit')}</button></form>` });
+  showSheet({ title: t('reflect.title'), body: `<form id="reflect-form" class="sheet-form"><p class="quote">${esc(L(p.text))}</p>
+    <textarea id="reflect-text" class="big-input" rows="4" placeholder="${esc(t('reflect.q'))}" aria-label="${esc(t('reflect.q'))}">${esc(p.reflection || '')}</textarea>
+    <button class="primary block" type="submit">${t('reflect.submit')}</button></form>` });
   $('#reflect-form').addEventListener('submit', e => { e.preventDefault(); p.reflection = $('#reflect-text').value.trim(); save(); close(); renderJournal(); toast(t('toast.reflected')); });
 }
 
 function share(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
-  showSheet({ title: t('share.title'), body: `<p class="hint">${t('share.hint')}</p>
-    <div class="share-preview"><span class="wordmark">daily <em>thanks</em></span><p>${esc(L(p.text))}</p><small>${esc(authorName(p))} · ${esc(kindLabel(p))}</small></div>
-    <div class="btn-row"><button class="primary" data-action="copy-share" data-id="${esc(id)}">${t('share.copy')}</button><button class="secondary" data-action="send-group" data-id="${esc(id)}">${icon('userplus')} ${t('send.title')}</button><button class="secondary" data-action="native-share" data-id="${esc(id)}">${t('share.native')}</button></div>
-    <p class="hint">${t('share.hint2')}</p>` });
+  showSheet({ title: t('share.title'), body: `<div class="share-preview"><span class="wordmark">daily <em>thanks</em></span><p>${esc(L(p.text))}</p><small>${esc(authorName(p))} · ${esc(kindLabel(p))}</small></div>
+    <div class="list">
+      <button class="list-row" data-action="copy-share" data-id="${esc(id)}"><span class="row-icon">${icon('copy')}</span><span class="row-main"><span class="row-title">${t('share.copy')}</span></span></button>
+      <button class="list-row" data-action="send-group" data-id="${esc(id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${t('share.toGroup')}</span></span><span class="row-end">${icon('chevron')}</span></button>
+      <button class="list-row" data-action="native-share" data-id="${esc(id)}"><span class="row-icon">${icon('upload')}</span><span class="row-main"><span class="row-title">${t('share.native')}</span></span></button>
+    </div><p class="hint">${t('share.note')}</p>` });
 }
 
 function sendToGroup(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
-  showSheet({ title: t('send.title'), body: `<p class="hint">${t('send.hint')}</p><div class="panel panel-muted">${esc(L(p.text))}</div>
-    <label class="field-label" for="send-target">${t('send.target')}</label>
-    <select id="send-target">${data.groups.map(g => `<option value="${esc(g.id)}">${esc(L(g.name))}</option>`).join('')}</select>
-    <button class="primary block" style="margin-top:16px" data-action="confirm-send" data-id="${esc(id)}">${t('send.submit')}</button>` });
+  showSheet({ title: t('share.toGroup'), body: `<p class="quote">${esc(L(p.text))}</p><p class="field-label">${t('send.pick')}</p>
+    <div class="list">${data.groups.map(g => `<button class="list-row" data-action="send-to" data-id="${esc(id)}|${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name))}</span></span><span class="row-end">${icon('chevron')}</span></button>`).join('')}</div>` });
 }
 
 function createGroup() {
-  showSheet({ title: t('gr.createTitle'), body: `<form id="group-form"><label class="field-label" for="group-name">${t('gr.name')}</label>
-    <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" required>
-    <button class="primary block" type="submit" style="margin-top:18px">${t('gr.create')}</button></form>` });
+  showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
+    <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
+    <button class="primary block" type="submit">${t('gr.create')}</button></form>` });
   $('#group-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#group-name').value.trim(); if (!name) return;
     data.groups.push({ id: 'g' + Date.now(), name }); save(); close(); renderGroups(); toast(t('toast.grCreated'));
@@ -514,59 +552,63 @@ function createGroup() {
 }
 
 function createChallenge() {
-  showSheet({ title: t('ch.createTitle'), body: `<form id="challenge-form">
-    <label class="field-label" for="challenge-name">${t('ch.name')}</label><input id="challenge-name" class="field" value="${esc(t('ch.defaultName'))}" maxlength="50" required>
-    <label class="field-label" for="challenge-group">${t('ch.with')}</label>
-    <select id="challenge-group"><option value="pair">${t('ch.pair')}</option>${data.groups.map(g => `<option value="${esc(g.id)}">${esc(L(g.name))}</option>`).join('')}</select>
-    <p class="hint">${t('ch.createHint')}</p>
+  state.sheetWith = state.sheetWith || 'pair';
+  showSheet({ title: t('ch.createTitle'), body: `<form id="challenge-form" class="sheet-form">
+    <input id="challenge-name" class="field" value="${esc(t('ch.defaultName'))}" maxlength="50" aria-label="${esc(t('ch.name'))}" required>
+    <p class="field-label">${t('ch.with')}</p>
+    <div class="chips">${[['pair', t('ch.pairShort')], ...data.groups.map(g => [g.id, L(g.name)])].map(([id, label]) => `<button type="button" class="chip ${state.sheetWith === id ? 'active' : ''}" data-action="pick-with" data-id="${esc(id)}">${esc(label)}</button>`).join('')}</div>
+    <p class="hint">${t('ch.rest')}</p>
     <button class="primary block" type="submit">${t('ch.start')}</button></form>` });
   $('#challenge-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#challenge-name').value.trim(); if (!name) return;
-    data.challenges.unshift({ id: 'ch' + Date.now(), name, group: $('#challenge-group').value, members: [{ ko: '나', en: 'Me' }], start: today(), days: [] });
+    data.challenges.unshift({ id: 'ch' + Date.now(), name, group: state.sheetWith, members: [{ ko: '나', en: 'Me' }], start: today(), days: [] });
     save(); close(); state.tab = 'challenges'; render(); toast(t('toast.chStarted'));
   });
 }
 
 function challengeDetail(id) {
   const ch = data.challenges.find(c => c.id === id); if (!ch) return;
-  showSheet({ title: esc(L(ch.name)), body: `<span class="tag">${esc(groupName(ch.group))}</span>
-    <p class="muted" style="margin-top:10px">${esc(ch.members.map(L).join(', '))}</p>${dayRow(ch)}
-    <div class="panel" style="text-align:center"><p style="font-size:18px;font-weight:300;color:var(--ink);line-height:1.6">${t('ch.question')}</p>
-    <button class="primary block" data-action="challenge-write" data-id="${esc(ch.id)}">${t('ch.write')}</button></div>
-    <p class="hint" style="text-align:center">${t('ch.rest')}</p>
-    <p class="fine-print">${t('ch.detailHint')}</p>` });
+  showSheet({ title: esc(L(ch.name)), body: `<p class="hint">${esc(groupName(ch.group))} · ${esc(ch.members.map(L).join(', '))}</p>${dayRow(ch)}
+    <p class="quote center">${t('ch.question')}</p>
+    <button class="primary block" data-action="challenge-write" data-id="${esc(ch.id)}">${t('ch.write')}</button>
+    <p class="hint center">${t('ch.rest')}</p>` });
 }
 
 function notifications() {
   const s = data.settings;
-  showSheet({ title: t('n.title'), body: `<p class="hint">${t('n.hint')}</p>
-    <label class="field-label" for="notify-time">${t('n.time')}</label><input id="notify-time" class="field" type="time" value="${esc(s.notificationTime)}">
-    <label class="check-label"><input id="notify-enabled" type="checkbox" ${s.notificationEnabled ? 'checked' : ''}> ${t('n.enable')}</label>
-    <label class="check-label"><input id="notify-group" type="checkbox" ${s.groupUpdates ? 'checked' : ''}> ${t('n.group')}</label>
-    <div class="panel panel-muted"><h3>${t('n.example')}</h3><p style="color:var(--ink)">${t('n.ex1')}</p><p>${t('n.ex2')}</p></div>
-    <button class="primary block" data-action="save-notifications">${t('n.save')}</button>
-    <p class="fine-print">${t('n.fine')}</p>` });
+  showSheet({ title: t('n.title'), body: `<div class="sheet-form">
+    <div class="list">
+      <label class="list-row"><span class="row-icon">${icon('bell')}</span><span class="row-main"><span class="row-title">${t('n.enable')}</span></span><input id="notify-enabled" class="switch" type="checkbox" ${s.notificationEnabled ? 'checked' : ''}></label>
+      <label class="list-row"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('n.time')}</span></span><input id="notify-time" class="time-input" type="time" value="${esc(s.notificationTime)}"></label>
+      <label class="list-row"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${t('n.group')}</span></span><input id="notify-group" class="switch" type="checkbox" ${s.groupUpdates ? 'checked' : ''}></label>
+    </div>
+    <div class="lock-preview"><span class="row-sub">Daily Thanks</span><strong>${t('n.ex1')}</strong><span>${t('n.ex2')}</span></div>
+    <button class="primary block" data-action="save-notifications">${t('n.save')}</button></div>` });
 }
 
 function widget() {
   const ch = data.challenges[0];
-  showSheet({ title: t('w.title'), body: `<p class="hint">${t('w.desc')}</p><div class="widget-surface">
+  showSheet({ title: t('w.title'), body: `<div class="widget-surface">
     <div class="widget-card"><h3>${icon('sun')}${t('w.today')}</h3><div class="question">${t('w.q')}</div><button class="primary block" data-action="compose">${t('w.write')}</button></div>
-    ${ch ? `<div class="widget-card"><h3>${icon('people')}${esc(groupName(ch.group))}</h3><p class="muted">${t('w.sub')}</p>${dayRow(ch)}<button class="secondary block" data-action="challenges">${t('w.view')}</button></div>` : ''}
-    </div><p class="fine-print">${t('w.fine')}</p>` });
+    ${ch ? `<div class="widget-card"><h3>${icon('people')}${esc(groupName(ch.group))}</h3>${dayRow(ch)}</div>` : ''}
+    </div><p class="hint">${t('w.desc')}</p>` });
 }
 
 function settings() {
-  showSheet({ title: t('s.title'), body: `<p class="field-label" style="margin-top:0">${t('s.lang')}</p>
-    <div class="seg"><button class="${lang() === 'ko' ? 'active' : ''}" data-action="set-lang" data-id="ko">한국어</button><button class="${lang() === 'en' ? 'active' : ''}" data-action="set-lang" data-id="en">English</button></div>
-    ${session ? `<div class="row" style="margin-top:16px"><span class="muted">${t('acct.signedIn')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}</span><button class="secondary" data-action="logout">${t('acct.logout')}</button></div>` : ''}
-    <hr class="divider"><div class="menu-list">
-      <button data-action="notification">${icon('bell')}${t('s.notify')}</button>
-      <button data-action="widget">${icon('phone')}${t('s.widget')}</button>
-      <button data-action="export">${icon('download')}${t('s.export')}</button>
-      <button data-action="fullscreen">${icon('maximize')}${t('fs.enter')}</button>
-      <button data-action="reset">${icon('reset')}${t('s.reset')}</button>
-    </div><p class="fine-print">${t('s.fine')}</p>` });
+  const row = (action, ic, title, end = icon('chevron'), cls = '') => `<button class="list-row ${cls}" data-action="${action}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${title}</span></span><span class="row-end">${end}</span></button>`;
+  showSheet({ title: t('s.title'), body: `
+    ${seg([['ko', '한국어'], ['en', 'English']], 'set-lang', lang())}
+    <div class="list">
+      ${session
+        ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
+        : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
+      ${row('notification', 'bell', t('s.notify'), `<span class="row-sub">${esc(data.settings.notificationTime)}</span>${icon('chevron')}`)}
+      ${row('widget', 'phone', t('s.widget'))}
+      ${row('fullscreen', 'maximize', t('fs.enter'))}
+      ${row('export', 'copy', t('s.export'), '')}
+      ${row('reset', 'reset', t('s.reset'), '', 'danger')}
+    </div>
+    <p class="about">${icon('info')}<span>${t('s.about')}</span></p>` });
 }
 
 /* ---------------- sign-in ---------------- */
@@ -636,14 +678,25 @@ const actions = {
   'feed-public': () => { state.feed = 'public'; renderFeed(); },
   'feed-group': () => { state.feed = 'group'; renderFeed(); },
   challenges: () => { close(); state.tab = 'challenges'; render(); },
-  compose: () => compose('today'),
   next: () => { const sc = $('#feed-scroll'); sc?.scrollBy({ top: sc.clientHeight, behavior: 'smooth' }); },
   settings, notification: notifications, widget, close,
   'toggle-lang': () => setLang(lang() === 'ko' ? 'en' : 'ko'),
   'set-lang': id => setLang(id),
   like, share, 'send-group': sendToGroup, reflect,
-  'kind-today': () => compose('today', state.challenge, $('#gratitude-text')?.value || ''),
-  'kind-ahead': () => compose('ahead', state.challenge, $('#gratitude-text')?.value || ''),
+  'pick-kind': id => compose(id, state.challenge, $('#gratitude-text')?.value || ''),
+  'pick-scope': id => {
+    state.sheetScope = id;
+    document.querySelectorAll('[data-action="pick-scope"]').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+    $('#group-chips').hidden = id !== 'group'; $('#public-note').hidden = id !== 'public';
+  },
+  'pick-group': id => { state.sheetGroup = id; document.querySelectorAll('[data-action="pick-group"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
+  'pick-with': id => { state.sheetWith = id; document.querySelectorAll('[data-action="pick-with"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
+  note: noteSheet,
+  'send-to': pair => {
+    const [id, g] = pair.split('|'); const p = data.posts.find(x => x.id === id); if (!p) return;
+    data.posts.unshift({ ...clone(p), id: 'repost' + Date.now(), scope: 'group', group: g, mine: false, name: p.mine ? { ko: '나', en: 'Me' } : p.name, sharedFrom: { ko: '공유', en: 'shared' }, likes: 0 });
+    save(); close(); state.immersive = false; state.tab = 'feed'; state.feed = 'group'; state.group = g; render(); toast(t('toast.sent'));
+  },
   sample: id => { const ta = $('#gratitude-text'); ta.value = SAMPLES[lang()][id]; ta.focus(); },
   'journal-filter': id => { state.filter = id; renderJournal(); },
   delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
@@ -653,16 +706,11 @@ const actions = {
     if (navigator.share && p) navigator.share({ title: 'Daily Thanks', text: `${L(p.text)}\n\n— ${authorName(p)} · Daily Thanks` }).catch(() => {});
     else toast(t('toast.noShare'));
   },
-  'confirm-send': id => {
-    const p = data.posts.find(x => x.id === id); if (!p) return;
-    const g = $('#send-target').value;
-    data.posts.unshift({ ...clone(p), id: 'repost' + Date.now(), scope: 'group', group: g, mine: false, name: p.mine ? { ko: '나', en: 'Me' } : p.name, sharedFrom: { ko: '공유', en: 'shared' }, likes: 0 });
-    save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g; render(); toast(t('toast.sent'));
-  },
   'new-group': createGroup,
   'open-group': id => { state.tab = 'feed'; state.feed = 'group'; state.group = id; render(); },
   'new-challenge': createChallenge,
   'challenge-write': id => { close(); compose('today', id); },
+  compose: () => compose('today', null),
   'challenge-detail': challengeDetail,
   'save-notifications': () => {
     Object.assign(data.settings, { notificationTime: $('#notify-time').value, notificationEnabled: $('#notify-enabled').checked, groupUpdates: $('#notify-group').checked });
