@@ -571,8 +571,13 @@ render();
 const splash = $('#splash');
 if (splash) {
   let gone = false;
-  const hide = () => { if (gone) return; gone = true; splash.classList.add('out'); setTimeout(() => splash.remove(), 600); };
-  splash.addEventListener('click', hide);
+  const hide = () => {
+    if (gone) return; gone = true; splash.classList.add('out'); setTimeout(() => splash.remove(), 600);
+    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev => window.removeEventListener(ev, hide, true));
+  };
+  // The splash never blocks input (pointer-events: none): the first swipe or wheel scrolls the feed
+  // underneath right away, and any touch, scroll or key press fades the splash out immediately.
+  ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev => window.addEventListener(ev, hide, { capture: true, passive: true }));
   setTimeout(hide, 1800);
 }
 })();
