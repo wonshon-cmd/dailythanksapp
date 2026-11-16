@@ -4,4 +4,8 @@
     <string name="title_activity_main">Daily Thanks</string>
     <string name="package_name">org.dailyjourney.dailythanks</string>
     <string name="custom_url_scheme">org.dailyjourney.dailythanks</string>
+    <string name="widget_name">Daily Thanks</string>
+    <string name="widget_description">Write today\'s thanks in one tap</string>
+    <string name="widget_question">What are you thankful for today?</string>
+    <string name="widget_write">+ Write</string>
 </resources>

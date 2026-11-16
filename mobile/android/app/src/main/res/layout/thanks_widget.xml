@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="daily thanks"
+        android:textColor="#9BA0A3"
+        android:textSize="13sp"
+        android:fontFamily="serif" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="@string/widget_question"
+        android:textColor="#303438"
+        android:textSize="16sp"
+        android:maxLines="3"
+        android:ellipsize="end" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/widget_pill"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:text="@string/widget_write"
+        android:textColor="#303438"
+        android:textSize="13sp" />
+</LinearLayout>
