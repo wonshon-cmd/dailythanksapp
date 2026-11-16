@@ -758,6 +758,13 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 .invite-link{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:#F6F6F6;color:#303438;font-size:13px;line-height:1.5;word-break:break-all;user-select:all}
 .feed-sub .link-btn + .link-btn{margin-left:0}
 
+/* a verse now and then (feed card) */
+.verse-card .card-inner{gap:18px}
+.verse-text{margin:6px 0 0;font-size:calc(var(--read, 19px) + 1px);line-height:1.85;font-weight:300;color:var(--ink);word-break:keep-all;letter-spacing:-.005em}
+.verse-ref{margin:0;font-size:13px;color:#A9AEB1}
+.verse-actions{display:flex;gap:18px;margin-top:8px}
+.verse-actions .link-btn{color:#9BA0A3}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -902,7 +909,7 @@ const STR = {
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
-    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'verse.kicker': "말씀 한 구절", 'verse.title': "말씀 구절", 'verse.freq': "얼마나 자주", 'verse.hint': "감사 글 사이에 성경 한 구절이 보여요. 얼마나 자주 볼지 골라 주세요.", 'verse.often': "자주", 'verse.normal': "보통", 'verse.rare': "가끔", 'verse.off': "끄기", 'verse.note.often': "감사 4개쯤마다 한 구절", 'verse.note.normal': "감사 8개쯤마다 한 구절", 'verse.note.rare': "감사 15개쯤마다 한 구절", 'verse.note.off': "말씀 구절을 보여 주지 않아요", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -1017,7 +1024,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -1390,7 +1397,7 @@ const STR = {
     'login.apple': 'Continuar con Apple',
     'login.google': 'Continuar con Google',
     'login.phone': 'Continuar con número de teléfono',
-    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
+    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'verse.kicker': "Un versículo", 'verse.title': "Versículos", 'verse.freq': "Con qué frecuencia", 'verse.hint': "Entre las publicaciones aparece un versículo. Elige con qué frecuencia verlo.", 'verse.often': "A menudo", 'verse.normal': "Normal", 'verse.rare': "Poco", 'verse.off': "No", 'verse.note.often': "Un versículo cada 4 publicaciones aprox.", 'verse.note.normal': "Un versículo cada 8 publicaciones aprox.", 'verse.note.rare': "Un versículo cada 15 publicaciones aprox.", 'verse.note.off': "Sin versículos en el feed", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -1694,6 +1701,10 @@ function showSheet({ title, body }) {
 }
 function close() {
   sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = '';
+  if (state.verseChanged) { // verse frequency changed: rebuild the feed, staying near the same place
+    state.verseChanged = false; const sc = $('#feed-scroll');
+    render(sc ? Math.round(sc.scrollTop / Math.max(1, sc.clientHeight)) : 0);
+  }
   // Habit onboarding, one step at a time: (after sign-in) reminders → home-screen widget.
   if (state.pendingPrime) { state.pendingPrime = false; if (maybePrime()) return; }
   if (state.pendingWidget) { state.pendingWidget = false; maybeWidget(); }
@@ -1772,7 +1783,60 @@ function trackSeen() {
 
 const wroteToday = () => data.posts.some(p => p.mine && p.date === today());
 /* Public feed order: 3 posts → "write today's thanks" card (until written today) → sign-in card (until signed in) → the rest. */
-function feedSequence(posts) {
+/* ---------------- a verse now and then ----------------
+   Public-domain translations only: 개역한글 (ko), KJV (en), Reina-Valera 1909 (es).
+   content.json "verses": { ko: [{ ref, text }], … } can replace the list without an app update. */
+const VERSES = [
+  { ref: {"ko": "시편 107:1", "en": "Psalm 107:1", "es": "Salmos 107:1"}, text: {"ko": "여호와께 감사하라 그는 선하시며 그 인자하심이 영원함이로다", "en": "O give thanks unto the LORD, for he is good: for his mercy endureth for ever.", "es": "Alabad á Jehová, porque es bueno; porque para siempre es su misericordia."} },
+  { ref: {"ko": "데살로니가전서 5:16-18", "en": "1 Thessalonians 5:16-18", "es": "1 Tesalonicenses 5:16-18"}, text: {"ko": "항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라 이것이 그리스도 예수 안에서 너희를 향하신 하나님의 뜻이니라", "en": "Rejoice evermore. Pray without ceasing. In every thing give thanks: for this is the will of God in Christ Jesus concerning you.", "es": "Estad siempre gozosos. Orad sin cesar. Dad gracias en todo; porque esta es la voluntad de Dios para con vosotros en Cristo Jesús."} },
+  { ref: {"ko": "시편 118:24", "en": "Psalm 118:24", "es": "Salmos 118:24"}, text: {"ko": "이 날은 여호와의 정하신 것이라 이 날에 우리가 즐거워하고 기뻐하리로다", "en": "This is the day which the LORD hath made; we will rejoice and be glad in it.", "es": "Este es el día que hizo Jehová; nos gozaremos y alegraremos en él."} },
+  { ref: {"ko": "빌립보서 4:6", "en": "Philippians 4:6", "es": "Filipenses 4:6"}, text: {"ko": "아무 것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희 구할 것을 감사함으로 하나님께 아뢰라", "en": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.", "es": "Por nada estéis afanosos; sino sean notorias vuestras peticiones delante de Dios en toda oración y ruego, con hacimiento de gracias."} },
+  { ref: {"ko": "예레미야애가 3:22-23", "en": "Lamentations 3:22-23", "es": "Lamentaciones 3:22-23"}, text: {"ko": "여호와의 자비와 긍휼이 무궁하시므로 우리가 진멸되지 아니함이니이다 이것들이 아침마다 새로우니 주의 성실이 크도소이다", "en": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.", "es": "Es por la misericordia de Jehová que no somos consumidos, porque nunca decayeron sus misericordias. Nuevas son cada mañana; grande es tu fidelidad."} },
+  { ref: {"ko": "시편 100:4", "en": "Psalm 100:4", "es": "Salmos 100:4"}, text: {"ko": "감사함으로 그 문에 들어가며 찬송함으로 그 궁정에 들어가서 그에게 감사하며 그 이름을 송축할지어다", "en": "Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.", "es": "Entrad por sus puertas con reconocimiento, por sus atrios con alabanza: alabadle, bendecid su nombre."} },
+  { ref: {"ko": "골로새서 3:15", "en": "Colossians 3:15", "es": "Colosenses 3:15"}, text: {"ko": "그리스도의 평강이 너희 마음을 주장하게 하라 너희는 평강을 위하여 한 몸으로 부르심을 받았나니 너희는 또한 감사하는 자가 되라", "en": "And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful.", "es": "Y la paz de Dios gobierne en vuestros corazones, á la cual asimismo sois llamados en un cuerpo; y sed agradecidos."} },
+  { ref: {"ko": "시편 103:2", "en": "Psalm 103:2", "es": "Salmos 103:2"}, text: {"ko": "내 영혼아 여호와를 송축하며 그 모든 은택을 잊지 말지어다", "en": "Bless the LORD, O my soul, and forget not all his benefits.", "es": "Bendice, alma mía, á Jehová, y no olvides ninguno de sus beneficios."} },
+  { ref: {"ko": "야고보서 1:17", "en": "James 1:17", "es": "Santiago 1:17"}, text: {"ko": "각양 좋은 은사와 온전한 선물이 다 위로부터 빛들의 아버지께로서 내려오나니 그는 변함도 없으시고 회전하는 그림자도 없으시니라", "en": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning.", "es": "Toda buena dádiva y todo don perfecto es de lo alto, que desciende del Padre de las luces, en el cual no hay mudanza, ni sombra de variación."} },
+  { ref: {"ko": "시편 23:1", "en": "Psalm 23:1", "es": "Salmos 23:1"}, text: {"ko": "여호와는 나의 목자시니 내가 부족함이 없으리로다", "en": "The LORD is my shepherd; I shall not want.", "es": "Jehová es mi pastor; nada me faltará."} },
+  { ref: {"ko": "마태복음 11:28", "en": "Matthew 11:28", "es": "Mateo 11:28"}, text: {"ko": "수고하고 무거운 짐 진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라", "en": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.", "es": "Venid á mí todos los que estáis trabajados y cargados, que yo os haré descansar."} },
+  { ref: {"ko": "로마서 8:28", "en": "Romans 8:28", "es": "Romanos 8:28"}, text: {"ko": "우리가 알거니와 하나님을 사랑하는 자 곧 그 뜻대로 부르심을 입은 자들에게는 모든 것이 합력하여 선을 이루느니라", "en": "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.", "es": "Y sabemos que á los que á Dios aman, todas las cosas les ayudan á bien, es á saber, á los que conforme al propósito son llamados."} },
+  { ref: {"ko": "빌립보서 4:13", "en": "Philippians 4:13", "es": "Filipenses 4:13"}, text: {"ko": "내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라", "en": "I can do all things through Christ which strengtheneth me.", "es": "Todo lo puedo en Cristo que me fortalece."} },
+  { ref: {"ko": "이사야 41:10", "en": "Isaiah 41:10", "es": "Isaías 41:10"}, text: {"ko": "두려워 말라 내가 너와 함께 함이니라 놀라지 말라 나는 네 하나님이 됨이니라 내가 너를 굳세게 하리라 참으로 너를 도와 주리라 참으로 나의 의로운 오른손으로 너를 붙들리라", "en": "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.", "es": "No temas, que yo soy contigo; no desmayes, que yo soy tu Dios que te esfuerzo: siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia."} }
+];
+const VERSE_TR = { ko: '개역한글', en: 'KJV', es: 'RV 1909' };
+const VERSE_EVERY = { often: 4, normal: 8, rare: 15, off: 0 };
+const verseEvery = () => VERSE_EVERY[data.settings.verseEvery || 'normal'] ?? 8;
+function verseList() {
+  const remote = CONTENT.verses?.[lang()];
+  if (Array.isArray(remote) && remote.length) return remote.filter(v => v && v.text && v.ref).map(v => ({ ref: v.ref, text: v.text, tr: v.tr || '' }));
+  return VERSES.map(v => ({ ref: L(v.ref), text: L(v.text), tr: VERSE_TR[lang()] || VERSE_TR.en }));
+}
+// Puts a verse card after every N thanks (N from Settings). The verse changes with the day and position.
+function withVerses(items) {
+  const n = verseEvery(), list = verseList(); if (!n || !list.length) return items;
+  const first = Math.min(4, Math.ceil(n / 2)); // the first verse comes a little sooner, then every n thanks
+  const out = []; let posts = 0, k = 0, start = dayOfYear() * 3;
+  for (const it of items) {
+    out.push(it);
+    if (it.type === 'post' && (++posts === first || (posts > first && (posts - first) % n === 0))) out.push({ type: 'verse', v: list[(start + k++) % list.length] });
+  }
+  return out;
+}
+function verseCard(v) {
+  return `<article class="post card-page verse-card"><div class="card-inner">
+    <div class="post-kind">${icon('book')}<span>${t('verse.kicker')}</span></div>
+    <p class="verse-text">${esc(v.text)}</p>
+    <p class="verse-ref">${esc(v.ref)}${v.tr ? ` · ${esc(v.tr)}` : ''}</p>
+    <div class="verse-actions"><button class="link-btn" data-action="verse-share" data-id="${esc(v.ref)}">${icon('share')}${t('act.share')}</button>
+    <button class="link-btn" data-action="verse-freq">${icon('sparkle')}${t('verse.freq')}</button></div></div></article>`;
+}
+function verseFreqSheet() {
+  const cur = data.settings.verseEvery || 'normal';
+  showSheet({ title: t('verse.title'), body: `<p class="hint">${t('verse.hint')}</p>
+    ${seg([['often', t('verse.often')], ['normal', t('verse.normal')], ['rare', t('verse.rare')], ['off', t('verse.off')]], 'set-verse', cur, 'four')}
+    <p class="hint verse-freq-note">${t('verse.note.' + cur)}</p>` });
+}
+function feedSequence(posts) { return withVerses(baseSequence(posts)); }
+function baseSequence(posts) {
   const items = posts.slice(0, GATE_AFTER).map(p => ({ type: 'post', p }));
   if (posts.length > GATE_AFTER || !session) {
     if (!wroteToday() || state.justWrote) items.push({ type: 'compose' });
@@ -1806,7 +1870,7 @@ function loginCard() {
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <p class="fine-print">${t('login.demo')}</p></div></article>`;
 }
-const cardFor = item => item.type === 'compose' ? composeCard() : loginCard();
+const cardFor = item => item.type === 'compose' ? composeCard() : item.type === 'verse' ? verseCard(item.v) : loginCard();
 function bindGateForm() {
   const f = $('#gate-compose'); if (!f) return;
   f.addEventListener('submit', e => {
@@ -2274,6 +2338,8 @@ function settings() {
     ${seg(LANGS, 'set-lang', lang())}
     <p class="field-label">${t('size.title')}</p>
     ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
+    <p class="field-label">${t('verse.title')}</p>
+    ${seg([['often', t('verse.often')], ['normal', t('verse.normal')], ['rare', t('verse.rare')], ['off', t('verse.off')]], 'set-verse', data.settings.verseEvery || 'normal', 'four')}
     <div class="list">
       ${session
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
@@ -2915,6 +2981,18 @@ const actions = {
     const p = data.posts.find(x => x.id === id); if (!p) return;
     if (navigator.share) navigator.share({ title: 'Thank you', text: thanksText(p) }).then(() => { close(); cheer(t('ty.saved')); }).catch(() => {});
     else { copyText(thanksText(p)); }
+  },
+  'set-verse': id => {
+    data.settings.verseEvery = id; save();
+    document.querySelectorAll('[data-action="set-verse"]').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+    const note = $('.verse-freq-note'); if (note) note.textContent = t('verse.note.' + id);
+    state.verseChanged = true; // the feed is rebuilt with the new spacing when the sheet closes
+  },
+  'verse-freq': () => verseFreqSheet(),
+  'verse-share': ref => {
+    const v = verseList().find(x => x.ref === ref); if (!v) return;
+    const text = `${v.text}\n— ${v.ref}${v.tr ? ' (' + v.tr + ')' : ''}\n\nGive thanks daily. · daily thanks`;
+    if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
   },
   'set-size': id => { data.settings.textSize = id; save(); applyTextSize(); document.querySelectorAll('[data-action="set-size"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'read-more': id => { const p = data.posts.find(x => x.id === id); if (p) showSheet({ title: esc(p.mine ? t('me') : L(p.name)), body: `<p class="full-text">${esc(L(p.text))}</p>` }); },

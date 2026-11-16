@@ -745,3 +745,10 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 .invite-btn{flex:none;white-space:nowrap}
 .invite-link{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:#F6F6F6;color:#303438;font-size:13px;line-height:1.5;word-break:break-all;user-select:all}
 .feed-sub .link-btn + .link-btn{margin-left:0}
+
+/* a verse now and then (feed card) */
+.verse-card .card-inner{gap:18px}
+.verse-text{margin:6px 0 0;font-size:calc(var(--read, 19px) + 1px);line-height:1.85;font-weight:300;color:var(--ink);word-break:keep-all;letter-spacing:-.005em}
+.verse-ref{margin:0;font-size:13px;color:#A9AEB1}
+.verse-actions{display:flex;gap:18px;margin-top:8px}
+.verse-actions .link-btn{color:#9BA0A3}

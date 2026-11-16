@@ -399,5 +399,17 @@
 "join.ok": "Unirme",
 "join.done": "Te uniste a “{name}”.",
 "join.already": "Ya estás en este grupo.",
-"inv.copy": "Copiar enlace"
+"inv.copy": "Copiar enlace",
+"verse.kicker": "Un versículo",
+"verse.title": "Versículos",
+"verse.freq": "Con qué frecuencia",
+"verse.hint": "Entre las publicaciones aparece un versículo. Elige con qué frecuencia verlo.",
+"verse.often": "A menudo",
+"verse.normal": "Normal",
+"verse.rare": "Poco",
+"verse.off": "No",
+"verse.note.often": "Un versículo cada 4 publicaciones aprox.",
+"verse.note.normal": "Un versículo cada 8 publicaciones aprox.",
+"verse.note.rare": "Un versículo cada 15 publicaciones aprox.",
+"verse.note.off": "Sin versículos en el feed"
 }
