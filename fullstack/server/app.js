@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { parseReference, formatReference, verseCount } from './bible/reference.js';
 import { listTranslations, getPassageText } from './bible/translations.js';
 import { transcribe as defaultTranscribe } from './sermons/stt.js';
-import { summarizeSermon as defaultSummarize } from './sermons/summarize.js';
+import { summarizeSermon as defaultSummarize, summarizeMeeting as defaultSummarizeMeeting } from './sermons/summarize.js';
 import { flaggedTerms } from './moderation.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -15,11 +15,13 @@ const CONTENT_FILE = path.resolve(here, '../../content/content.json'); // editab
 const STATIC = {                                              // whitelist: nothing else on disk is served
   '/styles.css': [FRONTEND_DIR, 'styles.css', 'text/css; charset=utf-8'],
   '/app.js': [FRONTEND_DIR, 'app.js', 'text/javascript; charset=utf-8'],
-  '/fullstack/client.js': [PUBLIC_DIR, 'client.js', 'text/javascript; charset=utf-8']
+  '/fullstack/client.js': [PUBLIC_DIR, 'client.js', 'text/javascript; charset=utf-8'],
+  '/daily-bible/styles.css': [FRONTEND_DIR, 'styles.css', 'text/css; charset=utf-8'],
+  '/daily-bible/app.js': [FRONTEND_DIR, 'app.js', 'text/javascript; charset=utf-8']
 };
 const AUDIO_TYPES = { 'audio/mpeg': '.mp3', 'audio/mp4': '.m4a', 'audio/x-m4a': '.m4a', 'audio/wav': '.wav', 'audio/x-wav': '.wav', 'audio/webm': '.webm', 'audio/ogg': '.ogg', 'audio/aac': '.aac' };
 
-class HttpError extends Error { constructor(status, code, message) { super(message || code); this.status = status; this.code = code; } }
+class HttpError extends Error { constructor(status, code, message, extra) { super(message || code); this.status = status; this.code = code; this.extra = extra; } }
 
 const send = (res, status, body, type = 'application/json; charset=utf-8') => {
   res.writeHead(status, { 'Content-Type': type, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
@@ -47,7 +49,7 @@ function userIdOf(req) {
   return id;
 }
 
-export function createApp({ config, store, transcribe = defaultTranscribe, summarize = defaultSummarize }) {
+export function createApp({ config, store, transcribe = defaultTranscribe, summarize = defaultSummarize, summarizeMeeting = defaultSummarizeMeeting }) {
   const routes = [];
   const route = (method, pattern, handler, feature) => {
     const keys = [];
@@ -73,6 +75,41 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   });
 
   // Account deletion (required by the App Store and Google Play): removes the user's data everywhere.
+  // Groups & invites. Invite link: https://dailyjourney.org/join/?c=CODE&n=NAME → app → POST /api/groups/join.
+  const CODE_RE = /^[a-z0-9]{4,24}$/;
+  const newCode = () => Array.from(crypto.randomBytes(6), b => 'abcdefghjkmnpqrstuvwxyz23456789'[b % 31]).join('');
+  const publicGroup = g => ({ id: g.id, name: g.name, inviteCode: g.inviteCode, members: g.members.length });
+  route('POST', '/api/groups', async ({ req, user }) => {
+    const { name, code } = await readJson(req);
+    const clean = String(name || '').trim().slice(0, 30);
+    if (!clean) throw new HttpError(400, 'name_required');
+    let inviteCode = CODE_RE.test(code || '') && !store.groupByCode(code) ? code : newCode();
+    while (store.groupByCode(inviteCode)) inviteCode = newCode();
+    const g = store.addGroup({ id: crypto.randomUUID(), name: clean, inviteCode, ownerId: user, members: [user], createdAt: new Date().toISOString() });
+    return { status: 201, body: { group: publicGroup(g) } };
+  });
+  route('GET', '/api/groups', ({ user }) => ({ groups: store.listGroups(user).map(publicGroup) }));
+  route('GET', '/api/invites/:code', ({ params }) => {
+    const g = store.groupByCode(params.code); if (!g) throw new HttpError(404, 'invite_not_found');
+    return { name: g.name, members: g.members.length };
+  });
+  route('POST', '/api/groups/join', async ({ req, user }) => {
+    const { code } = await readJson(req);
+    if (!CODE_RE.test(code || '')) throw new HttpError(400, 'bad_code');
+    const g = store.joinGroup(code, user); if (!g) throw new HttpError(404, 'invite_not_found');
+    return { group: publicGroup(g) };
+  });
+  // Gentle group nudge: one message to every member, at most once a day per group, never naming anyone.
+  // (Delivery = push to members' devices; here it is recorded so the push service can send it.)
+  route('POST', '/api/groups/nudge', async ({ req, user }) => {
+    const { code } = await readJson(req);
+    const g = CODE_RE.test(code || '') && store.groupByCode(code);
+    if (!g || !g.members.includes(user)) throw new HttpError(404, 'group_not_found');
+    const day = new Date().toISOString().slice(0, 10);
+    if (g.lastNudge === day) throw new HttpError(429, 'already_nudged_today');
+    g.lastNudge = day; store.addNudge({ groupId: g.id, day, by: user });
+    return { ok: true, recipients: g.members.length };
+  });
   route('DELETE', '/api/account', ({ user }) => { store.deleteUser(user); return { ok: true }; });
 
   /* ---------- 표현 필터 + 검토 요청 ----------
@@ -175,10 +212,12 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
       let transcript = job.transcript;
       if (!transcript) {
         store.updateSermon(id, { status: 'transcribing' });
-        transcript = (await transcribe({ filePath: job.filePath, mimeType: job.mimeType, language: 'ko' }, config.stt)).text;
+        transcript = (await transcribe({ filePath: job.filePath, mimeType: job.mimeType, language: job.language || 'ko', context: [job.context, job.passage].filter(Boolean).join(' · '), passageText: job.passageText }, config.stt)).text;
       }
       store.updateSermon(id, { status: 'summarizing', transcript });
-      const { summary, references, model } = await summarize({ transcript, title: job.title, preacher: job.preacher });
+      const { summary, references, model } = job.kind === 'meeting'
+        ? await summarizeMeeting({ transcript, members: job.members || [], passage: job.passage, passageText: job.passageText, title: job.title })
+        : await summarize({ transcript, title: job.title, preacher: job.preacher, context: job.context, church: job.church, passage: job.passage, passageText: job.passageText });
       store.updateSermon(id, { status: 'done', summary, references, model, finishedAt: new Date().toISOString() });
     } catch (err) {
       store.updateSermon(id, { status: 'error', error: { code: err.code || 'failed', message: err.message } });
@@ -187,27 +226,132 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   const newSermon = (user, fields) => store.addSermon({
     id: crypto.randomUUID(), ownerId: user, status: 'queued', visibility: 'private',
     title: String(fields.title || '').slice(0, 120), preacher: String(fields.preacher || '').slice(0, 60),
+    language: ['ko', 'en', 'es'].includes(fields.language) ? fields.language : 'ko',
+    context: String(fields.context || '').slice(0, 600),
+    church: String(fields.church || '').slice(0, 60),
+    passage: String(fields.passage || '').slice(0, 120),
+    passageText: String(fields.passageText || '').slice(0, 20000),
+    kind: fields.kind === 'meeting' ? 'meeting' : 'sermon',
+    members: (Array.isArray(fields.members) ? fields.members : String(fields.members || '').split(',')).map(x => String(x).trim().slice(0, 30)).filter(Boolean).slice(0, 40),
     createdAt: new Date().toISOString()
   });
 
+  /* Sermon notes plan: the first N notes are free and kept; then delete some, or subscribe (monthly / yearly,
+     "almost unlimited" with a fair-use cap per 30 days). */
+  const quota = user => {
+    const plan = store.getPlan(user), P = config.sermonPlans;
+    const month = new Date(Date.now() - 30 * 864e5).toISOString();
+    const now = Date.now(), dayT = store.sermonTimes(user, new Date(now - 864e5).toISOString()), weekT = store.sermonTimes(user, new Date(now - 7 * 864e5).toISOString());
+    // rolling windows: a slot frees up 24 h / 7 days after it was used
+    const resetAt = (times, span) => times.length ? new Date(new Date(times[0]).getTime() + span).toISOString() : null;
+    return { plan: plan?.plan || 'free', until: plan?.until || null, used: store.storageUsed(user), limit: plan ? P.paidBytes : P.freeBytes, unit: 'bytes',
+      notes: store.countSermons(user), monthUsed: store.countSermons(user, month), monthLimit: plan ? P.fairUsePerMonth : null,
+      dayUsed: dayT.length, dayLimit: plan ? P.paidDay : P.freeDay, dayReset: resetAt(dayT, 864e5),
+      weekUsed: weekT.length, weekLimit: plan ? P.paidWeek : P.freeWeek, weekReset: resetAt(weekT, 7 * 864e5) };
+  };
+  const checkQuota = (user, adding = 0) => {
+    const q = quota(user);
+    if (q.used + adding > q.limit || (adding === 0 && q.used >= q.limit)) throw new HttpError(402, 'storage_full', null, { used: q.used, limit: q.limit });
+    if (q.dayUsed >= q.dayLimit) throw new HttpError(429, 'daily_limit', null, { reset: q.dayReset });
+    if (q.weekUsed >= q.weekLimit) throw new HttpError(429, 'weekly_limit', null, { reset: q.weekReset });
+    if (q.plan !== 'free' && q.monthUsed >= q.monthLimit) throw new HttpError(429, 'fair_use', null, { monthUsed: q.monthUsed, monthLimit: q.monthLimit });
+  };
+  route('GET', '/api/sermons/quota', ({ user }) => quota(user), 'sermon');
+  route('DELETE', '/api/sermons/:id', ({ params, user }) => {
+    if (!store.deleteSermon(params.id, user)) throw new HttpError(404, 'not_found');
+    return { ok: true, ...quota(user) };
+  }, 'sermon');
+  // Subscriptions: in production verify the store receipt (App Store Server API / Google Play Developer API)
+  // or a Stripe webhook before setting the plan. BILLING_DEV=1 allows activating without one, for testing only.
+  route('POST', '/api/billing/activate', async ({ req, user }) => {
+    const body = await readJson(req, 64 * 1024);
+    const plan = body.plan === 'yearly' ? 'yearly' : body.plan === 'monthly' ? 'monthly' : null;
+    if (!plan) throw new HttpError(422, 'invalid_plan');
+    if (!config.sermonPlans.devBilling) throw new HttpError(501, 'billing_not_configured');
+    const until = new Date(Date.now() + (plan === 'yearly' ? 365 : 31) * 864e5).toISOString();
+    store.setPlan(user, { plan, until, source: 'dev' });
+    return quota(user);
+  }, 'sermon');
+
   route('POST', '/api/sermons/audio', async ({ req, url, user }) => {
+    checkQuota(user);
     const mimeType = String(req.headers['content-type'] || '').split(';')[0];
     if (!AUDIO_TYPES[mimeType]) throw new HttpError(415, 'unsupported_audio_type');
     const audio = await readBody(req, config.maxUploadBytes);
     if (!audio.length) throw new HttpError(400, 'empty_audio');
-    const s = newSermon(user, { title: url.searchParams.get('title'), preacher: url.searchParams.get('preacher') });
+    checkQuota(user, audio.length);
+    const s = newSermon(user, { title: url.searchParams.get('title'), preacher: url.searchParams.get('preacher'), language: url.searchParams.get('lang'), context: url.searchParams.get('context') });
+    store.updateSermon(s.id, { bytes: audio.length });
     fs.mkdirSync(config.uploadDir, { recursive: true });
     const filePath = path.join(config.uploadDir, s.id + AUDIO_TYPES[mimeType]);
     fs.writeFileSync(filePath, audio);
-    runJob(s.id, { filePath, mimeType, title: s.title, preacher: s.preacher });
+    runJob(s.id, { filePath, mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText, kind: s.kind, members: s.members });
     return { status: 202, body: { id: s.id, status: 'queued' } };
   }, 'sermon');
+  /* Long recordings arrive in pieces while recording (a 40-minute sermon never has to upload in one go):
+     start → chunks in order → finish (pieces are joined, then transcribed and summarized). */
+  const partDir = id => path.join(config.uploadDir, id + '.parts');
+  route('POST', '/api/sermons/upload', async ({ url, user }) => {
+    checkQuota(user);
+    const mimeType = String(url.searchParams.get('type') || 'audio/webm').split(';')[0];
+    if (!AUDIO_TYPES[mimeType]) throw new HttpError(415, 'unsupported_audio_type');
+    const s = newSermon(user, { title: url.searchParams.get('title'), preacher: url.searchParams.get('preacher'), language: url.searchParams.get('lang'), context: url.searchParams.get('context'), kind: url.searchParams.get('kind'), members: url.searchParams.get('members') });
+    store.updateSermon(s.id, { status: 'uploading', mimeType });
+    fs.mkdirSync(partDir(s.id), { recursive: true });
+    return { status: 201, body: { id: s.id, status: 'uploading' } };
+  }, 'sermon');
+  route('PUT', '/api/sermons/:id/chunk', async ({ req, url, params, user }) => {
+    const s = store.getSermon(params.id);
+    if (!s || s.ownerId !== user || s.status !== 'uploading') throw new HttpError(404, 'not_found');
+    const i = Number(url.searchParams.get('i')); if (!Number.isInteger(i) || i < 0 || i > 100000) throw new HttpError(422, 'invalid_chunk');
+    const buf = await readBody(req, 25 * 1024 * 1024); if (!buf.length) throw new HttpError(400, 'empty_chunk');
+    fs.writeFileSync(path.join(partDir(s.id), String(i).padStart(6, '0')), buf);
+    return { ok: true, i };
+  }, 'sermon');
+  route('POST', '/api/sermons/:id/finish', async ({ req, params, user }) => {
+    const s0 = store.getSermon(params.id), body = await readJson(req, 16 * 1024).catch(() => ({}));
+    if (s0 && s0.ownerId === user) store.updateSermon(s0.id, { title: String(body.title || s0.title || '').slice(0, 120), preacher: String(body.preacher || s0.preacher || '').slice(0, 60),
+      church: String(body.church || s0.church || '').slice(0, 60), passage: String(body.passage || s0.passage || '').slice(0, 120), passageText: String(body.passageText || s0.passageText || '').slice(0, 20000) });
+    const s = store.getSermon(params.id);
+    if (!s || s.ownerId !== user || s.status !== 'uploading') throw new HttpError(404, 'not_found');
+    const dir = partDir(s.id), parts = fs.existsSync(dir) ? fs.readdirSync(dir).sort() : [];
+    if (!parts.length) throw new HttpError(400, 'empty_audio');
+    const filePath = path.join(config.uploadDir, s.id + AUDIO_TYPES[s.mimeType]);
+    const audio = Buffer.concat(parts.map(f => fs.readFileSync(path.join(dir, f))));
+    fs.rmSync(dir, { recursive: true, force: true });
+    try { checkQuota(user, audio.length); } catch (e) { store.deleteSermon(s.id, user); throw e; }   // no room: nothing is kept
+    fs.writeFileSync(filePath, audio);
+    store.updateSermon(s.id, { status: 'queued', bytes: audio.length });
+    runJob(s.id, { filePath, mimeType: s.mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText, kind: s.kind, members: s.members });
+    return { status: 202, body: { id: s.id, status: 'queued', parts: parts.length } };
+  }, 'sermon');
+  // A sermon from a YouTube link: the audio is fetched on the server (needs yt-dlp; YTDLP_PATH), then the usual steps.
+  route('POST', '/api/sermons/youtube', async ({ req, user }) => {
+    checkQuota(user);
+    const body = await readJson(req, 16 * 1024);
+    const link = String(body.url || '');
+    if (!/^https:\/\/(www\.|m\.)?(youtube\.com\/(watch\?v=|live\/|shorts\/)|youtu\.be\/)[\w-]{6,}/.test(link)) throw new HttpError(422, 'invalid_youtube_url');
+    if (!config.ytdlpPath) throw new HttpError(501, 'youtube_not_configured');
+    const s = newSermon(user, body);
+    fs.mkdirSync(config.uploadDir, { recursive: true });
+    const filePath = path.join(config.uploadDir, s.id + '.m4a');
+    store.updateSermon(s.id, { status: 'downloading', source: link });
+    const { execFile } = await import('node:child_process');
+    execFile(config.ytdlpPath, ['-x', '--audio-format', 'm4a', '--no-playlist', '-o', filePath, link], { timeout: 15 * 60 * 1000 }, err => {
+      if (err) return store.updateSermon(s.id, { status: 'error', error: { code: 'youtube_failed', message: 'Could not fetch audio from that link.' } });
+      try { store.updateSermon(s.id, { bytes: fs.statSync(filePath).size }); } catch {}
+      runJob(s.id, { filePath, mimeType: 'audio/mp4', title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText, kind: s.kind, members: s.members });
+    });
+    return { status: 202, body: { id: s.id, status: 'downloading' } };
+  }, 'sermon');
   route('POST', '/api/sermons/text', async ({ req, user }) => {
+    checkQuota(user);
     const body = await readJson(req, 1024 * 1024);
     const transcript = String(body.transcript || '').trim();
     if (transcript.length < 50) throw new HttpError(422, 'transcript_too_short');
-    const s = newSermon(user, body);
-    runJob(s.id, { transcript, title: s.title, preacher: s.preacher });
+    const bytes = Buffer.byteLength(transcript); checkQuota(user, bytes);
+    const s = newSermon(user, body); store.updateSermon(s.id, { bytes });
+    runJob(s.id, { transcript, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText, kind: s.kind, members: s.members });
     return { status: 202, body: { id: s.id, status: 'queued' } };
   }, 'sermon');
   route('GET', '/api/sermons', ({ user }) => ({ sermons: store.listSermons(user) }), 'sermon');
@@ -231,6 +375,12 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
         .replace('<script src="app.js" defer></script>', '<script src="app.js" defer></script>\n<script src="fullstack/client.js" defer></script>');
       return send(res, 200, html, 'text/html; charset=utf-8'), true;
     }
+    if (pathname === '/daily-bible' || pathname === '/daily-bible/') {   // the Bible app: same code in Bible mode, same API
+      const html = fs.readFileSync(path.join(FRONTEND_DIR, 'index.html'), 'utf8')
+        .replace('<script src="app.js" defer></script>', '<script>window.DT_APP = "bible";</script>\n<script src="app.js" defer></script>')
+        .replace(/<title>[^<]*<\/title>/, '<title>Daily Bible</title>');
+      return send(res, 200, html, 'text/html; charset=utf-8'), true;
+    }
     const entry = STATIC[pathname];
     if (!entry) return false;
     send(res, 200, fs.readFileSync(path.join(entry[0], entry[1])), entry[2]);
@@ -239,6 +389,12 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
 
   return async function handle(req, res) {
     const url = new URL(req.url, 'http://localhost');
+    const origin = req.headers.origin;
+    if (origin && config.corsOrigins.includes(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Vary', 'Origin');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-user-id'); res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    }
+    if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }
     try {
       if (req.method === 'GET' && serveStatic(url.pathname, res)) return;
       for (const r of routes) {
@@ -253,7 +409,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     } catch (err) {
       if (!(err instanceof HttpError)) console.error(err);
       const status = err instanceof HttpError ? err.status : 500;
-      send(res, status, { error: err instanceof HttpError ? err.code : 'internal_error' });
+      send(res, status, { error: err instanceof HttpError ? err.code : 'internal_error', ...(err instanceof HttpError && err.extra ? err.extra : {}) });
     }
   };
 }

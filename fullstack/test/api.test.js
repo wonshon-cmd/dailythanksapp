@@ -131,7 +131,120 @@ test('serves editable app content without the _help/_examples keys', async () =>
   const call = await start({});
   const res = await call('GET', '/api/content');
   assert.equal(res.status, 200);
-  assert.ok(Array.isArray(res.body.tagline));
+  assert.ok(Array.isArray(res.body.tagline) || Array.isArray(res.body.tagline?.ko)); // one list, or one per language
   assert.equal(res.body.supportEmail, 'hi@dailyjourney.org');
   assert.ok(!('_help' in res.body) && !('_examples' in res.body));
+});
+
+test('group invite: create with a code, preview it, join from another account', async () => {
+  const call = await start({});
+  const made = await call('POST', '/api/groups', { name: 'Wednesday study', code: 'abcd2345' }, { 'x-user-id': 'owner' });
+  assert.equal(made.status, 201);
+  assert.equal(made.body.group.inviteCode, 'abcd2345');
+  const preview = await call('GET', '/api/invites/abcd2345');
+  assert.deepEqual(preview.body, { name: 'Wednesday study', members: 1 });
+  const joined = await call('POST', '/api/groups/join', { code: 'abcd2345' }, { 'x-user-id': 'friend' });
+  assert.equal(joined.body.group.members, 2);
+  const mine = await call('GET', '/api/groups', null, { 'x-user-id': 'friend' });
+  assert.equal(mine.body.groups[0].name, 'Wednesday study');
+  assert.equal((await call('POST', '/api/groups/join', { code: 'nope9999' }, { 'x-user-id': 'friend' })).status, 404);
+  assert.equal((await call('POST', '/api/groups', { name: ' ' }, { 'x-user-id': 'owner' })).status, 400);
+});
+
+test('group nudge: once a day, members only', async () => {
+  const call = await start({});
+  await call('POST', '/api/groups', { name: 'Grace', code: 'grace2345' }, { 'x-user-id': 'a' });
+  await call('POST', '/api/groups/join', { code: 'grace2345' }, { 'x-user-id': 'b' });
+  const first = await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'b' });
+  assert.equal(first.status, 200); assert.equal(first.body.recipients, 2);
+  assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'a' })).status, 429);
+  assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'stranger' })).status, 404);
+});
+
+test('sermon notes: free space, then delete recordings or get more space', async () => {
+  const one = Buffer.byteLength(MOCK_TRANSCRIPT);
+  const call = await start({ FEATURE_SERMON: '1', FREE_STORAGE_MB: String(3 * one / 1048576), BILLING_DEV: '1' });
+  const ids = [];
+  for (let i = 0; i < 3; i++) ids.push((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).body.id);
+  let q = (await call('GET', '/api/sermons/quota')).body;
+  assert.deepEqual([q.plan, q.used, q.limit, q.unit], ['free', 3 * one, 3 * one, 'bytes']);
+  const full = await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT });
+  assert.equal(full.status, 402); assert.equal(full.body.error, 'storage_full'); assert.equal(full.body.limit, 3 * one);
+  assert.equal((await call('DELETE', `/api/sermons/${ids[0]}`)).status, 200);           // delete one → room again
+  assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+  assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 402);
+  assert.equal((await call('DELETE', `/api/sermons/${ids[1]}`, null, { 'x-user-id': 'other' })).status, 404); // only your own
+  q = (await call('POST', '/api/billing/activate', { plan: 'yearly' })).body;            // more space
+  assert.equal(q.plan, 'yearly'); assert.equal(q.limit, 100 * 1024 ** 3);
+  assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+});
+
+test('sermon notes: a recording too big for the space left is not kept', async () => {
+  const call = await start({ FEATURE_SERMON: '1', STT_PROVIDER: 'mock', FREE_STORAGE_MB: String(3000 / 1048576) });
+  const { id } = (await call('POST', '/api/sermons/upload?type=audio/mp4')).body;
+  for (let i = 0; i < 2; i++) assert.equal((await call('PUT', `/api/sermons/${id}/chunk?i=${i}`, new Uint8Array(2000), { 'Content-Type': 'application/octet-stream' })).status, 200);
+  const fin = await call('POST', `/api/sermons/${id}/finish`, {});
+  assert.equal(fin.status, 402); assert.equal(fin.body.error, 'storage_full');
+  assert.equal((await call('GET', '/api/sermons')).body.sermons.length, 0);
+});
+
+test('billing: no plan without a verified receipt unless dev billing is on', async () => {
+  const call = await start({ FEATURE_SERMON: '1' });
+  assert.equal((await call('POST', '/api/billing/activate', { plan: 'monthly' })).status, 501);
+});
+
+test('daily bible page is served in Bible mode', async () => {
+  const call = await start({});
+  const page = await call('GET', '/daily-bible/');
+  assert.equal(page.status, 200); assert.match(page.body, /window\.DT_APP = "bible"/);
+  assert.equal((await call('GET', '/daily-bible/app.js')).status, 200);
+});
+
+test('sermons: a long recording uploads in pieces, then is summarized', async () => {
+  const call = await start({ FEATURE_SERMON: '1', STT_PROVIDER: 'mock' });
+  const up = await call('POST', '/api/sermons/upload?type=audio/webm&title=long');
+  assert.equal(up.status, 201);
+  for (let i = 0; i < 3; i++) assert.equal((await call('PUT', `/api/sermons/${up.body.id}/chunk?i=${i}`, new Uint8Array([i, i, i]), { 'Content-Type': 'application/octet-stream' })).status, 200);
+  assert.equal((await call('PUT', `/api/sermons/${up.body.id}/chunk?i=0`, new Uint8Array([1]), { 'x-user-id': 'other', 'Content-Type': 'application/octet-stream' })).status, 404);
+  const fin = await call('POST', `/api/sermons/${up.body.id}/finish`);
+  assert.equal(fin.status, 202); assert.equal(fin.body.parts, 3);
+  let sermon;
+  for (let i = 0; i < 30; i++) { sermon = (await call('GET', `/api/sermons/${up.body.id}`)).body.sermon; if (sermon.status === 'done') break; await new Promise(r => setTimeout(r, 20)); }
+  assert.equal(sermon.status, 'done');
+});
+
+test('sermons: YouTube link needs yt-dlp on the server', async () => {
+  const call = await start({ FEATURE_SERMON: '1' });
+  assert.equal((await call('POST', '/api/sermons/youtube', { url: 'https://example.com/x' })).status, 422);
+  assert.equal((await call('POST', '/api/sermons/youtube', { url: 'https://www.youtube.com/watch?v=abcdefghijk' })).status, 501);
+});
+
+test('small-group meeting: recording → notes per member', async () => {
+  const one = MOCK_TRANSCRIPT;
+  const config = loadConfig({ FEATURE_SERMON: '1', STT_PROVIDER: 'mock', DATA_FILE: path.join(tmp, 'meet.json'), UPLOAD_DIR: path.join(tmp, 'up') });
+  const store = createStore(config.dataFile);
+  let got = null;
+  const summarizeMeeting = async x => { got = x; return { summary: { overview: 'o', members: x.members.map(n => ({ name: n, sharing: 's', prayer_request: '' })), prayer_topics: [], next_steps: [] }, references: [], model: 'stub' }; };
+  const server = http.createServer(createApp({ config, store, summarizeMeeting, summarize: async () => { throw new Error('not for meetings'); } }));
+  await new Promise(r => server.listen(0, r)); servers.push(server);
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const up = await (await fetch(`${base}/api/sermons/upload?type=audio/mp4&kind=meeting&members=${encodeURIComponent('하은,민서')}`, { method: 'POST', headers: { 'x-user-id': 'lead' } })).json();
+  await fetch(`${base}/api/sermons/${up.id}/chunk?i=0`, { method: 'PUT', headers: { 'x-user-id': 'lead', 'Content-Type': 'application/octet-stream' }, body: new Uint8Array(500) });
+  await fetch(`${base}/api/sermons/${up.id}/finish`, { method: 'POST', headers: { 'x-user-id': 'lead', 'Content-Type': 'application/json' }, body: JSON.stringify({ passage: '요한복음 15:1-8' }) });
+  let s; for (let i = 0; i < 50; i++) { s = (await (await fetch(`${base}/api/sermons/${up.id}`, { headers: { 'x-user-id': 'lead' } })).json()).sermon; if (s.status === 'done') break; await new Promise(r => setTimeout(r, 20)); }
+  assert.equal(s.status, 'done');
+  assert.deepEqual(got.members, ['하은', '민서']);
+  assert.equal(got.passage, '요한복음 15:1-8');
+  assert.deepEqual(s.summary.members.map(m => m.name), ['하은', '민서']);
+  void one;
+});
+
+test('summaries have rolling daily and weekly limits, shown on the usage meter', async () => {
+  const call = await start({ FEATURE_SERMON: '1', FREE_SUMMARIES_DAY: '2', FREE_SUMMARIES_WEEK: '5' });
+  for (let i = 0; i < 2; i++) assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+  const q = (await call('GET', '/api/sermons/quota')).body;
+  assert.deepEqual([q.dayUsed, q.dayLimit, q.weekUsed, q.weekLimit], [2, 2, 2, 5]);
+  assert.ok(Date.parse(q.dayReset) > Date.now());
+  const third = await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT });
+  assert.equal(third.status, 429); assert.equal(third.body.error, 'daily_limit'); assert.ok(third.body.reset);
 });

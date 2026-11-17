@@ -1,0 +1,30 @@
+# Downloads the public-domain Bible text into bible/ and commits it to the same branch.
+# Runs when tools/fetch-bible.py changes, or by hand (Actions › Bible data › Run workflow).
+name: Bible data
+
+on:
+  push:
+    paths:
+      - 'tools/fetch-bible.py'
+      - '.github/workflows/bible-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download 개역한글, KJV, Reina-Valera 1909
+        run: python3 tools/fetch-bible.py bible
+      - name: Commit the text
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bible
+          git diff --cached --quiet && echo "no changes" || (git commit -m "Bible text (public domain) for read-through" && git push)

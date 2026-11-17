@@ -24,7 +24,7 @@ Daily Thanks - 감사 일기
 ### appstore.keywords  (91/100)
 
 ```
-감사일기,감사노트,감사,일기,습관,큐티,묵상,기도,소그룹,교회,매일
+감사일기,감사노트,감사,일기,습관,큐티,묵상,기도,공동체,교회,매일
 ```
 
 ### appstore.whatsnew  (52/4000)
@@ -56,7 +56,7 @@ Daily Thanks는 하루 30초, 오늘 감사한 것을 한 줄로 남기는 가�
 앱을 열면 다른 사람들의 일상적이고 따뜻한 감사가 한 장씩 보여요. 손주에게 처음 "사랑해요"를 들은 날, 비 온 뒤 흙냄새, 버스를 기다려 준 기사님까지. 읽다 보면 나의 오늘도 떠올라요.
 
 ■ 한 줄이면 충분해요
-"오늘 감사한 것은?" 질문에 한 줄만 적어 보세요. 매일 바뀌는 오늘의 질문이 시작을 도와줘요. 모두에게 나누거나, 비공개로 나만 보거나 소그룹과만 나눌 수 있어요.
+"오늘 감사한 것은?" 질문에 한 줄만 적어 보세요. 매일 바뀌는 오늘의 질문이 시작을 도와줘요. 모두에게 나누거나, 비공개로 나만 보거나 공동체와만 나눌 수 있어요.
 
 ■ 미리 감사 · 감사 전하기
 다가올 한 주를 맡기며 미리 감사하고, 나중에 돌아보며 감사를 덧붙여요. 고마운 사람에게는 "Thank you" 카드를 만들어 문자, WhatsApp, 카카오톡, 인스타그램으로 보낼 수 있어요.
@@ -90,7 +90,7 @@ Daily Thanks · Gratitude Diary
 ### appstore.subtitle  (30/30)
 
 ```
-Give thanks daily. Live fully.
+Give thanks daily. Live abundantly.
 ```
 
 ### appstore.promo  (148/170)
@@ -126,7 +126,7 @@ One line of thanks a day. Read warm gratitude, write yours, share the joy.
 ### description  (1498/4000)
 
 ```
-Give thanks daily. Live fully. Share the joy.
+Give thanks daily. Live abundantly. Share the joy.
 
 Daily Thanks is the simplest gratitude journal: thirty seconds a day, one line about what you're thankful for.
 

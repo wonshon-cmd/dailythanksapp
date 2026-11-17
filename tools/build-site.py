@@ -122,17 +122,41 @@ head, body = page_html.split('</style>', 1)
 doc = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
        '<link rel="icon" type="image/png" href="/favicon.png">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
-       '<meta property="og:title" content="daily thanks">\n<meta property="og:description" content="Give thanks daily. Live fully. Share the joy.">\n'
+       '<meta property="og:title" content="daily thanks">\n<meta property="og:description" content="Give thanks daily. Live abundantly. Share the joy.">\n'
        '<meta property="og:image" content="https://dailyjourney.org/og.png">\n<meta name="theme-color" content="#FFFFFF">\n'
        '<script>window.SITE_MODE = "web";</script>\n'
        + head + '</style>\n</head>\n<body>' + body + '\n</body>\n</html>\n')
-for sub in ('', 'privacy', 'terms', 'support', 'delete-account'):
+for sub in ('thanks', 'privacy', 'terms', 'support', 'delete-account', 'join', 't'):   # daily thanks intro lives at /thanks/
     d = WEB / sub; d.mkdir(exist_ok=True); (d / 'index.html').write_text(doc)
+# dailyjourney.org/ itself: the Daily Journey front page (daily bible + daily thanks)
+(WEB / 'index.html').write_text((ROOT / 'site' / 'dailyjourney.html').read_text())
 (WEB / '404.html').write_text(doc)
 (WEB / 'CNAME').write_text('dailyjourney.org\n')
 shutil.copy(ROOT / 'store' / 'icons' / 'play-512.png', WEB / 'favicon.png')
 shutil.copy(ROOT / 'store' / 'icons' / 'appstore-1024.png', WEB / 'apple-touch-icon.png')
 shutil.copy(ROOT / 'store' / 'instagram' / 'feed-en-1.png', WEB / 'og.png')
+# The web version of the app itself at dailyjourney.org/app/ (same files as the phone app; invite links and the Bible reader work here)
+app_dir = WEB / 'app'; app_dir.mkdir(exist_ok=True)
+for f in ('index.html', 'styles.css', 'app.js'): shutil.copy(ROOT / f, app_dir / f)
+bible = ROOT / 'bible'
+if bible.exists():  # public-domain Bible text: dailyjourney.org/bible/… and dailyjourney.org/app/bible/…
+    shutil.copytree(bible, WEB / 'bible', dirs_exist_ok=True)
+    shutil.copytree(bible, app_dir / 'bible', dirs_exist_ok=True)
+# daily bible on the web: dailyjourney.org/daily-bible/ (same files, Bible mode; shares data with /app/ on this site)
+bb_dir = WEB / 'daily-bible'; bb_dir.mkdir(exist_ok=True)
+for f in ('styles.css', 'app.js'): shutil.copy(ROOT / f, bb_dir / f)
+bb_html = (ROOT / 'index.html').read_text().replace('<script src="app.js" defer></script>', '<script>window.DT_APP = "bible";</script>\n<script src="app.js" defer></script>')
+bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Bible · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Bible"')
+(bb_dir / 'index.html').write_text(bb_html)
+if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
+# daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
+db_site = WEB / 'dailybible'
+shutil.copytree(ROOT / 'brand' / 'daily-bible' / 'web', db_site, dirs_exist_ok=True)   # icon, favicon, og image, app screenshots
+frag = (ROOT / 'site' / 'dailybible.html').read_text()
+(db_site / 'index.html').write_text('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
+    '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<meta name="theme-color" content="#FFFFFF">\n'
+    '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n'
+    '</head>\n<body>\n' + frag + '\n</body>\n</html>\n')
 content = ROOT / 'content' / 'content.json'
 if content.exists(): shutil.copy(content, WEB / 'content.json')   # the app can read its text from here too
 print('wrote', WEB.relative_to(ROOT), sorted(p.name for p in WEB.iterdir()))

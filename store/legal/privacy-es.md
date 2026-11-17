@@ -42,6 +42,8 @@ Daily Journey, Inc. ("nosotros") opera la app y el sitio web Daily Thanks (el "S
 - No vendemos tus datos.
 - Solo los comparten nuestros proveedores, para prestar el Servicio (Google Firebase, Apple, [proveedor de SMS] y, en funciones opcionales, Anthropic y [proveedor de transcripción]), o cuando la ley lo exige.
 - Los datos viajan cifrados.
+- **Cifrado de extremo a extremo:** tus notas privadas y ajustes se cifran en tu dispositivo antes de guardarse en nuestros servidores. La llave queda en tu dispositivo, así que ni nosotros podemos leerlas. Las publicaciones del grupo se cifran con la llave del grupo, que solo viaja dentro del enlace de invitación y nunca llega a nuestros servidores. Solo lo que compartes con “Todos” puede ser leído por nosotros, para operar el servicio y atender reportes.
+- Las publicaciones del grupo de otras personas no se pueden compartir ni copiar en la app, y en Android se bloquean las capturas de pantalla (en iPhone la pantalla se oculta mientras se graba).
 
 ## 5. Tus derechos
 

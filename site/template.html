@@ -1,13 +1,13 @@
 <title>daily thanks</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Give thanks daily. Live fully. Share the joy.">
+<meta name="description" content="Give thanks daily. Live abundantly. Share the joy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300;400;500&display=swap">
 <style>
 /* Layout: the app itself, opened up — pure white, one centred reading column, serif wordmark, light sans text. */
 :root{
-  --paper:#FFFFFF; --ink:#16191C; --text:#303438; --sub:#686E73; --faint:#9BA0A3; --ghost:#B4B8BA;
+  --paper:#FAFAFA; --ink:#16191C; --text:#303438; --sub:#686E73; --faint:#9BA0A3; --ghost:#B4B8BA;
   --pill:#F1F1F1; --line:#EEEEEE; --light:#F6D77A;
   --serif:'Newsreader',Georgia,'Times New Roman',serif;
   --sans:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;
@@ -90,6 +90,29 @@ th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:
 th{font-weight:500;color:var(--ink)}
 .mail{font-weight:400;color:var(--ink);user-select:all}
 
+/* shared thanks page */
+.shared{padding-block:clamp(56px,10vw,110px) 40px}
+.shared-kind{margin:0 0 22px;font-size:13px;color:var(--faint)}
+.shared-to{margin:0 0 14px;font-family:var(--serif);font-size:24px;color:#383D42}
+.ty-page .ty-kicker{margin:0 0 18px;font-size:15px;color:var(--sub)}
+.ty-letter{background:#fff;border:1px solid var(--line,#ECEDEE);border-radius:22px;padding:clamp(26px,5vw,40px);box-shadow:0 10px 30px #2a30360d;margin-bottom:28px}
+.ty-hello{margin:0 0 16px;font-family:var(--serif,Georgia,serif);font-size:clamp(26px,4.6vw,34px);color:var(--ink)}
+.ty-hello em{font-style:italic}
+.ty-page .shared-cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.ty-what{margin:14px 0 0;font-size:14px;color:var(--sub)}
+.shared-text{margin:0;font-size:clamp(21px,3.4vw,26px);line-height:1.8;color:var(--ink);letter-spacing:-.01em;white-space:pre-line;text-wrap:pretty}
+.shared-by{margin:24px 0 0;font-size:14px;color:var(--faint)}
+.shared-cta{margin-top:clamp(56px,9vw,90px);padding-top:32px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.shared-cta p{margin:0;color:var(--sub)}
+.shared-cta .stores{justify-content:flex-start;margin-top:4px}
+/* group invite page */
+.join .wordmark{font-size:clamp(34px,7vw,48px)}
+.join-kicker{margin:clamp(40px,6vw,56px) 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.join-name{margin:0;font-weight:400;font-size:clamp(28px,5vw,38px);color:var(--ink);letter-spacing:-.01em;text-wrap:balance}
+.join-body{margin:14px 0 0;color:var(--sub)}
+.join-note{margin:28px 0 0;font-size:14px;color:var(--faint)}
+.join .stores{margin-top:22px}
+.pill-dark{padding:14px 28px;font-size:15px;font-weight:500;color:var(--ink)}
 /* footer */
 footer{border-top:1px solid var(--line);margin-top:24px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding-block:40px 56px;font-size:13px;color:var(--faint)}
@@ -139,21 +162,24 @@ const S = {
     s2t:'한 줄 남겨요', s2:'"오늘 감사한 것은?" 한 줄만 적으면 돼요. 모두에게 나누거나, 나만 볼 수 있어요.',
     s3t:'기쁨을 나눠요', s3:'고마운 사람에게 감사 카드를 보내거나, 문자·WhatsApp·카카오톡·인스타그램으로 나눠요.',
     reach:'내 감사가 닿을수록 작은 빛이 조금씩 퍼져요. <span style="color:var(--text)">12명에게 닿았어요</span>',
-    today:'오늘의 감사', titles:{privacy:'개인정보처리방침', terms:'이용약관', support:'문의하기', 'delete-account':'계정 삭제'} },
+    tyFrom:'{name}님이 당신에게 감사를 전했어요', tyAnon:'누군가 당신에게 감사를 전했어요', tyReply:'{name}님에게 답장 감사 보내기', tyReplyAnon:'답장 감사 보내기', tyInApp:'앱에서 답장하기', tyWhat:'daily thanks는 매일 감사 한 줄을 남기고 나누는 앱이에요.',
+    postTitle:'감사 한 줄', postBad:'링크가 올바르지 않아요.', postWrite:'나도 감사 한 줄 쓰기', postAsk:'오늘 감사한 것은?', kToday:'오늘의 감사', kAhead:'미리 감사', kThanks:'감사 전하기', kMed:'묵상', kVerse:'말씀', joinTitle:'공동체 초대', joinGroup:'공동체', joinBody:'daily thanks에서 함께 감사를 나눠요.', joinOpen:'앱에서 참여하기', joinNoApp:'앱이 아직 없다면 먼저 설치해 주세요.', joinAfter:'설치한 뒤 이 링크를 다시 누르면 바로 참여할 수 있어요.', joinBad:'초대 링크가 올바르지 않아요. 보낸 사람에게 다시 받아 주세요.', today:'오늘의 감사', titles:{privacy:'개인정보처리방침', terms:'이용약관', support:'문의하기', 'delete-account':'계정 삭제'} },
   en: { privacy:'Privacy', terms:'Terms', support:'Support', delete:'Delete account', copy:'Copy', copied:'Copied', back:'← daily thanks',
     nonprofit:'A nonprofit organization', soon:'Coming soon', read:'Today’s thanks', how:'Thirty seconds a day. One line is enough.',
     s1t:'Read', s1:'Open the app and read warm, everyday thanks from others, one at a time.',
     s2t:'Write one line', s2:'Answer “What are you thankful for today?” Share it with everyone, or keep it just for you.',
     s3t:'Share the joy', s3:'Send a thank-you card to someone, or share via text, WhatsApp, KakaoTalk and Instagram.',
     reach:'As your thanks reaches people, a small light slowly spreads. <span style="color:var(--text)">Reached 12 people</span>',
-    today:'Today’s thanks', titles:{privacy:'Privacy Policy', terms:'Terms of Use', support:'Support', 'delete-account':'Delete your account'} },
+    tyFrom:'{name} sent you a thank-you', tyAnon:'Someone sent you a thank-you', tyReply:'Thank {name} back', tyReplyAnon:'Send thanks back', tyInApp:'Reply in the app', tyWhat:'daily thanks is a simple way to write down and share one line of thanks each day.',
+    postTitle:'A line of thanks', postBad:'This link isn’t valid.', postWrite:'Write your own thanks', postAsk:'What are you thankful for today?', kToday:'Today’s thanks', kAhead:'Thanks ahead', kThanks:'Thank-you note', kMed:'Reflection', kVerse:'Bible verse', joinTitle:'Group invite', joinGroup:'A group', joinBody:'Share gratitude together on daily thanks.', joinOpen:'Join in the app', joinNoApp:'Don’t have the app yet? Install it first.', joinAfter:'After installing, tap this link again to join.', joinBad:'This invite link isn’t valid. Ask the sender for a new one.', today:'Today’s thanks', titles:{privacy:'Privacy Policy', terms:'Terms of Use', support:'Support', 'delete-account':'Delete your account'} },
   es: { privacy:'Privacidad', terms:'Términos', support:'Soporte', delete:'Eliminar cuenta', copy:'Copiar', copied:'Copiado', back:'← daily thanks',
     nonprofit:'Organización sin fines de lucro', soon:'Muy pronto', read:'Gratitud de hoy', how:'Treinta segundos al día. Una línea es suficiente.',
     s1t:'Lee', s1:'Abre la app y lee, una por una, gracias cotidianas y cálidas de otras personas.',
     s2t:'Escribe una línea', s2:'Responde “¿Por qué estás agradecido hoy?”. Compártelo con todos o guárdalo solo para ti.',
     s3t:'Comparte la alegría', s3:'Envía una tarjeta de agradecimiento o comparte por mensaje de texto, WhatsApp, KakaoTalk e Instagram.',
     reach:'Cuanto más llega tu gratitud, más se extiende una pequeña luz. <span style="color:var(--text)">Llegó a 12 personas</span>',
-    today:'Gratitud de hoy', titles:{privacy:'Política de privacidad', terms:'Términos de uso', support:'Soporte', 'delete-account':'Eliminar tu cuenta'} }
+    tyFrom:'{name} te envió una nota de gracias', tyAnon:'Alguien te envió una nota de gracias', tyReply:'Agradécele a {name}', tyReplyAnon:'Enviar gracias de vuelta', tyInApp:'Responder en la app', tyWhat:'daily thanks es una forma sencilla de escribir y compartir una línea de gratitud cada día.',
+    postTitle:'Una línea de gratitud', postBad:'Este enlace no es válido.', postWrite:'Escribe tu propia gratitud', postAsk:'¿Por qué estás agradecido hoy?', kToday:'Gratitud de hoy', kAhead:'Gracias de antemano', kThanks:'Nota de gracias', kMed:'Reflexión', kVerse:'Versículo', joinTitle:'Invitación al grupo', joinGroup:'Un grupo', joinBody:'Compartamos gratitud juntos en daily thanks.', joinOpen:'Unirme en la app', joinNoApp:'¿Aún no tienes la app? Instálala primero.', joinAfter:'Después de instalarla, toca este enlace otra vez para unirte.', joinBad:'Este enlace no es válido. Pide uno nuevo a quien te lo envió.', today:'Gratitud de hoy', titles:{privacy:'Política de privacidad', terms:'Términos de uso', support:'Soporte', 'delete-account':'Eliminar tu cuenta'} }
 };
 const READS = [
   { name:{ko:'영숙',en:'Margaret',es:'Carmen'}, text:{ko:'오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en:'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.', es:'Hoy mi nieto me dijo por primera vez, clarito, “Abuela, te quiero”. Fue lo más bonito que he escuchado en mi vida. Gracias por dejarme vivir tanto como para oírlo.'} },
@@ -172,27 +198,80 @@ if (!S[lang]) lang = 'en';
 
 function home(t) {
   return `<section class="hero"><span class="wordmark">daily <em>thanks</em></span>
-    <p class="tag"><span>Give <em>thanks</em> daily.</span><span>Live fully.</span><span>Share the joy.</span></p>
+    <p class="tag"><span>Give <em>thanks</em> daily.</span><span>Live abundantly.</span><span>Share the joy.</span></p>
     <div class="stores"><span class="pill">${APPLE}App Store <small>${t.soon}</small></span><span class="pill">${PLAY}Google Play <small>${t.soon}</small></span></div></section>
   <section class="reads">${READS.map(r => `<article class="read"><div class="col"><p>${esc(r.text[lang])}</p><div class="by">${esc(r.name[lang])} · ${t.today}</div></div></article>`).join('')}</section>
   <section class="how wrap"><h2>${t.how}</h2>
     <div class="steps"><div><h3>${t.s1t}</h3><p>${t.s1}</p></div><div><h3>${t.s2t}</h3><p>${t.s2}</p></div><div><h3>${t.s3t}</h3><p>${t.s3}</p></div></div>
     <div class="reach"><span class="glow" aria-hidden="true"></span><span>${t.reach}</span></div></section>`;
 }
+// A thank-you card sent to someone: a page just for them, with a way to thank back (and to start their own).
+function thanksPage(t, p) {
+  const from = String(p.n || '').slice(0, 30), to = String(p.to).slice(0, 40), text = String(p.t).slice(0, 1500);
+  const reply = `/app/#reply?to=${encodeURIComponent(from)}&from=${encodeURIComponent(to)}`;
+  const appReply = `daily-thanks://reply?to=${encodeURIComponent(from)}&from=${encodeURIComponent(to)}`;
+  return `<section class="shared ty-page col">
+    <p class="ty-kicker">${esc(from ? t.tyFrom.replace('{name}', from) : t.tyAnon)}</p>
+    <div class="ty-letter"><p class="ty-hello">Thank you, <em>${esc(to)}</em></p><p class="shared-text">${esc(text)}</p>
+      <p class="shared-by">${from ? '— ' + esc(from) + ' · ' : ''}${esc(String(p.d || '').slice(0, 10))}</p></div>
+    <div class="shared-cta"><a class="pill pill-dark" href="${esc(reply)}">${esc(from ? t.tyReply.replace('{name}', from) : t.tyReplyAnon)}</a>
+      <a class="pill" href="${esc(appReply)}">${t.tyInApp}</a>
+      <p class="ty-what">${t.tyWhat}</p><a class="pill" href="/app/">${t.postWrite}</a>
+      <div class="stores"><span class="pill">${APPLE}App Store <small>${t.soon}</small></span><span class="pill">${PLAY}Google Play <small>${t.soon}</small></span></div></div>
+  </section>`;
+}
+// Shared thanks: dailyjourney.org/t/#<base64url JSON {t,n,k,d,l,to,r}> — the words live in the link, nothing is stored.
+function post(t) {
+  let p = null;
+  try {
+    const raw = WEB ? location.hash.slice(1) : (location.hash.split('?')[1] || ''); // preview: #t?<code>
+    const b64 = raw.replace(/-/g, '+').replace(/_/g, '/');
+    p = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b64 + '==='.slice((b64.length + 3) % 4)), c => c.charCodeAt(0))));
+  } catch { p = null; }
+  if (!p || !p.t) return `<section class="hero join"><span class="wordmark">daily <em>thanks</em></span><p class="join-note">${t.postBad}</p>
+    <div class="stores"><a class="pill pill-dark" href="/app/">${t.postWrite}</a></div></section>`;
+  if (p.k === 'thanks' && p.to) return thanksPage(t, p);
+  const kind = { today: t.kToday, ahead: t.kAhead, thanks: t.kThanks, meditation: t.kMed, verse: t.kVerse }[p.k] || t.kToday;
+  const text = String(p.t).slice(0, 1500), name = String(p.n || '').slice(0, 40);
+  return `<section class="shared col">
+    <p class="shared-kind">${esc(kind)}${p.r ? ' · ' + esc(String(p.r).slice(0, 60)) : ''}</p>
+    ${p.to ? `<p class="shared-to">Thank you, ${esc(String(p.to).slice(0, 40))}</p>` : ''}
+    <p class="shared-text">${esc(text)}</p>
+    <p class="shared-by">${name ? esc(name) + ' · ' : ''}${esc(String(p.d || '').slice(0, 10))}</p>
+    <div class="shared-cta"><p>${t.postAsk}</p><a class="pill pill-dark" href="/app/">${t.postWrite}</a>
+      <div class="stores"><span class="pill">${APPLE}App Store <small>${t.soon}</small></span><span class="pill">${PLAY}Google Play <small>${t.soon}</small></span></div></div>
+  </section>`;
+}
+// Group invite: dailyjourney.org/join/?c=CODE&n=NAME → open the app (daily-thanks://join…), or install it first.
+function join(t) {
+  const q = new URLSearchParams(WEB ? location.search : (location.hash.split('?')[1] || ''));
+  const code = (q.get('c') || '').replace(/[^a-z0-9]/gi, '').slice(0, 24), name = (q.get('n') || '').slice(0, 30);
+  const key = ((WEB ? location.hash : location.hash.split('#').slice(2).join('#')).match(/k=([A-Za-z0-9_-]{43})/) || [])[1] || '';
+  // the group key stays in the # part: browsers never send it to any server
+  const app = `daily-thanks://join?c=${encodeURIComponent(code)}&n=${encodeURIComponent(name)}${key ? '&k=' + key : ''}`;
+  return `<section class="hero join"><span class="wordmark">daily <em>thanks</em></span>
+    <p class="join-kicker">${t.joinTitle}</p>
+    <h1 class="join-name">${esc(name || t.joinGroup)}</h1>
+    <p class="join-body">${t.joinBody}</p>
+    ${code ? `<div class="stores"><a class="pill pill-dark" href="${esc(app)}">${t.joinOpen}</a></div>
+    <p class="join-note">${t.joinNoApp}</p>
+    <div class="stores"><span class="pill">${APPLE}App Store <small>${t.soon}</small></span><span class="pill">${PLAY}Google Play <small>${t.soon}</small></span></div>
+    <p class="join-note">${t.joinAfter}</p>` : `<p class="join-note">${t.joinBad}</p>`}</section>`;
+}
 function legal(t, page) {
   return `<article class="legal col"><a class="back" href="#">${t.back}</a><h1>${t.titles[page]}</h1>${PAGES[page][lang] || PAGES[page].en}</article>`;
 }
 function render() {
-  const t = S[lang], page = WEB ? (location.pathname.split('/').filter(Boolean)[0] || '') : location.hash.slice(1);
+  const t = S[lang], page = WEB ? (location.pathname.split('/').filter(Boolean)[0] || '') : location.hash.slice(1).split('?')[0];
   document.documentElement.lang = lang;
   document.getElementById('lang').value = lang;
   document.querySelectorAll('[data-k]').forEach(el => { el.textContent = t[el.dataset.k]; });
   document.querySelectorAll('a[href^="#"]').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + page && !!page));
-  const isLegal = PAGES && PAGES[page];
-  document.body.classList.toggle('home', !isLegal);
-  document.getElementById('view').innerHTML = isLegal ? legal(t, page) : home(t);
+  const isLegal = PAGES && PAGES[page], isJoin = page === 'join', isPost = page === 't';
+  document.body.classList.toggle('home', !isLegal && !isPost); // home and invite pages show the big wordmark, so the small header one is hidden
+  document.getElementById('view').innerHTML = isPost ? post(t) : isJoin ? join(t) : isLegal ? legal(t, page) : home(t);
   if (WEB) document.querySelectorAll('a[href^="#"]').forEach(a => { const h = a.getAttribute('href').slice(1); a.setAttribute('href', h ? `/${h}/` : '/'); });
-  document.title = isLegal ? `${t.titles[page]} · daily thanks` : 'daily thanks';
+  document.title = isPost ? `${t.postTitle} · daily thanks` : isJoin ? `${t.joinTitle} · daily thanks` : isLegal ? `${t.titles[page]} · daily thanks` : 'daily thanks';
 }
 document.getElementById('lang').addEventListener('change', e => { lang = e.target.value; store('dt-site-lang', lang); render(); });
 addEventListener('hashchange', () => { render(); scrollTo(0, 0); });

@@ -70,6 +70,8 @@ Depending on where you live (for example, under the GDPR in the EU/UK or the CCP
 We protect your data with:
 
 - Encryption in transit (HTTPS)
+- **End-to-end encryption:** private notes and personal settings are encrypted on your device before they are stored on our servers. The key stays on your device, so not even we can read them. Group posts are encrypted with the group’s key, which travels only inside the invite link and is never sent to our servers. Only posts you share with “Everyone” can be read by us, to run the service and handle reports.
+- Other people’s group posts can’t be shared or copied in the app, and screenshots are blocked on Android (on iPhone the screen is hidden while it’s being recorded).
 - Server-side access rules, so no one else can read your private notes
 - Access logging
 - Least-privilege access for operators

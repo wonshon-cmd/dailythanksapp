@@ -1,20 +1,133 @@
 {
   "_help": "Text the app downloads at launch. Edit this file and the app shows it next time it opens, with no store update. Leave a field out (or null) to use the text built into the app.",
   "version": 1,
-  "tagline": ["Give <em>thanks</em> daily.", "Live fully.", "Share the joy."],
+  "tagline": {
+    "ko": [
+      "매일 감사",
+      "풍성한 하루",
+      "나눔의 기쁨"
+    ],
+    "en": [
+      "Give <em>thanks</em> daily.",
+      "Live abundantly.",
+      "Share the joy."
+    ],
+    "es": [
+      "Give <em>thanks</em> daily.",
+      "Live abundantly.",
+      "Share the joy."
+    ]
+  },
   "copyright": "© 2026 Daily Journey, Inc.",
   "supportEmail": "hi@dailyjourney.org",
   "legalBase": "https://dailyjourney.org",
   "dailyQuestions": null,
   "notice": null,
   "featuredPosts": [],
-  "features": { "groupShare": true, "prayer": true, "sermon": true },
+  "features": {
+    "groupShare": true,
+    "prayer": true,
+    "sermon": true
+  },
+  "qtPlanName": {
+    "ko": "생명의 삶",
+    "en": "Our Daily Bread",
+    "es": "Nuestro Pan Diario"
+  },
+  "qtPlan": {
+    "ko": {
+      "2026-11-16": "아모스 7:10-17",
+      "2026-11-17": "아모스 8:1-10",
+      "2026-11-18": "아모스 8:11-9:6",
+      "2026-11-19": "아모스 9:7-15",
+      "2026-11-20": "고린도후서 1:1-7",
+      "2026-11-21": "고린도후서 1:8-14",
+      "2026-11-22": "고린도후서 1:15-24",
+      "2026-11-23": "고린도후서 2:1-11",
+      "2026-11-24": "고린도후서 2:12-17",
+      "2026-11-25": "고린도후서 3:1-11",
+      "2026-11-26": "고린도후서 3:12-18",
+      "2026-11-27": "고린도후서 4:1-10",
+      "2026-11-28": "고린도후서 4:11-18",
+      "2026-11-29": "고린도후서 5:1-10",
+      "2026-11-30": "고린도후서 5:11-21"
+    },
+    "en": {},
+    "es": {}
+  },
+  "verses": null,
   "minVersion": "1.0.0",
-  "storeLinks": { "ios": "", "android": "" },
-
+  "storeLinks": {
+    "ios": "",
+    "android": ""
+  },
   "_examples": {
-    "notice": { "id": "launch-2026-12", "until": "2026-12-31", "ko": "daily thanks가 정식으로 출시됐어요. 함께해 주셔서 고마워요.", "en": "daily thanks is officially here. Thank you for being with us.", "es": "daily thanks ya está aquí. Gracias por acompañarnos." },
-    "dailyQuestions": { "ko": ["오늘 나를 웃게 한 사람은 누구였나요?"], "en": ["Who made you smile today?"], "es": ["¿Quién te hizo sonreír hoy?"] },
-    "featuredPosts": [{ "id": "f-2026-12-01", "name": { "ko": "다은", "en": "Emma", "es": "Lucía" }, "text": { "ko": "첫눈이 왔어요.", "en": "The first snow came.", "es": "Cayó la primera nieve." }, "kind": "today", "date": "2026-12-01" }]
+    "notice": {
+      "id": "launch-2026-12",
+      "until": "2026-12-31",
+      "ko": "daily thanks가 정식으로 출시됐어요. 함께해 주셔서 고마워요.",
+      "en": "daily thanks is officially here. Thank you for being with us.",
+      "es": "daily thanks ya está aquí. Gracias por acompañarnos."
+    },
+    "dailyQuestions": {
+      "ko": [
+        "오늘 나를 웃게 한 사람은 누구였나요?"
+      ],
+      "en": [
+        "Who made you smile today?"
+      ],
+      "es": [
+        "¿Quién te hizo sonreír hoy?"
+      ]
+    },
+    "featuredPosts": [
+      {
+        "id": "f-2026-12-01",
+        "name": {
+          "ko": "다은",
+          "en": "Emma",
+          "es": "Lucía"
+        },
+        "text": {
+          "ko": "첫눈이 왔어요.",
+          "en": "The first snow came.",
+          "es": "Cayó la primera nieve."
+        },
+        "kind": "today",
+        "date": "2026-12-01"
+      }
+    ],
+    "qtPlan": {
+      "ko": {
+        "2026-12-01": "요한복음 3:1-15",
+        "2026-12-02": "요한복음 3:16-21"
+      }
+    },
+    "qtPlanName": {
+      "ko": "생명의 삶"
+    }
+  },
+  "_help_qt": "qtPlan: today's passage per language (YYYY-MM-DD → reference), filled every day by .github/workflows/daily-passage.yml (tools/fetch-daily-passage.py): ko 생명의 삶, en Our Daily Bread, es Nuestro Pan Diario. Only the reference is stored. You can also type a date here by hand; a hand-typed date wins until the next run changes it.",
+  "ipNotice": {
+    "_comment": "Turn on only after filing. Each item needs its application number, e.g. 30-2026-0001234 (KR design), 10-2026-0005678 (KR patent), US 63/123,456 (US provisional).",
+    "show": false,
+    "items": [
+      {
+        "label": {
+          "ko": "디자인 출원",
+          "en": "Design pending",
+          "es": "Diseño en trámite"
+        },
+        "no": ""
+      },
+      {
+        "label": {
+          "ko": "특허 출원",
+          "en": "Patent pending",
+          "es": "Patente en trámite"
+        },
+        "no": ""
+      }
+    ]
   }
 }

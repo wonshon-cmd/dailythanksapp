@@ -1,0 +1,41 @@
+# Every day: today's devotional passage (생명의 삶 · Our Daily Bread · Nuestro Pan Diario) → content/content.json,
+# then the website is published again so the app (which reads dailyjourney.org/content.json) shows it.
+# Only the Bible reference is stored; the app shows the verses from its own public-domain Bibles.
+# Runs just after midnight in Korea and in the US (Eastern), or by hand: Actions › Daily passage › Run workflow.
+name: Daily passage
+
+on:
+  schedule:
+    - cron: '7 15 * * *'   # 00:07 Korea
+    - cron: '7 5 * * *'    # 00:07 US Eastern (01:07 in summer)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: daily-passage
+  cancel-in-progress: false
+
+jobs:
+  passage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read today's passages
+        run: python3 tools/fetch-daily-passage.py
+      - name: Save and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- content/content.json; then echo "No change"; exit 0; fi
+          git config user.name "daily-passage-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/content.json
+          git commit -m "Today's passage ($(date -u +%F))"
+          git push
+          gh workflow run website.yml --ref "${GITHUB_REF_NAME}"

@@ -13,7 +13,7 @@ node tools/make-insta.js
 | 프로필 사진 | `profile-icon.png` (앱 아이콘과 같음 — 추천) 또는 `profile-wordmark.png` |
 | 사용자 이름 | @dailythanks.app (또는 사용 가능한 이름) |
 | 이름 | daily thanks · 감사 일기 |
-| 소개 | Give thanks daily. Live fully. Share the joy.<br>매일 한 줄의 감사 🤍 곧 출시 |
+| 소개 | Give thanks daily. Live abundantly. Share the joy.<br>매일 한 줄의 감사 🤍 곧 출시 |
 | 링크 | dailyjourney.org |
 
 - 계정 종류는 **비즈니스/크리에이터**로 바꾸세요. 게시물 통계를 볼 수 있어요.
@@ -32,7 +32,7 @@ node tools/make-insta.js
 | 5일차 | `feed-ko-5.png` 감사 카드 | 집으로 가는 길, 잠깐 멈춰 본 하늘. |
 | 6일차 | `feed-ko-4.png` 오늘의 질문 | 오늘 감사한 것은? 댓글로 한 줄 남겨 주세요. 가장 많이 닿은 감사는 카드로 만들어 소개할게요. |
 | 7일차 | `feed-ko-3.png` 감사 카드 | 평생 들은 말 중에 제일 예쁜 말. |
-| 8일차 | `feed-ko-2.png` 태그라인 | Give thanks daily. Live fully. Share the joy. |
+| 8일차 | `feed-ko-2.png` 태그라인 | Give thanks daily. Live abundantly. Share the joy. |
 | 9일차 | `feed-ko-1.png` 로고 | daily thanks. 매일의 감사가 삶을 풍성하게 합니다. |
 
 해시태그 (캡션 맨 끝이나 첫 댓글, 5개 이내):
@@ -46,7 +46,7 @@ node tools/make-insta.js
 | `reel-ko.mp4`, `reel-en.mp4` | 23초 | 1080×1920 (9:16) |
 | `reel-ko-cover.png`, `reel-en-cover.png` | 커버 이미지 | 1080×1920 |
 
-- 흐름: 로고 → Give thanks daily. / Live fully. / Share the joy. → 감사 글 3개 → "오늘 감사한 것은?" → 로고 + 곧 출시
+- 흐름: 로고 → Give thanks daily. / Live abundantly. / Share the joy. → 감사 글 3개 → "오늘 감사한 것은?" → 로고 + 곧 출시
 - **음악은 비어 있어요.** 인스타 앱에서 올릴 때 잔잔한 피아노나 어쿠스틱 곡을 붙이세요. 인스타 음악 라이브러리 곡이 저작권 문제가 없어요.
 - 캡션: "하루 30초, 한 줄의 감사. 오늘 감사한 것은? 댓글로 남겨 주세요 🤍"
 - 같은 영상을 유튜브 쇼츠와 틱톡에도 올리세요.

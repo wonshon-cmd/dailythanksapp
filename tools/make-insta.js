@@ -45,7 +45,7 @@ function posts(t) {
     `.f{justify-content:flex-start;padding-top:${text.length > 70 ? 380 : 470}px}.tx{font-size:${text.length > 70 ? 56 : 62}px;line-height:1.72;letter-spacing:-.01em}.by{margin-top:44px;font-size:30px;color:#A9AEB1;font-weight:400}`);
   return [
     page(`<div class="c"><span class="wm">${WM}</span></div>`, `.c{width:1080px;height:1350px;display:grid;place-items:center}.wm{font-size:150px;color:#383D42}`),
-    page(`<div class="c serif"><span>Give <em>thanks</em> daily.</span><span>Live fully.</span><span>Share the joy.</span></div>`,
+    page(`<div class="c serif"><span>Give <em>thanks</em> daily.</span><span>Live abundantly.</span><span>Share the joy.</span></div>`,
       `.c{width:1080px;height:1350px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font-size:76px;color:#4E5459;letter-spacing:-.01em}`),
     card(t.reads[0]),
     frame(`<div class="mark wm">${WM}</div><p class="q">${t.q}</p><p class="qs">${t.qsub}</p><div class="line"></div>`,
@@ -71,7 +71,7 @@ function posts(t) {
 function reel(t) {
   const scenes = [
     [0.0, 3.0, `<span class="wm big">${WM}</span>`],
-    [3.0, 6.6, `<div class="tag serif"><span>Give <em>thanks</em> daily.</span><span data-d=".5">Live fully.</span><span data-d="1">Share the joy.</span></div>`],
+    [3.0, 6.6, `<div class="tag serif"><span>Give <em>thanks</em> daily.</span><span data-d=".5">Live abundantly.</span><span data-d="1">Share the joy.</span></div>`],
     ...t.reads.map(([x, by], i) => [6.6 + i * 3.3, 6.6 + (i + 1) * 3.3, `<div class="rd"><p>${x}</p><small>${by}</small></div>`]),
     [16.5, 19.3, `<p class="q">${t.reel.q}</p>`],
     [19.3, 23.0, `<div class="end"><span class="wm">${WM}</span><small>${t.reel.end}</small></div>`],

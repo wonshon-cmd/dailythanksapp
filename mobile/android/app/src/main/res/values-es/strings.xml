@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="widget_name">Daily Thanks</string>
+    <string name="widget_description">Escribe tu gratitud de hoy con un toque</string>
+    <string name="widget_question">¿Por qué estás agradecido hoy?</string>
+    <string name="widget_write">+ Escribir</string>
+    <string name="verse_widget_name">Versículo del día</string>
+    <string name="verse_widget_description">Un versículo sobre la gratitud cada día</string>
+    <string name="verse_label">VERSÍCULO DEL DÍA</string>
+    <string name="verse_tr">RV 1909</string>
+    <string-array name="verse_refs">
+        <item>2 Corintios 9:15</item>
+        <item>Salmos 9:1</item>
+        <item>Efesios 5:20</item>
+        <item>Salmos 107:1</item>
+        <item>1 Tesalonicenses 5:16-18</item>
+        <item>Salmos 118:24</item>
+        <item>Filipenses 4:6</item>
+        <item>Lamentaciones 3:22-23</item>
+        <item>Salmos 100:4</item>
+        <item>Colosenses 3:15</item>
+        <item>Salmos 103:2</item>
+        <item>Santiago 1:17</item>
+    </string-array>
+    <string-array name="verse_texts">
+        <item>Gracias á Dios por su don inefable.</item>
+        <item>Te alabaré, oh Jehová, con todo mi corazón; contaré todas tus maravillas.</item>
+        <item>Dando gracias siempre de todo al Dios y Padre en el nombre de nuestro Señor Jesucristo:</item>
+        <item>Alabad á Jehová, porque es bueno; porque para siempre es su misericordia.</item>
+        <item>Estad siempre gozosos. Orad sin cesar. Dad gracias en todo; porque esta es la voluntad de Dios para con vosotros en Cristo Jesús.</item>
+        <item>Este es el día que hizo Jehová: nos gozaremos y alegraremos en él.</item>
+        <item>Por nada estéis afanosos; sino sean notorias vuestras peticiones delante de Dios en toda oración y ruego, con hacimiento de gracias.</item>
+        <item>Es por la misericordia de Jehová que no somos consumidos, porque nunca decayeron sus misericordias. Nuevas son cada mañana; grande es tu fidelidad.</item>
+        <item>Entrad por sus puertas con reconocimiento, por sus atrios con alabanza: alabadle, bendecid su nombre.</item>
+        <item>Y la paz de Dios gobierne en vuestros corazones, á la cual asimismo sois llamados en un cuerpo; y sed agradecidos.</item>
+        <item>Bendice, alma mía á Jehová, y no olvides ninguno de sus beneficios.</item>
+        <item>Toda buena dádiva y todo don perfecto es de lo alto, que desciende del Padre de las luces, en el cual no hay mudanza, ni sombra de variación.</item>
+    </string-array>
+    <string name="tw_name">Gratitud de hoy</string>
+    <string name="tw_description">Tu gratitud de hoy y tu racha</string>
+    <string name="tw_label">GRATITUD DE HOY</string>
+    <string name="tw_write">Escribir</string>
+    <string name="tw_done">Listo por hoy</string>
+    <string name="mw_name">Reflexión de hoy</string>
+    <string name="mw_description">El pasaje de hoy y un lugar para reflexionar</string>
+    <string name="mw_label">REFLEXIÓN DE HOY</string>
+    <string name="mw_passage">Pasaje de hoy</string>
+    <string name="mw_write">Reflexionar</string>
+    <string name="mw_done">Reflexión hecha</string>
+</resources>
