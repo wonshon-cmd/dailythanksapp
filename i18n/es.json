@@ -715,5 +715,13 @@
   "toast.intro": "Los consejos iniciales se verán de nuevo.",
   "note.mine": "Mi reflexión",
   "note.pickRange": "¿Sobre qué versículos reflexionas?",
-  "j.byBible": "En orden bíblico"
+  "j.byBible": "En orden bíblico",
+  "nick.title": "Nombres de miembros",
+  "nick.hint": "Solo cambia en tu pantalla. Los demás ven el nombre original.",
+  "nick.edit": "Cambiar nombre",
+  "nick.orig": "Nombre original {name}",
+  "nick.ph": "p. ej. Mamá, Papá",
+  "nick.save": "Guardar",
+  "nick.reset": "Usar nombre original",
+  "nick.row": "Cambiar nombres"
 }
