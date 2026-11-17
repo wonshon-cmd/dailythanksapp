@@ -1007,5 +1007,10 @@
   "cu.yes": "Repartir",
   "cu.no": "Dejarlo así",
   "cu.done": "Repartido en los días que quedan. Hoy: {r}",
-  "cu.short": "{n} días de atraso · repartir"
+  "cu.short": "{n} días de atraso · repartir",
+  "smd.title": "Reflexión de {n}",
+  "smd.someone": "Una reflexión",
+  "smd.read": "Leer este pasaje",
+  "smd.write": "Escribir la mía",
+  "smd.bad": "No se pudo abrir el enlace"
 }
