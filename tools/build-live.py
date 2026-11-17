@@ -36,6 +36,7 @@ for p in (WEB / 'dailybible').iterdir():     # the daily bible page is the front
     (shutil.copytree(p, out / p.name, dirs_exist_ok=True) if p.is_dir() else shutil.copy2(p, out / p.name))
 shutil.copy2(ROOT / 'content' / 'content.json', out / 'content.json')
 (out / '.nojekyll').write_text('')
+shutil.copy2(ROOT / 'supabase' / 'schema.sql', out / 'schema.txt')   # easy to open and copy on a phone (Supabase › SQL Editor)
 
 n = 0
 for f in out.rglob('*'):
