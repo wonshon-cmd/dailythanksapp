@@ -877,6 +877,9 @@ if (!data.settings.features) data.settings.features = { groupShare: false, praye
 if (!Array.isArray(data.prayed)) data.prayed = [];
 if (!Array.isArray(data.verseLikes)) data.verseLikes = [];
 if (!Array.isArray(data.readDone)) data.readDone = [];
+if (data.settings && !Array.isArray(data.settings.prayerSeen)) data.settings.prayerSeen = [];
+if (data.settings && (typeof data.settings.prefs !== 'object' || !data.settings.prefs)) data.settings.prefs = {};
+if (!data.readLog || typeof data.readLog !== 'object') data.readLog = {};
 if (!Array.isArray(data.savedVerses)) data.savedVerses = [];
 if (!data.settings.prayerInGroups) { data.settings.features.prayer = true; data.settings.prayerInGroups = true; } // groups share prayer requests by default
 if (!Array.isArray(data.seen)) data.seen = [];
@@ -3065,7 +3068,7 @@ function renderImmersive(keepIndex = 0) {
       if (quizAnswered() >= QUIZ_N) { const last = seq.findIndex(x => x.type === 'quiz' && x.i === QUIZ_N - 1); seq.splice(last + 1, 0, { type: 'quizres' }); }
     }
   }
-  if (!groupMode && !prayerMode && !keepIndex) seq.splice(0, 0, ...firstItems());   // on opening: my group's new prayer requests, then today's verses, one card each
+  if (!groupMode && !prayerMode && !keepIndex) { try { seq.splice(0, 0, ...firstItems()); } catch (e) { console.warn('first cards skipped', e); } }   // on opening: my group's new prayer requests, then today's verses, one card each
   if (prayerMode) { // swipe left: my groups' prayer requests first, then requests from people I don't know
     const newest = list => list.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     const mine = newest(data.posts.filter(p => p.kind === 'prayer' && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))));
@@ -3107,7 +3110,7 @@ function renderImmersive(keepIndex = 0) {
     : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>`}
   <button class="imm-plus" data-action="imm-write" aria-label="${t('top.write')}">${icon('plus')}</button>
   <button class="size-btn imm-size" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button>
-  ${!groupMode && !prayerMode ? immStreak() : ''}
+  ${!groupMode && !prayerMode ? safeHtml(immStreak) : ''}
   <button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button>
   ${showNudge() && !prayerMode ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
@@ -3119,8 +3122,10 @@ function renderImmersive(keepIndex = 0) {
   bindGateForm();
   if (sc && $('#imm-nudge')) sc.addEventListener('scroll', hideNudge, { passive: true });
   trackSeen();
-  watchFirstPrayers(); fillPlanCards();
+  try { watchFirstPrayers(); } catch {}
+  fillPlanCards().catch(e => console.warn('plan cards skipped', e));
 }
+const safeHtml = fn => { try { return fn(); } catch (e) { console.warn(e); return ''; } };
 
 /* First visit only: a faint "scroll for more" hint that goes away after the first scroll, for good. */
 const NUDGE_KEY = 'daily-thanks-nudged';
@@ -3139,7 +3144,11 @@ function hideNudge() {
 function render(keepIndex) {
   $('#app').classList.toggle('immersive', state.immersive);
   if (!state.immersive || state.immFeed !== 'public') document.querySelector('.gesture-hint:not(.back-hint)')?.remove();
-  if (state.immersive) { renderImmersive(keepIndex); requestAnimationFrame(markClamped); restoreDrafts($('#app')); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
+  if (state.immersive) {
+    try { renderImmersive(keepIndex); }
+    catch (e) { console.error('feed failed', e); state.firstPrIds = []; data.settings.prefs = { ...(data.settings.prefs || {}), firstOff: true };
+      try { renderImmersive(0); } catch (e2) { console.error(e2); state.immersive = false; $('#app').classList.remove('immersive'); return render(); } }
+    requestAnimationFrame(markClamped); restoreDrafts($('#app')); document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: 'immersive' } })); return; }
   document.querySelectorAll('[data-tab]').forEach(b => {
     const on = b.dataset.tab === state.tab;
     b.classList.toggle('active', on);
