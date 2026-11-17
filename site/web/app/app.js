@@ -1417,6 +1417,7 @@ function renderFeed(keepIndex = 0) {
     ${posts.length > 1 ? `<button class="next-fab" data-action="next" aria-label="${t('aria.next')}">${icon('down')}</button>` : ''}`;
   const sc = $('#feed-scroll');
   if (keepIndex && sc) sc.scrollTop = keepIndex * sc.clientHeight;
+  if (focus) state.immFocus = null;
   bindGateForm();
 }
 
@@ -1479,7 +1480,9 @@ function renderJournal() {
 /* Full-screen feed: only the gratitude text, with ♡ count, share and close on the right. */
 function renderImmersive(keepIndex = 0) {
   const pool = data.posts.filter(p => !p.mine && visible(p) && (p.scope === 'public' || (p.scope === 'group' && data.groups.some(g => inGroup(p, g.id)))));
-  const posts = rankedOnce('imm', pool);
+  let posts = rankedOnce('imm', pool);
+  const focus = state.immFocus && data.posts.find(p => p.id === state.immFocus);
+  if (focus) { posts = [focus, ...posts.filter(p => p.id !== focus.id)]; keepIndex = 0; }
   main.innerHTML = `<div class="feed-scroll imm-scroll" id="feed-scroll">${feedSequence(posts).map(it => {
     if (it.type !== 'post') return cardFor(it);
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
@@ -2570,12 +2573,14 @@ const actions = {
 };
 
 document.addEventListener('click', e => {
-  const cut = e.target.closest('.post-text[data-cut="1"]');
+  const cut = state.immersive && e.target.closest('.post-text[data-cut="1"]'); // in the regular feed a tap opens the big view instead
   if (cut) { const id = cut.closest('[data-post]')?.dataset.post; if (id) { actions['read-more'](id); return; } }
   const tab = e.target.closest('[data-tab]');
   if (tab) { state.tab = tab.dataset.tab; if (state.tab === 'feed') state.feed = 'public'; close(); render(); return; }
   const b = e.target.closest('[data-action]');
-  if (b && b.tagName !== 'SELECT') actions[b.dataset.action]?.(b.dataset.id);
+  if (b && b.tagName !== 'SELECT') { actions[b.dataset.action]?.(b.dataset.id); return; }
+  const card = !state.immersive && state.tab === 'feed' && !e.target.closest('a,button,input,textarea,select,label') && e.target.closest('.post[data-post]:not(.imm)');
+  if (card) { state.immFocus = card.dataset.post; toggleFullscreen(); }
 });
 document.addEventListener('change', e => {
   const f = e.target.dataset?.feature;
