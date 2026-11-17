@@ -1137,5 +1137,7 @@
   "bp.thanks": "Gratitud",
   "bp.prayer": "Petición",
   "bp.plan": "Plan de lectura",
-  "kk.thanks": "Gratitud"
+  "kk.thanks": "Gratitud",
+  "sn.addRef": "+ Añadir pasaje",
+  "sn.rmRef": "Quitar pasaje"
 }

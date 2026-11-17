@@ -144,7 +144,7 @@ const STR = {
     'np.cr1': "내가 고른 시간에만 알려드려요.", 'np.pr2': "오늘 분량을 읽은 날은 알리지 않아요.", 'np.cr2': "오늘 몫을 한 날은 알리지 않아요.",
     'bf.devo': "오늘의 말씀", 'bf.endTitle': "오늘도 말씀 앞에 머물렀어요", 'bf.endSub': "이어서 더 읽거나, 설교 노트를 남겨 보세요.", 'bf.cont': "이어 읽기", 'bf.home': "홈으로", 'bf.note': "설교 노트",
     'bn.feed': "피드", 'bn.group': "공동체", 'bn.plus': "남기기", 'bp.title2': "무엇을 남길까요?", 'bp.sermon': "설교 노트", 'bp.med': "묵상", 'bp.thanks': "감사", 'bp.prayer': "기도제목", 'bp.plan': "읽기 계획",
-    'kk.thanks': "감사", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'kk.thanks': "감사", 'sn.addRef': "+ 본문 추가", 'sn.rmRef': "본문 빼기", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -284,7 +284,7 @@ const STR = {
     'np.cr1': "Only at the times you choose.", 'np.pr2': "No reminder once today’s reading is done.", 'np.cr2': "No reminder once today’s part is done.",
     'bf.devo': "Today’s passage", 'bf.endTitle': "You spent time in the Word today", 'bf.endSub': "Keep reading, or write a sermon note.", 'bf.cont': "Keep reading", 'bf.home': "Home", 'bf.note': "Sermon note",
     'bn.feed': "Feed", 'bn.group': "Community", 'bn.plus': "Write", 'bp.title2': "What would you like to write?", 'bp.sermon': "Sermon note", 'bp.med': "Reflection", 'bp.thanks': "Thanks", 'bp.prayer': "Prayer request", 'bp.plan': "Reading plan",
-    'kk.thanks': "Thanks", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'kk.thanks': "Thanks", 'sn.addRef': "+ Add a passage", 'sn.rmRef': "Remove passage", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -682,7 +682,7 @@ const STR = {
     'np.cr1': "Solo a las horas que elijas.", 'np.pr2': "Sin recordatorio si ya leíste lo de hoy.", 'np.cr2': "Sin recordatorio si ya hiciste lo de hoy.",
     'bf.devo': "Pasaje de hoy", 'bf.endTitle': "Hoy estuviste en la Palabra", 'bf.endSub': "Sigue leyendo o escribe una nota de sermón.", 'bf.cont': "Seguir leyendo", 'bf.home': "Inicio", 'bf.note': "Nota de sermón",
     'bn.feed': "Feed", 'bn.group': "Comunidad", 'bn.plus': "Escribir", 'bp.title2': "¿Qué quieres escribir?", 'bp.sermon': "Nota de sermón", 'bp.med': "Reflexión", 'bp.thanks': "Gratitud", 'bp.prayer': "Petición", 'bp.plan': "Plan de lectura",
-    'kk.thanks': "Gratitud", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
+    'kk.thanks': "Gratitud", 'sn.addRef': "+ Añadir pasaje", 'sn.rmRef': "Quitar pasaje", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -1536,7 +1536,7 @@ function bpVerse(v) {
 function bpSel() {
   const r = state.bp, el = $('#bp-sel'); if (!el) return;
   el.textContent = r.c ? refText({ b: r.b, c: r.c, v: r.v || 0, v2: r.v2 || 0 }) : bookName(r.b);
-  $('#bp-ok').disabled = !r.c || ((r.mode === 'med' || r.mode === 'devo' || r.mode === 'note' || r.mode === 'sermonref' || r.mode === 'meetref') && !r.v);
+  $('#bp-ok').disabled = !r.c || ((r.mode === 'med' || r.mode === 'devo' || r.mode === 'note' || r.mode === 'sermonref' || r.mode === 'sermonref2' || r.mode === 'meetref') && !r.v);
 }
 function closePicker() { if (!bpEl || bpEl.hidden) return false; bpEl.hidden = true; bpEl.innerHTML = ''; return true; }
 function bpDone() {
@@ -1552,7 +1552,8 @@ function bpDone() {
   }
   if (r.mode === 'meetref') { state.snRef = ref; const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); ['#sn-pv', '#mt-live'].forEach(s2 => { const x = $(s2); if (x) x.hidden = false; }); recPaint(true); return; }
   if (r.mode === 'sermonref') { state.snRef = ref; const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); const pvb = $('#sn-pv'); if (pvb) pvb.hidden = false;
-    state.snPassageText = passageVerses(ref).then(vs => vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')).catch(() => ''); recPaint(true); return; }
+    snRefsChanged(); recPaint(true); return; }
+  if (r.mode === 'sermonref2') { state.snRefs = [...(state.snRefs || []), ref].slice(0, 2); snRefsChanged(); return; }
   if (r.mode === 'note') { closeReader(); state.medRef = ref; state.medSource = ''; state.medNote = true; compose('meditation', state.challenge); return; }
   if (r.mode === 'med') { state.medRef = ref; state.medSource = ''; state.medNote = true; fillMedPassage(); return; }
   if (r.mode === 'devo') { const g = data.groups.find(x => x.id === r.gid); if (!g) return; g.passages = { ...(g.passages || {}), [today()]: ref }; save(); render(); toast(refText(ref)); }
@@ -2512,7 +2513,9 @@ async function renderSermonNote(id) {
     : `<p class="hint">${n.status === 'error' ? t('sn.failed') : state.snOnline ? t('sn.working') : t('sn.offline')}</p>`;
   const trHtml = tr ? `<div class="sn-trtext">${tr.split(/\n+/).map(x => `<p>${snTerms().length ? markTerms(x, snTerms()) : esc(x)}</p>`).join('')}</div>` : `<p class="hint">${t('nt.noTr')}</p>`;
   const passRef = n.ref || parseRef(S?.passages?.[0] || '');
-  const passHtml = `${passRef ? `<section class="sn-sec"><p class="gd-label">${icon('book')} ${esc(refText(passRef))}</p><div class="sn-ptext" id="sn-ptext">${n.passageText ? passageHtml(n.passageText) : `<p class="hint">${t('rd.loading')}</p>`}</div></section>` : ''}
+  const moreRefs = (n.refs || []).filter(Boolean), multi = !!(passRef && moreRefs.length);
+  const passHtml = `${passRef ? `<section class="sn-sec"><p class="gd-label">${icon('book')} ${esc(refText(passRef))}</p><div class="sn-ptext" id="sn-ptext">${n.passageText && !multi ? passageHtml(n.passageText) : `<p class="hint">${t('rd.loading')}</p>`}</div></section>` : ''}
+    ${multi ? moreRefs.map((r, k) => `<section class="sn-sec"><p class="gd-label">${icon('book')} ${esc(refText(r))}</p><div class="sn-ptext" id="sn-ptext-${k}"><p class="hint">${t('rd.loading')}</p></div></section>`).join('') : ''}
     <section class="sn-sec"><p class="gd-label">${t('vc.title')}</p>${checks.length ? checks.map((c, k) => vcHtml(n, c, k)).join('') : `<p class="hint">${t('vc.none')}</p>`}</section>`;
   main.innerHTML = `<div class="screen"><div class="page bb sn-page">
     <div class="gd-top"><button class="gd-back" data-action="note-back">${icon('chevron')}<span>${t('sn.back')}</span></button></div>
@@ -2525,7 +2528,8 @@ async function renderSermonNote(id) {
   </div></div>`;
   if (n.rec && tab === 'sum') AudioStore.url(n.id).then(u => { const a = $('#note-rec'); if (a && u) a.src = u; }).catch(() => {});
   if (tab === 'pass') {
-    if (passRef && !n.passageText) passageVerses(passRef).then(vs => { const el = $('#sn-ptext'); if (el) el.innerHTML = passageHtml(vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')); }).catch(() => { const el = $('#sn-ptext'); if (el) el.innerHTML = `<p class="hint">${t('vc.noOrig')}</p>`; });
+    if (multi) moreRefs.forEach((r, k) => passageVerses(r).then(vs => { const el = $(`#sn-ptext-${k}`); if (el) el.innerHTML = passageHtml(vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')); }).catch(() => { const el = $(`#sn-ptext-${k}`); if (el) el.innerHTML = `<p class="hint">${t('vc.noOrig')}</p>`; }));
+    if (passRef && (!n.passageText || multi)) passageVerses(passRef).then(vs => { const el = $('#sn-ptext'); if (el) el.innerHTML = passageHtml(vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')); }).catch(() => { const el = $('#sn-ptext'); if (el) el.innerHTML = `<p class="hint">${t('vc.noOrig')}</p>`; });
     checks.forEach((c, k) => vcOriginal(c).then(o => { const el = $(`#vc-o-${k}`); if (el) el.textContent = o || t('vc.noOrig');
       const st = vcStatus(c, o); const box = $(`#vc-${k}`); if (box && st !== box.dataset.st) { c._auto = st; renderSermonNote(id); } }));
   }
@@ -2566,13 +2570,20 @@ function vcHtml(n, c, k) {
    (Sunday 11:00 → that church's pastor; Wednesday evening → maybe another). */
 const placeLabel = x => [x.preacher, x.church].filter(Boolean).join(' · ');
 // The chosen passage, full screen, to scroll through during the sermon. It floats over the note (recording keeps going).
-async function passageView(ref) {
+async function passageView(ref, more = []) {
   if (!ref) return;
+  if (more.length) return passageViewMany([ref, ...more]);
   let el = $('#pv'); if (!el) { el = document.createElement('div'); el.id = 'pv'; el.className = 'pv'; document.body.appendChild(el); }
   el.hidden = false;
   el.innerHTML = `<header class="pv-top"><span class="pv-ref">${icon('book')}${esc(refText(ref))}</span><button class="close" data-action="pv-close" aria-label="${esc(t('aria.close'))}">${icon('x')}</button></header><div class="pv-body" id="pv-body"><p class="hint">${t('rd.loading')}</p></div>`;
   try { const vs = await passageVerses(ref); const body = $('#pv-body'); if (body) body.innerHTML = vs.map((x, i) => `${i && x.c !== vs[i - 1].c ? `<p class="pv-ch">${esc(refText({ b: ref.b, c: x.c }))}</p>` : ''}<p class="pv-v"><sup>${x.v}</sup>${esc(x.text)}</p>`).join(''); }
   catch { const body = $('#pv-body'); if (body) body.innerHTML = `<p class="hint">${t('rd.offline')}</p>`; }
+}
+async function passageViewMany(refs) {
+  let el = $('#pv'); if (!el) { el = document.createElement('div'); el.id = 'pv'; el.className = 'pv'; document.body.appendChild(el); }
+  el.hidden = false;
+  el.innerHTML = `<header class="pv-top"><span class="pv-ref">${icon('book')}${esc(refs.map(refText).join(' · '))}</span><button class="close" data-action="pv-close" aria-label="${esc(t('aria.close'))}">${icon('x')}</button></header><div class="pv-body" id="pv-body">${refs.map((r, k) => `<p class="pv-ch">${esc(refText(r))}</p><div id="pv-part-${k}"><p class="hint">${t('rd.loading')}</p></div>`).join('')}</div>`;
+  refs.forEach((r, k) => passageVerses(r).then(vs => { const p = $(`#pv-part-${k}`); if (p) p.innerHTML = vs.map(x => `<p class="pv-v"><sup>${x.v}</sup>${esc(x.text)}</p>`).join(''); }).catch(() => { const p = $(`#pv-part-${k}`); if (p) p.innerHTML = `<p class="hint">${t('rd.offline')}</p>`; }));
 }
 const passageViewClose = () => { const el = $('#pv'); if (!el || el.hidden) return false; el.hidden = true; el.innerHTML = ''; return true; };
 function placeDefault() {
@@ -2605,13 +2616,21 @@ function readPlace() {
   if (sel && sel.value !== 'new') { const x = (data.sermonPlaces || [])[+sel.value] || {}; return { preacher: x.preacher || '', church: x.church || '' }; }
   return { preacher: $('#sn-preacher')?.value.trim() || '', church: $('#sn-church')?.value.trim() || '' };
 }
+// A sermon can have more than one passage (e.g. 룻기 4:4-9 and 마태복음 1:5): the first is required, up to two more.
+const snAllRefs = () => [state.snRef, ...(state.snRefs || [])].filter(Boolean);
+const snMoreHtml = () => `${(state.snRefs || []).map((r, i) => `<span class="sn-ref2">${icon('book')}<span>${esc(refText(r))}</span><button type="button" data-action="sn-ref-rm" data-id="${i}" aria-label="${esc(t('sn.rmRef'))}">${icon('x')}</button></span>`).join('')}${state.snRef && (state.snRefs || []).length < 2 ? `<button type="button" class="link-btn sn-addref" data-action="sn-ref-add">${t('sn.addRef')}</button>` : ''}`;
+function snRefsChanged() {
+  const refs = snAllRefs(), el = $('#sn-more'); if (el) el.innerHTML = snMoreHtml();
+  state.snPassageText = Promise.all(refs.map(r => passageVerses(r).then(vs => (refs.length > 1 ? refText(r) + '\n' : '') + vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')).catch(() => ''))).then(a => a.filter(Boolean).join('\n\n'));
+}
 function sermonNew() {
   const keep = recLive() || !!Rec.blob;   // reopened from the "recording" bar: keep what was chosen
   state.snMode = 'write'; state.snBlob = null;
-  if (!keep) { state.snRef = null; state.snPlace = null; state.snOpenedAt = Date.now(); state.snPassageText = null; Rec.slang = null; }
+  if (!keep) { state.snRef = null; state.snRefs = []; state.snPlace = null; state.snOpenedAt = Date.now(); state.snPassageText = null; Rec.slang = null; }
   showSheet({ title: t('sn.new'), body: `<form id="sn-form" class="sheet-form">
     <div class="sn-refrow"><button type="button" class="mp-open sn-refbtn ${state.snRef ? 'set' : ''}" data-action="sn-ref" id="sn-ref">${icon('book')}<span>${state.snRef ? esc(refText(state.snRef)) : t('sn.refReq')}</span>${icon('chevron')}</button>
       <button type="button" class="round-btn sn-pv" data-action="pv-open" id="sn-pv" aria-label="${esc(t('pv.open'))}" title="${esc(t('pv.open'))}" ${state.snRef ? '' : 'hidden'}>${icon('maximize')}</button></div>
+    <div id="sn-more" class="sn-more">${snMoreHtml()}</div>
     <input id="sn-title" class="field" maxlength="120" placeholder="${esc(t('sn.titleF'))}">
     <div id="sn-placebox">${placeField()}</div>
     <label class="sn-date"><span>${t('sn.date')}</span><input id="sn-date" type="date" class="field" value="${state.snDate && keep ? state.snDate : today()}" max="${today()}"></label>
@@ -2658,12 +2677,12 @@ async function sermonSubmit() {
     if (recLive()) await recStop();
     if (Rec.blob) {
       const blob = Rec.blob, id = 'n' + Date.now();
-      const context = [Rec.ctx.trim(), church, state.snRef ? refText(state.snRef) : ''].filter(Boolean).join(' · ').slice(0, 500);
+      const context = [Rec.ctx.trim(), church, ...snAllRefs().map(refText)].filter(Boolean).join(' · ').slice(0, 500);
       const passageText = (await state.snPassageText?.catch?.(() => '')) || '';
       data.sermonNotes = [{ id, manual: true, slang: sermonLang(), rec: { dur: Math.round(Rec.dur || 0), bytes: blob.size, ...(Rec.fileName ? { file: Rec.fileName.slice(0, 80) } : {}) }, date, title, preacher, church, status: 'done', body,
-        ...(state.snRef ? { ref: state.snRef, passageText: passageText.slice(0, 20000) } : {}),
+        ...(state.snRef ? { ref: state.snRef, ...(state.snRefs?.length ? { refs: [...state.snRefs] } : {}), passageText: passageText.slice(0, 20000) } : {}),
         ...(context ? { context } : {}), ...(Rec.live.final.trim() ? { liveText: Rec.live.final.trim() } : {}),
-        summary: { title, passages: state.snRef ? [refText(state.snRef)] : [], main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } }, ...(data.sermonNotes || [])];
+        summary: { title, passages: snAllRefs().map(refText), main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } }, ...(data.sermonNotes || [])];
       if (blob.size < 80 * 1024 * 1024) await AudioStore.put(id, blob).catch(() => {});
       recReset(true);
       if (data.drafts) delete data.drafts['sermon-write']; save(); close(); state.tab = 'notes'; state.noteOpen = null; render();
@@ -2672,8 +2691,8 @@ async function sermonSubmit() {
     if (!main && !body) { toast(t('sn.need')); return; }
     const passageText = state.snRef ? ((await state.snPassageText?.catch?.(() => '')) || '') : '';
     data.sermonNotes = [{ id: 'n' + Date.now(), manual: true, date, title, preacher, church, status: 'done', body, ...(church ? { context: church } : {}),
-      ...(state.snRef ? { ref: state.snRef, passageText: passageText.slice(0, 20000) } : {}),
-      summary: { title, passages: state.snRef ? [refText(state.snRef)] : [], main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } }, ...(data.sermonNotes || [])];
+      ...(state.snRef ? { ref: state.snRef, ...(state.snRefs?.length ? { refs: [...state.snRefs] } : {}), passageText: passageText.slice(0, 20000) } : {}),
+      summary: { title, passages: snAllRefs().map(refText), main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } }, ...(data.sermonNotes || [])];
     const wantAi = $('#sn-ai')?.checked;
     if (data.drafts) delete data.drafts['sermon-write']; save(); close(); state.tab = 'notes'; state.noteOpen = null; render();
     if (wantAi) aiSummarize(data.sermonNotes[0].id, true);
@@ -2864,7 +2883,7 @@ async function uploadRecording(id, blob) {
       }
       if (!ok) return pending(t('rec.upFail'));
     }
-    await sapi('POST', `/api/sermons/${rid}/finish`, { title: n.title, preacher: n.preacher, church: n.church || '', passage: n.ref ? refText(n.ref) : '', passageText: n.passageText || '' });
+    await sapi('POST', `/api/sermons/${rid}/finish`, { title: n.title, preacher: n.preacher, church: n.church || '', passage: n.ref ? [n.ref, ...(n.refs || [])].map(refText).join(' · ') : '', passageText: n.passageText || '' });
     n.remoteId = rid; save(); state.snChecked = false;
     pollInto(n, rid, () => pending(t('sn.failed')));
   } catch (e) { if (e?.code === 'daily_limit' || e?.code === 'weekly_limit') return pending(t(e.code === 'daily_limit' ? 'us.dayHit' : 'us.weekHit').replace('{t}', fmtLeft(e.data?.reset) || '24h'));
@@ -2883,7 +2902,7 @@ async function aiSummarize(id, fromSave) {
   try {
     await sermonSync();
     if (state.snOnline) {
-      const out = await sapi('POST', '/api/sermons/text', { transcript, title: n.title, preacher: n.preacher, church: n.church || '', context: n.context || '', language: n.slang || lang(), passage: n.ref ? refText(n.ref) : '', passageText: n.passageText || '' });
+      const out = await sapi('POST', '/api/sermons/text', { transcript, title: n.title, preacher: n.preacher, church: n.church || '', context: n.context || '', language: n.slang || lang(), passage: n.ref ? [n.ref, ...(n.refs || [])].map(refText).join(' · ') : '', passageText: n.passageText || '' });
       n.remoteId = out.id; save(); state.snChecked = false;
       return pollInto(n, out.id, () => fail(t('sn.failed')));
     }
@@ -5020,7 +5039,9 @@ const actions = {
   'bs-place-del': i => { (data.sermonPlaces || []).splice(+i, 1); save(); placesSheet(); toast(t('bs.deleted')); },
   'note-upload': id => uploadRecording(id),
   'rec-start': () => recStart(),
-  'pv-open': () => passageView(state.snRef),
+  'pv-open': () => passageView(state.snRef, state.snRefs || []),
+  'sn-ref-add': () => biblePicker({ mode: 'sermonref2', start: state.snRef || null }),
+  'sn-ref-rm': i => { state.snRefs = (state.snRefs || []).filter((_, k) => k !== +i); snRefsChanged(); },
   'pv-close': () => passageViewClose(),
   'rec-lang': () => { const order = ['ko', 'en', 'es'], next = order[(order.indexOf(sermonLang()) + 1) % 3]; Rec.slang = next; recPaint(true); toast(t('rec.slangSet').replace('{l}', SLANG[next][1])); },
   'rec-kind': k => { const cx = $('#rec-ctx'); if (cx) Rec.ctx = cx.value; Rec.kind = k; recPaint(true); },

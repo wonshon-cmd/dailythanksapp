@@ -1586,3 +1586,11 @@ html[data-size="xl"]{--read:31px}
 .nav-plus-ic .ico { stroke-width: 1.6; }
 /* side rail: icons only (the words stay for screen readers) */
 .rail-btn .rl { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* sermon form: extra passages (up to two) under the first one */
+.sn-more { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: -2px 0 10px; }
+.sn-more:empty { display: none; }
+.sn-ref2 { display: inline-flex; align-items: center; gap: 6px; padding: 6px 6px 6px 12px; border: 1px solid var(--line, #e6e6e6); border-radius: 999px; font-size: 14px; color: var(--ink, #222); }
+.sn-ref2 svg { width: 15px; height: 15px; opacity: .55; }
+.sn-ref2 button { display: grid; place-items: center; width: 24px; height: 24px; border: 0; border-radius: 50%; background: transparent; color: var(--muted, #888); }
+.sn-addref { font-size: 14px; color: var(--muted, #888); padding: 6px 4px; background: none; border: 0; }
