@@ -956,5 +956,10 @@
   "fc.read": "Empezar a leer",
   "fc.dayN": "Día {n}",
   "fc.write": "Escribir hoy",
-  "fc.group": "tu grupo"
+  "fc.group": "tu grupo",
+  "ss.ph": "Buscar notas de sermón",
+  "ss.none": "No se encontró “{q}”",
+  "ss.count": "{n} encontradas",
+  "ss.clear": "Borrar",
+  "ss.inTr": "Transcripción"
 }

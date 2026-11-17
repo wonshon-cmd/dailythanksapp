@@ -1470,6 +1470,17 @@ body.capturing #app{filter:blur(18px)}
 .first-card .fc-big { margin: 10px 0 4px; font-size: 26px; line-height: 1.3; color: #16191c; }
 .first-card .card-actions .primary svg { width: 18px; height: 18px; }
 .stk + .pl { margin: 0 0 26px; }
+/* sermon note search */
+.sn-search { display: flex; align-items: center; gap: 10px; padding: 0 14px; margin: 4px 0 10px; height: 46px; border-radius: 999px; background: #f2f2f2; color: #8a8f94; }
+.sn-search svg { width: 18px; height: 18px; flex: none; }
+.sn-search input { flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 15px; color: #2c3135; outline: none; -webkit-appearance: none; }
+.sn-search input::-webkit-search-cancel-button { display: none; }
+.sn-qx { flex: none; font-size: 13px; }
+.sn-count { margin: 2px 0 8px; font-size: 12px; color: #9aa0a6; }
+.sn-none { margin-top: 18px; }
+.note-ref { display: block; font-size: 13px; color: #6b7075; margin-top: 2px; }
+.sn-where { font-size: 11px; color: #9aa0a6; margin-right: 2px; }
+.notes mark, .sn-trtext mark { background: #eceef0; color: inherit; border-radius: 3px; padding: 0 2px; font-weight: 500; }
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1628,6 +1639,7 @@ const STR = {
     'stk.n': "{n}일 연속", 'stk.sub': "매일 말씀 읽기", 'stk.todayDone': "오늘도 읽었어요", 'stk.todayNot': "오늘 한 장 읽으면 이어져요", 'stk.start': "오늘 한 장 읽으면 연속 기록이 시작돼요", 'stk.best': "최고 {n}일",
     'bs.almost': "거의 찼어요",
     'fc.prKick': "{g} 기도제목", 'fc.prTitle': "{n}명이 기도를 부탁했어요", 'fc.pray': "기도하러 가기", 'fc.readTitle': "오늘 읽을 곳", 'fc.read': "읽기 시작", 'fc.dayN': "{n}일째", 'fc.write': "오늘 쓰기", 'fc.group': "소그룹",
+    'ss.ph': "설교 노트 검색", 'ss.none': "‘{q}’ 검색 결과가 없어요", 'ss.count': "{n}개", 'ss.clear': "지우기", 'ss.inTr': "받아쓰기",
     'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
@@ -1755,6 +1767,7 @@ const STR = {
     'stk.n': "{n}-day streak", 'stk.sub': "Daily Bible reading", 'stk.todayDone': "Read today", 'stk.todayNot': "Read a chapter today to keep it going", 'stk.start': "Read a chapter today to start a streak", 'stk.best': "Best {n} days",
     'bs.almost': "Almost full",
     'fc.prKick': "{g} prayer requests", 'fc.prTitle': "{n} asked for prayer", 'fc.pray': "Go pray", 'fc.readTitle': "Today’s reading", 'fc.read': "Start reading", 'fc.dayN': "Day {n}", 'fc.write': "Write today’s", 'fc.group': "Group",
+    'ss.ph': "Search sermon notes", 'ss.none': "Nothing found for “{q}”", 'ss.count': "{n} found", 'ss.clear': "Clear", 'ss.inTr': "Transcript",
     'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
@@ -2140,6 +2153,7 @@ const STR = {
     'stk.n': "Racha de {n} días", 'stk.sub': "Lectura diaria", 'stk.todayDone': "Leíste hoy", 'stk.todayNot': "Lee un capítulo hoy para seguir", 'stk.start': "Lee un capítulo hoy para empezar una racha", 'stk.best': "Mejor: {n} días",
     'bs.almost': "Casi lleno",
     'fc.prKick': "Peticiones de {g}", 'fc.prTitle': "{n} pidieron oración", 'fc.pray': "Ir a orar", 'fc.readTitle': "Lectura de hoy", 'fc.read': "Empezar a leer", 'fc.dayN': "Día {n}", 'fc.write': "Escribir hoy", 'fc.group': "tu grupo",
+    'ss.ph': "Buscar notas de sermón", 'ss.none': "No se encontró “{q}”", 'ss.count': "{n} encontradas", 'ss.clear': "Borrar", 'ss.inTr': "Transcripción",
     'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
@@ -2167,6 +2181,7 @@ const STR = {
 
 /* ---------------- icons (line style) ---------------- */
 const ICONS = {
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
   lines: '<path d="M4 6h16M4 10h16M4 14h10M4 18h13"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
   sunrise: '<path d="M12 2v7M4.93 10.93l1.41 1.41M2 18h2M20 18h2M19.07 10.93l-1.41 1.41M22 22H2M8 5l4-4 4 4M16 18a4 4 0 0 0-8 0"/>',
@@ -3585,14 +3600,45 @@ function renderSermons() {
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('sn.title'), '', roundBtn('sermon-new', 'plus', t('sn.new')))}
     ${recLive() ? `<button class="rec-bar" id="rec-bar" data-action="sermon-new"><i class="rec-dot"></i><span>${t('rec.bar').replace('{t}', fmtDur(Rec.seconds))}</span></button>` : ''}
-    <p class="hint">${t('sn.sub')}</p>
+    <label class="sn-search">${icon('search')}<input id="sn-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="${esc(t('ss.ph'))}" value="${esc(state.snQuery || '')}">
+      <button type="button" class="link-btn sn-qx" data-action="sn-q-clear" ${state.snQuery ? '' : 'hidden'}>${t('ss.clear')}</button></label>
+    <p class="hint" ${state.snQuery ? 'hidden' : ''} id="sn-sub">${t('sn.sub')}</p>
     ${'' && `<div class="sn-quota"><span>${q.plan === 'free' ? t('sn.free').replace('{n}', q.used).replace('{t}', q.limit) : t('sn.plan').replace('{plan}', t('sn.' + q.plan)).replace('{n}', q.monthUsed).replace('{t}', q.monthLimit)}</span>
       ${q.plan === 'free' ? `<i class="sn-bar"><b style="width:${Math.min(100, q.used / q.limit * 100)}%"></b></i>` : ''}</div>`}
-    <div class="notes">${notes.map(n => `<button class="note" data-action="note-open" data-id="${esc(n.id)}">
-      <span class="note-meta"><span>${esc(dayLabel(n.date || today()))}${n.preacher ? ' · ' + esc(n.preacher) : ''}</span>${status(n) ? `<span class="badge">${esc(status(n))}</span>` : ''}</span>
-      <span class="note-text">${esc(n.title || n.summary?.title || t('sn.title'))}</span>
-      ${n.summary?.main_message ? `<span class="note-reflect">${esc(n.summary.main_message)}</span>` : ''}</button>`).join('')}</div>
+    <div id="sn-list">${noteList(notes, status)}</div>
   </div></div>`;
+  const qi = $('#sn-q');
+  qi?.addEventListener('input', () => { state.snQuery = qi.value; const l = $('#sn-list'); if (l) l.innerHTML = noteList(sermonNotes(), status);
+    const x = $('.sn-qx'); if (x) x.hidden = !qi.value; const sub = $('#sn-sub'); if (sub) sub.hidden = !!qi.value; });
+}
+/* Sermon note search: every word must appear somewhere in the note — title, pastor, church, passage, summary,
+   my own notes or the full transcript. Results show where it matched, with the words marked. */
+const snTerms = () => String(state.snQuery || '').toLowerCase().split(/\s+/).filter(Boolean).slice(0, 6);
+const noteFields = n => { const S = n.summary || {};
+  return { top: [n.title, S.title, n.preacher, n.church, (S.passages || []).join(' '), n.ref ? refText(n.ref) : '', n.date, n.context].filter(Boolean).join(' · '),
+    sum: [S.main_message, (S.points || []).map(x => `${x.heading} ${x.detail}`).join(' '), (S.application || []).join(' '), (S.prayer_topics || []).join(' '), (S.discussion_questions || []).join(' '), n.body].filter(Boolean).join(' '),
+    tr: n.transcript || n.liveText || '' }; };
+const markTerms = (text, terms) => { let h = esc(text); terms.forEach(tm => { const e = esc(tm).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); if (e) h = h.replace(new RegExp(e, 'gi'), m => `<mark>${m}</mark>`); }); return h; };
+function noteHit(n, terms) {
+  const f = noteFields(n), all = `${f.top}\n${f.sum}\n${f.tr}`.toLowerCase();
+  if (!terms.every(tm => all.includes(tm))) return null;
+  const where = ['sum', 'tr'].find(k => f[k].toLowerCase().includes(terms[0])) || null;
+  let snip = '';
+  if (where) { const txt = f[where].replace(/\s+/g, ' '), i = txt.toLowerCase().indexOf(terms[0]), a = Math.max(0, i - 28), b = Math.min(txt.length, i + terms[0].length + 52);
+    snip = (a ? '…' : '') + txt.slice(a, b) + (b < txt.length ? '…' : ''); }
+  return { where, snip };
+}
+function noteList(notes, status) {
+  const terms = snTerms();
+  const rows = terms.length ? notes.map(n => ({ n, hit: noteHit(n, terms) })).filter(x => x.hit) : notes.map(n => ({ n, hit: null }));
+  if (terms.length && !rows.length) return `<p class="hint sn-none">${esc(t('ss.none').replace('{q}', state.snQuery.trim()))}</p>`;
+  const m = x => terms.length ? markTerms(x, terms) : esc(x);
+  return `${terms.length ? `<p class="sn-count">${esc(t('ss.count').replace('{n}', rows.length))}</p>` : ''}<div class="notes">${rows.map(({ n, hit }) => `<button class="note" data-action="note-open" data-id="${esc(n.id)}">
+      <span class="note-meta"><span>${m(dayLabel(n.date || today()) + (n.preacher ? ' · ' + n.preacher : '') + (terms.length && n.church ? ' · ' + n.church : ''))}</span>${status(n) ? `<span class="badge">${esc(status(n))}</span>` : ''}</span>
+      <span class="note-text">${m(n.title || n.summary?.title || t('sn.title'))}</span>
+      ${terms.length && (n.summary?.passages || []).length ? `<span class="note-ref">${m(n.summary.passages.join(', '))}</span>` : ''}
+      ${hit?.snip ? `<span class="note-reflect">${hit.where === 'tr' ? `<small class="sn-where">${t('ss.inTr')}</small> ` : ''}${m(hit.snip)}</span>`
+        : n.summary?.main_message ? `<span class="note-reflect">${m(n.summary.main_message)}</span>` : ''}</button>`).join('')}</div>`;
 }
 async function renderSermonNote(id) {
   let n = sermonNotes().find(x => x.id === id);
@@ -3616,7 +3662,7 @@ async function renderSermonNote(id) {
       <button class="primary block sn-tomed" data-action="note-tomed" data-id="${esc(n.id)}">${icon('pencil')}${t('sn.toMed')}</button>
       ${data.groups.length ? `<button class="secondary block sn-tomed" data-action="note-group" data-id="${esc(n.id)}">${icon('people')}${t('sn.toGroup')}</button>` : ''}`
     : `<p class="hint">${n.status === 'error' ? t('sn.failed') : state.snOnline ? t('sn.working') : t('sn.offline')}</p>`;
-  const trHtml = tr ? `<div class="sn-trtext">${esc(tr).split(/\n+/).map(x => `<p>${x}</p>`).join('')}</div>` : `<p class="hint">${t('nt.noTr')}</p>`;
+  const trHtml = tr ? `<div class="sn-trtext">${tr.split(/\n+/).map(x => `<p>${snTerms().length ? markTerms(x, snTerms()) : esc(x)}</p>`).join('')}</div>` : `<p class="hint">${t('nt.noTr')}</p>`;
   const passRef = n.ref || parseRef(S?.passages?.[0] || '');
   const passHtml = `${passRef ? `<section class="sn-sec"><p class="gd-label">${icon('book')} ${esc(refText(passRef))}</p><div class="sn-ptext" id="sn-ptext">${n.passageText ? passageHtml(n.passageText) : `<p class="hint">${t('rd.loading')}</p>`}</div></section>` : ''}
     <section class="sn-sec"><p class="gd-label">${t('vc.title')}</p>${checks.length ? checks.map((c, k) => vcHtml(n, c, k)).join('') : `<p class="hint">${t('vc.none')}</p>`}</section>`;
@@ -5914,7 +5960,10 @@ const actions = {
   'sn-mode': k => { state.snMode = k; const el = $('#sn-input'); if (el) el.innerHTML = snInput(); document.querySelectorAll('[data-action="sn-mode"]').forEach(b => b.classList.toggle('active', b.dataset.id === k));
     const fin = $('#sn-fin'); if (fin) fin.addEventListener('change', () => { const f = fin.files?.[0]; const nm = $('#sn-fname'); if (nm && f) nm.textContent = f.name; }); },
   'sn-rec': () => snRecord(),
-  'note-open': id => { state.noteOpen = id; state.noteTab = 'sum'; render(); window.scrollTo?.(0, 0); },
+  'note-open': id => { const n = sermonNotes().find(x => x.id === id), terms = snTerms(), hit = n && terms.length ? noteHit(n, terms) : null;
+    state.noteOpen = id; state.noteTab = hit?.where === 'tr' ? 'tr' : 'sum'; render(); window.scrollTo?.(0, 0);
+    if (hit?.where === 'tr') setTimeout(() => document.querySelector('.sn-trtext mark')?.scrollIntoView({ block: 'center' }), 60); },
+  'sn-q-clear': () => { state.snQuery = ''; render(); },
   'note-tab': k => { state.noteTab = k; if (state.noteOpen) renderSermonNote(state.noteOpen); },
   'vc-yes': pair => { const [id, k] = pair.split('|'), n = (data.sermonNotes || []).find(x => x.id === id), c = n?.summary?.verse_checks?.[+k]; if (!c) return; c.confirmed = true; save(); renderSermonNote(id); },
   'vc-fix': pair => { const [id, k] = pair.split('|'), n = (data.sermonNotes || []).find(x => x.id === id), c = n?.summary?.verse_checks?.[+k]; if (!c) return;
