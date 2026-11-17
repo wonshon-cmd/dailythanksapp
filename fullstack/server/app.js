@@ -212,10 +212,10 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
       let transcript = job.transcript;
       if (!transcript) {
         store.updateSermon(id, { status: 'transcribing' });
-        transcript = (await transcribe({ filePath: job.filePath, mimeType: job.mimeType, language: job.language || 'ko', context: job.context }, config.stt)).text;
+        transcript = (await transcribe({ filePath: job.filePath, mimeType: job.mimeType, language: job.language || 'ko', context: [job.context, job.passage].filter(Boolean).join(' · '), passageText: job.passageText }, config.stt)).text;
       }
       store.updateSermon(id, { status: 'summarizing', transcript });
-      const { summary, references, model } = await summarize({ transcript, title: job.title, preacher: job.preacher, context: job.context });
+      const { summary, references, model } = await summarize({ transcript, title: job.title, preacher: job.preacher, context: job.context, church: job.church, passage: job.passage, passageText: job.passageText });
       store.updateSermon(id, { status: 'done', summary, references, model, finishedAt: new Date().toISOString() });
     } catch (err) {
       store.updateSermon(id, { status: 'error', error: { code: err.code || 'failed', message: err.message } });
@@ -226,6 +226,9 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     title: String(fields.title || '').slice(0, 120), preacher: String(fields.preacher || '').slice(0, 60),
     language: ['ko', 'en', 'es'].includes(fields.language) ? fields.language : 'ko',
     context: String(fields.context || '').slice(0, 600),
+    church: String(fields.church || '').slice(0, 60),
+    passage: String(fields.passage || '').slice(0, 120),
+    passageText: String(fields.passageText || '').slice(0, 20000),
     createdAt: new Date().toISOString()
   });
 
@@ -269,7 +272,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     fs.mkdirSync(config.uploadDir, { recursive: true });
     const filePath = path.join(config.uploadDir, s.id + AUDIO_TYPES[mimeType]);
     fs.writeFileSync(filePath, audio);
-    runJob(s.id, { filePath, mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context });
+    runJob(s.id, { filePath, mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     return { status: 202, body: { id: s.id, status: 'queued' } };
   }, 'sermon');
   /* Long recordings arrive in pieces while recording (a 40-minute sermon never has to upload in one go):
@@ -294,7 +297,8 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   }, 'sermon');
   route('POST', '/api/sermons/:id/finish', async ({ req, params, user }) => {
     const s0 = store.getSermon(params.id), body = await readJson(req, 16 * 1024).catch(() => ({}));
-    if (s0 && s0.ownerId === user && (body.title || body.preacher)) store.updateSermon(s0.id, { title: String(body.title || s0.title).slice(0, 120), preacher: String(body.preacher || s0.preacher).slice(0, 60) });
+    if (s0 && s0.ownerId === user) store.updateSermon(s0.id, { title: String(body.title || s0.title || '').slice(0, 120), preacher: String(body.preacher || s0.preacher || '').slice(0, 60),
+      church: String(body.church || s0.church || '').slice(0, 60), passage: String(body.passage || s0.passage || '').slice(0, 120), passageText: String(body.passageText || s0.passageText || '').slice(0, 20000) });
     const s = store.getSermon(params.id);
     if (!s || s.ownerId !== user || s.status !== 'uploading') throw new HttpError(404, 'not_found');
     const dir = partDir(s.id), parts = fs.existsSync(dir) ? fs.readdirSync(dir).sort() : [];
@@ -303,7 +307,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     fs.writeFileSync(filePath, Buffer.concat(parts.map(f => fs.readFileSync(path.join(dir, f)))));
     fs.rmSync(dir, { recursive: true, force: true });
     store.updateSermon(s.id, { status: 'queued' });
-    runJob(s.id, { filePath, mimeType: s.mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context });
+    runJob(s.id, { filePath, mimeType: s.mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     return { status: 202, body: { id: s.id, status: 'queued', parts: parts.length } };
   }, 'sermon');
   // A sermon from a YouTube link: the audio is fetched on the server (needs yt-dlp; YTDLP_PATH), then the usual steps.
@@ -320,7 +324,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     const { execFile } = await import('node:child_process');
     execFile(config.ytdlpPath, ['-x', '--audio-format', 'm4a', '--no-playlist', '-o', filePath, link], { timeout: 15 * 60 * 1000 }, err => {
       if (err) return store.updateSermon(s.id, { status: 'error', error: { code: 'youtube_failed', message: 'Could not fetch audio from that link.' } });
-      runJob(s.id, { filePath, mimeType: 'audio/mp4', title: s.title, preacher: s.preacher, language: s.language, context: s.context });
+      runJob(s.id, { filePath, mimeType: 'audio/mp4', title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     });
     return { status: 202, body: { id: s.id, status: 'downloading' } };
   }, 'sermon');
@@ -330,7 +334,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     const transcript = String(body.transcript || '').trim();
     if (transcript.length < 50) throw new HttpError(422, 'transcript_too_short');
     const s = newSermon(user, body);
-    runJob(s.id, { transcript, title: s.title, preacher: s.preacher, language: s.language, context: s.context });
+    runJob(s.id, { transcript, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     return { status: 202, body: { id: s.id, status: 'queued' } };
   }, 'sermon');
   route('GET', '/api/sermons', ({ user }) => ({ sermons: store.listSermons(user) }), 'sermon');

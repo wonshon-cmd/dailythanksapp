@@ -1367,3 +1367,52 @@ body.capturing #app{filter:blur(18px)}
 .rec-livetext { max-height: 168px; overflow-y: auto; padding: 12px 14px; border-radius: 14px; background: #fafafa; border: 1px solid #ececec; font-size: 15px; line-height: 1.55; color: #2c3135; white-space: pre-wrap; }
 .rec-livetext i { color: #8a8f94; font-style: normal; }
 .rec-livetext.done { max-height: 120px; }
+/* sermon form: passage first, place, date */
+.sn-refbtn:not(.set) { border-style: dashed; }
+.sn-refbtn.set span { color: #2c3135; font-weight: 500; }
+.sn-who { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sn-select { appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8f94' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 18px; padding-right: 40px; }
+.sn-date { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #6b7075; }
+.sn-date span { flex: none; min-width: 40px; }
+.sn-date input { flex: 1; }
+.rec-big.rec-go.locked { background: #c9cccf; }
+.rec-need { display: flex; gap: 6px; align-items: flex-start; }
+.rec-need svg { width: 16px; height: 16px; flex: none; margin-top: 3px; }
+/* note: three views */
+.sn-tabs { margin: 14px 0 6px; }
+.sn-tabs .vc-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #d93025; vertical-align: middle; }
+.sn-trtext p { margin: 0 0 12px; font-size: 16px; line-height: 1.75; color: #303438; }
+.sn-ptext p { margin: 0 0 8px; font-size: 16px; line-height: 1.7; }
+.sn-ptext sup { font-size: 11px; color: #9aa0a6; margin-right: 4px; }
+.vc { padding: 14px 16px; border-radius: 16px; background: #f6f6f6; margin-bottom: 10px; display: grid; gap: 6px; }
+.vc.unsure { background: #fff6e5; }
+.vc-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0; }
+.vc-head .link-btn { font-weight: 500; color: #2c3135; padding: 0; }
+.vc-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #6b7075; white-space: nowrap; }
+.vc-badge svg { width: 14px; height: 14px; }
+.vc.unsure .vc-badge { color: #a35c00; font-weight: 500; }
+.vc-q, .vc-o { margin: 0; font-size: 14px; line-height: 1.6; color: #303438; }
+.vc-q small, .vc-o small { display: inline-block; min-width: 36px; margin-right: 6px; font-size: 11px; color: #9aa0a6; }
+.vc-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
+.vc-banner { display: flex; align-items: center; gap: 8px; width: 100%; padding: 12px 14px; margin: 6px 0 4px; border: 0; border-radius: 14px; background: #fff6e5; color: #a35c00; font-size: 14px; text-align: left; }
+.vc-banner span { flex: 1; }
+.vc-banner svg { width: 16px; height: 16px; }
+/* daily bible: reading plans together */
+.pl { margin-top: 18px; display: grid; gap: 10px; }
+.pl-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pl-head .gd-label { margin: 0; }
+.pl-new { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; font-size: 14px; }
+.pl-new svg { width: 16px; height: 16px; }
+.pl-row { display: flex; gap: 8px; align-items: stretch; }
+.pl-row .g-ch { flex: 1; margin: 0; }
+.pl-inv { align-self: center; flex: none; }
+.pl-with { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #8a8f94; }
+.pl-with svg { width: 14px; height: 14px; }
+.pl-sum { font-size: 15px; color: #303438; margin: 4px 0 10px; }
+.pl-by { color: #6b7075; margin: 0; }
+.pl-name { font-size: 22px; margin: 4px 0 0; font-weight: 500; }
+.pl-row .g-ch { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name name" "bar go" "with with"; gap: 8px 12px; padding: 14px 16px; }
+.pl-row .g-ch > span:first-child { grid-area: name; font-size: 15px; font-weight: 500; }
+.pl-row .g-ch .g-ch-bar { grid-area: bar; align-self: center; }
+.pl-row .g-ch .g-ch-go { grid-area: go; }
+.pl-row .g-ch .pl-with { grid-area: with; }

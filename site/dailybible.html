@@ -1,0 +1,296 @@
+<title>daily bible</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Hear, read and keep the Word, every day. Sermon notes with AI, reading plans together.">
+<meta property="og:title" content="daily bible">
+<meta property="og:description" content="말씀을 듣고, 읽고, 남기는 하루">
+<meta property="og:image" content="https://dailyjourney.org/dailybible/og.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+/* Layout: the app's own reading column, opened into spreads — each feature is a two-page spread (words | a phone screen),
+   the way a Bible lies open. One accent: the ribbon marker, used only where something is marked. */
+:root{
+  --paper:#FFFFFF; --ink:#1D2125; --text:#34393E; --sub:#6B7176; --faint:#9AA0A5;
+  --pill:#F2F2F1; --line:#ECECEA; --ribbon:#B5453F; --ribbon-soft:#F8ECEA; --shot:#FFFFFF;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141618; --ink:#F0F1F2; --text:#D6D9DC; --sub:#A1A6AB; --faint:#767C81;
+  --pill:#22262A; --line:#2A2E32; --ribbon:#D3675F; --ribbon-soft:#2E1F1E; --shot:#1C1F22; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141618; --ink:#F0F1F2; --text:#D6D9DC; --sub:#A1A6AB; --faint:#767C81;
+  --pill:#22262A; --line:#2A2E32; --ribbon:#D3675F; --ribbon-soft:#2E1F1E; --shot:#1C1F22; color-scheme:dark}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--text);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--faint);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto}
+.wordmark{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;line-height:1;white-space:nowrap;color:var(--ink)}
+.wordmark em{font-style:italic}
+.mark{width:22px;height:22px;color:var(--sub);flex:none}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.brand .wordmark{font-size:21px}
+.top nav{display:flex;align-items:center;gap:22px;font-size:13px;color:var(--faint)}
+.top nav a{text-decoration:none}
+.top nav a:hover{color:var(--text)}
+.lang{display:flex;align-items:center;gap:5px;color:var(--faint);font-size:13px}
+.lang svg{width:15px;height:15px}
+.lang select{appearance:none;border:0;background:transparent;color:inherit;font:inherit;padding:4px 0;cursor:pointer}
+@media (max-width:680px){.top nav .navlink{display:none}}
+
+/* hero */
+.hero{text-align:center;padding-block:clamp(56px,11vw,120px) clamp(48px,8vw,88px)}
+.hero .big{display:block;font-size:clamp(54px,12vw,104px);color:var(--ink)}
+.tag{margin:clamp(28px,4vw,40px) auto 0;font-family:var(--serif);font-size:clamp(19px,2.5vw,23px);line-height:1.6;color:var(--sub);max-width:28ch;text-wrap:balance}
+.cta{margin-top:36px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--pill);color:var(--text);padding:12px 22px;font-size:14px;font-weight:400;text-decoration:none;border:0}
+.pill svg{width:16px;height:16px}
+.pill small{color:var(--faint);font-size:12px;font-weight:300}
+.pill-dark{background:var(--ink);color:var(--paper)}
+.verse{margin:clamp(48px,7vw,72px) auto 0;max-width:34ch;display:grid;gap:10px;justify-items:center}
+.verse q{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,28px);line-height:1.45;color:var(--ink);quotes:none;text-wrap:balance}
+.ref{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.06em;color:var(--faint);font-variant-numeric:tabular-nums}
+.ref::before{content:"";width:8px;height:14px;background:var(--ribbon);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%)}
+
+/* spreads */
+.spreads{border-top:1px solid var(--line)}
+.spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--line)}
+.spread > *{padding-block:clamp(48px,7vw,84px)}
+.page-words{padding-right:clamp(20px,5vw,64px);display:flex;flex-direction:column;justify-content:center;min-width:0}
+.page-shot{padding-left:clamp(20px,5vw,64px);border-left:1px solid var(--line);display:flex;justify-content:center;align-items:center;min-width:0}
+.spread.flip .page-words{order:2;padding-right:0;padding-left:clamp(20px,5vw,64px);border-left:1px solid var(--line)}
+.spread.flip .page-shot{order:1;border-left:0;padding-left:0;padding-right:clamp(20px,5vw,64px)}
+.kicker{margin:0 0 14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.2vw,40px);line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin:0 0 18px;text-wrap:balance}
+.lead{margin:0 0 22px;color:var(--sub);max-width:40ch}
+.points{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.points li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;font-size:15px;color:var(--text)}
+.points li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--faint);margin-top:11px;justify-self:center}
+.points li.marked::before{width:8px;height:13px;border-radius:0;background:var(--ribbon);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);margin-top:7px}
+.phone{width:min(300px,100%);border-radius:34px;border:1px solid var(--line);background:var(--shot);padding:8px;box-shadow:0 18px 50px #20262c14}
+.phone img{display:block;width:100%;height:auto;border-radius:27px;aspect-ratio:390/844;object-fit:cover;object-position:top}
+@media (max-width:760px){
+  .spread{grid-template-columns:1fr}
+  .spread > *{padding-block:40px}
+  .page-words,.spread.flip .page-words{order:1;padding:40px 0 8px;border:0}
+  .page-shot,.spread.flip .page-shot{order:2;padding:8px 0 48px;border:0}
+}
+
+/* small facts */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px);padding-block:clamp(56px,8vw,96px);border-bottom:1px solid var(--line)}
+.facts h3{margin:0 0 6px;font-size:16px;font-weight:500;color:var(--ink)}
+.facts p{margin:0;font-size:15px;color:var(--sub)}
+@media (max-width:720px){.facts{grid-template-columns:1fr}}
+
+/* pricing */
+.price{padding-block:clamp(56px,8vw,96px);border-bottom:1px solid var(--line)}
+.price h2{margin-bottom:8px}
+.price .lead{margin-bottom:28px}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.plan{border:1px solid var(--line);border-radius:20px;padding:22px 22px 24px;display:grid;gap:6px;align-content:start}
+.plan.best{border-color:var(--ribbon);background:var(--ribbon-soft)}
+.plan b{font-weight:500;color:var(--ink);font-size:15px}
+.plan .amt{font-family:var(--serif);font-size:32px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+.plan .amt small{font-family:var(--sans);font-size:13px;color:var(--faint)}
+.plan p{margin:0;font-size:14px;color:var(--sub)}
+.free-note{margin:18px 0 0;font-size:14px;color:var(--sub)}
+@media (max-width:720px){.plans{grid-template-columns:1fr}}
+
+footer{padding-block:40px 56px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:var(--faint)}
+footer nav{display:flex;flex-wrap:wrap;gap:18px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--text)}
+@media (prefers-reduced-motion:no-preference){.phone{transition:transform .5s ease}.phone:hover{transform:translateY(-4px)}}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top" aria-label="daily bible">
+    <svg class="mark" viewBox="200 230 624 620" aria-hidden="true"><path d="M648 668 V800 L679 774 L710 800 V668 Z" fill="var(--ribbon)"/><g fill="none" stroke="currentColor" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"><path d="M252 278 H408 A104 104 0 0 1 512 382 V746 A78 78 0 0 0 434 668 H252 Z"/><path d="M772 278 H616 A104 104 0 0 0 512 382 V746 A78 78 0 0 1 590 668 H772 Z"/></g></svg>
+    <span class="wordmark">daily <em>bible</em></span></a>
+  <nav><a class="navlink" href="#notes" data-k="navNotes"></a><a class="navlink" href="#together" data-k="navTogether"></a><a class="navlink" href="#price" data-k="navPrice"></a>
+    <label class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      <select id="lang" aria-label="Language"><option value="ko">한국어</option><option value="en">English</option><option value="es">Español</option></select></label></nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <span class="wordmark big">daily <em>bible</em></span>
+    <p class="tag" data-k="tag"></p>
+    <div class="cta">
+      <a class="pill pill-dark" href="https://dailyjourney.org/daily-bible/" target="_blank" rel="noopener" data-k="open"></a>
+      <span class="pill">App Store <small data-k="soon"></small></span>
+      <span class="pill">Google Play <small data-k="soon"></small></span>
+    </div>
+    <div class="verse"><q data-k="verse"></q><span class="ref" data-k="verseRef"></span></div>
+  </section>
+
+  <div class="spreads">
+    <section class="spread" id="notes">
+      <div class="page-words">
+        <p class="kicker" data-k="k1"></p>
+        <h2 data-k="h1"></h2>
+        <p class="lead" data-k="l1"></p>
+        <ul class="points"><li class="marked" data-k="p1a"></li><li data-k="p1b"></li><li data-k="p1c"></li><li data-k="p1d"></li></ul>
+      </div>
+      <div class="page-shot"><div class="phone"><img id="img-record" alt="" width="390" height="844"></div></div>
+    </section>
+
+    <section class="spread flip">
+      <div class="page-words">
+        <p class="kicker" data-k="k2"></p>
+        <h2 data-k="h2"></h2>
+        <p class="lead" data-k="l2"></p>
+        <ul class="points"><li data-k="p2a"></li><li class="marked" data-k="p2b"></li><li data-k="p2c"></li></ul>
+      </div>
+      <div class="page-shot"><div class="phone"><img id="img-verses" alt="" width="390" height="844"></div></div>
+    </section>
+
+    <section class="spread" id="together">
+      <div class="page-words">
+        <p class="kicker" data-k="k3"></p>
+        <h2 data-k="h3"></h2>
+        <p class="lead" data-k="l3"></p>
+        <ul class="points"><li data-k="p3a"></li><li class="marked" data-k="p3b"></li><li data-k="p3c"></li></ul>
+      </div>
+      <div class="page-shot"><div class="phone"><img id="img-read" alt="" width="390" height="844"></div></div>
+    </section>
+  </div>
+
+  <section class="facts">
+    <div><h3 data-k="f1h"></h3><p data-k="f1"></p></div>
+    <div><h3 data-k="f2h"></h3><p data-k="f2"></p></div>
+    <div><h3 data-k="f3h"></h3><p data-k="f3"></p></div>
+  </section>
+
+  <section class="price" id="price">
+    <p class="kicker" data-k="kp"></p>
+    <h2 data-k="hp"></h2>
+    <p class="lead" data-k="lp"></p>
+    <div class="plans">
+      <div class="plan"><b data-k="free"></b><span class="amt" data-k="freeAmt"></span><p data-k="freeWhat"></p></div>
+      <div class="plan"><b data-k="month"></b><span class="amt" data-k="monthAmt"></span><p data-k="monthWhat"></p></div>
+      <div class="plan best"><b data-k="year"></b><span class="amt" data-k="yearAmt"></span><p data-k="yearWhat"></p></div>
+    </div>
+    <p class="free-note" data-k="hand"></p>
+  </section>
+
+  <footer>
+    <span>© 2026 Daily Journey, Inc.</span>
+    <nav><a href="https://dailyjourney.org/" target="_blank" rel="noopener">daily thanks</a><a href="https://dailyjourney.org/privacy/" target="_blank" rel="noopener" data-k="privacy"></a><a href="https://dailyjourney.org/terms/" target="_blank" rel="noopener" data-k="terms"></a><a href="https://dailyjourney.org/support/" target="_blank" rel="noopener" data-k="support"></a></nav>
+  </footer>
+</main>
+
+<script>
+const S = {
+  ko: {
+    navNotes: '설교 노트', navTogether: '함께 읽기', navPrice: '요금',
+    tag: '말씀을 듣고, 읽고, 남기는 하루.', open: '웹에서 바로 열기', soon: '곧 나와요',
+    verse: '나는 포도나무요 너희는 가지라', verseRef: '요한복음 15:5',
+    k1: '설교 노트', h1: '본문을 고르고, 녹음하면 한 장으로.', l1: '주일 설교를 녹음하면 AI가 받아 적고 한 장으로 정리해요. 핵심 메시지, 말씀 요점, 삶의 적용, 기도 제목, 나눔 질문까지.',
+    p1a: '본문을 먼저 골라요. AI가 그 구절을 참고해서 더 정확하게 알아듣고 정리해요.',
+    p1b: '화면을 꺼도 계속 녹음돼요. 전화가 와도 받지 않으면 그대로, 받으면 잠시 멈췄다가 통화가 끝나면 이어서.',
+    p1c: '녹음 · 실시간 · 오디오 파일. 한국어, 영어, 스페인어 설교에 맞춰 받아 적어요.',
+    p1d: '요약 · 받아쓰기 · 본문, 세 가지로 다시 봐요.',
+    k2: '구절 대조', h2: '설교에 나온 구절, 원문과 맞춰 봐요.', l2: '목사님이 읽은 구절을 성경 원문과 나란히 놓고 비교해요.',
+    p2a: '원문과 같으면 표시하고, 풀어서 말한 구절은 그렇다고 알려 줘요.',
+    p2b: 'AI가 확신하지 못한 구절은 짐작하지 않고 물어봐요. "맞아요" 또는 "다른 구절이에요"로 바로 고쳐요.',
+    p2c: '교회와 목사님은 한 번 넣으면 기억해요. 주일 11시면 그 교회, 수요일 저녁이면 그 예배로 먼저 채워져요.',
+    k3: '함께 읽기', h3: '어디서부터 어디까지, 며칠 동안.', l3: '읽을 범위와 기간을 정하면 날마다 읽을 만큼 나눠 드려요. 링크 하나로 가족과 친구를 초대해요.',
+    p3a: '기간에 맞춰 나누거나, 하루에 몇 장씩으로 정해요.',
+    p3b: '초대받은 사람은 같은 날 같은 본문을 읽어요. 가입하지 않아도 링크로 바로 함께해요.',
+    p3c: '얼마나 자주, 얼마나 오래, 몇 장을 읽었는지 기록판으로 보여 줘요.',
+    f1h: '묵상과 기도', f1: '읽다가 멈춘 곳에서 바로 묵상을 써요. 느낀 점과 기도, 목소리로도 남겨요.',
+    f2h: 'daily thanks와 함께', f2: '같은 기록을 써요. 감사, 기도, 묵상이 성경 읽기와 이어져요.',
+    f3h: '나만 보는 기록', f3: '개인 기록은 기기에서 잠가서 보관해요. 운영자도 열어 볼 수 없어요.',
+    kp: '요금', hp: '처음 열 개는 무료예요.', lp: 'AI로 정리한 설교 노트 10개까지 무료로 보관해요. 지우면 다시 쓸 수 있어요.',
+    free: '무료', freeAmt: '₩0', freeWhat: 'AI 노트 10개 보관',
+    month: '월간', monthAmt: '₩4,900<small> / 월</small>', monthWhat: '매달 60개까지 정리 · 보관 무제한',
+    year: '연간', yearAmt: '₩39,000<small> / 년</small>', yearWhat: '두 달 무료 · 매달 60개 · 보관 무제한',
+    hand: '손으로 쓴 설교 노트는 언제나 무료예요.',
+    privacy: '개인정보 처리방침', terms: '이용약관', support: '문의',
+    imgs: 'ko'
+  },
+  en: {
+    navNotes: 'Sermon notes', navTogether: 'Read together', navPrice: 'Pricing',
+    tag: 'Hear, read and keep the Word, every day.', open: 'Open on the web', soon: 'Soon',
+    verse: 'I am the vine, ye are the branches', verseRef: 'John 15:5',
+    k1: 'Sermon notes', h1: 'Pick the passage, record, get one page.', l1: 'Record Sunday’s sermon and the AI writes it down and fits it on one page: the main message, key points, how to live it, prayer topics and questions for your group.',
+    p1a: 'Choose the passage first. The AI uses those verses to hear the sermon and summarize it more accurately.',
+    p1b: 'Keeps recording with the screen off. If a call comes in and you don’t answer, it carries on; if you answer, it pauses and picks up when the call ends.',
+    p1c: 'Record, real-time or an audio file. Transcription tuned for sermons in Korean, English and Spanish.',
+    p1d: 'Read it back three ways: summary, transcript, passage.',
+    k2: 'Verse check', h2: 'Verses from the sermon, side by side with the Bible.', l2: 'Every verse the pastor read is set next to the Bible text.',
+    p2a: 'Matching verses are marked, and paraphrases are labeled as such.',
+    p2b: 'When the AI isn’t sure, it asks instead of guessing. Tap “That’s right” or “It’s a different verse” to fix it.',
+    p2c: 'Type your church and pastor once. Sunday at 11 fills in that church; Wednesday evening, that service.',
+    k3: 'Read together', h3: 'From where to where, over how many days.', l3: 'Set a range and a length, and each day gets its portion. Invite family and friends with one link.',
+    p3a: 'Split it over a period, or by a number of chapters a day.',
+    p3b: 'Everyone invited reads the same passage on the same day. No sign-up needed to join from the link.',
+    p3c: 'A dashboard shows how often, how long and how many chapters you’ve read.',
+    f1h: 'Reflection and prayer', f1: 'Write a reflection right where you stopped reading. Keep what you felt and your prayer, by voice too.',
+    f2h: 'Works with daily thanks', f2: 'Same records. Thanks, prayer and reflections connect to your Bible reading.',
+    f3h: 'Records only you can see', f3: 'Personal records are locked on your device. Not even we can open them.',
+    kp: 'Pricing', hp: 'Your first ten are free.', lp: 'Keep up to 10 AI sermon notes for free. Delete one and you can make another.',
+    free: 'Free', freeAmt: '$0', freeWhat: 'Keep 10 AI notes',
+    month: 'Monthly', monthAmt: '$3.99<small> / month</small>', monthWhat: 'Up to 60 a month · unlimited storage',
+    year: 'Yearly', yearAmt: '$29.99<small> / year</small>', yearWhat: 'Two months free · 60 a month · unlimited storage',
+    hand: 'Sermon notes you write by hand are always free.',
+    privacy: 'Privacy', terms: 'Terms', support: 'Support',
+    imgs: 'en'
+  },
+  es: {
+    navNotes: 'Notas de sermón', navTogether: 'Leer juntos', navPrice: 'Precios',
+    tag: 'Escuchar, leer y guardar la Palabra, cada día.', open: 'Abrir en la web', soon: 'Pronto',
+    verse: 'Yo soy la vid, vosotros los pámpanos', verseRef: 'Juan 15:5',
+    k1: 'Notas de sermón', h1: 'Elige el pasaje, graba y tenlo en una página.', l1: 'Graba el sermón del domingo y la IA lo transcribe y lo resume en una página: el mensaje central, los puntos, cómo vivirlo, motivos de oración y preguntas para tu grupo.',
+    p1a: 'Primero elige el pasaje. La IA usa esos versículos para entender el sermón y resumirlo con más precisión.',
+    p1b: 'Sigue grabando con la pantalla apagada. Si entra una llamada y no contestas, continúa; si contestas, se pausa y sigue sola al colgar.',
+    p1c: 'Grabar, en vivo o un archivo de audio. Transcripción pensada para sermones en coreano, inglés y español.',
+    p1d: 'Vuelve a verlo de tres formas: resumen, transcripción y pasaje.',
+    k2: 'Revisión de versículos', h2: 'Los versículos del sermón, junto al texto bíblico.', l2: 'Cada versículo que leyó el pastor aparece al lado del texto de la Biblia.',
+    p2a: 'Los que coinciden se marcan, y las paráfrasis se indican como tales.',
+    p2b: 'Si la IA no está segura, pregunta en vez de adivinar. Toca “Es correcto” o “Es otro versículo” para corregirlo.',
+    p2c: 'Escribe tu iglesia y tu pastor una vez. El domingo a las 11 se llena con esa iglesia; el miércoles por la noche, con ese culto.',
+    k3: 'Leer juntos', h3: 'Desde dónde hasta dónde, en cuántos días.', l3: 'Elige el rango y la duración, y cada día tiene su porción. Invita a familia y amigos con un enlace.',
+    p3a: 'Repártelo en un período o por capítulos al día.',
+    p3b: 'Todos los invitados leen el mismo pasaje el mismo día. Pueden unirse desde el enlace sin registrarse.',
+    p3c: 'Un panel muestra con qué frecuencia, cuánto tiempo y cuántos capítulos has leído.',
+    f1h: 'Reflexión y oración', f1: 'Escribe una reflexión justo donde dejaste de leer. Guarda lo que sentiste y tu oración, también con tu voz.',
+    f2h: 'Con daily thanks', f2: 'Los mismos registros. Gratitud, oración y reflexiones se conectan con tu lectura.',
+    f3h: 'Solo para ti', f3: 'Tus registros personales se cifran en tu dispositivo. Ni nosotros podemos abrirlos.',
+    kp: 'Precios', hp: 'Las primeras diez son gratis.', lp: 'Guarda hasta 10 notas de sermón con IA gratis. Si borras una, puedes crear otra.',
+    free: 'Gratis', freeAmt: '$0', freeWhat: 'Guarda 10 notas con IA',
+    month: 'Mensual', monthAmt: '$3.99<small> / mes</small>', monthWhat: 'Hasta 60 al mes · almacenamiento ilimitado',
+    year: 'Anual', yearAmt: '$29.99<small> / año</small>', yearWhat: 'Dos meses gratis · 60 al mes · almacenamiento ilimitado',
+    hand: 'Las notas que escribes a mano siempre son gratis.',
+    privacy: 'Privacidad', terms: 'Términos', support: 'Soporte',
+    imgs: 'en'
+  }
+};
+const ALT = {
+  ko: { record: '설교를 실시간으로 녹음하는 화면. 요한복음 15:1-8, 받아 적은 글이 보여요', verses: '설교에 나온 구절을 원문과 비교하는 화면', read: '읽기 화면: 통독 기록과 함께 읽기 계획' },
+  en: { record: 'Recording a sermon in real time on John 15:1-8, with the live transcript', verses: 'Verses from the sermon compared with the Bible text', read: 'Reading screen: progress and a shared reading plan' }
+};
+const pick = () => { try { const s = localStorage.getItem('db-site-lang'); if (S[s]) return s; } catch (e) {} const n = (navigator.language || 'ko').slice(0, 2); return S[n] ? n : 'ko'; };
+let lang = pick();
+function render() {
+  const t = S[lang], im = t.imgs, alt = ALT[im];
+  document.documentElement.lang = lang;
+  document.getElementById('lang').value = lang;
+  document.querySelectorAll('[data-k]').forEach(el => { const v = t[el.dataset.k]; if (v == null) return; if (/<small>/.test(v)) el.innerHTML = v; else el.textContent = v; });
+  for (const k of ['record', 'verses', 'read']) { const img = document.getElementById('img-' + k); img.src = `img/${im}-${k}.png`; img.alt = alt[k]; }
+}
+document.getElementById('lang').addEventListener('change', e => { lang = e.target.value; try { localStorage.setItem('db-site-lang', lang); } catch (err) {} render(); });
+render();
+</script>

@@ -19,7 +19,7 @@ import { sermonKeywords } from './keywords.js';
  *   - long sermons are cut into 10-minute pieces; each piece gets the end of the previous one as context;
  *   - repeated filler lines that engines invent during silence (e.g. "감사합니다" ×20) are removed.
  */
-export async function transcribe({ filePath, mimeType, language = 'ko', context = '' }, cfg) {
+export async function transcribe({ filePath, mimeType, language = 'ko', context = '', passageText = '' }, cfg) {
   const lang = ['ko', 'en', 'es'].includes(language) ? language : 'ko';
   const provider = pickProvider(lang, cfg);
   if (provider === 'mock') return { provider, text: MOCK_TRANSCRIPT };
@@ -27,9 +27,11 @@ export async function transcribe({ filePath, mimeType, language = 'ko', context 
   try {
     let text;
     const ctx = String(context || '').slice(0, 600);
-    if (provider === 'clova') text = await clovaTranscribe(clean.file, lang, cfg, ctx);
-    else if (provider === 'rtzr') text = await rtzrTranscribe(clean.file, lang, cfg, ctx);
-    else if (provider === 'openai') text = await openaiTranscribe(clean, mimeType, lang, cfg, ctx);
+    // the chosen passage's own words are the best hint for the part the preacher reads aloud
+    const pctx = [ctx, passageWords(passageText).join(' ')].filter(Boolean).join(' ');
+    if (provider === 'clova') text = await clovaTranscribe(clean.file, lang, cfg, pctx);
+    else if (provider === 'rtzr') text = await rtzrTranscribe(clean.file, lang, cfg, pctx);
+    else if (provider === 'openai') text = await openaiTranscribe(clean, mimeType, lang, cfg, ctx, passageText);
     else throw new Error(`Unknown STT provider: ${provider}`);
     return { provider, text: tidyTranscript(text) };
   } finally { clean.cleanup(); }
@@ -76,7 +78,7 @@ const PROMPT_LEAD = {
   en: 'This is a church sermon. Spell Bible books, names and references correctly, e.g. John 3:16.',
   es: 'Es un sermón en una iglesia. Escribe bien los libros, nombres y citas de la Biblia, p. ej. Juan 3:16.'
 };
-async function openaiTranscribe(clean, mimeType, lang, cfg, ctx = '') {
+async function openaiTranscribe(clean, mimeType, lang, cfg, ctx = '', passageText = '') {
   if (!cfg.openaiKey) throw notConfigured('OPENAI_API_KEY is not set');
   const MAX = 25 * 1024 * 1024;
   if (!clean.cleaned && fs.statSync(clean.file).size > MAX) { const e = new Error('Recording is over 25 MB; install ffmpeg (FFMPEG_PATH) so it can be split.'); e.code = 'audio_too_large'; throw e; }
@@ -88,7 +90,8 @@ async function openaiTranscribe(clean, mimeType, lang, cfg, ctx = '') {
     form.append('model', cfg.openaiModel || 'gpt-4o-transcribe');
     form.append('language', lang);
     // spelling context + the end of the previous piece, so sentences carry across the cut
-    form.append('prompt', `${PROMPT_LEAD[lang]}${ctx ? ` ${ctx}.` : ''} ${words}${out ? `\n${out.slice(-300)}` : ''}`);
+    const passage = String(passageText || '').replace(/^\d+:\d+\s/gm, '').replace(/\s+/g, ' ').slice(0, 500);
+    form.append('prompt', `${PROMPT_LEAD[lang]}${ctx ? ` ${ctx}.` : ''}${passage ? ` ${passage}` : ''} ${words}${out ? `\n${out.slice(-300)}` : ''}`);
     const res = await fetch('https://api.openai.com/v1/audio/transcriptions', { method: 'POST', headers: { Authorization: `Bearer ${cfg.openaiKey}` }, body: form });
     if (!res.ok) throw new Error(`OpenAI transcription failed: ${res.status} ${await res.text()}`);
     out += (out ? '\n' : '') + String((await res.json()).text || '').trim();
@@ -145,6 +148,13 @@ async function rtzrTranscribe(file, lang, cfg, ctx = '') {
 // Names and topics the listener typed ("새생명교회, 김요한 목사, 로마서 8장, 성령의 열매") → words to boost.
 export function contextWords(ctx) {
   return [...new Set(String(ctx || '').split(/[\s,·;/|()\[\]"'“”‘’]+|\.\s/).map(w => w.replace(/[.!?:]+$/, '').trim()).filter(w => w.length >= 2 && w.length <= 20 && !/^\d+$/.test(w)))].slice(0, 40);
+}
+
+// Distinct longer words from the passage text (names, places, key nouns) for engines that take a word list.
+export function passageWords(text) {
+  const seen = new Map();
+  String(text || '').replace(/^\d+:\d+\s/gm, '').split(/[\s,.;:!?·“”"'()]+/).forEach(w => { w = w.replace(/(은|는|이|가|을|를|에게|에서|으로|로|의|와|과|도|만)$/, ''); if (w.length >= 2 && w.length <= 20 && !/^\d+$/.test(w)) seen.set(w, (seen.get(w) || 0) + 1); });
+  return [...seen.entries()].sort((a, b) => b[0].length - a[0].length || b[1] - a[1]).slice(0, 30).map(([w]) => w);
 }
 
 /* ---------- clean-up of the text ---------- */

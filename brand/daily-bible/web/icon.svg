@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- daily bible: an open book with a ribbon marker. Same line weight and grey as the daily thanks sun. -->
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+  <path d="M648 668 V800 L679 774 L710 800 V668 Z" fill="#B5453F"/>
+  <g fill="none" stroke="#50555A" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M252 278 H408 A104 104 0 0 1 512 382 V746 A78 78 0 0 0 434 668 H252 Z"/>
+    <path d="M772 278 H616 A104 104 0 0 0 512 382 V746 A78 78 0 0 1 590 668 H772 Z"/>
+  </g>
+</svg>

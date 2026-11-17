@@ -66,3 +66,17 @@ test('stt: what the listener typed about the sermon helps recognition', async ()
   finally { globalThis.fetch = realFetch; fs.rmSync(dir, { recursive: true, force: true }); }
   assert.match(seen[0], /Grace Church, Pastor Kim, Romans 8/);
 });
+
+test('stt: the chosen passage is given to the engine', async () => {
+  const { passageWords } = await import('../server/sermons/stt.js');
+  const words = passageWords('3:1 그런데 바리새인 중에 니고데모라 하는 사람이 있으니 유대인의 지도자라\n3:2 그가 밤에 예수께 와서');
+  assert.ok(words.includes('니고데모라') || words.includes('니고데모'));
+  assert.ok(words.includes('바리새인'));
+  const seen = []; const realFetch = globalThis.fetch;
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'pas-')); const f = path.join(dir, 'a.mp3'); fs.writeFileSync(f, Buffer.alloc(2000));
+  globalThis.fetch = async (url, init) => { seen.push(init.body.get('prompt')); return new Response('{"text":"ok"}', { status: 200, headers: { 'content-type': 'application/json' } }); };
+  try { await transcribe({ filePath: f, mimeType: 'audio/mpeg', language: 'en', passageText: '3:16 For God so loved the world' }, { provider: 'openai', openaiKey: 'k', ffmpegPath: '/nonexistent' }); }
+  finally { globalThis.fetch = realFetch; fs.rmSync(dir, { recursive: true, force: true }); }
+  assert.match(seen[0], /For God so loved the world/);
+  assert.doesNotMatch(seen[0], /3:16 For/);
+});

@@ -147,6 +147,14 @@ bb_html = (ROOT / 'index.html').read_text().replace('<script src="app.js" defer>
 bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Bible · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Bible"')
 (bb_dir / 'index.html').write_text(bb_html)
 if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
+# daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
+db_site = WEB / 'dailybible'
+shutil.copytree(ROOT / 'brand' / 'daily-bible' / 'web', db_site, dirs_exist_ok=True)   # icon, favicon, og image, app screenshots
+frag = (ROOT / 'site' / 'dailybible.html').read_text()
+(db_site / 'index.html').write_text('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
+    '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<meta name="theme-color" content="#FFFFFF">\n'
+    '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n'
+    '</head>\n<body>\n' + frag + '\n</body>\n</html>\n')
 content = ROOT / 'content' / 'content.json'
 if content.exists(): shutil.copy(content, WEB / 'content.json')   # the app can read its text from here too
 print('wrote', WEB.relative_to(ROOT), sorted(p.name for p in WEB.iterdir()))
