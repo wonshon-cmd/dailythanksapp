@@ -1136,6 +1136,8 @@ const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ
 // "요한복음 3:1-15", "요 3:16", "시편 23", "John 3:16-18", "1 Tesalonicenses 5:16-18" → { b, c, v, v2 }
 function parseRef(input) {
   const str = String(input || '').trim(); if (!str) return null;
+  const cross = str.match(/^(.*?\D)\s*(\d+)\s*:\s*(\d+)\s*[-~–]\s*(\d+)\s*:\s*(\d+)\s*$/);
+  if (cross) { const r = parseRef(`${cross[1]} ${cross[2]}:${cross[3]}`); if (r && +cross[4] > r.c && +cross[4] <= BOOKS[r.b - 1][4]) return { ...r, v2: 0, c2: +cross[4], e2: +cross[5] }; }
   const m = str.match(/^(.*?)(\d+)\s*(?:장|:|\s)?\s*(?:(\d+)\s*(?:절)?\s*(?:[-~–]\s*(\d+)\s*(?:절)?)?)?\s*$/);
   if (!m) return null;
   const name = fold(m[1]); if (!name) return null;
@@ -1146,7 +1148,16 @@ function parseRef(input) {
   const v = m[3] ? +m[3] : 0, v2 = m[4] ? +m[4] : v;
   return { b: best, c, v, v2: Math.max(v, v2) };
 }
-const refText = r => r ? `${bookName(r.b)} ${r.c}${r.v ? `:${r.v}${r.v2 > r.v ? '-' + r.v2 : ''}` : (lang() === 'ko' ? '장' : '')}` : '';
+const refText = r => !r ? '' : r.c2 > r.c ? `${bookName(r.b)} ${r.c}:${r.v}-${r.c2}:${r.e2}` : `${bookName(r.b)} ${r.c}${r.v ? `:${r.v}${r.v2 > r.v ? '-' + r.v2 : ''}` : (lang() === 'ko' ? '장' : '')}`;
+// The verses of a passage, even when it runs into the next chapter (each verse keeps its chapter in .c).
+async function passageVerses(r) {
+  const out = [];
+  for (let c = r.c; c <= (r.c2 > r.c ? r.c2 : r.c); c++) {
+    const vs = await fetchChapter(r.b, c);
+    vs.forEach(x => { const lo = c === r.c ? r.v || 1 : 1, hi = r.c2 > r.c ? (c === r.c2 ? r.e2 : Infinity) : (r.v ? r.v2 || r.v : Infinity); if (x.v >= lo && x.v <= hi) out.push({ ...x, c }); });
+  }
+  return out;
+}
 const chapterMem = {}, bookMem = {};
 // Bible text: one file per book (bible/<tr>/<book>.json). Looked for next to the app first (phone app, preview,
 // dailyjourney.org/app), then on dailyjourney.org, then the getBible API as a last resort.
@@ -1232,7 +1243,7 @@ async function loadChapter(b, c, first) {
   try { verses = await fetchChapter(b, c); }
   catch { if (more) more.innerHTML = `${t('rd.offline')}<button class="link-btn" data-action="reader-retry">${t('rd.retry')}</button>`; return false; }
   if (!state.reader || r !== state.reader) return;
-  if (r.passage) verses = verses.filter(x => x.v >= r.v && x.v <= (r.v2 || r.v));
+  if (r.passage) verses = verses.filter(x => r.c2 > r.c ? (c === r.c ? x.v >= r.v : x.v <= r.e2) : x.v >= r.v && x.v <= (r.v2 || r.v));
   r.loaded.push([b, c]); r.last = [b, c];
   const hl = x => first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v);
   const last = verses[verses.length - 1].v;
@@ -1248,7 +1259,12 @@ async function loadChapter(b, c, first) {
       <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span>${t('act.note')}</span></button>
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
-  if (r.passage) { more.remove(); sc.innerHTML = pages; sc.scrollLeft = 0; passageCount(); return true; }
+  if (r.passage) {
+    if (first) { more.remove(); sc.innerHTML = pages; sc.scrollLeft = 0; } else sc.insertAdjacentHTML('beforeend', pages);
+    passageCount();
+    if (r.c2 > c) await loadChapter(b, c + 1, false);
+    return true;
+  }
   const onLoadingPage = sc && sc.scrollTop >= more.offsetTop - 2; // waiting on the "loading" page
   more.insertAdjacentHTML('beforebegin', pages);
   // Scroll snapping would otherwise stay glued to the "loading" page and jump past the new verses.
@@ -1390,14 +1406,16 @@ function chapterPicker(b) {
 }
 
 // Group passage of the day: the group's own choice, or the plan published in content.json (e.g. a QT plan used with permission).
+// Passages already known when this version was built (content.json from dailyjourney.org adds every new day).
+const QT_BUILTIN = { ko: {"2026-11-16": "아모스 7:10-17", "2026-11-17": "아모스 8:1-10", "2026-11-18": "아모스 8:11-9:6", "2026-11-19": "아모스 9:7-15", "2026-11-20": "고린도후서 1:1-7", "2026-11-21": "고린도후서 1:8-14", "2026-11-22": "고린도후서 1:15-24", "2026-11-23": "고린도후서 2:1-11", "2026-11-24": "고린도후서 2:12-17", "2026-11-25": "고린도후서 3:1-11", "2026-11-26": "고린도후서 3:12-18", "2026-11-27": "고린도후서 4:1-10", "2026-11-28": "고린도후서 4:11-18", "2026-11-29": "고린도후서 5:1-10", "2026-11-30": "고린도후서 5:11-21"} };
 function todaysPassage(gid) {
   const g = data.groups.find(x => x.id === gid);
   const own = g?.passages?.[today()];
   if (own) return { ref: own, source: '' };
   // Daily plan from content.json, per language (Korean groups: 생명의 삶, once the publisher's permission is in place)
   const planFor = CONTENT.qtPlan?.[lang()] && typeof CONTENT.qtPlan[lang()] === 'object' ? CONTENT.qtPlan[lang()] : CONTENT.qtPlan;
-  const plan = planFor?.[today()];
-  const name = CONTENT.qtPlanName && typeof CONTENT.qtPlanName === 'object' ? CONTENT.qtPlanName[lang()] : CONTENT.qtPlanName;
+  const plan = planFor?.[today()] || QT_BUILTIN[lang()]?.[today()];
+  const name = (CONTENT.qtPlanName && typeof CONTENT.qtPlanName === 'object' ? CONTENT.qtPlanName[lang()] : CONTENT.qtPlanName) || { ko: '생명의 삶', en: 'Our Daily Bread', es: 'Nuestro Pan Diario' }[lang()];
   if (plan) return { ref: parseRef(plan), source: name || '' };
   const gospel = [[40, 28], [41, 16], [42, 24], [43, 21]], all = gospel.flatMap(([b, n]) => Array.from({ length: n }, (_, i) => [b, i + 1]));
   const [b, c] = all[(dayOfYear() - 1) % all.length];
@@ -1454,7 +1472,7 @@ function devoSetSheet(gid) {
 function devoShare(gid) {
   closeReader(); state.medNote = false;
   const p = todaysPassage(gid);
-  state.medRef = p?.ref || null;
+  state.medRef = p?.ref || null; state.medSource = p?.source || '';
   Object.assign(visOf('compose'), { mode: 'private', targets: [gid] });
   compose('meditation', state.challenge);
 }
@@ -1924,16 +1942,16 @@ async function fillMedPassage(focus) {
   box.innerHTML = `<p class="mp-head">${icon('book')}<span>${state.medNote ? '' : t('devo.kicker') + (p.source ? ' · ' + esc(p.source) : '') + ' · '}${esc(refText(p.ref))}</span><button type="button" class="link-btn mp-change" data-action="mp-change">${t('devo.change')}</button></p><div class="mp-text">${t('rd.loading')}</div>`;
   try {
     const r = p.ref, verses = await fetchChapter(r.b, r.c);
-    const pick = verses.filter(x => !r.v || (x.v >= r.v && x.v <= (r.v2 || r.v)));
+    const pick = r.c2 > r.c ? await passageVerses(r) : verses.filter(x => !r.v || (x.v >= r.v && x.v <= (r.v2 || r.v))).map(x => ({ ...x, c: r.c }));
     state.medLast = verses[verses.length - 1].v;
     // one verse at a time: swipe (or tap the arrows) to turn
     const el = box.querySelector('.mp-text'); if (!el) return;
     el.classList.add('mp-cards');
     el.innerHTML = `<div class="mp-track">${pick.map(x => `<p class="mp-card"><span>${esc(x.text)}</span></p>`).join('')}</div>
-      <div class="mp-nav"><button type="button" class="mp-arrow" data-action="mp-prev" aria-label="‹">‹</button><span class="mp-count">${refText({ b: r.b, c: r.c, v: pick[0]?.v, v2: pick[0]?.v })} · 1/${pick.length}</span><button type="button" class="mp-arrow" data-action="mp-next" aria-label="›">›</button></div>
+      <div class="mp-nav"><button type="button" class="mp-arrow" data-action="mp-prev" aria-label="‹">‹</button><span class="mp-count">${refText({ b: r.b, c: pick[0]?.c || r.c, v: pick[0]?.v, v2: pick[0]?.v })} · 1/${pick.length}</span><button type="button" class="mp-arrow" data-action="mp-next" aria-label="›">›</button></div>
       ${r.v ? `<div class="mp-range">${r.v > 1 ? `<button type="button" class="link-btn" data-action="mp-grow" data-id="prev">${t('mp.addPrev')}</button>` : '<span></span>'}${(r.v2 || r.v) < state.medLast ? `<button type="button" class="link-btn" data-action="mp-grow" data-id="next">${t('mp.addNext')}</button>` : ''}</div>` : ''}`;
     const track = el.querySelector('.mp-track'), count = el.querySelector('.mp-count');
-    const showCount = () => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); const x = pick[i]; if (x) count.textContent = `${refText({ b: r.b, c: r.c, v: x.v, v2: x.v })} · ${i + 1}/${pick.length}`; };
+    const showCount = () => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); const x = pick[i]; if (x) count.textContent = `${refText({ b: r.b, c: x.c || r.c, v: x.v, v2: x.v })} · ${i + 1}/${pick.length}`; };
     track.addEventListener('scroll', showCount, { passive: true });
     if (focus === 'next') { track.scrollLeft = track.scrollWidth; showCount(); }
   } catch { const el = box.querySelector('.mp-text'); if (el) el.textContent = t('rd.offline'); }
