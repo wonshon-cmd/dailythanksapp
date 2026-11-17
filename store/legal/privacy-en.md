@@ -1,11 +1,11 @@
-# Daily Thanks · Daily Bible Privacy Policy
+# Daily Journey Privacy Policy
 
 > For Squarespace: paste into the dailyjourney.org/privacy page.
 > Replace every `[bracket]`. Have it reviewed by a privacy professional before launch.
 
 **Effective date: November 17, 2026**
 
-Daily Journey, Inc. ("we") runs the Daily Thanks and Daily Bible apps and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
+Daily Journey, Inc. ("we") runs the Daily Journey app and website (including daily bible and daily thanks on the web) (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
 
 ## 1. What we collect
 

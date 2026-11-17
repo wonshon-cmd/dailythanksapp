@@ -12,6 +12,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'sn.saved': "녹음과 노트를 저장했어요.", 'rec.afterLocal': "저장하면 녹음과 내가 적은 노트가 함께 남아요.", 'rec.liveHintLocal': "말하는 대로 바로 글자로 보여 줘요. 저장하면 녹음과 함께 남아요.",
     'pw.free': "지금은 무료로 쓰고 있어요. 공간이 모자라면 오래된 녹음을 정리해 주세요.",
     'cl.sentBodyApp': "{email}로 메일을 보냈어요. 메일에 있는 숫자 코드를 아래에 넣어 주세요.",
     'cl.sample': "샘플",
@@ -19,8 +20,8 @@ const STR = {
     'med.recShort': "녹음",
     'rc2.title': "나의 선한 영향력", 'rc2.sub': "내가 나눈 말씀과 감사, 기도제목이 이만큼 닿았어요.", 'rc2.peopleV': "{n}명", 'rc2.timesV': "{n}번", 'rc2.people': "마음을 표현한 사람", 'rc2.outside': "공동체 밖으로", 'rc2.inside': "공동체 안에서", 'rc2.shared': "내가 나눈 횟수", 'rc2.foot': "나눈 글 {p}개 · 앱 밖으로 보낸 것 {e}번", 'rc2.more': "자세히 보기",
     'yr.verse': "올해의 말씀", 'yr.most': "가장 많이 펼친 말씀 · {r}", 'yr.times': "{n}번 펼쳤어요",
-    'snz.ok': "끄기", 'snz.title': "무엇을 끌까요?", 'snz.what': "끌 것", 'snz.all': "전부", 'snz.for': "얼마 동안", 'snz.until': "다시 켤 때까지", 'snz.hint': "설정 › 보기 설정에서 언제든 다시 켤 수 있어요.", 'mc.title': "내 공동체", 'mc.ph': "교회·소그룹·챕터·수련회 코드", 'mc.connect': "연결", 'mc.none': "받은 코드를 넣으면 공동체와 연결돼요.", 'mc.bad': "코드를 확인해 주세요.", 'mc.needSign': "공동체와 연결하려면 로그인해 주세요. 로그인하면 바로 연결돼요.", 'mc.joining': "연결 중…", 'mc.admin': "관리자", 'mc.quiet': "조용히", 'mc.loud': "알림 켜기", 'mc.quietOn': "조용히 · 새 글 표시와 알림 없음", 'mc.quietDone': "조용히 해 두었어요. 새 글 표시와 알림이 오지 않아요.", 'mc.loudDone': "다시 알려 드릴게요.", 'mc.leave': "나가기", 'mc.leaveQ': "‘{name}’에서 나갈까요? 다시 들어오려면 코드나 초대 링크가 필요해요.", 'mc.left': "공동체에서 나왔어요.", 'mc.ownerStay': "관리자는 나갈 수 없어요. 공동체 관리에서 정리해 주세요.", 'join.pendingShort': "승인 대기",
-    'tour.k.verse': "오늘의 말씀", 'tour.k.prayer': "공동체 기도제목", 'tour.k.thanks': "감사", 'tour.s.verse': "밀어 올리며 성경을 읽어요", 'tour.s.prayer': "공동체의 기도제목을 바로 받아 봐요", 'tour.s.thanks': "나의 감사를 함께 나눠요", 'tour.f.title': "이런 것도 있어요", 'tour.f.read': "읽기", 'tour.f.readSub': "오늘의 본문, 이어 읽기, 함께 읽는 계획", 'tour.f.notes': "설교 노트", 'tour.f.notesSub': "설교를 녹음하면 노트로 정리돼요", 'tour.f.group': "공동체", 'tour.f.groupSub': "만들고, 초대 링크로 함께해요",
+    'snz.ok': "끄기", 'snz.title': "무엇을 끌까요?", 'snz.what': "끌 것", 'snz.all': "전부", 'snz.for': "얼마 동안", 'snz.until': "다시 켤 때까지", 'snz.hint': "설정 › 보기 설정에서 언제든 다시 켤 수 있어요.", 'mc.title': "내 공동체", 'mc.ph': "교회·공동체·챕터·수련회 코드", 'mc.connect': "연결", 'mc.none': "받은 코드를 넣으면 공동체와 연결돼요.", 'mc.bad': "코드를 확인해 주세요.", 'mc.needSign': "공동체와 연결하려면 로그인해 주세요. 로그인하면 바로 연결돼요.", 'mc.joining': "연결 중…", 'mc.admin': "관리자", 'mc.quiet': "조용히", 'mc.loud': "알림 켜기", 'mc.quietOn': "조용히 · 새 글 표시와 알림 없음", 'mc.quietDone': "조용히 해 두었어요. 새 글 표시와 알림이 오지 않아요.", 'mc.loudDone': "다시 알려 드릴게요.", 'mc.leave': "나가기", 'mc.leaveQ': "‘{name}’에서 나갈까요? 다시 들어오려면 코드나 초대 링크가 필요해요.", 'mc.left': "공동체에서 나왔어요.", 'mc.ownerStay': "관리자는 나갈 수 없어요. 공동체 관리에서 정리해 주세요.", 'join.pendingShort': "승인 대기",
+    'tour.k.verse': "오늘의 말씀", 'tour.k.prayer': "공동체 기도제목", 'tour.k.thanks': "감사", 'tour.s.verse': "밀어 올리며 성경을 읽어요", 'tour.s.prayer': "공동체의 기도제목을 바로 받아 봐요", 'tour.s.thanks': "나의 감사를 함께 나눠요", 'tour.f.title': "이런 것도 있어요", 'tour.f.read': "읽기", 'tour.f.readSub': "오늘의 본문, 이어 읽기, 함께 읽는 계획", 'tour.f.notes': "설교 노트", 'tour.f.notesSub': "설교를 녹음하고 본문과 함께 적어 둬요", 'tour.f.group': "공동체", 'tour.f.groupSub': "만들고, 초대 링크로 함께해요",
     'tour.skip': "건너뛰기", 'tour.done': "시작하기", 'tour.again': "둘러보기 다시 보기",
     'wl.title': "반가워요", 'wl.nameQ': "처음 오셨네요. 이름을 알려 주세요. 감사 카드와 공동체에서 이 이름이 보여요.", 'wl.next': "다음", 'wl.hi': "{name}님, 반가워요", 'wl.sub': "가입하면 기기를 바꿔도 이어서 쓰고, 공동체와 함께할 수 있어요.", 'wl.google': "Google로 계속하기", 'wl.ms': "Microsoft로 계속하기", 'wl.kakao': "카카오로 계속하기", 'wl.email': "메일로 계속하기", 'wl.phone': "휴대폰 문자로 계속하기", 'wl.notYet': "이 방법은 곧 열려요. 지금은 메일로 계속해 주세요.",
     'bp.thankSomeone': "감사 전하기",
@@ -166,6 +167,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'sn.saved': "Recording and notes saved.", 'rec.afterLocal': "When you save, the recording and your own notes are kept together.", 'rec.liveHintLocal': "Shows what’s said as text right away. When you save, it’s kept with the recording.",
     'pw.free': "It’s free for now. If you run out of space, clear out older recordings.",
     'cl.sentBodyApp': "We emailed {email}. Enter the number code from the email below.",
     'cl.sample': "Sample",
@@ -174,7 +176,7 @@ const STR = {
     'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
     'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
     'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
-    'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and it becomes tidy notes", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
+    'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and keep notes with the passage", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
     'tour.skip': "Skip", 'tour.done': "Get started", 'tour.again': "See the tour again",
     'wl.title': "Welcome", 'wl.nameQ': "First time here? What’s your name? It’s shown on thank-you cards and in your groups.", 'wl.next': "Next", 'wl.hi': "Welcome, {name}", 'wl.sub': "Sign up to keep going on any device and join a group.", 'wl.google': "Continue with Google", 'wl.ms': "Continue with Microsoft", 'wl.kakao': "Continue with Kakao", 'wl.email': "Continue with email", 'wl.phone': "Continue with a text message", 'wl.notYet': "This option opens soon. For now, please continue with email.",
     'bp.thankSomeone': "Thank someone",
@@ -320,6 +322,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'sn.saved': "Grabación y notas guardadas.", 'rec.afterLocal': "Al guardar, la grabación y tus notas quedan juntas.", 'rec.liveHintLocal': "Muestra al instante lo que se dice como texto. Al guardar, queda con la grabación.",
     'pw.free': "Por ahora es gratis. Si te quedas sin espacio, borra grabaciones antiguas.",
     'cl.sentBodyApp': "Enviamos un correo a {email}. Escribe abajo el código numérico del correo.",
     'cl.sample': "Ejemplo",
@@ -328,7 +331,7 @@ const STR = {
     'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
     'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
     'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
-    'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y se vuelve notas ordenadas", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
+    'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y toma notas con el pasaje", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
     'tour.skip': "Omitir", 'tour.done': "Empezar", 'tour.again': "Ver el recorrido otra vez",
     'wl.title': "Bienvenido", 'wl.nameQ': "¿Primera vez aquí? ¿Cómo te llamas? Se verá en las tarjetas de gratitud y en tus grupos.", 'wl.next': "Siguiente", 'wl.hi': "Bienvenido, {name}", 'wl.sub': "Regístrate para seguir en cualquier dispositivo y unirte a un grupo.", 'wl.google': "Continuar con Google", 'wl.ms': "Continuar con Microsoft", 'wl.kakao': "Continuar con Kakao", 'wl.email': "Continuar con correo", 'wl.phone': "Continuar con un mensaje de texto", 'wl.notYet': "Esta opción abre pronto. Por ahora, continúa con tu correo.",
     'bp.thankSomeone': "Agradecer a alguien",
@@ -1722,7 +1725,7 @@ function openReader(opts = {}) {
   readerEl.innerHTML = `<header class="reader-top">
       <button class="reader-x" data-action="reader-close" aria-label="${t('aria.close')}">${icon('x')}</button>
       <span class="reader-gap"></span>
-      <span class="reader-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">가<small>±</small></button>${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
+      <span class="reader-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button>${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
     <div class="reader-scroll${passage ? ' passage' : ''}" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>
     ${opts.group ? `<footer class="reader-foot"><button class="primary block" data-action="devo-share" data-id="${esc(opts.group)}">${icon('pencil')}${t('devo.share')}</button></footer>` : ''}`;
   readerEl.hidden = false; document.body.classList.add('reading');
@@ -2812,6 +2815,7 @@ function planSection(plans) {
 }
 // ---- sermon notes: the server summarizes (Claude) when it's connected; otherwise notes wait on the device ----
 const API_BASE = window.DT_API ?? '';
+const autoNotes = () => !!state.snOnline;   // the notes server answered; until then nothing promises automatic notes
 const NOTE_FREE = 10, NOTE_FAIR = 60;
 async function sapi(method, url, body) {
   const blob = body instanceof Blob;
@@ -2838,7 +2842,7 @@ const sermonNotes = () => {
   const linked = new Set(local.map(n => n.remoteId).filter(Boolean));
   const remote = (state.snRemote || []).filter(x => !linked.has(x.id)).map(x => ({ ...x, remote: true, date: (x.createdAt || '').slice(0, 10) }));
   const all = [...remote, ...local.filter(n => !remote.some(r => r.id === n.id))].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-  return all.length ? all : [EXAMPLE_NOTE()];
+  return all.length ? all : autoNotes() ? [EXAMPLE_NOTE()] : [];   // the full example only when automatic notes really exist
 };
 // Google-style space: lots of free room; when it fills up, delete recordings or get more space. No counter on screen.
 const FREE_BYTES = 1024 ** 3, PAID_BYTES = 100 * 1024 ** 3;
@@ -2884,7 +2888,7 @@ function renderSermons() {
   sermonSync();
   if (state.noteOpen) return renderSermonNote(state.noteOpen);
   const q = noteQuota(), notes = sermonNotes();
-  const status = n => n.example ? t('sn.example') : n.aiBusy ? t('sn.working') : n.recPending ? t('sn.offline') : n.status === 'done' ? '' : n.status === 'error' ? t('sn.failed') : !state.snOnline && n.status === 'waiting' ? t('sn.offline') : n.status === 'queued' ? t('sn.queued') : t('sn.working');
+  const status = n => n.example ? t('sn.example') : n.aiBusy ? t('sn.working') : n.recPending && autoNotes() ? t('sn.offline') : n.status === 'done' ? '' : n.status === 'error' ? t('sn.failed') : !state.snOnline && n.status === 'waiting' && false ? t('sn.offline') : n.status === 'queued' ? t('sn.queued') : t('sn.working');
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('sn.title'), '', roundBtn('sermon-new', 'plus', t('sn.new')))}
     ${recLive() ? `<button class="rec-bar" id="rec-bar" data-action="sermon-new"><i class="rec-dot"></i><span>${t('rec.bar').replace('{t}', fmtDur(Rec.seconds))}</span></button>` : ''}
@@ -2939,8 +2943,8 @@ async function renderSermonNote(id) {
       ${S.main_message ? `<section class="sn-sec sn-main"><p class="gd-label">${t('sn.main')}</p><p>${esc(S.main_message)}</p></section>` : ''}
       ${n.rec ? `<section class="sn-sec"><p class="gd-label">${icon('mic')} ${t('rec.listen')} · ${fmtDur(n.rec.dur || 0)}</p><audio class="med-play" id="note-rec" controls preload="none"></audio></section>` : ''}
       ${n.manual && n.aiBusy ? `<p class="sn-aibusy">${icon('sparkle')}${n.rec ? t('rec.busy') : t('sn.aiBusy')}</p>`
-        : n.rec && !n.ai ? `<p class="hint">${t('rec.pending')}</p><button class="secondary block sn-aibtn" data-action="note-upload" data-id="${esc(n.id)}">${icon('upload')}${t('rec.retry')}</button>`
-        : n.manual && !n.ai ? `<button class="secondary block sn-aibtn" data-action="note-ai" data-id="${esc(n.id)}">${icon('sparkle')}${t('sn.aiBtn')}</button>` : ''}
+        : n.rec && !n.ai && autoNotes() ? `<p class="hint">${t('rec.pending')}</p><button class="secondary block sn-aibtn" data-action="note-upload" data-id="${esc(n.id)}">${icon('upload')}${t('rec.retry')}</button>`
+        : n.manual && !n.ai && autoNotes() ? `<button class="secondary block sn-aibtn" data-action="note-ai" data-id="${esc(n.id)}">${icon('sparkle')}${t('sn.aiBtn')}</button>` : ''}
       ${n.manual && n.ai ? `<p class="gd-label sn-aitag">${icon('sparkle')}${t('sn.aiTag')}</p>` : ''}
       ${S.points?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.points')}</p><ol class="sn-points">${S.points.map(x => `<li><b>${esc(x.heading)}</b><span>${esc(x.detail)}</span></li>`).join('')}</ol></section>` : ''}
       ${S.application?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.apply')}</p>${list(S.application)}</section>` : ''}
@@ -2949,7 +2953,7 @@ async function renderSermonNote(id) {
       ${n.body ? `<section class="sn-sec"><p class="gd-label">${t('sn.body')}</p><p class="sn-body">${esc(n.body)}</p></section>` : ''}
       <button class="primary block sn-tomed" data-action="note-tomed" data-id="${esc(n.id)}">${icon('pencil')}${t('sn.toMed')}</button>
       ${data.groups.length ? `<button class="secondary block sn-tomed" data-action="note-group" data-id="${esc(n.id)}">${icon('people')}${t('sn.toGroup')}</button>` : ''}`
-    : `<p class="hint">${n.status === 'error' ? t('sn.failed') : state.snOnline ? t('sn.working') : t('sn.offline')}</p>`;
+    : `<p class="hint">${n.status === 'error' ? t('sn.failed') : state.snOnline ? t('sn.working') : t('sn.saved')}</p>`;
   const trHtml = tr ? `<div class="sn-trtext">${tr.split(/\n+/).map(x => `<p>${snTerms().length ? markTerms(x, snTerms()) : esc(x)}</p>`).join('')}</div>` : `<p class="hint">${t('nt.noTr')}</p>`;
   const passRef = n.ref || parseRef(S?.passages?.[0] || '');
   const moreRefs = (n.refs || []).filter(Boolean), multi = !!(passRef && moreRefs.length);
@@ -3083,7 +3087,7 @@ function sermonNew() {
 }
 const snInput = () => state.snMode === 'write' ? `<input id="sn-main" class="field" maxlength="200" placeholder="${esc(t('sn.mainF'))}">
     <textarea id="sn-body" data-draft="sermon-write" class="big-input" rows="7" placeholder="${esc(t('sn.bodyF'))}"></textarea>
-    <label class="med-check sn-ai"><input type="checkbox" id="sn-ai" checked>${icon('sparkle')}<span>${t('sn.aiOn')}</span></label>`
+    ${autoNotes() ? `<label class="med-check sn-ai"><input type="checkbox" id="sn-ai" checked>${icon('sparkle')}<span>${t('sn.aiOn')}</span></label>` : ''}`
   : state.snMode === 'rec' ? `<div class="sn-rec"><button type="button" class="sn-recbtn" data-action="sn-rec" id="sn-recbtn">${icon('mic')}<span>${t('sn.recStart')}</span></button><p class="hint" id="sn-recst"></p><p class="hint center">${t('sn.recNote')}</p></div>`
   : state.snMode === 'yt' ? `<input id="sn-yt" class="field" inputmode="url" placeholder="${esc(t('sn.ytPh'))}" autocomplete="off">`
   : state.snMode === 'file' ? `<label class="sn-file">${icon('upload')}<span id="sn-fname">${t('sn.pickFile')}</span><input type="file" id="sn-fin" accept="audio/*" hidden></label>`
@@ -3203,14 +3207,14 @@ function recCard() {
   }
   if (Rec.blob) { if (!Rec.url) Rec.url = URL.createObjectURL(Rec.blob);
     return `<div class="rec-done"><span>${icon(Rec.fileName ? 'upload' : 'mic')}${Rec.fileName ? esc(Rec.fileName.slice(0, 32)) : t('rec.done').replace('{t}', fmtDur(Rec.dur))}</span><button type="button" class="link-btn" data-action="rec-del">${t('rec.del')}</button></div>
-      <audio controls preload="metadata" src="${Rec.url}"></audio>${Rec.live.final ? `<div class="rec-livetext done">${esc(Rec.live.final)}</div>` : ''}<p class="hint">${t('rec.after')}</p>`; }
+      <audio controls preload="metadata" src="${Rec.url}"></audio>${Rec.live.final ? `<div class="rec-livetext done">${esc(Rec.live.final)}</div>` : ''}<p class="hint">${t(autoNotes() ? 'rec.after' : 'rec.afterLocal')}</p>`; }
   const kinds = [['rec', t('rec.kRec')], ...(SpeechRec() ? [['live', t('rec.kLive')]] : []), ['file', t('rec.kFile')]];
   if (Rec.kind === 'live' && !SpeechRec()) Rec.kind = 'rec';
   return `<div class="seg rec-seg">${kinds.map(([k, l]) => `<button type="button" class="${Rec.kind === k ? 'active' : ''}" data-action="rec-kind" data-id="${k}">${l}</button>`).join('')}</div>
     <label class="rec-ctx">${icon('lines')}<textarea id="rec-ctx" rows="3" maxlength="500" placeholder="${esc(t('rec.ctxPh'))}">${esc(Rec.ctx)}</textarea></label>
     ${!state.snRef ? `<div class="rec-row"><button type="button" class="rec-big rec-go locked" data-action="rec-need-ref">${icon(Rec.kind === 'file' ? 'upload' : 'mic')}<span>${Rec.kind === 'file' ? t('rec.pick') : t('rec.btn')}</span></button>${langChip()}</div><p class="hint rec-need">${icon('book')}${t('rec.needRef')}</p>`
       : Rec.kind === 'file' ? `<div class="rec-row"><label class="rec-big rec-go">${icon('upload')}<span>${t('rec.pick')}</span><input type="file" id="rec-file" accept="audio/*,video/mp4,.m4a,.mp3,.wav,.aac" hidden></label>${langChip()}</div><p class="hint">${t('rec.fileHint')}</p>`
-      : `<div class="rec-row"><button type="button" class="rec-big rec-go" data-action="rec-start">${icon('mic')}<span>${t('rec.btn')}</span></button>${langChip()}</div><p class="hint">${Rec.kind === 'live' ? t('rec.liveHint') : nativeRec() ? t('rec.hintApp') : t('rec.hintWeb')}</p>`}`;
+      : `<div class="rec-row"><button type="button" class="rec-big rec-go" data-action="rec-start">${icon('mic')}<span>${t('rec.btn')}</span></button>${langChip()}</div><p class="hint">${Rec.kind === 'live' ? t(autoNotes() ? 'rec.liveHint' : 'rec.liveHintLocal') : nativeRec() ? t('rec.hintApp') : t('rec.hintWeb')}</p>`}`;
 }
 function livePaint() { const el = $('#rec-livetext'); if (el) { el.innerHTML = `${esc(Rec.live.final)}<i>${esc(Rec.live.interim)}</i>` || ''; el.scrollTop = el.scrollHeight; } }
 function liveStart() {
@@ -3309,7 +3313,7 @@ async function uploadRecording(id, blob) {
   state.snChecked = false; await sermonSync();
   const pending = msg => { n.aiBusy = false; n.recPending = true; save(); render(); if (msg) toast(msg);
     if (n.liveText && !n.ai) { n.transcript = n.transcript || n.liveText; aiSummarize(n.id, true); } };   // no server: summarize what was heard live
-  if (!state.snOnline) return pending();
+  if (!state.snOnline) { n.aiBusy = false; n.recPending = false; if (n.liveText && !n.transcript) n.transcript = n.liveText; save(); render(); return; }
   try {
     const type = (blob.type || 'audio/mp4').split(';')[0];
     const { id: rid } = await sapi('POST', `/api/sermons/upload?type=${encodeURIComponent(type)}&lang=${n.slang || lang()}&title=${encodeURIComponent(n.title || '')}&preacher=${encodeURIComponent(n.preacher || '')}&context=${encodeURIComponent(n.context || '')}`);

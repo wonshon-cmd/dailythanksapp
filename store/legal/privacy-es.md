@@ -1,11 +1,11 @@
-# Política de privacidad de Daily Thanks · Daily Bible
+# Política de privacidad de Daily Journey
 
 > Para Squarespace: pega este texto en dailyjourney.org/privacy (versión en español).
 > Reemplaza todo lo que esté entre `[corchetes]`. Pide una revisión profesional antes del lanzamiento.
 
 **Fecha de vigencia: 17 de noviembre de 2026**
 
-Daily Journey, Inc. ("nosotros") opera las apps Daily Thanks y Daily Bible y su sitio web (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
+Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (incluidos daily bible y daily thanks en la web) (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
 
 ## 1. Qué recogemos
 

@@ -8,7 +8,7 @@
 
 **시행일: 2026년 11월 17일**
 
-1. **서비스:** Daily Thanks는 감사를 기록하고 나누는 서비스입니다. 운영자는 Daily Journey, Inc.입니다.
+1. **서비스:** Daily Journey는 성경을 읽고 감사 · 기도제목 · 묵상을 공동체와 나누는 서비스입니다(웹의 daily bible · daily thanks 포함). 운영자는 Daily Journey, Inc.입니다.
 2. **가입:** 만 14세 이상만 가입할 수 있습니다. Apple, Google, 휴대폰 번호로 로그인합니다.
 3. **내가 쓴 글:**
    - 글의 권리는 작성자에게 있습니다.
@@ -39,7 +39,7 @@
 
 **Effective date: November 17, 2026**
 
-1. **The Service:** Daily Thanks is a place to record and share gratitude. It is operated by Daily Journey, Inc.
+1. **The Service:** Daily Journey is a place to read the Bible and share thanks, prayer requests and reflections with your community (including daily bible and daily thanks on the web). It is operated by Daily Journey, Inc.
 2. **Eligibility:** You must be at least 14. In the U.S., you must be at least 13. You sign in with Apple, Google, or your phone number.
 3. **Your content:**
    - You own what you write.
@@ -70,7 +70,7 @@
 
 **Vigencia: 17 de noviembre de 2026**
 
-1. **El Servicio:** Daily Thanks es un lugar para registrar y compartir gratitud, operado por Daily Journey, Inc..
+1. **El Servicio:** Daily Journey es un lugar para leer la Biblia y compartir gratitud, peticiones y reflexiones con tu comunidad (incluidos daily bible y daily thanks en la web), operado por Daily Journey, Inc.
 2. **Requisitos:** Debes tener al menos 14 años. Inicias sesión con Apple, Google o tu teléfono.
 3. **Tu contenido:**
    - Lo que escribes es tuyo.

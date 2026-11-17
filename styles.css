@@ -1679,3 +1679,18 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .rec-mini.on b{font-weight:400;font-variant-numeric:tabular-nums}
 .tidy-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0 2px;font-size:13px;color:var(--sub)}
 .sample-tag{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:999px;background:#ECECEC;color:var(--sub);font-size:11px;vertical-align:1px}
+
+/* no yellow anywhere: the reach light, calendar marks and banners are grey */
+.glow{background:radial-gradient(circle closest-side,
+    rgba(110,115,119,calc(.40 + var(--g) * .40)) 0%,
+    rgba(138,144,148,calc(.26 + var(--g) * .30)) 22%,
+    rgba(170,175,178,calc(.12 + var(--g) * .18)) 50%,
+    rgba(200,203,205,calc(.04 + var(--g) * .08)) 75%,
+    rgba(220,222,224,0) 100%);box-shadow:none}
+.cal-day.on{background:#ECEDEE;color:var(--ink)}
+.inf-bar span{background:linear-gradient(90deg,#DADDDF,#9BA0A3)}
+.inf-hero-icon,.cel-mark{background:#F1F1F1}
+.inf-hero-icon{box-shadow:0 0 0 6px #F7F7F7,0 0 18px rgba(155,160,163,.25)}
+.cel-dots span.on{background:#ECEDEE;border-color:#C9CCCE;color:var(--ink)}
+.hw-light{background:radial-gradient(circle,#9BA0A3 0 3px,#B4B8BAcc 5px,#DADDDF66 9px,#FFFFFF00 15px)}
+.vc-banner{background:#F1F1F1;color:var(--ink)}
