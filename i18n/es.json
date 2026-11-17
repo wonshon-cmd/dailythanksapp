@@ -1250,5 +1250,10 @@
   "rc2.shared": "veces que compartiste",
   "rc2.foot": "{p} publicaciones compartidas · {e} enviadas fuera de la app",
   "rc2.more": "Ver detalles",
-  "med.recShort": "Grabar"
+  "med.recShort": "Grabar",
+  "tidy.said": "Escrito tal como lo dijiste",
+  "tidy.done": "Ordenado",
+  "tidy.go": "Ordenar",
+  "tidy.undo": "Deshacer",
+  "tidy.note": "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto."
 }

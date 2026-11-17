@@ -10,6 +10,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'tidy.said': "말한 그대로 적었어요", 'tidy.done': "정리했어요", 'tidy.go': "정리하기", 'tidy.undo': "원래대로", 'tidy.note': "말하는 동안 휴대폰·브라우저의 받아쓰기로 글이 채워져요.",
     'med.recShort': "녹음",
     'rc2.title': "나의 선한 영향력", 'rc2.sub': "내가 나눈 말씀과 감사, 기도제목이 이만큼 닿았어요.", 'rc2.peopleV': "{n}명", 'rc2.timesV': "{n}번", 'rc2.people': "마음을 표현한 사람", 'rc2.outside': "공동체 밖으로", 'rc2.inside': "공동체 안에서", 'rc2.shared': "내가 나눈 횟수", 'rc2.foot': "나눈 글 {p}개 · 앱 밖으로 보낸 것 {e}번", 'rc2.more': "자세히 보기",
     'yr.verse': "올해의 말씀", 'yr.most': "가장 많이 펼친 말씀 · {r}", 'yr.times': "{n}번 펼쳤어요",
@@ -160,6 +161,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'tidy.said': "Written down as you said it", 'tidy.done': "Tidied up", 'tidy.go': "Tidy up", 'tidy.undo': "Undo", 'tidy.note': "While you speak, your phone or browser’s dictation fills in the text.",
     'med.recShort': "Record",
     'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
     'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
@@ -310,6 +312,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'tidy.said': "Escrito tal como lo dijiste", 'tidy.done': "Ordenado", 'tidy.go': "Ordenar", 'tidy.undo': "Deshacer", 'tidy.note': "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto.",
     'med.recShort': "Grabar",
     'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
     'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
@@ -3754,6 +3757,40 @@ const medExtras = () => `<div id="med-play-felt">${recPlayer('felt')}</div>
 const fmtDur = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 // Two small recorders: one beside 느낀 점, one beside 기도. Recordings stay on this device, sealed.
 const recSlot = k => (state.medRec = state.medRec || {})[k] || null;
+const recBox = k => k === 'prayer' ? $('#med-prayer') : $('#gratitude-text');
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function dictateStart(k) {
+  if (!SR) return;
+  const box = recBox(k); if (!box) return;
+  const base = box.value.trim(), d = { k, base, said: '', on: true };
+  const go = () => {
+    const r = new SR(); r.lang = { ko: 'ko-KR', en: 'en-US', es: 'es-ES' }[lang()] || 'en-US'; r.continuous = true; r.interimResults = true;
+    r.onresult = e => { let fin = '', mid = ''; for (let i = e.resultIndex; i < e.results.length; i++) (e.results[i].isFinal ? (fin += e.results[i][0].transcript + ' ') : (mid += e.results[i][0].transcript));
+      if (fin) d.said = (d.said + ' ' + fin).replace(/\s+/g, ' ').trim();
+      const b = recBox(k); if (b) { b.value = [d.base, d.said, mid.trim()].filter(Boolean).join(d.base ? '\n' : ' ').replace(/ \n/g, '\n'); b.dispatchEvent(new Event('input', { bubbles: true })); } };
+    r.onend = () => { if (d.on) { try { go(); } catch {} } };   // some browsers stop after a pause; keep listening while recording
+    r.onerror = e => { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') d.on = false; };
+    d.r = r; try { r.start(); } catch {}
+  };
+  state.dictate = d; go();
+}
+function dictateStop() {
+  const d = state.dictate; if (!d) return; d.on = false; try { d.r?.stop(); } catch {}
+  if (d.said) { state.medTx = { ...(state.medTx || {}), [d.k]: { raw: recBox(d.k)?.value || '', base: d.base, said: d.said } }; }
+  state.dictate = null;
+}
+// "정리하기": tidy what was said — drop fillers and repeats, close sentences, keep the person's own words
+function tidySpeech(txt) {
+  let x = ' ' + txt.replace(/\s+/g, ' ') + ' ';
+  x = x.replace(/ (음+|어+|아+|으+|그+|저기|뭐랄까|뭐지|있잖아요?|막|um+|uh+|erm|you know|i mean|eh+|este|pues|o sea) (?=\S)/gi, ' ');
+  x = x.replace(/ (\S+)( \1)+ /g, ' $1 ');
+  x = x.trim();
+  // Korean sentence endings → a period and a new sentence; other languages: capitalise after a stop
+  x = x.replace(/(습니다|합니다|해요|어요|아요|예요|이에요|에요|네요|죠|거든요|겠어요|었어요|았어요|싶어요|주세요|드려요|입니다|니다|다|요)(?=\s|$)(?![.!?])/g, '$1.');
+  x = x.replace(/([.!?])\s*(?=\S)/g, '$1\n');
+  x = x.split('\n').map(l => l.trim()).filter(Boolean).map(l => l[0].toUpperCase() + l.slice(1)).map(l => /[.!?…]$/.test(l) ? l : l + '.').join('\n');
+  return x;
+}
 function recMini(k) {
   if (state.medRecOn === k) return `<button type="button" class="rec-mini on" data-action="med-rec" data-id="${k}"><i class="rec-dot"></i><b id="med-rect">0:00</b><span>${t('med.recStop')}</span></button>`;
   if (recSlot(k)) return '';
@@ -3762,10 +3799,13 @@ function recMini(k) {
 function recPlayer(k) {
   const r = recSlot(k); if (!r) return '';
   if (!r.url) r.url = URL.createObjectURL(r.blob);
-  return `<div class="med-recrow"><audio controls preload="metadata" src="${r.url}"></audio><button type="button" class="link-btn" data-action="med-rec-del" data-id="${k}">${t('med.recDel')}</button></div><p class="hint">${t('med.recNote')}</p>`;
+  const tx = state.medTx?.[k];
+  return `<div class="med-recrow"><audio controls preload="metadata" src="${r.url}"></audio><button type="button" class="link-btn" data-action="med-rec-del" data-id="${k}">${t('med.recDel')}</button></div>
+    ${tx ? `<div class="tidy-row"><span>${t(tx.tidied ? 'tidy.done' : 'tidy.said')}</span><button type="button" class="rec-mini" data-action="${tx.tidied ? 'tidy-undo' : 'tidy'}" data-id="${k}">${tx.tidied ? t('tidy.undo') : t('tidy.go')}</button></div>` : ''}
+    <p class="hint">${t('med.recNote')}${SR ? ' ' + t('tidy.note') : ''}</p>`;
 }
 const medRecPaint = () => ['felt', 'prayer'].forEach(k => { const m = $('#med-mini-' + k), pl = $('#med-play-' + k); if (m) m.innerHTML = recMini(k); if (pl) pl.innerHTML = recPlayer(k); });
-function medRecDel(k) { const r = recSlot(k); if (r?.url) URL.revokeObjectURL(r.url); if (state.medRec) delete state.medRec[k]; }
+function medRecDel(k) { if (state.medTx) delete state.medTx[k]; const r = recSlot(k); if (r?.url) URL.revokeObjectURL(r.url); if (state.medRec) delete state.medRec[k]; }
 function medRecReset() { if (state.medRecOn) medRecStop(true); ['felt', 'prayer'].forEach(medRecDel); }
 async function medRecStart(k = 'felt') {
   if (state.medRecOn) return;
@@ -3776,10 +3816,10 @@ async function medRecStart(k = 'felt') {
   rec.onstop = () => { stream.getTracks().forEach(x => x.stop()); clearInterval(state.medRecTimer);
     if (state.medRecDrop) { state.medRecDrop = false; medRecPaint(); return; }
     (state.medRec = state.medRec || {})[k] = { blob: new Blob(chunks, { type: rec.mimeType || type || 'audio/webm' }), dur: Math.round((Date.now() - t0) / 1000) }; medRecPaint(); };
-  rec.start(1000); state.medRecorder = rec; state.medRecOn = k; medRecPaint();
+  rec.start(1000); state.medRecorder = rec; state.medRecOn = k; dictateStart(k); medRecPaint();
   state.medRecTimer = setInterval(() => { const sec = (Date.now() - t0) / 1000; const el = $('#med-rect'); if (el) el.textContent = fmtDur(sec); if (sec >= 600) medRecStop(); }, 500);   // 10 minutes at most
 }
-function medRecStop(drop) { state.medRecOn = false; state.medRecDrop = !!drop; try { state.medRecorder?.stop(); } catch {} state.medRecorder = null; }
+function medRecStop(drop) { dictateStop(); state.medRecOn = false; state.medRecDrop = !!drop; try { state.medRecorder?.stop(); } catch {} state.medRecorder = null; }
 // Voice notes live in IndexedDB on this device, sealed with the same vault key as everything else personal.
 const AudioStore = (() => {
   let dbP = null;
@@ -5350,6 +5390,8 @@ const actions = {
   'journal-filter': id => { state.filter = id; renderJournal(); },
   'med-rec': k => state.medRecOn ? medRecStop() : medRecStart(k || 'felt'),
   'med-rec-del': k => { medRecDel(k); medRecPaint(); },
+  tidy: k => { const tx = state.medTx?.[k], b = recBox(k); if (!tx || !b) return; tx.before = b.value; b.value = [tx.base, tidySpeech(tx.said)].filter(Boolean).join('\n'); tx.tidied = true; medRecPaint(); },
+  'tidy-undo': k => { const tx = state.medTx?.[k], b = recBox(k); if (!tx || !b) return; b.value = tx.before ?? tx.raw; tx.tidied = false; medRecPaint(); },
   delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { { const q = data.posts.find(p => p.id === id); if (q?.voice) AudioStore.del(id); if (q?.prayerVoice) AudioStore.del(id + ':pr'); } data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
   'copy-share': id => { const p = data.posts.find(x => x.id === id); if (p) { countShare(id); copyText(withLink(`${L(p.text)}\n\n— ${authorName(p)} · Daily Thanks`, p)); } },
   'send-link': id => { // just the link: opens the thanks on dailyjourney.org
