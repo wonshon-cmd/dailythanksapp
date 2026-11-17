@@ -5431,7 +5431,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   showSheet({ title: med && state.medRef ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form">
     ${med && state.medRef ? '' : kinds}
     ${ahead || med || kind === 'prayer' ? '' : dailyQLine()}
-    ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label med-lab"><span>${t('med.felt')}</span><span id="med-mini-felt">${recMini('felt')}</span></p>` : ''}
+    ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label">${t('med.felt')}</p>` : ''}
     <textarea id="gratitude-text" data-draft="compose" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${med ? medExtras() : ''}
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
@@ -5467,10 +5467,9 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   });
 }
 /* ---------- meditation extras: a prayer line, "also a prayer request", and a voice note ---------- */
-const medExtras = () => `<div id="med-play-felt">${recPlayer('felt')}</div>
-    <p class="field-label med-lab"><span>${t('med.prayer')}</span><span id="med-mini-prayer">${recMini('prayer')}</span></p>
+// reflection: typed by hand only (no recording here)
+const medExtras = () => `<p class="field-label">${t('med.prayer')}</p>
     <textarea id="med-prayer" data-draft="compose-prayer" class="big-input med-prayer" maxlength="800" rows="2" placeholder="${esc(t('med.prayerPh'))}"></textarea>
-    <div id="med-play-prayer">${recPlayer('prayer')}</div>
     <label class="med-check"><input type="checkbox" id="med-asreq"><span>${t('med.asReq')}</span></label>`;
 const fmtDur = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 // Two small recorders: one beside 느낀 점, one beside 기도. Recordings stay on this device, sealed.
