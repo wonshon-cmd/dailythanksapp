@@ -1121,5 +1121,11 @@
   "sm.full": "Un versículo a la vez",
   "np.cr1": "Solo a las horas que elijas.",
   "np.pr2": "Sin recordatorio si ya leíste lo de hoy.",
-  "np.cr2": "Sin recordatorio si ya hiciste lo de hoy."
+  "np.cr2": "Sin recordatorio si ya hiciste lo de hoy.",
+  "bf.devo": "Pasaje de hoy",
+  "bf.endTitle": "Hoy estuviste en la Palabra",
+  "bf.endSub": "Sigue leyendo o escribe una nota de sermón.",
+  "bf.cont": "Seguir leyendo",
+  "bf.home": "Inicio",
+  "bf.note": "Nota de sermón"
 }

@@ -1570,3 +1570,11 @@ html[data-size="xl"]{--read:31px}
 .sm-full { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; font-size: 13px; }
 .sm-full svg { width: 14px; height: 14px; }
 .yr-btn { margin: 14px 0 4px; }
+/* top right of the scroll: text size right next to the language */
+.imm-tr { position: absolute; top: calc(30px + var(--safe-top)); right: 14px; z-index: 3; display: flex; align-items: center; gap: 2px; }
+.imm-tr .imm-lang { position: static; }
+@media (max-height:700px){ .imm-tr { top: calc(16px + var(--safe-top)); } }
+/* streak + what's new: bottom centre */
+.imm-streak { top: auto; bottom: calc(26px + var(--safe-bottom, 0px)); }
+@media (max-height:700px){ .imm-streak { top: auto; bottom: calc(18px + var(--safe-bottom, 0px)); } }
+.imm-nudge { bottom: calc(70px + var(--safe-bottom, 0px)); }
