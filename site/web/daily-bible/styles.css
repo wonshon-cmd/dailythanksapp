@@ -878,6 +878,9 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .ch-chip small{font-size:9px;color:#B4B8BA}
 /* 함께 7일 inside a group */
 .g-ch{display:flex;align-items:center;gap:12px;border:0;background:#F4F4F4;border-radius:14px;padding:12px 14px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;text-align:left;margin-top:4px}
+.g-ch>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto}
+.g-ch-d{white-space:nowrap}
+.g-ch-days,.g-ch-go{flex-shrink:0}
 .g-ch-days{display:flex;gap:4px;flex:1}
 .g-ch-days i{width:7px;height:7px;border-radius:50%;background:#DADDDF}
 .g-ch-days i.on{background:#8A9094}
@@ -1561,6 +1564,7 @@ html[data-size="xl"]{--read:31px}
 .seg.four button { padding-inline: 4px; }
 /* writing streak + what's new, top of the full-screen feed */
 .imm-streak { position: absolute; top: calc(78px + var(--safe-top)); left: 50%; transform: translateX(-50%); z-index: 3; display: inline-flex; gap: 10px; align-items: center; border: 0; padding: 5px 12px; border-radius: 999px; background: #f4f4f4; font: inherit; font-size: 12px; color: #6b7075; cursor: pointer; white-space: nowrap; }
+.imm-streak { cursor: default; user-select: none; }
 .imm-new { display: inline-flex; align-items: center; gap: 5px; color: #2c3135; }
 @media (max-height:700px){ .imm-streak { top: calc(58px + var(--safe-top)); } }
 /* shared reflection: range + one verse at a time */
@@ -1615,3 +1619,62 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .post.card-page .post-rail, .post.imm .post-rail { bottom: calc(96px + var(--safe-bottom)); }
 @media (max-height: 700px) { .post.card-page .post-rail:not(.card-close) { gap: 16px; } }
 .imm-reach { display: block; margin-top: 6px; font-size: 13px; color: var(--muted, #9a9a9a); }
+/* daily bible: the top + is a round button (sermon notes have their own tab) */
+.write-pill.plus-only{width:42px;padding:0;justify-content:center}
+.write-pill.plus-only .plus{font-size:18px}
+
+/* first-visit tour: a live demo of the feed scrolling, then three things that are here */
+#tour{position:absolute;inset:0;z-index:50;background:#fff}
+#tour .tour-demo{position:absolute;inset:0;display:flex;flex-direction:column;padding:calc(20px + var(--safe-top,0px)) 24px calc(22px + var(--safe-bottom,0px))}
+#tour .tour-mark{font-size:22px;color:var(--ink)}
+#tour .tour-stage{position:relative;flex:1;min-height:240px;margin:18px 0 0;border-radius:22px;background:#F7F7F7;overflow:hidden}
+#tour .tour-track{height:100%;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+#tour .tour-post{height:100%;box-sizing:border-box;padding:28px 26px;display:flex;flex-direction:column;justify-content:center}
+#tour .tour-kind{display:flex;align-items:center;gap:6px;margin:0 0 14px;font-size:13px;color:var(--sub)}
+#tour .tour-kind .ico{font-size:15px}
+#tour .tour-text{margin:0;font-size:21px;line-height:1.6;color:var(--ink);word-break:keep-all}
+#tour .tour-meta{margin:14px 0 0;font-size:13px;color:var(--faint)}
+#tour .tour-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:7px 14px;border-radius:999px;background:#ECECEC;font-size:13px;color:var(--ink)}
+#tour .tour-finger{position:absolute;left:50%;bottom:22%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:rgba(22,25,28,.16);border:2px solid rgba(255,255,255,.9);opacity:0;pointer-events:none}
+#tour .tour-finger.go{animation:tourSwipe .9s ease-in-out}
+@keyframes tourSwipe{0%{opacity:0;transform:translateY(40px)}20%{opacity:1}80%{opacity:1;transform:translateY(-120px)}100%{opacity:0;transform:translateY(-140px)}}
+#tour .tour-cap{position:relative;height:56px;margin-top:18px}
+#tour .tour-line{position:absolute;inset:0;margin:0;text-align:center;font-size:17px;line-height:1.45;color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+#tour .tour-line.on{opacity:1;transform:none}
+#tour .tour-dots{display:flex;justify-content:center;gap:6px;margin:6px 0 4px}
+#tour .tour-dots i{width:6px;height:6px;border-radius:50%;background:#D9DBDD;transition:background .3s}
+#tour .tour-dots i.on{background:#6E7377}
+#tour .tour-acts{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+#tour .tour-acts .primary{padding:0 26px;height:46px;border-radius:999px}
+#tour .tour-title{margin:28px 0 18px;font-size:22px;color:var(--ink)}
+#tour .tour-fs{flex:1;display:flex;flex-direction:column;gap:12px}
+#tour .tour-f{display:flex;gap:14px;align-items:center;padding:18px;border-radius:18px;background:#F7F7F7}
+#tour .tour-f b{display:block;font-weight:500;font-size:16px;color:var(--ink)}
+#tour .tour-f small{display:block;margin-top:3px;font-size:13px;color:var(--sub)}
+@media (prefers-reduced-motion:reduce){#tour .tour-track{transition:none}#tour .tour-finger{display:none}}
+
+/* daily bible top bar: language (first visits) + write */
+.top-right{display:flex;align-items:center;gap:6px}
+.top-lang{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3;cursor:pointer}
+.top-lang .ico{font-size:15px}
+.top-lang[hidden]{display:none}
+
+/* 나 › 내 공동체 */
+.mc-form{display:flex;gap:8px;margin:0 0 10px}
+.mc-form .field{flex:1;min-width:0;margin:0}
+.mc-form .secondary{flex:none;padding:0 18px;border-radius:999px}
+.mc-list{margin-bottom:22px}
+.mc-list .link-btn{white-space:nowrap}
+.snz .field-label{margin:18px 0 10px}.snz .field-label:first-child{margin-top:4px}.snz .chips{display:flex;flex-wrap:wrap;gap:8px}.snz .primary.block{margin-top:22px}
+.mp-track{cursor:grab;touch-action:pan-x pan-y;user-select:none}.mp-track:active{cursor:grabbing}
+.reach{margin-bottom:22px}.reach-sub{margin:-4px 0 12px;font-size:13px;color:var(--sub)}.reach .secondary.block{margin-top:10px}
+
+/* reflection: a small record button beside 느낀 점 and beside 기도 */
+.med-lab{display:flex;align-items:center;justify-content:space-between}
+.rec-mini{display:inline-flex;align-items:center;gap:5px;border:0;background:#F1F1F1;border-radius:999px;padding:5px 12px;font:inherit;font-size:12.5px;color:var(--text);cursor:pointer;letter-spacing:0;text-transform:none}
+.rec-mini .ico{font-size:14px}
+.rec-mini[disabled]{opacity:.4}
+.rec-mini.on{background:#16191C;color:#fff}
+.rec-mini.on .rec-dot{width:7px;height:7px;border-radius:50%;background:#E25B55}
+.rec-mini.on b{font-weight:400;font-variant-numeric:tabular-nums}
+.tidy-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0 2px;font-size:13px;color:var(--sub)}

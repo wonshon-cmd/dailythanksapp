@@ -890,6 +890,9 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .ch-chip small{font-size:9px;color:#B4B8BA}
 /* 함께 7일 inside a group */
 .g-ch{display:flex;align-items:center;gap:12px;border:0;background:#F4F4F4;border-radius:14px;padding:12px 14px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;text-align:left;margin-top:4px}
+.g-ch>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto}
+.g-ch-d{white-space:nowrap}
+.g-ch-days,.g-ch-go{flex-shrink:0}
 .g-ch-days{display:flex;gap:4px;flex:1}
 .g-ch-days i{width:7px;height:7px;border-radius:50%;background:#DADDDF}
 .g-ch-days i.on{background:#8A9094}
@@ -1573,6 +1576,7 @@ html[data-size="xl"]{--read:31px}
 .seg.four button { padding-inline: 4px; }
 /* writing streak + what's new, top of the full-screen feed */
 .imm-streak { position: absolute; top: calc(78px + var(--safe-top)); left: 50%; transform: translateX(-50%); z-index: 3; display: inline-flex; gap: 10px; align-items: center; border: 0; padding: 5px 12px; border-radius: 999px; background: #f4f4f4; font: inherit; font-size: 12px; color: #6b7075; cursor: pointer; white-space: nowrap; }
+.imm-streak { cursor: default; user-select: none; }
 .imm-new { display: inline-flex; align-items: center; gap: 5px; color: #2c3135; }
 @media (max-height:700px){ .imm-streak { top: calc(58px + var(--safe-top)); } }
 /* shared reflection: range + one verse at a time */
@@ -1627,6 +1631,65 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .post.card-page .post-rail, .post.imm .post-rail { bottom: calc(96px + var(--safe-bottom)); }
 @media (max-height: 700px) { .post.card-page .post-rail:not(.card-close) { gap: 16px; } }
 .imm-reach { display: block; margin-top: 6px; font-size: 13px; color: var(--muted, #9a9a9a); }
+/* daily bible: the top + is a round button (sermon notes have their own tab) */
+.write-pill.plus-only{width:42px;padding:0;justify-content:center}
+.write-pill.plus-only .plus{font-size:18px}
+
+/* first-visit tour: a live demo of the feed scrolling, then three things that are here */
+#tour{position:absolute;inset:0;z-index:50;background:#fff}
+#tour .tour-demo{position:absolute;inset:0;display:flex;flex-direction:column;padding:calc(20px + var(--safe-top,0px)) 24px calc(22px + var(--safe-bottom,0px))}
+#tour .tour-mark{font-size:22px;color:var(--ink)}
+#tour .tour-stage{position:relative;flex:1;min-height:240px;margin:18px 0 0;border-radius:22px;background:#F7F7F7;overflow:hidden}
+#tour .tour-track{height:100%;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+#tour .tour-post{height:100%;box-sizing:border-box;padding:28px 26px;display:flex;flex-direction:column;justify-content:center}
+#tour .tour-kind{display:flex;align-items:center;gap:6px;margin:0 0 14px;font-size:13px;color:var(--sub)}
+#tour .tour-kind .ico{font-size:15px}
+#tour .tour-text{margin:0;font-size:21px;line-height:1.6;color:var(--ink);word-break:keep-all}
+#tour .tour-meta{margin:14px 0 0;font-size:13px;color:var(--faint)}
+#tour .tour-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:7px 14px;border-radius:999px;background:#ECECEC;font-size:13px;color:var(--ink)}
+#tour .tour-finger{position:absolute;left:50%;bottom:22%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:rgba(22,25,28,.16);border:2px solid rgba(255,255,255,.9);opacity:0;pointer-events:none}
+#tour .tour-finger.go{animation:tourSwipe .9s ease-in-out}
+@keyframes tourSwipe{0%{opacity:0;transform:translateY(40px)}20%{opacity:1}80%{opacity:1;transform:translateY(-120px)}100%{opacity:0;transform:translateY(-140px)}}
+#tour .tour-cap{position:relative;height:56px;margin-top:18px}
+#tour .tour-line{position:absolute;inset:0;margin:0;text-align:center;font-size:17px;line-height:1.45;color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+#tour .tour-line.on{opacity:1;transform:none}
+#tour .tour-dots{display:flex;justify-content:center;gap:6px;margin:6px 0 4px}
+#tour .tour-dots i{width:6px;height:6px;border-radius:50%;background:#D9DBDD;transition:background .3s}
+#tour .tour-dots i.on{background:#6E7377}
+#tour .tour-acts{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+#tour .tour-acts .primary{padding:0 26px;height:46px;border-radius:999px}
+#tour .tour-title{margin:28px 0 18px;font-size:22px;color:var(--ink)}
+#tour .tour-fs{flex:1;display:flex;flex-direction:column;gap:12px}
+#tour .tour-f{display:flex;gap:14px;align-items:center;padding:18px;border-radius:18px;background:#F7F7F7}
+#tour .tour-f b{display:block;font-weight:500;font-size:16px;color:var(--ink)}
+#tour .tour-f small{display:block;margin-top:3px;font-size:13px;color:var(--sub)}
+@media (prefers-reduced-motion:reduce){#tour .tour-track{transition:none}#tour .tour-finger{display:none}}
+
+/* daily bible top bar: language (first visits) + write */
+.top-right{display:flex;align-items:center;gap:6px}
+.top-lang{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3;cursor:pointer}
+.top-lang .ico{font-size:15px}
+.top-lang[hidden]{display:none}
+
+/* 나 › 내 공동체 */
+.mc-form{display:flex;gap:8px;margin:0 0 10px}
+.mc-form .field{flex:1;min-width:0;margin:0}
+.mc-form .secondary{flex:none;padding:0 18px;border-radius:999px}
+.mc-list{margin-bottom:22px}
+.mc-list .link-btn{white-space:nowrap}
+.snz .field-label{margin:18px 0 10px}.snz .field-label:first-child{margin-top:4px}.snz .chips{display:flex;flex-wrap:wrap;gap:8px}.snz .primary.block{margin-top:22px}
+.mp-track{cursor:grab;touch-action:pan-x pan-y;user-select:none}.mp-track:active{cursor:grabbing}
+.reach{margin-bottom:22px}.reach-sub{margin:-4px 0 12px;font-size:13px;color:var(--sub)}.reach .secondary.block{margin-top:10px}
+
+/* reflection: a small record button beside 느낀 점 and beside 기도 */
+.med-lab{display:flex;align-items:center;justify-content:space-between}
+.rec-mini{display:inline-flex;align-items:center;gap:5px;border:0;background:#F1F1F1;border-radius:999px;padding:5px 12px;font:inherit;font-size:12.5px;color:var(--text);cursor:pointer;letter-spacing:0;text-transform:none}
+.rec-mini .ico{font-size:14px}
+.rec-mini[disabled]{opacity:.4}
+.rec-mini.on{background:#16191C;color:#fff}
+.rec-mini.on .rec-dot{width:7px;height:7px;border-radius:50%;background:#E25B55}
+.rec-mini.on b{font-weight:400;font-variant-numeric:tabular-nums}
+.tidy-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0 2px;font-size:13px;color:var(--sub)}
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1664,6 +1727,17 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'tidy.said': "말한 그대로 적었어요", 'tidy.done': "정리했어요", 'tidy.go': "정리하기", 'tidy.undo': "원래대로", 'tidy.note': "말하는 동안 휴대폰·브라우저의 받아쓰기로 글이 채워져요.",
+    'med.recShort': "녹음",
+    'rc2.title': "나의 선한 영향력", 'rc2.sub': "내가 나눈 말씀과 감사, 기도제목이 이만큼 닿았어요.", 'rc2.peopleV': "{n}명", 'rc2.timesV': "{n}번", 'rc2.people': "마음을 표현한 사람", 'rc2.outside': "공동체 밖으로", 'rc2.inside': "공동체 안에서", 'rc2.shared': "내가 나눈 횟수", 'rc2.foot': "나눈 글 {p}개 · 앱 밖으로 보낸 것 {e}번", 'rc2.more': "자세히 보기",
+    'yr.verse': "올해의 말씀", 'yr.most': "가장 많이 펼친 말씀 · {r}", 'yr.times': "{n}번 펼쳤어요",
+    'snz.ok': "끄기", 'snz.title': "무엇을 끌까요?", 'snz.what': "끌 것", 'snz.all': "전부", 'snz.for': "얼마 동안", 'snz.until': "다시 켤 때까지", 'snz.hint': "설정 › 보기 설정에서 언제든 다시 켤 수 있어요.", 'mc.title': "내 공동체", 'mc.ph': "교회·소그룹·챕터·수련회 코드", 'mc.connect': "연결", 'mc.none': "받은 코드를 넣으면 공동체와 연결돼요.", 'mc.bad': "코드를 확인해 주세요.", 'mc.needSign': "공동체와 연결하려면 로그인해 주세요. 로그인하면 바로 연결돼요.", 'mc.joining': "연결 중…", 'mc.admin': "관리자", 'mc.quiet': "조용히", 'mc.loud': "알림 켜기", 'mc.quietOn': "조용히 · 새 글 표시와 알림 없음", 'mc.quietDone': "조용히 해 두었어요. 새 글 표시와 알림이 오지 않아요.", 'mc.loudDone': "다시 알려 드릴게요.", 'mc.leave': "나가기", 'mc.leaveQ': "‘{name}’에서 나갈까요? 다시 들어오려면 코드나 초대 링크가 필요해요.", 'mc.left': "공동체에서 나왔어요.", 'mc.ownerStay': "관리자는 나갈 수 없어요. 공동체 관리에서 정리해 주세요.", 'join.pendingShort': "승인 대기",
+    'tour.k.verse': "오늘의 말씀", 'tour.k.prayer': "공동체 기도제목", 'tour.k.thanks': "감사", 'tour.s.verse': "밀어 올리며 성경을 읽어요", 'tour.s.prayer': "공동체의 기도제목을 바로 받아 봐요", 'tour.s.thanks': "나의 감사를 함께 나눠요", 'tour.f.title': "이런 것도 있어요", 'tour.f.read': "읽기", 'tour.f.readSub': "오늘의 본문, 이어 읽기, 함께 읽는 계획", 'tour.f.notes': "설교 노트", 'tour.f.notesSub': "설교를 녹음하면 노트로 정리돼요", 'tour.f.group': "공동체", 'tour.f.groupSub': "만들고, 초대 링크로 함께해요",
+    'tour.skip': "건너뛰기", 'tour.done': "시작하기", 'tour.again': "둘러보기 다시 보기",
+    'wl.title': "반가워요", 'wl.nameQ': "처음 오셨네요. 이름을 알려 주세요. 감사 카드와 공동체에서 이 이름이 보여요.", 'wl.next': "다음", 'wl.hi': "{name}님, 반가워요", 'wl.sub': "가입하면 기기를 바꿔도 이어서 쓰고, 공동체와 함께할 수 있어요.", 'wl.google': "Google로 계속하기", 'wl.ms': "Microsoft로 계속하기", 'wl.kakao': "카카오로 계속하기", 'wl.email': "메일로 계속하기", 'wl.phone': "휴대폰 문자로 계속하기", 'wl.notYet': "이 방법은 곧 열려요. 지금은 메일로 계속해 주세요.",
+    'bp.thankSomeone': "감사 전하기",
+    'adm.topLeaders': "순장도 ‘가장 꾸준한 사람’ 보기",
+    'cl.title': "로그인", 'cl.name': "이름", 'cl.namePh': "감사 카드에 보내는 사람으로 보여요", 'cl.email': "메일 주소", 'cl.send': "로그인 링크 받기", 'cl.sending': "보내는 중…", 'cl.badEmail': "메일 주소를 확인해 주세요.", 'cl.sendFail': "메일을 보내지 못했어요. 잠시 뒤에 다시 해 주세요.", 'cl.tooMany': "메일을 너무 자주 보냈어요. 잠시 뒤에 다시 해 주세요.", 'cl.sentTitle': "메일을 확인해 주세요", 'cl.sentBody': "{email}로 로그인 링크를 보냈어요. 메일의 링크를 누르면 바로 로그인돼요.", 'cl.code': "메일에 숫자 코드가 있다면", 'cl.verify': "코드로 로그인", 'cl.codeBad': "코드가 맞지 않거나 시간이 지났어요.", 'cl.resend': "메일 다시 보내기", 'cl.resent': "메일을 다시 보냈어요.", 'cl.linkBad': "로그인 링크가 만료되었어요. 다시 받아 주세요.", 'cl.needGroup': "공동체를 만들려면 먼저 로그인해 주세요. 초대한 사람만 들어올 수 있어요.", 'cl.needJoin': "‘{name}’에 들어가려면 로그인해 주세요. 로그인하면 바로 참여돼요.", 'cl.badInvite': "초대 링크가 바뀌었거나 없어졌어요. 새 링크를 받아 주세요.", 'cl.fail': "저장하지 못했어요. 인터넷 연결을 확인해 주세요.", 'cl.waiting': "참여 요청", 'cl.approve': "승인", 'cl.decline': "거절", 'cl.approved': "승인했어요.", 'cl.removed': "공동체에서 내보냈어요.", 'cl.noName': "이름 없음", 'cl.signIn': "로그인",
     's.legal': '정보', 's.privacy': '개인정보처리방침', 's.terms': '이용약관', 's.support': '문의하기', 's.delete': '계정 삭제', 'del.body': '계정과 내가 쓴 감사, 저장·좋아요 기록이 모두 삭제돼요. 삭제하면 되돌릴 수 없어요.', 'del.ok': '삭제', 'del.done': '계정을 삭제했어요. 함께해 주셔서 고마웠어요.', 's.version': '버전',
     'card.feed': '피드 4:5', 'card.story': '스토리 9:16', 'card.shareImg': '이미지로 공유', 'card.noShare': '이 화면에서는 이미지 공유가 막혀 있어요. 앱에서는 바로 인스타그램·카카오톡으로 보낼 수 있어요.',
     'wg.title': '홈 화면 위젯', 'wg.sub': '오늘의 말씀 · 오늘의 감사 · 오늘의 묵상. 원하는 것을 홈 화면에 두고, 누르면 바로 쓸 수 있어요.',
@@ -1804,6 +1878,17 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'tidy.said': "Written down as you said it", 'tidy.done': "Tidied up", 'tidy.go': "Tidy up", 'tidy.undo': "Undo", 'tidy.note': "While you speak, your phone or browser’s dictation fills in the text.",
+    'med.recShort': "Record",
+    'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
+    'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
+    'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
+    'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and it becomes tidy notes", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
+    'tour.skip': "Skip", 'tour.done': "Get started", 'tour.again': "See the tour again",
+    'wl.title': "Welcome", 'wl.nameQ': "First time here? What’s your name? It’s shown on thank-you cards and in your groups.", 'wl.next': "Next", 'wl.hi': "Welcome, {name}", 'wl.sub': "Sign up to keep going on any device and join a group.", 'wl.google': "Continue with Google", 'wl.ms': "Continue with Microsoft", 'wl.kakao': "Continue with Kakao", 'wl.email': "Continue with email", 'wl.phone': "Continue with a text message", 'wl.notYet': "This option opens soon. For now, please continue with email.",
+    'bp.thankSomeone': "Thank someone",
+    'adm.topLeaders': "Leaders can see “Most consistent” too",
+    'cl.title': "Sign in", 'cl.name': "Name", 'cl.namePh': "Shown as the sender on thank-you cards", 'cl.email': "Email", 'cl.send': "Email me a sign-in link", 'cl.sending': "Sending…", 'cl.badEmail': "Please check the email address.", 'cl.sendFail': "Couldn’t send the email. Please try again shortly.", 'cl.tooMany': "Too many emails for now. Please try again shortly.", 'cl.sentTitle': "Check your email", 'cl.sentBody': "We sent a sign-in link to {email}. Tap the link in the email to sign in.", 'cl.code': "If the email has a number code", 'cl.verify': "Sign in with code", 'cl.codeBad': "That code is wrong or has expired.", 'cl.resend': "Send the email again", 'cl.resent': "Sent again.", 'cl.linkBad': "That sign-in link has expired. Please request a new one.", 'cl.needGroup': "Sign in first to create a group. Only people you invite can join.", 'cl.needJoin': "Sign in to join “{name}”. You’ll be in as soon as you do.", 'cl.badInvite': "This invite link has changed or no longer exists. Please ask for a new one.", 'cl.fail': "Couldn’t save. Please check your connection.", 'cl.waiting': "Waiting to join", 'cl.approve': "Approve", 'cl.decline': "Decline", 'cl.approved': "Approved.", 'cl.removed': "Removed from the group.", 'cl.noName': "No name", 'cl.signIn': "Sign in",
     's.legal': 'About', 's.privacy': 'Privacy Policy', 's.terms': 'Terms of Use', 's.support': 'Contact support', 's.delete': 'Delete account', 'del.body': 'Your account, your notes, and your saves and likes will be deleted. This can’t be undone.', 'del.ok': 'Delete', 'del.done': 'Your account was deleted. Thank you for being here.', 's.version': 'Version',
     'card.feed': 'Feed 4:5', 'card.story': 'Story 9:16', 'card.shareImg': 'Share as image', 'card.noShare': 'Image sharing is blocked on this screen. In the app it goes straight to Instagram or KakaoTalk.',
     'wg.title': 'Home screen widgets', 'wg.sub': 'Daily verse · Today’s thanks · Today’s reflection. Put the ones you like on your home screen and tap to write.',
@@ -1944,6 +2029,17 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'tidy.said': "Escrito tal como lo dijiste", 'tidy.done': "Ordenado", 'tidy.go': "Ordenar", 'tidy.undo': "Deshacer", 'tidy.note': "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto.",
+    'med.recShort': "Grabar",
+    'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
+    'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
+    'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
+    'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y se vuelve notas ordenadas", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
+    'tour.skip': "Omitir", 'tour.done': "Empezar", 'tour.again': "Ver el recorrido otra vez",
+    'wl.title': "Bienvenido", 'wl.nameQ': "¿Primera vez aquí? ¿Cómo te llamas? Se verá en las tarjetas de gratitud y en tus grupos.", 'wl.next': "Siguiente", 'wl.hi': "Bienvenido, {name}", 'wl.sub': "Regístrate para seguir en cualquier dispositivo y unirte a un grupo.", 'wl.google': "Continuar con Google", 'wl.ms': "Continuar con Microsoft", 'wl.kakao': "Continuar con Kakao", 'wl.email': "Continuar con correo", 'wl.phone': "Continuar con un mensaje de texto", 'wl.notYet': "Esta opción abre pronto. Por ahora, continúa con tu correo.",
+    'bp.thankSomeone': "Agradecer a alguien",
+    'adm.topLeaders': "Los líderes también ven “Más constantes”",
+    'cl.title': "Iniciar sesión", 'cl.name': "Nombre", 'cl.namePh': "Aparece como remitente en las tarjetas de gratitud", 'cl.email': "Correo", 'cl.send': "Enviarme un enlace", 'cl.sending': "Enviando…", 'cl.badEmail': "Revisa el correo.", 'cl.sendFail': "No se pudo enviar el correo. Inténtalo en un momento.", 'cl.tooMany': "Demasiados correos por ahora. Inténtalo en un momento.", 'cl.sentTitle': "Revisa tu correo", 'cl.sentBody': "Enviamos un enlace a {email}. Tócalo en el correo para iniciar sesión.", 'cl.code': "Si el correo trae un código numérico", 'cl.verify': "Entrar con el código", 'cl.codeBad': "El código no es correcto o ya venció.", 'cl.resend': "Enviar el correo otra vez", 'cl.resent': "Enviado otra vez.", 'cl.linkBad': "El enlace venció. Pide uno nuevo.", 'cl.needGroup': "Inicia sesión para crear un grupo. Solo entran las personas que invites.", 'cl.needJoin': "Inicia sesión para unirte a “{name}”. Entrarás enseguida.", 'cl.badInvite': "Este enlace cambió o ya no existe. Pide uno nuevo.", 'cl.fail': "No se pudo guardar. Revisa tu conexión.", 'cl.waiting': "Esperando unirse", 'cl.approve': "Aprobar", 'cl.decline': "Rechazar", 'cl.approved': "Aprobado.", 'cl.removed': "Salió del grupo.", 'cl.noName': "Sin nombre", 'cl.signIn': "Iniciar sesión",
     's.legal': 'Acerca de', 's.privacy': 'Política de privacidad', 's.terms': 'Términos de uso', 's.support': 'Contactar soporte', 's.delete': 'Eliminar cuenta', 'del.body': 'Se eliminarán tu cuenta, tus notas y tus guardados y me gusta. No se puede deshacer.', 'del.ok': 'Eliminar', 'del.done': 'Eliminamos tu cuenta. Gracias por estar aquí.', 's.version': 'Versión',
     'card.feed': 'Feed 4:5',
     'card.story': 'Historia 9:16',
@@ -2386,6 +2482,8 @@ const ICONS = {
   reset: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5"/>',
   apple: '<path fill="currentColor" stroke="none" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-4.1zM14 5.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/>',
   google: '<path fill="#4285F4" stroke="none" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" stroke="none" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" stroke="none" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" stroke="none" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>',
+  microsoft: '<path fill="#F25022" stroke="none" d="M3 3h8.5v8.5H3z"/><path fill="#7FBA00" stroke="none" d="M12.5 3H21v8.5h-8.5z"/><path fill="#00A4EF" stroke="none" d="M3 12.5h8.5V21H3z"/><path fill="#FFB900" stroke="none" d="M12.5 12.5H21V21h-8.5z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/>',
   phoneMsg: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/>',
   moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
   calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
@@ -2570,7 +2668,8 @@ function setSession(next) {
 }
 const GATE_AFTER = 5; // posts shown before the "write today's thanks" card and the sign-in card
 
-const state = { tab: BIBLE_MODE ? 'read' : 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'public' }; // posts default to Everyone; switch to Only me any time // immersive: the app opens on a full-screen feed of people's thanks
+try { if (!sessionStorage.getItem('dt-visit')) { sessionStorage.setItem('dt-visit', '1'); data.settings.opens = (data.settings.opens || 0) + 1; localStorage.setItem(KEY, JSON.stringify(data)); } } catch {}
+const state = { dqSeed: Math.floor(Math.random() * 1000), tab: BIBLE_MODE ? 'read' : 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'public' }; // posts default to Everyone; switch to Only me any time // immersive: the app opens on a full-screen feed of people's thanks
 // returning visits get "first things first" (group prayer requests, today's verses) on opening
 { const d0 = new Date().toLocaleDateString('en-CA'); state.openedBefore = !!data.settings.firstOpen && data.settings.firstOpen !== d0; if (!data.settings.firstOpen) data.settings.firstOpen = d0; }
 
@@ -2586,6 +2685,267 @@ function save() {
   try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { toast(t('toast.noStore')); }
   document.dispatchEvent(new CustomEvent('dt:save', { detail: data }));
 }
+
+/* ---------------- Supabase (daily bible): e-mail link sign-in · 공동체 ----------------
+   Only the Project URL and the publishable (public) key live here — never a secret key. What anyone may read
+   is enforced by the database rules (supabase/schema.sql). Group keys stay in the invite link's # part. */
+const SUPA = { url: 'https://puhaycwpfpqsmxubvzkt.supabase.co', key: 'sb_publishable_NYYC9G102Ct3YYuY_unhVA_pGGXFGBa' };
+const CLOUD = BIBLE_MODE && !!SUPA.url && !!SUPA.key;
+const Cloud = (() => {
+  const AKEY = 'daily-bible-auth';
+  let auth = null;
+  try { auth = JSON.parse(localStorage.getItem(AKEY)); } catch { auth = null; }
+  const keep = a => { auth = a; try { a ? localStorage.setItem(AKEY, JSON.stringify(a)) : localStorage.removeItem(AKEY); } catch {} };
+  const fail = async res => { const j = await res.json().catch(() => ({})); throw Object.assign(new Error(j.msg || j.message || j.error_description || j.error || res.statusText), { status: res.status, code: j.code || j.error_code }); };
+  const call = async (path, { method = 'GET', body, token, prefer } = {}) => {
+    const headers = { apikey: SUPA.key, ...(body ? { 'Content-Type': 'application/json' } : {}), ...(token ? { Authorization: 'Bearer ' + token } : {}), ...(prefer ? { Prefer: prefer } : {}) };
+    const res = await fetch(SUPA.url + path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    if (!res.ok) await fail(res);
+    return res.status === 204 ? null : res.json().catch(() => null);
+  };
+  const store = (j, email) => keep({ access: j.access_token, refresh: j.refresh_token, exp: Date.now() + (+j.expires_in || 3600) * 1000, id: j.user?.id || auth?.id, email: j.user?.email || email || auth?.email });
+  let refreshing = null;
+  async function token() {
+    if (!auth) return null;
+    if (Date.now() < auth.exp - 60e3) return auth.access;
+    refreshing = refreshing || call('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: auth.refresh } })
+      .then(j => { store(j); return auth.access; })
+      .catch(e => { if (e.status === 400 || e.status === 401) signedOut(); return null; })
+      .finally(() => { refreshing = null; });
+    return refreshing;
+  }
+  const rest = async (path, opts = {}) => { const tk = await token(); if (!tk) throw Object.assign(new Error('not_signed_in'), { code: 'not_signed_in' }); return call('/rest/v1/' + path, { ...opts, token: tk }); };
+  const appUrl = () => location.origin + location.pathname;
+  function signedIn() {
+    setSession({ ...(session || {}), method: 'email', email: auth.email, since: session?.since || new Date().toISOString(), lang: lang(), termsAcceptedAt: session?.termsAcceptedAt || new Date().toISOString(), termsVersion: '2026-12-01' });
+    sync();
+  }
+  function signedOut() { keep(null); if (session?.method === 'email') setSession(null); }
+  return {
+    on: () => CLOUD && !!auth,
+    email: () => auth?.email || '',
+    uid: () => auth?.id || '',
+    // 1) send the e-mail (link, and a code if the mail template includes {{ .Token }})
+    sendLink: (email, name) => call('/auth/v1/otp?redirect_to=' + encodeURIComponent(appUrl()), { method: 'POST', body: { email, create_user: true, data: name ? { name } : {} } }),
+    // 2a) typed the code from the e-mail
+    verify: async (email, code) => { const j = await call('/auth/v1/verify', { method: 'POST', body: { type: 'email', email, token: code } }); store(j, email); signedIn(); },
+    // 2b) came back from the link: #access_token=…&refresh_token=…
+    fromRedirect() {
+      const h = location.hash.slice(1); if (!/(^|&)(access_token|error_description)=/.test(h)) return false;
+      const q = new URLSearchParams(h);
+      try { history.replaceState(null, '', location.pathname + location.search); } catch { location.hash = ''; }
+      if (q.get('error_description')) { setTimeout(() => toast(t('cl.linkBad')), 300); return true; }
+      store({ access_token: q.get('access_token'), refresh_token: q.get('refresh_token'), expires_in: q.get('expires_in') });
+      call('/auth/v1/user', { token: auth.access }).then(u => { keep({ ...auth, id: u.id, email: u.email }); signedIn(); render(); setTimeout(() => toast(t('login.done')), 200); })
+        .catch(() => { signedOut(); toast(t('cl.linkBad')); });
+      return true;
+    },
+    async signOut() { const tk = auth?.access; signedOut(); if (tk) call('/auth/v1/logout', { method: 'POST', token: tk }).catch(() => {}); },
+    // Google · Microsoft: off to the provider, back with #access_token (handled by fromRedirect)
+    oauth(provider) { location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
+    // which sign-in methods are switched on in Supabase (Authentication › Sign In / Providers)
+    providers: () => call('/auth/v1/settings').then(j => j.external || {}).catch(() => ({})),
+    sendSms: phone => call('/auth/v1/otp', { method: 'POST', body: { phone, create_user: true } }),
+    verifySms: async (phone, code) => { const j = await call('/auth/v1/verify', { method: 'POST', body: { type: 'sms', phone, token: code } }); store(j, phone); signedIn(); },
+    rest, rpc: (fn, args) => rest('rpc/' + fn, { method: 'POST', body: args }),
+    resume() { if (CLOUD && auth) { if (!session) signedIn(); else sync(); } }
+  };
+})();
+
+
+/* ---------------- first-visit tour (daily bible) ----------------
+   1) a live demo: the feed scrolls by itself — a verse, a group prayer request, a thank-you
+   2) "다음" → what else is here (three things), then the name / sign-up sheet. */
+const DEMO = {
+  ko: [{ k: 'verse', text: '여호와는 나의 목자시니 내가 부족함이 없으리로다', meta: '시편 23:1' },
+       { k: 'prayer', text: '이번 주 어머니 수술이 잘 마무리되도록 기도 부탁드려요.', meta: '지은 · 은혜 공동체 · 기도제목' },
+       { k: 'thanks', text: '오늘 아침 가족과 함께 따뜻한 밥을 먹을 수 있어 감사해요.', meta: '민서 · 감사' }],
+  en: [{ k: 'verse', text: 'The Lord is my shepherd; I shall not want.', meta: 'Psalm 23:1' },
+       { k: 'prayer', text: 'Please pray that my mom’s surgery this week goes well.', meta: 'Sarah · Grace Group · Prayer request' },
+       { k: 'thanks', text: 'Thankful for a warm breakfast with my family this morning.', meta: 'Mia · Thanks' }],
+  es: [{ k: 'verse', text: 'Jehová es mi pastor; nada me faltará.', meta: 'Salmo 23:1' },
+       { k: 'prayer', text: 'Oren para que la cirugía de mi mamá salga bien esta semana.', meta: 'Sara · Grupo Gracia · Petición' },
+       { k: 'thanks', text: 'Agradecida por un desayuno cálido con mi familia esta mañana.', meta: 'Mía · Gratitud' }]
+};
+function startTour() {
+  close(); document.getElementById('splash')?.remove();
+  const host = sheet.parentElement || document.body;
+  const el = document.createElement('div'); el.id = 'tour'; el.setAttribute('role', 'dialog'); host.append(el);
+  const cards = DEMO[lang()] || DEMO.en, ic = { verse: 'book', prayer: 'pray', thanks: 'heart' };
+  let i = 0, timer = null;
+  const end = () => { clearInterval(timer); el.remove(); data.settings.toured = true; save(); if (CLOUD && !Cloud.on()) welcomeSheet(); };
+  function demo() {
+    el.innerHTML = `<div class="tour-demo">
+      <span class="wordmark tour-mark">daily <em>bible</em></span>
+      <div class="tour-stage"><div class="tour-track">${cards.map(c => `<div class="tour-post">
+        <p class="tour-kind">${icon(ic[c.k])}<span>${t('tour.k.' + c.k)}</span></p>
+        <p class="tour-text">${esc(c.text)}</p><p class="tour-meta">${esc(c.meta)}</p>
+        ${c.k === 'prayer' ? `<span class="tour-chip">${icon('pray')}${t('pr.prayed')}</span>` : c.k === 'thanks' ? `<span class="tour-chip">${icon('heart')}${t('act.like')}</span>` : ''}</div>`).join('')}</div>
+        <i class="tour-finger"></i></div>
+      <div class="tour-cap">${cards.map((c, n) => `<p class="tour-line" data-n="${n}">${t('tour.s.' + c.k)}</p>`).join('')}</div>
+      <div class="tour-dots">${cards.map((c, n) => `<i data-n="${n}"></i>`).join('')}</div>
+      <div class="tour-acts"><button class="subtle-link" data-tour="skip">${t('tour.skip')}</button><button class="primary" data-tour="next">${t('wl.next')}</button></div></div>`;
+    const track = el.querySelector('.tour-track'), finger = el.querySelector('.tour-finger');
+    const show = () => {
+      track.style.transform = `translateY(-${i * 100}%)`;
+      el.querySelectorAll('.tour-line').forEach(x => x.classList.toggle('on', +x.dataset.n === i));
+      el.querySelectorAll('.tour-dots i').forEach(x => x.classList.toggle('on', +x.dataset.n === i));
+    };
+    show();
+    // a finger swipes up, the card slides away — like scrolling the real feed
+    timer = setInterval(() => { finger.classList.remove('go'); void finger.offsetWidth; finger.classList.add('go'); setTimeout(() => { i = (i + 1) % cards.length; show(); }, 450); }, 2800);
+  }
+  function features() {
+    clearInterval(timer);
+    const f = k => `<div class="tour-f"><span class="row-icon">${icon({ read: 'book', notes: 'mic', group: 'people' }[k])}</span><span><b>${t('tour.f.' + k)}</b><small>${t('tour.f.' + k + 'Sub')}</small></span></div>`;
+    el.innerHTML = `<div class="tour-demo tour-feat"><span class="wordmark tour-mark">daily <em>bible</em></span>
+      <p class="tour-title">${t('tour.f.title')}</p>
+      <div class="tour-fs">${f('read')}${f('notes')}${f('group')}</div>
+      <div class="tour-acts"><span></span><button class="primary" data-tour="done">${t('tour.done')}</button></div></div>`;
+  }
+  el.addEventListener('click', e => {
+    const b = e.target.closest('[data-tour]'); if (!b) return;
+    if (b.dataset.tour === 'next') features(); else end();
+  });
+  demo();
+}
+/* First visit: name first, then one tap to sign up — Google · Microsoft · e-mail · text message.
+   A button whose provider isn't switched on in Supabase yet says so instead of failing. */
+function welcomeSheet(reason = '') {
+  if (!data.settings.myName) {
+    showSheet({ title: t('wl.title'), body: `<form id="wl-form" class="sheet-form"><p class="hint">${t('wl.nameQ')}</p>
+      <input id="wl-name" class="field" maxlength="30" autocomplete="name" placeholder="${esc(t('cl.namePh'))}" required>
+      <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
+    $('#wl-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#wl-name').value.trim().slice(0, 30); if (!n) return; data.settings.myName = n; save(); welcomeSheet(reason); });
+    return;
+  }
+  const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
+  showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>
+    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
+    <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
+    <button class="subtle-link" data-action="wl-later">${t('np.later')}</button>` });
+}
+async function welcomeSign(id) {
+  if (id === 'email') return emailLogin();
+  const on = await Cloud.providers();
+  if (id === 'phone') { if (on.phone) smsLogin(); else toast(t('wl.notYet')); return; }
+  if (on[id]) Cloud.oauth(id); else toast(t('wl.notYet'));
+}
+// Korean numbers (010-…) become +8210…; numbers typed with + stay as they are
+const e164 = v => { const d = String(v).replace(/[^\d+]/g, ''); return d.startsWith('+') ? d : d.startsWith('0') ? '+82' + d.slice(1) : '+' + d; };
+function smsLogin() {
+  showSheet({ title: t('phone.title'), body: `<form id="sms-form" class="sheet-form">
+    <label class="field-label" for="sms-number">${t('phone.number')}</label>
+    <input id="sms-number" class="field" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-1234-5678" required>
+    <div id="sms-step" hidden><label class="field-label" for="sms-code">${t('phone.code')}</label>
+    <input id="sms-code" class="field" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000"></div>
+    <button class="primary block" type="submit" id="sms-submit">${t('phone.send')}</button></form>` });
+  let phone = '';
+  $('#sms-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!phone) {
+      const p = e164($('#sms-number').value); if (p.replace(/\D/g, '').length < 10) { toast(t('phone.bad')); return; }
+      try { await Cloud.sendSms(p); phone = p; $('#sms-step').hidden = false; $('#sms-submit').textContent = t('phone.verify'); $('#sms-code').focus(); toast(t('phone.sent')); }
+      catch (err) { toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail')); }
+    } else {
+      const code = $('#sms-code').value.replace(/\D/g, ''); if (code.length !== 6) { toast(t('phone.badCode')); return; }
+      try { await Cloud.verifySms(phone, code); close(); render(); toast(t('login.done')); } catch { toast(t('cl.codeBad')); }
+    }
+  });
+}
+// The sign-in sheet: name (shown on thanks cards) + e-mail → link in the mail (or the code from it).
+function emailLogin(reason = '', after = null) {
+  state.afterLogin = after;
+  showSheet({ title: t('cl.title'), body: `<form id="cl-form" class="sheet-form">
+    ${reason ? `<p class="hint">${esc(reason)}</p>` : ''}
+    <label class="field-label" for="cl-name">${t('cl.name')}</label>
+    <input id="cl-name" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('cl.namePh'))}" required>
+    <label class="field-label" for="cl-email">${t('cl.email')}</label>
+    <input id="cl-email" class="field" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required>
+    <button class="primary block" type="submit" id="cl-send">${t('cl.send')}</button>
+    <p class="fine-print">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p></form>` });
+  $('#cl-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('#cl-name').value.trim().slice(0, 30), email = $('#cl-email').value.trim().toLowerCase();
+    if (!name) { $('#cl-name').focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast(t('cl.badEmail')); return; }
+    data.settings.myName = name; save();
+    const b = $('#cl-send'); b.disabled = true; b.textContent = t('cl.sending');
+    try { await Cloud.sendLink(email, name); emailSent(email, name); }
+    catch (err) { b.disabled = false; b.textContent = t('cl.send'); toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail')); }
+  });
+}
+function emailSent(email, name) {
+  showSheet({ title: t('cl.sentTitle'), body: `<p class="hint">${esc(t('cl.sentBody').replace('{email}', email))}</p>
+    <form id="cl-code-form" class="sheet-form">
+    <label class="field-label" for="cl-code">${t('cl.code')}</label>
+    <input id="cl-code" class="field" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="000000">
+    <button class="secondary block" type="submit">${t('cl.verify')}</button></form>
+    <button class="subtle-link" data-action="cl-resend">${t('cl.resend')}</button>` });
+  state.clEmail = { email, name };
+  $('#cl-code-form').addEventListener('submit', async e => {
+    e.preventDefault(); const code = $('#cl-code').value.replace(/\D/g, '');
+    if (code.length < 6) { toast(t('phone.badCode')); return; }
+    try { await Cloud.verify(email, code); close(); render(); toast(t('login.done')); const next = state.afterLogin; state.afterLogin = null; if (next) setTimeout(next, 300); }
+    catch { toast(t('cl.codeBad')); }
+  });
+}
+
+/* Keeps this device's 공동체 in step with Supabase: registers groups made here, finishes joins made from a link
+   (also ones made before signing in), and brings in names, member counts and people waiting for approval. */
+let syncing = null;
+function sync() {
+  if (!Cloud.on()) return Promise.resolve();
+  return syncing = syncing || (async () => {
+    const uid = Cloud.uid();
+    if (data.settings.myName) Cloud.rest('profiles?id=eq.' + uid, { method: 'PATCH', body: { name: data.settings.myName } }).catch(() => {});
+    for (const g of data.groups.filter(x => x.cloud && !x.sid)) {
+      try {
+        if (g.owner) {
+          const [row] = await Cloud.rest('groups', { method: 'POST', prefer: 'return=representation', body: { name: L(g.name), invite_code: g.invite, owner: uid, approve: !!g.approve, members_invite: g.membersInvite !== false } });
+          await Cloud.rest('group_members', { method: 'POST', body: { group_id: row.id, user_id: uid, role: 'owner', status: 'active' } });
+          g.sid = row.id;
+        } else {
+          const [row] = await Cloud.rpc('join_group', { code: g.invite });
+          g.sid = row.group_id; g.name = row.name || g.name; g.pending = row.status === 'pending';
+          toast(g.pending ? t('join.pending') : t('join.done').replace('{name}', L(g.name)));
+        }
+      } catch (err) {
+        if (/invalid_code/.test(err.message)) { data.groups = data.groups.filter(x => x !== g); toast(t('cl.badInvite')); }
+        else if (err.code === '23505' && g.owner) { g.invite = newCode(); }   // that invite code is taken: try a new one next time
+      }
+    }
+    // my memberships on the server
+    try {
+      const mine = await Cloud.rest(`group_members?user_id=eq.${uid}&select=group_id,role,status,groups(*)`);
+      const ids = new Set(mine.map(m => m.group_id));
+      for (const m of mine) {
+        let g = data.groups.find(x => x.sid === m.group_id);
+        if (!g) { g = { id: 'g' + m.group_id.slice(0, 8), sid: m.group_id, cloud: true, name: m.groups?.name || '', invite: m.groups?.invite_code || newCode(), owner: m.role === 'owner' }; data.groups.push(g); }
+        g.pending = m.status === 'pending'; g.role = m.role;
+        if (m.groups) { g.name = m.groups.name; if (m.groups.invite_code) g.invite = m.groups.invite_code; g.approve = !!m.groups.approve; g.membersInvite = m.groups.members_invite !== false; g.topToLeaders = !!m.groups.top_to_leaders; }
+      }
+      // removed from a group (or a pending request turned down)
+      data.groups = data.groups.filter(g => !(g.cloud && g.sid && !ids.has(g.sid)));
+      for (const g of data.groups.filter(x => x.sid && !x.pending)) {
+        const people = await Cloud.rest(`group_members?group_id=eq.${g.sid}&select=user_id,role,status,profiles(name)`).catch(() => null);
+        if (!people) continue;
+        g.size = people.filter(p => p.status === 'active').length;
+        g.people = people.map(p => ({ id: p.user_id, name: p.profiles?.name || '', role: p.role, pending: p.status === 'pending' }));
+      }
+    } catch {}
+    save(); render();
+  })().finally(() => { syncing = null; });
+}
+// group admin: approve / turn down / remove someone (the database lets only the group's leaders do this)
+async function cloudMember(gid, uid, approve) {
+  const g = data.groups.find(x => x.id === gid); if (!g?.sid) return;
+  const where = `group_members?group_id=eq.${g.sid}&user_id=eq.${uid}`;
+  try { approve ? await Cloud.rest(where, { method: 'PATCH', body: { status: 'active' } }) : await Cloud.rest(where, { method: 'DELETE' }); }
+  catch { toast(t('cl.fail')); return; }
+  await sync(); groupAdmin(gid); toast(approve ? t('cl.approved') : t('cl.removed'));
+}
+function cloudGroupSet(g, fields) { if (Cloud.on() && g?.sid) Cloud.rest('groups?id=eq.' + g.sid, { method: 'PATCH', body: fields }).catch(() => toast(t('cl.fail'))); }
 
 /* ---------------- remote content: change text without a store update ----------------
    Text that changes often (tagline, daily questions, notices, featured posts, which optional features exist,
@@ -2663,7 +3023,7 @@ const inGroup = (p, gid) => p.scope === 'group' && postGroups(p).includes(gid) &
 // Who may invite: the admin always; members only while the admin allows it (on by default).
 const canInvite = g => !!g && (g.owner || g.membersInvite !== false);
 // A small red dot (on the 공동체 tab and on the group) while a group has posts you haven't caught up on.
-const unseenIn = gid => data.posts.filter(p => !p.mine && inGroup(p, gid) && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
+const unseenIn = gid => data.groups.find(g => g.id === gid)?.muted ? 0 : data.posts.filter(p => !p.mine && inGroup(p, gid) && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
 const unseenKind = (gid, kind) => data.posts.filter(p => !p.mine && inGroup(p, gid) && kindGroup(p) === kind && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
 const anyUnseen = () => data.groups.some(g => unseenIn(g.id));
 function markGroupSeen(gid, kind) {
@@ -3023,6 +3383,7 @@ async function loadChapter(b, c, first) {
   if (!state.reader || r !== state.reader) return;
   if (r.passage) verses = verses.filter(x => r.c2 > r.c ? (c === r.c ? x.v >= r.v : x.v <= r.e2) : x.v >= r.v && x.v <= (r.v2 || r.v));
   r.loaded.push([b, c]); r.last = [b, c];
+  { const y = today().slice(0, 4), v = data.chViews = data.chViews || {}; v[y] = v[y] || {}; v[y][readKey(b, c)] = (v[y][readKey(b, c)] || 0) + 1; }
   const hl = x => first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v);
   const last = verses[verses.length - 1].v;
   // One verse per page; swipe up for the next one (same feel as the thanks feed).
@@ -3536,11 +3897,20 @@ function groupAdmin(gid) {
   showSheet({ title: t('adm.title'), body: `<div class="list">
       ${sw('adm-invite', g.membersInvite !== false, t('adm.invite'))}
       ${sw('adm-approve', !!g.approve, t('adm.approve'))}
+      ${sw('adm-top', !!g.topToLeaders, t('adm.topLeaders'))}
       <button class="list-row" data-action="adm-newlink" data-id="${esc(gid)}"><span class="row-icon">${icon('reset')}</span><span class="row-main"><span class="row-title">${t('adm.newLink')}</span></span></button></div>
-    ${g.approve ? `<p class="hint">${t('adm.pending')}</p>` : ''}
-    <p class="field-label">${t('adm.members')} · ${groupSize(gid)}</p>
+    ${g.approve && !g.sid ? `<p class="hint">${t('adm.pending')}</p>` : ''}
+    ${g.sid ? cloudPeople(g) : `<p class="field-label">${t('adm.members')} · ${groupSize(gid)}</p>
     <div class="list"><div class="list-row static"><span class="row-main"><span class="row-title">${t('adm.you')}</span></span></div>
-      ${people.filter(([k]) => !(g.removed || []).includes(k)).map(([k, name]) => `<div class="list-row static"><span class="row-main"><span class="row-title">${esc(data.nicknames?.[k] || name)}</span>${data.nicknames?.[k] ? `<span class="row-sub">${t('nick.orig').replace('{name}', esc(name))}</span>` : ''}</span><button class="link-btn" data-action="nick-edit" data-id="${esc(gid)}|${esc(k)}|${esc(name)}">${t('nick.edit')}</button><button class="link-btn adm-rm" data-action="adm-remove" data-id="${esc(gid)}|${esc(k)}">${t('adm.remove')}</button></div>`).join('')}</div>` });
+      ${people.filter(([k]) => !(g.removed || []).includes(k)).map(([k, name]) => `<div class="list-row static"><span class="row-main"><span class="row-title">${esc(data.nicknames?.[k] || name)}</span>${data.nicknames?.[k] ? `<span class="row-sub">${t('nick.orig').replace('{name}', esc(name))}</span>` : ''}</span><button class="link-btn" data-action="nick-edit" data-id="${esc(gid)}|${esc(k)}|${esc(name)}">${t('nick.edit')}</button><button class="link-btn adm-rm" data-action="adm-remove" data-id="${esc(gid)}|${esc(k)}">${t('adm.remove')}</button></div>`).join('')}</div>`}` });
+}
+function cloudPeople(g) {
+  const ppl = (g.people || []).filter(p => p.id !== Cloud.uid()), waiting = ppl.filter(p => p.pending), active = ppl.filter(p => !p.pending);
+  const who = p => esc(p.name || t('cl.noName'));
+  return `${waiting.length ? `<p class="field-label">${t('cl.waiting')} · ${waiting.length}</p><div class="list">${waiting.map(p => `<div class="list-row static"><span class="row-main"><span class="row-title">${who(p)}</span></span><button class="secondary" data-action="cl-approve" data-id="${esc(g.id)}|${esc(p.id)}">${t('cl.approve')}</button><button class="link-btn adm-rm" data-action="cl-remove" data-id="${esc(g.id)}|${esc(p.id)}">${t('cl.decline')}</button></div>`).join('')}</div>` : ''}
+    <p class="field-label">${t('adm.members')} · ${active.length + 1}</p>
+    <div class="list"><div class="list-row static"><span class="row-main"><span class="row-title">${t('adm.you')}</span></span></div>
+      ${active.map(p => `<div class="list-row static"><span class="row-main"><span class="row-title">${who(p)}</span></span><button class="link-btn adm-rm" data-action="cl-remove" data-id="${esc(g.id)}|${esc(p.id)}">${t('adm.remove')}</button></div>`).join('')}</div>`;
 }
 function leaderStart(gid) {
   const g = data.groups.find(x => x.id === gid); if (!g) return;
@@ -3591,7 +3961,7 @@ function quizResultCard() {
    challenge or reading plan I haven't done yet. Each one is a card at the very top of the feed. */
 // What-you-see preferences (Settings › What you see). Defaults: opening cards on, feed = me + people I'm connected to.
 const PREF_DEFAULTS = { firstPr: true, firstVerse: true, firstCh: true, firstMax: 5, feedThanks: true, feedPrayer: true, feedMed: true, strangers: false };
-const pref = k => { const v = data.settings.prefs?.[k]; return v === undefined ? PREF_DEFAULTS[k] : v; };
+const pref = k => { if ((data.settings.prefs?.offUntil?.[k] || '') > new Date().toISOString()) return false; const v = data.settings.prefs?.[k]; return v === undefined ? PREF_DEFAULTS[k] : v; };
 const setPref = (k, v) => { data.settings.prefs = { ...(data.settings.prefs || {}), [k]: v }; save(); };
 const firstSnoozed = () => data.settings.prefs?.firstOff || (data.settings.prefs?.firstUntil || '') > new Date().toISOString();
 // People I'm connected to: anyone who posts in my groups (and anyone who joined my plans / challenges).
@@ -3602,7 +3972,7 @@ function connectedKeys() {
   return keys;
 }
 const newGroupPrayers = () => data.posts.filter(p => p.kind === 'prayer' && !p.mine && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))
-  && p.date >= daysAgo(6) && !data.prayed.includes(p.id) && !(data.settings.prayerSeen || []).includes(p.id));
+  && p.date >= daysAgo(6) && !postGroups(p).every(gid => data.groups.find(g => g.id === gid)?.muted) && !data.prayed.includes(p.id) && !(data.settings.prayerSeen || []).includes(p.id));
 function firstItems() {
   if (!state.openedBefore && !BIBLE_MODE) return [];   // the very first visit of daily thanks: its feed and first-visit steps come first
   if (firstSnoozed()) return [];
@@ -3633,7 +4003,7 @@ async function fillPlanCards() {
   const n = verses.length;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };   // a note on a later verse covers what was read so far
   const cu = c.cuDismissed === today() ? '' : catchUpCard(c);
-  slot.outerHTML = cu + verseCards(verses, `<button class="fv-src why-btn" data-action="first-why" data-id="plan|${esc(c.id)}">${esc(L(c.name) || chName(c))} · ${t('fc.dayN').replace('{n}', c.days.length + 1)}<i class="why-i">?</i></button>
+  slot.outerHTML = cu + verseCards(verses, `<button class="fv-src why-btn" data-action="first-why" data-id="plan|${esc(c.id)}">${esc(L(c.name) || chName(c))} · ${t('fc.dayN').replace('{n}', c.days.length + 1)}</button>
         <div class="post-kind">${icon('book')}<span>${esc(t('fv.kick').replace('{r}', range))}</span></div>`, c.id) + `<article class="post card-page fv-end" data-fvend="${esc(c.id)}"><div class="card-inner">
       <div class="post-kind">${icon('check')}<span>${esc(range)}</span></div>
       <p class="card-title">${t('fv.doneTitle')}</p>
@@ -3683,9 +4053,28 @@ function immStreak() {
     ? data.posts.filter(p => !p.mine && visible(p) && data.groups.some(g => inGroup(p, g.id)) && !(data.groupSeen || []).includes(p.id)).length
     : data.groups.reduce((x, g) => x + unseenIn(g.id), 0);
   if (!n && !unseen) return '';
-  return `<button class="imm-streak" data-action="imm-streak">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</button>`;
+  return `<div class="imm-streak" aria-live="polite">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</div>`;
 }
-const firstOffLinks = () => `<p class="fo-links"><button data-action="first-off">${t('fo.off')}</button><span>·</span><button data-action="first-snooze">${t('fo.h24')}</button></p>`;
+const firstOffLinks = () => `<p class="fo-links"><button data-action="off-sheet">${t('fo.off')}</button></p>`;
+// "끄기": what to turn off (prayer cards, today's reading, challenges, or all of them) and for how long
+function offSheet() {
+  const what = state.offWhat || 'firstPr', dur = state.offFor || 'h24';
+  const chip = (k, label) => `<button type="button" class="chip ${what === k ? 'active' : ''}" data-action="off-what" data-id="${k}">${label}</button>`;
+  showSheet({ title: t('snz.title'), body: `<div class="snz"><p class="field-label">${t('snz.what')}</p>
+    <div class="chips">${chip('firstPr', t('vw.fPr'))}${chip('firstVerse', t('vw.fVerse'))}${chip('firstCh', t('vw.fCh'))}${chip('all', t('snz.all'))}</div>
+    <p class="field-label">${t('snz.for')}</p>
+    ${seg([['h24', t('vw.h24')], ['w1', t('vw.w1')], ['off', t('snz.until')]], 'off-for', dur)}
+    <button class="primary block" data-action="off-ok">${t('snz.ok')}</button>
+    <p class="hint">${t('snz.hint')}</p></div>` });
+}
+function offApply() {
+  const what = state.offWhat || 'firstPr', dur = state.offFor || 'h24', P = { ...(data.settings.prefs || {}) };
+  const until = dur === 'h24' ? new Date(Date.now() + 864e5).toISOString() : dur === 'w1' ? new Date(Date.now() + 7 * 864e5).toISOString() : '';
+  if (what === 'all') { P.firstOff = dur === 'off'; P.firstUntil = until; }
+  else if (dur === 'off') { P[what] = false; }
+  else P.offUntil = { ...(P.offUntil || {}), [what]: until };
+  data.settings.prefs = P; state.firstPrIds = null; save(); close(); render(0); toast(t('fo.offDone'));
+}
 function viewSettings() {
   const sw = (k, label, sub = '') => `<label class="list-row"><span class="row-main"><span class="row-title">${label}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span><input class="switch" type="checkbox" data-pref="${k}" ${pref(k) ? 'checked' : ''}></label>`;
   const until = data.settings.prefs?.firstUntil, snoozed = !data.settings.prefs?.firstOff && until > new Date().toISOString();
@@ -3999,10 +4388,13 @@ function bibleShell() {
   document.querySelectorAll('.wordmark').forEach(w => { w.innerHTML = 'daily <em>bible</em>'; });
   const sp = document.getElementById('splash'); if (sp) sp.setAttribute('aria-label', 'daily bible');
   const tag = document.querySelector('#splash .splash-tag'); if (tag) tag.innerHTML = '<span>Read the Word daily.</span><span>Take notes.</span><span>Live it.</span>';
-  const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'sermon-new'; pill.querySelector('.label').dataset.i18n = 'bb.newNote'; }
+  const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'bible-write'; pill.classList.add('plus-only'); pill.setAttribute('aria-label', '+'); pill.querySelector('.label').remove(); } // sermon notes have their own tab; + is for writing
   const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
+  // language switch beside the + (shown on every screen for the first few visits)
+  if (pill && !document.querySelector('.top-right')) { const box = document.createElement('div'); box.className = 'top-right'; pill.before(box);
+    box.innerHTML = `<button class="top-lang" data-action="lang-menu" hidden></button>`; box.append(pill); }
   const nav = document.querySelector('.bottom-nav');
-  // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the "+ 설교 노트" button at the top right
+  // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the + button at the top right (감사 · 기도제목 · 묵상 · 감사 전하기)
   const tabBtn = ([id, ic, k]) => `<button data-tab="${id}"><span class="nav-ico" data-icon="${ic}"></span><span data-i18n="${k}"></span></button>`;
   if (nav) { nav.classList.add('bb-nav'); nav.innerHTML = `<button data-action="fullscreen" class="nav-feed"><span class="nav-ico" data-icon="sun"></span><span data-i18n="bn.feed"></span></button>`
     + tabBtn(['read', 'book', 'bb.read'])
@@ -4660,7 +5052,12 @@ function yearStats(y = new Date().getFullYear()) {
   const ys = String(y), log = Object.entries(data.readLog || {}).filter(([, d]) => d.startsWith(ys));
   const days = [...new Set(log.map(([, d]) => d))].sort(); let best = 0, run = 0, prev = null; days.forEach(d => { run = prev && dayDiff(prev, d) === 1 ? run + 1 : 1; best = Math.max(best, run); prev = d; });
   const books = Object.entries(data.booksDone || {}).filter(([, d]) => d.startsWith(ys)).map(([b]) => +b);
-  return { y, chapters: log.length, days: days.length, best, books, pct: Math.round((data.readDone || []).length / TOTAL_CHAPTERS * 1000) / 10 };
+  // verse of the year: the one you saved (2) and liked (1) most; ties → the latest saved
+  const liked = new Set(data.verseLikes || []), vs = (data.savedVerses || []).filter(x => (x.date || '').startsWith(ys) && x.text)
+    .map(x => ({ ...x, score: 2 + (liked.has(x.key) ? 1 : 0) })).sort((a, b) => b.score - a.score || (b.date || '').localeCompare(a.date || ''));
+  const views = Object.entries(data.chViews?.[ys] || {}).sort((a, b) => b[1] - a[1])[0];
+  const most = views ? { b: +views[0].split(':')[0], c: +views[0].split(':')[1], n: views[1] } : null;
+  return { y, verse: vs[0] || null, most, chapters: log.length, days: days.length, best, books, pct: Math.round((data.readDone || []).length / TOTAL_CHAPTERS * 1000) / 10 };
 }
 async function yearCanvas(kind = 'feed', prog = 1) {
   try { await document.fonts.ready; } catch {}
@@ -4671,21 +5068,28 @@ function drawYear(x, W, H, st, prog) {
   x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H);
   x.fillStyle = '#9BA0A3'; x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30); const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('bible', M + dw, M + 30);
   x.fillStyle = '#B5453F'; x.beginPath(); const rx = W - M - 18; x.moveTo(rx, M - 6); x.lineTo(rx + 22, M - 6); x.lineTo(rx + 22, M + 52); x.lineTo(rx + 11, M + 42); x.lineTo(rx, M + 52); x.closePath(); x.fill();
-  const top = H * .25, a = ease(prog * 1.4), gap = H > 1500 ? 170 : 132;
+  const top = H * .25, a = ease(prog * 1.4), gap = H > 1500 ? 160 : 126;
   x.globalAlpha = a; x.fillStyle = '#80868A'; x.font = `400 40px ${sans}`; x.fillText(t('yr.title').replace('{y}', st.y), M, top);
   x.fillStyle = '#16191C'; x.font = `400 190px ${serif}`; x.fillText(String(Math.round(st.chapters * ease(prog * 1.2))), M - 8, top + 200);
   x.font = `300 48px ${sans}`; x.fillStyle = '#4A4F54'; x.fillText(t('yr.chapters').replace('{n}', '').trim() + ' ' + t('yr.read'), M, top + 270);
-  const rows = [[t('yr.days').replace('{n}', st.days), t('yr.daysL')], [t('yr.best').replace('{n}', st.best), ''], [t('yr.books').replace('{n}', st.books.length), st.books.slice(0, 4).map(b => bookName(b)).join(' · ')], [t('yr.pct').replace('{p}', st.pct), '']];
+  const fit = (txt, w) => { if (x.measureText(txt).width <= w) return txt; let a = txt; while (a.length > 1 && x.measureText(a + '…').width > w) a = a.slice(0, -1); return a + '…'; };
+  x.font = `300 30px ${sans}`;
+  let rows = [
+    ...(st.verse ? [[t('yr.verse') + ' · ' + refText({ b: st.verse.b, c: st.verse.c, v: st.verse.v, v2: st.verse.v }), fit(st.verse.text, W - 2 * M)]] : []),
+    [t('yr.days').replace('{n}', st.days) + ' ' + t('yr.daysL'), st.best ? t('yr.best').replace('{n}', st.best) : ''],
+    [t('yr.books').replace('{n}', st.books.length), st.books.slice(0, 4).map(b => bookName(b)).join(' · ')],
+    ...(st.most ? [[t('yr.most').replace('{r}', refText({ b: st.most.b, c: st.most.c })), t('yr.times').replace('{n}', st.most.n)]] : []),
+    [t('yr.pct').replace('{p}', st.pct), '']];
+  if (H < 1500 && rows.length > 4) rows = rows.slice(0, 4);   // the square card keeps four lines; the story has room for all
   rows.forEach(([big, small], i) => { const k = ease(prog * 2 - .35 - i * .18); if (k <= 0) return; x.globalAlpha = k; const yy = top + 390 + i * gap;
     x.fillStyle = '#E3E5E6'; x.fillRect(M, yy - 58, W - 2 * M, 2); x.fillStyle = '#2C3135'; x.font = `400 44px ${sans}`; x.fillText(big, M, yy + 14);
     if (small) { x.fillStyle = '#9BA0A3'; x.font = `300 30px ${sans}`; x.fillText(small, M, yy + 52); } });
   x.globalAlpha = 1; x.fillStyle = '#B4B8BA'; x.font = `400 30px ${sans}`; x.fillText('dailyjourney.org', M, H - M);
 }
 function yearShare() {
-  state.yrKind = state.yrKind || 'feed';
+  state.yrKind = 'story';   // shared as a 9:16 story only
   showSheet({ title: esc(t('yr.title').replace('{y}', new Date().getFullYear())), body: `
     <div class="card-frame"><img id="yr-img" alt="" class="card-img"></div>
-    <div class="card-row"><div class="seg card-seg">${[['feed', t('yr.feed')], ['story', t('yr.story')]].map(([k, l]) => `<button type="button" class="${state.yrKind === k ? 'active' : ''}" data-action="yr-kind" data-id="${k}"><span>${l}</span></button>`).join('')}</div></div>
     <div class="sheet-actions"><button class="primary" data-action="yr-post">${icon('camera')}${t('yr.post')}</button><button class="secondary" data-action="yr-reel">${icon('play')}${t('yr.reel')}</button></div>
     <div id="yr-reel"></div>` });
   yearCanvas(state.yrKind).then(c => { const img = $('#yr-img'); if (img) { img.src = c.toDataURL('image/png'); img.style.aspectRatio = state.yrKind === 'story' ? '9 / 16' : '4 / 5'; } });
@@ -4708,11 +5112,58 @@ async function yearReel() {
   $('#yr-reel').innerHTML = `<video class="reel-video" src="${URL.createObjectURL(state.reelFile)}" autoplay muted loop playsinline></video>
     <button class="primary block" data-action="yr-reel-share">${icon('camera')}${t('yr.post')}</button><button class="secondary block" data-action="reel-save" style="margin-top:8px">${icon('download')}${t('yr.save')}</button>`;
 }
+// 나 › 나눔이 닿은 곳: how many people my posts reached — inside my communities and beyond — and how much I shared.
+function reachStats() {
+  const mine = data.posts.filter(p => p.mine && p.scope !== 'private' && !p.status);
+  const touch = p => (p.likes || 0) + (p.saves || 0) + (p.shares || 0) + (p.prayedBy || 0);
+  const inside = mine.filter(p => p.scope === 'group').reduce((a, p) => a + touch(p), 0);
+  const outside = mine.filter(p => p.scope === 'public').reduce((a, p) => a + touch(p), 0) + mine.reduce((a, p) => a + (p.extShares || 0), 0);
+  return { people: influence().people, inside, outside, shared: (data.sharesGiven || 0) + (data.verseShares || 0), ext: data.extSharesGiven || 0, posts: mine.length };
+}
+function reachHtml() {
+  const r = reachStats(), tile = (v, l) => `<div class="db-tile"><b>${v}</b><span>${l}</span></div>`;
+  return `<section class="db reach">
+    <p class="gd-label">${t('rc2.title')}</p>
+    <p class="reach-sub">${t('rc2.sub')}</p>
+    <div class="db-tiles">${tile(t('rc2.peopleV').replace('{n}', r.people), t('rc2.people'))}${tile(t('rc2.timesV').replace('{n}', r.outside), t('rc2.outside'))}${tile(t('rc2.timesV').replace('{n}', r.inside), t('rc2.inside'))}${tile(t('rc2.timesV').replace('{n}', r.shared), t('rc2.shared'))}</div>
+    <p class="db-foot">${t('rc2.foot').replace('{p}', r.posts).replace('{e}', r.ext)}</p>
+    ${influenceCard()}
+  </section>`;
+}
+// 나 › 내 공동체: type a code from your church, small group, chapter or retreat; keep each one loud, quiet, or leave it
+function myCommunities() {
+  const row = g => { const sub = g.pending ? t('join.pendingShort') : g.muted ? t('mc.quietOn') : g.owner ? t('mc.admin') : '';
+    return `<div class="list-row static"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span>
+      <button class="link-btn" data-action="mc-quiet" data-id="${esc(g.id)}">${g.muted ? t('mc.loud') : t('mc.quiet')}</button>
+      <button class="link-btn adm-rm" data-action="mc-leave" data-id="${esc(g.id)}">${t('mc.leave')}</button></div>`; };
+  return `<p class="gd-label">${t('mc.title')}</p>
+    <form id="mc-form" class="mc-form"><input id="mc-code" class="field" maxlength="24" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${esc(t('mc.ph'))}"><button class="secondary" type="submit">${t('mc.connect')}</button></form>
+    ${data.groups.length ? `<div class="list mc-list">${data.groups.map(row).join('')}</div>` : `<p class="hint">${t('mc.none')}</p>`}`;
+}
+function joinByCode(raw) {
+  const code = String(raw || '').replace(/[^a-z0-9]/gi, '').toLowerCase().slice(0, 24);
+  if (code.length < 4) { toast(t('mc.bad')); return; }
+  if (data.groups.some(g => g.invite === code)) { toast(t('join.already')); return; }
+  data.groups.push({ id: 'g' + code, name: '', invite: code, cloud: true, pending: true }); save(); render();
+  if (!CLOUD) return;
+  if (Cloud.on()) sync(); else welcomeSheet(t('mc.needSign'));
+}
+document.addEventListener('submit', e => { if (e.target.id === 'mc-form') { e.preventDefault(); joinByCode($('#mc-code').value); } });
+function leaveGroup(gid) {
+  const g = data.groups.find(x => x.id === gid); if (!g) return;
+  if (g.owner) { toast(t('mc.ownerStay')); return; }
+  confirmSheet(t('mc.leave'), esc(t('mc.leaveQ').replace('{name}', L(g.name) || t('scope.group'))), t('mc.leave'), async () => {
+    if (g.sid && Cloud.on()) { try { await Cloud.rest(`group_members?group_id=eq.${g.sid}&user_id=eq.${Cloud.uid()}`, { method: 'DELETE' }); } catch { toast(t('cl.fail')); return; } }
+    data.groups = data.groups.filter(x => x !== g); if (state.group === gid) state.group = data.groups[0]?.id; save(); render(); toast(t('mc.left'));
+  });
+}
 function renderBibleMe() {
   const saved = data.savedVerses || [], medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).sort((a, b) => chIndex(a.ref.b, a.ref.c) - chIndex(b.ref.b, b.ref.c));
   const q = noteQuota(), d = readDays();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
+    ${myCommunities()}
+    ${reachHtml()}
     ${readGauge()}${dashHtml()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
     ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
@@ -4833,7 +5284,7 @@ function renderImmersive(keepIndex = 0) {
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
     return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
-      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}"><span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span><i class="why-i">?</i></button>` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
+      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
@@ -4848,7 +5299,7 @@ function renderImmersive(keepIndex = 0) {
   ${groupMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${esc(L(data.groups.find(g => g.id === state.group)?.name || t('nav.group')))}${state.groupKind ? ' · ' + t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[state.groupKind]) : ''}</span></button>`
     : prayerMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${t('pr.section')}</span></button>`
     : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>${BIBLE_MODE ? 'bible' : 'thanks'}</em></span></div>`}
-  <button class="imm-plus" data-action="${BIBLE_MODE ? 'sermon-new' : 'imm-write'}" aria-label="${BIBLE_MODE ? t('bb.newNote') : t('top.write')}">${icon('plus')}</button>
+  <button class="imm-plus" data-action="${BIBLE_MODE ? 'bible-write' : 'imm-write'}" aria-label="${BIBLE_MODE ? t('bp.title2') : t('top.write')}">${icon('plus')}</button>
   ${!groupMode && !prayerMode ? safeHtml(immStreak) : ''}
   <div class="imm-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button><button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button></div>
   ${showNudge() && !prayerMode ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
@@ -4895,6 +5346,7 @@ function render(keepIndex) {
     b.classList.toggle('has-new', b.dataset.tab === 'group' && anyUnseen());
     on ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current');
   });
+  { const tl = document.querySelector('.top-lang'); if (tl) { tl.hidden = (data.settings.opens || 0) > 5; tl.setAttribute('aria-label', t('aria.lang')); tl.innerHTML = `${icon('globe')}<span>${LANGS.find(x => x[0] === lang())?.[1] || ''}</span>`; } }
   { const wp = document.querySelector('.write-pill'); if (wp) wp.hidden = BIBLE_MODE && state.tab === 'group'; } // Community has its own +
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal, read: renderBibleHome, notes: renderSermons, me: renderBibleMe })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
@@ -4933,7 +5385,28 @@ function updateVis(key) {
 /* ---------------- sheets ---------------- */
 const seg = (items, action, current, extra = '') => `<div class="seg ${extra}">${items.map(([id, label, ic]) => `<button type="button" class="${current === id ? 'active' : ''}" data-action="${action}" data-id="${id}">${ic ? icon(ic) : ''}<span>${label}</span></button>`).join('')}</div>`;
 
+// Left/right swipe on a row of cards: fingers already scroll it; this adds the same drag for a mouse or trackpad.
+function swipeCards(track) {
+  let x0 = null, s0 = 0;
+  track.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; x0 = e.clientX; s0 = track.scrollLeft; track.style.scrollSnapType = 'none'; track.setPointerCapture(e.pointerId); });
+  track.addEventListener('pointermove', e => { if (x0 !== null) track.scrollLeft = s0 - (e.clientX - x0); });
+  const up = e => { if (x0 === null) return; const dx = e.clientX - x0, w = track.clientWidth, i = Math.round(s0 / w);
+    const to = Math.abs(dx) > 40 ? i + (dx < 0 ? 1 : -1) : i; x0 = null; track.style.scrollSnapType = '';
+    track.scrollTo({ left: Math.max(0, Math.min(to, track.children.length - 1)) * w, behavior: 'smooth' }); };
+  track.addEventListener('pointerup', up); track.addEventListener('pointercancel', up);
+}
+const visKind = k => k === 'prayer' ? 'prayer' : k === 'meditation' ? 'meditation' : 'thanks';
+function visDefault(kind) {
+  const saved = data.settings.visPref?.[visKind(kind)];
+  if (saved) return { mode: saved.mode, targets: (saved.targets || []).filter(id => data.groups.some(g => g.id === id)) };
+  if (visKind(kind) === 'thanks') return { mode: 'public', targets: [] };
+  const g = data.groups.find(x => !x.pending && !x.muted) || data.groups[0];
+  return { mode: 'private', targets: g ? [g.id] : [] };
+}
+const visRemember = kind => { const v = visOf('compose'); data.settings.visPref = { ...(data.settings.visPref || {}), [visKind(kind)]: { mode: v.mode, targets: visTargets(v) } }; };
 function compose(kind = state.composeKind, chId = state.challenge, keepText = '') {
+  if (!keepText) { state.vis = state.vis || {}; state.vis.compose = visDefault(kind); }
+  state.dqTurn = (state.dqTurn || 0) + 1;   // a new question every time
   state.composeKind = kind; state.challenge = chId;
   state.sheetScope = state.sheetScope || 'public';
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
@@ -4974,14 +5447,14 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     e.preventDefault();
     const kind = state.composeKind, prayer = kind === 'meditation' ? ($('#med-prayer')?.value.trim() || '') : '';
     if (state.medRecOn) medRecStop();
-    const voice = kind === 'meditation' && state.medAudio;
-    const text = $('#gratitude-text').value.trim() || (kind === 'meditation' && (prayer || voice) ? (prayer ? '' : t('med.voice')) : ''); if (!text && !prayer) { $('#gratitude-text').focus(); return; }
+    const voice = kind === 'meditation' && recSlot('felt'), prVoice = kind === 'meditation' && recSlot('prayer');
+    const text = $('#gratitude-text').value.trim() || (kind === 'meditation' && (prayer || voice || prVoice) ? (prayer ? '' : t('med.voice')) : ''); if (!text && !prayer && !prVoice) { $('#gratitude-text').focus(); return; }
     const asReq = kind === 'meditation' && prayer && $('#med-asreq')?.checked;
-    const vis = visScope('compose');
+    const vis = visScope('compose'); visRemember(kind);
     const pid = 'p' + Date.now();
-    const post = (v = vis) => ({ id: pid, mine: true, ...v, kind, text: text || prayer, date: today(), likes: 0, ...(kind === 'meditation' && state.medRef ? { ref: state.medRef } : {}), ...(prayer && text ? { prayer } : {}), ...(voice ? { voice: { dur: state.medAudioDur || 0 } } : {}) });
+    const post = (v = vis) => ({ id: pid, mine: true, ...v, kind, text: text || prayer, date: today(), likes: 0, ...(kind === 'meditation' && state.medRef ? { ref: state.medRef } : {}), ...(prayer && text ? { prayer } : {}), ...(voice ? { voice: { dur: voice.dur || 0 } } : {}), ...(prVoice ? { prayerVoice: { dur: prVoice.dur || 0 } } : {}) });
     // the voice note stays on this device, sealed with the vault key; a prayer can also go out as its own prayer request
-    const extras = p => { if (voice) AudioStore.put(p.id, state.medAudio).catch(() => {}); medRecReset();
+    const extras = p => { if (voice) AudioStore.put(p.id, voice.blob).catch(() => {}); if (prVoice) AudioStore.put(p.id + ':pr', prVoice.blob).catch(() => {}); medRecReset();
       if (asReq) data.posts.splice(1, 0, { id: pid + 'r', mine: true, ...visScope('compose'), kind: 'prayer', text: prayer, date: today(), likes: 0, ...(state.medRef ? { ref: state.medRef } : {}) }); };
     if (!passesFilter(text || prayer, vis.scope, (choice, terms) => {
       if (choice === 'edit') return compose(kind, state.challenge, text);
@@ -4993,31 +5466,76 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   });
 }
 /* ---------- meditation extras: a prayer line, "also a prayer request", and a voice note ---------- */
+// reflection: typed by hand only (no recording here)
 const medExtras = () => `<p class="field-label">${t('med.prayer')}</p>
     <textarea id="med-prayer" data-draft="compose-prayer" class="big-input med-prayer" maxlength="800" rows="2" placeholder="${esc(t('med.prayerPh'))}"></textarea>
-    <label class="med-check"><input type="checkbox" id="med-asreq"><span>${t('med.asReq')}</span></label>
-    <div class="med-rec" id="med-rec">${medRecHtml()}</div>`;
+    <label class="med-check"><input type="checkbox" id="med-asreq"><span>${t('med.asReq')}</span></label>`;
 const fmtDur = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-function medRecHtml() {
-  if (state.medRecOn) return `<button type="button" class="med-recbtn on" data-action="med-rec">${icon('mic')}<span>${t('med.recStop')}</span><b id="med-rect">0:00</b></button>`;
-  if (state.medAudio) { if (!state.medAudioUrl) state.medAudioUrl = URL.createObjectURL(state.medAudio);
-    return `<div class="med-recrow"><audio controls preload="metadata" src="${state.medAudioUrl}"></audio><button type="button" class="link-btn" data-action="med-rec-del">${t('med.recDel')}</button></div>`; }
-  return `<button type="button" class="med-recbtn" data-action="med-rec">${icon('mic')}<span>${t('med.rec')}</span></button><p class="hint">${t('med.recNote')}</p>`;
+// Two small recorders: one beside 느낀 점, one beside 기도. Recordings stay on this device, sealed.
+const recSlot = k => (state.medRec = state.medRec || {})[k] || null;
+const recBox = k => k === 'prayer' ? $('#med-prayer') : $('#gratitude-text');
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function dictateStart(k) {
+  if (!SR) return;
+  const box = recBox(k); if (!box) return;
+  const base = box.value.trim(), d = { k, base, said: '', on: true };
+  const go = () => {
+    const r = new SR(); r.lang = { ko: 'ko-KR', en: 'en-US', es: 'es-ES' }[lang()] || 'en-US'; r.continuous = true; r.interimResults = true;
+    r.onresult = e => { let fin = '', mid = ''; for (let i = e.resultIndex; i < e.results.length; i++) (e.results[i].isFinal ? (fin += e.results[i][0].transcript + ' ') : (mid += e.results[i][0].transcript));
+      if (fin) d.said = (d.said + ' ' + fin).replace(/\s+/g, ' ').trim();
+      const b = recBox(k); if (b) { b.value = [d.base, d.said, mid.trim()].filter(Boolean).join(d.base ? '\n' : ' ').replace(/ \n/g, '\n'); b.dispatchEvent(new Event('input', { bubbles: true })); } };
+    r.onend = () => { if (d.on) { try { go(); } catch {} } };   // some browsers stop after a pause; keep listening while recording
+    r.onerror = e => { if (e.error === 'not-allowed' || e.error === 'service-not-allowed') d.on = false; };
+    d.r = r; try { r.start(); } catch {}
+  };
+  state.dictate = d; go();
 }
-const medRecPaint = () => { const el = $('#med-rec'); if (el) el.innerHTML = medRecHtml(); };
-function medRecReset() { if (state.medRecOn) medRecStop(true); if (state.medAudioUrl) URL.revokeObjectURL(state.medAudioUrl); state.medAudio = null; state.medAudioUrl = null; state.medAudioDur = 0; }
-async function medRecStart() {
+function dictateStop() {
+  const d = state.dictate; if (!d) return; d.on = false; try { d.r?.stop(); } catch {}
+  if (d.said) { state.medTx = { ...(state.medTx || {}), [d.k]: { raw: recBox(d.k)?.value || '', base: d.base, said: d.said } }; }
+  state.dictate = null;
+}
+// "정리하기": tidy what was said — drop fillers and repeats, close sentences, keep the person's own words
+function tidySpeech(txt) {
+  let x = ' ' + txt.replace(/\s+/g, ' ') + ' ';
+  x = x.replace(/ (음+|어+|아+|으+|그+|저기|뭐랄까|뭐지|있잖아요?|막|um+|uh+|erm|you know|i mean|eh+|este|pues|o sea) (?=\S)/gi, ' ');
+  x = x.replace(/ (\S+)( \1)+ /g, ' $1 ');
+  x = x.trim();
+  // Korean sentence endings → a period and a new sentence; other languages: capitalise after a stop
+  x = x.replace(/(습니다|합니다|해요|어요|아요|예요|이에요|에요|네요|죠|거든요|겠어요|었어요|았어요|싶어요|주세요|드려요|입니다|니다|다|요)(?=\s|$)(?![.!?])/g, '$1.');
+  x = x.replace(/([.!?])\s*(?=\S)/g, '$1\n');
+  x = x.split('\n').map(l => l.trim()).filter(Boolean).map(l => l[0].toUpperCase() + l.slice(1)).map(l => /[.!?…]$/.test(l) ? l : l + '.').join('\n');
+  return x;
+}
+function recMini(k) {
+  if (state.medRecOn === k) return `<button type="button" class="rec-mini on" data-action="med-rec" data-id="${k}"><i class="rec-dot"></i><b id="med-rect">0:00</b><span>${t('med.recStop')}</span></button>`;
+  if (recSlot(k)) return '';
+  return `<button type="button" class="rec-mini" data-action="med-rec" data-id="${k}" ${state.medRecOn ? 'disabled' : ''}>${icon('mic')}<span>${t('med.recShort')}</span></button>`;
+}
+function recPlayer(k) {
+  const r = recSlot(k); if (!r) return '';
+  if (!r.url) r.url = URL.createObjectURL(r.blob);
+  const tx = state.medTx?.[k];
+  return `<div class="med-recrow"><audio controls preload="metadata" src="${r.url}"></audio><button type="button" class="link-btn" data-action="med-rec-del" data-id="${k}">${t('med.recDel')}</button></div>
+    ${tx ? `<div class="tidy-row"><span>${t(tx.tidied ? 'tidy.done' : 'tidy.said')}</span><button type="button" class="rec-mini" data-action="${tx.tidied ? 'tidy-undo' : 'tidy'}" data-id="${k}">${tx.tidied ? t('tidy.undo') : t('tidy.go')}</button></div>` : ''}
+    <p class="hint">${t('med.recNote')}${SR ? ' ' + t('tidy.note') : ''}</p>`;
+}
+const medRecPaint = () => ['felt', 'prayer'].forEach(k => { const m = $('#med-mini-' + k), pl = $('#med-play-' + k); if (m) m.innerHTML = recMini(k); if (pl) pl.innerHTML = recPlayer(k); });
+function medRecDel(k) { if (state.medTx) delete state.medTx[k]; const r = recSlot(k); if (r?.url) URL.revokeObjectURL(r.url); if (state.medRec) delete state.medRec[k]; }
+function medRecReset() { if (state.medRecOn) medRecStop(true); ['felt', 'prayer'].forEach(medRecDel); }
+async function medRecStart(k = 'felt') {
+  if (state.medRecOn) return;
   let stream; try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); } catch { toast(t('med.recFail')); return; }
   const type = ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm'].find(m => window.MediaRecorder?.isTypeSupported?.(m)) || '';
   const rec = new MediaRecorder(stream, type ? { mimeType: type, audioBitsPerSecond: 32000 } : undefined), chunks = [], t0 = Date.now();
   rec.ondataavailable = e => e.data.size && chunks.push(e.data);
   rec.onstop = () => { stream.getTracks().forEach(x => x.stop()); clearInterval(state.medRecTimer);
-    if (state.medRecDrop) { state.medRecDrop = false; return; }
-    state.medAudio = new Blob(chunks, { type: rec.mimeType || type || 'audio/webm' }); state.medAudioDur = Math.round((Date.now() - t0) / 1000); medRecPaint(); };
-  rec.start(1000); state.medRecorder = rec; state.medRecOn = true; medRecPaint();
-  state.medRecTimer = setInterval(() => { const s = (Date.now() - t0) / 1000; const el = $('#med-rect'); if (el) el.textContent = fmtDur(s); if (s >= 600) medRecStop(); }, 500);   // 10 minutes at most
+    if (state.medRecDrop) { state.medRecDrop = false; medRecPaint(); return; }
+    (state.medRec = state.medRec || {})[k] = { blob: new Blob(chunks, { type: rec.mimeType || type || 'audio/webm' }), dur: Math.round((Date.now() - t0) / 1000) }; medRecPaint(); };
+  rec.start(1000); state.medRecorder = rec; state.medRecOn = k; dictateStart(k); medRecPaint();
+  state.medRecTimer = setInterval(() => { const sec = (Date.now() - t0) / 1000; const el = $('#med-rect'); if (el) el.textContent = fmtDur(sec); if (sec >= 600) medRecStop(); }, 500);   // 10 minutes at most
 }
-function medRecStop(drop) { state.medRecOn = false; state.medRecDrop = !!drop; try { state.medRecorder?.stop(); } catch {} state.medRecorder = null; }
+function medRecStop(drop) { dictateStop(); state.medRecOn = false; state.medRecDrop = !!drop; try { state.medRecorder?.stop(); } catch {} state.medRecorder = null; }
 // Voice notes live in IndexedDB on this device, sealed with the same vault key as everything else personal.
 const AudioStore = (() => {
   let dbP = null;
@@ -5059,6 +5577,7 @@ async function fillMedPassage(focus) {
     const track = el.querySelector('.mp-track'), count = el.querySelector('.mp-count');
     const showCount = () => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); const x = pick[i]; if (x) count.textContent = `${refText({ b: r.b, c: x.c || r.c, v: x.v, v2: x.v })} · ${i + 1}/${pick.length}`; };
     track.addEventListener('scroll', showCount, { passive: true });
+    swipeCards(track);
     if (focus === 'next') { track.scrollLeft = track.scrollWidth; showCount(); }
   } catch { const el = box.querySelector('.mp-text'); if (el) el.textContent = t('rd.offline'); }
 }
@@ -5124,7 +5643,7 @@ function chResult(id) {
     <p class="cel-title">${t('chr.title').replace('{name}', esc(chName(ch)))}</p>
     <p class="cel-body">${t('chr.sub').replace('{n}', chLen(ch))}</p>
     <div class="chr-nums"><span><b>${st.mine}/${chLen(ch)}</b><small>${t('me')}</small></span>${g ? `<span><b>${st.people}</b><small>${esc(L(g.name))}</small></span><span><b>${st.total}</b><small>${t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[ch.type || 'thanks'] || 'thanks')}</small></span>` : ''}</div>
-    ${st.top.length > 1 ? `<div class="ch-top">${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''}
+    ${seesTop(ch) && st.top.length > 1 ? `<div class="ch-top">${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''}
     ${g ? `<button class="primary block" data-action="chr-post" data-id="${esc(id)}">${icon('people')}${t('chr.toGroup')}</button>` : ''}
     <button class="secondary block" data-action="chr-card" data-id="${esc(id)}" style="margin-top:8px">${icon('share')}${t('chr.shareCard')}</button>
   </div>` });
@@ -5148,13 +5667,15 @@ function noteSheet(id) {
   if (p.kind === 'thanks') return thanksCard(id);
   showSheet({ title: t('j.title'), body: `${p.ref ? `<p class="gd-label">${esc(refText(p.ref))}</p>` : ''}<p class="quote">${esc(L(p.text))}</p>
     ${p.prayer ? `<p class="field-label">${t('med.prayer')}</p><p class="quote med-pr">${esc(p.prayer)}</p>` : ''}
-    ${p.voice ? `<p class="field-label">${t('med.voice')} · ${fmtDur(p.voice.dur || 0)}</p><audio class="med-play" id="note-audio" controls preload="none"></audio>` : ''}
+    ${p.voice ? `<p class="field-label">${t('med.felt')} · ${t('med.voice')} · ${fmtDur(p.voice.dur || 0)}</p><audio class="med-play" id="note-audio" controls preload="none"></audio>` : ''}
+    ${p.prayerVoice ? `<p class="field-label">${t('med.prayer')} · ${t('med.voice')} · ${fmtDur(p.prayerVoice.dur || 0)}</p><audio class="med-play" id="note-audio-pr" controls preload="none"></audio>` : ''}
     <div class="list">
       <button class="list-row" data-action="share" data-id="${esc(p.id)}"><span class="row-icon">${icon('upload')}</span><span class="row-main"><span class="row-title">${t('note.share')}</span></span></button>
       ${p.kind === 'ahead' ? `<button class="list-row" data-action="reflect" data-id="${esc(p.id)}"><span class="row-icon">${icon('pencil')}</span><span class="row-main"><span class="row-title">${t('note.reflect')}</span></span></button>` : ''}
       <button class="list-row danger" data-action="delete" data-id="${esc(p.id)}"><span class="row-icon">${icon('trash')}</span><span class="row-main"><span class="row-title">${t('note.delete')}</span></span></button>
     </div>` });
   if (p.voice) AudioStore.url(p.id).then(u => { const a = $('#note-audio'); if (a && u) a.src = u; }).catch(() => {});
+  if (p.prayerVoice) AudioStore.url(p.id + ':pr').then(u => { const a = $('#note-audio-pr'); if (a && u) a.src = u; }).catch(() => {});
 }
 
 function reflect(id) {
@@ -5525,6 +6046,7 @@ const groupKeyOf = g => { if (!g.key) { g.key = Vault.newGroupKey(); save(); } r
 const protectedPost = p => !!p && !p.mine && p.scope !== 'public';
 function inviteLink(g) {
   if (!g.invite) { g.invite = newCode(); save(); }
+  if (BIBLE_MODE) return `${LEGAL_BASE}/daily-bible/#join?c=${encodeURIComponent(g.invite)}&n=${encodeURIComponent(L(g.name))}${g.approve ? '&a=1' : ''}&k=${groupKeyOf(g)}`;
   return `${INVITE_BASE()}?c=${encodeURIComponent(g.invite)}&n=${encodeURIComponent(L(g.name))}${g.approve ? '&a=1' : ''}#k=${groupKeyOf(g)}`;
 }
 function inviteSheet(id) {
@@ -5580,13 +6102,14 @@ function joinGroup(code, name, key) {
   state.pendingJoin = { code, name: name || t('scope.group'), key, approve };
 }
 function createGroup() {
+  if (CLOUD && !Cloud.on()) { welcomeSheet(t('cl.needGroup')); return; }
   showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
     <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
     <button class="primary block" type="submit">${t('gr.create')}</button>
     ${data.church || !featureOn('leader') ? '' : `<button type="button" class="subtle-link" data-action="church-create">${t('chu.make')}</button>`}</form>` });
   $('#group-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#group-name').value.trim(); if (!name) return;
-    const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true, key: Vault.newGroupKey() }; data.groups.push(g); if (data.church) data.church.groups.push(g.id); save(); close(); renderGroups();
+    const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true, key: Vault.newGroupKey(), ...(CLOUD ? { cloud: true } : {}) }; data.groups.push(g); if (CLOUD) sync(); if (data.church) data.church.groups.push(g.id); save(); close(); renderGroups();
     document.dispatchEvent(new CustomEvent('dt:group-created', { detail: g })); // server add-on registers the invite code
     toast(t('toast.grCreated'));
     // invite people right away — but only if they're still on the 공동체 tab and nothing else is open
@@ -5696,7 +6219,9 @@ function chStats(ch) {
   const top = [...per.values()].map(x => ({ name: x.name, n: x.days.size })).filter(x => x.n > 0).sort((a, b) => b.n - a.n).slice(0, 3);
   return { total: posts.length, people: per.size, mine: meDays, top };
 }
-const chTopHtml = ch => { const st = chStats(ch); return st.top.length > 1 ? `<div class="ch-top"><p class="gd-label">${icon('sparkle')}${t('chr.top')}</p>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''; };
+// "가장 꾸준한 사람": the group's admin only; 순장 too when the admin turns it on (off by default)
+const seesTop = ch => { if (!ch?.group || ch.group === 'pair') return true; const g = data.groups.find(x => x.id === ch.group); return !!g && (g.owner || (g.role === 'leader' && !!g.topToLeaders)); };
+const chTopHtml = ch => { const st = chStats(ch); return seesTop(ch) && st.top.length > 1 ? `<div class="ch-top"><p class="gd-label">${icon('sparkle')}${t('chr.top')}</p>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''; };
 const chTypeLabel = ch => ch.type === 'meditation' ? t('kind.meditation') : ch.type === 'prayer' ? t('kind.prayer') : ch.type === 'bible' ? t('ch.t.bible') : t('ch.t.thanks');
 const chLen = ch => ch.length || 7;
 function challengeDetail(id) {
@@ -5749,9 +6274,10 @@ function bibleSettings() {
     </div>
     <p class="field-label">${t('bs.data')}</p>
     <div class="list">
-      ${session
+      ${CLOUD ? (Cloud.on() ? row('logout', 'user', `${t('s.account')} · ${esc(Cloud.email())}`, `<span class="row-link">${t('acct.logout')}</span>`) : row('wl-open', 'user', t('s.account'), `<span class="row-sub">${t('cl.signIn')}</span>${icon('chevron')}`)) : session
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
+      ${row('tour', 'history', t('tour.again'))}
       ${row('vault', 'lock', t('vault.title'))}
       ${row('export', 'copy', t('s.export'), '')}
       <a class="list-row" href="${LEGAL_BASE}/app/" target="_blank" rel="noopener"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('bs.thanks')}</span></span><span class="row-end">${icon('chevron')}</span></a>
@@ -5935,7 +6461,7 @@ const DAILY_Q = {
        'Did someone help you today?', 'What is one thing at home you’re thankful for?', 'What did you learn today?', 'What gratitude did you find in something hard?', 'What are you thankful for right now?', 'What is one reason to look forward to tomorrow?', 'Who has stayed by your side for a long time?']
 };
 const dayOfYear = () => { const d = new Date(), s0 = new Date(d.getFullYear(), 0, 0); return Math.floor((d - s0) / 864e5); };
-const dailyQ = () => { const remote = CONTENT.dailyQuestions?.[lang()]; const list = Array.isArray(remote) && remote.length ? remote : (DAILY_Q[lang()] || DAILY_Q.en); return list[dayOfYear() % list.length]; };
+const dailyQ = () => { const remote = CONTENT.dailyQuestions?.[lang()]; const list = Array.isArray(remote) && remote.length ? remote : (DAILY_Q[lang()] || DAILY_Q.en); return list[(state.dqSeed + (state.dqTurn || 0)) % list.length]; };
 const dailyQLine = () => `<p class="daily-q">${icon('sparkle')}<span>${t('dq.label')} · ${esc(dailyQ())}</span></p>`;
 
 // A past note resurfaces: exactly a week / month / year ago if there is one, otherwise the oldest of the last weeks.
@@ -6407,7 +6933,7 @@ function phoneLogin() {
     }
   });
 }
-const methodName = m => ({ apple: 'Apple', google: 'Google', phone: lang() === 'ko' ? '휴대폰' : 'Phone' })[m] || m;
+const methodName = m => m === 'email' ? (session?.email || 'Email') : ({ apple: 'Apple', google: 'Google', phone: lang() === 'ko' ? '휴대폰' : 'Phone' })[m] || m;
 
 /* ---------------- actions ---------------- */
 function setLang(l) {
@@ -6451,7 +6977,7 @@ const actions = {
   'toggle-lang': () => setLang(lang() === 'ko' ? 'en' : 'ko'),
   'set-lang': id => setLang(id),
   like, share, 'send-group': sendToGroup, reflect,
-  'pick-kind': id => { state.tyName = $('#ty-name')?.value || state.tyName; if (id !== 'meditation') { state.medRef = null; state.medSource = null; state.medNote = false; } compose(id, state.challenge, $('#gratitude-text')?.value || ''); },
+  'pick-kind': id => { state.vis = state.vis || {}; state.vis.compose = visDefault(id); state.tyName = $('#ty-name')?.value || state.tyName; if (id !== 'meditation') { state.medRef = null; state.medSource = null; state.medNote = false; } compose(id, state.challenge, $('#gratitude-text')?.value || ''); },
   'mp-next': () => { const tr = $('.mp-track'); if (tr) tr.scrollBy({ left: tr.clientWidth, behavior: 'smooth' }); },
   'mp-prev': () => { const tr = $('.mp-track'); if (tr) tr.scrollBy({ left: -tr.clientWidth, behavior: 'smooth' }); },
   'mp-grow': dir => { const r = state.medRef; if (!r?.v) return; const ref = { ...r, v2: r.v2 || r.v };
@@ -6578,9 +7104,11 @@ const actions = {
   },
   sample: id => { const ta = $('#gratitude-text'); ta.value = SAMPLES[lang()][id]; ta.focus(); },
   'journal-filter': id => { state.filter = id; renderJournal(); },
-  'med-rec': () => state.medRecOn ? medRecStop() : medRecStart(),
-  'med-rec-del': () => { medRecReset(); medRecPaint(); },
-  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { if (data.posts.find(p => p.id === id)?.voice) AudioStore.del(id); data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
+  'med-rec': k => state.medRecOn ? medRecStop() : medRecStart(k || 'felt'),
+  'med-rec-del': k => { medRecDel(k); medRecPaint(); },
+  tidy: k => { const tx = state.medTx?.[k], b = recBox(k); if (!tx || !b) return; tx.before = b.value; b.value = [tx.base, tidySpeech(tx.said)].filter(Boolean).join('\n'); tx.tidied = true; medRecPaint(); },
+  'tidy-undo': k => { const tx = state.medTx?.[k], b = recBox(k); if (!tx || !b) return; b.value = tx.before ?? tx.raw; tx.tidied = false; medRecPaint(); },
+  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { { const q = data.posts.find(p => p.id === id); if (q?.voice) AudioStore.del(id); if (q?.prayerVoice) AudioStore.del(id + ':pr'); } data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
   'copy-share': id => { const p = data.posts.find(x => x.id === id); if (p) { countShare(id); copyText(withLink(`${L(p.text)}\n\n— ${authorName(p)} · Daily Thanks`, p)); } },
   'send-link': id => { // just the link: opens the thanks on dailyjourney.org
     const p = data.posts.find(x => x.id === id); if (!p) return;
@@ -6681,6 +7209,8 @@ const actions = {
   usage: () => usageSheet(),
   'bible-plus': () => { const row = (action, ic, label, id = '') => `<button class="list-row" data-action="${action}"${id ? ` data-id="${id}"` : ''}><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
     showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sermon-new', 'mic', t('bp.sermon'))}${row('bp-write', 'book', t('bp.med'), 'meditation')}${row('bp-write', 'sun', t('bp.thanks'), 'today')}${row('bp-write', 'pray', t('bp.prayer'), 'prayer')}${row('plan-new', 'calendar', t('bp.plan'))}</div>` }); },
+  'bible-write': () => { const row = (ic, label, kind) => `<button class="list-row" data-action="bp-write" data-id="${kind}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
+    showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sun', t('bp.thanks'), 'today')}${row('pray', t('bp.prayer'), 'prayer')}${row('book', t('bp.med'), 'meditation')}${row('heart', t('bp.thankSomeone'), 'thanks')}</div>` }); },
   'bp-write': kind => { close(); state.medRef = null; state.medSource = null; state.medNote = false; compose(kind, null); },
   'size-cycle': () => { const order = ['s', 'm', 'l', 'xl'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
   'imm-streak': () => { if (anyUnseen() && !BIBLE_MODE) { state.immersive = false; state.tab = 'group'; render(); } else if (anyUnseen()) { state.prevFeed = 'public'; state.immFeed = 'prayer'; render(0); } else toast(t('stk.write').replace('{n}', BIBLE_MODE ? readDays() : writeStreak())); },
@@ -6692,6 +7222,12 @@ const actions = {
   'yr-reel': () => yearReel(),
   'yr-reel-share': async () => { const f = state.reelFile; if (!f) return; try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
   'us-refresh': async () => { state.snChecked = false; await sermonSync(); usageSheet(); },
+  'off-sheet': () => offSheet(),
+  'mc-quiet': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; g.muted = !g.muted; state.firstPrIds = null; save(); render(); toast(g.muted ? t('mc.quietDone') : t('mc.loudDone')); },
+  'mc-leave': gid => leaveGroup(gid),
+  'off-what': k => { state.offWhat = k; offSheet(); },
+  'off-for': k => { state.offFor = k; offSheet(); },
+  'off-ok': () => offApply(),
   'first-off': () => { setPref('firstOff', true); state.firstPrIds = []; toast(t('fo.offDone')); render(0); },
   'first-snooze': () => { setPref('firstUntil', new Date(Date.now() + 864e5).toISOString()); toast(t('fo.snoozed')); render(0); },
   'first-why': id => { const [k, v] = id.split('|'); const c = k === 'plan' ? data.challenges.find(x => x.id === v) : null;
@@ -6759,9 +7295,10 @@ const actions = {
   'ls-invite': gid => { state.lsInvited = { ...(state.lsInvited || {}), [gid]: true }; inviteSheet(gid); },
   'ls-challenge': gid => { if (!data.challenges.some(c => c.group === gid)) data.challenges.unshift({ id: 'ch' + Date.now(), name: t('chn.thanks'), type: 'thanks', length: 7, group: gid, members: [{ ko: '나', en: 'Me', es: 'Yo' }], start: today(), days: [] });
     save(); toast(t('toast.chStarted')); leaderStart(gid); },
-  'adm-invite': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.membersInvite = g.membersInvite === false; save(); groupAdmin(gid); },
-  'adm-approve': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.approve = !g.approve; save(); groupAdmin(gid); },
-  'adm-newlink': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; const old = g.invite; g.invite = newCode(); g.key = Vault.newGroupKey(); save();
+  'adm-invite': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.membersInvite = g.membersInvite === false; save(); cloudGroupSet(g, { members_invite: g.membersInvite }); groupAdmin(gid); },
+  'adm-top': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.topToLeaders = !g.topToLeaders; save(); cloudGroupSet(g, { top_to_leaders: g.topToLeaders }); groupAdmin(gid); },
+  'adm-approve': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.approve = !g.approve; save(); cloudGroupSet(g, { approve: g.approve }); groupAdmin(gid); },
+  'adm-newlink': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; const old = g.invite; g.invite = newCode(); g.key = Vault.newGroupKey(); save(); cloudGroupSet(g, { invite_code: g.invite });
     document.dispatchEvent(new CustomEvent('dt:group-relink', { detail: { old, code: g.invite } })); toast(t('adm.newLinkDone')); },
   'adm-remove': pair => { const [gid, k] = pair.split('|'); const g = data.groups.find(x => x.id === gid); if (!g?.owner) return;
     if (state.rmArm !== pair) { state.rmArm = pair; const b = [...document.querySelectorAll('[data-action="adm-remove"]')].find(x => x.dataset.id === pair); if (b) { b.textContent = t('adm.sure'); b.classList.add('armed'); } return; }
@@ -6771,6 +7308,11 @@ const actions = {
   'join-ok': () => {
     const j = state.pendingJoin; if (!j) return close();
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}), ...(j.approve ? { pending: true } : {}) }; data.groups.push(g); state.pendingJoin = null;
+    if (CLOUD) { // Supabase finishes the join (right away, or after signing in); until then it waits as pending
+      g.cloud = true; g.pending = true; save(); close(); state.tab = 'group'; state.immersive = false; render();
+      if (Cloud.on()) sync(); else welcomeSheet(t('cl.needJoin').replace('{name}', j.name)); // signed in once = stays signed in
+      return;
+    }
     if (j.approve) { document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code, approve: true } })); save(); close(); state.tab = 'group'; render(); toast(t('join.pending')); return; }
     document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code } }));
     save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
@@ -6832,6 +7374,7 @@ const actions = {
     const x = verseFromKey(k); if (!x.text) return;
     const text = `${x.text}\n— ${refText({ b: x.b, c: x.c, v: x.v, v2: x.v })} (${x.tr})\n\n${verseLink(x)}`;
     if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
+    data.verseShares = (data.verseShares || 0) + 1; data.extSharesGiven = (data.extSharesGiven || 0) + 1; save();
   },
   'open-saved-verse': k => { const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
   'verse-read': ref => { const r = parseRef(ref); openReader(r ? { ...r } : {}); },
@@ -6857,8 +7400,16 @@ const actions = {
   },
   export: exportData,
   fullscreen: toggleFullscreen,
-  login: id => id === 'phone' ? phoneLogin() : completeLogin(id),
-  logout: () => { setSession(null); close(); render(); toast(t('acct.loggedOut')); },
+  login: id => CLOUD ? welcomeSheet() : id === 'phone' ? phoneLogin() : completeLogin(id),
+  'email-login': () => emailLogin(),
+  'wl-open': () => welcomeSheet(),
+  tour: () => startTour(),
+  'wl-sign': id => welcomeSign(id),
+  'wl-later': () => { try { sessionStorage.setItem('wl-later', '1'); } catch {} close(); },
+  'cl-resend': () => { const c = state.clEmail; if (!c) return; Cloud.sendLink(c.email, c.name).then(() => toast(t('cl.resent')), err => toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail'))); },
+  'cl-approve': pair => { const [gid, uid] = pair.split('|'); cloudMember(gid, uid, true); },
+  'cl-remove': pair => { const [gid, uid] = pair.split('|'); if (state.rmArm !== pair) { state.rmArm = pair; const b = [...document.querySelectorAll('[data-action="cl-remove"]')].find(x => x.dataset.id === pair); if (b) { b.textContent = t('adm.sure'); b.classList.add('armed'); } return; } state.rmArm = null; cloudMember(gid, uid, false); },
+  logout: () => { if (CLOUD) Cloud.signOut(); setSession(null); close(); render(); toast(t('acct.loggedOut')); },
   'gate-scope': id => { state.composeScope = id; document.querySelectorAll('[data-action="gate-scope"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'gate-later': () => { const sc = $('#feed-scroll'), card = $('#compose-card'); if (sc && card) sc.scrollTo({ top: card.offsetTop + sc.clientHeight, behavior: 'smooth' }); },
   'intro-again': () => { Object.assign(data.settings, { gestureHint: false, hintArmed: false, triedLeft: false, triedRight: false, swipedBack: false, prayerBackHint: false, quiz: {}, readerOpened: false }); save(); close(); state.tab = 'feed'; state.immersive = true; render(0); toast(t('toast.intro')); },
@@ -6935,6 +7486,7 @@ async function toggleFullscreen() {
   const entering = !state.immersive;
   state.immersive = entering;
   if (entering) { if (!BIBLE_MODE) state.tab = 'feed'; state.feed = 'public'; state.immFeed = 'public'; }
+  else if (BIBLE_MODE) { state.immFeed = 'public'; state.tab = 'read'; state.groupDetail = null; } // daily bible: closing the feed always lands on 읽기
   else if (state.immFeed === 'group') { state.immFeed = 'public'; state.tab = 'group'; } // closing a group returns to the 공동체 tab
   else state.immFeed = 'public';
   render(state.tab === 'feed' && state.feed === 'public' ? idx : 0);
@@ -7010,6 +7562,8 @@ function doubleTap(el, x, y) {
   h.style.left = x + 'px'; h.style.top = y + 'px'; document.body.appendChild(h); setTimeout(() => h.remove(), 750);
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
+if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
+  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }

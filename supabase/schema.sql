@@ -40,6 +40,8 @@ create table if not exists groups (
   meeting_live jsonb,                              -- { date, ref } while a meeting is reading together
   created_at timestamptz not null default now()
 );
+-- "가장 꾸준한 사람" ranking: the admin always sees it; 순장 (leaders) only when the admin turns this on
+alter table groups add column if not exists top_to_leaders boolean not null default false;
 create table if not exists group_members (
   group_id uuid references groups on delete cascade,
   user_id uuid references profiles on delete cascade,
