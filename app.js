@@ -2311,11 +2311,10 @@ function bibleShell() {
   const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'sermon-new'; pill.querySelector('.label').dataset.i18n = 'bb.newNote'; }
   const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
   const nav = document.querySelector('.bottom-nav');
-  // feed (the full-screen scroll) · read · ＋ · sermon notes · groups · me
+  // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the "+ 설교 노트" button at the top right
   const tabBtn = ([id, ic, k]) => `<button data-tab="${id}"><span class="nav-ico" data-icon="${ic}"></span><span data-i18n="${k}"></span></button>`;
   if (nav) { nav.classList.add('bb-nav'); nav.innerHTML = `<button data-action="fullscreen" class="nav-feed"><span class="nav-ico" data-icon="sun"></span><span data-i18n="bn.feed"></span></button>`
     + tabBtn(['read', 'book', 'bb.read'])
-    + `<button data-action="bible-plus" class="nav-plus" data-i18n-aria="bn.plus"><span class="nav-plus-ic" data-icon="plus"></span></button>`
     + [['notes', 'mic', 'bb.notes'], ['group', 'people', 'bn.group'], ['me', 'user', 'bb.me']].map(tabBtn).join(''); }
 }
 // A reading day: a chapter finished, or at least a minute spent reading (same rule as the dashboard).
