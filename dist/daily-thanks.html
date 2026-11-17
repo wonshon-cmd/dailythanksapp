@@ -1630,6 +1630,9 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .post.card-page .post-rail, .post.imm .post-rail { bottom: calc(96px + var(--safe-bottom)); }
 @media (max-height: 700px) { .post.card-page .post-rail:not(.card-close) { gap: 16px; } }
 .imm-reach { display: block; margin-top: 6px; font-size: 13px; color: var(--muted, #9a9a9a); }
+/* daily bible: the top + is a round button (sermon notes have their own tab) */
+.write-pill.plus-only{width:42px;padding:0;justify-content:center}
+.write-pill.plus-only .plus{font-size:18px}
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1667,6 +1670,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'bp.thankSomeone': "감사 전하기",
     'adm.topLeaders': "순장도 ‘가장 꾸준한 사람’ 보기",
     'cl.title': "로그인", 'cl.name': "이름", 'cl.namePh': "감사 카드에 보내는 사람으로 보여요", 'cl.email': "메일 주소", 'cl.send': "로그인 링크 받기", 'cl.sending': "보내는 중…", 'cl.badEmail': "메일 주소를 확인해 주세요.", 'cl.sendFail': "메일을 보내지 못했어요. 잠시 뒤에 다시 해 주세요.", 'cl.tooMany': "메일을 너무 자주 보냈어요. 잠시 뒤에 다시 해 주세요.", 'cl.sentTitle': "메일을 확인해 주세요", 'cl.sentBody': "{email}로 로그인 링크를 보냈어요. 메일의 링크를 누르면 바로 로그인돼요.", 'cl.code': "메일에 숫자 코드가 있다면", 'cl.verify': "코드로 로그인", 'cl.codeBad': "코드가 맞지 않거나 시간이 지났어요.", 'cl.resend': "메일 다시 보내기", 'cl.resent': "메일을 다시 보냈어요.", 'cl.linkBad': "로그인 링크가 만료되었어요. 다시 받아 주세요.", 'cl.needGroup': "공동체를 만들려면 먼저 로그인해 주세요. 초대한 사람만 들어올 수 있어요.", 'cl.needJoin': "‘{name}’에 들어가려면 로그인해 주세요. 로그인하면 바로 참여돼요.", 'cl.badInvite': "초대 링크가 바뀌었거나 없어졌어요. 새 링크를 받아 주세요.", 'cl.fail': "저장하지 못했어요. 인터넷 연결을 확인해 주세요.", 'cl.waiting': "참여 요청", 'cl.approve': "승인", 'cl.decline': "거절", 'cl.approved': "승인했어요.", 'cl.removed': "공동체에서 내보냈어요.", 'cl.noName': "이름 없음", 'cl.signIn': "로그인",
     's.legal': '정보', 's.privacy': '개인정보처리방침', 's.terms': '이용약관', 's.support': '문의하기', 's.delete': '계정 삭제', 'del.body': '계정과 내가 쓴 감사, 저장·좋아요 기록이 모두 삭제돼요. 삭제하면 되돌릴 수 없어요.', 'del.ok': '삭제', 'del.done': '계정을 삭제했어요. 함께해 주셔서 고마웠어요.', 's.version': '버전',
@@ -1809,6 +1813,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'bp.thankSomeone': "Thank someone",
     'adm.topLeaders': "Leaders can see “Most consistent” too",
     'cl.title': "Sign in", 'cl.name': "Name", 'cl.namePh': "Shown as the sender on thank-you cards", 'cl.email': "Email", 'cl.send': "Email me a sign-in link", 'cl.sending': "Sending…", 'cl.badEmail': "Please check the email address.", 'cl.sendFail': "Couldn’t send the email. Please try again shortly.", 'cl.tooMany': "Too many emails for now. Please try again shortly.", 'cl.sentTitle': "Check your email", 'cl.sentBody': "We sent a sign-in link to {email}. Tap the link in the email to sign in.", 'cl.code': "If the email has a number code", 'cl.verify': "Sign in with code", 'cl.codeBad': "That code is wrong or has expired.", 'cl.resend': "Send the email again", 'cl.resent': "Sent again.", 'cl.linkBad': "That sign-in link has expired. Please request a new one.", 'cl.needGroup': "Sign in first to create a group. Only people you invite can join.", 'cl.needJoin': "Sign in to join “{name}”. You’ll be in as soon as you do.", 'cl.badInvite': "This invite link has changed or no longer exists. Please ask for a new one.", 'cl.fail': "Couldn’t save. Please check your connection.", 'cl.waiting': "Waiting to join", 'cl.approve': "Approve", 'cl.decline': "Decline", 'cl.approved': "Approved.", 'cl.removed': "Removed from the group.", 'cl.noName': "No name", 'cl.signIn': "Sign in",
     's.legal': 'About', 's.privacy': 'Privacy Policy', 's.terms': 'Terms of Use', 's.support': 'Contact support', 's.delete': 'Delete account', 'del.body': 'Your account, your notes, and your saves and likes will be deleted. This can’t be undone.', 'del.ok': 'Delete', 'del.done': 'Your account was deleted. Thank you for being here.', 's.version': 'Version',
@@ -1951,6 +1956,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'bp.thankSomeone': "Agradecer a alguien",
     'adm.topLeaders': "Los líderes también ven “Más constantes”",
     'cl.title': "Iniciar sesión", 'cl.name': "Nombre", 'cl.namePh': "Aparece como remitente en las tarjetas de gratitud", 'cl.email': "Correo", 'cl.send': "Enviarme un enlace", 'cl.sending': "Enviando…", 'cl.badEmail': "Revisa el correo.", 'cl.sendFail': "No se pudo enviar el correo. Inténtalo en un momento.", 'cl.tooMany': "Demasiados correos por ahora. Inténtalo en un momento.", 'cl.sentTitle': "Revisa tu correo", 'cl.sentBody': "Enviamos un enlace a {email}. Tócalo en el correo para iniciar sesión.", 'cl.code': "Si el correo trae un código numérico", 'cl.verify': "Entrar con el código", 'cl.codeBad': "El código no es correcto o ya venció.", 'cl.resend': "Enviar el correo otra vez", 'cl.resent': "Enviado otra vez.", 'cl.linkBad': "El enlace venció. Pide uno nuevo.", 'cl.needGroup': "Inicia sesión para crear un grupo. Solo entran las personas que invites.", 'cl.needJoin': "Inicia sesión para unirte a “{name}”. Entrarás enseguida.", 'cl.badInvite': "Este enlace cambió o ya no existe. Pide uno nuevo.", 'cl.fail': "No se pudo guardar. Revisa tu conexión.", 'cl.waiting': "Esperando unirse", 'cl.approve': "Aprobar", 'cl.decline': "Rechazar", 'cl.approved': "Aprobado.", 'cl.removed': "Salió del grupo.", 'cl.noName': "Sin nombre", 'cl.signIn': "Iniciar sesión",
     's.legal': 'Acerca de', 's.privacy': 'Política de privacidad', 's.terms': 'Términos de uso', 's.support': 'Contactar soporte', 's.delete': 'Eliminar cuenta', 'del.body': 'Se eliminarán tu cuenta, tus notas y tus guardados y me gusta. No se puede deshacer.', 'del.ok': 'Eliminar', 'del.done': 'Eliminamos tu cuenta. Gracias por estar aquí.', 's.version': 'Versión',
@@ -4171,10 +4177,10 @@ function bibleShell() {
   document.querySelectorAll('.wordmark').forEach(w => { w.innerHTML = 'daily <em>bible</em>'; });
   const sp = document.getElementById('splash'); if (sp) sp.setAttribute('aria-label', 'daily bible');
   const tag = document.querySelector('#splash .splash-tag'); if (tag) tag.innerHTML = '<span>Read the Word daily.</span><span>Take notes.</span><span>Live it.</span>';
-  const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'sermon-new'; pill.querySelector('.label').dataset.i18n = 'bb.newNote'; }
+  const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'bible-write'; pill.classList.add('plus-only'); pill.setAttribute('aria-label', '+'); pill.querySelector('.label').remove(); } // sermon notes have their own tab; + is for writing
   const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
   const nav = document.querySelector('.bottom-nav');
-  // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the "+ 설교 노트" button at the top right
+  // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the + button at the top right (감사 · 기도제목 · 묵상 · 감사 전하기)
   const tabBtn = ([id, ic, k]) => `<button data-tab="${id}"><span class="nav-ico" data-icon="${ic}"></span><span data-i18n="${k}"></span></button>`;
   if (nav) { nav.classList.add('bb-nav'); nav.innerHTML = `<button data-action="fullscreen" class="nav-feed"><span class="nav-ico" data-icon="sun"></span><span data-i18n="bn.feed"></span></button>`
     + tabBtn(['read', 'book', 'bb.read'])
@@ -5020,7 +5026,7 @@ function renderImmersive(keepIndex = 0) {
   ${groupMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${esc(L(data.groups.find(g => g.id === state.group)?.name || t('nav.group')))}${state.groupKind ? ' · ' + t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[state.groupKind]) : ''}</span></button>`
     : prayerMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${t('pr.section')}</span></button>`
     : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>${BIBLE_MODE ? 'bible' : 'thanks'}</em></span></div>`}
-  <button class="imm-plus" data-action="${BIBLE_MODE ? 'sermon-new' : 'imm-write'}" aria-label="${BIBLE_MODE ? t('bb.newNote') : t('top.write')}">${icon('plus')}</button>
+  <button class="imm-plus" data-action="${BIBLE_MODE ? 'bible-write' : 'imm-write'}" aria-label="${BIBLE_MODE ? t('bp.title2') : t('top.write')}">${icon('plus')}</button>
   ${!groupMode && !prayerMode ? safeHtml(immStreak) : ''}
   <div class="imm-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button><button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button></div>
   ${showNudge() && !prayerMode ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
@@ -6857,6 +6863,8 @@ const actions = {
   usage: () => usageSheet(),
   'bible-plus': () => { const row = (action, ic, label, id = '') => `<button class="list-row" data-action="${action}"${id ? ` data-id="${id}"` : ''}><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
     showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sermon-new', 'mic', t('bp.sermon'))}${row('bp-write', 'book', t('bp.med'), 'meditation')}${row('bp-write', 'sun', t('bp.thanks'), 'today')}${row('bp-write', 'pray', t('bp.prayer'), 'prayer')}${row('plan-new', 'calendar', t('bp.plan'))}</div>` }); },
+  'bible-write': () => { const row = (ic, label, kind) => `<button class="list-row" data-action="bp-write" data-id="${kind}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
+    showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sun', t('bp.thanks'), 'today')}${row('pray', t('bp.prayer'), 'prayer')}${row('book', t('bp.med'), 'meditation')}${row('heart', t('bp.thankSomeone'), 'thanks')}</div>` }); },
   'bp-write': kind => { close(); state.medRef = null; state.medSource = null; state.medNote = false; compose(kind, null); },
   'size-cycle': () => { const order = ['s', 'm', 'l', 'xl'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
   'imm-streak': () => { if (anyUnseen() && !BIBLE_MODE) { state.immersive = false; state.tab = 'group'; render(); } else if (anyUnseen()) { state.prevFeed = 'public'; state.immFeed = 'prayer'; render(0); } else toast(t('stk.write').replace('{n}', BIBLE_MODE ? readDays() : writeStreak())); },

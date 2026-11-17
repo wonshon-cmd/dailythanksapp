@@ -1618,3 +1618,6 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .post.card-page .post-rail, .post.imm .post-rail { bottom: calc(96px + var(--safe-bottom)); }
 @media (max-height: 700px) { .post.card-page .post-rail:not(.card-close) { gap: 16px; } }
 .imm-reach { display: block; margin-top: 6px; font-size: 13px; color: var(--muted, #9a9a9a); }
+/* daily bible: the top + is a round button (sermon notes have their own tab) */
+.write-pill.plus-only{width:42px;padding:0;justify-content:center}
+.write-pill.plus-only .plus{font-size:18px}
