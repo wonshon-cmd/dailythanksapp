@@ -1497,6 +1497,11 @@ body.capturing #app{filter:blur(18px)}
 .fo-links button { border: 0; background: none; padding: 4px 2px; font: inherit; color: #9aa0a6; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #d6d9db; }
 .why-q { font-size: 16px; }
 .post.imm > .fo-links { position: absolute; left: 34px; bottom: calc(96px + var(--safe-bottom, 0px)); margin: 0; }
+.pl-behind { grid-area: with; font-size: 12px; color: #6b7075; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #d6d9db; cursor: pointer; }
+.pl-row .g-ch { grid-template-areas: "name name" "bar go" "with with"; }
+.cu-t { font-size: 20px; margin: 0 0 6px; }
+.pl-row .g-ch { grid-template-areas: "name name" "bar go" "behind behind" "with with"; }
+.pl-behind { grid-area: behind; }
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1658,6 +1663,7 @@ const STR = {
     'ss.ph': "설교 노트 검색", 'ss.none': "‘{q}’ 검색 결과가 없어요", 'ss.count': "{n}개", 'ss.clear': "지우기", 'ss.inTr': "받아쓰기",
     'fp.kick': "{g} 기도제목 · {i}/{n}", 'fv.kick': "오늘 읽을 곳 · {r}", 'fv.count': "{i} / {n}", 'fv.doneTitle': "오늘 분량을 다 읽었어요", 'fv.done': "읽었어요", 'fv.doneSub': "{name} · {d}일째", 'fv.marked': "오늘 읽기를 채웠어요",
     'vw.row': "보기 설정", 'vw.rowSub': "앱 열 때 먼저 볼 것, 피드에 보일 것", 'vw.first': "앱을 열면 먼저", 'vw.fPr': "순원 기도제목", 'vw.fVerse': "오늘 읽을 말씀 (읽기 계획)", 'vw.fCh': "오늘의 챌린지", 'vw.howMany': "기도제목 몇 개까지", 'vw.all': "전부", 'vw.pause': "잠시 쉬기", 'vw.on': "켜기", 'vw.h24': "24시간", 'vw.w1': "일주일", 'vw.off': "끄기", 'vw.until': "{d}에 다시 켜져요", 'vw.feed': "피드에 보일 것", 'vw.thanks': "감사", 'vw.prayer': "기도제목", 'vw.med': "묵상", 'vw.strangers': "모르는 사람 글도 보기", 'vw.strangersSub': "끄면 내 글과 소그룹·초대로 연결된 사람 글만 보여요", 'fo.off': "이 화면 끄기", 'fo.h24': "24시간 끄기", 'fo.offDone': "껐어요. 설정 › 보기 설정에서 다시 켤 수 있어요.", 'fo.snoozed': "24시간 동안 쉬어요", 'why.title': "이게 뭐예요?", 'why.pr': "‘{g}’에 새 기도제목이 올라와서, 앱을 열면 먼저 보여 드려요. 한 번 본 기도제목은 다시 맨 앞에 나오지 않아요.", 'why.plan': "‘{name}’ 계획의 오늘 분량이라 먼저 보여 드려요. ({d}/{t}일째)", 'why.settings': "보기 설정", 'emp.title': "아직 함께 나눌 사람이 없어요", 'emp.sub': "소그룹을 만들거나 초대 링크로 사람들을 불러 보세요. 내 글과 연결된 사람 글만 여기 보여요.", 'emp.group': "소그룹 만들기", 'emp.strangers': "모르는 사람 감사도 보기",
+    'cu.kick': "읽기가 밀렸어요", 'cu.title': "{n}일 밀렸어요. 괜찮아요.", 'cu.sub': "남은 {d}일에 나눠서 하루 {per}장씩 읽을까요? 끝나는 날은 그대로예요.", 'cu.yes': "나눠서 읽기", 'cu.no': "그대로 둘게요", 'cu.done': "남은 날에 고르게 나눴어요. 오늘은 {r}", 'cu.short': "{n}일 밀림 · 남은 날에 나누기",
     'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
@@ -1788,6 +1794,7 @@ const STR = {
     'ss.ph': "Search sermon notes", 'ss.none': "Nothing found for “{q}”", 'ss.count': "{n} found", 'ss.clear': "Clear", 'ss.inTr': "Transcript",
     'fp.kick': "{g} prayer request · {i}/{n}", 'fv.kick': "Today’s reading · {r}", 'fv.count': "{i} / {n}", 'fv.doneTitle': "That’s today’s reading", 'fv.done': "I read it", 'fv.doneSub': "{name} · day {d}", 'fv.marked': "Today’s reading is done",
     'vw.row': "What you see", 'vw.rowSub': "What comes first when you open the app, and what’s in the feed", 'vw.first': "When the app opens, first show", 'vw.fPr': "Group prayer requests", 'vw.fVerse': "Today’s reading (plans)", 'vw.fCh': "Today’s challenge", 'vw.howMany': "How many prayer requests", 'vw.all': "All", 'vw.pause': "Take a break", 'vw.on': "On", 'vw.h24': "24 hours", 'vw.w1': "A week", 'vw.off': "Off", 'vw.until': "Back on {d}", 'vw.feed': "In the feed", 'vw.thanks': "Thanks", 'vw.prayer': "Prayer requests", 'vw.med': "Reflections", 'vw.strangers': "Also show people I don’t know", 'vw.strangersSub': "When off, you only see your posts and people you’re connected to through groups and invites", 'fo.off': "Turn this off", 'fo.h24': "Off for 24 hours", 'fo.offDone': "Turned off. Turn it back on in Settings › What you see.", 'fo.snoozed': "Taking a 24-hour break", 'why.title': "What’s this?", 'why.pr': "New prayer requests were shared in ‘{g}’, so they come first when you open the app. Once you’ve seen one, it won’t come first again.", 'why.plan': "It’s today’s part of your ‘{name}’ plan, so it comes first. (Day {d} of {t})", 'why.settings': "What you see", 'emp.title': "No one to share with yet", 'emp.sub': "Start a group or invite people with a link. Only your posts and people you’re connected to show here.", 'emp.group': "Start a group", 'emp.strangers': "Show thanks from people I don’t know",
+    'cu.kick': "Fell behind", 'cu.title': "{n} days behind. That’s okay.", 'cu.sub': "Spread the rest over the {d} days left — about {per} chapters a day? The end date stays the same.", 'cu.yes': "Spread it out", 'cu.no': "Leave it", 'cu.done': "Spread evenly over the days left. Today: {r}", 'cu.short': "{n} days behind · spread the rest",
     'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
@@ -2176,6 +2183,7 @@ const STR = {
     'ss.ph': "Buscar notas de sermón", 'ss.none': "No se encontró “{q}”", 'ss.count': "{n} encontradas", 'ss.clear': "Borrar", 'ss.inTr': "Transcripción",
     'fp.kick': "Petición de {g} · {i}/{n}", 'fv.kick': "Lectura de hoy · {r}", 'fv.count': "{i} / {n}", 'fv.doneTitle': "Esa es la lectura de hoy", 'fv.done': "Ya lo leí", 'fv.doneSub': "{name} · día {d}", 'fv.marked': "Lectura de hoy completa",
     'vw.row': "Qué ves", 'vw.rowSub': "Qué aparece primero al abrir la app y qué hay en el feed", 'vw.first': "Al abrir la app, primero", 'vw.fPr': "Peticiones de oración del grupo", 'vw.fVerse': "Lectura de hoy (planes)", 'vw.fCh': "Reto de hoy", 'vw.howMany': "Cuántas peticiones", 'vw.all': "Todas", 'vw.pause': "Tomar un descanso", 'vw.on': "Activado", 'vw.h24': "24 horas", 'vw.w1': "Una semana", 'vw.off': "Apagado", 'vw.until': "Vuelve el {d}", 'vw.feed': "En el feed", 'vw.thanks': "Gratitud", 'vw.prayer': "Peticiones", 'vw.med': "Reflexiones", 'vw.strangers': "Mostrar también a personas que no conozco", 'vw.strangersSub': "Si está apagado, solo ves lo tuyo y a quienes estás conectado por grupos e invitaciones", 'fo.off': "Apagar esto", 'fo.h24': "Apagar 24 horas", 'fo.offDone': "Apagado. Puedes activarlo en Ajustes › Qué ves.", 'fo.snoozed': "Descanso de 24 horas", 'why.title': "¿Qué es esto?", 'why.pr': "Hay nuevas peticiones en ‘{g}’, por eso aparecen primero al abrir la app. Una vez vista, no vuelve a aparecer primero.", 'why.plan': "Es la porción de hoy de tu plan ‘{name}’, por eso aparece primero. (Día {d} de {t})", 'why.settings': "Qué ves", 'emp.title': "Aún no hay con quién compartir", 'emp.sub': "Crea un grupo o invita a otros con un enlace. Aquí solo aparece lo tuyo y de quienes estás conectado.", 'emp.group': "Crear un grupo", 'emp.strangers': "Ver gratitud de desconocidos",
+    'cu.kick': "Te atrasaste", 'cu.title': "{n} días de atraso. No pasa nada.", 'cu.sub': "¿Repartimos lo que falta en los {d} días que quedan, unos {per} capítulos al día? La fecha final no cambia.", 'cu.yes': "Repartir", 'cu.no': "Dejarlo así", 'cu.done': "Repartido en los días que quedan. Hoy: {r}", 'cu.short': "{n} días de atraso · repartir",
     'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
@@ -3431,7 +3439,8 @@ async function fillPlanCards() {
   if (!document.body.contains(slot) || !verses.length) return;
   const n = verses.length;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };   // a note on a later verse covers what was read so far
-  slot.outerHTML = verses.map((x, i) => { const k = verseKey(x.b, x.c, x.v), liked = (data.verseLikes || []).includes(k), saved = (data.savedVerses || []).some(s => s.key === k);
+  const cu = c.cuDismissed === today() ? '' : catchUpCard(c);
+  slot.outerHTML = cu + verses.map((x, i) => { const k = verseKey(x.b, x.c, x.v), liked = (data.verseLikes || []).includes(k), saved = (data.savedVerses || []).some(s => s.key === k);
     return `<article class="post card-page fv-card" id="v-${x.b}-${x.c}-${x.v}" data-fv="${esc(c.id)}">
       <div class="card-inner"><button class="fv-src why-btn" data-action="first-why" data-id="plan|${esc(c.id)}">${esc(L(c.name) || chName(c))} · ${t('fc.dayN').replace('{n}', c.days.length + 1)}<i class="why-i">?</i></button>
         <div class="post-kind">${icon('book')}<span>${esc(t('fv.kick').replace('{r}', range))}</span></div>
@@ -3662,6 +3671,7 @@ function planSection(plans) {
       ${plans.length ? '' : `<p class="hint">${t('pl.sub')}</p>`}
       ${plans.map(c => `<div class="pl-row"><button class="g-ch" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
+        ${planBehind(c) && c.cuDismissed !== today() ? `<span class="pl-behind" data-action="cu-ask" data-id="${esc(c.id)}">${esc(t('cu.short').replace('{n}', planBehind(c).behind))} ›</span>` : ''}
         ${(c.members || []).length > 1 ? `<span class="pl-with">${icon('people')}${esc((c.members || []).map(m => L(m)).join(', '))}</span>` : ''}</button>
         <button class="round-btn pl-inv" data-action="plan-invite" data-id="${esc(c.id)}" aria-label="${esc(t('pl.invite'))}">${icon('share')}</button></div>`).join('')}
     </section>`;
@@ -5104,9 +5114,35 @@ function chBiblePlan() {
 // Chapters for day k (0-based) of a Bible plan: spread evenly, so no day is more than one chapter heavier.
 function chPlanDay(ch, k) {
   const p = ch.plan; if (!p) return null;
+  const cu = ch.catchUp;   // after "spread it out": the rest is split evenly over the days that were left
+  if (cu && k >= cu.k0) { const j = k - cu.k0, s0 = cu.next + Math.floor(j * cu.rem / cu.days), e0 = cu.next + Math.floor((j + 1) * cu.rem / cu.days) - 1;
+    return { start: chAt(Math.min(s0, chIndex(...p.to))), end: chAt(Math.min(Math.max(s0, e0), chIndex(...p.to))) }; }
   const a = chIndex(...p.from), days = chLen(ch), s0 = a + Math.floor(k * p.total / days), e0 = a + Math.floor((k + 1) * p.total / days) - 1;
   return { start: chAt(s0), end: chAt(Math.max(s0, e0)) };
 }
+// Behind on a reading plan? How many days, and what spreading the rest over the days left would look like.
+function planBehind(c) {
+  if (!c?.plan || chDone(c)) return null;
+  const base = c.catchUp ? c.catchUp.at : c.start, k0 = c.catchUp ? c.catchUp.k0 : 0;
+  const doneBefore = c.days.length - k0 - (c.lastDay === today() ? 1 : 0), expected = Math.max(0, dayDiff(base, today()));
+  const behind = expected - doneBefore; if (behind < 1) return null;
+  const daysLeft = Math.max(1, chLen(c) - dayDiff(c.start, today())), next = chIndex(...chPlanDay(c, c.days.length).start), rem = chIndex(...c.plan.to) - next + 1;
+  if (rem < 1) return null;
+  return { behind, daysLeft, rem, next, per: Math.max(1, Math.round(rem / daysLeft * 10) / 10) };
+}
+function catchUp(id) {
+  const c = data.challenges.find(x => x.id === id), b = planBehind(c); if (!b) return;
+  c.catchUp = { at: today(), k0: c.days.length, next: b.next, rem: b.rem, days: b.daysLeft };
+  // the plan's length becomes "what's done + the days left", so the end date doesn't move
+  c.length = c.days.length + b.daysLeft; c.start = (() => { const d = new Date(today() + 'T00:00:00'); d.setDate(d.getDate() - c.days.length); return d.toLocaleDateString('en-CA'); })();
+  save(); toast(t('cu.done').replace('{r}', chPlanText(chPlanDay(c, c.days.length))));
+}
+const catchUpCard = c => { const b = planBehind(c); if (!b) return '';
+  return `<article class="post card-page cu-card" data-cu="${esc(c.id)}"><div class="card-inner">
+    <div class="post-kind">${icon('book')}<span>${esc(L(c.name) || chName(c))} · ${t('cu.kick')}</span></div>
+    <p class="card-title">${esc(t('cu.title').replace('{n}', b.behind))}</p>
+    <p class="card-sub">${esc(t('cu.sub').replace('{d}', b.daysLeft).replace('{per}', b.per))}</p>
+    <div class="card-actions"><button class="primary" data-action="cu-yes" data-id="${esc(c.id)}">${t('cu.yes')}</button><button class="secondary" data-action="cu-no" data-id="${esc(c.id)}">${t('cu.no')}</button></div></div></article>`; };
 const chPlanText = d => { if (!d) return ''; const [b1, c1] = d.start, [b2, c2] = d.end;
   return b1 === b2 ? (c1 === c2 ? refText({ b: b1, c: c1 }) : `${bookName(b1)} ${c1}–${c2}${lang() === 'ko' ? '장' : ''}`) : `${refText({ b: b1, c: c1 })} – ${refText({ b: b2, c: c2 })}`; };
 function chOpts() {
@@ -6107,6 +6143,11 @@ const actions = {
   'vw-pause': k => { const P = { ...(data.settings.prefs || {}) }; P.firstOff = k === 'off'; P.firstUntil = k === 'h24' ? new Date(Date.now() + 864e5).toISOString() : k === 'w1' ? new Date(Date.now() + 7 * 864e5).toISOString() : '';
     data.settings.prefs = P; save(); viewSettings(); },
   'emp-strangers': () => { setPref('strangers', true); render(0); },
+  'cu-yes': id => { catchUp(id); if (BIBLE_MODE) { close(); render(); } else { state.firstPrIds = state.firstPrIds || []; render(0); } },
+  'cu-no': id => { const c = data.challenges.find(x => x.id === id); if (c) { c.cuDismissed = today(); save(); } document.querySelector(`[data-cu="${id}"]`)?.remove(); close(); },
+  'cu-ask': id => { const c = data.challenges.find(x => x.id === id), b = planBehind(c); if (!b) return;
+    showSheet({ title: esc(L(c.name) || chName(c)), body: `<p class="card-title cu-t">${esc(t('cu.title').replace('{n}', b.behind))}</p><p class="hint">${esc(t('cu.sub').replace('{d}', b.daysLeft).replace('{per}', b.per))}</p>
+      <div class="sheet-actions"><button class="primary" data-action="cu-yes" data-id="${esc(id)}">${t('cu.yes')}</button><button class="secondary" data-action="cu-no" data-id="${esc(id)}">${t('cu.no')}</button></div>` }); },
   'plan-read-done': id => { const c = data.challenges.find(x => x.id === id); if (!c) return;
     planChapters(c).forEach(([b, ch]) => { const k = readKey(b, ch); if (!data.readDone.includes(k)) data.readDone.push(k); data.readLog = data.readLog || {}; data.readLog[k] = today(); });
     const last = planChapters(c).slice(-1)[0]; if (last) data.reading = { b: last[0], c: last[1], v: 1, at: new Date().toISOString() };
