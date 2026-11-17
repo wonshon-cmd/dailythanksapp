@@ -712,5 +712,8 @@
   "gh.right": "Desliza a la derecha para peticiones de oración",
   "gh.up": "Desliza hacia arriba para la siguiente",
   "s.intro": "Volver a ver los consejos iniciales",
-  "toast.intro": "Los consejos iniciales se verán de nuevo."
+  "toast.intro": "Los consejos iniciales se verán de nuevo.",
+  "note.mine": "Mi reflexión",
+  "note.pickRange": "¿Sobre qué versículos reflexionas?",
+  "j.byBible": "En orden bíblico"
 }
