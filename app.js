@@ -1575,7 +1575,7 @@ function renderImmersive(keepIndex = 0) {
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : p.scope === 'group' ? esc(groupNames(p)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       <aside class="post-rail">
-        ${p.kind === 'prayer' ? prayBtn(p) : ''}<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>
+        ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
@@ -1583,6 +1583,7 @@ function renderImmersive(keepIndex = 0) {
       </aside></article>`;
   }).join('')}</div>
   <div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>
+  <button class="imm-plus" data-action="imm-write" aria-label="${t('top.write')}">${icon('plus')}</button>
   ${prayerMode ? `<div class="imm-switch"><span class="imm-title">${t('pl.kicker')}</span></div>${data.settings.prayerBackHint ? '' : `<p class="swipe-hint imm-back-hint">${t('pl.back')}<span aria-hidden="true">›</span></p>`}`
     : groupMode ? `<div class="imm-switch"><span class="imm-title">${esc(L(data.groups.find(g => g.id === gid)?.name))}</span></div>` : ''}
   <button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button>
@@ -1658,7 +1659,8 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   state.sheetScope = state.sheetScope || 'public';
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
   const ahead = kind === 'ahead', med = kind === 'meditation';
-  const kinds = seg([['today', t('kind.today'), 'sun'], ['ahead', t('kind.aheadShort'), 'sunrise'], ['thanks', t('kind.thanks'), 'send'], ...(featureOn('prayer') ? [['prayer', t('kind.prayer'), 'pray']] : [])], 'pick-kind', kind, 'seg-kinds' + (featureOn('prayer') ? ' four' : ''));
+  const kinds = `<div class="kind-chips">${[['today', t('kind.today')], ['ahead', t('kind.aheadShort')], ['thanks', t('kind.thanks')], ['meditation', t('kind.meditation')], ...(featureOn('prayer') ? [['prayer', t('kind.prayer')]] : [])]
+    .map(([id, label]) => `<button type="button" class="kind-chip ${kind === id ? 'active' : ''}" data-action="pick-kind" data-id="${id}">${label}</button>`).join('')}</div>`;
   if (kind === 'prayer' && !state.prayerScopeSet) { Object.assign(visOf('compose'), { mode: 'private', targets: data.groups[0] ? [data.groups[0].id] : [] }); state.prayerScopeSet = true; }
   if (kind === 'thanks') {
     showSheet({ title: t('compose.title'), body: `<form id="compose-form" class="sheet-form">${kinds}${thanksForm({ text: keepText, name: state.tyName })}</form>` });
@@ -1672,8 +1674,8 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     });
     return;
   }
-  showSheet({ title: med ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form">
-    ${med ? `<p class="daily-q">${icon('book')}<span>${t('kind.meditation')}${state.medRef ? ' · ' + esc(refText(state.medRef)) : ''}</span></p>` : kinds}
+  showSheet({ title: med && state.medRef ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form">
+    ${med && state.medRef ? `<p class="daily-q">${icon('book')}<span>${t('kind.meditation')} · ${esc(refText(state.medRef))}</span></p>` : kinds}
     ${ahead || med || kind === 'prayer' ? '' : dailyQLine()}
     <textarea id="gratitude-text" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
@@ -2630,6 +2632,11 @@ const actions = {
   },
   'pick-chtype': id => { state.chType = id; document.querySelectorAll('[data-action="pick-chtype"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'imm-feed': k => { state.immFeed = k; render(0); },
+  'imm-write': () => {
+    state.medRef = null;
+    if (state.immFeed === 'group' && state.group) Object.assign(visOf('compose'), { mode: 'private', targets: [state.group] }); // inside a group: share with that group
+    compose(state.immFeed === 'prayer' ? 'prayer' : 'today', null);
+  },
   'imm-group': gid => { state.group = gid; render(0); },
   'group-write': gid => { Object.assign(visOf('compose'), { mode: 'private', targets: [gid] }); compose('today', null); },
   'group-nudge': gid => {
