@@ -2851,7 +2851,8 @@ const noteQuota = () => {
   return { plan: plan?.plan || 'free', used: kept.reduce((x, n) => x + noteBytes(n), 0), limit: plan ? PAID_BYTES : FREE_BYTES, unit: 'bytes', monthUsed: month, monthLimit: plan ? NOTE_FAIR : null,
     dayUsed: made.filter(n => n.date === today()).length, dayLimit: plan ? 10 : 3, weekUsed: made.filter(n => n.date >= daysAgo(6)).length, weekLimit: plan ? 40 : 10 };
 };
-const quotaFull = q => q.used >= q.limit || (q.plan !== 'free' && q.monthLimit && q.monthUsed >= q.monthLimit);
+const PAID = false;   // first store release: no purchases, no usage limits, no usage screen
+const quotaFull = q => PAID && (q.used >= q.limit || (q.plan !== 'free' && q.monthLimit && q.monthUsed >= q.monthLimit));
 // Usage, Claude-style: tucked away under Settings › Storage, small type, thin bars, when each limit refills.
 const fmtLeft = iso => { const ms = Date.parse(iso || '') - Date.now(); if (!(ms > 0)) return ''; const h = ms / 36e5;
   return h >= 48 ? t('us.d').replace('{n}', Math.ceil(h / 24)) : h >= 1 ? t('us.h').replace('{n}', Math.ceil(h)) : t('us.m').replace('{n}', Math.max(1, Math.ceil(ms / 6e4))); };
@@ -3367,7 +3368,7 @@ function sermonPoll(id) {
     setTimeout(tick, 2000); }; setTimeout(tick, 1500);
 }
 // Plans show only where in-app purchase really works (the phone app's store billing); otherwise just the space note
-const payOn = () => !!window.DTBilling?.purchase;
+const payOn = () => PAID && !!window.DTBilling?.purchase;
 function paywall() {
   const q = noteQuota();
   if (!payOn()) { showSheet({ title: t('pw.title').replace('{t}', q.limit || NOTE_FREE), body: `<p class="hint">${t('pw.free')}</p>
@@ -3543,7 +3544,7 @@ function renderBibleMe() {
     <p class="gd-label">${t('me.saved')} · ${saved.length}</p>
     <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
     <div class="list" style="margin-top:18px">
-      <button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>
+      ${PAID ? `<button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>` : ''}
       <a class="list-row" href="${LEGAL_BASE}/app/" target="_blank" rel="noopener"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('me.thanks')}</span></span></a>
     </div>
   </div></div>`;
@@ -4641,7 +4642,7 @@ function bibleSettings() {
     <p class="field-label">${t('bs.sermon')}</p>
     <div class="list">
       ${row('bs-places', 'people', t('bs.places'), `${places ? `<span class="row-sub">${places}</span>` : ''}${icon('chevron')}`)}
-      ${row('usage', 'sparkle', t('bs.sub'), `${almost ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}${icon('chevron')}`)}
+      ${PAID ? row('usage', 'sparkle', t('bs.sub'), `${almost ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}${icon('chevron')}`) : ''}
     </div>
     <p class="field-label">${t('bs.data')}</p>
     <div class="list">
