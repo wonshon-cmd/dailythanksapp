@@ -3488,8 +3488,20 @@ const Vault = (() => {
   const url64 = u => b64(u).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   let keyP = null;
   const raw = () => { try { let r = localStorage.getItem(KEY); if (!r) { r = url64(crypto.getRandomValues(new Uint8Array(32))); localStorage.setItem(KEY, r); } return r; } catch { return null; } };
+  // In the phone app the key lives in the iPhone Keychain / Android Keystore (SecureStore), never in web storage.
+  const secure = () => window.Capacitor?.Plugins?.SecureStore;
+  const rawAsync = async () => {
+    const S = secure(); if (!S) return raw();
+    try {
+      const { value } = await S.get({ key: 'vault' }); if (value) return value;
+      let r = null; try { r = localStorage.getItem(KEY); } catch {}
+      r = r || url64(crypto.getRandomValues(new Uint8Array(32)));
+      await S.set({ key: 'vault', value: r }); try { localStorage.removeItem(KEY); } catch {}   // moved out of web storage
+      return r;
+    } catch { return raw(); }
+  };
   const imp = r => crypto.subtle.importKey('raw', unb64(r), 'AES-GCM', false, ['encrypt', 'decrypt']);
-  const key = () => keyP || (keyP = imp(raw()));
+  const key = () => keyP || (keyP = rawAsync().then(imp));
   const sealWith = async (k, obj) => { const iv = crypto.getRandomValues(new Uint8Array(12)); const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, k, new TextEncoder().encode(JSON.stringify(obj))); return { v: 1, iv: b64(iv), ct: b64(ct) }; };
   const openWith = async (k, s) => JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(s.iv) }, k, unb64(s.ct))));
   return {
@@ -3498,8 +3510,9 @@ const Vault = (() => {
     // what the server keeps: only posts shared with everyone stay readable; the rest is one sealed box
     sealState: async st => ({ posts: (st.posts || []).filter(p => p.mine && p.scope === 'public' && !p.status), sealed: await sealWith(await key(), st) }),
     openState: async st => st && st.sealed ? openWith(await key(), st.sealed) : st,
-    recoveryCode: () => raw(),
-    restore: async code => { const c = String(code || '').trim(); try { if (unb64(c).length !== 32) return false; await imp(c); localStorage.setItem(KEY, c); keyP = null; return true; } catch { return false; } },
+    recoveryCode: () => rawAsync(),
+    restore: async code => { const c = String(code || '').trim(); try { if (unb64(c).length !== 32) return false; await imp(c);
+      const S = secure(); if (S) await S.set({ key: 'vault', value: c }); else localStorage.setItem(KEY, c); keyP = null; return true; } catch { return false; } },
     newGroupKey: () => url64(crypto.getRandomValues(new Uint8Array(32))),
     sealForGroup: async (groupKey, obj) => sealWith(await imp(groupKey), obj),
     openForGroup: async (groupKey, sealed) => openWith(await imp(groupKey), sealed)
@@ -3507,11 +3520,12 @@ const Vault = (() => {
 })();
 function vaultSheet() {
   showSheet({ title: t('vault.title'), body: `<p class="hint">${t('vault.body')}</p><p class="hint">${t('vault.group')}</p>
-    <p class="field-label">${t('vault.code')}</p><p class="vault-code" id="vault-code">${esc(Vault.recoveryCode() || '')}</p>
+    <p class="field-label">${t('vault.code')}</p><p class="vault-code" id="vault-code">…</p>
     <p class="hint">${t('vault.codeHint')}</p>
     <button class="secondary block" data-action="vault-copy">${icon('copy')}${t('vault.copy')}</button>
     <p class="field-label">${t('vault.restore')}</p>
     <form id="vault-form" class="sheet-form"><input id="vault-in" class="field" placeholder="${esc(t('vault.restorePh'))}" autocomplete="off" spellcheck="false"><button class="secondary block" type="submit">${t('vault.restore')}</button></form>` });
+  Vault.recoveryCode().then(c => { const el = $('#vault-code'); if (el) el.textContent = c || ''; });
   $('#vault-form').addEventListener('submit', async e => { e.preventDefault(); if (await Vault.restore($('#vault-in').value)) { close(); toast(t('vault.restored')); document.dispatchEvent(new CustomEvent('dt:vault-restored')); } else toast(t('vault.bad')); });
 }
 // Group keys travel only in the invite link's # part (never sent to any server).
@@ -4440,7 +4454,7 @@ const actions = {
   vault: () => vaultSheet(),
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),
   'bible-offline-go': () => saveBibleOffline(),
-  'vault-copy': () => copyText(Vault.recoveryCode() || ''),
+  'vault-copy': async () => copyText((await Vault.recoveryCode()) || ''),
   'join-ok': () => {
     const j = state.pendingJoin; if (!j) return close();
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}) }; data.groups.push(g); state.pendingJoin = null;

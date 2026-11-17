@@ -29,6 +29,7 @@ class AppViewController: CAPBridgeViewController {
     override open func capacitorDidLoad() {
         bridge?.registerPluginInstance(WidgetBridgePlugin())
         bridge?.registerPluginInstance(PrivacyPlugin())
+        bridge?.registerPluginInstance(SecureStorePlugin())
     }
 }
 
@@ -68,5 +69,44 @@ public class PrivacyPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func protect(_ call: CAPPluginCall) {
         DispatchQueue.main.async { self.notifyListeners("captured", data: ["on": UIScreen.main.isCaptured]) }
         call.resolve()
+    }
+}
+
+/// SecureStore: small secrets (the privacy-lock key) in the iOS Keychain — encrypted by the system,
+/// readable only by this app on this device (not included in backups that move to other devices).
+@objc(SecureStorePlugin)
+public class SecureStorePlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "SecureStorePlugin"
+    public let jsName = "SecureStore"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "get", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "set", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "remove", returnType: CAPPluginReturnPromise)
+    ]
+    private func base(_ key: String) -> [String: Any] {
+        [kSecClass as String: kSecClassGenericPassword,
+         kSecAttrService as String: "org.dailyjourney.dailythanks.secure",
+         kSecAttrAccount as String: key]
+    }
+    @objc func get(_ call: CAPPluginCall) {
+        guard let key = call.getString("key") else { call.reject("key required"); return }
+        var q = base(key); q[kSecReturnData as String] = true; q[kSecMatchLimit as String] = kSecMatchLimitOne
+        var out: AnyObject?
+        if SecItemCopyMatching(q as CFDictionary, &out) == errSecSuccess, let d = out as? Data, let v = String(data: d, encoding: .utf8) {
+            call.resolve(["value": v])
+        } else { call.resolve(["value": NSNull()]) }
+    }
+    @objc func set(_ call: CAPPluginCall) {
+        guard let key = call.getString("key"), let value = call.getString("value") else { call.reject("key and value required"); return }
+        SecItemDelete(base(key) as CFDictionary)
+        var q = base(key)
+        q[kSecValueData as String] = Data(value.utf8)
+        q[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+        let st = SecItemAdd(q as CFDictionary, nil)
+        st == errSecSuccess ? call.resolve() : call.reject("keychain error \(st)")
+    }
+    @objc func remove(_ call: CAPPluginCall) {
+        guard let key = call.getString("key") else { call.reject("key required"); return }
+        SecItemDelete(base(key) as CFDictionary); call.resolve()
     }
 }

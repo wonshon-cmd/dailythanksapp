@@ -2,12 +2,34 @@
   "appId": "org.dailyjourney.dailythanks",
   "appName": "Daily Thanks",
   "webDir": "www",
-  "backgroundColor": "#FAFAFA",
-  "ios": { "contentInset": "never", "backgroundColor": "#FAFAFA", "scheme": "Daily Thanks" },
-  "android": { "backgroundColor": "#FAFAFA" },
+  "backgroundColor": "#FFFFFF",
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#FFFFFF",
+    "scheme": "Daily Thanks",
+    "webContentsDebuggingEnabled": false,
+    "limitsNavigationsToAppBoundDomains": false
+  },
+  "android": {
+    "backgroundColor": "#FFFFFF",
+    "webContentsDebuggingEnabled": false,
+    "allowMixedContent": false
+  },
   "plugins": {
-    "SplashScreen": { "launchShowDuration": 0, "launchAutoHide": false, "backgroundColor": "#FAFAFA", "showSpinner": false },
-    "StatusBar": { "style": "LIGHT", "backgroundColor": "#FAFAFA", "overlaysWebView": true },
-    "LocalNotifications": { "smallIcon": "ic_stat_sun", "iconColor": "#9BA0A3" }
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "launchAutoHide": false,
+      "backgroundColor": "#FFFFFF",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "LIGHT",
+      "backgroundColor": "#FFFFFF",
+      "overlaysWebView": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_sun",
+      "iconColor": "#9BA0A3"
+    }
   }
 }

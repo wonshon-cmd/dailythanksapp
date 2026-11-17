@@ -8,6 +8,7 @@ public class MainActivity extends BridgeActivity {
     public void onCreate(Bundle savedInstanceState) {
         registerPlugin(WidgetBridgePlugin.class); // home-screen widgets
         registerPlugin(PrivacyPlugin.class);      // no screenshots of other people's group posts
+        registerPlugin(SecureStorePlugin.class);  // privacy-lock key in the Android Keystore
         super.onCreate(savedInstanceState);
     }
 }
