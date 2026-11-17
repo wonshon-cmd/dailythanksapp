@@ -5,7 +5,7 @@ const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..'), SVG = fs.readFileSync(path.join(ROOT, 'brand/daily-bible/icon.svg'), 'utf8');
 const mark = fs.readFileSync(path.join(ROOT, 'brand/daily-bible/icon-mark.svg'), 'utf8');
-const FONT = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">';
+const FONT = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300&display=swap">';
 const word = size => `<span style="font-family:Newsreader,Georgia,serif;font-size:${size}px;letter-spacing:-.025em;color:#383D42;white-space:nowrap">daily <em>bible</em></span>`;
 (async () => {
   const b = await chromium.launch();
@@ -21,7 +21,7 @@ const word = size => `<span style="font-family:Newsreader,Georgia,serif;font-siz
   await shot(1024, 1024, icon(1024), path.join(A, 'icon-only.png'));
   await shot(1024, 1024, `<div style="width:1024px;height:1024px;display:grid;place-items:center;color:#50555A">${mark.replace('<svg ', '<svg width="560" height="556" ')}</div>`, path.join(A, 'icon-foreground.png'), true);
   await shot(1024, 1024, '', path.join(A, 'icon-background.png'));
-  await shot(2732, 2732, `<div style="width:2732px;height:2732px;display:grid;place-items:center">${word(150)}</div>`, path.join(A, 'splash.png'));
+  await shot(2732, 2732, `<div style="width:2732px;height:2732px;display:grid;place-items:center;position:relative">${word(150)}<span style="position:absolute;left:0;right:0;bottom:190px;text-align:center;font:300 40px 'Noto Sans KR',-apple-system,sans-serif;letter-spacing:.02em;color:#A4A9AC">© 2026 Daily Journey, Inc.</span></div>`, path.join(A, 'splash.png'));
   await shot(180, 180, icon(180), path.join(W, 'apple-touch-icon.png'));
   await shot(64, 64, icon(64), path.join(W, 'favicon.png'));
   await shot(1200, 630, `<div style="width:1200px;height:630px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;color:#50555A">${mark.replace('<svg ', '<svg width="120" height="119" ')}${word(104)}</div>`, path.join(W, 'og.png'));

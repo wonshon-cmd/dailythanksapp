@@ -130,6 +130,7 @@ const STR = {
     'pv.open': "본문 크게 보기",
     'stk.n': "{n}일 연속", 'stk.sub': "매일 말씀 읽기", 'stk.todayDone': "오늘도 읽었어요", 'stk.todayNot': "오늘 한 장 읽으면 이어져요", 'stk.start': "오늘 한 장 읽으면 연속 기록이 시작돼요", 'stk.best': "최고 {n}일",
     'bs.almost': "거의 찼어요",
+    'fc.prKick': "{g} 기도제목", 'fc.prTitle': "{n}명이 기도를 부탁했어요", 'fc.pray': "기도하러 가기", 'fc.readTitle': "오늘 읽을 곳", 'fc.read': "읽기 시작", 'fc.dayN': "{n}일째", 'fc.write': "오늘 쓰기", 'fc.group': "소그룹",
     'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
@@ -256,6 +257,7 @@ const STR = {
     'pv.open': "Read the passage full screen",
     'stk.n': "{n}-day streak", 'stk.sub': "Daily Bible reading", 'stk.todayDone': "Read today", 'stk.todayNot': "Read a chapter today to keep it going", 'stk.start': "Read a chapter today to start a streak", 'stk.best': "Best {n} days",
     'bs.almost': "Almost full",
+    'fc.prKick': "{g} prayer requests", 'fc.prTitle': "{n} asked for prayer", 'fc.pray': "Go pray", 'fc.readTitle': "Today’s reading", 'fc.read': "Start reading", 'fc.dayN': "Day {n}", 'fc.write': "Write today’s", 'fc.group': "Group",
     'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
@@ -640,6 +642,7 @@ const STR = {
     'pv.open': "Leer el pasaje en pantalla completa",
     'stk.n': "Racha de {n} días", 'stk.sub': "Lectura diaria", 'stk.todayDone': "Leíste hoy", 'stk.todayNot': "Lee un capítulo hoy para seguir", 'stk.start': "Lee un capítulo hoy para empezar una racha", 'stk.best': "Mejor: {n} días",
     'bs.almost': "Casi lleno",
+    'fc.prKick': "Peticiones de {g}", 'fc.prTitle': "{n} pidieron oración", 'fc.pray': "Ir a orar", 'fc.readTitle': "Lectura de hoy", 'fc.read': "Empezar a leer", 'fc.dayN': "Día {n}", 'fc.write': "Escribir hoy", 'fc.group': "tu grupo",
     'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
@@ -1669,7 +1672,7 @@ function loginCard() {
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <p class="fine-print">${t('login.demo')}</p></div></article>`;
 }
-const cardFor = item => item.type === 'quiz' ? quizCard(item.i) : item.type === 'quizres' ? quizResultCard() : item.type === 'compose' ? composeCard() : item.type === 'verse' ? verseCard(item.v) : item.type === 'camp' ? campaignCard(item.c) : item.type === 'wrecap' ? weekRecapCard(item.n) : loginCard();
+const cardFor = item => item.type === 'first' ? firstCard(item) : item.type === 'quiz' ? quizCard(item.i) : item.type === 'quizres' ? quizResultCard() : item.type === 'compose' ? composeCard() : item.type === 'verse' ? verseCard(item.v) : item.type === 'camp' ? campaignCard(item.c) : item.type === 'wrecap' ? weekRecapCard(item.n) : loginCard();
 function bindGateForm() {
   const f = $('#gate-compose'); if (!f) return;
   f.addEventListener('submit', e => {
@@ -1834,6 +1837,35 @@ function quizResultCard() {
     <p class="card-sub">${t('qz.resSub')}</p>
     <div class="card-actions"><button class="primary" data-action="imm-write">${t('qz.resGo')}</button></div></div></article>`;
 }
+/* What to see first when the app opens: new prayer requests from my group (순원 기도제목), then today's part of a
+   challenge or reading plan I haven't done yet. Each one is a card at the very top of the feed. */
+const newGroupPrayers = () => data.posts.filter(p => p.kind === 'prayer' && !p.mine && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))
+  && p.date >= daysAgo(6) && !data.prayed.includes(p.id) && !(data.settings.prayerSeen || []).includes(p.id));
+function firstItems() {
+  const out = [], reqs = newGroupPrayers();
+  if (reqs.length) out.push({ type: 'first', kind: 'prayer', reqs });
+  data.challenges.filter(c => !chDone(c) && c.lastDay !== today()).sort((a, b) => (b.start || '').localeCompare(a.start || '')).slice(0, 2).forEach(c => out.push({ type: 'first', kind: 'ch', c }));
+  return out;
+}
+function firstCard(it) {
+  if (it.kind === 'prayer') {
+    const gids = [...new Set(it.reqs.flatMap(p => data.groups.filter(g => inGroup(p, g.id)).map(g => g.id)))], g = gids.length === 1 ? L(data.groups.find(x => x.id === gids[0])?.name) : t('fc.group');
+    const people = new Set(it.reqs.map(p => authorKey(p))).size;
+    return `<article class="post card-page first-card"><div class="card-inner">
+      <div class="post-kind">${icon('pray')}<span>${esc(t('fc.prKick').replace('{g}', g))}</span></div>
+      <p class="card-title">${esc(t('fc.prTitle').replace('{n}', people))}</p>
+      <ul class="fc-list">${it.reqs.slice(0, 3).map(p => `<li><b>${esc(authorName(p))}</b><span>${esc(L(p.text).slice(0, 60))}</span></li>`).join('')}</ul>
+      <div class="card-actions"><button class="primary" data-action="first-prayers">${icon('pray')}${t('fc.pray')}</button></div>
+    </div></article>`;
+  }
+  const c = it.c, k = Math.min(c.days.length, chLen(c) - 1), bible = c.type === 'bible' && c.plan;
+  return `<article class="post card-page first-card"><div class="card-inner">
+    <div class="post-kind">${icon(bible ? 'book' : c.type === 'prayer' ? 'pray' : 'sparkle')}<span>${esc(c.name || chName(c))} · ${chDday(c)}</span></div>
+    <p class="card-title">${bible ? esc(t('fc.readTitle')) : esc(chName(c))}</p>
+    <p class="fc-big">${bible ? esc(chPlanText(chPlanDay(c, k))) : esc(t('fc.dayN').replace('{n}', c.days.length + 1))}</p>
+    <div class="card-actions"><button class="primary" data-action="challenge-write" data-id="${esc(c.id)}">${bible ? t('fc.read') : t('fc.write')}</button></div>
+  </div></article>`;
+}
 function campaignCard(c) {
   const joined = data.challenges.find(x => x.campaign === c.id), day = dayDiff(c.start, today()) + 1, left = dayDiff(today(), c.end);
   return `<article class="post card-page camp-card"><div class="card-inner">
@@ -1973,7 +2005,7 @@ function streakHtml() {
   const week = Array.from({ length: 7 }, (_, i) => daysAgo(6 - i));
   const wd = d => new Date(d + 'T00:00:00').toLocaleDateString(lang(), { weekday: 'narrow' });
   return `<section class="stk ${done ? 'done' : ''}">
-    <div class="stk-main"><span class="stk-flame">${icon('sun')}</span><div><b class="stk-n">${n ? esc(t('stk.n').replace('{n}', n)) : esc(t('stk.sub'))}</b>
+    <div class="stk-main"><span class="stk-flame">${icon('book')}</span><div><b class="stk-n">${n ? esc(t('stk.n').replace('{n}', n)) : esc(t('stk.sub'))}</b>
       <span class="stk-sub">${n ? (done ? t('stk.todayDone') : t('stk.todayNot')) : t('stk.start')}${best > n ? ' · ' + esc(t('stk.best').replace('{n}', best)) : ''}</span></div></div>
     <div class="stk-week">${week.map(d => `<span class="${days.has(d) ? 'on' : ''} ${d === today() ? 'today' : ''}"><i></i><small>${esc(wd(d))}</small></span>`).join('')}</div>
   </section>`;
@@ -1984,6 +2016,7 @@ function renderBibleHome() {
   const plans = data.challenges.filter(c => c.type === 'bible' && !chDone(c));
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${streakHtml()}
+    ${plans.some(c => c.lastDay !== today()) ? planSection(plans) : ''}
     <section class="bb-cont">
       <p class="gd-label">${t('bb.where')}</p>
       <p class="bb-ref">${r ? esc(refText({ b: r.b, c: r.c, v: r.v || 1, v2: r.v || 1 })) : t('bb.start')}</p>
@@ -1994,15 +2027,18 @@ function renderBibleHome() {
     ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
       <p class="gd-ref">${esc(refText(p.ref))}</p>
       <div class="gd-acts"><button class="primary" data-action="bb-today">${t('bb.readToday')}</button></div></section>` : ''}
-    <section class="pl">
+    ${plans.some(c => c.lastDay !== today()) ? '' : planSection(plans)}
+  </div></div>`;
+}
+function planSection(plans) {
+  return `<section class="pl">
       <div class="pl-head"><p class="gd-label">${t('pl.title')}</p><button class="secondary pl-new" data-action="plan-new">${icon('plus')}${t('pl.new')}</button></div>
       ${plans.length ? '' : `<p class="hint">${t('pl.sub')}</p>`}
       ${plans.map(c => `<div class="pl-row"><button class="g-ch" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(c.name || chName(c))} <em class="g-ch-d">${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
         ${(c.members || []).length > 1 ? `<span class="pl-with">${icon('people')}${esc((c.members || []).map(m => L(m)).join(', '))}</span>` : ''}</button>
         <button class="round-btn pl-inv" data-action="plan-invite" data-id="${esc(c.id)}" aria-label="${esc(t('pl.invite'))}">${icon('share')}</button></div>`).join('')}
-    </section>
-  </div></div>`;
+    </section>`;
 }
 // ---- sermon notes: the server summarizes (Claude) when it's connected; otherwise notes wait on the device ----
 const API_BASE = window.DT_API ?? '';
@@ -2614,6 +2650,7 @@ function renderImmersive(keepIndex = 0) {
     const c = activeCampaign(), wn = weekRecapDue();
     if (c && seq.length) seq.splice(Math.min(1, seq.length), 0, { type: 'camp', c });
     if (wn) seq.splice(0, 0, { type: 'wrecap', n: wn });
+    if (!keepIndex) seq.splice(0, 0, ...firstItems());   // on opening: my group's new prayer requests, today's challenge / reading
     // newcomers: the quiz, spread between posts, until it's done (the result stays for that day)
     const q = quizState();
     if (!q.doneOn || q.doneOn === today()) {
@@ -4391,6 +4428,8 @@ const actions = {
   'note-tomed': id => { const n = sermonNotes().find(x => x.id === id); if (!n?.summary) return; const r = parseRef(n.summary.passages?.[0] || '');
     state.medRef = r || null; state.medSource = ''; state.medNote = !!r; compose('meditation', null, `${n.title || n.summary.title || ''} — ${n.summary.main_message || ''}\n`); },
   'note-ai': id => aiSummarize(id),
+  'first-prayers': () => { data.settings.prayerSeen = [...new Set([...(data.settings.prayerSeen || []), ...newGroupPrayers().map(p => p.id)])].slice(-300); save();
+    state.prevFeed = 'public'; state.immFeed = 'prayer'; state.immersive = true; state.tab = 'feed'; render(0); },
   'bs-places': () => placesSheet(),
   'bs-place-del': i => { (data.sermonPlaces || []).splice(+i, 1); save(); placesSheet(); toast(t('bs.deleted')); },
   'note-upload': id => uploadRecording(id),
@@ -4707,7 +4746,7 @@ if (splash) {
   ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev => window.addEventListener(ev, hide, { capture: true, passive: true }));
   // 1) wordmark  2) "Give thanks daily. Live abundantly. Share the joy."  3) feed
   // daily bible: just the wordmark, then the app (no tagline step)
-  if (BIBLE_MODE) { splash.querySelector('.splash-tag')?.remove(); splash.setAttribute('aria-label', 'daily bible'); setTimeout(hide, 1600); }
+  if (BIBLE_MODE) { splash.querySelector('.splash-tag')?.remove(); splash.setAttribute('aria-label', 'daily bible. © 2026 Daily Journey, Inc.'); setTimeout(hide, 2400); }
   else { setTimeout(() => { if (!gone) splash.classList.add('step2'); }, 1400); setTimeout(hide, 4200); }
 }
 })();

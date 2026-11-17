@@ -948,5 +948,13 @@
   "stk.todayNot": "Lee un capítulo hoy para seguir",
   "stk.start": "Lee un capítulo hoy para empezar una racha",
   "stk.best": "Mejor: {n} días",
-  "bs.almost": "Casi lleno"
+  "bs.almost": "Casi lleno",
+  "fc.prKick": "Peticiones de {g}",
+  "fc.prTitle": "{n} pidieron oración",
+  "fc.pray": "Ir a orar",
+  "fc.readTitle": "Lectura de hoy",
+  "fc.read": "Empezar a leer",
+  "fc.dayN": "Día {n}",
+  "fc.write": "Escribir hoy",
+  "fc.group": "tu grupo"
 }
