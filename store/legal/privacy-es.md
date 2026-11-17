@@ -55,4 +55,4 @@ Puedes acceder, corregir o eliminar tus datos:
 
 ## 6. Contacto
 
-Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, EE. UU. · hi@dailyjourney.org
+Daily Journey, Inc. · 105 Challenger Rd, Suite 401, Ridgefield Park, NJ 07660, EE. UU. · hi@dailyjourney.org

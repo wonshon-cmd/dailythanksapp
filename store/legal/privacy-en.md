@@ -84,4 +84,4 @@ We will post changes in the app or on our website at least 7 days before they ta
 
 ## 9. Contact
 
-Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, USA · hi@dailyjourney.org
+Daily Journey, Inc. · 105 Challenger Rd, Suite 401, Ridgefield Park, NJ 07660, USA · hi@dailyjourney.org
