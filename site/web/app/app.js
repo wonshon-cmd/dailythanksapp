@@ -731,6 +731,22 @@ const seed = {
       text: { ko: '이번 주 어머니 수술이 잘 마무리되도록 기도 부탁드려요.', en: 'Please pray that my mom’s surgery this week goes well.', es: 'Por favor, oren para que la cirugía de mi mamá salga bien esta semana.' } },
     { id: 'pr2', name: { ko: '민서', en: 'Rachel', es: 'Laura' }, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(1), likes: 0, prayedBy: [{ ko: '지은', en: 'Sarah', es: 'María' }],
       text: { ko: '새 직장에서 좋은 동료들을 만나게 해 주세요.', en: 'Pray that I find good coworkers at my new job.', es: 'Oren para que encuentre buenos compañeros en mi nuevo trabajo.' } },
+    { id: 'gm1', name: {"ko": "하은", "en": "Grace", "es": "Isabel"}, scope: 'group', group: 'g1', kind: 'meditation', date: daysAgo(0), likes: 6, shares: 0, saves: 0, ref: { b: 50, c: 4, v: 6, v2: 7 },
+      text: {"ko": "\"아무 것도 염려하지 말고\"라는 말씀에서 멈췄어요. 걱정을 내려놓는 게 아니라, 감사함으로 아뢰는 것부터 시작하라는 뜻 같아요.", "en": "I stopped at \"Be careful for nothing.\" It feels like the start is not to drop the worry, but to bring it with thanksgiving.", "es": "Me detuve en \"Por nada estéis afanosos\". Siento que el comienzo no es soltar la preocupación, sino presentarla con gratitud."} },
+    { id: 'gm2', name: {"ko": "민서", "en": "Rachel", "es": "Laura"}, scope: 'group', group: 'g1', kind: 'meditation', date: daysAgo(1), likes: 4, shares: 0, saves: 0, ref: { b: 25, c: 3, v: 22, v2: 23 },
+      text: {"ko": "\"이것이 아침마다 새로우니\" — 어제 실수한 일이 계속 마음에 남았는데, 오늘 아침은 새롭게 주신 아침이라는 게 위로가 됐어요.", "en": "\"They are new every morning.\" Yesterday’s mistake stayed with me, but it comforted me that this morning was given fresh.", "es": "\"Nuevas son cada mañana.\" El error de ayer seguía conmigo, pero me consoló que esta mañana fuera nueva."} },
+    { id: 'gm3', name: {"ko": "준호", "en": "Ryan", "es": "Martín"}, scope: 'group', group: 'g1', kind: 'meditation', date: daysAgo(2), likes: 3, shares: 0, saves: 0, ref: { b: 52, c: 5, v: 16, v2: 18 },
+      text: {"ko": "\"범사에 감사하라\"를 오늘은 출근길 지하철에서 연습해 봤어요. 붐비는 지하철에서도 감사할 것이 세 가지나 있었어요.", "en": "I practiced \"In every thing give thanks\" on the subway today. Even on a crowded train I found three things.", "es": "Practiqué \"Dad gracias en todo\" en el metro. Aun lleno, encontré tres cosas."} },
+    { id: 'gt1', name: {"ko": "준호", "en": "Ryan", "es": "Martín"}, scope: 'group', group: 'g1', kind: 'today', date: daysAgo(0), likes: 7, shares: 0, saves: 0,
+      text: {"ko": "모임 끝나고 다 같이 치운 덕분에 금방 정리됐어요. 이런 사람들과 함께여서 감사해요.", "en": "Everyone cleaned up together after our meeting, so it was done in minutes. Thankful for these people.", "es": "Todos limpiamos juntos después de la reunión y terminamos enseguida. Agradecido por estas personas."} },
+    { id: 'ga1', name: {"ko": "하은", "en": "Grace", "es": "Isabel"}, scope: 'group', group: 'g1', kind: 'ahead', date: daysAgo(1), likes: 5, shares: 0, saves: 0,
+      text: {"ko": "다음 주 아이 학교 발표가 있어요. 떨리겠지만 끝까지 잘 해낼 줄 믿고 미리 감사해요.", "en": "My child has a school presentation next week. It will be nerve-racking, but I thank you ahead that it will go well.", "es": "Mi hijo tiene una presentación la próxima semana. Estará nervioso, pero doy gracias de antemano porque saldrá bien."} },
+    { id: 'gp3', name: {"ko": "준호", "en": "Ryan", "es": "Martín"}, scope: 'group', group: 'g1', kind: 'prayer', date: daysAgo(0), likes: 0, shares: 0, saves: 0, prayedBy: [{ ko: '지은', en: 'Sarah', es: 'María' }],
+      text: {"ko": "아버지 건강검진 결과가 이번 주에 나와요. 평안한 마음으로 기다릴 수 있도록 기도해 주세요.", "en": "My dad’s checkup results come this week. Please pray that we wait with peace.", "es": "Esta semana salen los resultados de mi papá. Oren para que esperemos con paz."} },
+    { id: 'gf1', name: {"ko": "엄마", "en": "Mom", "es": "Mamá"}, scope: 'group', group: 'g2', kind: 'today', date: daysAgo(0), likes: 3, shares: 0, saves: 0,
+      text: {"ko": "오랜만에 다 같이 저녁 먹어서 좋았어. 고마워 우리 가족.", "en": "It was good to have dinner all together again. Thank you, family.", "es": "Qué bueno cenar todos juntos otra vez. Gracias, familia."} },
+    { id: 'gf2', name: {"ko": "아빠", "en": "Dad", "es": "Papá"}, scope: 'group', group: 'g2', kind: 'prayer', date: daysAgo(1), likes: 0, shares: 0, saves: 0, prayedBy: [],
+      text: {"ko": "다음 달 이사 준비가 순조롭게 되도록 함께 기도하자.", "en": "Let’s pray that getting ready for next month’s move goes smoothly.", "es": "Oremos para que la mudanza del próximo mes salga bien."} },
     { id: 'gs1', name: { ko: '지은', en: 'Sarah', es: 'María' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(1), likes: 3,
       text: { ko: '바쁜 출근길에도 하늘을 올려다보는 여유를 주셔서 감사했어요.', en: 'I was grateful for a moment to look up at the sky on a busy commute.', es: 'Agradecí un momento para mirar el cielo en un trayecto apurado.' } },
     { id: 'gs2', name: { ko: '하은', en: 'Grace', es: 'Isabel' }, scope: 'group', group: 'g1', kind: 'share', week: 'w', date: daysAgo(0), likes: 2,
@@ -767,6 +783,9 @@ let data;
 try { const stored = JSON.parse(localStorage.getItem(KEY)); data = stored && Array.isArray(stored.posts) ? stored : clone(seed); }
 catch { data = clone(seed); }
 if (typeof data.sharesGiven !== 'number') data.sharesGiven = 0;
+// new sample posts reach people who installed before they existed (never re-adds ones they deleted or hid)
+data.seedSeen = data.seedSeen || data.posts.map(p => p.id);
+seed.posts.forEach(sp => { if (!data.seedSeen.includes(sp.id)) { data.seedSeen.push(sp.id); if (!data.posts.some(p => p.id === sp.id)) data.posts.push(clone(sp)); } });
 // keep sample authors' names current (localized per language)
 data.posts.forEach(p => { const s = seed.posts.find(x => x.id === p.id); if (s && !p.mine) { p.name = clone(s.name); if (s.prayedBy) p.prayedBy = clone(s.prayedBy); } });
 (data.challenges || []).forEach(c => { const s = seed.challenges.find(x => x.id === c.id); if (s) c.members = clone(s.members); });
@@ -1529,9 +1548,9 @@ function renderImmersive(keepIndex = 0) {
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
-        <p class="imm-by">${esc(authorName(p))} · ${groupMode ? esc(p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : p.scope === 'group' ? esc(groupNames(p)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
+        <p class="imm-by">${esc(authorName(p))} · ${groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : p.scope === 'group' ? esc(groupNames(p)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       <aside class="post-rail">
-        ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
+        ${p.kind === 'prayer' ? prayBtn(p) : ''}<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
