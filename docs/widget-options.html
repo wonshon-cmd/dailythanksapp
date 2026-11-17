@@ -2,10 +2,10 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300;400;500&display=swap">
 <style>
-/* Layout: one option per row — number and name, then the small and medium widget on a home-screen strip. Light is drawn only with lines. */
+/* Layout: one option per row — number and name, then the small and medium widget on a home-screen strip. The light is an outline sparkle. */
 :root{
-  --paper:#FFFFFF; --ink:#303438; --sub:#686E73; --faint:#9BA0A3; --home:#E6E8EA; --pill:#F1F1F1; --line:#EEEEEE; --off:#E4E6E7;
-  --gold:#F2CF6A; --gold-soft:#F8E3A6; --gold-pale:#FCF1CF;
+  --paper:#FFFFFF; --ink:#303438; --sub:#686E73; --faint:#9BA0A3; --home:#E6E8EA; --pill:#F1F1F1; --line:#EEEEEE; --off:#D9DCDE;
+  --gold:#E2B84A; --gold-soft:#FBEFC5; --gray:#6B7176;
   --serif:'Newsreader',Georgia,serif; --sans:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;
   color-scheme:light;
 }
@@ -24,103 +24,49 @@ h1 em{font-style:italic}
 .note{font-size:13px;color:var(--faint);line-height:1.5}
 .home{display:flex;gap:14px;flex-wrap:wrap;background:var(--home);border-radius:26px;padding:16px;min-width:0}
 @media (max-width:600px){.opt{grid-template-columns:1fr;gap:12px}.label{flex-direction:row;align-items:baseline;gap:10px;flex-wrap:wrap}}
-
 .w{background:#FFFFFF;border-radius:22px;padding:16px;display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 4px 14px #2a30360f}
 .s{width:140px;height:140px}
 .m{width:300px;max-width:100%;height:140px}
 @media (max-width:400px){.m{width:100%}}
-.q{font-size:14px;line-height:1.5;font-weight:400;margin:0;position:relative}
+.cen{align-items:center;justify-content:center;text-align:center}
+.q{font-size:14px;line-height:1.5;font-weight:400;margin:0}
 .q.lg{font-size:16px;font-weight:300}
 .sm{font-size:12px;color:var(--faint);margin:0}
-.btn{display:inline-flex;align-items:center;background:var(--pill);border-radius:999px;padding:5px 11px;font-size:12px;white-space:nowrap;align-self:flex-start;position:relative}
-.plus{width:32px;height:32px;border-radius:50%;background:var(--pill);display:grid;place-items:center;font-size:19px;font-weight:300;line-height:1;position:relative}
+.mine{font-size:13px;line-height:1.55;color:var(--sub);margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.btn{display:inline-flex;background:var(--pill);border-radius:999px;padding:5px 11px;font-size:12px;white-space:nowrap;align-self:flex-start;position:relative;z-index:1}
+.plus{width:32px;height:32px;border-radius:50%;background:var(--pill);display:grid;place-items:center;font-size:19px;font-weight:300;line-height:1}
 .grow{flex:1}
-.row{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
-
-/* line-light vocabulary */
-.hline{height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent);box-shadow:0 0 8px var(--gold-soft)}
-.hline.left{background:linear-gradient(90deg,var(--gold),var(--gold-soft) 45%,transparent)}
-.beam{position:absolute;top:0;bottom:0;left:16px;width:2px;background:linear-gradient(180deg,var(--gold),var(--gold-soft) 45%,transparent 90%);box-shadow:0 0 8px var(--gold-pale)}
-.topline{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 5%,var(--gold) 50%,transparent 95%);box-shadow:0 0 10px var(--gold-soft)}
-.diag{position:absolute;top:-30px;right:20px;width:2px;height:150px;transform:rotate(38deg);transform-origin:top;background:linear-gradient(180deg,var(--gold),var(--gold-soft) 40%,transparent 85%);box-shadow:0 0 8px var(--gold-pale)}
-.rise{position:absolute;left:0;right:0;bottom:30px;height:1.5px;background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent)}
-.rise::before{content:"";position:absolute;left:50%;bottom:0;width:90px;height:34px;transform:translateX(-50%);border-radius:90px 90px 0 0;background:radial-gradient(ellipse at 50% 100%,var(--gold-pale),transparent 70%)}
-.rays{width:28px;height:28px;position:relative}
-.rays i{position:absolute;left:13px;top:0;width:2px;height:8px;border-radius:2px;background:var(--gold);transform-origin:1px 14px}
-.rays i:nth-child(2){transform:rotate(45deg)}.rays i:nth-child(3){transform:rotate(90deg)}.rays i:nth-child(4){transform:rotate(135deg)}
-.rays i:nth-child(5){transform:rotate(180deg)}.rays i:nth-child(6){transform:rotate(225deg)}.rays i:nth-child(7){transform:rotate(270deg)}.rays i:nth-child(8){transform:rotate(315deg)}
-.u{background:linear-gradient(transparent 82%,var(--gold-soft) 82%,var(--gold-soft) 96%,transparent 96%)}
-.week{display:flex;gap:5px}
-.week i{flex:1;height:3px;border-radius:3px;background:var(--off)}
-.week i.on{background:var(--gold);box-shadow:0 0 6px var(--gold-soft)}
-.grow-line{height:3px;border-radius:3px;background:var(--off);position:relative;overflow:visible}
-.grow-line b{position:absolute;left:0;top:0;bottom:0;width:57%;border-radius:3px;background:linear-gradient(90deg,var(--gold-soft),var(--gold));box-shadow:0 0 8px var(--gold-soft)}
-.stack{display:flex;flex-direction:column;gap:6px}
-.stack i{display:block;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--gold),transparent)}
-.stack i:nth-child(1){width:46%}.stack i:nth-child(2){width:30%;opacity:.7}.stack i:nth-child(3){width:16%;opacity:.45}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sp{width:26px;height:26px;flex:none;stroke:var(--gold)}
+.sp.gray{stroke:var(--gray)}
+.sp.big{width:52px;height:52px;stroke-width:1.3}
+.sp.corner{position:absolute;right:12px;bottom:10px;width:58px;height:58px;stroke-width:1.2;opacity:.9}
+.halo{display:inline-grid;place-items:center;width:44px;height:44px;margin:-9px 0 0 -9px;border-radius:50%;background:radial-gradient(circle,var(--gold-soft) 0 30%,transparent 70%)}
+.wk{display:flex;gap:3px}
+.sp.mini{width:13px;height:13px;stroke:var(--off);stroke-width:2}
+.sp.mini.on{stroke:var(--gold)}
 </style>
-
 <div class="wrap">
-  <h1>위젯 시안 <em>10</em> · 빛줄기</h1>
-  <p class="lead">빛을 동그라미 대신 <strong>줄</strong>로 그렸어요. 모두 흰 바탕이고 노란색은 빛 줄에만 썼어요. 각 줄의 왼쪽은 작은 위젯, 오른쪽은 중간 위젯이에요.</p>
-
-  <section class="opt"><div class="label"><span class="num">1</span><span class="name">새벽 수평선</span><span class="note">가운데가 가장 밝은 한 줄</span></div>
-    <div class="home">
-      <div class="w s"><span class="grow"></span><p class="q">오늘 감사한 것은?</p><div class="hline" style="margin-top:14px"></div><span class="grow"></span></div>
-      <div class="w m"><span class="grow"></span><p class="q">오늘 감사한 것은?</p><div class="hline" style="margin-top:14px"></div><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">2</span><span class="name">떠오르는 빛</span><span class="note">아래 지평선 위로 은은한 빛</span></div>
-    <div class="home">
-      <div class="w s"><p class="q">오늘 감사한 것은?</p><span class="rise"></span></div>
-      <div class="w m"><p class="q">오늘 감사한 것은?</p><span class="rise"></span></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">3</span><span class="name">한 줄기 빛</span><span class="note">왼쪽 위에서 내려오는 세로 빛</span></div>
-    <div class="home">
-      <div class="w s" style="padding-left:30px"><span class="beam"></span><span class="grow"></span><p class="q">오늘 감사한 것은?</p></div>
-      <div class="w m" style="padding-left:30px"><span class="beam"></span><span class="grow"></span><div class="row"><p class="q">오늘 감사한 것은?</p><span class="btn">+ 쓰기</span></div></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">4</span><span class="name">빛살</span><span class="note">짧은 선 여덟 개로 그린 해</span></div>
-    <div class="home">
-      <div class="w s"><span class="rays"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="grow"></span><p class="q">오늘 감사한 것은?</p></div>
-      <div class="w m"><span class="rays"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="grow"></span><div class="row"><p class="q">오늘 감사한 것은?</p><span class="btn">+ 한 줄 쓰기</span></div></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">5</span><span class="name">빛 밑줄</span><span class="note">'감사'에만 은은한 밑줄</span></div>
-    <div class="home">
-      <div class="w s"><span class="grow"></span><p class="q lg">오늘 <span class="u">감사</span>한<br>것은?</p><span class="grow"></span></div>
-      <div class="w m"><span class="grow"></span><p class="q lg">오늘 <span class="u">감사</span>한 것은?</p><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">6</span><span class="name">일주일 빛줄</span><span class="note">쓴 날의 줄만 빛나요</span></div>
-    <div class="home">
-      <div class="w s"><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><div class="week"><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="w m"><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><div class="row"><div class="week" style="width:150px"><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="btn">+ 한 줄 쓰기</span></div></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">7</span><span class="name">윗선 빛</span><span class="note">위젯 위 가장자리에 빛 한 줄</span></div>
-    <div class="home">
-      <div class="w s"><span class="topline"></span><span class="grow"></span><p class="q">오늘 감사한 것은?</p></div>
-      <div class="w m"><span class="topline"></span><span class="grow"></span><div class="row"><p class="q">오늘 감사한 것은?</p><span class="plus">+</span></div></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">8</span><span class="name">비스듬한 빛</span><span class="note">창문으로 들어오는 햇살처럼</span></div>
-    <div class="home">
-      <div class="w s"><span class="diag"></span><span class="grow"></span><p class="q">오늘 감사한 것은?</p></div>
-      <div class="w m"><span class="diag" style="right:60px"></span><span class="grow"></span><div class="row"><p class="q">오늘 감사한 것은?</p><span class="btn">+ 한 줄 쓰기</span></div></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">9</span><span class="name">자라는 빛</span><span class="note">감사가 닿을수록 줄이 길어져요</span></div>
-    <div class="home">
-      <div class="w s"><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><div class="grow-line"><b></b></div><p class="sm" style="margin-top:8px">12명에게 닿았어요</p></div>
-      <div class="w m"><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><div class="row"><div style="flex:1"><div class="grow-line"><b></b></div><p class="sm" style="margin-top:8px">12명에게 닿았어요</p></div><span class="btn">+ 한 줄 쓰기</span></div></div>
-    </div></section>
-
-  <section class="opt"><div class="label"><span class="num">10</span><span class="name">잔잔한 세 줄</span><span class="note">점점 옅어지는 빛 세 줄과 ＋</span></div>
-    <div class="home">
-      <div class="w s"><div class="stack"><i></i><i></i><i></i></div><span class="grow"></span><div class="row"><p class="q">오늘 감사한<br>것은?</p><span class="plus">+</span></div></div>
-      <div class="w m"><div class="stack"><i></i><i></i><i></i></div><span class="grow"></span><div class="row"><p class="q">오늘 감사한 것은?</p><span class="plus">+</span></div></div>
-    </div></section>
+  <h1>위젯 시안 <em>10</em> · 반짝임</h1>
+  <p class="lead">보내 주신 반짝임 모양을 빛으로 썼어요. 흰 바탕에 선으로만 그렸어요. 각 줄의 왼쪽은 작은 위젯, 오른쪽은 중간 위젯이에요.</p>
+  <section class="opt"><div class="label"><span class="num">1</span><span class="name">금빛 반짝임</span><span class="note">보내 주신 모양을 은은한 금빛 선으로</span></div>
+    <div class="home"><div class="w s"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span></div><div class="w m"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span></div></div></section>
+  <section class="opt"><div class="label"><span class="num">2</span><span class="name">회색 반짝임</span><span class="note">보내 주신 그대로, 회색 선</span></div>
+    <div class="home"><div class="w s"><svg class="sp gray" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span></div><div class="w m"><svg class="sp gray" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span></div></div></section>
+  <section class="opt"><div class="label"><span class="num">3</span><span class="name">반짝임만 가운데</span><span class="note">글자 없이, 누르면 바로 쓰기</span></div>
+    <div class="home"><div class="w s cen"><svg class="sp gold big" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></div><div class="w m cen"><svg class="sp gold big" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></div></div></section>
+  <section class="opt"><div class="label"><span class="num">4</span><span class="name">반짝임 · 큰 질문</span><span class="note">버튼 없이 질문만</span></div>
+    <div class="home"><div class="w s"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q lg">오늘 감사한 것은?</p></div><div class="w m"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q lg">오늘 감사한 것은?</p></div></div></section>
+  <section class="opt"><div class="label"><span class="num">5</span><span class="name">빛나는 반짝임</span><span class="note">선 뒤로 아주 옅은 빛이 번져요</span></div>
+    <div class="home"><div class="w s"><span class="halo"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></span><span class="grow"></span><p class="q">오늘 감사한 것은?</p></div><div class="w m"><span class="halo"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></span><span class="grow"></span><div class="row"><p class="q">오늘 감사한 것은?</p><span class="btn">+ 한 줄 쓰기</span></div></div></div></section>
+  <section class="opt"><div class="label"><span class="num">6</span><span class="name">일주일 반짝임</span><span class="note">쓴 날의 반짝임만 금빛</span></div>
+    <div class="home"><div class="w s"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><div class="wk"><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></div></div><div class="w m"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="q">오늘 감사한 것은?</p><span class="grow"></span><div class="row"><div class="wk"><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini on" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><svg class="sp mini" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></div><span class="btn">+ 한 줄 쓰기</span></div></div></div></section>
+  <section class="opt"><div class="label"><span class="num">7</span><span class="name">가운데 정렬</span><span class="note">반짝임 아래 질문</span></div>
+    <div class="home"><div class="w s cen"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><p class="q" style="margin-top:12px">오늘 감사한 것은?</p></div><div class="w m cen"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><p class="q" style="margin-top:12px">오늘 감사한 것은?</p></div></div></section>
+  <section class="opt"><div class="label"><span class="num">8</span><span class="name">반짝임 · ＋ 만</span><span class="note">가장 단순한 모양</span></div>
+    <div class="home"><div class="w s"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><span class="plus" style="align-self:flex-end">+</span></div><div class="w m"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><span class="plus" style="align-self:flex-end">+</span></div></div></section>
+  <section class="opt"><div class="label"><span class="num">9</span><span class="name">오늘 쓴 한 줄</span><span class="note">쓴 날은 내 감사가 보여요</span></div>
+    <div class="home"><div class="w s"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="mine">퇴근길에 엄마가 보내 준 사진 한 장에 하루가 따뜻해졌어요.</p></div><div class="w m"><svg class="sp gold" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg><span class="grow"></span><p class="mine">퇴근길에 엄마가 보내 준 사진 한 장에 하루가 따뜻해졌어요.</p><span class="grow"></span><p class="sm">오늘의 감사</p></div></div></section>
+  <section class="opt"><div class="label"><span class="num">10</span><span class="name">구석의 반짝임</span><span class="note">오른쪽 아래에 크게, 질문은 왼쪽 위</span></div>
+    <div class="home"><div class="w s"><p class="q">오늘 감사한 것은?</p><svg class="sp gold corner" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></div><div class="w m"><p class="q">오늘 감사한 것은?</p><span class="grow"></span><span class="btn">+ 한 줄 쓰기</span><svg class="sp gold corner" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></svg></div></div></section>
 </div>
