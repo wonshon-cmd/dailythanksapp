@@ -27,6 +27,7 @@ export function loadConfig(env = process.env) {
       fairUsePerMonth: Number(env.SERMON_FAIR_USE || 60),   // monthly / yearly plans: "almost unlimited"
       devBilling: on(env.BILLING_DEV)                        // dev only: activate a plan without a store receipt
     },
-    corsOrigins: String(env.CORS_ORIGINS || 'https://dailyjourney.org,capacitor://localhost,http://localhost,https://localhost').split(',').map(x => x.trim()).filter(Boolean)
+    ytdlpPath: env.YTDLP_PATH || '',   // optional: yt-dlp binary for "sermon from a YouTube link"
+        corsOrigins: String(env.CORS_ORIGINS || 'https://dailyjourney.org,capacitor://localhost,http://localhost,https://localhost').split(',').map(x => x.trim()).filter(Boolean)
   };
 }

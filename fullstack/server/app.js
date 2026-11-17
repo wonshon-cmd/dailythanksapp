@@ -270,6 +270,58 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     runJob(s.id, { filePath, mimeType, title: s.title, preacher: s.preacher });
     return { status: 202, body: { id: s.id, status: 'queued' } };
   }, 'sermon');
+  /* Long recordings arrive in pieces while recording (a 40-minute sermon never has to upload in one go):
+     start → chunks in order → finish (pieces are joined, then transcribed and summarized). */
+  const partDir = id => path.join(config.uploadDir, id + '.parts');
+  route('POST', '/api/sermons/upload', async ({ url, user }) => {
+    checkQuota(user);
+    const mimeType = String(url.searchParams.get('type') || 'audio/webm').split(';')[0];
+    if (!AUDIO_TYPES[mimeType]) throw new HttpError(415, 'unsupported_audio_type');
+    const s = newSermon(user, { title: url.searchParams.get('title'), preacher: url.searchParams.get('preacher') });
+    store.updateSermon(s.id, { status: 'uploading', mimeType });
+    fs.mkdirSync(partDir(s.id), { recursive: true });
+    return { status: 201, body: { id: s.id, status: 'uploading' } };
+  }, 'sermon');
+  route('PUT', '/api/sermons/:id/chunk', async ({ req, url, params, user }) => {
+    const s = store.getSermon(params.id);
+    if (!s || s.ownerId !== user || s.status !== 'uploading') throw new HttpError(404, 'not_found');
+    const i = Number(url.searchParams.get('i')); if (!Number.isInteger(i) || i < 0 || i > 100000) throw new HttpError(422, 'invalid_chunk');
+    const buf = await readBody(req, 25 * 1024 * 1024); if (!buf.length) throw new HttpError(400, 'empty_chunk');
+    fs.writeFileSync(path.join(partDir(s.id), String(i).padStart(6, '0')), buf);
+    return { ok: true, i };
+  }, 'sermon');
+  route('POST', '/api/sermons/:id/finish', async ({ req, params, user }) => {
+    const s0 = store.getSermon(params.id), body = await readJson(req, 16 * 1024).catch(() => ({}));
+    if (s0 && s0.ownerId === user && (body.title || body.preacher)) store.updateSermon(s0.id, { title: String(body.title || s0.title).slice(0, 120), preacher: String(body.preacher || s0.preacher).slice(0, 60) });
+    const s = store.getSermon(params.id);
+    if (!s || s.ownerId !== user || s.status !== 'uploading') throw new HttpError(404, 'not_found');
+    const dir = partDir(s.id), parts = fs.existsSync(dir) ? fs.readdirSync(dir).sort() : [];
+    if (!parts.length) throw new HttpError(400, 'empty_audio');
+    const filePath = path.join(config.uploadDir, s.id + AUDIO_TYPES[s.mimeType]);
+    fs.writeFileSync(filePath, Buffer.concat(parts.map(f => fs.readFileSync(path.join(dir, f)))));
+    fs.rmSync(dir, { recursive: true, force: true });
+    store.updateSermon(s.id, { status: 'queued' });
+    runJob(s.id, { filePath, mimeType: s.mimeType, title: s.title, preacher: s.preacher });
+    return { status: 202, body: { id: s.id, status: 'queued', parts: parts.length } };
+  }, 'sermon');
+  // A sermon from a YouTube link: the audio is fetched on the server (needs yt-dlp; YTDLP_PATH), then the usual steps.
+  route('POST', '/api/sermons/youtube', async ({ req, user }) => {
+    checkQuota(user);
+    const body = await readJson(req, 16 * 1024);
+    const link = String(body.url || '');
+    if (!/^https:\/\/(www\.|m\.)?(youtube\.com\/(watch\?v=|live\/|shorts\/)|youtu\.be\/)[\w-]{6,}/.test(link)) throw new HttpError(422, 'invalid_youtube_url');
+    if (!config.ytdlpPath) throw new HttpError(501, 'youtube_not_configured');
+    const s = newSermon(user, body);
+    fs.mkdirSync(config.uploadDir, { recursive: true });
+    const filePath = path.join(config.uploadDir, s.id + '.m4a');
+    store.updateSermon(s.id, { status: 'downloading', source: link });
+    const { execFile } = await import('node:child_process');
+    execFile(config.ytdlpPath, ['-x', '--audio-format', 'm4a', '--no-playlist', '-o', filePath, link], { timeout: 15 * 60 * 1000 }, err => {
+      if (err) return store.updateSermon(s.id, { status: 'error', error: { code: 'youtube_failed', message: 'Could not fetch audio from that link.' } });
+      runJob(s.id, { filePath, mimeType: 'audio/mp4', title: s.title, preacher: s.preacher });
+    });
+    return { status: 202, body: { id: s.id, status: 'downloading' } };
+  }, 'sermon');
   route('POST', '/api/sermons/text', async ({ req, user }) => {
     checkQuota(user);
     const body = await readJson(req, 1024 * 1024);

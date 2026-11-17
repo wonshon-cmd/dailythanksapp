@@ -189,3 +189,22 @@ test('daily bible page is served in Bible mode', async () => {
   assert.equal(page.status, 200); assert.match(page.body, /window\.DT_APP = "bible"/);
   assert.equal((await call('GET', '/daily-bible/app.js')).status, 200);
 });
+
+test('sermons: a long recording uploads in pieces, then is summarized', async () => {
+  const call = await start({ FEATURE_SERMON: '1', STT_PROVIDER: 'mock' });
+  const up = await call('POST', '/api/sermons/upload?type=audio/webm&title=long');
+  assert.equal(up.status, 201);
+  for (let i = 0; i < 3; i++) assert.equal((await call('PUT', `/api/sermons/${up.body.id}/chunk?i=${i}`, new Uint8Array([i, i, i]), { 'Content-Type': 'application/octet-stream' })).status, 200);
+  assert.equal((await call('PUT', `/api/sermons/${up.body.id}/chunk?i=0`, new Uint8Array([1]), { 'x-user-id': 'other', 'Content-Type': 'application/octet-stream' })).status, 404);
+  const fin = await call('POST', `/api/sermons/${up.body.id}/finish`);
+  assert.equal(fin.status, 202); assert.equal(fin.body.parts, 3);
+  let sermon;
+  for (let i = 0; i < 30; i++) { sermon = (await call('GET', `/api/sermons/${up.body.id}`)).body.sermon; if (sermon.status === 'done') break; await new Promise(r => setTimeout(r, 20)); }
+  assert.equal(sermon.status, 'done');
+});
+
+test('sermons: YouTube link needs yt-dlp on the server', async () => {
+  const call = await start({ FEATURE_SERMON: '1' });
+  assert.equal((await call('POST', '/api/sermons/youtube', { url: 'https://example.com/x' })).status, 422);
+  assert.equal((await call('POST', '/api/sermons/youtube', { url: 'https://www.youtube.com/watch?v=abcdefghijk' })).status, 501);
+});
