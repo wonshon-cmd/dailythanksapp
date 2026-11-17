@@ -1614,3 +1614,4 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 /* every full-screen card keeps its icons above the round + button (verse cards sat lower and touched it) */
 .post.card-page .post-rail, .post.imm .post-rail { bottom: calc(96px + var(--safe-bottom)); }
 @media (max-height: 700px) { .post.card-page .post-rail:not(.card-close) { gap: 16px; } }
+.imm-reach { display: block; margin-top: 6px; font-size: 13px; color: var(--muted, #9a9a9a); }

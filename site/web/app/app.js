@@ -3180,7 +3180,7 @@ function renderImmersive(keepIndex = 0) {
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
     return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
       <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}"><span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span><i class="why-i">?</i></button>` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
-        <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
+        <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
         ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
@@ -4333,6 +4333,8 @@ const recapText = () => `${t('rc.shareHead')}\n\n${weekNotes().filter(p => p.sco
 /* ---------------- optional features (Settings › Features) ---------------- */
 // Prayer requests: others tap "I prayed"; the author sees who prayed (quietly, no ranking).
 // Counts are private: in feeds a heart shows no number; only the author sees counts on their own posts.
+// how many people a post of mine reached (liked, saved or shared it)
+const reachOf = p => (p.likes || 0) + (data.liked.includes(p.id) ? 1 : 0) + (p.saves || 0) + sharesOf(p);
 const countLabel = (p, n) => p.mine && !BIBLE_MODE ? `<span>${n}</span>` : ''; // daily bible: no like numbers at all
 function prayBtn(p) {
   const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
