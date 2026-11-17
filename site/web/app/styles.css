@@ -1125,3 +1125,8 @@ body.capturing #app{filter:blur(18px)}
 .tile-bar b{display:block;height:100%;background:#8A9094}
 .ch-count{display:flex;align-items:center;gap:6px;margin:4px 0 10px;font-size:13px;color:#6E7377}
 .ch-count .ico{font-size:14px}
+/* My Thanks: Bible reading progress */
+.jb-main{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.jb-main small{font-size:12px;color:#A9AEB1}
+.jb-bar{display:block;height:3px;border-radius:3px;background:#ECEDEE;overflow:hidden;max-width:220px}
+.jb-bar b{display:block;height:100%;background:#8A9094}

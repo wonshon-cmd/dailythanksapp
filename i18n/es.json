@@ -609,5 +609,8 @@
   "off.done": "La Biblia completa está guardada.",
   "off.fail": "Algunos libros no se guardaron. Inténtalo de nuevo.",
   "tile.ch": "{name} {n}/{t}",
-  "ch.counted": "Cuenta como el día {n} de tu {name}"
+  "ch.counted": "Cuenta como el día {n} de tu {name}",
+  "j.bible": "{n} capítulos leídos · {p}%",
+  "j.bibleWeek": "{n} esta semana",
+  "j.bibleNone": "Empieza a leer la Biblia"
 }
