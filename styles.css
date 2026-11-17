@@ -1151,3 +1151,43 @@ body.capturing #app{filter:blur(18px)}
 /* season + weekly recap cards */
 .camp-card .card-actions,.recap-card .card-actions{flex-wrap:wrap}
 .adm-rm.armed{font-weight:600;color:#A2564E}
+/* challenge: D-day, faithful, result */
+.g-ch-d{font-style:normal;font-size:11.5px;color:#8A9094;background:#FFFFFF;border-radius:99px;padding:2px 7px;margin-left:6px}
+.g-ch-d.done{color:#fff;background:#8A9094}
+.ch-top{margin:-8px 0 20px;display:flex;flex-direction:column;gap:6px}
+.ch-top .gd-label{display:flex;align-items:center;gap:6px;margin:0 0 4px}
+.ch-top-row{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--ink)}
+.ch-top-row i{font-style:normal;width:22px;height:22px;border-radius:50%;background:#F1F1F1;display:grid;place-items:center;font-size:12px;color:#6E7377}
+.ch-top-row small{margin-left:auto;color:#A9AEB1;font-size:12.5px}
+.chr{text-align:center}
+.chr .ch-top{margin:4px 0 18px;text-align:left}
+.chr-nums{display:flex;justify-content:center;gap:28px;margin:16px 0 18px}
+.chr-nums span{display:flex;flex-direction:column;gap:4px;align-items:center}
+.chr-nums b{font-size:26px;font-weight:400;color:var(--ink)}
+.chr-nums small{font-size:12px;color:#8E9396}
+.confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:120}
+/* quiz */
+.qz-score{margin-left:auto;font-size:12px;color:#8A9094}
+.quiz-card .post-kind{width:100%}
+.qz-q{font-size:22px;line-height:1.6}
+.qz-opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.qz-opt{border:1px solid var(--line);background:#FFFFFF;border-radius:14px;padding:13px 16px;font:inherit;font-size:15px;text-align:left;color:var(--ink);cursor:pointer}
+.qz-opt.right{background:#EEF3EF;border-color:#B9D2BF}
+.qz-opt.wrong{background:#F8EEEC;border-color:#E7C2BC}
+.qz-opt.dim{opacity:.5}
+.qz-fact{margin:16px 0 4px;font-size:14.5px;line-height:1.7;color:var(--ink)}
+.qz-src{margin:0;font-size:12px;color:#A9AEB1}
+.qz-dots{display:flex;gap:8px;margin:10px 0 6px}
+.qz-dots i{width:10px;height:10px;border-radius:50%;background:#E3E5E6}
+.qz-dots i.on{background:#8A9094}
+/* church */
+.chu-entry{margin:0 0 6px}
+.chu-list{display:flex;flex-direction:column;gap:10px;margin:14px 0 30px}
+.chu-g{border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.chu-head{display:flex;justify-content:space-between;align-items:baseline}
+.chu-head b{font-size:16px;font-weight:500;color:var(--ink)}
+.chu-head span{font-size:12.5px;color:#8A9094}
+.chu-sub{margin:6px 0 8px;font-size:12.5px;color:#8E9396;line-height:1.5}
+.chu-acts{display:flex;gap:14px}
+.chu-acts .link-btn{font-size:13px;padding:4px 0}
+.church .sw-row{margin:12px 0 0;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;display:flex;align-items:center;font:inherit;text-align:left;cursor:pointer}
