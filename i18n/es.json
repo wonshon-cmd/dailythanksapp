@@ -596,5 +596,10 @@
   "vault.locked": "Este dispositivo necesita tu llave de recuperación. Añádela en Ajustes › Bloqueo de privacidad.",
   "vault.group": "Las publicaciones del grupo se bloquean con la llave del grupo. Solo viaja dentro del enlace de invitación y nunca llega al servidor.",
   "prot.noShare": "Solo quien escribió una publicación del grupo puede compartirla.",
-  "prot.shot": "Las publicaciones del grupo no se pueden compartir con capturas."
+  "prot.shot": "Las publicaciones del grupo no se pueden compartir con capturas.",
+  "gend.title": "Ya lo viste todo",
+  "gend.sub": "Te toca: comparte tu día con tu grupo.",
+  "gend.thanks": "Compartir gratitud",
+  "gend.meditation": "Compartir una reflexión",
+  "gend.prayer": "Compartir una petición"
 }

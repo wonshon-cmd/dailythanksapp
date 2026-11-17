@@ -1114,3 +1114,6 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .post.protected,.gd-recent{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 body.capturing #app{filter:blur(18px)}
 .vault-code{font-family:ui-monospace,Menlo,monospace;font-size:13.5px;word-break:break-all;background:#F4F4F4;border-radius:12px;padding:12px 14px;color:var(--ink);margin:0 0 6px;-webkit-user-select:all;user-select:all}
+/* end of a group's posts: your turn */
+.gend-acts{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:22px}
+.gend-acts button{display:inline-flex;align-items:center;gap:8px}
