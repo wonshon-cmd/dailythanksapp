@@ -802,3 +802,12 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
    Cards, buttons and fields stay pure white so they sit gently on top. Change --bg here to adjust everything. */
 :root{--bg:#FAFAFA;--paper:#FAFAFA}
 html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.reader-foot,.feed-scroll,.imm-scroll,.screen{background:var(--bg)}
+/* subtle first-time hints: swipe right to read, swipe left to go back */
+.swipe-hint{margin:6px 0 0;font-size:12px;color:#B4B8BA;display:flex;align-items:center;gap:6px;letter-spacing:.01em}
+.swipe-hint.right span{display:inline-block;animation:nudge-x 2.4s ease-in-out infinite}
+.swipe-hint.back{position:absolute;left:0;right:0;bottom:calc(22px + var(--safe-bottom));justify-content:center;margin:0;transition:opacity .8s ease;pointer-events:none}
+.swipe-hint.back span{display:inline-block;animation:nudge-x-back 2.4s ease-in-out infinite}
+.swipe-hint.back.gone{opacity:0}
+@keyframes nudge-x{0%,60%,100%{transform:none}30%{transform:translateX(4px)}}
+@keyframes nudge-x-back{0%,60%,100%{transform:none}30%{transform:translateX(-4px)}}
+@media (prefers-reduced-motion:reduce){.swipe-hint span{animation:none}}

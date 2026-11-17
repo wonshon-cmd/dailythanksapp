@@ -443,5 +443,7 @@
 "share.link": "Copiar enlace",
 "verse.saved": "Guardado · Mi gratitud › Guardado",
 "verse.unsaved": "Quitado de guardados.",
-"act.like": "Me gusta"
+"act.like": "Me gusta",
+"hint.swipeRead": "Desliza a la derecha para leer la Biblia",
+"hint.swipeBack": "Desliza a la izquierda para volver"
 }
