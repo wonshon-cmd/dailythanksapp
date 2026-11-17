@@ -2686,9 +2686,9 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
 let LEGAL_BASE = 'https://dailyjourney.org';
-// daily bible (github.io site and phone app): privacy, terms, support, invite and plan links live on the public site.
-// daily journey (dailyjourney.org) keeps its own address.
-if (BIBLE_MODE && BRAND2 !== 'journey') LEGAL_BASE = 'https://wonshon-cmd.github.io/dailybible';
+// The phone app and dailyjourney.org always link to dailyjourney.org (privacy, terms, support, delete-account, invites).
+// Only the separate github.io copy of daily bible keeps its own address.
+if (BIBLE_MODE && /(^|\.)github\.io$/.test(location.hostname)) LEGAL_BASE = 'https://wonshon-cmd.github.io/dailybible';
 let SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
