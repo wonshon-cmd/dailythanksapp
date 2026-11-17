@@ -1623,13 +1623,38 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .write-pill.plus-only{width:42px;padding:0;justify-content:center}
 .write-pill.plus-only .plus{font-size:18px}
 
-/* first-visit tour: a soft spotlight and a small white card */
-#tour{position:fixed;inset:0;z-index:9999}
-#tour .tour-dim{position:absolute;inset:0;background:rgba(22,25,28,.45)}
-#tour .tour-hole{position:absolute;border-radius:16px;box-shadow:0 0 0 9999px rgba(22,25,28,.45);transition:all .25s ease;pointer-events:none}
-#tour .tour-card{position:absolute;left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border-radius:18px;padding:18px 18px 14px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
-#tour .tour-step{margin:0 0 6px;font-size:12px;color:var(--faint,#9BA0A3)}
-#tour .tour-title{margin:0 0 6px;font-size:17px;color:var(--ink,#16191C)}
-#tour .tour-body{margin:0;font-size:14px;line-height:1.55;color:var(--sub,#686E73)}
+/* first-visit tour: a live demo of the feed scrolling, then three things that are here */
+#tour{position:absolute;inset:0;z-index:50;background:#fff}
+#tour .tour-demo{position:absolute;inset:0;display:flex;flex-direction:column;padding:calc(20px + var(--safe-top,0px)) 24px calc(22px + var(--safe-bottom,0px))}
+#tour .tour-mark{font-size:22px;color:var(--ink)}
+#tour .tour-stage{position:relative;flex:1;min-height:240px;margin:18px 0 0;border-radius:22px;background:#F7F7F7;overflow:hidden}
+#tour .tour-track{height:100%;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+#tour .tour-post{height:100%;box-sizing:border-box;padding:28px 26px;display:flex;flex-direction:column;justify-content:center}
+#tour .tour-kind{display:flex;align-items:center;gap:6px;margin:0 0 14px;font-size:13px;color:var(--sub)}
+#tour .tour-kind .ico{font-size:15px}
+#tour .tour-text{margin:0;font-size:21px;line-height:1.6;color:var(--ink);word-break:keep-all}
+#tour .tour-meta{margin:14px 0 0;font-size:13px;color:var(--faint)}
+#tour .tour-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:7px 14px;border-radius:999px;background:#ECECEC;font-size:13px;color:var(--ink)}
+#tour .tour-finger{position:absolute;left:50%;bottom:22%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:rgba(22,25,28,.16);border:2px solid rgba(255,255,255,.9);opacity:0;pointer-events:none}
+#tour .tour-finger.go{animation:tourSwipe .9s ease-in-out}
+@keyframes tourSwipe{0%{opacity:0;transform:translateY(40px)}20%{opacity:1}80%{opacity:1;transform:translateY(-120px)}100%{opacity:0;transform:translateY(-140px)}}
+#tour .tour-cap{position:relative;height:56px;margin-top:18px}
+#tour .tour-line{position:absolute;inset:0;margin:0;text-align:center;font-size:17px;line-height:1.45;color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+#tour .tour-line.on{opacity:1;transform:none}
+#tour .tour-dots{display:flex;justify-content:center;gap:6px;margin:6px 0 4px}
+#tour .tour-dots i{width:6px;height:6px;border-radius:50%;background:#D9DBDD;transition:background .3s}
+#tour .tour-dots i.on{background:#6E7377}
 #tour .tour-acts{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-#tour .tour-acts .primary{padding:0 20px;height:40px;border-radius:999px}
+#tour .tour-acts .primary{padding:0 26px;height:46px;border-radius:999px}
+#tour .tour-title{margin:28px 0 18px;font-size:22px;color:var(--ink)}
+#tour .tour-fs{flex:1;display:flex;flex-direction:column;gap:12px}
+#tour .tour-f{display:flex;gap:14px;align-items:center;padding:18px;border-radius:18px;background:#F7F7F7}
+#tour .tour-f b{display:block;font-weight:500;font-size:16px;color:var(--ink)}
+#tour .tour-f small{display:block;margin-top:3px;font-size:13px;color:var(--sub)}
+@media (prefers-reduced-motion:reduce){#tour .tour-track{transition:none}#tour .tour-finger{display:none}}
+
+/* daily bible top bar: language (first visits) + write */
+.top-right{display:flex;align-items:center;gap:6px}
+.top-lang{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3;cursor:pointer}
+.top-lang .ico{font-size:15px}
+.top-lang[hidden]{display:none}
