@@ -837,5 +837,15 @@
   "pp.phone": "Teléfono",
   "pp.save": "Guardar",
   "pp.hint": "Toca para abrir un mensaje listo para enviar.",
-  "pp.del": "Quitar"
+  "pp.del": "Quitar",
+  "med.felt": "Lo que sentí",
+  "med.prayer": "Oración",
+  "med.prayerPh": "Una oración desde este pasaje, o un pedido de oración",
+  "med.asReq": "Compartir también como pedido de oración",
+  "med.rec": "Grabar tu voz",
+  "med.recStop": "Terminar grabación",
+  "med.recDel": "Borrar grabación",
+  "med.recNote": "Las grabaciones quedan cifradas en este dispositivo.",
+  "med.recFail": "No se puede usar el micrófono. Permítelo en Ajustes.",
+  "med.voice": "Nota de voz"
 }
