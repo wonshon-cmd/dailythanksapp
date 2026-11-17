@@ -1017,3 +1017,4 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .mp-open{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--line);background:#FFFFFF;border-radius:14px;padding:14px 14px;font:inherit;font-size:15px;color:var(--sub);cursor:pointer;text-align:left}
 .mp-open span{flex:1}
 .mp-open .ico{font-size:17px}
+.col-kinds{margin:0 0 12px}
