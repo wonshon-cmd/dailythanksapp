@@ -449,5 +449,16 @@
 "day.today": "Hoy",
 "day.yesterday": "Ayer",
 "j.month": "{m} · {n} días de gratitud",
-"j.monthTitle": "Este mes"
+"j.monthTitle": "Este mes",
+"imm.all": "Todos",
+"imm.group": "Grupo",
+"gs.week": "Esta semana",
+"gs.people": "{n} participaron",
+"gs.quiet": "Esperando lo primero de esta semana",
+"gs.counts": "Gratitud {t} · Reflexiones {m} · Peticiones {p}",
+"gs.chDay": "día {n}",
+"gs.nudge": "Invitar a todos hoy",
+"gs.nudged": "Invitados hoy",
+"gs.nudgeDone": "Se envió una nota suave a todo el grupo.",
+"gs.privacy": "Aquí no se ve quién participó, solo lo que hicimos juntos."
 }

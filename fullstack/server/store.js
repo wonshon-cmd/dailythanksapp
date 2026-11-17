@@ -7,7 +7,7 @@ import path from 'node:path';
  * the route handlers only call the methods below.
  */
 export function createStore(file) {
-  const empty = { states: {}, passages: [], sermons: [], reports: [], reviews: [], groups: [] };
+  const empty = { states: {}, passages: [], sermons: [], reports: [], reviews: [], groups: [], nudges: [] };
   let db = empty;
   try { db = { ...empty, ...JSON.parse(fs.readFileSync(file, 'utf8')) }; } catch { /* first run */ }
   let timer = null;
@@ -43,6 +43,7 @@ export function createStore(file) {
     listReviews: ({ status, userId } = {}) => db.reviews.filter(r => (!status || r.status === status) && (!userId || r.userId === userId)),
     updateReview: (id, patch) => { const r = db.reviews.find(x => x.id === id); if (r) { Object.assign(r, patch); persist(); } return r; },
     // Groups and invite codes: anyone with the code can join (the code is the invitation).
+    addNudge: n => { db.nudges.push(n); persist(); return n; },
     addGroup: g => { db.groups.push(g); persist(); return g; },
     groupByCode: code => db.groups.find(g => g.inviteCode === code) || null,
     listGroups: userId => db.groups.filter(g => g.members.includes(userId)),

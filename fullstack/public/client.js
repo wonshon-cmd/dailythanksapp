@@ -51,6 +51,7 @@
 
   /* ---------- groups: register invite codes and joins with the server ---------- */
   document.addEventListener('dt:group-created', e => { api('POST', '/api/groups', { name: e.detail.name, code: e.detail.invite }).catch(() => {}); });
+  document.addEventListener('dt:group-nudge', e => { if (e.detail.code) api('POST', '/api/groups/nudge', { code: e.detail.code }).catch(() => {}); });
   document.addEventListener('dt:group-join', e => { api('POST', '/api/groups/join', { code: e.detail.code }).catch(() => DT.toast('Invite not found')); });
 
   /* ---------- 1) server sync ---------- */

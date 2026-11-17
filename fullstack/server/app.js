@@ -97,6 +97,17 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     const g = store.joinGroup(code, user); if (!g) throw new HttpError(404, 'invite_not_found');
     return { group: publicGroup(g) };
   });
+  // Gentle group nudge: one message to every member, at most once a day per group, never naming anyone.
+  // (Delivery = push to members' devices; here it is recorded so the push service can send it.)
+  route('POST', '/api/groups/nudge', async ({ req, user }) => {
+    const { code } = await readJson(req);
+    const g = CODE_RE.test(code || '') && store.groupByCode(code);
+    if (!g || !g.members.includes(user)) throw new HttpError(404, 'group_not_found');
+    const day = new Date().toISOString().slice(0, 10);
+    if (g.lastNudge === day) throw new HttpError(429, 'already_nudged_today');
+    g.lastNudge = day; store.addNudge({ groupId: g.id, day, by: user });
+    return { ok: true, recipients: g.members.length };
+  });
   route('DELETE', '/api/account', ({ user }) => { store.deleteUser(user); return { ok: true }; });
 
   /* ---------- 표현 필터 + 검토 요청 ----------

@@ -150,3 +150,13 @@ test('group invite: create with a code, preview it, join from another account', 
   assert.equal((await call('POST', '/api/groups/join', { code: 'nope9999' }, { 'x-user-id': 'friend' })).status, 404);
   assert.equal((await call('POST', '/api/groups', { name: ' ' }, { 'x-user-id': 'owner' })).status, 400);
 });
+
+test('group nudge: once a day, members only', async () => {
+  const call = await start({});
+  await call('POST', '/api/groups', { name: 'Grace', code: 'grace2345' }, { 'x-user-id': 'a' });
+  await call('POST', '/api/groups/join', { code: 'grace2345' }, { 'x-user-id': 'b' });
+  const first = await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'b' });
+  assert.equal(first.status, 200); assert.equal(first.body.recipients, 2);
+  assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'a' })).status, 429);
+  assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'stranger' })).status, 404);
+});
