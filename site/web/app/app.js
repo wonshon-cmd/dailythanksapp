@@ -2881,7 +2881,7 @@ if (location.hash === '#write') { document.getElementById('splash')?.remove(); s
 (() => {
   const tag = document.querySelector('#splash .splash-tag'); if (!tag) return;
   const remote = CONTENT.tagline && !Array.isArray(CONTENT.tagline) ? CONTENT.tagline[lang()] : null;
-  const lines = Array.isArray(remote) && remote.length ? remote : lang() === 'ko' ? ['매일 감사하기.', '온전히 살기.', '기쁨 나누기.'] : null;
+  const lines = Array.isArray(remote) && remote.length ? remote : lang() === 'ko' ? ['매일 감사하기.', '풍성하게 살기.', '기쁨 나누기.'] : null;
   if (lines) { tag.innerHTML = lines.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join(''); tag.classList.toggle('ko', lang() === 'ko'); }
 })();
 /* Splash: white screen with the wordmark only, then fades into the app (tap to skip). */
