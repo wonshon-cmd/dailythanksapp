@@ -131,7 +131,7 @@ test('serves editable app content without the _help/_examples keys', async () =>
   const call = await start({});
   const res = await call('GET', '/api/content');
   assert.equal(res.status, 200);
-  assert.ok(Array.isArray(res.body.tagline));
+  assert.ok(Array.isArray(res.body.tagline) || Array.isArray(res.body.tagline?.ko)); // one list, or one per language
   assert.equal(res.body.supportEmail, 'hi@dailyjourney.org');
   assert.ok(!('_help' in res.body) && !('_examples' in res.body));
 });
