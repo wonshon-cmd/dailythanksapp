@@ -1416,3 +1416,36 @@ body.capturing #app{filter:blur(18px)}
 .pl-row .g-ch .g-ch-bar { grid-area: bar; align-self: center; }
 .pl-row .g-ch .g-ch-go { grid-area: go; }
 .pl-row .g-ch .pl-with { grid-area: with; }
+/* record button + small sermon-language chip */
+.rec-row { display: flex; gap: 8px; align-items: stretch; }
+.rec-row .rec-big { flex: 1; min-width: 0; }
+.rec-lang { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 58px; border: 0; border-radius: 999px; background: #f1f1f1; color: #4a4f54; font: inherit; cursor: pointer; }
+.rec-lang svg { width: 16px; height: 16px; }
+.rec-lang b { font-size: 12px; font-weight: 600; letter-spacing: .02em; }
+/* sermon passage, full screen */
+.sn-refrow { display: flex; gap: 8px; align-items: center; }
+.sn-refrow .sn-refbtn { flex: 1; min-width: 0; }
+.sn-pv { flex: none; }
+.pv { position: fixed; inset: 0; z-index: 60; background: var(--bg, #fff); display: flex; flex-direction: column; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+.pv-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 1px solid #eee; }
+.pv-ref { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 500; color: #2c3135; }
+.pv-ref svg { width: 18px; height: 18px; }
+.pv-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 24px 26px 60px; max-width: 680px; width: 100%; margin: 0 auto; box-sizing: border-box; }
+.pv-v { margin: 0 0 18px; font-size: calc(19px * var(--fs, 1)); line-height: 1.8; color: #2c3135; }
+.pv-v sup { font-size: 12px; color: #9aa0a6; margin-right: 6px; }
+.pv-ch { margin: 28px 0 14px; font-size: 13px; color: #8a8f94; letter-spacing: .04em; }
+/* daily bible: reading streak */
+.stk { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px; margin-bottom: 18px; border-radius: 18px; background: #f6f6f6; }
+.stk-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.stk-flame { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: #ececec; color: #8a8f94; flex: none; }
+.stk.done .stk-flame { background: #fbe7a6; color: #8a6a12; }
+.stk-flame svg { width: 20px; height: 20px; }
+.stk-n { display: block; font-size: 17px; font-weight: 600; color: #2c3135; }
+.stk-sub { display: block; font-size: 12px; color: #8a8f94; }
+.stk-week { display: flex; gap: 6px; }
+.stk-week span { display: grid; justify-items: center; gap: 3px; }
+.stk-week i { width: 14px; height: 14px; border-radius: 50%; background: #e1e3e5; }
+.stk-week .on i { background: #8a9094; }
+.stk.done .stk-week .today i { background: #e2b93b; }
+.stk-week .today:not(.on) i { box-shadow: inset 0 0 0 2px #c6c9cc; background: transparent; }
+.stk-week small { font-size: 10px; color: #9aa0a6; }

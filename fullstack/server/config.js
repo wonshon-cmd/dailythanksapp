@@ -26,7 +26,9 @@ export function loadConfig(env = process.env) {
     maxUploadBytes: Number(env.MAX_UPLOAD_MB || 200) * 1024 * 1024,
     // Sermon notes: the first notes are free (kept); after that, delete some or subscribe.
     sermonPlans: {
-      freeNotes: Number(env.FREE_SERMON_NOTES || 10),
+      // Google-style: plenty of free space; when it fills up, delete recordings or get more space.
+      freeBytes: Math.round(Number(env.FREE_STORAGE_MB || 1024) * 1024 * 1024),      // 1 GB ≈ 50 hours of recordings
+      paidBytes: Math.round(Number(env.PAID_STORAGE_GB || 100) * 1024 * 1024 * 1024), // monthly / yearly plans
       fairUsePerMonth: Number(env.SERMON_FAIR_USE || 60),   // monthly / yearly plans: "almost unlimited"
       devBilling: on(env.BILLING_DEV)                        // dev only: activate a plan without a store receipt
     },

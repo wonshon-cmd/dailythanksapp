@@ -37,6 +37,7 @@ export function createStore(file) {
     getSermon: id => db.sermons.find(x => x.id === id) || null,
     listSermons: userId => db.sermons.filter(s => s.ownerId === userId).map(({ transcript, ...rest }) => rest),
     deleteSermon: (id, userId) => { const before = db.sermons.length; db.sermons = db.sermons.filter(s => !(s.id === id && s.ownerId === userId)); persist(); return db.sermons.length < before; },
+    storageUsed: userId => db.sermons.filter(s => s.ownerId === userId).reduce((n, s) => n + (s.bytes || 0), 0),
     countSermons: (userId, since) => db.sermons.filter(s => s.ownerId === userId && (!since || s.createdAt >= since)).length,
     // Subscription per user: { plan: 'monthly' | 'yearly', until: ISO date, source }
     getPlan: userId => { const p = db.plans[userId]; return p && p.until > new Date().toISOString() ? p : null; },

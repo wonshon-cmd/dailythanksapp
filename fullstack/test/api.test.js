@@ -161,21 +161,31 @@ test('group nudge: once a day, members only', async () => {
   assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'stranger' })).status, 404);
 });
 
-test('sermon notes: 10 free, then delete or subscribe', async () => {
-  const call = await start({ FEATURE_SERMON: '1', FREE_SERMON_NOTES: '3', BILLING_DEV: '1' });
+test('sermon notes: free space, then delete recordings or get more space', async () => {
+  const one = Buffer.byteLength(MOCK_TRANSCRIPT);
+  const call = await start({ FEATURE_SERMON: '1', FREE_STORAGE_MB: String(3 * one / 1048576), BILLING_DEV: '1' });
   const ids = [];
   for (let i = 0; i < 3; i++) ids.push((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).body.id);
   let q = (await call('GET', '/api/sermons/quota')).body;
-  assert.deepEqual([q.plan, q.used, q.limit], ['free', 3, 3]);
+  assert.deepEqual([q.plan, q.used, q.limit, q.unit], ['free', 3 * one, 3 * one, 'bytes']);
   const full = await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT });
-  assert.equal(full.status, 402); assert.equal(full.body.error, 'quota_full'); assert.equal(full.body.limit, 3);
+  assert.equal(full.status, 402); assert.equal(full.body.error, 'storage_full'); assert.equal(full.body.limit, 3 * one);
   assert.equal((await call('DELETE', `/api/sermons/${ids[0]}`)).status, 200);           // delete one → room again
   assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
   assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 402);
   assert.equal((await call('DELETE', `/api/sermons/${ids[1]}`, null, { 'x-user-id': 'other' })).status, 404); // only your own
-  q = (await call('POST', '/api/billing/activate', { plan: 'yearly' })).body;            // subscribe → almost unlimited
-  assert.equal(q.plan, 'yearly'); assert.equal(q.limit, null);
+  q = (await call('POST', '/api/billing/activate', { plan: 'yearly' })).body;            // more space
+  assert.equal(q.plan, 'yearly'); assert.equal(q.limit, 100 * 1024 ** 3);
   assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+});
+
+test('sermon notes: a recording too big for the space left is not kept', async () => {
+  const call = await start({ FEATURE_SERMON: '1', STT_PROVIDER: 'mock', FREE_STORAGE_MB: String(3000 / 1048576) });
+  const { id } = (await call('POST', '/api/sermons/upload?type=audio/mp4')).body;
+  for (let i = 0; i < 2; i++) assert.equal((await call('PUT', `/api/sermons/${id}/chunk?i=${i}`, new Uint8Array(2000), { 'Content-Type': 'application/octet-stream' })).status, 200);
+  const fin = await call('POST', `/api/sermons/${id}/finish`, {});
+  assert.equal(fin.status, 402); assert.equal(fin.body.error, 'storage_full');
+  assert.equal((await call('GET', '/api/sermons')).body.sermons.length, 0);
 });
 
 test('billing: no plan without a verified receipt unless dev billing is on', async () => {

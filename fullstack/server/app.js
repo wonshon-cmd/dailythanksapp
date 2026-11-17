@@ -237,12 +237,12 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   const quota = user => {
     const plan = store.getPlan(user), P = config.sermonPlans;
     const month = new Date(Date.now() - 30 * 864e5).toISOString();
-    return { plan: plan?.plan || 'free', until: plan?.until || null, used: store.countSermons(user), limit: plan ? null : P.freeNotes,
-      monthUsed: store.countSermons(user, month), monthLimit: plan ? P.fairUsePerMonth : null };
+    return { plan: plan?.plan || 'free', until: plan?.until || null, used: store.storageUsed(user), limit: plan ? P.paidBytes : P.freeBytes, unit: 'bytes',
+      notes: store.countSermons(user), monthUsed: store.countSermons(user, month), monthLimit: plan ? P.fairUsePerMonth : null };
   };
-  const checkQuota = user => {
+  const checkQuota = (user, adding = 0) => {
     const q = quota(user);
-    if (q.plan === 'free' && q.used >= q.limit) throw new HttpError(402, 'quota_full', null, { used: q.used, limit: q.limit });
+    if (q.used + adding > q.limit || (adding === 0 && q.used >= q.limit)) throw new HttpError(402, 'storage_full', null, { used: q.used, limit: q.limit });
     if (q.plan !== 'free' && q.monthUsed >= q.monthLimit) throw new HttpError(429, 'fair_use', null, { monthUsed: q.monthUsed, monthLimit: q.monthLimit });
   };
   route('GET', '/api/sermons/quota', ({ user }) => quota(user), 'sermon');
@@ -268,7 +268,9 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     if (!AUDIO_TYPES[mimeType]) throw new HttpError(415, 'unsupported_audio_type');
     const audio = await readBody(req, config.maxUploadBytes);
     if (!audio.length) throw new HttpError(400, 'empty_audio');
+    checkQuota(user, audio.length);
     const s = newSermon(user, { title: url.searchParams.get('title'), preacher: url.searchParams.get('preacher'), language: url.searchParams.get('lang'), context: url.searchParams.get('context') });
+    store.updateSermon(s.id, { bytes: audio.length });
     fs.mkdirSync(config.uploadDir, { recursive: true });
     const filePath = path.join(config.uploadDir, s.id + AUDIO_TYPES[mimeType]);
     fs.writeFileSync(filePath, audio);
@@ -304,9 +306,11 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     const dir = partDir(s.id), parts = fs.existsSync(dir) ? fs.readdirSync(dir).sort() : [];
     if (!parts.length) throw new HttpError(400, 'empty_audio');
     const filePath = path.join(config.uploadDir, s.id + AUDIO_TYPES[s.mimeType]);
-    fs.writeFileSync(filePath, Buffer.concat(parts.map(f => fs.readFileSync(path.join(dir, f)))));
+    const audio = Buffer.concat(parts.map(f => fs.readFileSync(path.join(dir, f))));
     fs.rmSync(dir, { recursive: true, force: true });
-    store.updateSermon(s.id, { status: 'queued' });
+    try { checkQuota(user, audio.length); } catch (e) { store.deleteSermon(s.id, user); throw e; }   // no room: nothing is kept
+    fs.writeFileSync(filePath, audio);
+    store.updateSermon(s.id, { status: 'queued', bytes: audio.length });
     runJob(s.id, { filePath, mimeType: s.mimeType, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     return { status: 202, body: { id: s.id, status: 'queued', parts: parts.length } };
   }, 'sermon');
@@ -324,6 +328,7 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     const { execFile } = await import('node:child_process');
     execFile(config.ytdlpPath, ['-x', '--audio-format', 'm4a', '--no-playlist', '-o', filePath, link], { timeout: 15 * 60 * 1000 }, err => {
       if (err) return store.updateSermon(s.id, { status: 'error', error: { code: 'youtube_failed', message: 'Could not fetch audio from that link.' } });
+      try { store.updateSermon(s.id, { bytes: fs.statSync(filePath).size }); } catch {}
       runJob(s.id, { filePath, mimeType: 'audio/mp4', title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     });
     return { status: 202, body: { id: s.id, status: 'downloading' } };
@@ -333,7 +338,8 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
     const body = await readJson(req, 1024 * 1024);
     const transcript = String(body.transcript || '').trim();
     if (transcript.length < 50) throw new HttpError(422, 'transcript_too_short');
-    const s = newSermon(user, body);
+    const bytes = Buffer.byteLength(transcript); checkQuota(user, bytes);
+    const s = newSermon(user, body); store.updateSermon(s.id, { bytes });
     runJob(s.id, { transcript, title: s.title, preacher: s.preacher, language: s.language, context: s.context, church: s.church, passage: s.passage, passageText: s.passageText });
     return { status: 202, body: { id: s.id, status: 'queued' } };
   }, 'sermon');

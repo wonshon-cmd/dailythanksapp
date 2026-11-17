@@ -1,6 +1,6 @@
 <title>daily bible</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Hear, read and keep the Word, every day. Sermon notes with AI, reading plans together.">
+<meta name="description" content="Focus on the Word: scroll through Scripture, record a sermon and get it summarized automatically, read as planned and share.">
 <meta property="og:title" content="daily bible">
 <meta property="og:description" content="말씀을 듣고, 읽고, 남기는 하루">
 <meta property="og:image" content="https://dailyjourney.org/dailybible/og.png">
@@ -118,7 +118,7 @@ footer a:hover{color:var(--text)}
   <a class="brand" href="#top" aria-label="daily bible">
     <svg class="mark" viewBox="200 230 624 620" aria-hidden="true"><path d="M648 668 V800 L679 774 L710 800 V668 Z" fill="var(--ribbon)"/><g fill="none" stroke="currentColor" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"><path d="M252 278 H408 A104 104 0 0 1 512 382 V746 A78 78 0 0 0 434 668 H252 Z"/><path d="M772 278 H616 A104 104 0 0 0 512 382 V746 A78 78 0 0 1 590 668 H772 Z"/></g></svg>
     <span class="wordmark">daily <em>bible</em></span></a>
-  <nav><a class="navlink" href="#notes" data-k="navNotes"></a><a class="navlink" href="#together" data-k="navTogether"></a><a class="navlink" href="#price" data-k="navPrice"></a>
+  <nav><a class="navlink" href="#word" data-k="navWord"></a><a class="navlink" href="#notes" data-k="navNotes"></a><a class="navlink" href="#together" data-k="navTogether"></a><a class="navlink" href="#price" data-k="navPrice"></a>
     <label class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
       <select id="lang" aria-label="Language"><option value="ko">한국어</option><option value="en">English</option><option value="es">Español</option></select></label></nav>
 </div></header>
@@ -136,24 +136,24 @@ footer a:hover{color:var(--text)}
   </section>
 
   <div class="spreads">
-    <section class="spread" id="notes">
+    <section class="spread" id="word">
       <div class="page-words">
         <p class="kicker" data-k="k1"></p>
         <h2 data-k="h1"></h2>
         <p class="lead" data-k="l1"></p>
-        <ul class="points"><li class="marked" data-k="p1a"></li><li data-k="p1b"></li><li data-k="p1c"></li><li data-k="p1d"></li></ul>
+        <ul class="points"><li data-k="p1a"></li><li data-k="p1b"></li><li class="marked" data-k="p1c"></li></ul>
       </div>
-      <div class="page-shot"><div class="phone"><img id="img-record" alt="" width="390" height="844"></div></div>
+      <div class="page-shot"><div class="phone"><img id="img-scroll" alt="" width="390" height="844"></div></div>
     </section>
 
-    <section class="spread flip">
+    <section class="spread flip" id="notes">
       <div class="page-words">
         <p class="kicker" data-k="k2"></p>
         <h2 data-k="h2"></h2>
         <p class="lead" data-k="l2"></p>
-        <ul class="points"><li data-k="p2a"></li><li class="marked" data-k="p2b"></li><li data-k="p2c"></li></ul>
+        <ul class="points"><li class="marked" data-k="p2a"></li><li data-k="p2b"></li><li data-k="p2c"></li><li data-k="p2d"></li></ul>
       </div>
-      <div class="page-shot"><div class="phone"><img id="img-verses" alt="" width="390" height="844"></div></div>
+      <div class="page-shot"><div class="phone"><img id="img-record" alt="" width="390" height="844"></div></div>
     </section>
 
     <section class="spread" id="together">
@@ -194,93 +194,93 @@ footer a:hover{color:var(--text)}
 <script>
 const S = {
   ko: {
-    navNotes: '설교 노트', navTogether: '함께 읽기', navPrice: '요금',
-    tag: '말씀을 듣고, 읽고, 남기는 하루.', open: '웹에서 바로 열기', soon: '곧 나와요',
+    navWord: '말씀', navNotes: '설교 요약', navTogether: '함께 읽기', navPrice: '요금',
+    tag: '말씀에 집중하는 하루.', open: '웹에서 바로 열기', soon: '곧 나와요',
     verse: '나는 포도나무요 너희는 가지라', verseRef: '요한복음 15:5',
-    k1: '설교 노트', h1: '본문을 고르고, 녹음하면 한 장으로.', l1: '주일 설교를 녹음하면 AI가 받아 적고 한 장으로 정리해요. 핵심 메시지, 말씀 요점, 삶의 적용, 기도 제목, 나눔 질문까지.',
-    p1a: '본문을 먼저 골라요. AI가 그 구절을 참고해서 더 정확하게 알아듣고 정리해요.',
-    p1b: '화면을 꺼도 계속 녹음돼요. 전화가 와도 받지 않으면 그대로, 받으면 잠시 멈췄다가 통화가 끝나면 이어서.',
-    p1c: '녹음 · 실시간 · 오디오 파일. 한국어, 영어, 스페인어 설교에 맞춰 받아 적어요.',
-    p1d: '요약 · 받아쓰기 · 본문, 세 가지로 다시 봐요.',
-    k2: '구절 대조', h2: '설교에 나온 구절, 원문과 맞춰 봐요.', l2: '목사님이 읽은 구절을 성경 원문과 나란히 놓고 비교해요.',
-    p2a: '원문과 같으면 표시하고, 풀어서 말한 구절은 그렇다고 알려 줘요.',
-    p2b: 'AI가 확신하지 못한 구절은 짐작하지 않고 물어봐요. "맞아요" 또는 "다른 구절이에요"로 바로 고쳐요.',
-    p2c: '교회와 목사님은 한 번 넣으면 기억해요. 주일 11시면 그 교회, 수요일 저녁이면 그 예배로 먼저 채워져요.',
-    k3: '함께 읽기', h3: '어디서부터 어디까지, 며칠 동안.', l3: '읽을 범위와 기간을 정하면 날마다 읽을 만큼 나눠 드려요. 링크 하나로 가족과 친구를 초대해요.',
+    k1: '말씀에 집중', h1: '한 절씩, 스크롤로.', l1: '화면에는 말씀 한 절만. 밀어 올리면 다음 절이 나와요. 다른 건 다 치웠어요.',
+    p1a: '읽던 곳을 기억해요. 열면 바로 그 절부터 이어서 읽어요.',
+    p1b: '멈춘 절에서 바로 묵상을 써요. 읽어 내려온 범위가 그대로 묵상 본문이 돼요.',
+    p1c: '매일 읽으면 연속 기록이 이어져요. 오늘도 한 장이면 충분해요.',
+    k2: '설교 자동 요약', h2: '녹음하면, 설교가 한 장으로.', l2: '본문을 고르고 녹음 버튼만 누르세요. 끝나면 받아 적은 글과 한 장 요약이 자동으로 정리돼요.',
+    p2a: '고른 본문을 바탕으로 받아 적어서 성경 이름과 구절이 정확해요.',
+    p2b: '화면을 꺼도, 전화가 와도 계속 녹음돼요. 전화를 받으면 잠시 멈췄다가 끊으면 이어서.',
+    p2c: '요약 · 받아쓰기 · 본문, 세 가지로 다시 봐요. 설교에 나온 구절은 원문과 나란히 놓여요.',
+    p2d: '휴대폰 언어로 받아 적고, 버튼 옆에서 한국어 · 영어 · 스페인어로 바꿀 수 있어요.',
+    k3: '계획한 대로, 함께', h3: '어디서부터 어디까지, 며칠 동안.', l3: '범위와 기간만 정하면 날마다 읽을 만큼 나눠 드려요. 같이 읽을 사람은 링크 하나로 불러요.',
     p3a: '기간에 맞춰 나누거나, 하루에 몇 장씩으로 정해요.',
     p3b: '초대받은 사람은 같은 날 같은 본문을 읽어요. 가입하지 않아도 링크로 바로 함께해요.',
-    p3c: '얼마나 자주, 얼마나 오래, 몇 장을 읽었는지 기록판으로 보여 줘요.',
-    f1h: '묵상과 기도', f1: '읽다가 멈춘 곳에서 바로 묵상을 써요. 느낀 점과 기도, 목소리로도 남겨요.',
+    p3c: '설교 노트와 묵상을 소그룹에 나눠요.',
+    f1h: '오늘도 연속', f1: '얼마나 자주, 얼마나 오래, 몇 장을 읽었는지 한눈에 보여요.',
     f2h: 'daily thanks와 함께', f2: '같은 기록을 써요. 감사, 기도, 묵상이 성경 읽기와 이어져요.',
     f3h: '나만 보는 기록', f3: '개인 기록은 기기에서 잠가서 보관해요. 운영자도 열어 볼 수 없어요.',
-    kp: '요금', hp: '처음 열 개는 무료예요.', lp: 'AI로 정리한 설교 노트 10개까지 무료로 보관해요. 지우면 다시 쓸 수 있어요.',
-    free: '무료', freeAmt: '₩0', freeWhat: 'AI 노트 10개 보관',
-    month: '월간', monthAmt: '₩4,900<small> / 월</small>', monthWhat: '매달 60개까지 정리 · 보관 무제한',
-    year: '연간', yearAmt: '₩39,000<small> / 년</small>', yearWhat: '두 달 무료 · 매달 60개 · 보관 무제한',
-    hand: '손으로 쓴 설교 노트는 언제나 무료예요.',
+    kp: '요금', hp: '넉넉하게 무료로 쓰세요.', lp: '저장 공간이 차면 녹음을 지우거나 공간을 늘리면 돼요. 횟수 제한은 없어요.',
+    free: '무료', freeAmt: '1GB', freeWhat: '설교 녹음 약 50시간',
+    month: '월간', monthAmt: '₩4,900<small> / 월</small>', monthWhat: '100GB · 매달 설교 60편까지 자동 요약',
+    year: '연간', yearAmt: '₩39,000<small> / 년</small>', yearWhat: '두 달 무료 · 100GB',
+    hand: '손으로 쓴 설교 노트는 공간을 거의 쓰지 않아요.',
     privacy: '개인정보 처리방침', terms: '이용약관', support: '문의',
     imgs: 'ko'
   },
   en: {
-    navNotes: 'Sermon notes', navTogether: 'Read together', navPrice: 'Pricing',
-    tag: 'Hear, read and keep the Word, every day.', open: 'Open on the web', soon: 'Soon',
+    navWord: 'The Word', navNotes: 'Sermon summaries', navTogether: 'Read together', navPrice: 'Pricing',
+    tag: 'A day focused on the Word.', open: 'Open on the web', soon: 'Soon',
     verse: 'I am the vine, ye are the branches', verseRef: 'John 15:5',
-    k1: 'Sermon notes', h1: 'Pick the passage, record, get one page.', l1: 'Record Sunday’s sermon and the AI writes it down and fits it on one page: the main message, key points, how to live it, prayer topics and questions for your group.',
-    p1a: 'Choose the passage first. The AI uses those verses to hear the sermon and summarize it more accurately.',
-    p1b: 'Keeps recording with the screen off. If a call comes in and you don’t answer, it carries on; if you answer, it pauses and picks up when the call ends.',
-    p1c: 'Record, real-time or an audio file. Transcription tuned for sermons in Korean, English and Spanish.',
-    p1d: 'Read it back three ways: summary, transcript, passage.',
-    k2: 'Verse check', h2: 'Verses from the sermon, side by side with the Bible.', l2: 'Every verse the pastor read is set next to the Bible text.',
-    p2a: 'Matching verses are marked, and paraphrases are labeled as such.',
-    p2b: 'When the AI isn’t sure, it asks instead of guessing. Tap “That’s right” or “It’s a different verse” to fix it.',
-    p2c: 'Type your church and pastor once. Sunday at 11 fills in that church; Wednesday evening, that service.',
-    k3: 'Read together', h3: 'From where to where, over how many days.', l3: 'Set a range and a length, and each day gets its portion. Invite family and friends with one link.',
+    k1: 'Focus on the Word', h1: 'One verse at a time. Just scroll.', l1: 'One verse on the screen. Swipe up for the next. Everything else is out of the way.',
+    p1a: 'It remembers where you stopped and opens right there.',
+    p1b: 'Write a reflection on the verse where you paused. What you scrolled through becomes its passage.',
+    p1c: 'Read every day and your streak keeps going. One chapter today is enough.',
+    k2: 'Automatic sermon summaries', h2: 'Record it. The sermon fits on one page.', l2: 'Choose the passage and press record. When it ends, the transcript and a one-page summary are ready on their own.',
+    p2a: 'The transcript follows the passage you chose, so book names and verses come out right.',
+    p2b: 'Keeps recording with the screen off and when a call comes in. Answer it and recording pauses, then picks up when you hang up.',
+    p2c: 'Read it back three ways: summary, transcript, passage. Verses from the sermon sit next to the Bible text.',
+    p2d: 'Transcribed in your phone’s language; switch between Korean, English and Spanish right next to the button.',
+    k3: 'As planned, together', h3: 'From where to where, over how many days.', l3: 'Set a range and a length and each day gets its portion. Bring others in with one link.',
     p3a: 'Split it over a period, or by a number of chapters a day.',
     p3b: 'Everyone invited reads the same passage on the same day. No sign-up needed to join from the link.',
-    p3c: 'A dashboard shows how often, how long and how many chapters you’ve read.',
-    f1h: 'Reflection and prayer', f1: 'Write a reflection right where you stopped reading. Keep what you felt and your prayer, by voice too.',
+    p3c: 'Share sermon notes and reflections with your small group.',
+    f1h: 'Keep the streak', f1: 'See how often, how long and how many chapters you’ve read.',
     f2h: 'Works with daily thanks', f2: 'Same records. Thanks, prayer and reflections connect to your Bible reading.',
     f3h: 'Records only you can see', f3: 'Personal records are locked on your device. Not even we can open them.',
-    kp: 'Pricing', hp: 'Your first ten are free.', lp: 'Keep up to 10 AI sermon notes for free. Delete one and you can make another.',
-    free: 'Free', freeAmt: '$0', freeWhat: 'Keep 10 AI notes',
-    month: 'Monthly', monthAmt: '$3.99<small> / month</small>', monthWhat: 'Up to 60 a month · unlimited storage',
-    year: 'Yearly', yearAmt: '$29.99<small> / year</small>', yearWhat: 'Two months free · 60 a month · unlimited storage',
-    hand: 'Sermon notes you write by hand are always free.',
+    kp: 'Pricing', hp: 'Plenty of room, free.', lp: 'When your space fills up, delete recordings or get more space. No limit on how many.',
+    free: 'Free', freeAmt: '1 GB', freeWhat: 'About 50 hours of sermons',
+    month: 'Monthly', monthAmt: '$3.99<small> / month</small>', monthWhat: '100 GB · up to 60 sermon summaries a month',
+    year: 'Yearly', yearAmt: '$29.99<small> / year</small>', yearWhat: 'Two months free · 100 GB',
+    hand: 'Notes you write by hand take almost no space.',
     privacy: 'Privacy', terms: 'Terms', support: 'Support',
     imgs: 'en'
   },
   es: {
-    navNotes: 'Notas de sermón', navTogether: 'Leer juntos', navPrice: 'Precios',
-    tag: 'Escuchar, leer y guardar la Palabra, cada día.', open: 'Abrir en la web', soon: 'Pronto',
+    navWord: 'La Palabra', navNotes: 'Resúmenes', navTogether: 'Leer juntos', navPrice: 'Precios',
+    tag: 'Un día centrado en la Palabra.', open: 'Abrir en la web', soon: 'Pronto',
     verse: 'Yo soy la vid, vosotros los pámpanos', verseRef: 'Juan 15:5',
-    k1: 'Notas de sermón', h1: 'Elige el pasaje, graba y tenlo en una página.', l1: 'Graba el sermón del domingo y la IA lo transcribe y lo resume en una página: el mensaje central, los puntos, cómo vivirlo, motivos de oración y preguntas para tu grupo.',
-    p1a: 'Primero elige el pasaje. La IA usa esos versículos para entender el sermón y resumirlo con más precisión.',
-    p1b: 'Sigue grabando con la pantalla apagada. Si entra una llamada y no contestas, continúa; si contestas, se pausa y sigue sola al colgar.',
-    p1c: 'Grabar, en vivo o un archivo de audio. Transcripción pensada para sermones en coreano, inglés y español.',
-    p1d: 'Vuelve a verlo de tres formas: resumen, transcripción y pasaje.',
-    k2: 'Revisión de versículos', h2: 'Los versículos del sermón, junto al texto bíblico.', l2: 'Cada versículo que leyó el pastor aparece al lado del texto de la Biblia.',
-    p2a: 'Los que coinciden se marcan, y las paráfrasis se indican como tales.',
-    p2b: 'Si la IA no está segura, pregunta en vez de adivinar. Toca “Es correcto” o “Es otro versículo” para corregirlo.',
-    p2c: 'Escribe tu iglesia y tu pastor una vez. El domingo a las 11 se llena con esa iglesia; el miércoles por la noche, con ese culto.',
-    k3: 'Leer juntos', h3: 'Desde dónde hasta dónde, en cuántos días.', l3: 'Elige el rango y la duración, y cada día tiene su porción. Invita a familia y amigos con un enlace.',
+    k1: 'Centrado en la Palabra', h1: 'Un versículo a la vez. Solo desliza.', l1: 'Un versículo en la pantalla. Desliza hacia arriba para el siguiente. Nada más estorba.',
+    p1a: 'Recuerda dónde te quedaste y abre justo ahí.',
+    p1b: 'Escribe una reflexión en el versículo donde te detuviste. Lo que leíste se vuelve su pasaje.',
+    p1c: 'Lee cada día y tu racha sigue. Un capítulo hoy es suficiente.',
+    k2: 'Resumen automático del sermón', h2: 'Grábalo. El sermón cabe en una página.', l2: 'Elige el pasaje y pulsa grabar. Al terminar, la transcripción y el resumen de una página están listos solos.',
+    p2a: 'La transcripción sigue el pasaje que elegiste, así los libros y versículos salen bien.',
+    p2b: 'Sigue grabando con la pantalla apagada y cuando entra una llamada. Si contestas, se pausa y sigue al colgar.',
+    p2c: 'Vuelve a verlo de tres formas: resumen, transcripción y pasaje. Los versículos del sermón aparecen junto al texto bíblico.',
+    p2d: 'Se transcribe en el idioma de tu teléfono; cambia entre coreano, inglés y español junto al botón.',
+    k3: 'Como lo planeaste, juntos', h3: 'Desde dónde hasta dónde, en cuántos días.', l3: 'Elige el rango y la duración y cada día tiene su porción. Invita a otros con un enlace.',
     p3a: 'Repártelo en un período o por capítulos al día.',
     p3b: 'Todos los invitados leen el mismo pasaje el mismo día. Pueden unirse desde el enlace sin registrarse.',
-    p3c: 'Un panel muestra con qué frecuencia, cuánto tiempo y cuántos capítulos has leído.',
-    f1h: 'Reflexión y oración', f1: 'Escribe una reflexión justo donde dejaste de leer. Guarda lo que sentiste y tu oración, también con tu voz.',
+    p3c: 'Comparte notas de sermón y reflexiones con tu grupo.',
+    f1h: 'Mantén la racha', f1: 'Mira con qué frecuencia, cuánto tiempo y cuántos capítulos has leído.',
     f2h: 'Con daily thanks', f2: 'Los mismos registros. Gratitud, oración y reflexiones se conectan con tu lectura.',
     f3h: 'Solo para ti', f3: 'Tus registros personales se cifran en tu dispositivo. Ni nosotros podemos abrirlos.',
-    kp: 'Precios', hp: 'Las primeras diez son gratis.', lp: 'Guarda hasta 10 notas de sermón con IA gratis. Si borras una, puedes crear otra.',
-    free: 'Gratis', freeAmt: '$0', freeWhat: 'Guarda 10 notas con IA',
-    month: 'Mensual', monthAmt: '$3.99<small> / mes</small>', monthWhat: 'Hasta 60 al mes · almacenamiento ilimitado',
-    year: 'Anual', yearAmt: '$29.99<small> / año</small>', yearWhat: 'Dos meses gratis · 60 al mes · almacenamiento ilimitado',
-    hand: 'Las notas que escribes a mano siempre son gratis.',
+    kp: 'Precios', hp: 'Mucho espacio, gratis.', lp: 'Cuando se llene, borra grabaciones o consigue más espacio. Sin límite de cantidad.',
+    free: 'Gratis', freeAmt: '1 GB', freeWhat: 'Unas 50 horas de sermones',
+    month: 'Mensual', monthAmt: '$3.99<small> / mes</small>', monthWhat: '100 GB · hasta 60 resúmenes al mes',
+    year: 'Anual', yearAmt: '$29.99<small> / año</small>', yearWhat: 'Dos meses gratis · 100 GB',
+    hand: 'Las notas escritas a mano casi no ocupan espacio.',
     privacy: 'Privacidad', terms: 'Términos', support: 'Soporte',
     imgs: 'en'
   }
 };
 const ALT = {
-  ko: { record: '설교를 실시간으로 녹음하는 화면. 요한복음 15:1-8, 받아 적은 글이 보여요', verses: '설교에 나온 구절을 원문과 비교하는 화면', read: '읽기 화면: 통독 기록과 함께 읽기 계획' },
-  en: { record: 'Recording a sermon in real time on John 15:1-8, with the live transcript', verses: 'Verses from the sermon compared with the Bible text', read: 'Reading screen: progress and a shared reading plan' }
+  ko: { scroll: '한 절씩 읽는 화면: 요한복음 15:1', record: '요한복음 15:1-8 설교를 녹음하며 받아 적는 화면', read: '읽기 화면: 연속 기록과 함께 읽기 계획' },
+  en: { scroll: 'Reading one verse at a time: John 15:1', record: 'Recording a sermon on John 15:1-8 with the live transcript', read: 'Reading screen: streak and a shared reading plan' }
 };
 const pick = () => { try { const s = localStorage.getItem('db-site-lang'); if (S[s]) return s; } catch (e) {} const n = (navigator.language || 'ko').slice(0, 2); return S[n] ? n : 'ko'; };
 let lang = pick();
@@ -289,7 +289,7 @@ function render() {
   document.documentElement.lang = lang;
   document.getElementById('lang').value = lang;
   document.querySelectorAll('[data-k]').forEach(el => { const v = t[el.dataset.k]; if (v == null) return; if (/<small>/.test(v)) el.innerHTML = v; else el.textContent = v; });
-  for (const k of ['record', 'verses', 'read']) { const img = document.getElementById('img-' + k); img.src = `img/${im}-${k}.png`; img.alt = alt[k]; }
+  for (const k of ['scroll', 'record', 'read']) { const img = document.getElementById('img-' + k); img.src = `img/${im}-${k}.png`; img.alt = alt[k]; }
 }
 document.getElementById('lang').addEventListener('change', e => { lang = e.target.value; try { localStorage.setItem('db-site-lang', lang); } catch (err) {} render(); });
 render();
