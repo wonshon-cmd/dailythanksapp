@@ -1184,5 +1184,16 @@
   "cl.noName": "Sin nombre",
   "cl.signIn": "Iniciar sesión",
   "adm.topLeaders": "Los líderes también ven “Más constantes”",
-  "bp.thankSomeone": "Agradecer a alguien"
+  "bp.thankSomeone": "Agradecer a alguien",
+  "wl.title": "Bienvenido",
+  "wl.nameQ": "¿Primera vez aquí? ¿Cómo te llamas? Se verá en las tarjetas de gratitud y en tus grupos.",
+  "wl.next": "Siguiente",
+  "wl.hi": "Bienvenido, {name}",
+  "wl.sub": "Regístrate para seguir en cualquier dispositivo y unirte a un grupo.",
+  "wl.google": "Continuar con Google",
+  "wl.ms": "Continuar con Microsoft",
+  "wl.kakao": "Continuar con Kakao",
+  "wl.email": "Continuar con correo",
+  "wl.phone": "Continuar con un mensaje de texto",
+  "wl.notYet": "Esta opción abre pronto. Por ahora, continúa con tu correo."
 }

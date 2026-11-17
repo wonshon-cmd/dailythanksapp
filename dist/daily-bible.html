@@ -1672,6 +1672,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'wl.title': "반가워요", 'wl.nameQ': "처음 오셨네요. 이름을 알려 주세요. 감사 카드와 공동체에서 이 이름이 보여요.", 'wl.next': "다음", 'wl.hi': "{name}님, 반가워요", 'wl.sub': "가입하면 기기를 바꿔도 이어서 쓰고, 공동체와 함께할 수 있어요.", 'wl.google': "Google로 계속하기", 'wl.ms': "Microsoft로 계속하기", 'wl.kakao': "카카오로 계속하기", 'wl.email': "메일로 계속하기", 'wl.phone': "휴대폰 문자로 계속하기", 'wl.notYet': "이 방법은 곧 열려요. 지금은 메일로 계속해 주세요.",
     'bp.thankSomeone': "감사 전하기",
     'adm.topLeaders': "순장도 ‘가장 꾸준한 사람’ 보기",
     'cl.title': "로그인", 'cl.name': "이름", 'cl.namePh': "감사 카드에 보내는 사람으로 보여요", 'cl.email': "메일 주소", 'cl.send': "로그인 링크 받기", 'cl.sending': "보내는 중…", 'cl.badEmail': "메일 주소를 확인해 주세요.", 'cl.sendFail': "메일을 보내지 못했어요. 잠시 뒤에 다시 해 주세요.", 'cl.tooMany': "메일을 너무 자주 보냈어요. 잠시 뒤에 다시 해 주세요.", 'cl.sentTitle': "메일을 확인해 주세요", 'cl.sentBody': "{email}로 로그인 링크를 보냈어요. 메일의 링크를 누르면 바로 로그인돼요.", 'cl.code': "메일에 숫자 코드가 있다면", 'cl.verify': "코드로 로그인", 'cl.codeBad': "코드가 맞지 않거나 시간이 지났어요.", 'cl.resend': "메일 다시 보내기", 'cl.resent': "메일을 다시 보냈어요.", 'cl.linkBad': "로그인 링크가 만료되었어요. 다시 받아 주세요.", 'cl.needGroup': "공동체를 만들려면 먼저 로그인해 주세요. 초대한 사람만 들어올 수 있어요.", 'cl.needJoin': "‘{name}’에 들어가려면 로그인해 주세요. 로그인하면 바로 참여돼요.", 'cl.badInvite': "초대 링크가 바뀌었거나 없어졌어요. 새 링크를 받아 주세요.", 'cl.fail': "저장하지 못했어요. 인터넷 연결을 확인해 주세요.", 'cl.waiting': "참여 요청", 'cl.approve': "승인", 'cl.decline': "거절", 'cl.approved': "승인했어요.", 'cl.removed': "공동체에서 내보냈어요.", 'cl.noName': "이름 없음", 'cl.signIn': "로그인",
@@ -1815,6 +1816,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'wl.title': "Welcome", 'wl.nameQ': "First time here? What’s your name? It’s shown on thank-you cards and in your groups.", 'wl.next': "Next", 'wl.hi': "Welcome, {name}", 'wl.sub': "Sign up to keep going on any device and join a group.", 'wl.google': "Continue with Google", 'wl.ms': "Continue with Microsoft", 'wl.kakao': "Continue with Kakao", 'wl.email': "Continue with email", 'wl.phone': "Continue with a text message", 'wl.notYet': "This option opens soon. For now, please continue with email.",
     'bp.thankSomeone': "Thank someone",
     'adm.topLeaders': "Leaders can see “Most consistent” too",
     'cl.title': "Sign in", 'cl.name': "Name", 'cl.namePh': "Shown as the sender on thank-you cards", 'cl.email': "Email", 'cl.send': "Email me a sign-in link", 'cl.sending': "Sending…", 'cl.badEmail': "Please check the email address.", 'cl.sendFail': "Couldn’t send the email. Please try again shortly.", 'cl.tooMany': "Too many emails for now. Please try again shortly.", 'cl.sentTitle': "Check your email", 'cl.sentBody': "We sent a sign-in link to {email}. Tap the link in the email to sign in.", 'cl.code': "If the email has a number code", 'cl.verify': "Sign in with code", 'cl.codeBad': "That code is wrong or has expired.", 'cl.resend': "Send the email again", 'cl.resent': "Sent again.", 'cl.linkBad': "That sign-in link has expired. Please request a new one.", 'cl.needGroup': "Sign in first to create a group. Only people you invite can join.", 'cl.needJoin': "Sign in to join “{name}”. You’ll be in as soon as you do.", 'cl.badInvite': "This invite link has changed or no longer exists. Please ask for a new one.", 'cl.fail': "Couldn’t save. Please check your connection.", 'cl.waiting': "Waiting to join", 'cl.approve': "Approve", 'cl.decline': "Decline", 'cl.approved': "Approved.", 'cl.removed': "Removed from the group.", 'cl.noName': "No name", 'cl.signIn': "Sign in",
@@ -1958,6 +1960,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'wl.title': "Bienvenido", 'wl.nameQ': "¿Primera vez aquí? ¿Cómo te llamas? Se verá en las tarjetas de gratitud y en tus grupos.", 'wl.next': "Siguiente", 'wl.hi': "Bienvenido, {name}", 'wl.sub': "Regístrate para seguir en cualquier dispositivo y unirte a un grupo.", 'wl.google': "Continuar con Google", 'wl.ms': "Continuar con Microsoft", 'wl.kakao': "Continuar con Kakao", 'wl.email': "Continuar con correo", 'wl.phone': "Continuar con un mensaje de texto", 'wl.notYet': "Esta opción abre pronto. Por ahora, continúa con tu correo.",
     'bp.thankSomeone': "Agradecer a alguien",
     'adm.topLeaders': "Los líderes también ven “Más constantes”",
     'cl.title': "Iniciar sesión", 'cl.name': "Nombre", 'cl.namePh': "Aparece como remitente en las tarjetas de gratitud", 'cl.email': "Correo", 'cl.send': "Enviarme un enlace", 'cl.sending': "Enviando…", 'cl.badEmail': "Revisa el correo.", 'cl.sendFail': "No se pudo enviar el correo. Inténtalo en un momento.", 'cl.tooMany': "Demasiados correos por ahora. Inténtalo en un momento.", 'cl.sentTitle': "Revisa tu correo", 'cl.sentBody': "Enviamos un enlace a {email}. Tócalo en el correo para iniciar sesión.", 'cl.code': "Si el correo trae un código numérico", 'cl.verify': "Entrar con el código", 'cl.codeBad': "El código no es correcto o ya venció.", 'cl.resend': "Enviar el correo otra vez", 'cl.resent': "Enviado otra vez.", 'cl.linkBad': "El enlace venció. Pide uno nuevo.", 'cl.needGroup': "Inicia sesión para crear un grupo. Solo entran las personas que invites.", 'cl.needJoin': "Inicia sesión para unirte a “{name}”. Entrarás enseguida.", 'cl.badInvite': "Este enlace cambió o ya no existe. Pide uno nuevo.", 'cl.fail': "No se pudo guardar. Revisa tu conexión.", 'cl.waiting': "Esperando unirse", 'cl.approve': "Aprobar", 'cl.decline': "Rechazar", 'cl.approved': "Aprobado.", 'cl.removed': "Salió del grupo.", 'cl.noName': "Sin nombre", 'cl.signIn': "Iniciar sesión",
@@ -2403,6 +2406,8 @@ const ICONS = {
   reset: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5"/>',
   apple: '<path fill="currentColor" stroke="none" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.8 1.2 1.8 2.6 3.1 2.5 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.4-4.1zM14 5.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/>',
   google: '<path fill="#4285F4" stroke="none" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" stroke="none" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" stroke="none" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" stroke="none" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>',
+  microsoft: '<path fill="#F25022" stroke="none" d="M3 3h8.5v8.5H3z"/><path fill="#7FBA00" stroke="none" d="M12.5 3H21v8.5h-8.5z"/><path fill="#00A4EF" stroke="none" d="M3 12.5h8.5V21H3z"/><path fill="#FFB900" stroke="none" d="M12.5 12.5H21V21h-8.5z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/>',
   phoneMsg: '<rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18h2"/>',
   moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
   calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
@@ -2659,11 +2664,61 @@ const Cloud = (() => {
       return true;
     },
     async signOut() { const tk = auth?.access; signedOut(); if (tk) call('/auth/v1/logout', { method: 'POST', token: tk }).catch(() => {}); },
+    // Google · Microsoft · Kakao: off to the provider, back with #access_token (handled by fromRedirect)
+    oauth(provider) { location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
+    // which sign-in methods are switched on in Supabase (Authentication › Sign In / Providers)
+    providers: () => call('/auth/v1/settings').then(j => j.external || {}).catch(() => ({})),
+    sendSms: phone => call('/auth/v1/otp', { method: 'POST', body: { phone, create_user: true } }),
+    verifySms: async (phone, code) => { const j = await call('/auth/v1/verify', { method: 'POST', body: { type: 'sms', phone, token: code } }); store(j, phone); signedIn(); },
     rest, rpc: (fn, args) => rest('rpc/' + fn, { method: 'POST', body: args }),
     resume() { if (CLOUD && auth) { if (!session) signedIn(); else sync(); } }
   };
 })();
 
+/* First visit: name first, then one tap to sign up — Google · Microsoft · Kakao · e-mail · text message.
+   A button whose provider isn't switched on in Supabase yet says so instead of failing. */
+function welcomeSheet() {
+  if (!data.settings.myName) {
+    showSheet({ title: t('wl.title'), body: `<form id="wl-form" class="sheet-form"><p class="hint">${t('wl.nameQ')}</p>
+      <input id="wl-name" class="field" maxlength="30" autocomplete="name" placeholder="${esc(t('cl.namePh'))}" required>
+      <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
+    $('#wl-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#wl-name').value.trim().slice(0, 30); if (!n) return; data.settings.myName = n; save(); welcomeSheet(); });
+    return;
+  }
+  const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
+  showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${t('wl.sub')}</p>
+    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('kakao', 'chat', t('wl.kakao'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
+    <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
+    <button class="subtle-link" data-action="wl-later">${t('np.later')}</button>` });
+}
+async function welcomeSign(id) {
+  if (id === 'email') return emailLogin();
+  const on = await Cloud.providers();
+  if (id === 'phone') { if (on.phone) smsLogin(); else toast(t('wl.notYet')); return; }
+  if (on[id]) Cloud.oauth(id); else toast(t('wl.notYet'));
+}
+// Korean numbers (010-…) become +8210…; numbers typed with + stay as they are
+const e164 = v => { const d = String(v).replace(/[^\d+]/g, ''); return d.startsWith('+') ? d : d.startsWith('0') ? '+82' + d.slice(1) : '+' + d; };
+function smsLogin() {
+  showSheet({ title: t('phone.title'), body: `<form id="sms-form" class="sheet-form">
+    <label class="field-label" for="sms-number">${t('phone.number')}</label>
+    <input id="sms-number" class="field" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-1234-5678" required>
+    <div id="sms-step" hidden><label class="field-label" for="sms-code">${t('phone.code')}</label>
+    <input id="sms-code" class="field" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000"></div>
+    <button class="primary block" type="submit" id="sms-submit">${t('phone.send')}</button></form>` });
+  let phone = '';
+  $('#sms-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!phone) {
+      const p = e164($('#sms-number').value); if (p.replace(/\D/g, '').length < 10) { toast(t('phone.bad')); return; }
+      try { await Cloud.sendSms(p); phone = p; $('#sms-step').hidden = false; $('#sms-submit').textContent = t('phone.verify'); $('#sms-code').focus(); toast(t('phone.sent')); }
+      catch (err) { toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail')); }
+    } else {
+      const code = $('#sms-code').value.replace(/\D/g, ''); if (code.length !== 6) { toast(t('phone.badCode')); return; }
+      try { await Cloud.verifySms(phone, code); close(); render(); toast(t('login.done')); } catch { toast(t('cl.codeBad')); }
+    }
+  });
+}
 // The sign-in sheet: name (shown on thanks cards) + e-mail → link in the mail (or the code from it).
 function emailLogin(reason = '', after = null) {
   state.afterLogin = after;
@@ -5013,7 +5068,7 @@ function renderImmersive(keepIndex = 0) {
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
     return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
-      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}"><span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span></button>` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
+      <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
@@ -5933,7 +5988,7 @@ function bibleSettings() {
     </div>
     <p class="field-label">${t('bs.data')}</p>
     <div class="list">
-      ${CLOUD ? (Cloud.on() ? row('logout', 'user', `${t('s.account')} · ${esc(Cloud.email())}`, `<span class="row-link">${t('acct.logout')}</span>`) : row('email-login', 'user', t('s.account'), `<span class="row-sub">${t('cl.signIn')}</span>${icon('chevron')}`)) : session
+      ${CLOUD ? (Cloud.on() ? row('logout', 'user', `${t('s.account')} · ${esc(Cloud.email())}`, `<span class="row-link">${t('acct.logout')}</span>`) : row('wl-open', 'user', t('s.account'), `<span class="row-sub">${t('cl.signIn')}</span>${icon('chevron')}`)) : session
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
       ${row('vault', 'lock', t('vault.title'))}
@@ -7049,8 +7104,11 @@ const actions = {
   },
   export: exportData,
   fullscreen: toggleFullscreen,
-  login: id => CLOUD ? emailLogin() : id === 'phone' ? phoneLogin() : completeLogin(id),
+  login: id => CLOUD ? welcomeSheet() : id === 'phone' ? phoneLogin() : completeLogin(id),
   'email-login': () => emailLogin(),
+  'wl-open': () => welcomeSheet(),
+  'wl-sign': id => welcomeSign(id),
+  'wl-later': () => { try { sessionStorage.setItem('wl-later', '1'); } catch {} close(); },
   'cl-resend': () => { const c = state.clEmail; if (!c) return; Cloud.sendLink(c.email, c.name).then(() => toast(t('cl.resent')), err => toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail'))); },
   'cl-approve': pair => { const [gid, uid] = pair.split('|'); cloudMember(gid, uid, true); },
   'cl-remove': pair => { const [gid, uid] = pair.split('|'); if (state.rmArm !== pair) { state.rmArm = pair; const b = [...document.querySelectorAll('[data-action="cl-remove"]')].find(x => x.dataset.id === pair); if (b) { b.textContent = t('adm.sure'); b.classList.add('armed'); } return; } state.rmArm = null; cloudMember(gid, uid, false); },
@@ -7207,7 +7265,8 @@ function doubleTap(el, x, y) {
   h.style.left = x + 'px'; h.style.top = y + 'px'; document.body.appendChild(h); setTimeout(() => h.remove(), 750);
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
-if (CLOUD) { if (!Cloud.fromRedirect()) Cloud.resume(); document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
+  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }

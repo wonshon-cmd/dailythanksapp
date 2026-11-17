@@ -35,6 +35,11 @@ python3 tools/build-live.py <dailybible 저장소 경로>   # 공개 사이트 �
 - 링크가 Site URL(앞 페이지)로 와도 `build-live.py`가 넣은 스크립트가 앱으로 넘겨줌.
 - "가장 꾸준한 사람": 관리자만. 관리 화면 스위치로 순장에게도 보이게(기본 꺼짐). `groups.top_to_leaders` — schema.sql 다시 실행 필요.
 
+- 첫 방문: 이름 묻기 → Google · Microsoft · 카카오 · 메일 · 휴대폰 문자 (`welcomeSheet`). Supabase에서 안 켠 방법은 "곧 열려요" 안내.
+  켜는 곳: Authentication › Sign In / Providers — Google, Azure(Microsoft), Kakao (각 개발자 콘솔의 Client ID/Secret 필요,
+  콜백 `https://puhaycwpfpqsmxubvzkt.supabase.co/auth/v1/callback`), Phone (Twilio 등 문자 서비스 필요).
+  Redirect URLs에 `https://wonshon-cmd.github.io/dailybible/**` 추가.
+
 ## 다음 할 일
 1. Supabase 나머지: 기도제목/감사/묵상 나눔과 좋아요·기도했어요, 읽기 계획 함께하기,
    순장 도구·목사님 보기를 실제 권한으로 연결, 오늘의 본문(content.json) 매일 갱신
