@@ -1522,13 +1522,20 @@ body.capturing #app{filter:blur(18px)}
 .cat-h { margin-top: 18px; }
 .ps-last { margin: 6px 0 0; font-size: 13px; line-height: 1.6; color: #4a4f54; } .ps-last small { display: block; color: #9aa0a6; }
 .ps-notes { margin-top: 6px; font-size: 13px; } .ps-notes summary { color: #6b7075; cursor: pointer; } .ps-notes p { margin: 4px 0; }
-/* usage meter: small and quiet */
-.us-title { font-size: 15px; font-weight: 500; color: #6b7075; }
-.us { display: grid; gap: 14px; padding-bottom: 6px; }
-.us-row { display: grid; gap: 5px; }
-.us-top { display: flex; justify-content: space-between; font-size: 12px; color: #6b7075; }
-.us-n { font-variant-numeric: tabular-nums; color: #9aa0a6; }
-.us-bar { display: block; height: 4px; border-radius: 2px; background: #ececec; overflow: hidden; }
-.us-bar b { display: block; height: 100%; background: #8a9094; border-radius: 2px; }
-.us-row small { font-size: 11px; color: #a4a9ac; }
-.us-more { justify-self: start; font-size: 12px; color: #8a8f94; padding: 0; }
+/* usage: like Claude's — grey section labels, one rounded card per limit, "% used", when it refills */
+.us-title { font-size: 16px; font-weight: 600; color: #2c3135; }
+.us { position: relative; display: grid; gap: 8px; padding-bottom: 8px; }
+.us-refresh { position: absolute; top: -52px; right: 52px; width: 40px; height: 40px; }
+.us-refresh svg { width: 18px; height: 18px; }
+.us-sec { margin: 12px 0 0; font-size: 13px; color: #8a8f94; }
+.us-card { display: grid; gap: 10px; padding: 16px 18px; border-radius: 18px; background: #f5f5f5; }
+.us-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.us-top b { font-size: 15px; font-weight: 500; color: #2c3135; }
+.us-top span { font-size: 13px; color: #8a8f94; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.us-bar { display: block; height: 6px; border-radius: 3px; background: #e4e6e8; overflow: hidden; }
+.us-bar b { display: block; height: 100%; border-radius: 3px; background: #6b7176; }
+.us-card.high .us-bar b { background: #3a3f44; }
+.us-card.full .us-bar b { background: #b5453f; }
+.us-card small { font-size: 12px; color: #8a8f94; }
+.us-none { font-size: 15px; font-weight: 500; color: #2c3135; }
+.us-more { justify-self: start; margin-top: 6px; font-size: 12px; color: #8a8f94; padding: 0; }

@@ -1076,5 +1076,18 @@
   "us.m": "{n} min",
   "us.d": "{n} días",
   "us.dayHit": "Ya usaste los resúmenes de hoy. Seguirá en {t}. Tu grabación está guardada.",
-  "us.weekHit": "Ya usaste los resúmenes de esta semana. Seguirá en {t}. Tu grabación está guardada."
+  "us.weekHit": "Ya usaste los resúmenes de esta semana. Seguirá en {t}. Tu grabación está guardada.",
+  "us.used": "{p}% usado",
+  "us.at": "Se recarga a las {t}",
+  "us.atTom": "Se recarga mañana {t}",
+  "us.atDay": "Se recarga el {d} {t}",
+  "us.reset2": "{w}",
+  "us.secSum": "Resúmenes",
+  "us.secWeek": "Límite semanal",
+  "us.secSpace": "Almacenamiento",
+  "us.secExtra": "Uso extra",
+  "us.noExtra": "Nada por ahora",
+  "us.noExtraSub": "Cuando recibas uso extra, aparecerá aquí con su fecha de vencimiento.",
+  "us.refresh": "Actualizar",
+  "us.spaceCard": "Grabaciones y notas"
 }
