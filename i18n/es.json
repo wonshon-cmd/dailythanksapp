@@ -601,5 +601,13 @@
   "gend.sub": "Te toca: comparte tu día con tu grupo.",
   "gend.thanks": "Compartir gratitud",
   "gend.meditation": "Compartir una reflexión",
-  "gend.prayer": "Compartir una petición"
+  "gend.prayer": "Compartir una petición",
+  "off.title": "Guardar la Biblia sin conexión",
+  "off.body": "Guarda completas 개역한글 · KJV · Reina-Valera 1909 (traducciones libres de dominio público) en este dispositivo para leer siempre, incluso sin internet. La app del teléfono ya las incluye.",
+  "off.go": "Guardar",
+  "off.doing": "Guardando… {n}/{t}",
+  "off.done": "La Biblia completa está guardada.",
+  "off.fail": "Algunos libros no se guardaron. Inténtalo de nuevo.",
+  "tile.ch": "{name} {n}/{t}",
+  "ch.counted": "Cuenta como el día {n} de tu {name}"
 }
