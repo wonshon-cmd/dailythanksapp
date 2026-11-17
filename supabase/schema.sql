@@ -1,4 +1,4 @@
--- daily thanks · daily bible — Supabase schema (run once in Supabase › SQL Editor)
+-- daily thanks · daily bible — Supabase schema (Supabase › SQL Editor › Run). Safe to run again: it updates the rules in place.
 -- Who can see what is enforced by the database itself (Row Level Security), not by the app:
 --   • private posts: only the author (and they are stored sealed — the app encrypts them before upload)
 --   • group posts: only members of that group
@@ -151,31 +151,51 @@ alter table challenge_members enable row level security;
 alter table meetings enable row level security;
 alter table member_notes enable row level security;
 
+drop policy if exists "me" on profiles;
 create policy "me" on profiles for all using (id = auth.uid()) with check (id = auth.uid());
+drop policy if exists "people in my groups" on profiles;
 create policy "people in my groups" on profiles for select using (exists (
   select 1 from group_members a join group_members b on a.group_id = b.group_id where a.user_id = auth.uid() and b.user_id = profiles.id and a.status = 'active'));
 
+drop policy if exists "church owner" on churches;
 create policy "church owner" on churches for all using (owner = auth.uid()) with check (owner = auth.uid());
+drop policy if exists "church staff read" on churches;
 create policy "church staff read" on churches for select using (exists (select 1 from church_roles r where r.church_id = id and r.user_id = auth.uid()));
+drop policy if exists "church roles by owner" on church_roles;
 create policy "church roles by owner" on church_roles for all using (exists (select 1 from churches c where c.id = church_id and c.owner = auth.uid()));
+drop policy if exists "my church role" on church_roles;
 create policy "my church role" on church_roles for select using (user_id = auth.uid());
 
+drop policy if exists "members read group" on groups;
 create policy "members read group" on groups for select using (owner = auth.uid() or is_member(id) or is_leader(id));
+drop policy if exists "create group" on groups;
 create policy "create group" on groups for insert with check (owner = auth.uid());
+drop policy if exists "leaders edit group" on groups;
 create policy "leaders edit group" on groups for update using (is_leader(id));
+drop policy if exists "owner deletes group" on groups;
 create policy "owner deletes group" on groups for delete using (owner = auth.uid());
 
+drop policy if exists "members see members" on group_members;
 create policy "members see members" on group_members for select using (is_member(group_id) or is_leader(group_id) or user_id = auth.uid());
+drop policy if exists "leaders manage members" on group_members;
 create policy "leaders manage members" on group_members for all using (is_leader(group_id)) with check (is_leader(group_id));
+drop policy if exists "owner joins own group" on group_members;
 create policy "owner joins own group" on group_members for insert with check (user_id = auth.uid() and exists (select 1 from groups g where g.id = group_id and g.owner = auth.uid()));
+drop policy if exists "leave group" on group_members;
 create policy "leave group" on group_members for delete using (user_id = auth.uid());
 
+drop policy if exists "read posts" on posts;
 create policy "read posts" on posts for select using (author = auth.uid() or scope = 'public' or (scope = 'group' and is_member(group_id)));
+drop policy if exists "write own posts" on posts;
 create policy "write own posts" on posts for insert with check (author = auth.uid() and (scope <> 'group' or is_member(group_id)));
+drop policy if exists "edit own posts" on posts;
 create policy "edit own posts" on posts for update using (author = auth.uid());
+drop policy if exists "delete own posts" on posts;
 create policy "delete own posts" on posts for delete using (author = auth.uid());
 
+drop policy if exists "read reactions" on reactions;
 create policy "read reactions" on reactions for select using (exists (select 1 from posts p where p.id = post_id));   -- posts' own rules decide which
+drop policy if exists "my reactions" on reactions;
 create policy "my reactions" on reactions for all using (user_id = auth.uid()) with check (user_id = auth.uid());
 
 -- (a security-definer helper, so the two tables' rules don't call each other in a loop)
@@ -183,12 +203,18 @@ create or replace function in_challenge(cid uuid) returns boolean language sql s
   select exists (select 1 from challenges c where c.id = cid and (c.owner = auth.uid() or (c.group_id is not null and is_member(c.group_id))))
       or exists (select 1 from challenge_members m where m.challenge_id = cid and m.user_id = auth.uid())
 $$;
+drop policy if exists "read challenges" on challenges;
 create policy "read challenges" on challenges for select using (in_challenge(id));
+drop policy if exists "own challenges" on challenges;
 create policy "own challenges" on challenges for all using (owner = auth.uid()) with check (owner = auth.uid());
+drop policy if exists "read challenge members" on challenge_members;
 create policy "read challenge members" on challenge_members for select using (in_challenge(challenge_id));
+drop policy if exists "my challenge progress" on challenge_members;
 create policy "my challenge progress" on challenge_members for all using (user_id = auth.uid()) with check (user_id = auth.uid());
 
+drop policy if exists "leaders: meetings" on meetings;
 create policy "leaders: meetings" on meetings for all using (is_leader(group_id)) with check (is_leader(group_id));
+drop policy if exists "leaders: member notes" on member_notes;
 create policy "leaders: member notes" on member_notes for all using (is_leader(group_id)) with check (is_leader(group_id));
 
 -- joining a reading plan from its link
