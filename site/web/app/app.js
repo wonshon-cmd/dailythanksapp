@@ -1161,22 +1161,29 @@ function openReader(opts = {}) {
   data.reading = data.reading || { b: 1, c: 1 }; data.readDone = data.readDone || [];
   data.verseLikes = data.verseLikes || []; data.savedVerses = data.savedVerses || [];
   const start = opts.b ? opts : { b: data.reading.b, c: data.reading.c, v: data.reading.v || 1 };
-  state.reader = { ...start, group: opts.group || null, loaded: [] };
+  // Today's passage from a group: only those verses, one card at a time, turned sideways.
+  const passage = !!(opts.group && opts.b && opts.v);
+  state.reader = { ...start, group: opts.group || null, loaded: [], passage };
   if (!readerEl) { readerEl = document.createElement('div'); readerEl.className = 'reader'; readerEl.id = 'reader'; sheet.parentElement.appendChild(readerEl); }
   readerEl.innerHTML = `<header class="reader-top">
       <button class="reader-x" data-action="reader-close" aria-label="${t('aria.close')}">${icon('x')}</button>
       <span class="reader-gap"></span>
       <span class="reader-tr">${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
-    <div class="reader-scroll" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>
+    <div class="reader-scroll${passage ? ' passage' : ''}" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>
     ${opts.group ? `<footer class="reader-foot"><button class="primary block" data-action="devo-share" data-id="${esc(opts.group)}">${icon('pencil')}${t('devo.share')}</button></footer>` : ''}`;
   readerEl.hidden = false; document.body.classList.add('reading');
   data.settings.readerOpened = true;
-  if (!data.settings.swipedBack) { // first times only: a faint "swipe left to go back" that fades away
+  if (!data.settings.swipedBack && !passage) { // first times only: a faint "swipe left to go back" that fades away
     const h = document.createElement('p'); h.className = 'swipe-hint back'; h.innerHTML = `${t('hint.swipeBack')}<span aria-hidden="true">›</span>`;
     readerEl.appendChild(h); setTimeout(() => h.classList.add('gone'), 3200);
   }
   readerObs?.disconnect();
   readerObs = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) loadNextChapter(); }, { root: $('#reader-scroll'), rootMargin: '600px' });
+  if (passage) {
+    loadChapter(start.b, start.c, true);
+    $('#reader-scroll').addEventListener('scroll', passageCount, { passive: true });
+    return;
+  }
   loadChapter(start.b, start.c, true).then(() => readerObs.observe($('#reader-more')));
   $('#reader-scroll').addEventListener('scroll', trackReading, { passive: true });
 }
@@ -1187,6 +1194,7 @@ async function loadChapter(b, c, first) {
   try { verses = await fetchChapter(b, c); }
   catch { if (more) more.innerHTML = `${t('rd.offline')}<button class="link-btn" data-action="reader-retry">${t('rd.retry')}</button>`; return false; }
   if (!state.reader || r !== state.reader) return;
+  if (r.passage) verses = verses.filter(x => x.v >= r.v && x.v <= (r.v2 || r.v));
   r.loaded.push([b, c]); r.last = [b, c];
   const hl = x => first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v);
   const last = verses[verses.length - 1].v;
@@ -1201,6 +1209,7 @@ async function loadChapter(b, c, first) {
       <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span>${t('act.share')}</span></button>
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
+  if (r.passage) { more.remove(); sc.innerHTML = pages; sc.scrollLeft = 0; passageCount(); return true; }
   const onLoadingPage = sc && sc.scrollTop >= more.offsetTop - 2; // waiting on the "loading" page
   more.insertAdjacentHTML('beforebegin', pages);
   // Scroll snapping would otherwise stay glued to the "loading" page and jump past the new verses.
@@ -1228,6 +1237,11 @@ function trackReading() {
     data.challenges.filter(ch => ch.type === 'bible' && ch.lastDay !== today() && ch.days.length < chLen(ch)).forEach(ch => { ch.days.push(ch.days.length + 1); ch.lastDay = today(); });
   }
   clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600);
+}
+function passageCount() {
+  const sc = $('#reader-scroll'), gap = $('.reader-gap'); if (!sc || !gap) return;
+  const pages = sc.querySelectorAll('.vs-page'), i = Math.min(pages.length - 1, Math.round(sc.scrollLeft / Math.max(1, sc.clientWidth)));
+  gap.innerHTML = pages.length > 1 ? `<span class="pg-count">${i + 1} / ${pages.length}</span>` : '';
 }
 function closeReader() {
   if (!readerEl || readerEl.hidden) return false;
@@ -2886,6 +2900,7 @@ render();
       return;
     }
     if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.4) return; // mostly sideways, anywhere on the screen
+    if (inReader && state.reader?.passage && startEl?.closest('#reader-scroll')) return; // sideways turns the verse
     if (inReader) { if (dx > 0) { data.settings.swipedBack = true; closeReader(); } return; } // Bible ← reached by swiping left; swipe right to come back
     if (document.getElementById('sheet')?.hidden === false) return;
     if (startEl?.closest('.chips,.kind-chips,.seg,input,textarea,select,.cal-grid')) return;
