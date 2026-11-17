@@ -10,6 +10,8 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'rc2.title': "나눔이 닿은 곳", 'rc2.sub': "내가 나눈 말씀과 감사, 기도제목이 이만큼 닿았어요.", 'rc2.peopleV': "{n}명", 'rc2.timesV': "{n}번", 'rc2.people': "마음을 표현한 사람", 'rc2.outside': "공동체 밖으로", 'rc2.inside': "공동체 안에서", 'rc2.shared': "내가 나눈 횟수", 'rc2.foot': "나눈 글 {p}개 · 앱 밖으로 보낸 것 {e}번", 'rc2.more': "자세히 보기",
+    'yr.verse': "올해의 말씀", 'yr.most': "가장 많이 펼친 말씀 · {r}", 'yr.times': "{n}번 펼쳤어요",
     'snz.ok': "끄기", 'snz.title': "무엇을 끌까요?", 'snz.what': "끌 것", 'snz.all': "전부", 'snz.for': "얼마 동안", 'snz.until': "다시 켤 때까지", 'snz.hint': "설정 › 보기 설정에서 언제든 다시 켤 수 있어요.", 'mc.title': "내 공동체", 'mc.ph': "교회·소그룹·챕터·수련회 코드", 'mc.connect': "연결", 'mc.none': "받은 코드를 넣으면 공동체와 연결돼요.", 'mc.bad': "코드를 확인해 주세요.", 'mc.needSign': "공동체와 연결하려면 로그인해 주세요. 로그인하면 바로 연결돼요.", 'mc.joining': "연결 중…", 'mc.admin': "관리자", 'mc.quiet': "조용히", 'mc.loud': "알림 켜기", 'mc.quietOn': "조용히 · 새 글 표시와 알림 없음", 'mc.quietDone': "조용히 해 두었어요. 새 글 표시와 알림이 오지 않아요.", 'mc.loudDone': "다시 알려 드릴게요.", 'mc.leave': "나가기", 'mc.leaveQ': "‘{name}’에서 나갈까요? 다시 들어오려면 코드나 초대 링크가 필요해요.", 'mc.left': "공동체에서 나왔어요.", 'mc.ownerStay': "관리자는 나갈 수 없어요. 공동체 관리에서 정리해 주세요.", 'join.pendingShort': "승인 대기",
     'tour.k.verse': "오늘의 말씀", 'tour.k.prayer': "공동체 기도제목", 'tour.k.thanks': "감사", 'tour.s.verse': "밀어 올리며 성경을 읽어요", 'tour.s.prayer': "공동체의 기도제목을 바로 받아 봐요", 'tour.s.thanks': "나의 감사를 함께 나눠요", 'tour.f.title': "이런 것도 있어요", 'tour.f.read': "읽기", 'tour.f.readSub': "오늘의 본문, 이어 읽기, 함께 읽는 계획", 'tour.f.notes': "설교 노트", 'tour.f.notesSub': "설교를 녹음하면 노트로 정리돼요", 'tour.f.group': "공동체", 'tour.f.groupSub': "만들고, 초대 링크로 함께해요",
     'tour.skip': "건너뛰기", 'tour.done': "시작하기", 'tour.again': "둘러보기 다시 보기",
@@ -157,6 +159,8 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'rc2.title': "Where your sharing reached", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
+    'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
     'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
     'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and it becomes tidy notes", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
     'tour.skip': "Skip", 'tour.done': "Get started", 'tour.again': "See the tour again",
@@ -304,6 +308,8 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'rc2.title': "Hasta dónde llegó lo que compartiste", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
+    'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
     'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
     'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y se vuelve notas ordenadas", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
     'tour.skip': "Omitir", 'tour.done': "Empezar", 'tour.again': "Ver el recorrido otra vez",
@@ -940,7 +946,7 @@ function setSession(next) {
 const GATE_AFTER = 5; // posts shown before the "write today's thanks" card and the sign-in card
 
 try { if (!sessionStorage.getItem('dt-visit')) { sessionStorage.setItem('dt-visit', '1'); data.settings.opens = (data.settings.opens || 0) + 1; localStorage.setItem(KEY, JSON.stringify(data)); } } catch {}
-const state = { tab: BIBLE_MODE ? 'read' : 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'public' }; // posts default to Everyone; switch to Only me any time // immersive: the app opens on a full-screen feed of people's thanks
+const state = { dqSeed: Math.floor(Math.random() * 1000), tab: BIBLE_MODE ? 'read' : 'feed', feed: 'public', group: data.groups[0]?.id, composeKind: 'today', challenge: null, filter: 'all', immersive: true, justWrote: false, composeScope: 'public' }; // posts default to Everyone; switch to Only me any time // immersive: the app opens on a full-screen feed of people's thanks
 // returning visits get "first things first" (group prayer requests, today's verses) on opening
 { const d0 = new Date().toLocaleDateString('en-CA'); state.openedBefore = !!data.settings.firstOpen && data.settings.firstOpen !== d0; if (!data.settings.firstOpen) data.settings.firstOpen = d0; }
 
@@ -1654,6 +1660,7 @@ async function loadChapter(b, c, first) {
   if (!state.reader || r !== state.reader) return;
   if (r.passage) verses = verses.filter(x => r.c2 > r.c ? (c === r.c ? x.v >= r.v : x.v <= r.e2) : x.v >= r.v && x.v <= (r.v2 || r.v));
   r.loaded.push([b, c]); r.last = [b, c];
+  { const y = today().slice(0, 4), v = data.chViews = data.chViews || {}; v[y] = v[y] || {}; v[y][readKey(b, c)] = (v[y][readKey(b, c)] || 0) + 1; }
   const hl = x => first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v);
   const last = verses[verses.length - 1].v;
   // One verse per page; swipe up for the next one (same feel as the thanks feed).
@@ -3322,7 +3329,12 @@ function yearStats(y = new Date().getFullYear()) {
   const ys = String(y), log = Object.entries(data.readLog || {}).filter(([, d]) => d.startsWith(ys));
   const days = [...new Set(log.map(([, d]) => d))].sort(); let best = 0, run = 0, prev = null; days.forEach(d => { run = prev && dayDiff(prev, d) === 1 ? run + 1 : 1; best = Math.max(best, run); prev = d; });
   const books = Object.entries(data.booksDone || {}).filter(([, d]) => d.startsWith(ys)).map(([b]) => +b);
-  return { y, chapters: log.length, days: days.length, best, books, pct: Math.round((data.readDone || []).length / TOTAL_CHAPTERS * 1000) / 10 };
+  // verse of the year: the one you saved (2) and liked (1) most; ties → the latest saved
+  const liked = new Set(data.verseLikes || []), vs = (data.savedVerses || []).filter(x => (x.date || '').startsWith(ys) && x.text)
+    .map(x => ({ ...x, score: 2 + (liked.has(x.key) ? 1 : 0) })).sort((a, b) => b.score - a.score || (b.date || '').localeCompare(a.date || ''));
+  const views = Object.entries(data.chViews?.[ys] || {}).sort((a, b) => b[1] - a[1])[0];
+  const most = views ? { b: +views[0].split(':')[0], c: +views[0].split(':')[1], n: views[1] } : null;
+  return { y, verse: vs[0] || null, most, chapters: log.length, days: days.length, best, books, pct: Math.round((data.readDone || []).length / TOTAL_CHAPTERS * 1000) / 10 };
 }
 async function yearCanvas(kind = 'feed', prog = 1) {
   try { await document.fonts.ready; } catch {}
@@ -3333,11 +3345,19 @@ function drawYear(x, W, H, st, prog) {
   x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H);
   x.fillStyle = '#9BA0A3'; x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30); const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('bible', M + dw, M + 30);
   x.fillStyle = '#B5453F'; x.beginPath(); const rx = W - M - 18; x.moveTo(rx, M - 6); x.lineTo(rx + 22, M - 6); x.lineTo(rx + 22, M + 52); x.lineTo(rx + 11, M + 42); x.lineTo(rx, M + 52); x.closePath(); x.fill();
-  const top = H * .25, a = ease(prog * 1.4), gap = H > 1500 ? 170 : 132;
+  const top = H * .25, a = ease(prog * 1.4), gap = H > 1500 ? 160 : 126;
   x.globalAlpha = a; x.fillStyle = '#80868A'; x.font = `400 40px ${sans}`; x.fillText(t('yr.title').replace('{y}', st.y), M, top);
   x.fillStyle = '#16191C'; x.font = `400 190px ${serif}`; x.fillText(String(Math.round(st.chapters * ease(prog * 1.2))), M - 8, top + 200);
   x.font = `300 48px ${sans}`; x.fillStyle = '#4A4F54'; x.fillText(t('yr.chapters').replace('{n}', '').trim() + ' ' + t('yr.read'), M, top + 270);
-  const rows = [[t('yr.days').replace('{n}', st.days), t('yr.daysL')], [t('yr.best').replace('{n}', st.best), ''], [t('yr.books').replace('{n}', st.books.length), st.books.slice(0, 4).map(b => bookName(b)).join(' · ')], [t('yr.pct').replace('{p}', st.pct), '']];
+  const fit = (txt, w) => { if (x.measureText(txt).width <= w) return txt; let a = txt; while (a.length > 1 && x.measureText(a + '…').width > w) a = a.slice(0, -1); return a + '…'; };
+  x.font = `300 30px ${sans}`;
+  let rows = [
+    ...(st.verse ? [[t('yr.verse') + ' · ' + refText({ b: st.verse.b, c: st.verse.c, v: st.verse.v, v2: st.verse.v }), fit(st.verse.text, W - 2 * M)]] : []),
+    [t('yr.days').replace('{n}', st.days) + ' ' + t('yr.daysL'), st.best ? t('yr.best').replace('{n}', st.best) : ''],
+    [t('yr.books').replace('{n}', st.books.length), st.books.slice(0, 4).map(b => bookName(b)).join(' · ')],
+    ...(st.most ? [[t('yr.most').replace('{r}', refText({ b: st.most.b, c: st.most.c })), t('yr.times').replace('{n}', st.most.n)]] : []),
+    [t('yr.pct').replace('{p}', st.pct), '']];
+  if (H < 1500 && rows.length > 4) rows = rows.slice(0, 4);   // the square card keeps four lines; the story has room for all
   rows.forEach(([big, small], i) => { const k = ease(prog * 2 - .35 - i * .18); if (k <= 0) return; x.globalAlpha = k; const yy = top + 390 + i * gap;
     x.fillStyle = '#E3E5E6'; x.fillRect(M, yy - 58, W - 2 * M, 2); x.fillStyle = '#2C3135'; x.font = `400 44px ${sans}`; x.fillText(big, M, yy + 14);
     if (small) { x.fillStyle = '#9BA0A3'; x.font = `300 30px ${sans}`; x.fillText(small, M, yy + 52); } });
@@ -3369,6 +3389,24 @@ async function yearReel() {
   if (!$('#yr-reel')) return;
   $('#yr-reel').innerHTML = `<video class="reel-video" src="${URL.createObjectURL(state.reelFile)}" autoplay muted loop playsinline></video>
     <button class="primary block" data-action="yr-reel-share">${icon('camera')}${t('yr.post')}</button><button class="secondary block" data-action="reel-save" style="margin-top:8px">${icon('download')}${t('yr.save')}</button>`;
+}
+// 나 › 나눔이 닿은 곳: how many people my posts reached — inside my communities and beyond — and how much I shared.
+function reachStats() {
+  const mine = data.posts.filter(p => p.mine && p.scope !== 'private' && !p.status);
+  const touch = p => (p.likes || 0) + (p.saves || 0) + (p.shares || 0) + (p.prayedBy || 0);
+  const inside = mine.filter(p => p.scope === 'group').reduce((a, p) => a + touch(p), 0);
+  const outside = mine.filter(p => p.scope === 'public').reduce((a, p) => a + touch(p), 0) + mine.reduce((a, p) => a + (p.extShares || 0), 0);
+  return { people: influence().people, inside, outside, shared: (data.sharesGiven || 0) + (data.verseShares || 0), ext: data.extSharesGiven || 0, posts: mine.length };
+}
+function reachHtml() {
+  const r = reachStats(), tile = (v, l) => `<div class="db-tile"><b>${v}</b><span>${l}</span></div>`;
+  return `<section class="db reach">
+    <p class="gd-label">${t('rc2.title')}</p>
+    <p class="reach-sub">${t('rc2.sub')}</p>
+    <div class="db-tiles">${tile(t('rc2.peopleV').replace('{n}', r.people), t('rc2.people'))}${tile(t('rc2.timesV').replace('{n}', r.outside), t('rc2.outside'))}${tile(t('rc2.timesV').replace('{n}', r.inside), t('rc2.inside'))}${tile(t('rc2.timesV').replace('{n}', r.shared), t('rc2.shared'))}</div>
+    <p class="db-foot">${t('rc2.foot').replace('{p}', r.posts).replace('{e}', r.ext)}</p>
+    <button class="secondary block" data-action="influence">${t('rc2.more')}</button>
+  </section>`;
 }
 // 나 › 내 공동체: type a code from your church, small group, chapter or retreat; keep each one loud, quiet, or leave it
 function myCommunities() {
@@ -3403,6 +3441,7 @@ function renderBibleMe() {
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
     ${myCommunities()}
+    ${reachHtml()}
     ${readGauge()}${dashHtml()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
     ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
@@ -3624,7 +3663,18 @@ function updateVis(key) {
 /* ---------------- sheets ---------------- */
 const seg = (items, action, current, extra = '') => `<div class="seg ${extra}">${items.map(([id, label, ic]) => `<button type="button" class="${current === id ? 'active' : ''}" data-action="${action}" data-id="${id}">${ic ? icon(ic) : ''}<span>${label}</span></button>`).join('')}</div>`;
 
+// Left/right swipe on a row of cards: fingers already scroll it; this adds the same drag for a mouse or trackpad.
+function swipeCards(track) {
+  let x0 = null, s0 = 0;
+  track.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; x0 = e.clientX; s0 = track.scrollLeft; track.style.scrollSnapType = 'none'; track.setPointerCapture(e.pointerId); });
+  track.addEventListener('pointermove', e => { if (x0 !== null) track.scrollLeft = s0 - (e.clientX - x0); });
+  const up = e => { if (x0 === null) return; const dx = e.clientX - x0, w = track.clientWidth, i = Math.round(s0 / w);
+    const to = Math.abs(dx) > 40 ? i + (dx < 0 ? 1 : -1) : i; x0 = null; track.style.scrollSnapType = '';
+    track.scrollTo({ left: Math.max(0, Math.min(to, track.children.length - 1)) * w, behavior: 'smooth' }); };
+  track.addEventListener('pointerup', up); track.addEventListener('pointercancel', up);
+}
 function compose(kind = state.composeKind, chId = state.challenge, keepText = '') {
+  state.dqTurn = (state.dqTurn || 0) + 1;   // a new question every time
   state.composeKind = kind; state.challenge = chId;
   state.sheetScope = state.sheetScope || 'public';
   state.sheetGroup = state.sheetGroup || data.groups[0]?.id;
@@ -3750,6 +3800,7 @@ async function fillMedPassage(focus) {
     const track = el.querySelector('.mp-track'), count = el.querySelector('.mp-count');
     const showCount = () => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); const x = pick[i]; if (x) count.textContent = `${refText({ b: r.b, c: x.c || r.c, v: x.v, v2: x.v })} · ${i + 1}/${pick.length}`; };
     track.addEventListener('scroll', showCount, { passive: true });
+    swipeCards(track);
     if (focus === 'next') { track.scrollLeft = track.scrollWidth; showCount(); }
   } catch { const el = box.querySelector('.mp-text'); if (el) el.textContent = t('rd.offline'); }
 }
@@ -4631,7 +4682,7 @@ const DAILY_Q = {
        'Did someone help you today?', 'What is one thing at home you’re thankful for?', 'What did you learn today?', 'What gratitude did you find in something hard?', 'What are you thankful for right now?', 'What is one reason to look forward to tomorrow?', 'Who has stayed by your side for a long time?']
 };
 const dayOfYear = () => { const d = new Date(), s0 = new Date(d.getFullYear(), 0, 0); return Math.floor((d - s0) / 864e5); };
-const dailyQ = () => { const remote = CONTENT.dailyQuestions?.[lang()]; const list = Array.isArray(remote) && remote.length ? remote : (DAILY_Q[lang()] || DAILY_Q.en); return list[dayOfYear() % list.length]; };
+const dailyQ = () => { const remote = CONTENT.dailyQuestions?.[lang()]; const list = Array.isArray(remote) && remote.length ? remote : (DAILY_Q[lang()] || DAILY_Q.en); return list[(state.dqSeed + (state.dqTurn || 0)) % list.length]; };
 const dailyQLine = () => `<p class="daily-q">${icon('sparkle')}<span>${t('dq.label')} · ${esc(dailyQ())}</span></p>`;
 
 // A past note resurfaces: exactly a week / month / year ago if there is one, otherwise the oldest of the last weeks.
@@ -5542,6 +5593,7 @@ const actions = {
     const x = verseFromKey(k); if (!x.text) return;
     const text = `${x.text}\n— ${refText({ b: x.b, c: x.c, v: x.v, v2: x.v })} (${x.tr})\n\n${verseLink(x)}`;
     if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
+    data.verseShares = (data.verseShares || 0) + 1; data.extSharesGiven = (data.extSharesGiven || 0) + 1; save();
   },
   'open-saved-verse': k => { const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
   'verse-read': ref => { const r = parseRef(ref); openReader(r ? { ...r } : {}); },
