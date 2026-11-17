@@ -1564,6 +1564,7 @@ html[data-size="xl"]{--read:31px}
 .seg.four button { padding-inline: 4px; }
 /* writing streak + what's new, top of the full-screen feed */
 .imm-streak { position: absolute; top: calc(78px + var(--safe-top)); left: 50%; transform: translateX(-50%); z-index: 3; display: inline-flex; gap: 10px; align-items: center; border: 0; padding: 5px 12px; border-radius: 999px; background: #f4f4f4; font: inherit; font-size: 12px; color: #6b7075; cursor: pointer; white-space: nowrap; }
+.imm-streak { cursor: default; user-select: none; }
 .imm-new { display: inline-flex; align-items: center; gap: 5px; color: #2c3135; }
 @media (max-height:700px){ .imm-streak { top: calc(58px + var(--safe-top)); } }
 /* shared reflection: range + one verse at a time */

@@ -2201,7 +2201,7 @@ function immStreak() {
     ? data.posts.filter(p => !p.mine && visible(p) && data.groups.some(g => inGroup(p, g.id)) && !(data.groupSeen || []).includes(p.id)).length
     : data.groups.reduce((x, g) => x + unseenIn(g.id), 0);
   if (!n && !unseen) return '';
-  return `<button class="imm-streak" data-action="imm-streak">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</button>`;
+  return `<div class="imm-streak" aria-live="polite">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</div>`;
 }
 const firstOffLinks = () => `<p class="fo-links"><button data-action="first-off">${t('fo.off')}</button><span>·</span><button data-action="first-snooze">${t('fo.h24')}</button></p>`;
 function viewSettings() {
