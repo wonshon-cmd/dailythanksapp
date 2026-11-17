@@ -6,7 +6,7 @@
 
 ## 한국어
 
-**시행일: [2026년 12월 1일]**
+**시행일: 2026년 11월 17일**
 
 1. **서비스:** Daily Thanks는 감사를 기록하고 나누는 서비스입니다. 운영자는 Daily Journey, Inc.입니다.
 2. **가입:** 만 14세 이상만 가입할 수 있습니다. Apple, Google, 휴대폰 번호로 로그인합니다.
@@ -31,13 +31,13 @@
 7. **계정 삭제:** 앱의 설정 › 정보 › 계정 삭제, 또는 dailyjourney.org/delete-account에서 언제든 삭제할 수 있습니다.
 8. **책임의 한계:** 서비스는 있는 그대로 제공됩니다. 운영자는 법이 허용하는 범위에서 간접적인 손해에 책임지지 않습니다.
 9. **변경:** 약관이 바뀌면 시행 7일 전에 알립니다.
-10. **문의:** hi@dailyjourney.org
+10. **문의:** Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, USA · hi@dailyjourney.org
 
 ---
 
 ## English
 
-**Effective date: [December 1, 2026]**
+**Effective date: November 17, 2026**
 
 1. **The Service:** Daily Thanks is a place to record and share gratitude. It is operated by Daily Journey, Inc.
 2. **Eligibility:** You must be at least 14. In the U.S., you must be at least 13. You sign in with Apple, Google, or your phone number.
@@ -62,13 +62,13 @@
 7. **Deleting your account:** Settings › About › Delete account, or dailyjourney.org/delete-account.
 8. **Disclaimer:** The Service is provided "as is". To the extent the law allows, we are not liable for indirect damages.
 9. **Changes:** We will notify you at least 7 days before changes take effect.
-10. **Contact:** hi@dailyjourney.org
+10. **Contact:** Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, USA · hi@dailyjourney.org
 
 ---
 
 ## Español
 
-**Vigencia: [1 de diciembre de 2026]**
+**Vigencia: 17 de noviembre de 2026**
 
 1. **El Servicio:** Daily Thanks es un lugar para registrar y compartir gratitud, operado por Daily Journey, Inc..
 2. **Requisitos:** Debes tener al menos 14 años. Inicias sesión con Apple, Google o tu teléfono.
@@ -90,4 +90,4 @@
    - Puedes pedir una revisión si crees que la decisión fue un error.
 6. **Notas de sermón (opcional):** Los sermones pertenecen a quienes los predican. Úsalas para tu reflexión personal y pide permiso antes de compartirlas.
 7. **Eliminar tu cuenta:** Ajustes › Acerca de › Eliminar cuenta, o dailyjourney.org/delete-account.
-8. **Contacto:** hi@dailyjourney.org
+8. **Contacto:** Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, EE. UU. · hi@dailyjourney.org

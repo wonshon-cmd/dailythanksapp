@@ -9,6 +9,8 @@
 <meta property="og:description" content="daily bible · daily thanks">
 <meta property="og:image" content="https://dailyjourney.org/dailybible/og.png">
 <meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://dailyjourney.org/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Daily Journey, Inc.","url":"https://dailyjourney.org/","email":"hi@dailyjourney.org","logo":"https://dailyjourney.org/dailybible/apple-touch-icon.png","address":{"@type":"PostalAddress","streetAddress":"105 Challenger Rd","addressLocality":"Ridgefield Park","addressRegion":"NJ","postalCode":"07660","addressCountry":"US"}}</script>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +53,10 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:13.5px
 footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}
 footer nav a{text-decoration:none}
 footer nav a:hover{color:var(--ink)}
-.mail{user-select:all}
+.co{font-style:normal;line-height:1.7;margin:4px 0 12px}
+.co strong{color:var(--ink);font-weight:500}
+.co a{text-decoration:none}
+.cr{margin:0}
 </style>
 </head>
 <body>
@@ -85,7 +90,12 @@ footer nav a:hover{color:var(--ink)}
 
   <footer>
     <nav><a href="/privacy/" data-k="privacy"></a><a href="/terms/" data-k="terms"></a><a href="/support/" data-k="support"></a><a href="/delete-account/" data-k="delete"></a></nav>
-    <p style="margin:0"><span class="mail">hi@dailyjourney.org</span> · © <span id="yr">2026</span> Daily Journey, Inc.</p>
+    <address class="co">
+      <strong>Daily Journey, Inc.</strong><br>
+      105 Challenger Rd<br>Ridgefield Park, NJ 07660<br>United States<br>
+      <a href="mailto:hi@dailyjourney.org">hi@dailyjourney.org</a>
+    </address>
+    <p class="cr">© <span id="yr">2026</span> Daily Journey, Inc.</p>
   </footer>
 </div>
 <script>

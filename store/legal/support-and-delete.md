@@ -16,6 +16,7 @@
 궁금한 점이나 불편한 점이 있으면 언제든 알려 주세요. 보통 2영업일 안에 답장드려요.
 
 - 이메일: hi@dailyjourney.org
+- 주소: Daily Journey, Inc., 105 Challenger Rd, Ridgefield Park, NJ 07660, USA
 
 **자주 묻는 질문**
 
@@ -43,6 +44,8 @@
 
 Questions or problems? Email hi@dailyjourney.org. We usually reply within 2 business days.
 
+Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, USA
+
 - **Who can see my notes?**
   - Choose "Everyone" or "Private" when you write.
   - Private means only you, or only the group you pick.
@@ -65,6 +68,8 @@ Questions or problems? Email hi@dailyjourney.org. We usually reply within 2 busi
 **Soporte de Daily Thanks**
 
 Escríbenos a hi@dailyjourney.org. Respondemos en unos 2 días hábiles.
+
+Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, EE. UU.
 
 - **Eliminar la cuenta:**
   - En la app: Ajustes › Acerca de › Eliminar cuenta.
