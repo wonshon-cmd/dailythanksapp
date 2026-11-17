@@ -2129,7 +2129,6 @@ function groupStatusCard(gid) {
       <button class="primary" data-action="group-write" data-id="${esc(gid)}">${t('gs.write')}</button>
       <button class="secondary" data-action="group-nudge" data-id="${esc(gid)}" ${nudged ? 'disabled' : ''}>${nudged ? t('gs.nudged') : t('gs.nudge')}</button>
     </div>
-    <p class="hint">${t('gs.privacy')}</p>
   </div></article>`;
 }
 function devoCard(gid) {
