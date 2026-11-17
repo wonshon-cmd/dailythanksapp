@@ -2509,6 +2509,8 @@ if (!Array.isArray(data.prayed)) data.prayed = [];
 if (!Array.isArray(data.verseLikes)) data.verseLikes = [];
 if (!Array.isArray(data.readDone)) data.readDone = [];
 if (data.settings && !Array.isArray(data.settings.prayerSeen)) data.settings.prayerSeen = [];
+// the example community used to be called '은혜 소그룹'
+try { (data.groups || []).forEach(g => { if (g && g.name && typeof g.name === 'object' && g.name.ko === '은혜 소그룹') g.name.ko = '은혜 공동체'; }); } catch {}
 if (data.settings && (typeof data.settings.prefs !== 'object' || !data.settings.prefs)) data.settings.prefs = {};
 if (!data.readLog || typeof data.readLog !== 'object') data.readLog = {};
 if (!Array.isArray(data.savedVerses)) data.savedVerses = [];
