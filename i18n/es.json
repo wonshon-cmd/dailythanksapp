@@ -925,5 +925,18 @@
   "pl.joined": "Te uniste al plan",
   "pl.already": "Ya estás en este plan",
   "pl.today": "Hoy",
-  "pl.someone": "Un amigo"
+  "pl.someone": "Un amigo",
+  "bs.size": "Tamaño del texto bíblico",
+  "bs.remind": "Recordatorio de lectura",
+  "bs.places": "Iglesia y pastor",
+  "bs.placesNone": "Aquí se guardan la iglesia y el pastor que escribes en una nota de sermón.",
+  "bs.placesHint": "Al empezar una nota, se llena primero la que más usas ese día y a esa hora.",
+  "bs.usually": "Normalmente {when}",
+  "bs.sub": "Plan de notas de sermón",
+  "bs.thanks": "Abrir daily thanks",
+  "bs.sermon": "Notas de sermón",
+  "bs.reading": "Lectura",
+  "bs.data": "Mis registros",
+  "bs.deleted": "Eliminado",
+  "bs.off": "Apagado"
 }
