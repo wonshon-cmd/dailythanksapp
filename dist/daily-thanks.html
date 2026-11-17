@@ -1203,6 +1203,7 @@ body.capturing #app{filter:blur(18px)}
 .chu-acts{display:flex;gap:14px}
 .chu-acts .link-btn{font-size:13px;padding:4px 0}
 .church .sw-row{margin:12px 0 0;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;display:flex;align-items:center;font:inherit;text-align:left;cursor:pointer}
+.chr .cel-title{margin-top:8px}
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -3389,7 +3390,6 @@ function chResult(id) {
   const ch = data.challenges.find(c => c.id === id); if (!ch) return;
   const st = chStats(ch), g = data.groups.find(x => x.id === ch.group);
   showSheet({ title: '', body: `<div class="chr">
-    <div class="cel-mark">${icon('sparkle')}</div>
     <p class="cel-title">${t('chr.title').replace('{name}', esc(chName(ch)))}</p>
     <p class="cel-body">${t('chr.sub').replace('{n}', chLen(ch))}</p>
     <div class="chr-nums"><span><b>${st.mine}/${chLen(ch)}</b><small>${t('me')}</small></span>${g ? `<span><b>${st.people}</b><small>${esc(L(g.name))}</small></span><span><b>${st.total}</b><small>${t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[ch.type || 'thanks'] || 'thanks')}</small></span>` : ''}</div>

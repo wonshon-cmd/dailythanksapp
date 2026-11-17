@@ -2159,7 +2159,6 @@ function chResult(id) {
   const ch = data.challenges.find(c => c.id === id); if (!ch) return;
   const st = chStats(ch), g = data.groups.find(x => x.id === ch.group);
   showSheet({ title: '', body: `<div class="chr">
-    <div class="cel-mark">${icon('sparkle')}</div>
     <p class="cel-title">${t('chr.title').replace('{name}', esc(chName(ch)))}</p>
     <p class="cel-body">${t('chr.sub').replace('{n}', chLen(ch))}</p>
     <div class="chr-nums"><span><b>${st.mine}/${chLen(ch)}</b><small>${t('me')}</small></span>${g ? `<span><b>${st.people}</b><small>${esc(L(g.name))}</small></span><span><b>${st.total}</b><small>${t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[ch.type || 'thanks'] || 'thanks')}</small></span>` : ''}</div>

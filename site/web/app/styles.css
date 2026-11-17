@@ -1191,3 +1191,4 @@ body.capturing #app{filter:blur(18px)}
 .chu-acts{display:flex;gap:14px}
 .chu-acts .link-btn{font-size:13px;padding:4px 0}
 .church .sw-row{margin:12px 0 0;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;display:flex;align-items:center;font:inherit;text-align:left;cursor:pointer}
+.chr .cel-title{margin-top:8px}
