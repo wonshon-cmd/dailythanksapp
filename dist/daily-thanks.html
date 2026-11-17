@@ -2663,7 +2663,7 @@ const Cloud = (() => {
       return true;
     },
     async signOut() { const tk = auth?.access; signedOut(); if (tk) call('/auth/v1/logout', { method: 'POST', token: tk }).catch(() => {}); },
-    // Google · Microsoft · Kakao: off to the provider, back with #access_token (handled by fromRedirect)
+    // Google · Microsoft: off to the provider, back with #access_token (handled by fromRedirect)
     oauth(provider) { location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
     // which sign-in methods are switched on in Supabase (Authentication › Sign In / Providers)
     providers: () => call('/auth/v1/settings').then(j => j.external || {}).catch(() => ({})),
@@ -2674,7 +2674,7 @@ const Cloud = (() => {
   };
 })();
 
-/* First visit: name first, then one tap to sign up — Google · Microsoft · Kakao · e-mail · text message.
+/* First visit: name first, then one tap to sign up — Google · Microsoft · e-mail · text message.
    A button whose provider isn't switched on in Supabase yet says so instead of failing. */
 function welcomeSheet(reason = '') {
   if (!data.settings.myName) {
@@ -2686,7 +2686,7 @@ function welcomeSheet(reason = '') {
   }
   const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>
-    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('kakao', 'chat', t('wl.kakao'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
+    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t('np.later')}</button>` });
 }
