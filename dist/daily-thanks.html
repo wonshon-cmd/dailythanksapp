@@ -2759,7 +2759,9 @@ function createGroup() {
     e.preventDefault(); const name = $('#group-name').value.trim(); if (!name) return;
     const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true }; data.groups.push(g); save(); close(); renderGroups();
     document.dispatchEvent(new CustomEvent('dt:group-created', { detail: g })); // server add-on registers the invite code
-    toast(t('toast.grCreated')); setTimeout(() => inviteSheet(g.id), 350); // invite people right away
+    toast(t('toast.grCreated'));
+    // invite people right away — but only if they're still on the 소그룹 tab and nothing else is open
+    setTimeout(() => { if (state.tab === 'group' && !state.immersive && $('#sheet').hidden) inviteSheet(g.id); }, 350);
   });
 }
 
