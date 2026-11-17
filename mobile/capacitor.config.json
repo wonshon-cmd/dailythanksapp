@@ -1,12 +1,12 @@
 {
-  "appId": "org.dailyjourney.dailythanks",
-  "appName": "Daily Thanks",
+  "appId": "org.dailyjourney.dailybible",
+  "appName": "Daily Bible",
   "webDir": "www",
   "backgroundColor": "#FFFFFF",
   "ios": {
     "contentInset": "never",
     "backgroundColor": "#FFFFFF",
-    "scheme": "Daily Thanks",
+    "scheme": "Daily Bible",
     "webContentsDebuggingEnabled": false,
     "limitsNavigationsToAppBoundDomains": false
   },

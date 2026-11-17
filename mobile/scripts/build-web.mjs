@@ -1,4 +1,4 @@
-// Copies the web app from the repo root into mobile/www and adds the native bridge.
+// Copies the web app from the repo root into mobile/www as daily bible and adds the native bridge.
 // The web app stays the single source of truth: edit index.html / styles.css / app.js at the root, then `npm run sync`.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,9 +16,13 @@ fs.copyFileSync(path.resolve(here, '../src/native.js'), path.join(www, 'native.j
 // Bible text travels with the app, so read-through works offline.
 if (fs.existsSync(path.join(root, 'bible'))) fs.cpSync(path.join(root, 'bible'), path.join(www, 'bible'), { recursive: true });
 
+// This shell ships daily bible: the same web app in Bible mode (window.DT_APP = "bible", as build-site.py does for /daily-bible/).
 // native.js must run before app.js (it sets the content URL and fills in share/notification APIs).
 let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 if (!html.includes('<script src="app.js"')) throw new Error('index.html: app.js script tag not found');
-html = html.replace('<script src="app.js"', '<script src="native.js"></script>\n<script src="app.js"');
+html = html.replace('<script src="app.js"', '<script>window.DT_APP = "bible";</script>\n<script src="native.js"></script>\n<script src="app.js"');
+html = html.replace(/<title>[^<]*<\/title>/, '<title>Daily Bible</title>')
+  .replace(/(name="apple-mobile-web-app-title" content=")[^"]*"/, '$1Daily Bible"')
+  .replace(/(name="description" content=")[^"]*"/, '$1Daily Bible — 말씀을 매일"');
 fs.writeFileSync(path.join(www, 'index.html'), html);
 console.log('web app copied to', path.relative(process.cwd(), www));

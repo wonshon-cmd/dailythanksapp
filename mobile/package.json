@@ -1,8 +1,8 @@
 {
-  "name": "daily-thanks-mobile",
+  "name": "daily-bible-mobile",
   "private": true,
   "version": "1.0.0",
-  "description": "iOS and Android app for Daily Thanks (Capacitor shell around the web app in the repo root).",
+  "description": "iOS and Android app for Daily Bible (Capacitor shell around the web app in the repo root, in Bible mode).",
   "type": "module",
   "scripts": {
     "build": "node scripts/build-web.mjs",

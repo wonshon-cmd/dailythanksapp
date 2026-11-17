@@ -80,7 +80,7 @@
             android:layout_weight="1"
             android:fontFamily="serif"
             android:gravity="end"
-            android:text="daily thanks"
+            android:text="daily bible"
             android:textColor="@color/vw_faint"
             android:textSize="13sp" />
     </LinearLayout>

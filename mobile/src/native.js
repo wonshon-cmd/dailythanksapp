@@ -1,10 +1,10 @@
-/* Daily Thanks — native bridge for the iOS / Android app (Capacitor).
+/* Daily Bible (daily thanks code base) — native bridge for the iOS / Android app (Capacitor).
    Loaded before app.js only inside the app (mobile/scripts/build-web.mjs adds it). In a browser it does nothing.
    It fills in the web APIs the app already uses, so app.js needs no phone-specific code:
    - navigator.share / canShare  → system share sheet (text and card images)
    - Notification permission     → local notifications
    - daily reminder              → scheduled at the time chosen in the app, skipped on days you already wrote
-   - reminder tap, widget link   → opens the writing sheet (daily-thanks://write)
+   - reminder tap, widget link   → opens the writing sheet (daily-bible://write)
    - Android back button, status bar, launch screen */
 (() => {
   'use strict';
@@ -27,7 +27,7 @@
     if (data.files && data.files.length) {
       opts.files = [];
       for (const f of data.files) {
-        const name = (f.name || 'daily-thanks.png').replace(/[^\w.-]/g, '_');
+        const name = (f.name || 'daily-bible.png').replace(/[^\w.-]/g, '_');
         const { uri } = await P.Filesystem.writeFile({ path: name, data: await toBase64(f), directory: 'CACHE' });
         opts.files.push(uri);
       }
@@ -90,11 +90,11 @@
   });
 
   /* ---------- deep links: widget, reminders, group invites ---------- */
-  // daily-thanks://write → writing sheet; daily-thanks://join?c=CODE&n=NAME (group invite) → join sheet
+  // daily-bible://write (or daily-thanks://…) → writing sheet; daily-bible://join?c=CODE&n=NAME (group invite) → join sheet
   const route = url => {
     if (!url) return;
-    if (/join/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n'), q.get('k')), 300)); }
-    else if (/reply/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.replyThanks(q.get('to'), q.get('from')), 300)); }
+    if (/join/.test(url)) { const q = new URL(url.replace(/^daily-(?:thanks|bible):\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n'), q.get('k')), 300)); }
+    else if (/reply/.test(url)) { const q = new URL(url.replace(/^daily-(?:thanks|bible):\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.replyThanks(q.get('to'), q.get('from')), 300)); }
     else if (/meditat/.test(url)) ready(DT => setTimeout(() => DT.openMeditation(), 300));
     else if (/write/.test(url)) ready(DT => setTimeout(() => DT.openWrite(), 300));
   };

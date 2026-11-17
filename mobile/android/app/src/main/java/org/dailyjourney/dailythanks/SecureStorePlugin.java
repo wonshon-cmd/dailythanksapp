@@ -21,7 +21,7 @@ import javax.crypto.spec.GCMParameterSpec;
  *  (hardware-backed where available; it never leaves the device and is never exported). */
 @CapacitorPlugin(name = "SecureStore")
 public class SecureStorePlugin extends Plugin {
-    private static final String ALIAS = "dailythanks_secure", PREFS = "dt_secure";
+    private static final String ALIAS = "dailybible_secure", PREFS = "dt_secure";
 
     private SecretKey key() throws Exception {
         KeyStore ks = KeyStore.getInstance("AndroidKeyStore"); ks.load(null);
