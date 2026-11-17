@@ -1091,3 +1091,17 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .lf-main span{font-size:16px;font-weight:500}
 .lf-main small{font-size:12.5px;color:#8E9396}
 .link-first > .ico{color:#B4B8BB;font-size:16px}
+/* 동행 setup */
+.ch-types{margin-bottom:6px}
+.ch-unit{margin-bottom:10px}
+.ch-step{display:flex;align-items:center;justify-content:center;gap:22px;margin:4px 0 6px}
+.ch-step .round-btn{width:40px;height:40px;font-size:18px}
+.ch-n{min-width:96px;text-align:center;font-size:20px;color:var(--ink)}
+.ch-sum{text-align:center;margin:0}
+.ch-range{display:flex;align-items:center;gap:8px;margin:6px 0 4px}
+.ch-ref{flex:1;border:1px solid var(--line);background:#FFFFFF;border-radius:14px;padding:10px 12px;text-align:left;font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-width:0}
+.ch-ref small{font-size:11.5px;color:#A9AEB1}
+.ch-ref span{font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-arrow{color:#B4B8BB}
+.ch-plan{margin:8px 0 2px;text-align:center;font-size:13.5px;color:var(--ink);background:#F4F4F4;border-radius:12px;padding:10px}
+.ch-range{margin-bottom:16px}
