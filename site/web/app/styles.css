@@ -883,3 +883,8 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .g-ch-days i.on{background:#8A9094}
 .g-ch-go{color:#8A9094;white-space:nowrap}
 .bottom-nav button{flex:1}
+.pl-caught{margin:0;font-size:13px;color:#A9AEB1}
+.pdivider-card .card-actions{margin-top:10px}
+.g-ch-bar{flex:1;height:4px;border-radius:4px;background:#DADDDF;overflow:hidden}
+.g-ch-bar b{display:block;height:100%;background:#8A9094}
+.g-ch-n{font-size:12px;color:#8A9094}

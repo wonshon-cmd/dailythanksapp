@@ -29,8 +29,12 @@
     "prayer": true,
     "sermon": true
   },
-  "qtPlanName": null,
-  "qtPlan": {},
+  "qtPlanName": {
+    "ko": "생명의 삶"
+  },
+  "qtPlan": {
+    "ko": {}
+  },
   "verses": null,
   "minVersion": "1.0.0",
   "storeLinks": {
@@ -74,9 +78,14 @@
       }
     ],
     "qtPlan": {
-      "2026-12-01": "요한복음 3:1-15",
-      "2026-12-02": "요한복음 3:16-21"
+      "ko": {
+        "2026-12-01": "요한복음 3:1-15",
+        "2026-12-02": "요한복음 3:16-21"
+      }
     },
-    "qtPlanName": "생명의 삶 (두란노 허락을 받은 뒤에만 이름과 일정을 넣으세요)"
-  }
+    "qtPlanName": {
+      "ko": "생명의 삶"
+    }
+  },
+  "_help_qt": "qtPlan.ko: one passage per date (YYYY-MM-DD → '책 장:절-절'). Korean groups show it automatically each day as '오늘의 말씀 · 생명의 삶'. Add the 생명의 삶 schedule only with Duranno's permission."
 }
