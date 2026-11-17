@@ -1,5 +1,7 @@
-// Daily Bible store screenshots with captions, in Korean / English / Spanish.
-// Usage: python3 tools/build-single.py && node tools/make-bible-screenshots.js [dist/daily-bible.html] [store/screenshots/bible]
+// Daily Journey (the Bible app) store screenshots with captions, in Korean / English / Spanish.
+// Usage: python3 tools/build-single.py && node tools/make-journey-screenshots.js [dist/daily-bible.html] [store/screenshots/journey]
+//   BRAND=bible … shows the app as "daily bible" instead (default: journey → window.DT_BRAND = 'journey').
+//   LANGS=ko … limits the languages.
 //   (mobile/www/index.html from `cd mobile && node scripts/build-web.mjs` works too.)
 // Produces Apple 6.9" (1320x2868) and Google Play phone (1080x2340) PNGs: apple-6.9-<lang>-<n>.png, play-<lang>-<n>.png.
 // The page is served from a fake origin; Bible text and i18n come from the repo, and the network (Supabase etc.) is blocked,
@@ -8,7 +10,8 @@ const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const page = path.resolve(process.argv[2] || path.join(ROOT, 'dist/daily-bible.html'));
-const out = path.resolve(process.argv[3] || path.join(ROOT, 'store/screenshots/bible'));
+const BRAND = process.env.BRAND || 'journey';
+const out = path.resolve(process.argv[3] || path.join(ROOT, 'store/screenshots', BRAND));
 const CAPTIONS = {
   ko: ['말씀을 매일,<br>한 장씩', '친구와 같은 날,<br>같은 말씀을', '공동체의 기도제목을<br>함께 기도해요', '설교는 녹음하면<br>노트로 정리돼요', '가까운 사람들과<br>공동체로 함께'],
   en: ['The Word daily,<br>one page at a time', 'Same passage, same day,<br>with friends', 'Pray for your<br>community together', 'Record the sermon,<br>it becomes notes', 'Communities of<br>the people close to you'],
@@ -29,9 +32,10 @@ async function rawShots(b, lang) {
     if (/fonts\.(googleapis|gstatic)\.com$/.test(u.host)) return r.continue();
     return r.abort(); // no Supabase, no remote Bible: sample content only
   });
-  await ctx.addInitScript(name => {
+  await ctx.addInitScript(([name, brand]) => {
+    if (brand === 'journey') window.DT_BRAND = 'journey';
     try { localStorage.setItem('daily-thanks-v4', JSON.stringify({ settings: { toured: true, myName: name } })); sessionStorage.setItem('wl-later', '1'); } catch {}
-  }, NAME[lang]);
+  }, [NAME[lang], BRAND]);
   const p = await ctx.newPage();
   p.on('pageerror', e => console.warn('page error:', e.message));
   await p.goto('http://app.local/'); await p.waitForTimeout(4500); // let the splash finish
@@ -69,7 +73,7 @@ async function framed(b, lang, files) {
       await p.setContent(`<!doctype html><html><head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300;400&display=swap"></head>
         <body style="margin:0;width:${w}px;height:${h}px;overflow:hidden;background:#F2F2F2;font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;align-items:center">
-          <div style="margin-top:${Math.round(h * .07)}px;font-family:Newsreader,serif;font-size:${Math.round(w * .033)}px;color:#9BA0A3">daily <em>bible</em></div>
+          <div style="margin-top:${Math.round(h * .07)}px;font-family:Newsreader,serif;font-size:${Math.round(w * .033)}px;color:#9BA0A3">daily <em>${BRAND}</em></div>
           <div style="margin-top:${Math.round(h * .018)}px;text-align:center;font-size:${Math.round(w * .062)}px;line-height:1.38;font-weight:300;color:#303438;letter-spacing:-.01em">${CAPTIONS[lang][i]}</div>
           <div style="margin-top:${Math.round(h * .05)}px;width:${shotW}px;border-radius:${Math.round(w * .06)}px ${Math.round(w * .06)}px 0 0;overflow:hidden;box-shadow:0 30px 80px #2a30362b;border:${Math.round(w * .012)}px solid #FFFFFF;border-bottom:0">
             <img src="${img}" style="display:block;width:100%"></div>
