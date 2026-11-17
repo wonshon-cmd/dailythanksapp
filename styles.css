@@ -1539,3 +1539,34 @@ body.capturing #app{filter:blur(18px)}
 .us-card small { font-size: 12px; color: #8a8f94; }
 .us-none { font-size: 15px; font-weight: 500; color: #2c3135; }
 .us-more { justify-self: start; margin-top: 6px; font-size: 12px; color: #8a8f94; padding: 0; }
+/* a finished day: check mark + where you are */
+.cel-day { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; pointer-events: auto; background: transparent; transition: opacity .45s ease; }
+.cel-day.out { opacity: 0; }
+.cel-day-box { display: grid; justify-items: center; gap: 8px; padding: 26px 30px 22px; border-radius: 26px; background: rgba(255,255,255,.96); box-shadow: 0 18px 50px #20262c26; animation: celPop .45s cubic-bezier(.2,1.4,.4,1); }
+.cel-check { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #3a3f44; color: #fff; }
+.cel-check svg { width: 30px; height: 30px; stroke-width: 2.4; animation: celDraw .5s .15s ease both; }
+.cel-day-box b { font-size: 19px; font-weight: 600; color: #16191c; }
+.cel-day-box small { font-size: 13px; color: #6b7075; font-variant-numeric: tabular-nums; }
+@keyframes celPop { from { transform: scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes celDraw { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+.g-ch.today-done .g-ch-d { background: #3a3f44; color: #fff; }
+.g-ch-d svg { width: 11px; height: 11px; margin-right: 3px; vertical-align: -1px; }
+/* text size right in the scroll */
+.size-btn { display: inline-flex; align-items: baseline; gap: 1px; border: 0; background: none; padding: 6px 8px; font: inherit; font-size: 14px; font-weight: 500; color: #8a8f94; cursor: pointer; }
+.size-btn small { font-size: 10px; }
+.reader-tr { display: inline-flex; align-items: center; gap: 6px; }
+.imm-size { position: absolute; top: calc(34px + var(--safe-top)); right: 104px; z-index: 3; }
+@media (max-height:700px){ .imm-size { top: calc(20px + var(--safe-top)); } }
+html[data-size="xl"]{--read:31px}
+.seg.four button { padding-inline: 4px; }
+/* writing streak + what's new, top of the full-screen feed */
+.imm-streak { position: absolute; top: calc(78px + var(--safe-top)); left: 50%; transform: translateX(-50%); z-index: 3; display: inline-flex; gap: 10px; align-items: center; border: 0; padding: 5px 12px; border-radius: 999px; background: #f4f4f4; font: inherit; font-size: 12px; color: #6b7075; cursor: pointer; white-space: nowrap; }
+.imm-new { display: inline-flex; align-items: center; gap: 5px; color: #2c3135; }
+@media (max-height:700px){ .imm-streak { top: calc(58px + var(--safe-top)); } }
+/* shared reflection: range + one verse at a time */
+.sm-refrow { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.sm-ref { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500; color: #2c3135; }
+.sm-ref svg { width: 16px; height: 16px; }
+.sm-full { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; font-size: 13px; }
+.sm-full svg { width: 14px; height: 14px; }
+.yr-btn { margin: 14px 0 4px; }

@@ -1551,6 +1551,37 @@ body.capturing #app{filter:blur(18px)}
 .us-card small { font-size: 12px; color: #8a8f94; }
 .us-none { font-size: 15px; font-weight: 500; color: #2c3135; }
 .us-more { justify-self: start; margin-top: 6px; font-size: 12px; color: #8a8f94; padding: 0; }
+/* a finished day: check mark + where you are */
+.cel-day { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; pointer-events: auto; background: transparent; transition: opacity .45s ease; }
+.cel-day.out { opacity: 0; }
+.cel-day-box { display: grid; justify-items: center; gap: 8px; padding: 26px 30px 22px; border-radius: 26px; background: rgba(255,255,255,.96); box-shadow: 0 18px 50px #20262c26; animation: celPop .45s cubic-bezier(.2,1.4,.4,1); }
+.cel-check { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #3a3f44; color: #fff; }
+.cel-check svg { width: 30px; height: 30px; stroke-width: 2.4; animation: celDraw .5s .15s ease both; }
+.cel-day-box b { font-size: 19px; font-weight: 600; color: #16191c; }
+.cel-day-box small { font-size: 13px; color: #6b7075; font-variant-numeric: tabular-nums; }
+@keyframes celPop { from { transform: scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes celDraw { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+.g-ch.today-done .g-ch-d { background: #3a3f44; color: #fff; }
+.g-ch-d svg { width: 11px; height: 11px; margin-right: 3px; vertical-align: -1px; }
+/* text size right in the scroll */
+.size-btn { display: inline-flex; align-items: baseline; gap: 1px; border: 0; background: none; padding: 6px 8px; font: inherit; font-size: 14px; font-weight: 500; color: #8a8f94; cursor: pointer; }
+.size-btn small { font-size: 10px; }
+.reader-tr { display: inline-flex; align-items: center; gap: 6px; }
+.imm-size { position: absolute; top: calc(34px + var(--safe-top)); right: 104px; z-index: 3; }
+@media (max-height:700px){ .imm-size { top: calc(20px + var(--safe-top)); } }
+html[data-size="xl"]{--read:31px}
+.seg.four button { padding-inline: 4px; }
+/* writing streak + what's new, top of the full-screen feed */
+.imm-streak { position: absolute; top: calc(78px + var(--safe-top)); left: 50%; transform: translateX(-50%); z-index: 3; display: inline-flex; gap: 10px; align-items: center; border: 0; padding: 5px 12px; border-radius: 999px; background: #f4f4f4; font: inherit; font-size: 12px; color: #6b7075; cursor: pointer; white-space: nowrap; }
+.imm-new { display: inline-flex; align-items: center; gap: 5px; color: #2c3135; }
+@media (max-height:700px){ .imm-streak { top: calc(58px + var(--safe-top)); } }
+/* shared reflection: range + one verse at a time */
+.sm-refrow { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.sm-ref { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500; color: #2c3135; }
+.sm-ref svg { width: 16px; height: 16px; }
+.sm-full { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; font-size: 13px; }
+.sm-full svg { width: 14px; height: 14px; }
+.yr-btn { margin: 14px 0 4px; }
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1719,6 +1750,8 @@ const STR = {
     'us.title': "사용량", 'us.day': "오늘 자동 요약", 'us.week': "이번 주 자동 요약", 'us.space': "저장 공간", 'us.reset': "{t} 후 다시 채워져요", 'us.full': "다 썼어요", 'us.more': "공간 늘리기", 'us.h': "{n}시간", 'us.m': "{n}분", 'us.d': "{n}일", 'us.dayHit': "오늘 자동 요약을 다 썼어요. {t} 후에 이어서 정리해요. 녹음은 그대로 저장돼 있어요.", 'us.weekHit': "이번 주 자동 요약을 다 썼어요. {t} 후에 이어서 정리해요. 녹음은 그대로 저장돼 있어요.",
     'us.used': "{p}% 사용", 'us.at': "오늘 {t}에 다시 채워져요", 'us.atTom': "내일 {t}에 다시 채워져요", 'us.atDay': "{d} {t}에 다시 채워져요", 'us.reset2': "{w}", 'us.secSum': "자동 요약", 'us.secWeek': "주간 한도", 'us.secSpace': "저장 공간", 'us.secExtra': "추가 사용량", 'us.noExtra': "지금은 없어요", 'us.noExtraSub': "추가로 받으면 여기에 쓸 수 있는 날짜와 함께 보여요.", 'us.refresh': "새로고침",
     'us.spaceCard': "녹음 · 노트",
+    'cel.today': "오늘 완료", 'cel.dayOf': "{name} · {d}/{t}일", 'cel.book': "{book} 다 읽었어요", 'cel.bible': "성경 전체를 다 읽었어요", 'cel.share': "나누기", 'size.xl': "아주 크게", 'size.btn': "글자 크기", 'stk.write': "{n}일 연속", 'stk.new': "새 글 {n}", 'np.noon': "점심", 'np.noonSub': "하루 중간에", 'np.planTitle': "오늘 읽을 말씀,<br>언제 알려드릴까요?", 'np.chTitle': "챌린지 하는 날,<br>언제 알려드릴까요?", 'np.multi': "여러 개 골라도 돼요", 'yr.btn': "올해 말씀 기록 나누기", 'yr.title': "{y}년 나의 말씀", 'yr.chapters': "{n}장", 'yr.read': "읽은 말씀", 'yr.days': "{n}일", 'yr.daysL': "말씀 읽은 날", 'yr.best': "가장 길게 {n}일 연속", 'yr.books': "다 읽은 책 {n}권", 'yr.pct': "성경의 {p}%", 'yr.feed': "피드 4:5", 'yr.story': "스토리 9:16", 'yr.reel': "영상 만들기", 'yr.post': "인스타그램에 올리기", 'yr.save': "저장하기", 'yr.making': "영상을 만드는 중… {p}%", 'sm.full': "한 절씩 보기",
+    'np.cr1': "내가 고른 시간에만 알려드려요.", 'np.pr2': "오늘 분량을 읽은 날은 알리지 않아요.", 'np.cr2': "오늘 몫을 한 날은 알리지 않아요.",
     'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
@@ -1855,6 +1888,8 @@ const STR = {
     'us.title': "Usage", 'us.day': "Summaries today", 'us.week': "Summaries this week", 'us.space': "Storage", 'us.reset': "Refills in {t}", 'us.full': "Used up", 'us.more': "Get more space", 'us.h': "{n} h", 'us.m': "{n} min", 'us.d': "{n} days", 'us.dayHit': "You’ve used today’s summaries. It will continue in {t}. Your recording is saved.", 'us.weekHit': "You’ve used this week’s summaries. It will continue in {t}. Your recording is saved.",
     'us.used': "{p}% used", 'us.at': "Resets at {t}", 'us.atTom': "Resets tomorrow {t}", 'us.atDay': "Resets {d} {t}", 'us.reset2': "{w}", 'us.secSum': "Summaries", 'us.secWeek': "Weekly limit", 'us.secSpace': "Storage", 'us.secExtra': "Extra usage", 'us.noExtra': "None right now", 'us.noExtraSub': "When you get some, it shows up here with its expiry date.", 'us.refresh': "Refresh",
     'us.spaceCard': "Recordings & notes",
+    'cel.today': "Done for today", 'cel.dayOf': "{name} · {d}/{t} days", 'cel.book': "You finished {book}", 'cel.bible': "You read the whole Bible", 'cel.share': "Share", 'size.xl': "Extra large", 'size.btn': "Text size", 'stk.write': "{n}-day streak", 'stk.new': "{n} new", 'np.noon': "Noon", 'np.noonSub': "Midday", 'np.planTitle': "When should we remind you<br>to read today’s passage?", 'np.chTitle': "When should we remind you<br>on challenge days?", 'np.multi': "You can pick more than one", 'yr.btn': "Share my year in the Word", 'yr.title': "My {y} in the Word", 'yr.chapters': "{n} chapters", 'yr.read': "read", 'yr.days': "{n} days", 'yr.daysL': "in the Word", 'yr.best': "Longest streak {n} days", 'yr.books': "{n} books finished", 'yr.pct': "{p}% of the Bible", 'yr.feed': "Feed 4:5", 'yr.story': "Story 9:16", 'yr.reel': "Make a video", 'yr.post': "Post to Instagram", 'yr.save': "Save", 'yr.making': "Making the video… {p}%", 'sm.full': "One verse at a time",
+    'np.cr1': "Only at the times you choose.", 'np.pr2': "No reminder once today’s reading is done.", 'np.cr2': "No reminder once today’s part is done.",
     'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
@@ -2249,6 +2284,8 @@ const STR = {
     'us.title': "Uso", 'us.day': "Resúmenes hoy", 'us.week': "Resúmenes esta semana", 'us.space': "Almacenamiento", 'us.reset': "Se recarga en {t}", 'us.full': "Agotado", 'us.more': "Más espacio", 'us.h': "{n} h", 'us.m': "{n} min", 'us.d': "{n} días", 'us.dayHit': "Ya usaste los resúmenes de hoy. Seguirá en {t}. Tu grabación está guardada.", 'us.weekHit': "Ya usaste los resúmenes de esta semana. Seguirá en {t}. Tu grabación está guardada.",
     'us.used': "{p}% usado", 'us.at': "Se recarga a las {t}", 'us.atTom': "Se recarga mañana {t}", 'us.atDay': "Se recarga el {d} {t}", 'us.reset2': "{w}", 'us.secSum': "Resúmenes", 'us.secWeek': "Límite semanal", 'us.secSpace': "Almacenamiento", 'us.secExtra': "Uso extra", 'us.noExtra': "Nada por ahora", 'us.noExtraSub': "Cuando recibas uso extra, aparecerá aquí con su fecha de vencimiento.", 'us.refresh': "Actualizar",
     'us.spaceCard': "Grabaciones y notas",
+    'cel.today': "Hecho por hoy", 'cel.dayOf': "{name} · {d}/{t} días", 'cel.book': "Terminaste {book}", 'cel.bible': "Leíste toda la Biblia", 'cel.share': "Compartir", 'size.xl': "Muy grande", 'size.btn': "Tamaño del texto", 'stk.write': "Racha de {n} días", 'stk.new': "{n} nuevas", 'np.noon': "Mediodía", 'np.noonSub': "A mitad del día", 'np.planTitle': "¿Cuándo te recordamos<br>la lectura de hoy?", 'np.chTitle': "¿Cuándo te recordamos<br>los días del reto?", 'np.multi': "Puedes elegir más de uno", 'yr.btn': "Compartir mi año en la Palabra", 'yr.title': "Mi {y} en la Palabra", 'yr.chapters': "{n} capítulos", 'yr.read': "leídos", 'yr.days': "{n} días", 'yr.daysL': "en la Palabra", 'yr.best': "Racha más larga: {n} días", 'yr.books': "{n} libros terminados", 'yr.pct': "{p}% de la Biblia", 'yr.feed': "Feed 4:5", 'yr.story': "Historia 9:16", 'yr.reel': "Crear video", 'yr.post': "Publicar en Instagram", 'yr.save': "Guardar", 'yr.making': "Creando el video… {p}%", 'sm.full': "Un versículo a la vez",
+    'np.cr1': "Solo a las horas que elijas.", 'np.pr2': "Sin recordatorio si ya leíste lo de hoy.", 'np.cr2': "Sin recordatorio si ya hiciste lo de hoy.",
     'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
@@ -2276,6 +2313,7 @@ const STR = {
 
 /* ---------------- icons (line style) ---------------- */
 const ICONS = {
+  play: '<path d="M7 4v16l13-8z"/>',
   eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
   settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
@@ -2902,7 +2940,7 @@ function openReader(opts = {}) {
   readerEl.innerHTML = `<header class="reader-top">
       <button class="reader-x" data-action="reader-close" aria-label="${t('aria.close')}">${icon('x')}</button>
       <span class="reader-gap"></span>
-      <span class="reader-tr">${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
+      <span class="reader-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">가<small>±</small></button>${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
     <div class="reader-scroll${passage ? ' passage' : ''}" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>
     ${opts.group ? `<footer class="reader-foot"><button class="primary block" data-action="devo-share" data-id="${esc(opts.group)}">${icon('pencil')}${t('devo.share')}</button></footer>` : ''}`;
   readerEl.hidden = false; document.body.classList.add('reading');
@@ -2978,8 +3016,9 @@ function trackReading() {
       const d = chPlanDay(ch, ch.days.length); // with a plan: the day counts when today's last chapter is read
       if (d && chIndex(b, c) < chIndex(...d.end)) return;
       ch.days.push(ch.days.length + 1); ch.lastDay = today();
-      if (ch.days.length >= chLen(ch)) setTimeout(() => chFinish(ch.id), 600);
+      if (ch.days.length >= chLen(ch)) setTimeout(() => chFinish(ch.id), 600); else setTimeout(() => celebrateDay(ch), 300);
     });
+    bookMilestone(b, c);
   }
   clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600);
 }
@@ -3532,6 +3571,12 @@ function watchFirstPrayers() {
     const seen = data.settings.prayerSeen = data.settings.prayerSeen || []; if (!seen.includes(id)) { seen.push(id); if (seen.length > 300) seen.shift(); clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600); } }), { threshold: 0.6 });
   document.querySelectorAll('[data-firstpr]').forEach(el => firstSeenObs.observe(el));
 }
+function writeStreak() { const days = new Set(data.posts.filter(p => p.mine).map(p => p.date)); let i = days.has(today()) ? 0 : 1, n = 0; while (days.has(daysAgo(i))) { n++; i++; } return n; }
+function immStreak() {
+  const n = writeStreak(), unseen = data.groups.reduce((x, g) => x + unseenIn(g.id), 0);
+  if (!n && !unseen) return '';
+  return `<button class="imm-streak" data-action="imm-streak">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</button>`;
+}
 const firstOffLinks = () => `<p class="fo-links"><button data-action="first-off">${t('fo.off')}</button><span>·</span><button data-action="first-snooze">${t('fo.h24')}</button></p>`;
 function viewSettings() {
   const sw = (k, label, sub = '') => `<label class="list-row"><span class="row-main"><span class="row-title">${label}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span><input class="switch" type="checkbox" data-pref="${k}" ${pref(k) ? 'checked' : ''}></label>`;
@@ -3888,7 +3933,7 @@ function planSection(plans) {
   return `<section class="pl">
       <div class="pl-head"><p class="gd-label">${t('pl.title')}</p><button class="secondary pl-new" data-action="plan-new">${icon('plus')}${t('pl.new')}</button></div>
       ${plans.length ? '' : `<p class="hint">${t('pl.sub')}</p>`}
-      ${plans.map(c => `<div class="pl-row"><button class="g-ch" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${chDday(c)}</em></span>
+      ${plans.map(c => `<div class="pl-row"><button class="g-ch${c.lastDay === today() ? ' today-done' : ''}" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${c.lastDay === today() ? icon('check') : ''}${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
         ${planBehind(c) && c.cuDismissed !== today() ? `<span class="pl-behind" data-action="cu-ask" data-id="${esc(c.id)}">${esc(t('cu.short').replace('{n}', planBehind(c).behind))} ›</span>` : ''}
         ${(c.members || []).length > 1 ? `<span class="pl-with">${icon('people')}${esc((c.members || []).map(m => L(m)).join(', '))}</span>` : ''}</button>
@@ -4482,12 +4527,65 @@ function dashHtml() {
     <p class="db-foot">${t('db.streak').replace('{n}', D.streak).replace('{m}', D.longest)}<br>${t('db.notes').replace('{s}', sSer).replace('{m}', sMed)}</p>
   </section>`;
 }
+function yearStats(y = new Date().getFullYear()) {
+  const ys = String(y), log = Object.entries(data.readLog || {}).filter(([, d]) => d.startsWith(ys));
+  const days = [...new Set(log.map(([, d]) => d))].sort(); let best = 0, run = 0, prev = null; days.forEach(d => { run = prev && dayDiff(prev, d) === 1 ? run + 1 : 1; best = Math.max(best, run); prev = d; });
+  const books = Object.entries(data.booksDone || {}).filter(([, d]) => d.startsWith(ys)).map(([b]) => +b);
+  return { y, chapters: log.length, days: days.length, best, books, pct: Math.round((data.readDone || []).length / TOTAL_CHAPTERS * 1000) / 10 };
+}
+async function yearCanvas(kind = 'feed', prog = 1) {
+  try { await document.fonts.ready; } catch {}
+  const [W, H] = CARD[kind], c = document.createElement('canvas'); c.width = W; c.height = H; drawYear(c.getContext('2d'), W, H, yearStats(), prog); return c;
+}
+function drawYear(x, W, H, st, prog) {
+  const M = Math.round(W * .11), serif = '"Newsreader", Georgia, serif', sans = '"Noto Sans KR", "Apple SD Gothic Neo", sans-serif', ease = v => 1 - Math.pow(1 - Math.max(0, Math.min(1, v)), 3);
+  x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H);
+  x.fillStyle = '#9BA0A3'; x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30); const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('bible', M + dw, M + 30);
+  x.fillStyle = '#B5453F'; x.beginPath(); const rx = W - M - 18; x.moveTo(rx, M - 6); x.lineTo(rx + 22, M - 6); x.lineTo(rx + 22, M + 52); x.lineTo(rx + 11, M + 42); x.lineTo(rx, M + 52); x.closePath(); x.fill();
+  const top = H * .25, a = ease(prog * 1.4), gap = H > 1500 ? 170 : 132;
+  x.globalAlpha = a; x.fillStyle = '#80868A'; x.font = `400 40px ${sans}`; x.fillText(t('yr.title').replace('{y}', st.y), M, top);
+  x.fillStyle = '#16191C'; x.font = `400 190px ${serif}`; x.fillText(String(Math.round(st.chapters * ease(prog * 1.2))), M - 8, top + 200);
+  x.font = `300 48px ${sans}`; x.fillStyle = '#4A4F54'; x.fillText(t('yr.chapters').replace('{n}', '').trim() + ' ' + t('yr.read'), M, top + 270);
+  const rows = [[t('yr.days').replace('{n}', st.days), t('yr.daysL')], [t('yr.best').replace('{n}', st.best), ''], [t('yr.books').replace('{n}', st.books.length), st.books.slice(0, 4).map(b => bookName(b)).join(' · ')], [t('yr.pct').replace('{p}', st.pct), '']];
+  rows.forEach(([big, small], i) => { const k = ease(prog * 2 - .35 - i * .18); if (k <= 0) return; x.globalAlpha = k; const yy = top + 390 + i * gap;
+    x.fillStyle = '#E3E5E6'; x.fillRect(M, yy - 58, W - 2 * M, 2); x.fillStyle = '#2C3135'; x.font = `400 44px ${sans}`; x.fillText(big, M, yy + 14);
+    if (small) { x.fillStyle = '#9BA0A3'; x.font = `300 30px ${sans}`; x.fillText(small, M, yy + 52); } });
+  x.globalAlpha = 1; x.fillStyle = '#B4B8BA'; x.font = `400 30px ${sans}`; x.fillText('dailyjourney.org', M, H - M);
+}
+function yearShare() {
+  state.yrKind = state.yrKind || 'feed';
+  showSheet({ title: esc(t('yr.title').replace('{y}', new Date().getFullYear())), body: `
+    <div class="card-frame"><img id="yr-img" alt="" class="card-img"></div>
+    <div class="card-row"><div class="seg card-seg">${[['feed', t('yr.feed')], ['story', t('yr.story')]].map(([k, l]) => `<button type="button" class="${state.yrKind === k ? 'active' : ''}" data-action="yr-kind" data-id="${k}"><span>${l}</span></button>`).join('')}</div></div>
+    <div class="sheet-actions"><button class="primary" data-action="yr-post">${icon('camera')}${t('yr.post')}</button><button class="secondary" data-action="yr-reel">${icon('play')}${t('yr.reel')}</button></div>
+    <div id="yr-reel"></div>` });
+  yearCanvas(state.yrKind).then(c => { const img = $('#yr-img'); if (img) { img.src = c.toDataURL('image/png'); img.style.aspectRatio = state.yrKind === 'story' ? '9 / 16' : '4 / 5'; } });
+}
+async function yearReel() {
+  const box = $('#yr-reel'); if (!box || state.reeling) return;
+  try { await document.fonts.ready; } catch {}
+  const [W, H] = CARD.story, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d'), st = yearStats(), total = 5.5;
+  const types = ['video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'], type = window.MediaRecorder ? types.find(m => MediaRecorder.isTypeSupported?.(m)) : null;
+  if (!type || !c.captureStream) { toast(t('card.noShare')); return; }
+  state.reeling = true; box.innerHTML = `<p class="hint" id="yr-p">${t('yr.making').replace('{p}', 0)}</p>`;
+  const rec = new MediaRecorder(c.captureStream(30), { mimeType: type, videoBitsPerSecond: 6e6 }), chunks = []; rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  const done = new Promise(r => rec.onstop = r); rec.start(250); const start = performance.now();
+  await new Promise(r => { const step = () => { const time = (performance.now() - start) / 1000; drawYear(x, W, H, st, Math.min(1, time / (total - 1.2)));
+    const pe = $('#yr-p'); if (pe) pe.textContent = t('yr.making').replace('{p}', Math.min(100, Math.round(time / total * 100)));
+    if (time < total) requestAnimationFrame(step); else r(); }; requestAnimationFrame(step); });
+  rec.stop(); await done; state.reeling = false;
+  const mime = type.split(';')[0]; state.reelFile = new File([new Blob(chunks, { type: mime })], `daily-bible-${st.y}.${mime.includes('mp4') ? 'mp4' : 'webm'}`, { type: mime });
+  if (!$('#yr-reel')) return;
+  $('#yr-reel').innerHTML = `<video class="reel-video" src="${URL.createObjectURL(state.reelFile)}" autoplay muted loop playsinline></video>
+    <button class="primary block" data-action="yr-reel-share">${icon('camera')}${t('yr.post')}</button><button class="secondary block" data-action="reel-save" style="margin-top:8px">${icon('download')}${t('yr.save')}</button>`;
+}
 function renderBibleMe() {
   const saved = data.savedVerses || [], medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).sort((a, b) => chIndex(a.ref.b, a.ref.c) - chIndex(b.ref.b, b.ref.c));
   const q = noteQuota(), d = readDays();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
     ${readGauge()}${dashHtml()}
+    <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
     ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
     <p class="gd-label">${t('me.medi')} · ${medi.length}</p>
     <div class="notes">${medi.slice(0, 20).map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}"><span class="note-meta"><span>${esc(refText(p.ref))}</span></span><span class="note-text">${esc(L(p.text))}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
@@ -4618,6 +4716,8 @@ function renderImmersive(keepIndex = 0) {
     : prayerMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${t('pr.section')}</span></button>`
     : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>`}
   <button class="imm-plus" data-action="imm-write" aria-label="${t('top.write')}">${icon('plus')}</button>
+  <button class="size-btn imm-size" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button>
+  ${!groupMode && !prayerMode ? immStreak() : ''}
   <button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button>
   ${showNudge() && !prayerMode ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
@@ -4833,27 +4933,44 @@ function finishCompose(message) {
   if (state.challenge) {
     const ch = data.challenges.find(c => c.id === state.challenge);
     const next = ch && Math.min(ch.days.length + 1, chLen(ch));
-    if (ch && ch.lastDay !== today() && !ch.days.includes(next)) { ch.days.push(next); ch.lastDay = today(); if (ch.days.length >= chLen(ch)) state.chFinished = ch.id; } // one day per day
+    if (ch && ch.lastDay !== today() && !ch.days.includes(next)) { ch.days.push(next); ch.lastDay = today(); if (ch.days.length >= chLen(ch)) state.chFinished = ch.id; else state.chDayDone = ch.id; } // one day per day
   }
   state.challenge = null;
   save(); close(); state.immersive = false; state.tab = BIBLE_MODE ? 'me' : 'journal'; render();
   if (state.chFinished) { const id = state.chFinished; state.chFinished = null; setTimeout(() => chFinish(id), 250); return; }
+  if (state.chDayDone) { const c = data.challenges.find(x => x.id === state.chDayDone); state.chDayDone = null; if (c) setTimeout(() => celebrateDay(c), 250); }
   cheer(message);
 }
 /* A finished challenge: fireworks, the group's result, and ways to share it. */
-function confetti() {
+function confetti(scale = 1) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const c = document.createElement('canvas'), x = c.getContext('2d'), W = c.width = innerWidth * devicePixelRatio, H = c.height = innerHeight * devicePixelRatio;
   c.className = 'confetti'; document.body.appendChild(c);
   const cols = ['#F2D27A', '#F6E2A8', '#C9CDD0', '#8A9094', '#E7A79E', '#B9D2BF'];
   const bursts = [[.3, .35], [.7, .3], [.5, .22]];
-  const parts = bursts.flatMap(([bx, by], k) => Array.from({ length: 46 }, () => { const a = Math.random() * Math.PI * 2, v = (3 + Math.random() * 6) * devicePixelRatio;
+  const parts = bursts.slice(0, scale < 1 ? 2 : 3).flatMap(([bx, by], k) => Array.from({ length: Math.round(46 * scale) }, () => { const a = Math.random() * Math.PI * 2, v = (3 + Math.random() * 6) * devicePixelRatio;
     return { x: bx * W, y: by * H, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2 * devicePixelRatio, r: (2 + Math.random() * 3) * devicePixelRatio, c: cols[(Math.random() * cols.length) | 0], d: k * 220 }; }));
   const t0 = performance.now();
   const step = now => { const el = now - t0; x.clearRect(0, 0, W, H);
     parts.forEach(p => { if (el < p.d) return; p.vy += .12 * devicePixelRatio; p.vx *= .99; p.x += p.vx; p.y += p.vy; x.globalAlpha = Math.max(0, 1 - (el - p.d) / 1900); x.fillStyle = p.c; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 7); x.fill(); });
     if (el < 2300) requestAnimationFrame(step); else c.remove(); };
   requestAnimationFrame(step);
+}
+// A day done: a small burst, a check mark, and where you are (4/30 · D-26). The whole challenge gets chFinish.
+function bookMilestone(b, c) {
+  if (c !== BOOKS[b - 1][4]) return;
+  const done = Array.from({ length: BOOKS[b - 1][4] }, (_, i) => i + 1).every(n => data.readDone.includes(readKey(b, n))); if (!done) return;
+  data.booksDone = data.booksDone || {}; if (data.booksDone[b]) return; data.booksDone[b] = today(); save();
+  const all = data.readDone.length >= TOTAL_CHAPTERS;
+  setTimeout(() => { if (all) { confetti(); yearShare(); } else celebrateDay(null, t('cel.book').replace('{book}', bookName(b))); }, 400);
+}
+function celebrateDay(c, title) {
+  confetti(.6);
+  document.querySelector('.cel-day')?.remove();
+  const el = document.createElement('div'); el.className = 'cel-day'; el.setAttribute('role', 'status');
+  el.innerHTML = `<div class="cel-day-box"><span class="cel-check">${icon('check')}</span><b>${esc(title || t('cel.today'))}</b>${c ? `<small>${esc(t('cel.dayOf').replace('{name}', L(c.name) || chName(c)).replace('{d}', c.days.length).replace('{t}', chLen(c)))} · ${chDday(c)}</small>` : ''}</div>`;
+  el.addEventListener('click', () => el.remove()); document.body.appendChild(el);
+  setTimeout(() => el.classList.add('out'), 2000); setTimeout(() => el.remove(), 2500);
 }
 function chFinish(id) {
   const ch = data.challenges.find(c => c.id === id); if (!ch) return;
@@ -5174,7 +5291,7 @@ async function openSharedMeditation(b64) {
   const ref = parseRef(x.r || ''), name = String(x.n || '').slice(0, 30), text = String(x.t || '').slice(0, 2000);
   state.sharedMed = { ref, text };
   showSheet({ title: esc(name ? t('smd.title').replace('{n}', name) : t('smd.someone')), body: `
-    ${ref ? `<p class="gd-label">${icon('book')} ${esc(refText(ref))}</p><div class="sn-ptext sm-pass" id="sm-pass"><p class="hint">${t('rd.loading')}</p></div>` : ''}
+    ${ref ? `<div class="sm-refrow"><span class="sm-ref">${icon('book')}${esc(refText(ref))}</span><button class="secondary sm-full" data-action="sm-read">${icon('maximize')}${t('sm.full')}</button></div><div class="sn-ptext sm-pass" id="sm-pass"><p class="hint">${t('rd.loading')}</p></div>` : ''}
     <p class="quote sm-text">${esc(text)}</p>
     ${x.d ? `<p class="hint">${esc(dayLabel(x.d))}</p>` : ''}
     <div class="sheet-actions">${ref ? `<button class="secondary" data-action="sm-read">${icon('book')}${t('smd.read')}</button>` : ''}<button class="primary" data-action="sm-write">${icon('pencil')}${t('smd.write')}</button></div>` });
@@ -5296,7 +5413,8 @@ function planInvite(id) {
     <p class="pl-sum">${esc(range)} · ${chLen(ch)}${lang() === 'ko' ? '일' : ' ' + t('ch.u.d').toLowerCase()}</p>
     <div class="invite-link selectable">${esc(link)}</div>
     <div class="sheet-actions"><button class="primary" data-action="invite-share">${icon('share')}${t('inv.share')}</button>
-    <button class="secondary" data-action="plan-copy" data-id="${esc(id)}">${t('inv.copy')}</button></div>` });
+    <button class="secondary" data-action="plan-copy" data-id="${esc(id)}">${t('inv.copy')}</button></div>
+    <button class="subtle-link" data-action="plan-invite-done">${t('np.later')}</button>` });
 }
 function planJoin(q) {
   const pair = x => { const [b, c] = String(x || '').split('.').map(Number); return b >= 1 && b <= 66 && c >= 1 && c <= BOOKS[b - 1][4] ? [b, c] : null; };
@@ -5358,7 +5476,7 @@ function createChallenge() {
     data.challenges.unshift({ id: 'ch' + Date.now(), name, type, length: plan ? plan.days : chDays(), group: state.sheetWith, members: [{ ko: '나', en: 'Me', es: 'Yo' }], start: today(), days: [],
       ...(plan ? { plan: { from: plan.from, to: plan.to, total: plan.total } } : {}) });
     save(); close(); state.tab = BIBLE_MODE ? 'read' : 'group'; state.chFromGroup = false; render(); toast(t('toast.chStarted'));
-    if (BIBLE_MODE && type === 'bible') setTimeout(() => planInvite(data.challenges[0].id), 300);
+    if (BIBLE_MODE && type === 'bible') setTimeout(() => planInvite(data.challenges[0].id), 300); else askReminders(type === 'bible' ? 'plan' : 'challenge');
   });
 }
 
@@ -5478,7 +5596,7 @@ function bibleSettings() {
   showSheet({ title: t('s.title'), body: `
     ${seg(LANGS, 'set-lang', lang())}
     <p class="field-label">${t('bs.size')}</p>
-    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
+    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')], ['xl', t('size.xl')]], 'set-size', data.settings.textSize || 'm', 'seg-size four')}
     <p class="field-label">${t('bs.reading')}</p>
     <div class="list">
       ${row(data.settings.notificationEnabled ? 'notification' : 'notify-prime', 'bell', t('bs.remind'), `<span class="row-sub">${data.settings.notificationEnabled ? esc(data.settings.notificationTime) : t('bs.off')}</span>${icon('chevron')}`)}
@@ -5523,7 +5641,7 @@ function settings() {
   showSheet({ title: t('s.title'), body: `
     ${seg(LANGS, 'set-lang', lang())}
     <p class="field-label">${t('size.title')}</p>
-    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
+    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')], ['xl', t('size.xl')]], 'set-size', data.settings.textSize || 'm', 'seg-size four')}
     <p class="field-label">${t('verse.title')}</p>
     ${seg([['often', t('verse.often')], ['normal', t('verse.normal')], ['rare', t('verse.rare')], ['off', t('verse.off')]], 'set-verse', data.settings.verseEvery || 'normal', 'four')}
     <div class="list">
@@ -5832,27 +5950,34 @@ function smOpen(id) {
    iOS / the browser show their own fixed permission popup. Right before it, this screen explains why reminders help
    and lets people pick a time; only "Turn on reminders" triggers the system popup (Notification.requestPermission
    on the web; UNUserNotificationCenter.requestAuthorization in the native iOS app). */
-const NOTIFY_TIMES = [['dawn', '06:00', 'sunrise'], ['morning', '08:00', 'sun'], ['evening', '21:00', 'moon']];
-function notifyPrime() {
+const NOTIFY_TIMES = [['morning', '07:00', 'sunrise'], ['noon', '12:30', 'sun'], ['evening', '21:00', 'moon']];
+// offered right after setting up a reading plan or a challenge (once each), if reminders aren't on yet
+function askReminders(context) {
+  if (data.settings.notificationEnabled || (data.settings.notifyAskedFor || {})[context]) return;
+  // never on top of something the person is doing: if a sheet is open by then, ask another time
+  setTimeout(() => { if (!sheet.hidden || document.body.classList.contains('reading')) return;
+    data.settings.notifyAskedFor = { ...(data.settings.notifyAskedFor || {}), [context]: today() }; save(); notifyPrime(context); }, 600);
+}
+function notifyPrime(context) {
   data.settings.notifyAsked = data.settings.notifyAsked || today(); save(); // asked once, even if closed with ✕
   if (!data.settings.widgetAsked) state.pendingWidget = true;              // the widget guide follows when this closes
-  state.primeTime = state.primeTime || 'evening';
-  const tile = ([id, time, ic]) => `<button type="button" class="time-tile ${state.primeTime === id ? 'active' : ''}" data-action="prime-time" data-id="${id}">${icon(ic)}<strong>${t('np.' + id)}</strong><span>${time.replace(/^0/, '')}</span><small>${t('np.' + id + 'Sub')}</small></button>`;
+  state.primeTimes = state.primeTimes || new Set([context === 'plan' ? 'morning' : 'evening']); state.primeTime = [...state.primeTimes][0];
+  const tile = ([id, time, ic]) => `<button type="button" class="time-tile ${state.primeTimes.has(id) ? 'active' : ''}" data-action="prime-time" data-id="${id}">${icon(ic)}<strong>${t('np.' + id)}</strong><span>${time.replace(/^0/, '')}</span><small>${t('np.' + id + 'Sub')}</small></button>`;
   showSheet({ title: '', body: `<div class="prime">
     <div class="cel-mark">${icon('bell')}</div>
-    <p class="prime-title">${t('np.title')}</p>${t('np.sub') ? `<p class="prime-sub">${t('np.sub')}</p>` : ''}
-    <ul class="prime-reasons"><li>${icon('sun')}${t('np.r1')}</li><li>${icon('check')}${t('np.r2')}</li><li>${icon('people')}${t('np.r3')}</li></ul>
-    <p class="field-label">${t('np.when')}</p>
+    <p class="prime-title">${context === 'plan' ? t('np.planTitle') : context === 'challenge' ? t('np.chTitle') : t('np.title')}</p>${!context && t('np.sub') ? `<p class="prime-sub">${t('np.sub')}</p>` : ''}
+    <ul class="prime-reasons"><li>${icon('sun')}${context ? t('np.cr1') : t('np.r1')}</li><li>${icon('check')}${context === 'plan' ? t('np.pr2') : context ? t('np.cr2') : t('np.r2')}</li><li>${icon('people')}${t('np.r3')}</li></ul>
+    <p class="field-label">${t('np.when')} <small class="hint">${t('np.multi')}</small></p>
     <div class="time-tiles">${NOTIFY_TIMES.map(tile).join('')}</div>
     <label class="prime-other">${t('np.other')}<input id="prime-custom" class="time-input" type="time" value="${esc(data.settings.notificationTime)}"></label>
     <button class="primary block" data-action="prime-allow">${icon('bell')}${t('np.allow')}</button>
     <button class="subtle-link" data-action="prime-later">${t('np.later')}</button></div>` });
-  $('#prime-custom').addEventListener('change', () => { state.primeTime = 'custom'; document.querySelectorAll('.time-tile').forEach(b => b.classList.remove('active')); });
+  $('#prime-custom').addEventListener('change', () => { state.primeCustom = true; });
 }
 async function primeAllow() {
-  const chosen = NOTIFY_TIMES.find(x => x[0] === state.primeTime);
-  const time = chosen ? chosen[1] : ($('#prime-custom')?.value || '21:00');
-  Object.assign(data.settings, { notificationEnabled: true, notificationTime: time, notifyAsked: today() });
+  const times = [...NOTIFY_TIMES.filter(x => state.primeTimes?.has(x[0])).map(x => x[1]), ...(state.primeCustom && $('#prime-custom')?.value ? [$('#prime-custom').value] : [])];
+  const list = [...new Set(times.length ? times : [$('#prime-custom')?.value || '21:00'])].sort(), time = list[0];
+  Object.assign(data.settings, { notificationEnabled: true, notificationTime: time, notificationTimes: list, notifyAsked: today() });
   save(); close();
   let granted = false;
   try {
@@ -5862,7 +5987,7 @@ async function primeAllow() {
       if (granted) new Notification('Daily Thanks', { body: t('np.test') });
     }
   } catch { /* some embedded viewers block the permission request; the preference is still saved */ }
-  toast((granted || !('Notification' in window) ? t('np.on') : t('np.blocked')).replace('{time}', time));
+  toast((granted || !('Notification' in window) ? t('np.on') : t('np.blocked')).replace('{time}', list.join(' · ')));
 }
 // Reminders are offered once, only after someone has written and signed in (habit order: read → write → sign in → remind → widget).
 function maybePrime() {
@@ -6232,7 +6357,7 @@ const actions = {
   'sm-new': smNew,
   'sm-open': smOpen,
   'notify-prime': () => { close(); setTimeout(notifyPrime, 50); },
-  'prime-time': id => { state.primeTime = id; document.querySelectorAll('.time-tile').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
+  'prime-time': id => { const S2 = state.primeTimes = state.primeTimes || new Set(); S2.has(id) && S2.size > 1 ? S2.delete(id) : S2.add(id); state.primeTime = [...S2][0]; document.querySelectorAll('.time-tile').forEach(b => b.classList.toggle('active', S2.has(b.dataset.id))); },
   'prime-allow': primeAllow,
   'prime-later': () => { data.settings.notifyAsked = today(); save(); close(); toast(t('np.laterToast')); },
   'cal-day': dayNotes,
@@ -6333,8 +6458,9 @@ const actions = {
   'invite-share': id => { const msg = state.inviteMsg; if (navigator.share) navigator.share({ title: 'daily thanks', text: msg }).catch(() => {}); else copyText(msg); },
   'plan-new': () => { state.chType = 'bible'; state.sheetWith = 'pair'; createChallenge(); },
   'plan-invite': id => planInvite(id),
+  'plan-invite-done': () => { close(); askReminders('plan'); },
   'plan-copy': id => { const ch = data.challenges.find(x => x.id === id); if (ch) copyText(planLink(ch)); },
-  'plan-join': () => { const c = state.planJoin; close(); if (!c) { toast(t('pl.already')); return; } data.challenges.unshift(c); state.planJoin = null; save(); state.tab = BIBLE_MODE ? 'read' : 'group'; render(); toast(t('pl.joined')); },
+  'plan-join': () => { const c = state.planJoin; close(); if (!c) { toast(t('pl.already')); return; } data.challenges.unshift(c); state.planJoin = null; save(); state.tab = BIBLE_MODE ? 'read' : 'group'; render(); toast(t('pl.joined')); askReminders('plan'); },
   'invite-copy': id => { const g = data.groups.find(x => x.id === id); if (g) copyText(inviteLink(g)); },
   vault: () => vaultSheet(),
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),
@@ -6412,6 +6538,14 @@ const actions = {
   'ps-preview': () => { close(); state.pastorView = pastorSnapshot(); render(); },
   'ps-close': () => { state.pastorView = null; if (location.hash.startsWith('#pastor=')) { try { history.replaceState(null, '', location.pathname); } catch {} } render(); },
   usage: () => usageSheet(),
+  'size-cycle': () => { const order = ['s', 'm', 'l', 'xl'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
+  'imm-streak': () => { if (anyUnseen()) { state.immersive = false; state.tab = 'group'; render(); } else toast(t('stk.write').replace('{n}', writeStreak())); },
+  'yr-share': () => yearShare(),
+  'yr-kind': k => { state.yrKind = k; yearShare(); },
+  'yr-post': async () => { const c = await yearCanvas(state.yrKind || 'feed'); const blob = await new Promise(r => c.toBlob(r, 'image/png')); const f = new File([blob], `daily-bible-${new Date().getFullYear()}.png`, { type: 'image/png' });
+    try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
+  'yr-reel': () => yearReel(),
+  'yr-reel-share': async () => { const f = state.reelFile; if (!f) return; try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
   'us-refresh': async () => { state.snChecked = false; await sermonSync(); usageSheet(); },
   'first-off': () => { setPref('firstOff', true); state.firstPrIds = []; toast(t('fo.offDone')); render(0); },
   'first-snooze': () => { setPref('firstUntil', new Date(Date.now() + 864e5).toISOString()); toast(t('fo.snoozed')); render(0); },
@@ -6436,7 +6570,7 @@ const actions = {
     const last = planChapters(c).slice(-1)[0]; if (last) data.reading = { b: last[0], c: last[1], v: 1, at: new Date().toISOString() };
     if (c.lastDay !== today()) { c.days.push(c.days.length + 1); c.lastDay = today(); }
     save(); const card = document.querySelector(`[data-fvend="${id}"] .card-actions`); if (card) card.innerHTML = `<span class="hint">${icon('check')} ${t('fv.marked')}</span>`;
-    toast(t('fv.marked')); if (c.days.length >= chLen(c)) setTimeout(() => chFinish(c.id), 600); },
+    if (c.days.length >= chLen(c)) setTimeout(() => chFinish(c.id), 600); else celebrateDay(c); },
   'first-prayers': () => { data.settings.prayerSeen = [...new Set([...(data.settings.prayerSeen || []), ...newGroupPrayers().map(p => p.id)])].slice(-300); save();
     state.prevFeed = 'public'; state.immFeed = 'prayer'; state.immersive = true; state.tab = 'feed'; render(0); },
   'bs-places': () => placesSheet(),
