@@ -117,8 +117,8 @@ def main():
         p = plan.setdefault(lang, {})
         if p.get(day) != ref: p[day] = ref; changed = True
         for old in sorted(p)[:-45]: del p[old]          # keep about six weeks
-        if names_.get(lang) != cfg['name']: names_[lang] = cfg['name']; changed = True
-    data['qtPlan'], data['qtPlanName'] = plan, names_
+    data['qtPlan'] = plan
+    data.pop('qtPlanName', None)   # only the references are kept; the app never shows the source's name
     if changed and not dry:
         CONTENT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n'); print('updated', CONTENT.relative_to(ROOT))
     elif not changed: print('no change')

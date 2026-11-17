@@ -15,10 +15,10 @@ Daily Journey - 매일 성경
 매일 성경 읽기, 공동체와 함께
 ```
 
-### appstore.promo  (66/170)
+### appstore.promo  (74/170)
 
 ```
-오늘의 본문을 읽고, 친구와 같은 날 같은 말씀을 읽어요. 공동체의 기도제목을 받고, 설교는 녹음하면 노트로 정리돼요.
+오늘의 본문을 읽고, 친구와 같은 날 같은 말씀을 읽어요. 공동체의 기도제목을 받고, 설교는 녹음하며 본문과 함께 내 노트로 남겨요.
 ```
 
 ### appstore.keywords  (90/100)
@@ -45,7 +45,7 @@ Daily Journey - 매일 성경
 오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 설교 노트를 한곳에서.
 ```
 
-### description  (1244/4000)
+### description  (1291/4000)
 
 ```
 말씀을 매일, 공동체와 함께.
@@ -69,7 +69,7 @@ Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 �
 읽은 본문 아래에 느낀 점과 기도를 적어 두세요. 나만 보거나, 공동체와 나누거나, 모두에게 나눌 수 있어요. 마지막으로 고른 공개 범위를 기억해요.
 
 ■ 설교 노트
-본문을 먼저 고르고 설교를 녹음하면 노트로 정리돼요. 직접 적어도 돼요. 교회와 목사님은 한 번 적으면 기억해서, 다음 주일에는 미리 채워져요. 노트는 공동체에 나눌 수 있어요.
+본문을 고르고 설교를 녹음하면서, 들은 말씀을 내 노트로 적어 두세요. 지원되는 기기에서는 실시간 받아쓰기도 볼 수 있어요(기기·브라우저 음성 인식 사용). 교회와 목사님은 한 번 적으면 기억해서, 다음 주일에는 미리 채워져요. 노트는 공동체에 나눌 수 있어요.
 
 ■ 공동체
 교회 순모임, 가족, 친구와 공동체를 만들어요. 초대 링크나 초대 코드로 들어오고, 원하면 리더가 승인한 사람만 들어올 수 있어요. 알림이 많으면 조용히 해 두고, 언제든 나갈 수 있어요.
@@ -105,10 +105,10 @@ Daily Journey - Bible Reading
 Read the Bible daily, together
 ```
 
-### appstore.promo  (143/170)
+### appstore.promo  (168/170)
 
 ```
-Read today’s passage, and read the same verses on the same day as your friends. Pray for your community, and record a sermon to get tidy notes.
+Read today’s passage, and read the same verses on the same day as your friends. Pray for your community, and record each sermon alongside your own notes on the passage.
 ```
 
 ### appstore.keywords  (92/100)
@@ -135,7 +135,7 @@ Daily Journey - Bible Reading
 Today’s passage, reading plans with friends, prayer requests and sermon notes.
 ```
 
-### description  (2254/4000)
+### description  (2337/4000)
 
 ```
 The Word every day, together.
@@ -159,7 +159,7 @@ Today’s verse, your community’s prayer requests and shared thanks, one card 
 Write what you noticed and a prayer under the passage you read. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.
 
 ■ SERMON NOTES
-Pick the passage, record the sermon, and it becomes notes. Or write them yourself. Your church and pastor are remembered, so next Sunday they are already filled in. Share notes with your community.
+Pick the passage, record the sermon, and write your own notes. On supported devices you can also see live captions (using your device or browser speech recognition). Your church and pastor are remembered, so next Sunday they are already filled in. Share notes with your community.
 
 ■ COMMUNITIES
 Start a community for your church group, family or friends. People join with an invite link or code, and you can require approval. Mute a busy community, or leave at any time.
@@ -195,10 +195,10 @@ Daily Journey: Biblia diaria
 Lee la Biblia cada día, juntos
 ```
 
-### appstore.promo  (135/170)
+### appstore.promo  (141/170)
 
 ```
-Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu comunidad y graba el sermón para tener tus notas ordenadas.
+Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu comunidad y graba el sermón junto a tus propias notas del pasaje.
 ```
 
 ### appstore.keywords  (82/100)
@@ -225,7 +225,7 @@ Daily Journey: Biblia diaria
 Pasaje de hoy, planes de lectura con amigos, peticiones de oración y sermones.
 ```
 
-### description  (2424/4000)
+### description  (2536/4000)
 
 ```
 La Palabra cada día, juntos.
@@ -249,7 +249,7 @@ El versículo de hoy, las peticiones de oración de tu comunidad y la gratitud c
 Escribe lo que notaste y una oración bajo el pasaje que leíste. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.
 
 ■ NOTAS DEL SERMÓN
-Elige el pasaje, graba el sermón y se convierte en notas. O escríbelas tú. Tu iglesia y tu pastor se recuerdan, así que el próximo domingo ya están puestos. Comparte las notas con tu comunidad.
+Elige el pasaje, graba el sermón y escribe tus propias notas. En dispositivos compatibles también verás subtítulos en vivo (con el reconocimiento de voz del dispositivo o del navegador). Tu iglesia y tu pastor se recuerdan, así que el próximo domingo ya están puestos. Comparte las notas con tu comunidad.
 
 ■ COMUNIDADES
 Crea una comunidad para tu grupo de la iglesia, tu familia o tus amigos. Se entra con un enlace o un código de invitación, y puedes pedir aprobación. Silencia una comunidad muy activa o sal cuando quieras.
