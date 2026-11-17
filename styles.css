@@ -1610,3 +1610,7 @@ button.rg { width: 100%; font: inherit; color: inherit; text-align: left; backgr
 .rt-chs { min-width: 0; font-size: 14.5px; }
 button.rg:focus:not(:focus-visible) { outline: none; }
 .rg-rt { flex-wrap: wrap; }
+
+/* every full-screen card keeps its icons above the round + button (verse cards sat lower and touched it) */
+.post.card-page .post-rail, .post.imm .post-rail { bottom: calc(96px + var(--safe-bottom)); }
+@media (max-height: 700px) { .post.card-page .post-rail:not(.card-close) { gap: 16px; } }
