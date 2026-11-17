@@ -1,22 +1,23 @@
-# Daily Thanks Privacy Policy
+# Daily Thanks · Daily Bible Privacy Policy
 
 > For Squarespace: paste into the dailyjourney.org/privacy page.
 > Replace every `[bracket]`. Have it reviewed by a privacy professional before launch.
 
 **Effective date: November 17, 2026**
 
-Daily Journey, Inc. ("we") runs the Daily Thanks app and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
+Daily Journey, Inc. ("we") runs the Daily Thanks and Daily Bible apps and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
 
 ## 1. What we collect
 
 | Category | Data | When |
 |---|---|---|
-| Account | Apple or Google account identifier, email and name (if you share them), or your phone number if you sign in with your phone | When you sign in |
-| Your content | Notes of thanks, thank-you cards (including the recipient name you type), reflections, visibility setting | When you write |
+| Account | Email address or phone number, and your name / if you sign in with Google or Microsoft, that account’s identifier and email | When you sign in |
+| Your content | Notes of thanks, thank-you cards (including the recipient name you type), prayer requests, reflections, visibility setting | When you write |
+| Communities | Communities you create or join, your role (admin, leader, member), join requests | When you create or join one |
 | Activity | Likes, saves, shares, reports, blocks, hidden posts, posts viewed, dates written | When you use the Service |
 | Settings | Language, text size, reminder time, features turned on or off | When you change them |
 | Device | Push notification token, device type, OS version, app version | When you allow notifications or open the app |
-| Optional: sermon notes | Sermon recording or transcript, and the summary | Only if you turn on "AI sermon notes" and use it |
+| Optional: sermon notes | Sermon recording or transcript, and the tidy notes | Only if you use automatic sermon notes |
 
 - We do **not** track you across other apps or websites.
 - We do **not** collect location.
@@ -47,10 +48,11 @@ Daily Journey, Inc. ("we") runs the Daily Thanks app and website (the "Service")
 
 | Provider | Purpose |
 |---|---|
-| Google LLC (Firebase) | Sign-in, storage, push notifications |
-| Apple Inc. | Sign in with Apple, iOS notifications |
-| Supabase, Inc. | Sign-in and data storage |
-| Anthropic PBC (optional feature) | Sermon summaries |
+| Supabase, Inc. | Sign-in, storage |
+| Google LLC · Microsoft Corp. (optional) | Confirming who you are if you sign in with them |
+| Apple Inc. · Google LLC | App notifications |
+| [SMS provider] | Phone verification codes |
+| Anthropic PBC (optional feature) | Tidying sermon notes |
 | Speech-recognition provider: NAVER Cloud, Returnzero or OpenAI, depending on language (optional feature) | Sermon transcription |
 
 Data is encrypted in transit.

@@ -8,11 +8,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
 
-/** Home-screen widget: wordmark, today's question, and a button that opens the writing sheet (daily-thanks://write). */
+/** Home-screen widget: wordmark, today's question, and a button that opens the writing sheet (daily-bible://write). */
 public class ThanksWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager manager, int[] ids) {
-        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-thanks://write"), context, MainActivity.class);
+        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-bible://write"), context, MainActivity.class);
         open.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent tap = PendingIntent.getActivity(context, 0, open, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         for (int id : ids) {

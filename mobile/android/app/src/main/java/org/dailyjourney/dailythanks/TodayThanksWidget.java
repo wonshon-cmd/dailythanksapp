@@ -14,7 +14,7 @@ public class TodayThanksWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager manager, int[] ids) {
         WidgetData x = new WidgetData(context);
         String mine = x.today ? x.s("thanks") : "";
-        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-thanks://write"), context, MainActivity.class);
+        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-bible://write"), context, MainActivity.class);
         open.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent tap = PendingIntent.getActivity(context, 2, open, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         for (int id : ids) {
