@@ -1127,5 +1127,14 @@
   "bf.endSub": "Sigue leyendo o escribe una nota de sermón.",
   "bf.cont": "Seguir leyendo",
   "bf.home": "Inicio",
-  "bf.note": "Nota de sermón"
+  "bf.note": "Nota de sermón",
+  "bn.feed": "Feed",
+  "bn.group": "Grupos",
+  "bn.plus": "Escribir",
+  "bp.title2": "¿Qué quieres escribir?",
+  "bp.sermon": "Nota de sermón",
+  "bp.med": "Reflexión",
+  "bp.thanks": "Gratitud",
+  "bp.prayer": "Petición",
+  "bp.plan": "Plan de lectura"
 }
