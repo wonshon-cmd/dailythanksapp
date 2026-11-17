@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Daily Journey</title>
-<meta name="description" content="daily bible · daily thanks — 말씀과 감사로 이어지는 하루">
-<meta property="og:title" content="Daily Journey">
-<meta property="og:description" content="daily bible · daily thanks">
+<meta name="description" content="daily journey — 말씀에 집중하는 하루. A day focused on the Word.">
+<meta property="og:title" content="daily journey">
+<meta property="og:description" content="A day focused on the Word">
 <meta property="og:image" content="https://dailyjourney.org/dailybible/og.png">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="canonical" href="https://dailyjourney.org/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Daily Journey, Inc.","url":"https://dailyjourney.org/","email":"hi@dailyjourney.org","logo":"https://dailyjourney.org/dailybible/apple-touch-icon.png","address":{"@type":"PostalAddress","streetAddress":"105 Challenger Rd","addressLocality":"Ridgefield Park","addressRegion":"NJ","postalCode":"07660","addressCountry":"US"}}</script>
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/dailybible/favicon.png">
+<link rel="apple-touch-icon" href="/dailybible/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+KR:wght@300;400;500&display=swap">
@@ -32,23 +32,23 @@ img{max-width:100%}
 header.top{display:flex;align-items:center;justify-content:space-between;padding-block:22px}
 .mark{font-family:var(--serif);font-size:21px;color:var(--ink);letter-spacing:-.02em;text-decoration:none}
 .lang{appearance:none;border:0;background:var(--pill);border-radius:999px;font:inherit;font-size:13.5px;color:var(--text);padding:7px 14px;cursor:pointer}
-.hero{padding-block:72px 56px;text-align:center}
-.hero h1{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,76px);line-height:1.05;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
-.hero p{margin:18px auto 0;max-width:30em;color:var(--sub);font-size:17px;text-wrap:balance}
-.apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding-bottom:72px}
-@media (max-width:720px){.apps{grid-template-columns:1fr}}
-.app{border:1px solid var(--line);border-radius:28px;padding:32px 28px 28px;display:flex;flex-direction:column;min-width:0}
-.app img.icon{width:64px;height:64px;border-radius:16px;box-shadow:0 1px 3px #2a303614}
-.app h2{margin:20px 0 4px;font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.1;letter-spacing:-.025em;color:var(--ink)}
-.app h2 em{font-style:italic}
-.app .tag{margin:0;color:var(--sub)}
-.app ul{list-style:none;margin:22px 0 28px;padding:0;flex:1}
-.app li{padding:11px 0;border-top:1px solid var(--line);font-size:15.5px}
-.app li:last-child{border-bottom:1px solid var(--line)}
+.hero{padding-block:64px 56px;text-align:center}
+.hero-icon{width:84px;height:84px;border-radius:20px;box-shadow:0 1px 4px #2a303614}
+.hero h1{margin:22px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(48px,9vw,84px);line-height:1.02;letter-spacing:-.03em;color:var(--ink)}
+.hero h1 em{font-style:italic}
+.hero .lead{margin:14px auto 0;color:var(--ink);font-size:19px;font-weight:400}
+.hero p{margin:8px auto 0;max-width:30em;color:var(--sub);font-size:16.5px;text-wrap:balance}
+.hero .note{margin-top:14px;font-size:13.5px}
 .btns{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 20px;border-radius:999px;font-size:15px;font-weight:400;text-decoration:none;white-space:nowrap}
+.btns.center{justify-content:center;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:50px;padding:0 26px;border-radius:999px;font-size:15.5px;font-weight:400;text-decoration:none;white-space:nowrap}
 .btn.primary{background:var(--ink);color:#fff}
-.btn.secondary{background:var(--pill);color:var(--ink)}
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;padding-bottom:72px}
+@media (max-width:820px){.feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.feats{grid-template-columns:1fr}}
+.feats article{border-top:1px solid var(--line);padding:22px 0 26px;min-width:0}
+.feats h3{margin:0 0 6px;font-size:16.5px;font-weight:500;color:var(--ink)}
+.feats p{margin:0;color:var(--sub);font-size:15px}
 footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:13.5px;color:var(--sub)}
 footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}
 footer nav a{text-decoration:none}
@@ -67,25 +67,21 @@ footer nav a:hover{color:var(--ink)}
   </header>
 
   <section class="hero">
-    <h1>Daily Journey</h1>
+    <img class="hero-icon" src="/dailybible/apple-touch-icon.png" alt="" width="84" height="84">
+    <h1>daily <em>journey</em></h1>
+    <p class="lead" data-k="tag"></p>
     <p data-k="sub"></p>
+    <div class="btns center"><a class="btn primary" href="/daily-bible/" data-k="open"></a></div>
+    <p class="note" data-k="note"></p>
   </section>
 
-  <section class="apps">
-    <article class="app">
-      <img class="icon" src="/dailybible/apple-touch-icon.png" alt="" width="64" height="64">
-      <h2>daily <em>bible</em></h2>
-      <p class="tag" data-k="bTag"></p>
-      <ul><li data-k="b1"></li><li data-k="b2"></li><li data-k="b3"></li><li data-k="b4"></li></ul>
-      <div class="btns"><a class="btn primary" href="/daily-bible/" data-k="open"></a><a class="btn secondary" href="/dailybible/" data-k="more"></a></div>
-    </article>
-    <article class="app">
-      <img class="icon" src="/favicon.png" alt="" width="64" height="64">
-      <h2>daily <em>thanks</em></h2>
-      <p class="tag" data-k="tTag"></p>
-      <ul><li data-k="t1"></li><li data-k="t2"></li><li data-k="t3"></li><li data-k="t4"></li></ul>
-      <div class="btns"><a class="btn primary" href="/app/" data-k="open"></a><a class="btn secondary" href="/thanks/" data-k="more"></a></div>
-    </article>
+  <section class="feats">
+    <article><h3 data-k="f1"></h3><p data-k="f1d"></p></article>
+    <article><h3 data-k="f2"></h3><p data-k="f2d"></p></article>
+    <article><h3 data-k="f3"></h3><p data-k="f3d"></p></article>
+    <article><h3 data-k="f4"></h3><p data-k="f4d"></p></article>
+    <article><h3 data-k="f5"></h3><p data-k="f5d"></p></article>
+    <article><h3 data-k="f6"></h3><p data-k="f6d"></p></article>
   </section>
 
   <footer>
@@ -100,18 +96,30 @@ footer nav a:hover{color:var(--ink)}
 </div>
 <script>
 const S = {
-  ko: { sub: '말씀과 감사로 이어지는 하루. 혼자서도, 공동체와 함께도.', bTag: '말씀에 집중하는 하루',
-    b1: '한 절씩, 한 장씩 스크롤로 읽는 말씀', b2: '설교를 녹음하면 자동으로 정리되는 설교 노트', b3: '공동체와 함께하는 읽기 계획과 기도제목', b4: '통독 기록과 매일 이어지는 읽은 날',
-    tTag: '감사가 이어지는 하루', t1: '하루 한 줄, 오늘의 감사', t2: '가까운 사람들과만 나누는 감사', t3: '함께 7일, 감사 챌린지', t4: '감사 카드로 마음 전하기',
-    open: '웹에서 열기', more: '더 알아보기', privacy: '개인정보 처리방침', terms: '이용약관', support: '고객지원', delete: '계정 삭제' },
-  en: { sub: 'Days carried by the Word and by gratitude — on your own, or with your community.', bTag: 'A day focused on the Word',
-    b1: 'Scripture one verse, one card at a time', b2: 'Record a sermon, get your notes written for you', b3: 'Reading plans and prayer requests with your community', b4: 'Read-through history and your reading days',
-    tTag: 'A day that carries gratitude', t1: 'One line of thanks a day', t2: 'Shared only with the people close to you', t3: '7 days of thanks, together', t4: 'Send a thank-you card',
-    open: 'Open on the web', more: 'Learn more', privacy: 'Privacy', terms: 'Terms', support: 'Support', delete: 'Delete account' },
-  es: { sub: 'Días sostenidos por la Palabra y la gratitud — a solas o con tu comunidad.', bTag: 'Un día centrado en la Palabra',
-    b1: 'La Escritura versículo a versículo, una tarjeta a la vez', b2: 'Graba un sermón y tus notas se escriben solas', b3: 'Planes de lectura y peticiones con tu comunidad', b4: 'Historial de lectura y tus días leídos',
-    tTag: 'Un día que lleva gratitud', t1: 'Una línea de gratitud al día', t2: 'Solo con las personas cercanas', t3: '7 días de gratitud, juntos', t4: 'Envía una tarjeta de gracias',
-    open: 'Abrir en la web', more: 'Saber más', privacy: 'Privacidad', terms: 'Términos', support: 'Soporte', delete: 'Eliminar cuenta' }
+  ko: { tag: '말씀에 집중하는 하루', sub: '한 절씩 읽고, 설교를 담고, 공동체와 함께 기도해요.', open: '웹에서 열기', note: '앱 설치 없이 바로 시작할 수 있어요. 휴대폰에서는 홈 화면에 추가해 앱처럼 쓰세요.',
+    f1: '한 절씩, 한 장씩', f1d: '스크롤 한 번에 한 절. 말씀만 보이는 하얀 화면에서 집중해서 읽어요.',
+    f2: '설교 노트', f2d: '설교 본문을 고르고 녹음하면 요약 · 받아쓰기 · 본문이 정리된 노트가 돼요.',
+    f3: '읽기 계획', f3d: '함께 읽을 범위와 기간을 정하고 초대해요. 밀려도 남은 날에 나눠서 따라잡아요.',
+    f4: '공동체', f4d: '순 · 소모임 · 가족과만 기도제목과 묵상을 나눠요. 모르는 사람의 글은 보이지 않아요.',
+    f5: '통독 기록', f5d: '몇 번 읽었는지, 언제 시작해 언제 마쳤는지, 날마다 읽은 장이 남아요.',
+    f6: '내 기록은 내 것', f6d: '개인 기록은 기기에서 잠근 뒤 저장해 운영자도 읽을 수 없어요.',
+    privacy: '개인정보 처리방침', terms: '이용약관', support: '고객지원', delete: '계정 삭제' },
+  en: { tag: 'A day focused on the Word', sub: 'Read one verse at a time, keep your sermons, and pray with your community.', open: 'Open on the web', note: 'No download needed. On your phone, add it to your Home Screen to use it like an app.',
+    f1: 'One verse at a time', f1d: 'Scroll through Scripture one verse per screen, on a quiet white page.',
+    f2: 'Sermon notes', f2d: 'Pick the passage and record the sermon — get a summary, transcript and the passage in one note.',
+    f3: 'Reading plans', f3d: 'Set what to read and for how long, and invite others. Fall behind? It spreads the rest over the days left.',
+    f4: 'Community', f4d: 'Share prayer requests and reflections only with your group or family — never with strangers.',
+    f5: 'Read-through history', f5d: 'How many times you’ve read the Bible, when each round started and ended, and what you read each day.',
+    f6: 'Your notes stay yours', f6d: 'Personal notes are locked on your device before they are saved, so even we can’t read them.',
+    privacy: 'Privacy', terms: 'Terms', support: 'Support', delete: 'Delete account' },
+  es: { tag: 'Un día centrado en la Palabra', sub: 'Lee versículo a versículo, guarda tus sermones y ora con tu comunidad.', open: 'Abrir en la web', note: 'Sin descargas. En tu teléfono, añádela a la pantalla de inicio para usarla como app.',
+    f1: 'Versículo a versículo', f1d: 'La Escritura un versículo por pantalla, en una página blanca y tranquila.',
+    f2: 'Notas de sermón', f2d: 'Elige el pasaje y graba el sermón: resumen, transcripción y pasaje en una sola nota.',
+    f3: 'Planes de lectura', f3d: 'Define qué leer y en cuánto tiempo, e invita a otros. Si te atrasas, reparte lo que falta.',
+    f4: 'Comunidad', f4d: 'Comparte peticiones y reflexiones solo con tu grupo o familia, nunca con desconocidos.',
+    f5: 'Historial de lectura', f5d: 'Cuántas veces has leído la Biblia, cuándo empezó y terminó cada vuelta y qué leíste cada día.',
+    f6: 'Tus notas son tuyas', f6d: 'Tus notas personales se cifran en tu dispositivo antes de guardarse; ni nosotros podemos leerlas.',
+    privacy: 'Privacidad', terms: 'Términos', support: 'Soporte', delete: 'Eliminar cuenta' }
 };
 let lang = 'ko';
 try { lang = localStorage.getItem('dj-lang') || ''; } catch (e) {}
