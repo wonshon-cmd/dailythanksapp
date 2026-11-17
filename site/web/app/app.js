@@ -845,7 +845,8 @@ function save() {
    links, minimum app version) lives in content/content.json on the server. At launch the app uses the copy it
    saved last time, then downloads a fresh one from CONTENT_URL. Anything missing falls back to built-in text. */
 const CONTENT_KEY = 'daily-thanks-content';
-const CONTENT_URL = window.DT_CONTENT_URL || null; // native build: e.g. 'https://api.dailyjourney.org/api/content'
+// Daily content (today's 생명의 삶 / Our Daily Bread passage, notices…) — updated every day on dailyjourney.org.
+const CONTENT_URL = window.DT_CONTENT_URL || 'https://dailyjourney.org/content.json';
 let CONTENT = {};
 const bootAt = Date.now();
 const verNum = v => String(v || '0').split('.').slice(0, 3).reduce((a, n) => a * 1000 + (parseInt(n, 10) || 0), 0);

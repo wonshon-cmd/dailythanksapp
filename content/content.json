@@ -30,10 +30,14 @@
     "sermon": true
   },
   "qtPlanName": {
-    "ko": "생명의 삶"
+    "ko": "생명의 삶",
+    "en": "Our Daily Bread",
+    "es": "Nuestro Pan Diario"
   },
   "qtPlan": {
-    "ko": {}
+    "ko": {},
+    "en": {},
+    "es": {}
   },
   "verses": null,
   "minVersion": "1.0.0",
@@ -87,5 +91,5 @@
       "ko": "생명의 삶"
     }
   },
-  "_help_qt": "qtPlan.ko: one passage per date (YYYY-MM-DD → '책 장:절-절'). Korean groups show it automatically each day as '오늘의 말씀 · 생명의 삶'. Add the 생명의 삶 schedule only with Duranno's permission."
+  "_help_qt": "qtPlan: today's passage per language (YYYY-MM-DD → reference), filled every day by .github/workflows/daily-passage.yml (tools/fetch-daily-passage.py): ko 생명의 삶, en Our Daily Bread, es Nuestro Pan Diario. Only the reference is stored. You can also type a date here by hand; a hand-typed date wins until the next run changes it."
 }
