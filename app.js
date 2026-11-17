@@ -1375,8 +1375,8 @@ async function loadChapter(b, c, first) {
     <aside class="post-rail vs-rail">
       <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
       <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
-      <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span>${t('act.share')}</span></button>
-      <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span>${t('act.note')}</span></button>
+      <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
+      <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
   if (r.passage) {
@@ -1604,7 +1604,7 @@ function groupEndCard(gid, kind) {
   return `<article class="post card-page gend-card"><div class="card-inner">
     <p class="card-title">${t('gend.title')}</p><p class="card-sub">${t('gend.sub')}</p>
     <div class="gend-acts">${kinds.map((k, i) => `<button class="${i ? 'secondary' : 'primary'}" data-action="gend-write" data-id="${esc(gid)}|${k}">${icon(k === 'prayer' ? 'pray' : k === 'meditation' ? 'book' : 'pencil')}${t('gend.' + k)}</button>`).join('')}</div>
-  </div><aside class="post-rail card-close"><button class="rail-btn" data-action="imm-back" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button></aside></article>`;
+  </div><aside class="post-rail card-close"><button class="rail-btn" data-action="imm-back" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>`;
 }
 function devoCard(gid) {
   const p = todaysPassage(gid), n = data.posts.filter(x => x.kind === 'meditation' && inGroup(x, gid) && x.date === today()).length;
@@ -1789,7 +1789,7 @@ function postTemplate(p, i, count) {
     <aside class="post-rail">
       ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
       <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
-      ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>`}
+      ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span class="rl">${t('act.share')}</span></button>`}
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
       ${state.tab === 'feed' ? `<button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.enter')}">${icon('maximize')}<span>${t('fs.open')}</span></button>` : ''}
     </aside>
@@ -1966,9 +1966,9 @@ function verseCards(verses, head, cid = '') {
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
         <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
-        <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span>${t('act.share')}</span></button>
-        <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span>${t('act.note')}</span></button>
-        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button>
+        <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
+        <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
+        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button>
       </aside></article>`; }).join('');
 }
 // daily bible with no reading plan today: today's passage (생명의 삶 / Our Daily Bread), one verse per card
@@ -2015,10 +2015,10 @@ function firstCard(it) {
     const gids = [...new Set(it.reqs.flatMap(p => data.groups.filter(g => inGroup(p, g.id)).map(g => g.id)))], g = gids.length === 1 ? L(data.groups.find(x => x.id === gids[0])?.name) : t('fc.group');
     const people = new Set(it.reqs.map(p => authorKey(p))).size;
     return `<article class="post card-page first-card"><div class="card-inner">
-      <div class="post-kind">${icon('pray')}<span>${esc(t('fc.prKick').replace('{g}', g))}</span></div>
+      <div class="post-kind"><span>${esc(t('fc.prKick').replace('{g}', g))}</span></div>
       <p class="card-title">${esc(t('fc.prTitle').replace('{n}', people))}</p>
       <ul class="fc-list">${it.reqs.slice(0, 3).map(p => `<li><b>${esc(authorName(p))}</b><span>${esc(L(p.text).slice(0, 60))}</span></li>`).join('')}</ul>
-      <div class="card-actions"><button class="primary" data-action="first-prayers">${icon('pray')}${t('fc.pray')}</button></div>
+      <div class="card-actions"><button class="primary" data-action="first-prayers">${t('fc.pray')}</button></div>
     </div></article>`;
   }
   const c = it.c, k = Math.min(c.days.length, chLen(c) - 1), bible = c.type === 'bible' && c.plan;
@@ -3120,20 +3120,20 @@ function renderImmersive(keepIndex = 0) {
     if (it.type === 'gend') return groupEndCard(it.gid, it.kind);
     if (it.type !== 'post') { // verse, writing and other cards get the same 닫기 as posts, in the same spot
       const html = cardFor(it), i = html.lastIndexOf('</article>');
-      return i < 0 ? html : html.slice(0, i) + `<aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button></aside>` + html.slice(i);
+      return i < 0 ? html : html.slice(0, i) + `<aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside>` + html.slice(i);
     }
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
     return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
-      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}">${icon('pray')}<span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span><i class="why-i">?</i></button>${(data.settings.prayerSeen || []).includes(p.id) ? '' : '<i class="new-dot fp-dot"></i>'}` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
+      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}"><span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span><i class="why-i">?</i></button>${(data.settings.prayerSeen || []).includes(p.id) ? '' : '<i class="new-dot fp-dot"></i>'}` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : p.scope === 'group' ? esc(groupNames(p)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
         ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
-      ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>`}
+      ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span class="rl">${t('act.share')}</span></button>`}
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
-        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span>${groupMode || prayerMode || !anyUnseen() ? '' : '<i class="new-dot rail-dot"></i>'}</button>
+        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${groupMode || prayerMode || !anyUnseen() ? '' : '<i class="new-dot rail-dot"></i>'}</button>
       </aside></article>`;
   }).join('')}</div>
   ${prayerMode && !data.settings.prayerBackHint ? backHint('left', t('pl.back')) : ''}

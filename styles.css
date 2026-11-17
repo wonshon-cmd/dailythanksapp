@@ -1584,3 +1584,5 @@ html[data-size="xl"]{--read:31px}
 .bottom-nav.bb-nav .nav-plus { flex: 0 0 56px; align-self: start; display: grid; place-items: center; margin-top: -2px; }
 .nav-plus-ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #f1f1f1; color: #2c3135; font-size: 22px; }
 .nav-plus-ic .ico { stroke-width: 1.6; }
+/* side rail: icons only (the words stay for screen readers) */
+.rail-btn .rl { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
