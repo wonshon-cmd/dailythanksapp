@@ -1,18 +1,18 @@
-# Daily Bible 스토어 등록 문구 (자동 생성 · 글자 수 검사 완료)
-`python3 tools/check-listing.py bible`로 다시 만들 수 있어요. 원본: `store/listing/listing-bible.json`
+# Daily Journey 스토어 등록 문구 (자동 생성 · 글자 수 검사 완료)
+`python3 tools/check-listing.py journey`로 다시 만들 수 있어요. 원본: `store/listing/listing-journey.json`
 
 ## 한국어
 
-### appstore.name  (19/30)
+### appstore.name  (21/30)
 
 ```
-Daily Bible - 매일 성경
+Daily Journey - 매일 성경
 ```
 
-### appstore.subtitle  (15/30)
+### appstore.subtitle  (17/30)
 
 ```
-말씀을 매일, 공동체와 함께
+매일 성경 읽기, 공동체와 함께
 ```
 
 ### appstore.promo  (66/170)
@@ -27,16 +27,16 @@ Daily Bible - 매일 성경
 성경,성경읽기,통독,큐티,묵상,설교노트,기도제목,교회,말씀,공동체
 ```
 
-### appstore.whatsnew  (49/4000)
+### appstore.whatsnew  (51/4000)
 
 ```
-Daily Bible을 처음 선보입니다. 매일 말씀을 읽고, 공동체와 함께 나눠 보세요.
+Daily Journey를 처음 선보입니다. 매일 말씀을 읽고, 공동체와 함께 나눠 보세요.
 ```
 
-### play.title  (19/30)
+### play.title  (21/30)
 
 ```
-Daily Bible - 매일 성경
+Daily Journey - 매일 성경
 ```
 
 ### play.short  (40/80)
@@ -45,12 +45,12 @@ Daily Bible - 매일 성경
 오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 설교 노트를 한곳에서.
 ```
 
-### description  (1242/4000)
+### description  (1244/4000)
 
 ```
 말씀을 매일, 공동체와 함께.
 
-Daily Bible은 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 가까운 공동체와 나누는 앱이에요. 화면은 하얗고 조용해서, 말씀에만 머물 수 있어요.
+Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 가까운 공동체와 나누는 앱이에요. 화면은 하얗고 조용해서, 말씀에만 머물 수 있어요.
 
 ■ 읽기
 · 오늘의 본문: 매일 정해진 본문을 바로 펼쳐요.
@@ -93,16 +93,16 @@ Daily Bible은 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 가
 
 ## English
 
-### appstore.name  (26/30)
+### appstore.name  (29/30)
 
 ```
-Daily Bible: Read Together
+Daily Journey - Bible Reading
 ```
 
-### appstore.subtitle  (28/30)
+### appstore.subtitle  (30/30)
 
 ```
-The Word daily, with friends
+Read the Bible daily, together
 ```
 
 ### appstore.promo  (143/170)
@@ -117,16 +117,16 @@ Read today’s passage, and read the same verses on the same day as your friends
 bible,scripture,reading plan,devotional,sermon notes,prayer,church,kjv,verse,community,faith
 ```
 
-### appstore.whatsnew  (82/4000)
+### appstore.whatsnew  (84/4000)
 
 ```
-Introducing Daily Bible. Read the Word every day and share it with your community.
+Introducing Daily Journey. Read the Word every day and share it with your community.
 ```
 
-### play.title  (26/30)
+### play.title  (29/30)
 
 ```
-Daily Bible: Read Together
+Daily Journey - Bible Reading
 ```
 
 ### play.short  (78/80)
@@ -135,12 +135,12 @@ Daily Bible: Read Together
 Today’s passage, reading plans with friends, prayer requests and sermon notes.
 ```
 
-### description  (2248/4000)
+### description  (2254/4000)
 
 ```
 The Word every day, together.
 
-Daily Bible helps you read the Bible every day and share what you read, your prayers and your thanks with the people close to you. The screen is white and quiet, so you can stay with the text.
+Daily Journey helps you read the Bible every day and share what you read, your prayers and your thanks with the people close to you. The screen is white and quiet, so you can stay with the text.
 
 ■ READ
 · Today’s passage: open the set passage for the day in one tap.
@@ -150,13 +150,13 @@ Daily Bible helps you read the Bible every day and share what you read, your pra
 · King James Version, 개역한글 (Korean), Reina-Valera 1909 — all public domain.
 
 ■ READING PLANS WITH FRIENDS
-Choose where to start and finish and how many days, and Daily Bible splits it into daily readings. Send an invite link and friends or family read the same passage on the same day. Set a reading reminder for the time you like.
+Choose where to start and finish and how many days, and Daily Journey splits it into daily readings. Send an invite link and friends or family read the same passage on the same day. Set a reading reminder for the time you like.
 
 ■ FEED
 Today’s verse, your community’s prayer requests and shared thanks, one card at a time. Swipe through verses, and pray as soon as a request comes in. No like counts, no comparing.
 
 ■ REFLECTIONS
-Write what you noticed and a prayer under the passage you read. Keep it to yourself, share it with your community or with everyone. Daily Bible remembers your last choice.
+Write what you noticed and a prayer under the passage you read. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.
 
 ■ SERMON NOTES
 Pick the passage, record the sermon, and it becomes notes. Or write them yourself. Your church and pastor are remembered, so next Sunday they are already filled in. Share notes with your community.
@@ -183,16 +183,16 @@ Contact: hi@dailyjourney.org
 
 ## Español
 
-### appstore.name  (26/30)
+### appstore.name  (28/30)
 
 ```
-Daily Bible: Biblia diaria
+Daily Journey: Biblia diaria
 ```
 
-### appstore.subtitle  (27/30)
+### appstore.subtitle  (30/30)
 
 ```
-La Palabra cada día, juntos
+Lee la Biblia cada día, juntos
 ```
 
 ### appstore.promo  (135/170)
@@ -207,16 +207,16 @@ Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu com
 biblia,lectura,plan,devocional,sermon,notas,oracion,iglesia,versiculo,comunidad,fe
 ```
 
-### appstore.whatsnew  (79/4000)
+### appstore.whatsnew  (81/4000)
 
 ```
-Presentamos Daily Bible. Lee la Palabra cada día y compártela con tu comunidad.
+Presentamos Daily Journey. Lee la Palabra cada día y compártela con tu comunidad.
 ```
 
-### play.title  (26/30)
+### play.title  (28/30)
 
 ```
-Daily Bible: Biblia diaria
+Daily Journey: Biblia diaria
 ```
 
 ### play.short  (78/80)
@@ -225,12 +225,12 @@ Daily Bible: Biblia diaria
 Pasaje de hoy, planes de lectura con amigos, peticiones de oración y sermones.
 ```
 
-### description  (2418/4000)
+### description  (2424/4000)
 
 ```
 La Palabra cada día, juntos.
 
-Daily Bible te ayuda a leer la Biblia cada día y a compartir lo que lees, tus oraciones y tu gratitud con las personas cercanas. La pantalla es blanca y tranquila, para que te quedes en el texto.
+Daily Journey te ayuda a leer la Biblia cada día y a compartir lo que lees, tus oraciones y tu gratitud con las personas cercanas. La pantalla es blanca y tranquila, para que te quedes en el texto.
 
 ■ LEER
 · Pasaje de hoy: abre el pasaje del día con un toque.
@@ -240,13 +240,13 @@ Daily Bible te ayuda a leer la Biblia cada día y a compartir lo que lees, tus o
 · Reina-Valera 1909, King James Version y 개역한글 (coreano), todas de dominio público.
 
 ■ PLANES DE LECTURA CON AMIGOS
-Elige desde dónde hasta dónde y en cuántos días, y Daily Bible lo divide en lecturas diarias. Envía un enlace de invitación y tus amigos o tu familia leerán el mismo pasaje el mismo día. Pon un recordatorio a la hora que prefieras.
+Elige desde dónde hasta dónde y en cuántos días, y Daily Journey lo divide en lecturas diarias. Envía un enlace de invitación y tus amigos o tu familia leerán el mismo pasaje el mismo día. Pon un recordatorio a la hora que prefieras.
 
 ■ INICIO
 El versículo de hoy, las peticiones de oración de tu comunidad y la gratitud compartida, una tarjeta a la vez. Desliza los versículos y ora en cuanto llegue una petición. Sin contadores de “me gusta”, sin comparaciones.
 
 ■ REFLEXIONES
-Escribe lo que notaste y una oración bajo el pasaje que leíste. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Bible recuerda tu última elección.
+Escribe lo que notaste y una oración bajo el pasaje que leíste. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.
 
 ■ NOTAS DEL SERMÓN
 Elige el pasaje, graba el sermón y se convierte en notas. O escríbelas tú. Tu iglesia y tu pastor se recuerdan, así que el próximo domingo ya están puestos. Comparte las notas con tu comunidad.

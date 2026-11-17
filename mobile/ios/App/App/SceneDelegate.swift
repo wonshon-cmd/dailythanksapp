@@ -37,14 +37,14 @@ class AppViewController: CAPBridgeViewController {
 }
 
 /// WidgetBridge: the web app hands today's verse / thanks / passage to the home-screen widgets
-/// (App Group "group.org.dailyjourney.dailybible"), then asks WidgetKit to redraw them.
+/// (App Group "group.org.dailyjourney.app"), then asks WidgetKit to redraw them.
 @objc(WidgetBridgePlugin)
 public class WidgetBridgePlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "WidgetBridgePlugin"
     public let jsName = "WidgetBridge"
     public let pluginMethods: [CAPPluginMethod] = [CAPPluginMethod(name: "update", returnType: CAPPluginReturnPromise)]
     @objc func update(_ call: CAPPluginCall) {
-        UserDefaults(suiteName: "group.org.dailyjourney.dailybible")?.set(call.getString("json") ?? "{}", forKey: "widget")
+        UserDefaults(suiteName: "group.org.dailyjourney.app")?.set(call.getString("json") ?? "{}", forKey: "widget")
         WidgetCenter.shared.reloadAllTimelines()
         call.resolve()
     }
@@ -88,7 +88,7 @@ public class SecureStorePlugin: CAPPlugin, CAPBridgedPlugin {
     ]
     private func base(_ key: String) -> [String: Any] {
         [kSecClass as String: kSecClassGenericPassword,
-         kSecAttrService as String: "org.dailyjourney.dailybible.secure",
+         kSecAttrService as String: "org.dailyjourney.app.secure",
          kSecAttrAccount as String: key]
     }
     @objc func get(_ call: CAPPluginCall) {

@@ -1,15 +1,16 @@
-# Daily Bible 폰 앱 (iOS · Android)
+# Daily Journey 폰 앱 (iOS · Android)
 
 웹 앱(저장소 맨 위의 `index.html`, `styles.css`, `app.js`)을 **Capacitor**로 감싼 앱이에요.
-스토어에는 **daily bible만** 올려요. `scripts/build-web.mjs`가 `www/index.html`에 `window.DT_APP = "bible"`을 넣어서 같은 코드가 daily bible로 열려요.
+스토어에는 성경 앱 **Daily Journey 하나만** 올려요. `scripts/build-web.mjs`가 `www/index.html`에 `window.DT_APP = "bible"`과 `window.DT_BRAND = "journey"`를 넣어서 같은 코드가 *daily journey*로 열려요.
+`APP_BRAND=bible npm run sync`로 만들면 *daily bible* 이름으로 열려요(이때는 앱 ID·이름·아이콘·스토어 문구도 같이 바꿔야 해요).
 화면이나 글을 고치면 맨 위 파일만 고치고 `npm run sync`를 하면 두 앱에 똑같이 들어가요.
 
 | 항목 | 값 |
 |---|---|
-| 앱 ID (번들 ID · 패키지 이름) | `org.dailyjourney.dailybible` |
-| 앱 이름 | Daily Bible |
-| 바로가기 링크 | `daily-bible://write` → 글쓰기 화면 (`daily-thanks://`도 받아요: 초대 페이지가 아직 이 주소로 넘겨줘요) |
-| App Group (iOS 위젯) | `group.org.dailyjourney.dailybible` |
+| 앱 ID (번들 ID · 패키지 이름) | `org.dailyjourney.app` (iOS 위젯: `org.dailyjourney.app.widget`) |
+| 앱 이름 | Daily Journey |
+| 바로가기 링크 | `daily-journey://write` → 글쓰기 화면 (`daily-bible://`, `daily-thanks://`도 받아요) |
+| App Group (iOS 위젯) | `group.org.dailyjourney.app` |
 | Android 코드 패키지(namespace) | `org.dailyjourney.dailythanks` 그대로 (앱 ID와 달라도 괜찮아요. 스토어에는 앱 ID만 보여요) |
 | 글 내려받는 곳 | https://dailyjourney.org/content.json |
 
@@ -23,7 +24,7 @@
   - Android는 완성돼 있어요.
   - iOS는 Xcode에서 한 번 추가해야 해요(아래 4번).
 - **Android 뒤로가기 버튼:** 열린 창이 있으면 먼저 닫고, 없으면 앱을 내려요.
-- **아이콘과 시작 화면:** 흰 바탕에 회색 선의 펼친 성경 아이콘, 흰 바탕에 *daily bible*이 보이는 시작 화면이에요. (원본: `brand/daily-bible/`, 스토어용: `store/icons/bible-*.png`)
+- **아이콘과 시작 화면:** 흰 바탕에 회색 선의 펼친 성경 아이콘, 흰 바탕에 *daily journey*가 보이는 시작 화면이에요. (원본: `brand/daily-bible/`의 책 모양, 스토어용: `store/icons/journey-*.png`)
 - **폰 기능 연결 코드:** `src/native.js`예요. 브라우저에서는 아무 일도 하지 않아요.
 
 ## 1. 처음 한 번 (컴퓨터 준비)
@@ -69,17 +70,19 @@ npm run ios
 2. 아이폰을 연결하고 ▶ 버튼을 눌러요.
 3. **위젯 추가 (한 번만):**
    1. File › New › Target › **Widget Extension**을 골라요.
-   2. 이름은 `DailyBibleWidget`으로 하고, "Include Configuration App Intent"는 체크하지 않아요.
-   3. 만들어진 Swift 파일 내용을 `mobile/ios-widget/DailyBibleWidget.swift`로 바꿔요.
-   4. **App Groups 켜기:** App 타깃과 위젯 타깃 둘 다 Signing & Capabilities › + Capability › App Groups → `group.org.dailyjourney.dailybible` 체크. (오늘의 감사·묵상 위젯이 앱 내용을 읽는 통로예요.)
+   2. 이름은 `DailyJourneyWidget`으로(번들 ID `org.dailyjourney.app.widget`) 하고, "Include Configuration App Intent"는 체크하지 않아요.
+   3. 만들어진 Swift 파일 내용을 `mobile/ios-widget/DailyJourneyWidget.swift`로 바꿔요.
+   4. **App Groups 켜기:** App 타깃과 위젯 타깃 둘 다 Signing & Capabilities › + Capability › App Groups → `group.org.dailyjourney.app` 체크. (오늘의 감사·묵상 위젯이 앱 내용을 읽는 통로예요.)
    5. 다시 ▶ 실행 → 홈 화면을 길게 눌러 위젯을 추가해요.
 4. **App Store 제출:** Product › Archive → Distribute App → App Store Connect를 차례로 눌러요.
 
 ## 아이콘·시작 화면 다시 만들기
 
 ```bash
-node scripts/make-assets.cjs
+node scripts/make-assets.cjs --native
 ```
+
+`--native`는 ios/·android/ 안의 아이콘과 시작 화면까지 바로 다시 그려요. 아래 `npm run assets`는 선택이에요.
 
 ```bash
 npm run assets

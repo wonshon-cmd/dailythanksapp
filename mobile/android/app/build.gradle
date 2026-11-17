@@ -4,7 +4,7 @@ android {
     namespace = "org.dailyjourney.dailythanks"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "org.dailyjourney.dailybible"
+        applicationId "org.dailyjourney.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

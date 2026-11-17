@@ -15,7 +15,7 @@ public class MeditationWidget extends AppWidgetProvider {
         WidgetData x = new WidgetData(context);
         String src = x.s("passageSource");
         boolean done = x.today && x.d.optBoolean("meditated");
-        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-bible://meditation"), context, MainActivity.class);
+        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-journey://meditation"), context, MainActivity.class);
         open.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent tap = PendingIntent.getActivity(context, 3, open, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         for (int id : ids) {

@@ -13,7 +13,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>Daily Bible</string>
+        <string>Daily Journey</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -76,9 +76,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>org.dailyjourney.dailybible</string>
+			<string>org.dailyjourney.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>daily-journey</string>
 				<string>daily-bible</string>
 				<string>daily-thanks</string>
 			</array>

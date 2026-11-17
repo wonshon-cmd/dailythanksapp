@@ -26,12 +26,13 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- daily-bible://write : opened by the home-screen widget and reminders.
-                 daily-thanks:// is kept too: the dailyjourney.org/join/ page still hands invites over with it. -->
+            <!-- daily-journey://write : opened by the home-screen widget and reminders.
+                 daily-bible:// and daily-thanks:// are kept too (older links; the join page may hand invites over with them). -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="daily-journey" />
                 <data android:scheme="daily-bible" />
                 <data android:scheme="daily-thanks" />
             </intent-filter>

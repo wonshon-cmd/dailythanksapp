@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="widget_name">Daily Bible</string>
+    <string name="widget_name">Daily Journey</string>
     <string name="widget_description">Escribe tu gratitud de hoy con un toque</string>
     <string name="widget_question">¿Por qué estás agradecido hoy?</string>
     <string name="widget_write">+ Escribir</string>
