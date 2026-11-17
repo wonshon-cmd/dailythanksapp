@@ -144,7 +144,7 @@ const STR = {
     'np.cr1': "내가 고른 시간에만 알려드려요.", 'np.pr2': "오늘 분량을 읽은 날은 알리지 않아요.", 'np.cr2': "오늘 몫을 한 날은 알리지 않아요.",
     'bf.devo': "오늘의 말씀", 'bf.endTitle': "오늘도 말씀 앞에 머물렀어요", 'bf.endSub': "이어서 더 읽거나, 설교 노트를 남겨 보세요.", 'bf.cont': "이어 읽기", 'bf.home': "홈으로", 'bf.note': "설교 노트",
     'bn.feed': "피드", 'bn.group': "공동체", 'bn.plus': "남기기", 'bp.title2': "무엇을 남길까요?", 'bp.sermon': "설교 노트", 'bp.med': "묵상", 'bp.thanks': "감사", 'bp.prayer': "기도제목", 'bp.plan': "읽기 계획",
-    'kk.thanks': "감사", 'sn.addRef': "+ 본문 추가", 'sn.rmRef': "본문 빼기", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'kk.thanks': "감사", 'sn.addRef': "+ 본문 추가", 'sn.rmRef': "본문 빼기", 'rt.done': "통독 {n}회 완료", 'rt.round': "{k}회차", 'rt.since': "{d}부터", 'rt.title': "통독 기록", 'rt.now': "지금 읽는 중", 'rt.nowLine': "{k}회차 · {d}부터 · {n}/{t}장", 'rt.notYet': "아직 시작 전이에요", 'rt.past': "다 읽은 기록", 'rt.item': "{k}회", 'rt.days': "{n}일", 'rt.none': "한 번 다 읽으면 여기에 남아요.", 'rt.recent': "최근에 읽은 장", 'rt.empty': "한 장씩 읽으면 날짜별로 여기에 쌓여요.", 'rt.cel': "성경 {n}독을 마쳤어요", 'rt.chs': "{n}장", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -284,7 +284,7 @@ const STR = {
     'np.cr1': "Only at the times you choose.", 'np.pr2': "No reminder once today’s reading is done.", 'np.cr2': "No reminder once today’s part is done.",
     'bf.devo': "Today’s passage", 'bf.endTitle': "You spent time in the Word today", 'bf.endSub': "Keep reading, or write a sermon note.", 'bf.cont': "Keep reading", 'bf.home': "Home", 'bf.note': "Sermon note",
     'bn.feed': "Feed", 'bn.group': "Community", 'bn.plus': "Write", 'bp.title2': "What would you like to write?", 'bp.sermon': "Sermon note", 'bp.med': "Reflection", 'bp.thanks': "Thanks", 'bp.prayer': "Prayer request", 'bp.plan': "Reading plan",
-    'kk.thanks': "Thanks", 'sn.addRef': "+ Add a passage", 'sn.rmRef': "Remove passage", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'kk.thanks': "Thanks", 'sn.addRef': "+ Add a passage", 'sn.rmRef': "Remove passage", 'rt.done': "Read through {n}×", 'rt.round': "Round {k}", 'rt.since': "since {d}", 'rt.title': "Read-through history", 'rt.now': "Reading now", 'rt.nowLine': "Round {k} · since {d} · {n}/{t} chapters", 'rt.notYet': "Not started yet", 'rt.past': "Finished", 'rt.item': "Round {k}", 'rt.days': "{n} days", 'rt.none': "When you finish the whole Bible, it’s kept here.", 'rt.recent': "Recently read", 'rt.empty': "Each chapter you read shows up here by day.", 'rt.cel': "You read the whole Bible — {n}×", 'rt.chs': "{n} ch.", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -682,7 +682,7 @@ const STR = {
     'np.cr1': "Solo a las horas que elijas.", 'np.pr2': "Sin recordatorio si ya leíste lo de hoy.", 'np.cr2': "Sin recordatorio si ya hiciste lo de hoy.",
     'bf.devo': "Pasaje de hoy", 'bf.endTitle': "Hoy estuviste en la Palabra", 'bf.endSub': "Sigue leyendo o escribe una nota de sermón.", 'bf.cont': "Seguir leyendo", 'bf.home': "Inicio", 'bf.note': "Nota de sermón",
     'bn.feed': "Feed", 'bn.group': "Comunidad", 'bn.plus': "Escribir", 'bp.title2': "¿Qué quieres escribir?", 'bp.sermon': "Nota de sermón", 'bp.med': "Reflexión", 'bp.thanks': "Gratitud", 'bp.prayer': "Petición", 'bp.plan': "Plan de lectura",
-    'kk.thanks': "Gratitud", 'sn.addRef': "+ Añadir pasaje", 'sn.rmRef': "Quitar pasaje", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
+    'kk.thanks': "Gratitud", 'sn.addRef': "+ Añadir pasaje", 'sn.rmRef': "Quitar pasaje", 'rt.done': "Biblia leída {n}×", 'rt.round': "Vuelta {k}", 'rt.since': "desde {d}", 'rt.title': "Historial de lectura", 'rt.now': "Leyendo ahora", 'rt.nowLine': "Vuelta {k} · desde {d} · {n}/{t} capítulos", 'rt.notYet': "Aún no empieza", 'rt.past': "Terminadas", 'rt.item': "Vuelta {k}", 'rt.days': "{n} días", 'rt.none': "Cuando termines toda la Biblia, quedará aquí.", 'rt.recent': "Leído recientemente", 'rt.empty': "Cada capítulo que leas aparecerá aquí por día.", 'rt.cel': "Leíste toda la Biblia — {n}×", 'rt.chs': "{n} cap.", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -888,6 +888,7 @@ if (data.settings && !Array.isArray(data.settings.prayerSeen)) data.settings.pra
 try { (data.groups || []).forEach(g => { if (g && g.name && typeof g.name === 'object' && g.name.ko === '은혜 소그룹') g.name.ko = '은혜 공동체'; }); } catch {}
 if (data.settings && (typeof data.settings.prefs !== 'object' || !data.settings.prefs)) data.settings.prefs = {};
 if (!data.readLog || typeof data.readLog !== 'object') data.readLog = {};
+if (!data.rtStart && (data.readDone || []).length) data.rtStart = Object.values(data.readLog).sort()[0] || null;
 if (!Array.isArray(data.savedVerses)) data.savedVerses = [];
 if (!data.settings.prayerInGroups) { data.settings.features.prayer = true; data.settings.prayerInGroups = true; } // groups share prayer requests by default
 if (!Array.isArray(data.seen)) data.seen = [];
@@ -1414,14 +1415,14 @@ function trackReading() {
   const now = Date.now(); if (state.readTick && now - state.readTick < 60000) { data.readTime = data.readTime || {}; data.readTime[today()] = (data.readTime[today()] || 0) + (now - state.readTick) / 1000; } state.readTick = now;
   if (v === +cur.dataset.last) { // reached the chapter's last verse: count it and remember the day
     if (!data.readDone.includes(readKey(b, c))) data.readDone.push(readKey(b, c));
-    data.readLog = data.readLog || {}; data.readLog[readKey(b, c)] = today();
+    data.readLog = data.readLog || {}; data.readLog[readKey(b, c)] = today(); if (!data.rtStart) data.rtStart = today();
     data.challenges.filter(ch => ch.type === 'bible' && ch.lastDay !== today() && ch.days.length < chLen(ch)).forEach(ch => {
       const d = chPlanDay(ch, ch.days.length); // with a plan: the day counts when today's last chapter is read
       if (d && chIndex(b, c) < chIndex(...d.end)) return;
       ch.days.push(ch.days.length + 1); ch.lastDay = today();
       if (ch.days.length >= chLen(ch)) setTimeout(() => chFinish(ch.id), 600); else setTimeout(() => celebrateDay(ch), 300);
     });
-    bookMilestone(b, c);
+    if (!readThroughDone()) bookMilestone(b, c);
   }
   clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600);
 }
@@ -1489,17 +1490,41 @@ function readStatsRow() {
   return `<div class="rs"><p class="rs-row">${bits.map(x => `<span>${esc(x)}</span>`).join('')}</p>${r.eta ? `<p class="rs-eta">${esc(t('rs.eta').replace('{d}', r.eta))}</p>` : ''}</div>`;
 }
 // 통독 progress as a small dial: overall %, chapters read, and Old / New Testament bars.
+// Whole Bible read (all 1189 chapters): keep the round (when it started, when it ended), then start the next round from 0.
+function readThroughDone() {
+  if ((data.readDone || []).length < TOTAL_CHAPTERS) return false;
+  data.readThroughs = data.readThroughs || [];
+  const start = data.rtStart || Object.values(data.readLog || {}).sort()[0] || today(), end = today();
+  data.readThroughs.push({ start, end, days: Math.round((new Date(end) - new Date(start)) / 864e5) + 1 });
+  data.readDone = []; data.booksDone = {}; data.rtStart = null; save();
+  setTimeout(() => { confetti(); celebrateDay(null, t('rt.cel').replace('{n}', data.readThroughs.length)); }, 400);
+  return true;
+}
+const dotDate = d => String(d || '').replace(/-/g, '.');
+function readHistory() {
+  const rts = data.readThroughs || [], k = rts.length + 1, n = (data.readDone || []).length;
+  const byDay = {}; Object.entries(data.readLog || {}).forEach(([key, d]) => (byDay[d] = byDay[d] || []).push(key.split(':').map(Number)));
+  const days = Object.keys(byDay).sort().reverse().slice(0, 30);
+  const runs = list => { list.sort((a, b) => chIndex(...a) - chIndex(...b)); const out = []; list.forEach(([b, c]) => { const r = out[out.length - 1]; if (r && r.b === b && r.c2 === c - 1) r.c2 = c; else out.push({ b, c, c2: c }); });
+    return out.map(r => `${bookName(r.b)} ${r.c}${r.c2 > r.c ? '–' + r.c2 : ''}`).join(', '); };
+  showSheet({ title: t('rt.title'), body: `
+    <section class="rt-sec"><p class="gd-label">${t('rt.now')}</p><p class="rt-now">${n || data.rtStart ? esc(t('rt.nowLine').replace('{k}', k).replace('{d}', dotDate(data.rtStart || today())).replace('{n}', n).replace('{t}', TOTAL_CHAPTERS)) : t('rt.notYet')}</p></section>
+    <section class="rt-sec"><p class="gd-label">${t('rt.past')}</p>${rts.length ? `<ul class="rt-list">${rts.map((r, i) => `<li><b>${esc(t('rt.item').replace('{k}', i + 1))}</b><span>${dotDate(r.start)} – ${dotDate(r.end)}</span><small>${esc(t('rt.days').replace('{n}', r.days))}</small></li>`).reverse().join('')}</ul>` : `<p class="hint">${t('rt.none')}</p>`}</section>
+    <section class="rt-sec"><p class="gd-label">${t('rt.recent')}</p>${days.length ? `<ul class="rt-log">${days.map(d => `<li><span class="rt-d">${esc(dayLabel(d))}</span><span class="rt-chs">${esc(runs(byDay[d]))}</span><small>${esc(t('rt.chs').replace('{n}', byDay[d].length))}</small></li>`).join('')}</ul>` : `<p class="hint">${t('rt.empty')}</p>`}</section>` });
+}
 function readGauge() {
   const done = data.readDone || [], n = done.length, pct = n / TOTAL_CHAPTERS;
   const ot = done.filter(k => +k.split(':')[0] <= 39).length, nt = n - ot;
   const R = 44, L = Math.PI * R, arc = `M ${56 - R} 56 A ${R} ${R} 0 0 1 ${56 + R} 56`;
-  return `<div class="rg">
+  const rts = (data.readThroughs || []).length;
+  return `<button type="button" class="rg" data-action="rt-history" aria-label="${esc(t('rt.title'))}">
     <svg class="rg-dial" viewBox="0 0 112 62" aria-hidden="true"><path d="${arc}" class="rg-track"/><path d="${arc}" class="rg-fill" style="stroke-dasharray:${(L * pct).toFixed(1)} ${L.toFixed(1)}"/>
       <text x="56" y="52" class="rg-pct">${pct > 0 && pct < .01 ? '<1' : Math.round(pct * 100)}%</text></svg>
     <div class="rg-side"><p class="rg-n">${t('rd.progress').replace('{n}', n).replace('{total}', TOTAL_CHAPTERS)}</p>
       <p class="rg-row"><span>${t('rd.ot')}</span><i><b style="width:${(ot / 929 * 100).toFixed(1)}%"></b></i><small>${ot}/929</small></p>
-      <p class="rg-row"><span>${t('rd.nt')}</span><i><b style="width:${(nt / 260 * 100).toFixed(1)}%"></b></i><small>${nt}/260</small></p></div>
-  </div>`;
+      <p class="rg-row"><span>${t('rd.nt')}</span><i><b style="width:${(nt / 260 * 100).toFixed(1)}%"></b></i><small>${nt}/260</small></p>
+      ${rts || data.rtStart ? `<p class="rg-rt">${[rts ? t('rt.done').replace('{n}', rts) : '', rts ? t('rt.round').replace('{k}', rts + 1) : '', data.rtStart ? t('rt.since').replace('{d}', shortDate(data.rtStart)) : ''].filter(Boolean).map(esc).join(' · ')}${icon('chevron')}</p>` : `<p class="rg-rt">${esc(t('rt.title'))}${icon('chevron')}</p>`}</div>
+  </button>`;
 }
 const covers = (r, b, c, v) => !!r && r.b === b && (r.c2 > r.c ? (c > r.c && c < r.c2) || (c === r.c && v >= (r.v || 1)) || (c === r.c2 && v <= r.e2) : c === r.c && (!r.v || (v >= r.v && v <= (r.v2 || r.v))));
 const notesAt = (b, c, v) => data.posts.filter(p => p.mine && p.kind === 'meditation' && covers(p.ref, b, c, v));
@@ -5003,6 +5028,7 @@ const actions = {
   'size-cycle': () => { const order = ['s', 'm', 'l', 'xl'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
   'imm-streak': () => { if (anyUnseen() && !BIBLE_MODE) { state.immersive = false; state.tab = 'group'; render(); } else if (anyUnseen()) { state.prevFeed = 'public'; state.immFeed = 'prayer'; render(0); } else toast(t('stk.write').replace('{n}', BIBLE_MODE ? readDays() : writeStreak())); },
   'yr-share': () => yearShare(),
+  'rt-history': () => readHistory(),
   'yr-kind': k => { state.yrKind = k; yearShare(); },
   'yr-post': async () => { const c = await yearCanvas(state.yrKind || 'feed'); const blob = await new Promise(r => c.toBlob(r, 'image/png')); const f = new File([blob], `daily-bible-${new Date().getFullYear()}.png`, { type: 'image/png' });
     try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
@@ -5028,7 +5054,7 @@ const actions = {
   'sm-read': () => { const r = state.sharedMed?.ref; if (!r) return; close(); openReader({ b: r.b, c: r.c, v: r.v || 1, passage: r.v ? r : null }); },
   'sm-write': () => { const r = state.sharedMed?.ref; close(); state.medRef = r || null; state.medSource = ''; state.medNote = !!r; compose('meditation', null); },
   'plan-read-done': id => { const c = data.challenges.find(x => x.id === id); if (!c) return;
-    planChapters(c).forEach(([b, ch]) => { const k = readKey(b, ch); if (!data.readDone.includes(k)) data.readDone.push(k); data.readLog = data.readLog || {}; data.readLog[k] = today(); });
+    planChapters(c).forEach(([b, ch]) => { const k = readKey(b, ch); if (!data.readDone.includes(k)) data.readDone.push(k); data.readLog = data.readLog || {}; data.readLog[k] = today(); }); if (!data.rtStart) data.rtStart = today(); readThroughDone();
     const last = planChapters(c).slice(-1)[0]; if (last) data.reading = { b: last[0], c: last[1], v: 1, at: new Date().toISOString() };
     if (c.lastDay !== today()) { c.days.push(c.days.length + 1); c.lastDay = today(); }
     save(); const card = document.querySelector(`[data-fvend="${id}"] .card-actions`); if (card) card.innerHTML = `<span class="hint">${icon('check')} ${t('fv.marked')}</span>`;

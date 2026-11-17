@@ -1594,3 +1594,19 @@ html[data-size="xl"]{--read:31px}
 .sn-ref2 svg { width: 15px; height: 15px; opacity: .55; }
 .sn-ref2 button { display: grid; place-items: center; width: 24px; height: 24px; border: 0; border-radius: 50%; background: transparent; color: var(--muted, #888); }
 .sn-addref { font-size: 14px; color: var(--muted, #888); padding: 6px 4px; background: none; border: 0; }
+
+/* 통독: the dial opens the history */
+button.rg { width: 100%; font: inherit; color: inherit; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.rg-rt { display: flex; align-items: center; gap: 2px; margin: 6px 0 0; font-size: 12.5px; color: var(--muted, #888); }
+.rg-rt svg { width: 14px; height: 14px; opacity: .6; }
+.rt-sec { margin: 4px 0 18px; }
+.rt-now { margin: 6px 0 0; font-size: 16px; }
+.rt-list, .rt-log { list-style: none; margin: 6px 0 0; padding: 0; }
+.rt-list li, .rt-log li { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line, #eee); }
+.rt-list b { font-weight: 500; }
+.rt-list span { color: var(--ink, #222); }
+.rt-list small, .rt-log small { color: var(--muted, #888); font-size: 12.5px; }
+.rt-d { color: var(--muted, #888); font-size: 13.5px; min-width: 56px; }
+.rt-chs { min-width: 0; font-size: 14.5px; }
+button.rg:focus:not(:focus-visible) { outline: none; }
+.rg-rt { flex-wrap: wrap; }

@@ -1139,5 +1139,20 @@
   "bp.plan": "Plan de lectura",
   "kk.thanks": "Gratitud",
   "sn.addRef": "+ Añadir pasaje",
-  "sn.rmRef": "Quitar pasaje"
+  "sn.rmRef": "Quitar pasaje",
+  "rt.done": "Biblia leída {n}×",
+  "rt.round": "Vuelta {k}",
+  "rt.since": "desde {d}",
+  "rt.title": "Historial de lectura",
+  "rt.now": "Leyendo ahora",
+  "rt.nowLine": "Vuelta {k} · desde {d} · {n}/{t} capítulos",
+  "rt.notYet": "Aún no empieza",
+  "rt.past": "Terminadas",
+  "rt.item": "Vuelta {k}",
+  "rt.days": "{n} días",
+  "rt.none": "Cuando termines toda la Biblia, quedará aquí.",
+  "rt.recent": "Leído recientemente",
+  "rt.empty": "Cada capítulo que leas aparecerá aquí por día.",
+  "rt.cel": "Leíste toda la Biblia — {n}×",
+  "rt.chs": "{n} cap."
 }
