@@ -1252,6 +1252,16 @@ function passageCount() {
   const pages = sc.querySelectorAll('.vs-page'), i = Math.min(pages.length - 1, Math.round(sc.scrollLeft / Math.max(1, sc.clientWidth)));
   gap.innerHTML = pages.length > 1 ? `<span class="pg-count">${i + 1} / ${pages.length}</span>` : '';
 }
+// Leaving a group's full-screen view (back to the 소그룹 tab) or the prayer lane (back to where you were).
+function immBack() {
+  if (!state.immersive) return false;
+  if (history.state?.dt === 'imm') { try { history.replaceState(null, ''); } catch {} }
+  if (state.immFeed === 'prayer') { data.settings.prayerBackHint = true; state.immFeed = state.prevFeed || 'public'; state.showOthers = false; save(); render(0); return true; }
+  if (state.immFeed === 'group') { toggleFullscreen(); return true; }
+  return false;
+}
+// Phone / browser back gesture: reader first, then a group or the prayer lane.
+window.addEventListener('popstate', () => { if (!closeReader()) immBack(); });
 function closeReader() {
   if (!readerEl || readerEl.hidden) return false;
   readerObs?.disconnect(); readerEl.hidden = true; readerEl.innerHTML = ''; state.reader = null;
@@ -1632,10 +1642,10 @@ function renderImmersive(keepIndex = 0) {
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button>
       </aside></article>`;
   }).join('')}</div>
-  <div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>
+  ${groupMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${esc(L(data.groups.find(g => g.id === state.group)?.name || t('nav.group')))}</span></button>`
+    : prayerMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${t('pr.section')}</span></button>`
+    : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>`}
   <button class="imm-plus" data-action="imm-write" aria-label="${t('top.write')}">${icon('plus')}</button>
-  ${prayerMode ? `${data.settings.prayerBackHint ? '' : `<p class="swipe-hint imm-back-hint"><span aria-hidden="true">‹</span>${t('pl.back')}</p>`}`
-    : ''}
   <button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button>
   ${showNudge() && !prayerMode ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
@@ -2868,7 +2878,8 @@ const actions = {
     document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code } }));
     save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
   },
-  'open-group': id => { close(); markGroupSeen(id); state.group = id; state.immFeed = 'group'; state.immersive = true; state.tab = 'group'; render(0); },
+  'imm-back': () => immBack(),
+  'open-group': id => { close(); markGroupSeen(id); try { history.pushState({ dt: 'imm' }, ''); } catch {} state.group = id; state.immFeed = 'group'; state.immersive = true; state.tab = 'group'; render(0); },
   'new-challenge': createChallenge,
   'challenge-write': id => {
     const ch = data.challenges.find(c => c.id === id); close();
@@ -2978,6 +2989,7 @@ window.DailyThanks = {
   // native shell: a reminder tap or the home-screen widget opens the writing sheet
   joinGroup: (code, name) => joinGroup(code, name),
   closeReader: () => closeReader(),
+  back: () => closeReader() || immBack(),
   parseRef, refText,
   openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); }
 };

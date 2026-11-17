@@ -987,3 +987,8 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .gs-day.today i.on{background:#8A9094}
 .gs-day.today small{color:var(--ink);font-weight:600}
 .g-sum .gs-counts b{font-weight:500;color:#A9AEB1;margin-right:2px}
+/* inside a group / prayer requests: a clear way back, top left */
+.imm-backbar{position:absolute;top:14px;left:14px;z-index:5;display:flex;align-items:center;gap:4px;border:0;background:#F1F1F1;color:var(--ink);border-radius:999px;height:36px;padding:0 14px 0 8px;font:inherit;font-size:14px;cursor:pointer;max-width:70%}
+.imm-backbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.imm-backbar .ico{transform:rotate(180deg);font-size:18px;flex:none}
+@media (max-width:520px){.imm-backbar{top:calc(34px + var(--safe-top))}}
