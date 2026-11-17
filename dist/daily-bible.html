@@ -4708,7 +4708,10 @@ function renderImmersive(keepIndex = 0) {
     }
   }
   if (!groupMode && !prayerMode && !keepIndex) { try { seq.splice(0, 0, ...firstItems()); } catch (e) { console.warn('first cards skipped', e); } }
-  if (BIBLE_MODE && !groupMode && !prayerMode) { let f = []; try { f = firstItems(); } catch {} seq = [...f, ...(f.some(x => x.type === 'planread') ? [] : [{ type: 'devoread' }]), { type: 'bbend' }]; }   // on opening: my group's new prayer requests, then today's verses, one card each
+  // daily bible: prayer requests and today's verses first, then the same sharing feed as daily thanks (thanks, prayer
+  // requests, reflections from me and the people I'm connected to), one per card, and a closing card
+  if (BIBLE_MODE && !groupMode && !prayerMode) { let f = []; try { f = firstItems(); } catch {} const shown = new Set(f.filter(x => x.p).map(x => x.p.id));
+    seq = [...f, ...(f.some(x => x.type === 'planread') ? [] : [{ type: 'devoread' }]), ...posts.filter(p => !shown.has(p.id)).slice(0, 40).map(p => ({ type: 'post', p })), ...(posts.length ? [] : [{ type: 'empty' }]), { type: 'bbend' }]; }   // on opening: my group's new prayer requests, then today's verses, one card each
   if (prayerMode) { // swipe left: my groups' prayer requests first, then requests from people I don't know
     const newest = list => list.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     const mine = newest(data.posts.filter(p => p.kind === 'prayer' && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))));
