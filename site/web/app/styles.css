@@ -797,3 +797,8 @@ html,body,.app-shell,.feed-tabs,.bottom-nav,.sheet,.splash{background:#FFFFFF}
 .vs-page{position:relative}
 .vs-rail{bottom:calc(48px + var(--safe-bottom))}
 .vs-body{padding-right:44px}
+
+/* Background: a soft neutral white (no yellow) that is easier on the eyes than pure white.
+   Cards, buttons and fields stay pure white so they sit gently on top. Change --bg here to adjust everything. */
+:root{--bg:#FAFAFA;--paper:#FAFAFA}
+html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.reader-foot,.feed-scroll,.imm-scroll,.screen{background:var(--bg)}
