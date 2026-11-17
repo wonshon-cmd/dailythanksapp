@@ -538,5 +538,6 @@
   "col.kTitle.meditation": "reflexiones",
   "col.kTitle.prayer": "oraciones",
   "col.kTitle.all": "momentos",
-  "col.hintP": "{n} imágenes · desliza para verlas. Las notas privadas no se incluyen."
+  "col.hintP": "{n} imágenes · desliza para verlas. Las notas privadas no se incluyen.",
+  "draft.saved": "Guardado"
 }

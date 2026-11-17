@@ -1022,3 +1022,20 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .card-page{position:relative}
 .card-page .card-close{bottom:calc(96px + var(--safe-bottom))}
 @media (max-height:700px){.card-page .card-close{bottom:64px}}
+/* auto-save note under a writing box */
+.draft-saved{margin:4px 2px 0;font-size:11.5px;color:#A9AEB1;text-align:right;transition:opacity .6s}
+.draft-saved.gone{opacity:0}
+/* read-through gauge (Bible picker) */
+.rg{display:flex;align-items:center;gap:16px;padding:12px 20px;border-bottom:1px solid var(--line)}
+.rg-dial{width:112px;height:62px;flex:none}
+.rg-track,.rg-fill{fill:none;stroke-width:9;stroke-linecap:round}
+.rg-track{stroke:#ECEDEE}
+.rg-fill{stroke:#8A9094}
+.rg-pct{font-size:19px;font-weight:500;fill:var(--ink);text-anchor:middle;font-family:inherit}
+.rg-side{flex:1;min-width:0}
+.rg-n{margin:0 0 6px;font-size:13px;color:var(--ink)}
+.rg-row{display:flex;align-items:center;gap:8px;margin:4px 0 0;font-size:11.5px;color:#8E9396}
+.rg-row span{width:58px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rg-row i{flex:1;height:4px;border-radius:4px;background:#ECEDEE;overflow:hidden}
+.rg-row b{display:block;height:100%;background:#C9CDD0}
+.rg-row small{font-size:11px;color:#A9AEB1;white-space:nowrap}
