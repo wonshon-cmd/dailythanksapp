@@ -107,5 +107,27 @@
       "ko": "생명의 삶"
     }
   },
-  "_help_qt": "qtPlan: today's passage per language (YYYY-MM-DD → reference), filled every day by .github/workflows/daily-passage.yml (tools/fetch-daily-passage.py): ko 생명의 삶, en Our Daily Bread, es Nuestro Pan Diario. Only the reference is stored. You can also type a date here by hand; a hand-typed date wins until the next run changes it."
+  "_help_qt": "qtPlan: today's passage per language (YYYY-MM-DD → reference), filled every day by .github/workflows/daily-passage.yml (tools/fetch-daily-passage.py): ko 생명의 삶, en Our Daily Bread, es Nuestro Pan Diario. Only the reference is stored. You can also type a date here by hand; a hand-typed date wins until the next run changes it.",
+  "ipNotice": {
+    "_comment": "Turn on only after filing. Each item needs its application number, e.g. 30-2026-0001234 (KR design), 10-2026-0005678 (KR patent), US 63/123,456 (US provisional).",
+    "show": false,
+    "items": [
+      {
+        "label": {
+          "ko": "디자인 출원",
+          "en": "Design pending",
+          "es": "Diseño en trámite"
+        },
+        "no": ""
+      },
+      {
+        "label": {
+          "ko": "특허 출원",
+          "en": "Patent pending",
+          "es": "Patente en trámite"
+        },
+        "no": ""
+      }
+    ]
+  }
 }

@@ -1475,3 +1475,13 @@ body.capturing #app{filter:blur(18px)}
 .fv-text { font-size: clamp(24px, 6.4vw, 30px); line-height: 1.65; color: #16191c; margin: 18px 0 0; letter-spacing: -.01em; text-wrap: pretty; }
 .fv-ref { display: flex; gap: 10px; align-items: baseline; margin-top: 22px; font-size: 14px; color: #6b7075; }
 .fv-ref span { font-size: 12px; color: #a4a9ac; font-variant-numeric: tabular-nums; }
+.splash-ip { display: block; margin-top: 4px; font-size: 10px; color: #b4b8ba; }
+/* opening cards: small source label, "what is this", turn-off links */
+.why-btn { border: 0; background: none; padding: 0; font: inherit; cursor: pointer; text-align: left; }
+.why-i { display: inline-grid; place-items: center; width: 14px; height: 14px; margin-left: 6px; border-radius: 50%; border: 1px solid #c6c9cc; font-size: 9px; font-style: normal; color: #9aa0a6; vertical-align: 1px; }
+.fv-src { display: block; margin-bottom: 10px; font-size: 11px; letter-spacing: .02em; color: #a4a9ac; }
+.fo-links { display: flex; gap: 6px; justify-content: center; margin: 28px 0 0; font-size: 12px; color: #b4b8ba; }
+.post-body .fo-links { justify-content: flex-start; }
+.fo-links button { border: 0; background: none; padding: 4px 2px; font: inherit; color: #9aa0a6; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #d6d9db; }
+.why-q { font-size: 16px; }
+.post.imm > .fo-links { position: absolute; left: 34px; bottom: calc(96px + var(--safe-bottom, 0px)); margin: 0; }
