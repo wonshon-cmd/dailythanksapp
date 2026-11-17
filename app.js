@@ -1737,7 +1737,13 @@ async function fillMedPassage() {
   try {
     const r = p.ref, verses = await fetchChapter(r.b, r.c);
     const pick = verses.filter(x => !r.v || (x.v >= r.v && x.v <= (r.v2 || r.v)));
-    const el = box.querySelector('.mp-text'); if (el) el.innerHTML = pick.map(x => `<span class="mp-v"><sup>${x.v}</sup>${esc(x.text)}</span>`).join(' ');
+    // one verse at a time: swipe (or tap the arrows) to turn
+    const el = box.querySelector('.mp-text'); if (!el) return;
+    el.classList.add('mp-cards');
+    el.innerHTML = `<div class="mp-track">${pick.map(x => `<p class="mp-card"><span>${esc(x.text)}</span></p>`).join('')}</div>
+      <div class="mp-nav"><button type="button" class="mp-arrow" data-action="mp-prev" aria-label="‹">‹</button><span class="mp-count">${refText({ b: r.b, c: r.c, v: pick[0]?.v, v2: pick[0]?.v })} · 1/${pick.length}</span><button type="button" class="mp-arrow" data-action="mp-next" aria-label="›">›</button></div>`;
+    const track = el.querySelector('.mp-track'), count = el.querySelector('.mp-count');
+    track.addEventListener('scroll', () => { const i = Math.round(track.scrollLeft / track.clientWidth); const x = pick[i]; if (x) count.textContent = `${refText({ b: r.b, c: r.c, v: x.v, v2: x.v })} · ${i + 1}/${pick.length}`; }, { passive: true });
   } catch { const el = box.querySelector('.mp-text'); if (el) el.textContent = t('rd.offline'); }
 }
 function finishCompose(message) {
@@ -2584,6 +2590,8 @@ const actions = {
   'set-lang': id => setLang(id),
   like, share, 'send-group': sendToGroup, reflect,
   'pick-kind': id => { state.tyName = $('#ty-name')?.value || state.tyName; if (id !== 'meditation') { state.medRef = null; state.medSource = null; } compose(id, state.challenge, $('#gratitude-text')?.value || ''); },
+  'mp-next': () => { const tr = $('.mp-track'); if (tr) tr.scrollBy({ left: tr.clientWidth, behavior: 'smooth' }); },
+  'mp-prev': () => { const tr = $('.mp-track'); if (tr) tr.scrollBy({ left: -tr.clientWidth, behavior: 'smooth' }); },
   'mp-load': () => { const r = parseRef($('#mp-ref')?.value); if (!r) { $('#mp-ref')?.focus(); toast(t('devo.bad')); return; } state.medRef = r; state.medSource = ''; fillMedPassage(); },
   'mp-change': () => { state.medRef = null; state.medSource = null; const box = $('#med-passage'); if (box) box.innerHTML = `<div class="mp-pick"><input id="mp-ref" class="field" placeholder="${esc(t('devo.ph'))}"><button type="button" class="secondary" data-action="mp-load">${t('mp.load')}</button></div>`; },
   'vis-mode': pair => { const [key, m] = pair.split('|'); visOf(key).mode = m; updateVis(key); },
