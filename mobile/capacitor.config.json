@@ -6,7 +6,7 @@
   "ios": {
     "contentInset": "never",
     "backgroundColor": "#FFFFFF",
-    "scheme": "Daily Journey",
+    "scheme": "App",
     "webContentsDebuggingEnabled": false,
     "limitsNavigationsToAppBoundDomains": false
   },

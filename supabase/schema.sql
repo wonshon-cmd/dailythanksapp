@@ -90,6 +90,13 @@ create table if not exists posts (
   created_at timestamptz not null default now(),
   check ((scope = 'group') = (group_id is not null))
 );
+-- added later (safe to run again on an existing database)
+alter table posts add column if not exists hidden boolean not null default false;   -- set when 3 people report a post
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'posts_private_no_text') then
+    alter table posts add constraint posts_private_no_text check (scope <> 'private' or text is null) not valid;   -- private posts: sealed copy only
+  end if;
+end $$;
 create index if not exists posts_group on posts (group_id, created_at desc);
 create table if not exists reactions (
   post_id uuid references posts on delete cascade,
@@ -157,7 +164,9 @@ drop policy if exists "me" on profiles;
 create policy "me" on profiles for all using (id = auth.uid()) with check (id = auth.uid());
 drop policy if exists "people in my groups" on profiles;
 create policy "people in my groups" on profiles for select using (exists (
-  select 1 from group_members a join group_members b on a.group_id = b.group_id where a.user_id = auth.uid() and b.user_id = profiles.id and a.status = 'active'));
+  select 1 from group_members a join group_members b on a.group_id = b.group_id
+  where a.user_id = auth.uid() and a.status = 'active' and b.user_id = profiles.id
+    and (b.status = 'active' or is_leader(a.group_id))));   -- people waiting for approval: only the group's leaders see their name
 
 drop policy if exists "church owner" on churches;
 create policy "church owner" on churches for all using (owner = auth.uid()) with check (owner = auth.uid());
@@ -187,18 +196,19 @@ drop policy if exists "leave group" on group_members;
 create policy "leave group" on group_members for delete using (user_id = auth.uid());
 
 drop policy if exists "read posts" on posts;
-create policy "read posts" on posts for select using (author = auth.uid() or scope = 'public' or (scope = 'group' and is_member(group_id)));
+create policy "read posts" on posts for select using (author = auth.uid() or (not hidden and (scope = 'public' or (scope = 'group' and is_member(group_id)))));
 drop policy if exists "write own posts" on posts;
 create policy "write own posts" on posts for insert with check (author = auth.uid() and (scope <> 'group' or is_member(group_id)));
 drop policy if exists "edit own posts" on posts;
-create policy "edit own posts" on posts for update using (author = auth.uid());
+create policy "edit own posts" on posts for update using (author = auth.uid()) with check (author = auth.uid() and (scope <> 'group' or is_member(group_id)));
 drop policy if exists "delete own posts" on posts;
 create policy "delete own posts" on posts for delete using (author = auth.uid());
 
 drop policy if exists "read reactions" on reactions;
 create policy "read reactions" on reactions for select using (exists (select 1 from posts p where p.id = post_id));   -- posts' own rules decide which
 drop policy if exists "my reactions" on reactions;
-create policy "my reactions" on reactions for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+create policy "my reactions" on reactions for all using (user_id = auth.uid())
+  with check (user_id = auth.uid() and exists (select 1 from posts p where p.id = post_id));   -- the posts rule decides which posts you can see
 
 -- (a security-definer helper, so the two tables' rules don't call each other in a loop)
 create or replace function in_challenge(cid uuid) returns boolean language sql stable security definer set search_path = public as $$
@@ -212,7 +222,15 @@ create policy "own challenges" on challenges for all using (owner = auth.uid()) 
 drop policy if exists "read challenge members" on challenge_members;
 create policy "read challenge members" on challenge_members for select using (in_challenge(challenge_id));
 drop policy if exists "my challenge progress" on challenge_members;
-create policy "my challenge progress" on challenge_members for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+create policy "my challenge progress" on challenge_members for select using (user_id = auth.uid());
+drop policy if exists "update my progress" on challenge_members;
+create policy "update my progress" on challenge_members for update using (user_id = auth.uid()) with check (user_id = auth.uid());
+drop policy if exists "leave challenge" on challenge_members;
+create policy "leave challenge" on challenge_members for delete using (user_id = auth.uid());
+drop policy if exists "join own or group challenge" on challenge_members;
+create policy "join own or group challenge" on challenge_members for insert with check (user_id = auth.uid() and exists (
+  select 1 from challenges c where c.id = challenge_id and (c.owner = auth.uid() or (c.group_id is not null and is_member(c.group_id)))));
+-- anyone else joins only through join_challenge(code), which checks the invite code
 
 drop policy if exists "leaders: meetings" on meetings;
 create policy "leaders: meetings" on meetings for all using (is_leader(group_id)) with check (is_leader(group_id));
@@ -259,6 +277,18 @@ create table if not exists reports (
   created_at timestamptz not null default now()
 );
 alter table reports alter column reporter drop not null;
+create unique index if not exists reports_once on reports (reporter, post_id);   -- one report per person per post
+
+-- three different people report a post → it is hidden from everyone but its author until the owner reviews it
+create or replace function hide_reported_post() returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  if new.post_id is not null and (select count(distinct reporter) from reports where post_id = new.post_id and status = 'open') >= 3 then
+    update posts set hidden = true where id = new.post_id;
+  end if;
+  return new;
+end $$;
+drop trigger if exists on_report on reports;
+create trigger on_report after insert on reports for each row execute function hide_reported_post();
 alter table reports enable row level security;
 drop policy if exists "file a report" on reports;
 create policy "file a report" on reports for insert with check (reporter = auth.uid());

@@ -42,7 +42,8 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (incl
 - No vendemos tus datos.
 - Solo los comparten nuestros proveedores, para prestar el Servicio (Supabase, Google, Microsoft, Apple y, en funciones opcionales, Anthropic y un proveedor de reconocimiento de voz: NAVER Cloud, Returnzero u OpenAI, según el idioma), o cuando la ley lo exige.
 - Los datos viajan cifrados.
-- **Cifrado de extremo a extremo:** tus notas privadas y ajustes se cifran en tu dispositivo antes de guardarse en nuestros servidores. La llave queda en tu dispositivo, así que ni nosotros podemos leerlas. Las publicaciones del grupo se cifran con la llave del grupo, que solo viaja dentro del enlace de invitación y nunca llega a nuestros servidores. Solo lo que compartes con “Todos” puede ser leído por nosotros, para operar el servicio y atender reportes.
+- **Notas solo para ti:** se bloquean (cifran) en tu dispositivo y no se envían a nuestros servidores. La llave queda en tu dispositivo; ni nosotros podemos leerlas.
+- **Lo que compartes con una comunidad o con todos:** se guarda en nuestros servidores (Supabase). Las reglas de acceso permiten leerlo solo a los miembros de esa comunidad (o a usuarios registrados). No tiene cifrado de extremo a extremo, así que podemos leerlo para operar el servicio y atender reportes.
 - Las publicaciones del grupo de otras personas no se pueden compartir ni copiar en la app, y en Android se bloquean las capturas de pantalla (en iPhone la pantalla se oculta mientras se graba).
 
 ## 5. Tus derechos
