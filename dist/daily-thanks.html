@@ -3765,7 +3765,7 @@ const actions = {
   },
   'open-saved-verse': k => { const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
   'verse-read': ref => { const r = parseRef(ref); openReader(r ? { ...r } : {}); },
-  'reader-close': () => closeReader(),
+  'reader-close': () => { closeReader(); if (state.immersive) toggleFullscreen(); }, // ✕ goes to the regular app; swiping right still returns to the feed
   'reader-pick': () => readerPicker(),
   'reader-book': b => chapterPicker(+b),
   'reader-go': bc => { const [b, c] = bc.split(':').map(Number); close(); openReader({ b, c, group: state.reader?.group }); },
