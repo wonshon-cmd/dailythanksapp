@@ -1064,5 +1064,17 @@
   "ps.reports": "Notas del líder",
   "ps.members": "{n} personas",
   "dash.att": "Asistencia {p}%",
-  "dash.meet": "{n} reuniones este mes"
+  "dash.meet": "{n} reuniones este mes",
+  "us.title": "Uso",
+  "us.day": "Resúmenes hoy",
+  "us.week": "Resúmenes esta semana",
+  "us.space": "Almacenamiento",
+  "us.reset": "Se recarga en {t}",
+  "us.full": "Agotado",
+  "us.more": "Más espacio",
+  "us.h": "{n} h",
+  "us.m": "{n} min",
+  "us.d": "{n} días",
+  "us.dayHit": "Ya usaste los resúmenes de hoy. Seguirá en {t}. Tu grabación está guardada.",
+  "us.weekHit": "Ya usaste los resúmenes de esta semana. Seguirá en {t}. Tu grabación está guardada."
 }

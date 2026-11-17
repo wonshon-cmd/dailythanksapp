@@ -1534,6 +1534,16 @@ body.capturing #app{filter:blur(18px)}
 .cat-h { margin-top: 18px; }
 .ps-last { margin: 6px 0 0; font-size: 13px; line-height: 1.6; color: #4a4f54; } .ps-last small { display: block; color: #9aa0a6; }
 .ps-notes { margin-top: 6px; font-size: 13px; } .ps-notes summary { color: #6b7075; cursor: pointer; } .ps-notes p { margin: 4px 0; }
+/* usage meter: small and quiet */
+.us-title { font-size: 15px; font-weight: 500; color: #6b7075; }
+.us { display: grid; gap: 14px; padding-bottom: 6px; }
+.us-row { display: grid; gap: 5px; }
+.us-top { display: flex; justify-content: space-between; font-size: 12px; color: #6b7075; }
+.us-n { font-variant-numeric: tabular-nums; color: #9aa0a6; }
+.us-bar { display: block; height: 4px; border-radius: 2px; background: #ececec; overflow: hidden; }
+.us-bar b { display: block; height: 100%; background: #8a9094; border-radius: 2px; }
+.us-row small { font-size: 11px; color: #a4a9ac; }
+.us-more { justify-self: start; font-size: 12px; color: #8a8f94; padding: 0; }
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1698,6 +1708,7 @@ const STR = {
     'cu.kick': "읽기가 밀렸어요", 'cu.title': "{n}일 밀렸어요. 괜찮아요.", 'cu.sub': "남은 {d}일에 나눠서 하루 {per}장씩 읽을까요? 끝나는 날은 그대로예요.", 'cu.yes': "나눠서 읽기", 'cu.no': "그대로 둘게요", 'cu.done': "남은 날에 고르게 나눴어요. 오늘은 {r}", 'cu.short': "{n}일 밀림 · 남은 날에 나누기",
     'smd.title': "{n}님의 묵상", 'smd.someone': "누군가의 묵상", 'smd.read': "이 본문 읽기", 'smd.write': "나도 묵상 쓰기", 'smd.bad': "링크를 열지 못했어요",
     'ft.leader': "소그룹 리더 도구", 'ft.leaderSub': "순모임 진행·녹음 요약, 출석, 순원 리포트, 다락방·교회 대시보드, 목사님 보기 링크", 'ld.tools': "순장 도구", 'ld.meet': "순모임 시작", 'ld.reports': "순원 리포트", 'ld.past': "지난 순모임", 'ld.live': "지금 순모임 중 · {r}", 'ld.join': "함께 보기", 'mt.title': "순모임 · {d}", 'mt.pass': "오늘 나눌 본문 (순원들이 함께 봐요)", 'mt.share': "순원들과 본문 함께 보기", 'mt.shared': "순원들 화면에 본문이 열려요", 'mt.attend': "출석", 'mt.me': "나 (순장)", 'mt.notes': "메모", 'mt.save': "순모임 저장", 'mt.view': "순모임 · {d}", 'mt.att': "출석 {n}/{t}", 'mt.absent': "불참: {names}", 'mt.byMember': "순원별 나눔", 'mt.shareL': "나눔", 'mt.prayL': "기도제목", 'mt.prayer': "함께 기도할 것", 'mt.next': "다음에", 'mt.busy': "순모임을 받아 적고 순원별로 정리하고 있어요…", 'mt.pending': "인터넷에 연결되면 받아 적고 순원별로 정리해요.", 'mt.none': "아직 순모임 기록이 없어요.", 'mt.saved': "순모임을 저장했어요", 'rp.title': "{name} 리포트", 'rp.attend': "순모임 출석", 'rp.shared': "순모임에서 나눈 것", 'rp.prayers': "기도제목", 'rp.notes': "순장 메모", 'rp.add': "메모 남기기", 'rp.ph': "이번 주 이 순원을 위해 기억할 것 (순장과 목사님만 봐요)", 'rp.pick': "누구의 리포트를 볼까요?", 'rp.none': "아직 없어요", 'cat.set': "다락방 · 분류", 'cat.ph': "예: 1다락방, 청년부", 'cat.none': "분류 없음", 'cat.rename': "이름 바꾸기", 'cat.namePh': "소그룹 이름", 'ps.link': "목사님께 보기 링크", 'ps.desc': "지금 상태(출석, 이번 주 나눔, 순모임 요약, 순장 메모)를 담은 링크예요. 받은 분은 앱에서 대시보드로 봐요. 링크를 가진 사람은 누구나 볼 수 있으니 목사님께만 보내 주세요.", 'ps.title': "{c} 대시보드", 'ps.asof': "{d} 기준", 'ps.att4': "최근 출석", 'ps.lastMeet': "지난 순모임", 'ps.reports': "순장 메모", 'ps.members': "{n}명", 'dash.att': "출석 {p}%", 'dash.meet': "이번 달 순모임 {n}번",
+    'us.title': "사용량", 'us.day': "오늘 자동 요약", 'us.week': "이번 주 자동 요약", 'us.space': "저장 공간", 'us.reset': "{t} 후 다시 채워져요", 'us.full': "다 썼어요", 'us.more': "공간 늘리기", 'us.h': "{n}시간", 'us.m': "{n}분", 'us.d': "{n}일", 'us.dayHit': "오늘 자동 요약을 다 썼어요. {t} 후에 이어서 정리해요. 녹음은 그대로 저장돼 있어요.", 'us.weekHit': "이번 주 자동 요약을 다 썼어요. {t} 후에 이어서 정리해요. 녹음은 그대로 저장돼 있어요.",
     'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
@@ -1831,6 +1842,7 @@ const STR = {
     'cu.kick': "Fell behind", 'cu.title': "{n} days behind. That’s okay.", 'cu.sub': "Spread the rest over the {d} days left — about {per} chapters a day? The end date stays the same.", 'cu.yes': "Spread it out", 'cu.no': "Leave it", 'cu.done': "Spread evenly over the days left. Today: {r}", 'cu.short': "{n} days behind · spread the rest",
     'smd.title': "{n}’s reflection", 'smd.someone': "A reflection", 'smd.read': "Read this passage", 'smd.write': "Write my own", 'smd.bad': "Couldn’t open that link",
     'ft.leader': "Small-group leader tools", 'ft.leaderSub': "Run meetings (recorded and summarized), attendance, member reports, group and church dashboards, a view link for your pastor", 'ld.tools': "Leader tools", 'ld.meet': "Start a meeting", 'ld.reports': "Member reports", 'ld.past': "Past meetings", 'ld.live': "Meeting now · {r}", 'ld.join': "Read along", 'mt.title': "Meeting · {d}", 'mt.pass': "Today’s passage (everyone reads along)", 'mt.share': "Open the passage for everyone", 'mt.shared': "The passage opens on everyone’s screen", 'mt.attend': "Attendance", 'mt.me': "Me (leader)", 'mt.notes': "Notes", 'mt.save': "Save meeting", 'mt.view': "Meeting · {d}", 'mt.att': "Attended {n}/{t}", 'mt.absent': "Absent: {names}", 'mt.byMember': "By member", 'mt.shareL': "Shared", 'mt.prayL': "Prayer request", 'mt.prayer': "Pray together for", 'mt.next': "Next time", 'mt.busy': "Writing out the meeting and sorting it by member…", 'mt.pending': "It will be written out and sorted by member once you’re online.", 'mt.none': "No meetings yet.", 'mt.saved': "Meeting saved", 'rp.title': "{name} — report", 'rp.attend': "Meeting attendance", 'rp.shared': "What they shared", 'rp.prayers': "Prayer requests", 'rp.notes': "Leader notes", 'rp.add': "Add a note", 'rp.ph': "Something to remember for them this week (only you and your pastor see this)", 'rp.pick': "Whose report?", 'rp.none': "Nothing yet", 'cat.set': "Category", 'cat.ph': "e.g. Area 1, Young adults", 'cat.none': "No category", 'cat.rename': "Rename", 'cat.namePh': "Group name", 'ps.link': "View link for your pastor", 'ps.desc': "A link with where things stand now (attendance, this week’s sharing, meeting summaries, leader notes). It opens as a dashboard in the app. Anyone with the link can see it — send it only to your pastor.", 'ps.title': "{c} dashboard", 'ps.asof': "As of {d}", 'ps.att4': "Recent attendance", 'ps.lastMeet': "Last meeting", 'ps.reports': "Leader notes", 'ps.members': "{n} people", 'dash.att': "Attendance {p}%", 'dash.meet': "{n} meetings this month",
+    'us.title': "Usage", 'us.day': "Summaries today", 'us.week': "Summaries this week", 'us.space': "Storage", 'us.reset': "Refills in {t}", 'us.full': "Used up", 'us.more': "Get more space", 'us.h': "{n} h", 'us.m': "{n} min", 'us.d': "{n} days", 'us.dayHit': "You’ve used today’s summaries. It will continue in {t}. Your recording is saved.", 'us.weekHit': "You’ve used this week’s summaries. It will continue in {t}. Your recording is saved.",
     'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
@@ -2222,6 +2234,7 @@ const STR = {
     'cu.kick': "Te atrasaste", 'cu.title': "{n} días de atraso. No pasa nada.", 'cu.sub': "¿Repartimos lo que falta en los {d} días que quedan, unos {per} capítulos al día? La fecha final no cambia.", 'cu.yes': "Repartir", 'cu.no': "Dejarlo así", 'cu.done': "Repartido en los días que quedan. Hoy: {r}", 'cu.short': "{n} días de atraso · repartir",
     'smd.title': "Reflexión de {n}", 'smd.someone': "Una reflexión", 'smd.read': "Leer este pasaje", 'smd.write': "Escribir la mía", 'smd.bad': "No se pudo abrir el enlace",
     'ft.leader': "Herramientas para líderes", 'ft.leaderSub': "Reuniones (grabadas y resumidas), asistencia, informes por miembro, paneles de grupo e iglesia, enlace para tu pastor", 'ld.tools': "Herramientas de líder", 'ld.meet': "Empezar reunión", 'ld.reports': "Informes de miembros", 'ld.past': "Reuniones anteriores", 'ld.live': "Reunión ahora · {r}", 'ld.join': "Leer juntos", 'mt.title': "Reunión · {d}", 'mt.pass': "Pasaje de hoy (todos lo leen juntos)", 'mt.share': "Abrir el pasaje para todos", 'mt.shared': "El pasaje se abre en la pantalla de todos", 'mt.attend': "Asistencia", 'mt.me': "Yo (líder)", 'mt.notes': "Notas", 'mt.save': "Guardar reunión", 'mt.view': "Reunión · {d}", 'mt.att': "Asistieron {n}/{t}", 'mt.absent': "Ausentes: {names}", 'mt.byMember': "Por miembro", 'mt.shareL': "Compartió", 'mt.prayL': "Petición", 'mt.prayer': "Oremos por", 'mt.next': "Para la próxima", 'mt.busy': "Transcribiendo la reunión y ordenándola por miembro…", 'mt.pending': "Se transcribirá y ordenará por miembro cuando tengas conexión.", 'mt.none': "Aún no hay reuniones.", 'mt.saved': "Reunión guardada", 'rp.title': "Informe de {name}", 'rp.attend': "Asistencia", 'rp.shared': "Lo que compartió", 'rp.prayers': "Peticiones", 'rp.notes': "Notas del líder", 'rp.add': "Añadir nota", 'rp.ph': "Algo para recordar por esta persona (solo tú y tu pastor lo ven)", 'rp.pick': "¿De quién es el informe?", 'rp.none': "Nada aún", 'cat.set': "Categoría", 'cat.ph': "p. ej. Zona 1, Jóvenes", 'cat.none': "Sin categoría", 'cat.rename': "Cambiar nombre", 'cat.namePh': "Nombre del grupo", 'ps.link': "Enlace para tu pastor", 'ps.desc': "Un enlace con cómo van las cosas (asistencia, lo compartido esta semana, resúmenes de reuniones, notas). Se abre como panel en la app. Cualquiera con el enlace puede verlo: envíalo solo a tu pastor.", 'ps.title': "Panel de {c}", 'ps.asof': "Al {d}", 'ps.att4': "Asistencia reciente", 'ps.lastMeet': "Última reunión", 'ps.reports': "Notas del líder", 'ps.members': "{n} personas", 'dash.att': "Asistencia {p}%", 'dash.meet': "{n} reuniones este mes",
+    'us.title': "Uso", 'us.day': "Resúmenes hoy", 'us.week': "Resúmenes esta semana", 'us.space': "Almacenamiento", 'us.reset': "Se recarga en {t}", 'us.full': "Agotado", 'us.more': "Más espacio", 'us.h': "{n} h", 'us.m': "{n} min", 'us.d': "{n} días", 'us.dayHit': "Ya usaste los resúmenes de hoy. Seguirá en {t}. Tu grabación está guardada.", 'us.weekHit': "Ya usaste los resúmenes de esta semana. Seguirá en {t}. Tu grabación está guardada.",
     'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
@@ -3905,9 +3918,26 @@ const noteQuota = () => {
   if (state.snOnline && state.snQuota?.unit === 'bytes') return state.snQuota;
   const plan = data.settings.biblePlan && data.settings.biblePlan.until > new Date().toISOString() ? data.settings.biblePlan : null;
   const kept = (data.sermonNotes || []).filter(n => !n.manual || n.ai || n.rec), month = kept.filter(n => n.date >= daysAgo(30)).length;
-  return { plan: plan?.plan || 'free', used: kept.reduce((x, n) => x + noteBytes(n), 0), limit: plan ? PAID_BYTES : FREE_BYTES, unit: 'bytes', monthUsed: month, monthLimit: plan ? NOTE_FAIR : null };
+  const made = (data.sermonNotes || []).filter(n => n.ai || n.rec).concat((data.meetings || []).filter(m => m.rec));
+  return { plan: plan?.plan || 'free', used: kept.reduce((x, n) => x + noteBytes(n), 0), limit: plan ? PAID_BYTES : FREE_BYTES, unit: 'bytes', monthUsed: month, monthLimit: plan ? NOTE_FAIR : null,
+    dayUsed: made.filter(n => n.date === today()).length, dayLimit: plan ? 10 : 3, weekUsed: made.filter(n => n.date >= daysAgo(6)).length, weekLimit: plan ? 40 : 10 };
 };
 const quotaFull = q => q.used >= q.limit || (q.plan !== 'free' && q.monthLimit && q.monthUsed >= q.monthLimit);
+// Usage, Claude-style: tucked away under Settings › Storage, small type, thin bars, when each limit refills.
+const fmtLeft = iso => { const ms = Date.parse(iso || '') - Date.now(); if (!(ms > 0)) return ''; const h = ms / 36e5;
+  return h >= 48 ? t('us.d').replace('{n}', Math.ceil(h / 24)) : h >= 1 ? t('us.h').replace('{n}', Math.ceil(h)) : t('us.m').replace('{n}', Math.max(1, Math.ceil(ms / 6e4))); };
+const fmtBytes = b => b >= 1024 ** 3 ? `${(b / 1024 ** 3).toFixed(b >= 10 * 1024 ** 3 ? 0 : 1)} GB` : b >= 1024 ** 2 ? `${Math.round(b / 1024 ** 2)} MB` : `${Math.max(0, Math.round(b / 1024))} KB`;
+function usageSheet() {
+  const q = noteQuota(), nextMid = (() => { const d = new Date(); d.setHours(24, 0, 0, 0); return d.toISOString(); })(), nextWeek = (() => { const d = new Date(); d.setHours(24, 0, 0, 0); d.setDate(d.getDate() + 6); return d.toISOString(); })();
+  const bar = (label, used, limit, sub) => { const pct = limit ? Math.min(100, Math.round(used / limit * 100)) : 0;
+    return `<div class="us-row"><div class="us-top"><span>${label}</span><span class="us-n">${pct}%</span></div><i class="us-bar"><b style="width:${pct}%"></b></i>${sub ? `<small>${sub}</small>` : ''}</div>`; };
+  const dayLeft = q.dayUsed >= q.dayLimit ? t('us.reset').replace('{t}', fmtLeft(q.dayReset || nextMid)) : '', weekLeft = q.weekUsed >= q.weekLimit ? t('us.reset').replace('{t}', fmtLeft(q.weekReset || nextWeek)) : '';
+  showSheet({ title: `<span class="us-title">${t('us.title')}</span>`, body: `<div class="us">
+    ${bar(t('us.day'), q.dayUsed || 0, q.dayLimit, dayLeft)}
+    ${bar(t('us.week'), q.weekUsed || 0, q.weekLimit, weekLeft)}
+    ${bar(t('us.space'), q.used || 0, q.limit, `${fmtBytes(q.used || 0)} / ${fmtBytes(q.limit)}`)}
+    <button class="link-btn us-more" data-action="pw-open">${t('us.more')}</button></div>` });
+}
 function renderSermons() {
   sermonSync();
   if (state.noteOpen) return renderSermonNote(state.noteOpen);
@@ -4335,7 +4365,8 @@ async function uploadRecording(id, blob) {
     await sapi('POST', `/api/sermons/${rid}/finish`, { title: n.title, preacher: n.preacher, church: n.church || '', passage: n.ref ? refText(n.ref) : '', passageText: n.passageText || '' });
     n.remoteId = rid; save(); state.snChecked = false;
     pollInto(n, rid, () => pending(t('sn.failed')));
-  } catch (e) { if (e?.code === 'quota_full' || e?.code === 'storage_full' || e?.code === 'fair_use') { n.aiBusy = false; n.recPending = true; save(); return paywall(); } pending(t('rec.upFail')); }
+  } catch (e) { if (e?.code === 'daily_limit' || e?.code === 'weekly_limit') return pending(t(e.code === 'daily_limit' ? 'us.dayHit' : 'us.weekHit').replace('{t}', fmtLeft(e.data?.reset) || '24h'));
+    if (e?.code === 'quota_full' || e?.code === 'storage_full' || e?.code === 'fair_use') { n.aiBusy = false; n.recPending = true; save(); return paywall(); } pending(t('rec.upFail')); }
 }
 /* A handwritten note can also get an AI summary. The phone/web app asks our server (Claude, same sermon format);
    in the claude.ai preview, where there's no server, it asks Claude through the page's `sample` capability. */
@@ -4437,7 +4468,7 @@ function renderBibleMe() {
     <p class="gd-label">${t('me.saved')} · ${saved.length}</p>
     <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
     <div class="list" style="margin-top:18px">
-      <button class="list-row" data-action="pw-open"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>
+      <button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>
       <a class="list-row" href="/app/"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('me.thanks')}</span></span></a>
     </div>
   </div></div>`;
@@ -5430,7 +5461,7 @@ function bibleSettings() {
     <p class="field-label">${t('bs.sermon')}</p>
     <div class="list">
       ${row('bs-places', 'people', t('bs.places'), `${places ? `<span class="row-sub">${places}</span>` : ''}${icon('chevron')}`)}
-      ${row('pw-open', 'sparkle', t('bs.sub'), `${almost ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}${icon('chevron')}`)}
+      ${row('usage', 'sparkle', t('bs.sub'), `${almost ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}${icon('chevron')}`)}
     </div>
     <p class="field-label">${t('bs.data')}</p>
     <div class="list">
@@ -6354,6 +6385,7 @@ const actions = {
   'ps-copy': () => copyText(state.inviteMsg),
   'ps-preview': () => { close(); state.pastorView = pastorSnapshot(); render(); },
   'ps-close': () => { state.pastorView = null; if (location.hash.startsWith('#pastor=')) { try { history.replaceState(null, '', location.pathname); } catch {} } render(); },
+  usage: () => usageSheet(),
   'first-off': () => { setPref('firstOff', true); state.firstPrIds = []; toast(t('fo.offDone')); render(0); },
   'first-snooze': () => { setPref('firstUntil', new Date(Date.now() + 864e5).toISOString()); toast(t('fo.snoozed')); render(0); },
   'first-why': id => { const [k, v] = id.split('|'); const c = k === 'plan' ? data.challenges.find(x => x.id === v) : null;

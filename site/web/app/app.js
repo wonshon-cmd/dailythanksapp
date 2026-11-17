@@ -133,6 +133,11 @@ const STR = {
     'fc.prKick': "{g} 기도제목", 'fc.prTitle': "{n}명이 기도를 부탁했어요", 'fc.pray': "기도하러 가기", 'fc.readTitle': "오늘 읽을 곳", 'fc.read': "읽기 시작", 'fc.dayN': "{n}일째", 'fc.write': "오늘 쓰기", 'fc.group': "소그룹",
     'ss.ph': "설교 노트 검색", 'ss.none': "‘{q}’ 검색 결과가 없어요", 'ss.count': "{n}개", 'ss.clear': "지우기", 'ss.inTr': "받아쓰기",
     'fp.kick': "{g} 기도제목 · {i}/{n}", 'fv.kick': "오늘 읽을 곳 · {r}", 'fv.count': "{i} / {n}", 'fv.doneTitle': "오늘 분량을 다 읽었어요", 'fv.done': "읽었어요", 'fv.doneSub': "{name} · {d}일째", 'fv.marked': "오늘 읽기를 채웠어요",
+    'vw.row': "보기 설정", 'vw.rowSub': "앱 열 때 먼저 볼 것, 피드에 보일 것", 'vw.first': "앱을 열면 먼저", 'vw.fPr': "순원 기도제목", 'vw.fVerse': "오늘 읽을 말씀 (읽기 계획)", 'vw.fCh': "오늘의 챌린지", 'vw.howMany': "기도제목 몇 개까지", 'vw.all': "전부", 'vw.pause': "잠시 쉬기", 'vw.on': "켜기", 'vw.h24': "24시간", 'vw.w1': "일주일", 'vw.off': "끄기", 'vw.until': "{d}에 다시 켜져요", 'vw.feed': "피드에 보일 것", 'vw.thanks': "감사", 'vw.prayer': "기도제목", 'vw.med': "묵상", 'vw.strangers': "모르는 사람 글도 보기", 'vw.strangersSub': "끄면 내 글과 소그룹·초대로 연결된 사람 글만 보여요", 'fo.off': "이 화면 끄기", 'fo.h24': "24시간 끄기", 'fo.offDone': "껐어요. 설정 › 보기 설정에서 다시 켤 수 있어요.", 'fo.snoozed': "24시간 동안 쉬어요", 'why.title': "이게 뭐예요?", 'why.pr': "‘{g}’에 새 기도제목이 올라와서, 앱을 열면 먼저 보여 드려요. 한 번 본 기도제목은 다시 맨 앞에 나오지 않아요.", 'why.plan': "‘{name}’ 계획의 오늘 분량이라 먼저 보여 드려요. ({d}/{t}일째)", 'why.settings': "보기 설정", 'emp.title': "아직 함께 나눌 사람이 없어요", 'emp.sub': "소그룹을 만들거나 초대 링크로 사람들을 불러 보세요. 내 글과 연결된 사람 글만 여기 보여요.", 'emp.group': "소그룹 만들기", 'emp.strangers': "모르는 사람 감사도 보기",
+    'cu.kick': "읽기가 밀렸어요", 'cu.title': "{n}일 밀렸어요. 괜찮아요.", 'cu.sub': "남은 {d}일에 나눠서 하루 {per}장씩 읽을까요? 끝나는 날은 그대로예요.", 'cu.yes': "나눠서 읽기", 'cu.no': "그대로 둘게요", 'cu.done': "남은 날에 고르게 나눴어요. 오늘은 {r}", 'cu.short': "{n}일 밀림 · 남은 날에 나누기",
+    'smd.title': "{n}님의 묵상", 'smd.someone': "누군가의 묵상", 'smd.read': "이 본문 읽기", 'smd.write': "나도 묵상 쓰기", 'smd.bad': "링크를 열지 못했어요",
+    'ft.leader': "소그룹 리더 도구", 'ft.leaderSub': "순모임 진행·녹음 요약, 출석, 순원 리포트, 다락방·교회 대시보드, 목사님 보기 링크", 'ld.tools': "순장 도구", 'ld.meet': "순모임 시작", 'ld.reports': "순원 리포트", 'ld.past': "지난 순모임", 'ld.live': "지금 순모임 중 · {r}", 'ld.join': "함께 보기", 'mt.title': "순모임 · {d}", 'mt.pass': "오늘 나눌 본문 (순원들이 함께 봐요)", 'mt.share': "순원들과 본문 함께 보기", 'mt.shared': "순원들 화면에 본문이 열려요", 'mt.attend': "출석", 'mt.me': "나 (순장)", 'mt.notes': "메모", 'mt.save': "순모임 저장", 'mt.view': "순모임 · {d}", 'mt.att': "출석 {n}/{t}", 'mt.absent': "불참: {names}", 'mt.byMember': "순원별 나눔", 'mt.shareL': "나눔", 'mt.prayL': "기도제목", 'mt.prayer': "함께 기도할 것", 'mt.next': "다음에", 'mt.busy': "순모임을 받아 적고 순원별로 정리하고 있어요…", 'mt.pending': "인터넷에 연결되면 받아 적고 순원별로 정리해요.", 'mt.none': "아직 순모임 기록이 없어요.", 'mt.saved': "순모임을 저장했어요", 'rp.title': "{name} 리포트", 'rp.attend': "순모임 출석", 'rp.shared': "순모임에서 나눈 것", 'rp.prayers': "기도제목", 'rp.notes': "순장 메모", 'rp.add': "메모 남기기", 'rp.ph': "이번 주 이 순원을 위해 기억할 것 (순장과 목사님만 봐요)", 'rp.pick': "누구의 리포트를 볼까요?", 'rp.none': "아직 없어요", 'cat.set': "다락방 · 분류", 'cat.ph': "예: 1다락방, 청년부", 'cat.none': "분류 없음", 'cat.rename': "이름 바꾸기", 'cat.namePh': "소그룹 이름", 'ps.link': "목사님께 보기 링크", 'ps.desc': "지금 상태(출석, 이번 주 나눔, 순모임 요약, 순장 메모)를 담은 링크예요. 받은 분은 앱에서 대시보드로 봐요. 링크를 가진 사람은 누구나 볼 수 있으니 목사님께만 보내 주세요.", 'ps.title': "{c} 대시보드", 'ps.asof': "{d} 기준", 'ps.att4': "최근 출석", 'ps.lastMeet': "지난 순모임", 'ps.reports': "순장 메모", 'ps.members': "{n}명", 'dash.att': "출석 {p}%", 'dash.meet': "이번 달 순모임 {n}번",
+    'us.title': "사용량", 'us.day': "오늘 자동 요약", 'us.week': "이번 주 자동 요약", 'us.space': "저장 공간", 'us.reset': "{t} 후 다시 채워져요", 'us.full': "다 썼어요", 'us.more': "공간 늘리기", 'us.h': "{n}시간", 'us.m': "{n}분", 'us.d': "{n}일", 'us.dayHit': "오늘 자동 요약을 다 썼어요. {t} 후에 이어서 정리해요. 녹음은 그대로 저장돼 있어요.", 'us.weekHit': "이번 주 자동 요약을 다 썼어요. {t} 후에 이어서 정리해요. 녹음은 그대로 저장돼 있어요.",
     'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
@@ -262,6 +267,11 @@ const STR = {
     'fc.prKick': "{g} prayer requests", 'fc.prTitle': "{n} asked for prayer", 'fc.pray': "Go pray", 'fc.readTitle': "Today’s reading", 'fc.read': "Start reading", 'fc.dayN': "Day {n}", 'fc.write': "Write today’s", 'fc.group': "Group",
     'ss.ph': "Search sermon notes", 'ss.none': "Nothing found for “{q}”", 'ss.count': "{n} found", 'ss.clear': "Clear", 'ss.inTr': "Transcript",
     'fp.kick': "{g} prayer request · {i}/{n}", 'fv.kick': "Today’s reading · {r}", 'fv.count': "{i} / {n}", 'fv.doneTitle': "That’s today’s reading", 'fv.done': "I read it", 'fv.doneSub': "{name} · day {d}", 'fv.marked': "Today’s reading is done",
+    'vw.row': "What you see", 'vw.rowSub': "What comes first when you open the app, and what’s in the feed", 'vw.first': "When the app opens, first show", 'vw.fPr': "Group prayer requests", 'vw.fVerse': "Today’s reading (plans)", 'vw.fCh': "Today’s challenge", 'vw.howMany': "How many prayer requests", 'vw.all': "All", 'vw.pause': "Take a break", 'vw.on': "On", 'vw.h24': "24 hours", 'vw.w1': "A week", 'vw.off': "Off", 'vw.until': "Back on {d}", 'vw.feed': "In the feed", 'vw.thanks': "Thanks", 'vw.prayer': "Prayer requests", 'vw.med': "Reflections", 'vw.strangers': "Also show people I don’t know", 'vw.strangersSub': "When off, you only see your posts and people you’re connected to through groups and invites", 'fo.off': "Turn this off", 'fo.h24': "Off for 24 hours", 'fo.offDone': "Turned off. Turn it back on in Settings › What you see.", 'fo.snoozed': "Taking a 24-hour break", 'why.title': "What’s this?", 'why.pr': "New prayer requests were shared in ‘{g}’, so they come first when you open the app. Once you’ve seen one, it won’t come first again.", 'why.plan': "It’s today’s part of your ‘{name}’ plan, so it comes first. (Day {d} of {t})", 'why.settings': "What you see", 'emp.title': "No one to share with yet", 'emp.sub': "Start a group or invite people with a link. Only your posts and people you’re connected to show here.", 'emp.group': "Start a group", 'emp.strangers': "Show thanks from people I don’t know",
+    'cu.kick': "Fell behind", 'cu.title': "{n} days behind. That’s okay.", 'cu.sub': "Spread the rest over the {d} days left — about {per} chapters a day? The end date stays the same.", 'cu.yes': "Spread it out", 'cu.no': "Leave it", 'cu.done': "Spread evenly over the days left. Today: {r}", 'cu.short': "{n} days behind · spread the rest",
+    'smd.title': "{n}’s reflection", 'smd.someone': "A reflection", 'smd.read': "Read this passage", 'smd.write': "Write my own", 'smd.bad': "Couldn’t open that link",
+    'ft.leader': "Small-group leader tools", 'ft.leaderSub': "Run meetings (recorded and summarized), attendance, member reports, group and church dashboards, a view link for your pastor", 'ld.tools': "Leader tools", 'ld.meet': "Start a meeting", 'ld.reports': "Member reports", 'ld.past': "Past meetings", 'ld.live': "Meeting now · {r}", 'ld.join': "Read along", 'mt.title': "Meeting · {d}", 'mt.pass': "Today’s passage (everyone reads along)", 'mt.share': "Open the passage for everyone", 'mt.shared': "The passage opens on everyone’s screen", 'mt.attend': "Attendance", 'mt.me': "Me (leader)", 'mt.notes': "Notes", 'mt.save': "Save meeting", 'mt.view': "Meeting · {d}", 'mt.att': "Attended {n}/{t}", 'mt.absent': "Absent: {names}", 'mt.byMember': "By member", 'mt.shareL': "Shared", 'mt.prayL': "Prayer request", 'mt.prayer': "Pray together for", 'mt.next': "Next time", 'mt.busy': "Writing out the meeting and sorting it by member…", 'mt.pending': "It will be written out and sorted by member once you’re online.", 'mt.none': "No meetings yet.", 'mt.saved': "Meeting saved", 'rp.title': "{name} — report", 'rp.attend': "Meeting attendance", 'rp.shared': "What they shared", 'rp.prayers': "Prayer requests", 'rp.notes': "Leader notes", 'rp.add': "Add a note", 'rp.ph': "Something to remember for them this week (only you and your pastor see this)", 'rp.pick': "Whose report?", 'rp.none': "Nothing yet", 'cat.set': "Category", 'cat.ph': "e.g. Area 1, Young adults", 'cat.none': "No category", 'cat.rename': "Rename", 'cat.namePh': "Group name", 'ps.link': "View link for your pastor", 'ps.desc': "A link with where things stand now (attendance, this week’s sharing, meeting summaries, leader notes). It opens as a dashboard in the app. Anyone with the link can see it — send it only to your pastor.", 'ps.title': "{c} dashboard", 'ps.asof': "As of {d}", 'ps.att4': "Recent attendance", 'ps.lastMeet': "Last meeting", 'ps.reports': "Leader notes", 'ps.members': "{n} people", 'dash.att': "Attendance {p}%", 'dash.meet': "{n} meetings this month",
+    'us.title': "Usage", 'us.day': "Summaries today", 'us.week': "Summaries this week", 'us.space': "Storage", 'us.reset': "Refills in {t}", 'us.full': "Used up", 'us.more': "Get more space", 'us.h': "{n} h", 'us.m': "{n} min", 'us.d': "{n} days", 'us.dayHit': "You’ve used today’s summaries. It will continue in {t}. Your recording is saved.", 'us.weekHit': "You’ve used this week’s summaries. It will continue in {t}. Your recording is saved.",
     'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
@@ -649,6 +659,11 @@ const STR = {
     'fc.prKick': "Peticiones de {g}", 'fc.prTitle': "{n} pidieron oración", 'fc.pray': "Ir a orar", 'fc.readTitle': "Lectura de hoy", 'fc.read': "Empezar a leer", 'fc.dayN': "Día {n}", 'fc.write': "Escribir hoy", 'fc.group': "tu grupo",
     'ss.ph': "Buscar notas de sermón", 'ss.none': "No se encontró “{q}”", 'ss.count': "{n} encontradas", 'ss.clear': "Borrar", 'ss.inTr': "Transcripción",
     'fp.kick': "Petición de {g} · {i}/{n}", 'fv.kick': "Lectura de hoy · {r}", 'fv.count': "{i} / {n}", 'fv.doneTitle': "Esa es la lectura de hoy", 'fv.done': "Ya lo leí", 'fv.doneSub': "{name} · día {d}", 'fv.marked': "Lectura de hoy completa",
+    'vw.row': "Qué ves", 'vw.rowSub': "Qué aparece primero al abrir la app y qué hay en el feed", 'vw.first': "Al abrir la app, primero", 'vw.fPr': "Peticiones de oración del grupo", 'vw.fVerse': "Lectura de hoy (planes)", 'vw.fCh': "Reto de hoy", 'vw.howMany': "Cuántas peticiones", 'vw.all': "Todas", 'vw.pause': "Tomar un descanso", 'vw.on': "Activado", 'vw.h24': "24 horas", 'vw.w1': "Una semana", 'vw.off': "Apagado", 'vw.until': "Vuelve el {d}", 'vw.feed': "En el feed", 'vw.thanks': "Gratitud", 'vw.prayer': "Peticiones", 'vw.med': "Reflexiones", 'vw.strangers': "Mostrar también a personas que no conozco", 'vw.strangersSub': "Si está apagado, solo ves lo tuyo y a quienes estás conectado por grupos e invitaciones", 'fo.off': "Apagar esto", 'fo.h24': "Apagar 24 horas", 'fo.offDone': "Apagado. Puedes activarlo en Ajustes › Qué ves.", 'fo.snoozed': "Descanso de 24 horas", 'why.title': "¿Qué es esto?", 'why.pr': "Hay nuevas peticiones en ‘{g}’, por eso aparecen primero al abrir la app. Una vez vista, no vuelve a aparecer primero.", 'why.plan': "Es la porción de hoy de tu plan ‘{name}’, por eso aparece primero. (Día {d} de {t})", 'why.settings': "Qué ves", 'emp.title': "Aún no hay con quién compartir", 'emp.sub': "Crea un grupo o invita a otros con un enlace. Aquí solo aparece lo tuyo y de quienes estás conectado.", 'emp.group': "Crear un grupo", 'emp.strangers': "Ver gratitud de desconocidos",
+    'cu.kick': "Te atrasaste", 'cu.title': "{n} días de atraso. No pasa nada.", 'cu.sub': "¿Repartimos lo que falta en los {d} días que quedan, unos {per} capítulos al día? La fecha final no cambia.", 'cu.yes': "Repartir", 'cu.no': "Dejarlo así", 'cu.done': "Repartido en los días que quedan. Hoy: {r}", 'cu.short': "{n} días de atraso · repartir",
+    'smd.title': "Reflexión de {n}", 'smd.someone': "Una reflexión", 'smd.read': "Leer este pasaje", 'smd.write': "Escribir la mía", 'smd.bad': "No se pudo abrir el enlace",
+    'ft.leader': "Herramientas para líderes", 'ft.leaderSub': "Reuniones (grabadas y resumidas), asistencia, informes por miembro, paneles de grupo e iglesia, enlace para tu pastor", 'ld.tools': "Herramientas de líder", 'ld.meet': "Empezar reunión", 'ld.reports': "Informes de miembros", 'ld.past': "Reuniones anteriores", 'ld.live': "Reunión ahora · {r}", 'ld.join': "Leer juntos", 'mt.title': "Reunión · {d}", 'mt.pass': "Pasaje de hoy (todos lo leen juntos)", 'mt.share': "Abrir el pasaje para todos", 'mt.shared': "El pasaje se abre en la pantalla de todos", 'mt.attend': "Asistencia", 'mt.me': "Yo (líder)", 'mt.notes': "Notas", 'mt.save': "Guardar reunión", 'mt.view': "Reunión · {d}", 'mt.att': "Asistieron {n}/{t}", 'mt.absent': "Ausentes: {names}", 'mt.byMember': "Por miembro", 'mt.shareL': "Compartió", 'mt.prayL': "Petición", 'mt.prayer': "Oremos por", 'mt.next': "Para la próxima", 'mt.busy': "Transcribiendo la reunión y ordenándola por miembro…", 'mt.pending': "Se transcribirá y ordenará por miembro cuando tengas conexión.", 'mt.none': "Aún no hay reuniones.", 'mt.saved': "Reunión guardada", 'rp.title': "Informe de {name}", 'rp.attend': "Asistencia", 'rp.shared': "Lo que compartió", 'rp.prayers': "Peticiones", 'rp.notes': "Notas del líder", 'rp.add': "Añadir nota", 'rp.ph': "Algo para recordar por esta persona (solo tú y tu pastor lo ven)", 'rp.pick': "¿De quién es el informe?", 'rp.none': "Nada aún", 'cat.set': "Categoría", 'cat.ph': "p. ej. Zona 1, Jóvenes", 'cat.none': "Sin categoría", 'cat.rename': "Cambiar nombre", 'cat.namePh': "Nombre del grupo", 'ps.link': "Enlace para tu pastor", 'ps.desc': "Un enlace con cómo van las cosas (asistencia, lo compartido esta semana, resúmenes de reuniones, notas). Se abre como panel en la app. Cualquiera con el enlace puede verlo: envíalo solo a tu pastor.", 'ps.title': "Panel de {c}", 'ps.asof': "Al {d}", 'ps.att4': "Asistencia reciente", 'ps.lastMeet': "Última reunión", 'ps.reports': "Notas del líder", 'ps.members': "{n} personas", 'dash.att': "Asistencia {p}%", 'dash.meet': "{n} reuniones este mes",
+    'us.title': "Uso", 'us.day': "Resúmenes hoy", 'us.week': "Resúmenes esta semana", 'us.space': "Almacenamiento", 'us.reset': "Se recarga en {t}", 'us.full': "Agotado", 'us.more': "Más espacio", 'us.h': "{n} h", 'us.m': "{n} min", 'us.d': "{n} días", 'us.dayHit': "Ya usaste los resúmenes de hoy. Seguirá en {t}. Tu grabación está guardada.", 'us.weekHit': "Ya usaste los resúmenes de esta semana. Seguirá en {t}. Tu grabación está guardada.",
     'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
@@ -676,6 +691,8 @@ const STR = {
 
 /* ---------------- icons (line style) ---------------- */
 const ICONS = {
+  eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
   lines: '<path d="M4 6h16M4 10h16M4 14h10M4 18h13"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
@@ -912,6 +929,8 @@ function syncFeatured() {
     data.posts.unshift({ likes: 0, shares: 0, saves: 0, kind: 'today', date: today(), ...f, scope: 'public', featured: true, mine: false });
   });
 }
+const ipItems = (c = CONTENT) => { const n = c && c.ipNotice; if (!n || n.show !== true || !Array.isArray(n.items)) return [];
+  return n.items.filter(x => x && typeof x.no === 'string' && x.no.trim()).map(x => `${(x.label && (x.label[lang()] || x.label.en)) || 'Patent pending'} ${x.no.trim()}`).slice(0, 4); };
 function applyContent(c, persist = true) {
   if (!c || typeof c !== 'object' || Array.isArray(c)) return false;
   CONTENT = c;
@@ -924,6 +943,10 @@ function applyContent(c, persist = true) {
   if (tag && Array.isArray(tl) && tl.length) tag.innerHTML = tl.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join('');
   const copy = document.querySelector('#splash .splash-copy');
   if (copy && typeof c.copyright === 'string') copy.textContent = c.copyright;
+  // "Patent pending" style notice: only shown once something is really filed (content.json ipNotice.show + numbers).
+  // Showing it before filing would be false marking — keep show: false until there is an application number.
+  const ip = ipItems(c);
+  if (copy && ip.length && !copy.querySelector('.splash-ip')) copy.insertAdjacentHTML('beforeend', `<span class="splash-ip">${ip.map(x => esc(x)).join(' · ')}</span>`);
   return true;
 }
 // One-time messages from the content file: a notice (shown once per id) and "please update" when this build is too old.
@@ -1486,7 +1509,7 @@ function bpVerse(v) {
 function bpSel() {
   const r = state.bp, el = $('#bp-sel'); if (!el) return;
   el.textContent = r.c ? refText({ b: r.b, c: r.c, v: r.v || 0, v2: r.v2 || 0 }) : bookName(r.b);
-  $('#bp-ok').disabled = !r.c || ((r.mode === 'med' || r.mode === 'devo' || r.mode === 'note' || r.mode === 'sermonref') && !r.v);
+  $('#bp-ok').disabled = !r.c || ((r.mode === 'med' || r.mode === 'devo' || r.mode === 'note' || r.mode === 'sermonref' || r.mode === 'meetref') && !r.v);
 }
 function closePicker() { if (!bpEl || bpEl.hidden) return false; bpEl.hidden = true; bpEl.innerHTML = ''; return true; }
 function bpDone() {
@@ -1500,6 +1523,7 @@ function bpDone() {
     if (chIndex(...f) > chIndex(...tt)) { if (r.mode === 'chfrom') state.chTo = [ref.b, BOOKS[ref.b - 1][4]]; else state.chFrom = [ref.b, 1]; }
     redrawCh(); return;
   }
+  if (r.mode === 'meetref') { state.snRef = ref; const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); ['#sn-pv', '#mt-live'].forEach(s2 => { const x = $(s2); if (x) x.hidden = false; }); recPaint(true); return; }
   if (r.mode === 'sermonref') { state.snRef = ref; const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); const pvb = $('#sn-pv'); if (pvb) pvb.hidden = false;
     state.snPassageText = passageVerses(ref).then(vs => vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')).catch(() => ''); recPaint(true); return; }
   if (r.mode === 'note') { closeReader(); state.medRef = ref; state.medSource = ''; state.medNote = true; compose('meditation', state.challenge); return; }
@@ -1684,7 +1708,9 @@ function loginCard() {
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <p class="fine-print">${t('login.demo')}</p></div></article>`;
 }
-const cardFor = item => item.type === 'planread' ? `<article class="post card-page plan-load" data-id="${esc(item.c.id)}"><div class="card-inner"><div class="post-kind">${icon('book')}<span>${esc(L(item.c.name) || chName(item.c))}</span></div><p class="hint">${t('rd.loading')}</p></div></article>` : item.type === 'first' ? firstCard(item) : item.type === 'quiz' ? quizCard(item.i) : item.type === 'quizres' ? quizResultCard() : item.type === 'compose' ? composeCard() : item.type === 'verse' ? verseCard(item.v) : item.type === 'camp' ? campaignCard(item.c) : item.type === 'wrecap' ? weekRecapCard(item.n) : loginCard();
+const cardFor = item => item.type === 'empty' ? `<article class="post card-page"><div class="card-inner"><div class="post-kind">${icon('people')}<span>daily thanks</span></div>
+    <p class="card-title">${t('emp.title')}</p><p class="card-sub">${t('emp.sub')}</p>
+    <div class="card-actions"><button class="primary" data-action="new-group">${t('emp.group')}</button><button class="secondary" data-action="emp-strangers">${t('emp.strangers')}</button></div></div></article>` : item.type === 'planread' ? `<article class="post card-page plan-load" data-id="${esc(item.c.id)}"><div class="card-inner"><div class="post-kind">${icon('book')}<span>${esc(L(item.c.name) || chName(item.c))}</span></div><p class="hint">${t('rd.loading')}</p></div></article>` : item.type === 'first' ? firstCard(item) : item.type === 'quiz' ? quizCard(item.i) : item.type === 'quizres' ? quizResultCard() : item.type === 'compose' ? composeCard() : item.type === 'verse' ? verseCard(item.v) : item.type === 'camp' ? campaignCard(item.c) : item.type === 'wrecap' ? weekRecapCard(item.n) : loginCard();
 function bindGateForm() {
   const f = $('#gate-compose'); if (!f) return;
   f.addEventListener('submit', e => {
@@ -1851,18 +1877,32 @@ function quizResultCard() {
 }
 /* What to see first when the app opens: new prayer requests from my group (순원 기도제목), then today's part of a
    challenge or reading plan I haven't done yet. Each one is a card at the very top of the feed. */
+// What-you-see preferences (Settings › What you see). Defaults: opening cards on, feed = me + people I'm connected to.
+const PREF_DEFAULTS = { firstPr: true, firstVerse: true, firstCh: true, firstMax: 5, feedThanks: true, feedPrayer: true, feedMed: true, strangers: false };
+const pref = k => { const v = data.settings.prefs?.[k]; return v === undefined ? PREF_DEFAULTS[k] : v; };
+const setPref = (k, v) => { data.settings.prefs = { ...(data.settings.prefs || {}), [k]: v }; save(); };
+const firstSnoozed = () => data.settings.prefs?.firstOff || (data.settings.prefs?.firstUntil || '') > new Date().toISOString();
+// People I'm connected to: anyone who posts in my groups (and anyone who joined my plans / challenges).
+function connectedKeys() {
+  const keys = new Set(['me']);
+  data.posts.forEach(p => { if (p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))) keys.add(authorKey(p)); });
+  data.challenges.forEach(c => (c.members || []).forEach(m => keys.add(String(L(m)))));
+  return keys;
+}
 const newGroupPrayers = () => data.posts.filter(p => p.kind === 'prayer' && !p.mine && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))
   && p.date >= daysAgo(6) && !data.prayed.includes(p.id) && !(data.settings.prayerSeen || []).includes(p.id));
 function firstItems() {
   if (!state.openedBefore) return [];   // the very first visit: the thanks feed and its first-visit steps come first
+  if (firstSnoozed()) return [];
   // which requests come first is decided once when the app opens, so they don't vanish while you're looking at them
   if (!state.firstPrIds) state.firstPrIds = newGroupPrayers().sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(p => p.id);
-  const reqs = state.firstPrIds.map(id => data.posts.find(p => p.id === id)).filter(p => p && visible(p));
+  const max = pref('firstMax'), reqs = pref('firstPr') ? state.firstPrIds.map(id => data.posts.find(p => p.id === id)).filter(p => p && visible(p)).slice(0, max || 999) : [];
   const out = reqs.map((p, i) => ({ type: 'post', p, firstPr: { i: i + 1, n: reqs.length } }));   // one request per card, like the thanks feed
   const due = data.challenges.filter(c => !chDone(c) && c.lastDay !== today()).sort((a, b) => (b.start || '').localeCompare(a.start || ''));
-  const plan = due.find(c => c.type === 'bible' && c.plan);
+  const plan = pref('firstVerse') ? due.find(c => c.type === 'bible' && c.plan) : null;
   if (plan) out.push({ type: 'planread', c: plan });                                            // filled with one verse per card below
-  due.filter(c => c !== plan).slice(0, 1).forEach(c => out.push({ type: 'first', kind: 'ch', c }));
+  if (pref('firstCh')) due.filter(c => c !== plan && c.type !== 'bible').slice(0, 1).forEach(c => out.push({ type: 'first', kind: 'ch', c }));
+  if (out.length) out[out.length - 1].lastFirst = true;   // the small "turn off" links go under the last opening card
   return out;
 }
 // Today's portion of a reading plan, as verse cards (one verse per card), then a "done" card.
@@ -1880,9 +1920,11 @@ async function fillPlanCards() {
   if (!document.body.contains(slot) || !verses.length) return;
   const n = verses.length;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };   // a note on a later verse covers what was read so far
-  slot.outerHTML = verses.map((x, i) => { const k = verseKey(x.b, x.c, x.v), liked = (data.verseLikes || []).includes(k), saved = (data.savedVerses || []).some(s => s.key === k);
+  const cu = c.cuDismissed === today() ? '' : catchUpCard(c);
+  slot.outerHTML = cu + verses.map((x, i) => { const k = verseKey(x.b, x.c, x.v), liked = (data.verseLikes || []).includes(k), saved = (data.savedVerses || []).some(s => s.key === k);
     return `<article class="post card-page fv-card" id="v-${x.b}-${x.c}-${x.v}" data-fv="${esc(c.id)}">
-      <div class="card-inner"><div class="post-kind">${icon('book')}<span>${esc(t('fv.kick').replace('{r}', range))}</span></div>
+      <div class="card-inner"><button class="fv-src why-btn" data-action="first-why" data-id="plan|${esc(c.id)}">${esc(L(c.name) || chName(c))} · ${t('fc.dayN').replace('{n}', c.days.length + 1)}<i class="why-i">?</i></button>
+        <div class="post-kind">${icon('book')}<span>${esc(t('fv.kick').replace('{r}', range))}</span></div>
         <p class="vs-text fv-text">${esc(x.text)}</p>
         <p class="fv-ref">${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}<span>${t('fv.count').replace('{i}', i + 1).replace('{n}', n)}</span></p></div>
       <aside class="post-rail">
@@ -1895,7 +1937,7 @@ async function fillPlanCards() {
       <div class="post-kind">${icon('check')}<span>${esc(range)}</span></div>
       <p class="card-title">${t('fv.doneTitle')}</p>
       <p class="card-sub">${esc(t('fv.doneSub').replace('{name}', L(c.name) || chName(c)).replace('{d}', c.days.length + 1))}</p>
-      <div class="card-actions"><button class="primary" data-action="plan-read-done" data-id="${esc(c.id)}">${icon('check')}${t('fv.done')}</button></div></div></article>`;
+      <div class="card-actions"><button class="primary" data-action="plan-read-done" data-id="${esc(c.id)}">${icon('check')}${t('fv.done')}</button></div>${firstOffLinks()}</div></article>`;
 }
 // A prayer request seen as its own card no longer comes first next time.
 let firstSeenObs = null;
@@ -1904,6 +1946,22 @@ function watchFirstPrayers() {
   firstSeenObs = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const id = e.target.dataset.post;
     const seen = data.settings.prayerSeen = data.settings.prayerSeen || []; if (!seen.includes(id)) { seen.push(id); if (seen.length > 300) seen.shift(); clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600); } }), { threshold: 0.6 });
   document.querySelectorAll('[data-firstpr]').forEach(el => firstSeenObs.observe(el));
+}
+const firstOffLinks = () => `<p class="fo-links"><button data-action="first-off">${t('fo.off')}</button><span>·</span><button data-action="first-snooze">${t('fo.h24')}</button></p>`;
+function viewSettings() {
+  const sw = (k, label, sub = '') => `<label class="list-row"><span class="row-main"><span class="row-title">${label}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span><input class="switch" type="checkbox" data-pref="${k}" ${pref(k) ? 'checked' : ''}></label>`;
+  const until = data.settings.prefs?.firstUntil, snoozed = !data.settings.prefs?.firstOff && until > new Date().toISOString();
+  const pause = data.settings.prefs?.firstOff ? 'off' : snoozed ? (new Date(until) - Date.now() > 2 * 864e5 ? 'w1' : 'h24') : 'on';
+  showSheet({ title: t('vw.row'), body: `
+    <p class="field-label">${t('vw.first')}</p>
+    <div class="list">${sw('firstPr', t('vw.fPr'))}${sw('firstVerse', t('vw.fVerse'))}${sw('firstCh', t('vw.fCh'))}</div>
+    <p class="field-label">${t('vw.howMany')}</p>
+    ${seg([['3', '3'], ['5', '5'], ['10', '10'], ['0', t('vw.all')]], 'vw-max', String(pref('firstMax')))}
+    <p class="field-label">${t('vw.pause')}</p>
+    ${seg([['on', t('vw.on')], ['h24', t('vw.h24')], ['w1', t('vw.w1')], ['off', t('vw.off')]], 'vw-pause', pause, 'four')}
+    ${snoozed ? `<p class="hint">${esc(t('vw.until').replace('{d}', new Date(until).toLocaleString(lang(), { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })))}</p>` : ''}
+    <p class="field-label">${t('vw.feed')}</p>
+    <div class="list">${sw('feedThanks', t('vw.thanks'))}${sw('feedPrayer', t('vw.prayer'))}${sw('feedMed', t('vw.med'))}${sw('strangers', t('vw.strangers'), t('vw.strangersSub'))}</div>` });
 }
 function firstCard(it) {
   if (it.kind === 'prayer') {
@@ -1960,11 +2018,161 @@ function renderChurch() {
     <h1 class="gd-name">${esc(ch.name)}</h1>
     <p class="g-people">${t('chu.stats').replace('{g}', gs.length).replace('{m}', members).replace('{t}', todayAll)}</p>
     <div class="gd-row"><button class="secondary" data-action="church-allch">${icon('sparkle')}${t('chu.allCh')}</button><button class="secondary" data-action="new-group">${icon('plus')}${t('chu.newGroup')}</button></div>
+    <button class="secondary block" data-action="ps-link">${icon('share')}${t('ps.link')}</button>
     <button class="list-row sw-row" data-action="church-shared" aria-pressed="${ch.sharedPassage !== false}"><span class="row-main"><span class="row-title">${t('chu.shared')}</span></span><span class="sw ${ch.sharedPassage !== false ? 'on' : ''}"><i></i></span></button>
-    <div class="chu-list">${gs.map(g => { const w = groupWeek(g.id), c = data.challenges.find(x => x.group === g.id), lead = ch.leaders?.[g.id];
-      return `<section class="chu-g"><div class="chu-head"><b>${esc(L(g.name))}</b><span>${t('chu.today').replace('{n}', todayN(g.id)).replace('{t}', groupSize(g.id))}</span></div>
+    ${catGroups(gs).map(([cat, cgs]) => `<p class="gd-label cat-h">${esc(cat || t('cat.none'))} · ${esc(t('ps.members').replace('{n}', cgs.reduce((n, g) => n + groupSize(g.id), 0)))}</p>
+    <div class="chu-list">${cgs.map(g => { const w = groupWeek(g.id), c = data.challenges.find(x => x.group === g.id), lead = ch.leaders?.[g.id], att = attendRate(g.id), mm = meetingsOf(g.id).filter(m => m.date.slice(0, 7) === today().slice(0, 7)).length;
+      return `<section class="chu-g"><div class="chu-head"><b>${esc(L(g.name))}${unseenIn(g.id) ? ' <i class="new-dot"></i>' : ''}</b><span>${t('chu.today').replace('{n}', todayN(g.id)).replace('{t}', groupSize(g.id))}</span></div>
+        ${att != null || mm ? `<p class="chu-sub">${att != null ? esc(t('dash.att').replace('{p}', att)) : ''}${att != null && mm ? ' · ' : ''}${mm ? esc(t('dash.meet').replace('{n}', mm)) : ''}</p>` : ''}
         <p class="chu-sub">${lead ? t('chu.leader').replace('{name}', esc(lead)) : t('chu.noLeader')} · ${t('gs.counts').replace('{t}', w.thanks).replace('{m}', w.meditation).replace('{p}', w.prayer)}${c ? ` · ${esc(chName(c))} ${chDday(c)}` : ''}</p>
-        <div class="chu-acts"><button class="link-btn" data-action="church-leader" data-id="${esc(g.id)}">${t('chu.setLeader')}</button><button class="link-btn" data-action="church-move" data-id="${esc(g.id)}">${t('chu.move')}</button><button class="link-btn" data-action="open-group" data-id="${esc(g.id)}">${t('chu.open')} ›</button></div></section>`; }).join('')}</div>
+        <div class="chu-acts"><button class="link-btn" data-action="church-leader" data-id="${esc(g.id)}">${t('chu.setLeader')}</button><button class="link-btn" data-action="church-move" data-id="${esc(g.id)}">${t('chu.move')}</button><button class="link-btn" data-action="cat-set" data-id="${esc(g.id)}">${t('cat.set')}</button><button class="link-btn" data-action="cat-rename" data-id="${esc(g.id)}">${t('cat.rename')}</button><button class="link-btn" data-action="open-group" data-id="${esc(g.id)}">${t('chu.open')} ›</button></div></section>`; }).join('')}</div>`).join('')}
+  </div></div>`;
+}
+/* ---------------- small-group leader tools (Settings › Features › leader tools) ----------------
+   Meetings: the leader sets the passage (everyone reads along, one verse per page), takes attendance and records;
+   the recording comes back as notes per member. Member reports: attendance, what they shared, prayer requests,
+   the leader's own notes. The church view groups small groups by category; a link shows the pastor a dashboard. */
+const meetingsOf = gid => (data.meetings || []).filter(m => m.gid === gid).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+const memberList = gid => [['me', t('mt.me')], ...groupPeople(gid)];
+const nameOf = (gid, k) => k === 'me' ? t('mt.me') : (data.nicknames?.[k] || (memberList(gid).find(x => x[0] === k) || [])[1] || k);
+function attendRate(gid, n = 4) {
+  const ms = meetingsOf(gid).slice(0, n).filter(m => m.attend); if (!ms.length) return null;
+  const pct = ms.reduce((x, m) => { const v = Object.values(m.attend); return x + (v.length ? v.filter(Boolean).length / v.length : 0); }, 0) / ms.length;
+  return Math.round(pct * 100);
+}
+function leaderTools(gid) {
+  const ms = meetingsOf(gid).slice(0, 3);
+  return `<section class="ld"><p class="gd-label">${t('ld.tools')}</p>
+    <div class="gd-row"><button class="primary" data-action="mt-new" data-id="${esc(gid)}">${icon('mic')}${t('ld.meet')}</button><button class="secondary" data-action="rp-pick" data-id="${esc(gid)}">${icon('user')}${t('ld.reports')}</button></div>
+    ${ms.length ? `<p class="gd-label">${t('ld.past')}</p><div class="ld-list">${ms.map(m => { const v = Object.values(m.attend || {});
+      return `<button class="ld-meet" data-action="mt-open" data-id="${esc(m.id)}"><span>${esc(dayLabel(m.date))}${m.ref ? ' · ' + esc(refText(m.ref)) : ''}</span><small>${esc(t('mt.att').replace('{n}', v.filter(Boolean).length).replace('{t}', v.length))}${m.busy ? ' · ' + t('sn.working') : ''}</small></button>`; }).join('')}</div>` : ''}
+  </section>`;
+}
+function meetingSheet(gid) {
+  const g = data.groups.find(x => x.id === gid); if (!g) return;
+  const keep = recLive() || !!Rec.blob;
+  if (!keep || state.mtGid !== gid) { state.mtGid = gid; state.snRef = g.meetingLive?.date === today() ? g.meetingLive.ref : null; state.mtAttend = Object.fromEntries(memberList(gid).map(([k]) => [k, k === 'me'])); state.snMode = 'write'; }
+  showSheet({ title: esc(t('mt.title').replace('{d}', dayLabel(today()))), body: `<form id="mt-form" class="sheet-form">
+    <p class="field-label">${t('mt.pass')}</p>
+    <div class="sn-refrow"><button type="button" class="mp-open sn-refbtn ${state.snRef ? 'set' : ''}" data-action="mt-ref" id="sn-ref">${icon('book')}<span>${state.snRef ? esc(refText(state.snRef)) : t('sn.refReq')}</span>${icon('chevron')}</button>
+      <button type="button" class="round-btn sn-pv" data-action="pv-open" id="sn-pv" ${state.snRef ? '' : 'hidden'}>${icon('maximize')}</button></div>
+    <button type="button" class="secondary block" data-action="mt-live" id="mt-live" ${state.snRef ? '' : 'hidden'}>${icon('people')}${g.meetingLive?.date === today() ? t('mt.shared') : t('mt.share')}</button>
+    <p class="field-label">${t('mt.attend')}</p>
+    <div class="mt-att">${memberList(gid).map(([k, name]) => `<label class="mt-person"><input type="checkbox" data-att="${esc(k)}" ${state.mtAttend?.[k] ? 'checked' : ''}><span>${esc(nameOf(gid, k) || name)}</span></label>`).join('')}</div>
+    <div id="rec-card" class="rec-card">${recCard()}</div>
+    <textarea id="mt-notes" data-draft="meeting-${esc(gid)}" class="big-input" rows="3" placeholder="${esc(t('mt.notes'))}"></textarea>
+    <button class="primary block" type="submit">${t('mt.save')}</button></form>` });
+  document.querySelectorAll('[data-att]').forEach(cb => cb.addEventListener('change', () => { state.mtAttend[cb.dataset.att] = cb.checked; }));
+  $('#mt-form').addEventListener('submit', e => { e.preventDefault(); meetingSave(gid); });
+  recPaint(true);
+}
+async function meetingSave(gid) {
+  if (recLive()) await recStop();
+  const id = 'mt' + Date.now(), blob = Rec.blob, passageText = state.snRef ? ((await passageVerses(state.snRef).then(vs => vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')).catch(() => '')) || '') : '';
+  const m = { id, gid, date: today(), ref: state.snRef || null, attend: { ...(state.mtAttend || {}) }, notes: $('#mt-notes')?.value.trim() || '', passageText: passageText.slice(0, 20000),
+    ...(blob ? { rec: { dur: Math.round(Rec.dur || 0), bytes: blob.size } } : {}), ...(Rec.live.final.trim() ? { liveText: Rec.live.final.trim() } : {}) };
+  data.meetings = [m, ...(data.meetings || [])];
+  const g = data.groups.find(x => x.id === gid); if (g?.meetingLive) g.meetingLive = null;
+  if (blob && blob.size < 80 * 1024 * 1024) await AudioStore.put(id, blob).catch(() => {});
+  recReset(true); if (data.drafts) delete data.drafts['meeting-' + gid]; save(); close(); render(); toast(t('mt.saved'));
+  if (blob) meetingUpload(id, blob); else if (m.liveText) meetingSummarizeLocal(id);
+}
+async function meetingUpload(id, blob) {
+  const m = (data.meetings || []).find(x => x.id === id); if (!m) return;
+  m.busy = true; save(); state.snChecked = false; await sermonSync();
+  const members = memberList(m.gid).filter(([k]) => m.attend?.[k]).map(([k]) => nameOf(m.gid, k));
+  const stop = () => { m.busy = false; m.pending = true; save(); render(); if (m.liveText) meetingSummarizeLocal(id); };
+  if (!state.snOnline) return stop();
+  try {
+    const { id: rid } = await sapi('POST', `/api/sermons/upload?type=${encodeURIComponent((blob.type || 'audio/mp4').split(';')[0])}&lang=${sermonLang()}&kind=meeting&members=${encodeURIComponent(members.join(','))}&title=${encodeURIComponent(L(data.groups.find(g => g.id === m.gid)?.name) || '')}`);
+    const PART = 4 * 1024 * 1024;
+    for (let i = 0, k = 0; i < blob.size; i += PART, k++) { const r = await fetch(`${API_BASE}/api/sermons/${rid}/chunk?i=${k}`, { method: 'PUT', headers: { 'x-user-id': 'demo', 'Content-Type': 'application/octet-stream' }, body: blob.slice(i, i + PART) }); if (!r.ok) return stop(); }
+    await sapi('POST', `/api/sermons/${rid}/finish`, { passage: m.ref ? refText(m.ref) : '', passageText: m.passageText || '' });
+    m.remoteId = rid; save();
+    let n = 0; const tick = async () => { n++; try { const { sermon } = await sapi('GET', `/api/sermons/${rid}`);
+      if (sermon.status === 'done' && sermon.summary) { m.summary = sermon.summary; m.transcript = sermon.transcript || ''; m.busy = false; m.pending = false; save(); render(); return; }
+      if (sermon.status === 'error' || n > 600) return stop(); } catch { return stop(); } setTimeout(tick, n < 30 ? 2000 : 5000); };
+    setTimeout(tick, 1500);
+  } catch { stop(); }
+}
+// No server (preview): what was heard live is sorted by member with Claude through the page.
+async function meetingSummarizeLocal(id) {
+  const m = (data.meetings || []).find(x => x.id === id); if (!m?.liveText) return;
+  const sample = window.claude?.use ? await window.claude.use('sample').catch(() => null) : null; if (!sample) return;
+  const members = memberList(m.gid).filter(([k]) => m.attend?.[k]).map(([k]) => nameOf(m.gid, k));
+  m.busy = true; save(); render();
+  try {
+    const A = await sample.json(`You write notes for a church small-group leader from what was said at their meeting. Same language as the transcript. Only what people said; gentle, brief.
+Members: ${members.join(', ')}
+Return only JSON: {"overview": string, "members": [{"name": string, "sharing": string, "prayer_request": string}], "prayer_topics": string[], "next_steps": string[]}
+${m.ref ? `Passage: ${refText(m.ref)}\n` : ''}Transcript:
+${m.liveText}`, { modelTier: 'default' });
+    m.summary = { overview: String(A.overview || ''), members: [].concat(A.members || []).filter(x => x && x.name).map(x => ({ name: String(x.name), sharing: String(x.sharing || ''), prayer_request: String(x.prayer_request || '') })), prayer_topics: [].concat(A.prayer_topics || []).map(String), next_steps: [].concat(A.next_steps || []).map(String) };
+  } catch {}
+  m.busy = false; save(); render();
+}
+function meetingView(id) {
+  const m = (data.meetings || []).find(x => x.id === id); if (!m) return;
+  const people = memberList(m.gid), here = people.filter(([k]) => m.attend?.[k]), away = people.filter(([k]) => m.attend && !m.attend[k]), S = m.summary;
+  showSheet({ title: esc(t('mt.view').replace('{d}', dayLabel(m.date))), body: `
+    ${m.ref ? `<p class="gd-label">${icon('book')} ${esc(refText(m.ref))}</p>` : ''}
+    <p class="mt-attline"><b>${esc(t('mt.att').replace('{n}', here.length).replace('{t}', people.length))}</b>${away.length ? ` · ${esc(t('mt.absent').replace('{names}', away.map(([k]) => nameOf(m.gid, k)).join(', ')))}` : ''}</p>
+    ${m.rec ? `<audio class="med-play" id="mt-audio" controls preload="none"></audio>` : ''}
+    ${m.busy ? `<p class="sn-aibusy">${icon('sparkle')}${t('mt.busy')}</p>` : m.pending && !S ? `<p class="hint">${t('mt.pending')}</p>` : ''}
+    ${S?.overview ? `<p class="quote">${esc(S.overview)}</p>` : ''}
+    ${S?.members?.length ? `<p class="field-label">${t('mt.byMember')}</p><div class="mt-members">${S.members.map(x => `<div class="mt-mem"><b>${esc(x.name)}</b>${x.sharing ? `<p><small>${t('mt.shareL')}</small>${esc(x.sharing)}</p>` : ''}${x.prayer_request ? `<p><small>${t('mt.prayL')}</small>${esc(x.prayer_request)}</p>` : ''}</div>`).join('')}</div>` : ''}
+    ${S?.prayer_topics?.length ? `<p class="field-label">${t('mt.prayer')}</p><ul class="sn-list">${S.prayer_topics.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+    ${S?.next_steps?.length ? `<p class="field-label">${t('mt.next')}</p><ul class="sn-list">${S.next_steps.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+    ${m.notes ? `<p class="field-label">${t('mt.notes')}</p><p class="sn-body">${esc(m.notes)}</p>` : ''}
+    ${m.transcript || m.liveText ? `<details class="sn-tr"><summary>${t('sn.transcript')}</summary><p>${esc(m.transcript || m.liveText)}</p></details>` : ''}` });
+  if (m.rec) AudioStore.url(m.id).then(u => { const a = $('#mt-audio'); if (a && u) a.src = u; }).catch(() => {});
+}
+// One member: attendance across meetings, what they shared there, their prayer requests, and the leader's notes.
+function memberReport(gid, k) {
+  const name = nameOf(gid, k), ms = meetingsOf(gid).filter(m => m.attend && k in m.attend);
+  const said = ms.flatMap(m => (m.summary?.members || []).filter(x => x.name === name || x.name === (groupPeople(gid).find(p => p[0] === k) || [])[1]).map(x => ({ d: m.date, ...x })));
+  const prayers = data.posts.filter(p => p.kind === 'prayer' && !p.mine && inGroup(p, gid) && authorKey(p) === k).slice(0, 5);
+  const notes = data.memberNotes?.[gid]?.[k] || [];
+  showSheet({ title: esc(t('rp.title').replace('{name}', name)), body: `
+    <p class="field-label">${t('rp.attend')}</p>
+    ${ms.length ? `<div class="rp-dots">${ms.slice(0, 12).reverse().map(m => `<span class="${m.attend[k] ? 'on' : ''}" title="${esc(m.date)}"><i></i><small>${esc(shortDate(m.date))}</small></span>`).join('')}</div>` : `<p class="hint">${t('rp.none')}</p>`}
+    <p class="field-label">${t('rp.shared')}</p>
+    ${said.length ? said.slice(0, 6).map(x => `<div class="mt-mem"><small>${esc(dayLabel(x.d))}</small>${x.sharing ? `<p>${esc(x.sharing)}</p>` : ''}${x.prayer_request ? `<p><small>${t('mt.prayL')}</small>${esc(x.prayer_request)}</p>` : ''}</div>`).join('') : `<p class="hint">${t('rp.none')}</p>`}
+    <p class="field-label">${t('rp.prayers')}</p>
+    ${prayers.length ? `<ul class="sn-list">${prayers.map(p => `<li>${esc(L(p.text))} <small class="hint">${esc(dayLabel(p.date))}</small></li>`).join('')}</ul>` : `<p class="hint">${t('rp.none')}</p>`}
+    <p class="field-label">${t('rp.notes')}</p>
+    ${notes.map(n => `<p class="rp-note"><small>${esc(dayLabel(n.d))}</small>${esc(n.t)}</p>`).join('')}
+    <form id="rp-form" class="sheet-form"><textarea id="rp-in" class="big-input" rows="2" maxlength="600" placeholder="${esc(t('rp.ph'))}"></textarea><button class="secondary block" type="submit">${t('rp.add')}</button></form>` });
+  $('#rp-form').addEventListener('submit', e => { e.preventDefault(); const v = $('#rp-in').value.trim(); if (!v) return;
+    data.memberNotes = data.memberNotes || {}; data.memberNotes[gid] = data.memberNotes[gid] || {}; (data.memberNotes[gid][k] = data.memberNotes[gid][k] || []).unshift({ d: today(), t: v }); save(); memberReport(gid, k); });
+}
+// Pastor: a snapshot of the church dashboard inside a link (#pastor=…; the # part never reaches any server).
+function pastorSnapshot() {
+  const gs = churchGroups();
+  return { c: data.church?.name || '', at: today(), g: gs.map(g => { const w = groupWeek(g.id), m = meetingsOf(g.id)[0], v = m ? Object.values(m.attend || {}) : [];
+    const notes = Object.entries(data.memberNotes?.[g.id] || {}).map(([k, arr]) => ({ m: nameOf(g.id, k), t: arr[0]?.t || '' })).filter(x => x.t).slice(0, 8);
+    return { n: L(g.name), cat: g.category || '', lead: data.church?.leaders?.[g.id] || '', size: groupSize(g.id), att: attendRate(g.id), wk: [w.thanks, w.meditation, w.prayer],
+      last: m ? { d: m.date, r: m.ref ? refText(m.ref) : '', a: `${v.filter(Boolean).length}/${v.length}`, o: (m.summary?.overview || '').slice(0, 280) } : null, notes }; }) };
+}
+const b64url = obj => btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(obj)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const unb64url = str => JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(str.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0))));
+function pastorLinkSheet() {
+  const link = `${LEGAL_BASE}/app/#pastor=${b64url(pastorSnapshot())}`;
+  state.inviteMsg = link;
+  showSheet({ title: t('ps.link'), body: `<p class="hint">${t('ps.desc')}</p><div class="invite-link selectable">${esc(link.slice(0, 120))}…</div>
+    <div class="sheet-actions"><button class="primary" data-action="invite-share">${icon('share')}${t('inv.share')}</button><button class="secondary" data-action="ps-copy">${t('inv.copy')}</button><button class="secondary" data-action="ps-preview">${icon('eye')}</button></div>` });
+}
+const catGroups = gs => { const m = new Map(); gs.forEach(g => { const c = g.category || ''; if (!m.has(c)) m.set(c, []); m.get(c).push(g); }); return [...m.entries()].sort((a, b) => !a[0] ? 1 : !b[0] ? -1 : a[0].localeCompare(b[0])); };
+function renderPastor() {
+  const P = state.pastorView, cats = new Map(); P.g.forEach(g => { const c = g.cat || ''; if (!cats.has(c)) cats.set(c, []); cats.get(c).push(g); });
+  main.innerHTML = `<div class="screen"><div class="page gd church">
+    <div class="gd-top"><button class="gd-back" data-action="ps-close">${icon('chevron')}<span>${t('gd.back')}</span></button></div>
+    <h1 class="gd-name">${esc(t('ps.title').replace('{c}', P.c))}</h1><p class="g-people">${esc(t('ps.asof').replace('{d}', dayLabel(P.at)))}</p>
+    ${[...cats.entries()].map(([c, gs]) => `<p class="gd-label cat-h">${esc(c || t('cat.none'))} · ${esc(t('ps.members').replace('{n}', gs.reduce((n, g) => n + g.size, 0)))}</p>
+      <div class="chu-list">${gs.map(g => `<section class="chu-g"><div class="chu-head"><b>${esc(g.n)}</b><span>${g.att != null ? esc(t('dash.att').replace('{p}', g.att)) : ''}</span></div>
+        <p class="chu-sub">${g.lead ? esc(t('chu.leader').replace('{name}', g.lead)) + ' · ' : ''}${esc(t('ps.members').replace('{n}', g.size))} · ${t('gs.counts').replace('{t}', g.wk[0]).replace('{m}', g.wk[1]).replace('{p}', g.wk[2])}</p>
+        ${g.last ? `<p class="ps-last"><small>${t('ps.lastMeet')} · ${esc(dayLabel(g.last.d))}${g.last.r ? ' · ' + esc(g.last.r) : ''} · ${esc(g.last.a)}</small>${g.last.o ? esc(g.last.o) : ''}</p>` : ''}
+        ${g.notes.length ? `<details class="ps-notes"><summary>${t('ps.reports')} (${g.notes.length})</summary>${g.notes.map(x => `<p><b>${esc(x.m)}</b> ${esc(x.t)}</p>`).join('')}</details>` : ''}</section>`).join('')}</div>`).join('')}
   </div></div>`;
 }
 function churchCreate() {
@@ -1996,16 +2204,17 @@ function groupMenu(gid) {
     ${row('group-nudge', 'bell', nudged ? t('gs.nudged') : t('gs.nudge'), nudged ? 'disabled' : '')}
     ${canInvite(g) ? row('invite-group', 'userplus', t('inv.btn')) : ''}
     ${row('nick-sheet', 'user', t('nick.row'))}
-    ${g.owner ? row('group-admin', 'user', t('adm.row')) : ''}
+    ${g.owner && featureOn('leader') ? row('group-admin', 'user', t('adm.row')) : ''}
   </div>` });
 }
 function renderGroups() {
-  if (state.churchView && data.church) return renderChurch();
+  if (state.pastorView) return renderPastor();
+  if (state.churchView && data.church && featureOn('leader')) return renderChurch();
   if (state.groupDetail && data.groups.some(g => g.id === state.groupDetail)) return renderGroupDetail(state.groupDetail);
   state.groupDetail = null;
   main.innerHTML = `<div class="screen"><div class="page">
     ${pageHead(t('gr.title'), t('gr.desc'), roundBtn('new-group', 'plus', t('gr.new')))}
-    ${data.church ? `<button class="j-line chu-entry" data-action="church-open"><span class="j-ic">${icon('people')}</span><span>${t('chu.entry').replace('{name}', esc(data.church.name))}</span><span class="j-go">›</span></button>` : ''}
+    ${data.church && featureOn('leader') ? `<button class="j-line chu-entry" data-action="church-open"><span class="j-ic">${icon('people')}</span><span>${t('chu.entry').replace('{name}', esc(data.church.name))}</span><span class="j-go">›</span></button>` : ''}
     <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
   </div></div>`;
@@ -2026,6 +2235,8 @@ function renderGroupDetail(gid) {
       <button class="g-more" data-action="group-menu" data-id="${esc(gid)}" aria-label="${t('more')}">${icon('more')}</button></div>
     <h1 class="gd-name">${esc(L(g.name))}</h1>
     <p class="g-people">${who}</p>
+    ${g.meetingLive?.date === today() && g.meetingLive.ref ? `<button class="mt-live" data-action="mt-join" data-id="${esc(gid)}"><i class="rec-dot"></i><span>${esc(t('ld.live').replace('{r}', refText(g.meetingLive.ref)))}</span><b>${t('ld.join')} ›</b></button>` : ''}
+    ${g.owner && featureOn('leader') ? leaderTools(gid) : ''}
     <div class="gs-week">${w.days.map((on, i) => { const d = new Date(); d.setDate(d.getDate() - (6 - i));
       return `<span class="gs-day${i === 6 ? ' today' : ''}"><i class="${on ? 'on' : ''}"></i><small>${i === 6 ? t('gs.todayShort') : esc(d.toLocaleDateString(lang(), { weekday: 'narrow' }))}</small></span>`; }).join('')}</div>
     ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('book')}<span>${t('devo.kicker')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
@@ -2094,6 +2305,7 @@ function planSection(plans) {
       ${plans.length ? '' : `<p class="hint">${t('pl.sub')}</p>`}
       ${plans.map(c => `<div class="pl-row"><button class="g-ch" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
+        ${planBehind(c) && c.cuDismissed !== today() ? `<span class="pl-behind" data-action="cu-ask" data-id="${esc(c.id)}">${esc(t('cu.short').replace('{n}', planBehind(c).behind))} ›</span>` : ''}
         ${(c.members || []).length > 1 ? `<span class="pl-with">${icon('people')}${esc((c.members || []).map(m => L(m)).join(', '))}</span>` : ''}</button>
         <button class="round-btn pl-inv" data-action="plan-invite" data-id="${esc(c.id)}" aria-label="${esc(t('pl.invite'))}">${icon('share')}</button></div>`).join('')}
     </section>`;
@@ -2135,9 +2347,26 @@ const noteQuota = () => {
   if (state.snOnline && state.snQuota?.unit === 'bytes') return state.snQuota;
   const plan = data.settings.biblePlan && data.settings.biblePlan.until > new Date().toISOString() ? data.settings.biblePlan : null;
   const kept = (data.sermonNotes || []).filter(n => !n.manual || n.ai || n.rec), month = kept.filter(n => n.date >= daysAgo(30)).length;
-  return { plan: plan?.plan || 'free', used: kept.reduce((x, n) => x + noteBytes(n), 0), limit: plan ? PAID_BYTES : FREE_BYTES, unit: 'bytes', monthUsed: month, monthLimit: plan ? NOTE_FAIR : null };
+  const made = (data.sermonNotes || []).filter(n => n.ai || n.rec).concat((data.meetings || []).filter(m => m.rec));
+  return { plan: plan?.plan || 'free', used: kept.reduce((x, n) => x + noteBytes(n), 0), limit: plan ? PAID_BYTES : FREE_BYTES, unit: 'bytes', monthUsed: month, monthLimit: plan ? NOTE_FAIR : null,
+    dayUsed: made.filter(n => n.date === today()).length, dayLimit: plan ? 10 : 3, weekUsed: made.filter(n => n.date >= daysAgo(6)).length, weekLimit: plan ? 40 : 10 };
 };
 const quotaFull = q => q.used >= q.limit || (q.plan !== 'free' && q.monthLimit && q.monthUsed >= q.monthLimit);
+// Usage, Claude-style: tucked away under Settings › Storage, small type, thin bars, when each limit refills.
+const fmtLeft = iso => { const ms = Date.parse(iso || '') - Date.now(); if (!(ms > 0)) return ''; const h = ms / 36e5;
+  return h >= 48 ? t('us.d').replace('{n}', Math.ceil(h / 24)) : h >= 1 ? t('us.h').replace('{n}', Math.ceil(h)) : t('us.m').replace('{n}', Math.max(1, Math.ceil(ms / 6e4))); };
+const fmtBytes = b => b >= 1024 ** 3 ? `${(b / 1024 ** 3).toFixed(b >= 10 * 1024 ** 3 ? 0 : 1)} GB` : b >= 1024 ** 2 ? `${Math.round(b / 1024 ** 2)} MB` : `${Math.max(0, Math.round(b / 1024))} KB`;
+function usageSheet() {
+  const q = noteQuota(), nextMid = (() => { const d = new Date(); d.setHours(24, 0, 0, 0); return d.toISOString(); })(), nextWeek = (() => { const d = new Date(); d.setHours(24, 0, 0, 0); d.setDate(d.getDate() + 6); return d.toISOString(); })();
+  const bar = (label, used, limit, sub) => { const pct = limit ? Math.min(100, Math.round(used / limit * 100)) : 0;
+    return `<div class="us-row"><div class="us-top"><span>${label}</span><span class="us-n">${pct}%</span></div><i class="us-bar"><b style="width:${pct}%"></b></i>${sub ? `<small>${sub}</small>` : ''}</div>`; };
+  const dayLeft = q.dayUsed >= q.dayLimit ? t('us.reset').replace('{t}', fmtLeft(q.dayReset || nextMid)) : '', weekLeft = q.weekUsed >= q.weekLimit ? t('us.reset').replace('{t}', fmtLeft(q.weekReset || nextWeek)) : '';
+  showSheet({ title: `<span class="us-title">${t('us.title')}</span>`, body: `<div class="us">
+    ${bar(t('us.day'), q.dayUsed || 0, q.dayLimit, dayLeft)}
+    ${bar(t('us.week'), q.weekUsed || 0, q.weekLimit, weekLeft)}
+    ${bar(t('us.space'), q.used || 0, q.limit, `${fmtBytes(q.used || 0)} / ${fmtBytes(q.limit)}`)}
+    <button class="link-btn us-more" data-action="pw-open">${t('us.more')}</button></div>` });
+}
 function renderSermons() {
   sermonSync();
   if (state.noteOpen) return renderSermonNote(state.noteOpen);
@@ -2565,7 +2794,8 @@ async function uploadRecording(id, blob) {
     await sapi('POST', `/api/sermons/${rid}/finish`, { title: n.title, preacher: n.preacher, church: n.church || '', passage: n.ref ? refText(n.ref) : '', passageText: n.passageText || '' });
     n.remoteId = rid; save(); state.snChecked = false;
     pollInto(n, rid, () => pending(t('sn.failed')));
-  } catch (e) { if (e?.code === 'quota_full' || e?.code === 'storage_full' || e?.code === 'fair_use') { n.aiBusy = false; n.recPending = true; save(); return paywall(); } pending(t('rec.upFail')); }
+  } catch (e) { if (e?.code === 'daily_limit' || e?.code === 'weekly_limit') return pending(t(e.code === 'daily_limit' ? 'us.dayHit' : 'us.weekHit').replace('{t}', fmtLeft(e.data?.reset) || '24h'));
+    if (e?.code === 'quota_full' || e?.code === 'storage_full' || e?.code === 'fair_use') { n.aiBusy = false; n.recPending = true; save(); return paywall(); } pending(t('rec.upFail')); }
 }
 /* A handwritten note can also get an AI summary. The phone/web app asks our server (Claude, same sermon format);
    in the claude.ai preview, where there's no server, it asks Claude through the page's `sample` capability. */
@@ -2667,7 +2897,7 @@ function renderBibleMe() {
     <p class="gd-label">${t('me.saved')} · ${saved.length}</p>
     <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
     <div class="list" style="margin-top:18px">
-      <button class="list-row" data-action="pw-open"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>
+      <button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>
       <a class="list-row" href="/app/"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('me.thanks')}</span></span></a>
     </div>
   </div></div>`;
@@ -2730,11 +2960,15 @@ function renderImmersive(keepIndex = 0) {
   if (gid) state.group = gid;
   const pool = groupMode
     ? data.posts.filter(p => visible(p) && inGroup(p, gid))                     // the group's thanks, reflections and prayer requests
-    : data.posts.filter(p => !p.mine && visible(p) && (p.scope === 'public' || (p.scope === 'group' && data.groups.some(g => inGroup(p, g.id)))));
+    : (() => { const keys = connectedKeys(), strangers = pref('strangers');
+        return data.posts.filter(p => visible(p) && !(p.mine && p.scope === 'private') && (p.scope === 'public' || (p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))))
+          && (strangers || keys.has(authorKey(p)))
+          && (kindGroup(p) === 'prayer' ? pref('feedPrayer') : kindGroup(p) === 'meditation' ? pref('feedMed') : pref('feedThanks'))); })();
   let posts = groupMode ? pool.filter(p => !state.groupKind || kindGroup(p) === state.groupKind).sort((a, b) => (b.date || '').localeCompare(a.date || '')) : rankedOnce('imm', pool);
   const focus = state.immFocus && data.posts.find(p => p.id === state.immFocus);
   if (focus) { posts = [focus, ...posts.filter(p => p.id !== focus.id)]; keepIndex = 0; }
-  let seq = groupMode ? [...(state.groupKind ? [] : [{ type: 'devo', gid }]), ...posts.map(p => ({ type: 'post', p })), { type: 'gend', gid, kind: state.groupKind }] : feedSequence(posts.filter(p => p.kind !== 'prayer'));
+  let seq = groupMode ? [...(state.groupKind ? [] : [{ type: 'devo', gid }]), ...posts.map(p => ({ type: 'post', p })), { type: 'gend', gid, kind: state.groupKind }] : feedSequence(posts);
+  if (!groupMode && !prayerMode && !posts.length) seq.unshift({ type: 'empty' });   // nobody connected yet
   if (!groupMode && !prayerMode) { // the season's challenge and the weekly recap, near the top
     const c = activeCampaign(), wn = weekRecapDue();
     if (c && seq.length) seq.splice(Math.min(1, seq.length), 0, { type: 'camp', c });
@@ -2769,16 +3003,17 @@ function renderImmersive(keepIndex = 0) {
       return i < 0 ? html : html.slice(0, i) + `<aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button></aside>` + html.slice(i);
     }
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
-    const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null;
-    return `<article class="post imm${protectedPost(p) ? ' protected' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
-      <div class="post-body">${fp ? `<div class="post-kind fp-kick">${icon('pray')}<span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span></div>` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
+    const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
+    return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
+      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}">${icon('pray')}<span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span><i class="why-i">?</i></button>${(data.settings.prayerSeen || []).includes(p.id) ? '' : '<i class="new-dot fp-dot"></i>'}` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : p.scope === 'group' ? esc(groupNames(p)) : esc(kindLabel(p))}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
+      ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
         ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span>${t('act.share')}</span></button>`}
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
-        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button>
+        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span>${groupMode || prayerMode || !anyUnseen() ? '' : '<i class="new-dot rail-dot"></i>'}</button>
       </aside></article>`;
   }).join('')}</div>
   ${prayerMode && !data.settings.prayerBackHint ? backHint('left', t('pl.back')) : ''}
@@ -3331,9 +3566,22 @@ async function shareImage(id, external = true) {
    The words travel inside the link's # part, so no server is needed and nothing is stored anywhere. */
 function postLink(p) {
   const kind = p.kind === 'thanks' || p.kind === 'ahead' || p.kind === 'meditation' ? p.kind : 'today';
-  const payload = { t: L(p.text), n: p.kind === 'thanks' && p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.ref ? { r: refText(p.ref) } : {}) };
+  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.ref ? { r: refText(p.ref) } : {}) };
   const b64 = btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  // a reflection opens right in the app (passage + what they wrote); other posts open on their own web page
+  if (kind === 'meditation') return `${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`;
   return `${LEGAL_BASE}/t/#${b64}`;
+}
+async function openSharedMeditation(b64) {
+  let x; try { x = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0)))); } catch { toast(t('smd.bad')); return; }
+  const ref = parseRef(x.r || ''), name = String(x.n || '').slice(0, 30), text = String(x.t || '').slice(0, 2000);
+  state.sharedMed = { ref, text };
+  showSheet({ title: esc(name ? t('smd.title').replace('{n}', name) : t('smd.someone')), body: `
+    ${ref ? `<p class="gd-label">${icon('book')} ${esc(refText(ref))}</p><div class="sn-ptext sm-pass" id="sm-pass"><p class="hint">${t('rd.loading')}</p></div>` : ''}
+    <p class="quote sm-text">${esc(text)}</p>
+    ${x.d ? `<p class="hint">${esc(dayLabel(x.d))}</p>` : ''}
+    <div class="sheet-actions">${ref ? `<button class="secondary" data-action="sm-read">${icon('book')}${t('smd.read')}</button>` : ''}<button class="primary" data-action="sm-write">${icon('pencil')}${t('smd.write')}</button></div>` });
+  if (ref) { try { const vs = await passageVerses(ref.v ? ref : { ...ref, v: 1, v2: 999 }); const el = $('#sm-pass'); if (el) el.innerHTML = passageHtml(vs.map(v => `${v.c}:${v.v} ${v.text}`).join('\n')); } catch { const el = $('#sm-pass'); if (el) el.remove(); } }
 }
 const withLink = (text, p) => `${text}\n\n${postLink(p)}`;
 function share(id) {
@@ -3480,7 +3728,7 @@ function createGroup() {
   showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
     <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
     <button class="primary block" type="submit">${t('gr.create')}</button>
-    ${data.church ? '' : `<button type="button" class="subtle-link" data-action="church-create">${t('chu.make')}</button>`}</form>` });
+    ${data.church || !featureOn('leader') ? '' : `<button type="button" class="subtle-link" data-action="church-create">${t('chu.make')}</button>`}</form>` });
   $('#group-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#group-name').value.trim(); if (!name) return;
     const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true, key: Vault.newGroupKey() }; data.groups.push(g); if (data.church) data.church.groups.push(g.id); save(); close(); renderGroups();
@@ -3531,9 +3779,35 @@ function chBiblePlan() {
 // Chapters for day k (0-based) of a Bible plan: spread evenly, so no day is more than one chapter heavier.
 function chPlanDay(ch, k) {
   const p = ch.plan; if (!p) return null;
+  const cu = ch.catchUp;   // after "spread it out": the rest is split evenly over the days that were left
+  if (cu && k >= cu.k0) { const j = k - cu.k0, s0 = cu.next + Math.floor(j * cu.rem / cu.days), e0 = cu.next + Math.floor((j + 1) * cu.rem / cu.days) - 1;
+    return { start: chAt(Math.min(s0, chIndex(...p.to))), end: chAt(Math.min(Math.max(s0, e0), chIndex(...p.to))) }; }
   const a = chIndex(...p.from), days = chLen(ch), s0 = a + Math.floor(k * p.total / days), e0 = a + Math.floor((k + 1) * p.total / days) - 1;
   return { start: chAt(s0), end: chAt(Math.max(s0, e0)) };
 }
+// Behind on a reading plan? How many days, and what spreading the rest over the days left would look like.
+function planBehind(c) {
+  if (!c?.plan || chDone(c)) return null;
+  const base = c.catchUp ? c.catchUp.at : c.start, k0 = c.catchUp ? c.catchUp.k0 : 0;
+  const doneBefore = c.days.length - k0 - (c.lastDay === today() ? 1 : 0), expected = Math.max(0, dayDiff(base, today()));
+  const behind = expected - doneBefore; if (behind < 1) return null;
+  const daysLeft = Math.max(1, chLen(c) - dayDiff(c.start, today())), next = chIndex(...chPlanDay(c, c.days.length).start), rem = chIndex(...c.plan.to) - next + 1;
+  if (rem < 1) return null;
+  return { behind, daysLeft, rem, next, per: Math.max(1, Math.round(rem / daysLeft * 10) / 10) };
+}
+function catchUp(id) {
+  const c = data.challenges.find(x => x.id === id), b = planBehind(c); if (!b) return;
+  c.catchUp = { at: today(), k0: c.days.length, next: b.next, rem: b.rem, days: b.daysLeft };
+  // the plan's length becomes "what's done + the days left", so the end date doesn't move
+  c.length = c.days.length + b.daysLeft; c.start = (() => { const d = new Date(today() + 'T00:00:00'); d.setDate(d.getDate() - c.days.length); return d.toLocaleDateString('en-CA'); })();
+  save(); toast(t('cu.done').replace('{r}', chPlanText(chPlanDay(c, c.days.length))));
+}
+const catchUpCard = c => { const b = planBehind(c); if (!b) return '';
+  return `<article class="post card-page cu-card" data-cu="${esc(c.id)}"><div class="card-inner">
+    <div class="post-kind">${icon('book')}<span>${esc(L(c.name) || chName(c))} · ${t('cu.kick')}</span></div>
+    <p class="card-title">${esc(t('cu.title').replace('{n}', b.behind))}</p>
+    <p class="card-sub">${esc(t('cu.sub').replace('{d}', b.daysLeft).replace('{per}', b.per))}</p>
+    <div class="card-actions"><button class="primary" data-action="cu-yes" data-id="${esc(c.id)}">${t('cu.yes')}</button><button class="secondary" data-action="cu-no" data-id="${esc(c.id)}">${t('cu.no')}</button></div></div></article>`; };
 const chPlanText = d => { if (!d) return ''; const [b1, c1] = d.start, [b2, c2] = d.end;
   return b1 === b2 ? (c1 === c2 ? refText({ b: b1, c: c1 }) : `${bookName(b1)} ${c1}–${c2}${lang() === 'ko' ? '장' : ''}`) : `${refText({ b: b1, c: c1 })} – ${refText({ b: b2, c: c2 })}`; };
 function chOpts() {
@@ -3616,7 +3890,7 @@ function bibleSettings() {
     <p class="field-label">${t('bs.sermon')}</p>
     <div class="list">
       ${row('bs-places', 'people', t('bs.places'), `${places ? `<span class="row-sub">${places}</span>` : ''}${icon('chevron')}`)}
-      ${row('pw-open', 'sparkle', t('bs.sub'), `${almost ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}${icon('chevron')}`)}
+      ${row('usage', 'sparkle', t('bs.sub'), `${almost ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}${icon('chevron')}`)}
     </div>
     <p class="field-label">${t('bs.data')}</p>
     <div class="list">
@@ -3660,6 +3934,7 @@ function settings() {
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
       ${row(data.settings.notificationEnabled ? 'notification' : 'notify-prime', 'bell', t('s.notify'), `<span class="row-sub">${esc(data.settings.notificationTime)}</span>${icon('chevron')}`)}
+      ${row('view-settings', 'eye', t('vw.row'))}
       ${row('blocked', 'eyeOff', t('s.blocked'))}
       ${row('widget', 'phone', t('s.widget'))}
       ${row('vault', 'lock', t('vault.title'))}
@@ -3678,7 +3953,7 @@ function settings() {
       <div class="list-row static"><span class="row-icon">${icon('info')}</span><span class="row-main"><span class="row-title">${t('s.version')}</span></span><span class="row-end row-sub">${APP_VERSION}</span></div>
     </div>
     <p class="field-label">${t('ft.title')}</p>
-    <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic']].filter(([k]) => featureAvailable(k)).map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
+    <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic'], ['leader', 'star']].filter(([k]) => featureAvailable(k)).map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
     <p class="hint">${t('ft.hint')}</p>
     <p class="about">${icon('info')}<span>${t('s.about')}</span></p>` });
 }
@@ -4522,6 +4797,42 @@ const actions = {
   'note-tomed': id => { const n = sermonNotes().find(x => x.id === id); if (!n?.summary) return; const r = parseRef(n.summary.passages?.[0] || '');
     state.medRef = r || null; state.medSource = ''; state.medNote = !!r; compose('meditation', null, `${n.title || n.summary.title || ''} — ${n.summary.main_message || ''}\n`); },
   'note-ai': id => aiSummarize(id),
+  'mt-new': gid => meetingSheet(gid),
+  'mt-ref': () => biblePicker({ mode: 'meetref', start: state.snRef || null }),
+  'mt-live': () => { const g = data.groups.find(x => x.id === state.mtGid); if (!g || !state.snRef) return; g.meetingLive = { date: today(), ref: state.snRef }; save(); const b = $('#mt-live'); if (b) b.innerHTML = `${icon('people')}${t('mt.shared')}`; toast(t('mt.shared')); },
+  'mt-join': gid => { const g = data.groups.find(x => x.id === gid), r = g?.meetingLive?.ref; if (!r) return; openReader({ b: r.b, c: r.c, v: r.v || 1, passage: r.v ? r : null, group: gid }); },
+  'mt-open': id => meetingView(id),
+  'rp-pick': gid => showSheet({ title: t('rp.pick'), body: `<div class="list">${memberList(gid).filter(([k]) => k !== 'me').map(([k]) => `<button class="list-row" data-action="rp-open" data-id="${esc(gid)}|${esc(k)}"><span class="row-main"><span class="row-title">${esc(nameOf(gid, k))}</span></span>${icon('chevron')}</button>`).join('') || `<p class="hint">${t('gd.empty')}</p>`}</div>` }),
+  'rp-open': pair => { const [gid, k] = pair.split('|'); memberReport(gid, k); },
+  'cat-set': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; const cats = [...new Set(data.groups.map(x => x.category).filter(Boolean))];
+    showSheet({ title: esc(L(g.name)) + ' · ' + t('cat.set'), body: `<form id="cat-form" class="sheet-form"><input id="cat-in" class="field" list="cat-list" maxlength="30" value="${esc(g.category || '')}" placeholder="${esc(t('cat.ph'))}"><datalist id="cat-list">${cats.map(c => `<option value="${esc(c)}">`).join('')}</datalist><button class="primary block" type="submit">${t('nick.save')}</button></form>` });
+    $('#cat-form').addEventListener('submit', e => { e.preventDefault(); g.category = $('#cat-in').value.trim(); save(); close(); render(); }); },
+  'cat-rename': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return;
+    showSheet({ title: t('cat.rename'), body: `<form id="ren-form" class="sheet-form"><input id="ren-in" class="field" maxlength="30" value="${esc(L(g.name))}" placeholder="${esc(t('cat.namePh'))}" required><button class="primary block" type="submit">${t('nick.save')}</button></form>` });
+    $('#ren-form').addEventListener('submit', e => { e.preventDefault(); const v = $('#ren-in').value.trim(); if (!v) return; g.name = v; save(); close(); render(); }); },
+  'ps-link': () => pastorLinkSheet(),
+  'ps-copy': () => copyText(state.inviteMsg),
+  'ps-preview': () => { close(); state.pastorView = pastorSnapshot(); render(); },
+  'ps-close': () => { state.pastorView = null; if (location.hash.startsWith('#pastor=')) { try { history.replaceState(null, '', location.pathname); } catch {} } render(); },
+  usage: () => usageSheet(),
+  'first-off': () => { setPref('firstOff', true); state.firstPrIds = []; toast(t('fo.offDone')); render(0); },
+  'first-snooze': () => { setPref('firstUntil', new Date(Date.now() + 864e5).toISOString()); toast(t('fo.snoozed')); render(0); },
+  'first-why': id => { const [k, v] = id.split('|'); const c = k === 'plan' ? data.challenges.find(x => x.id === v) : null;
+    showSheet({ title: t('why.title'), body: `<p class="quote why-q">${esc(k === 'pr' ? t('why.pr').replace('{g}', v) : t('why.plan').replace('{name}', L(c?.name) || chName(c || {})).replace('{d}', (c?.days.length || 0) + 1).replace('{t}', c ? chLen(c) : 0))}</p>
+      <div class="sheet-actions"><button class="secondary" data-action="view-settings">${icon('settings')}${t('why.settings')}</button><button class="secondary" data-action="first-snooze-close">${t('fo.h24')}</button></div>` }); },
+  'first-snooze-close': () => { close(); setPref('firstUntil', new Date(Date.now() + 864e5).toISOString()); toast(t('fo.snoozed')); render(0); },
+  'view-settings': () => viewSettings(),
+  'vw-max': n => { setPref('firstMax', +n); viewSettings(); },
+  'vw-pause': k => { const P = { ...(data.settings.prefs || {}) }; P.firstOff = k === 'off'; P.firstUntil = k === 'h24' ? new Date(Date.now() + 864e5).toISOString() : k === 'w1' ? new Date(Date.now() + 7 * 864e5).toISOString() : '';
+    data.settings.prefs = P; save(); viewSettings(); },
+  'emp-strangers': () => { setPref('strangers', true); render(0); },
+  'cu-yes': id => { catchUp(id); if (BIBLE_MODE) { close(); render(); } else { state.firstPrIds = state.firstPrIds || []; render(0); } },
+  'cu-no': id => { const c = data.challenges.find(x => x.id === id); if (c) { c.cuDismissed = today(); save(); } document.querySelector(`[data-cu="${id}"]`)?.remove(); close(); },
+  'cu-ask': id => { const c = data.challenges.find(x => x.id === id), b = planBehind(c); if (!b) return;
+    showSheet({ title: esc(L(c.name) || chName(c)), body: `<p class="card-title cu-t">${esc(t('cu.title').replace('{n}', b.behind))}</p><p class="hint">${esc(t('cu.sub').replace('{d}', b.daysLeft).replace('{per}', b.per))}</p>
+      <div class="sheet-actions"><button class="primary" data-action="cu-yes" data-id="${esc(id)}">${t('cu.yes')}</button><button class="secondary" data-action="cu-no" data-id="${esc(id)}">${t('cu.no')}</button></div>` }); },
+  'sm-read': () => { const r = state.sharedMed?.ref; if (!r) return; close(); openReader({ b: r.b, c: r.c, v: r.v || 1, passage: r.v ? r : null }); },
+  'sm-write': () => { const r = state.sharedMed?.ref; close(); state.medRef = r || null; state.medSource = ''; state.medNote = !!r; compose('meditation', null); },
   'plan-read-done': id => { const c = data.challenges.find(x => x.id === id); if (!c) return;
     planChapters(c).forEach(([b, ch]) => { const k = readKey(b, ch); if (!data.readDone.includes(k)) data.readDone.push(k); data.readLog = data.readLog || {}; data.readLog[k] = today(); });
     const last = planChapters(c).slice(-1)[0]; if (last) data.reading = { b: last[0], c: last[1], v: 1, at: new Date().toISOString() };
@@ -4689,6 +5000,7 @@ document.addEventListener('click', e => {
   if (card) { state.immFocus = card.dataset.post; toggleFullscreen(); }
 });
 document.addEventListener('change', e => {
+  if (e.target.dataset?.pref) { setPref(e.target.dataset.pref, e.target.checked); state.firstPrIds = null; return; }
   if (e.target.id === 'rec-file') {   // sermon note from an audio file
     const f = e.target.files?.[0]; if (!f) return;
     if (quotaFull(noteQuota())) { close(); paywall(); return; }
@@ -4822,6 +5134,8 @@ function doubleTap(el, x, y) {
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
+if (location.hash.startsWith('#pastor=')) { try { state.pastorView = unb64url(location.hash.slice(8)); state.immersive = false; state.tab = 'group'; document.getElementById('splash')?.remove(); setTimeout(render, 60); } catch {} }
+if (location.hash.startsWith('#m=')) { const b64 = location.hash.slice(3); document.getElementById('splash')?.remove(); setTimeout(() => openSharedMeditation(b64), 120); }
 if (location.hash.startsWith('#plan')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => planJoin(q), 80); }
 if (location.hash === '#write') { document.getElementById('splash')?.remove(); setTimeout(() => compose('today', null), 50); }
 

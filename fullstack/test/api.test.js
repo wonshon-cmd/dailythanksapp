@@ -238,3 +238,13 @@ test('small-group meeting: recording → notes per member', async () => {
   assert.deepEqual(s.summary.members.map(m => m.name), ['하은', '민서']);
   void one;
 });
+
+test('summaries have rolling daily and weekly limits, shown on the usage meter', async () => {
+  const call = await start({ FEATURE_SERMON: '1', FREE_SUMMARIES_DAY: '2', FREE_SUMMARIES_WEEK: '5' });
+  for (let i = 0; i < 2; i++) assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+  const q = (await call('GET', '/api/sermons/quota')).body;
+  assert.deepEqual([q.dayUsed, q.dayLimit, q.weekUsed, q.weekLimit], [2, 2, 2, 5]);
+  assert.ok(Date.parse(q.dayReset) > Date.now());
+  const third = await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT });
+  assert.equal(third.status, 429); assert.equal(third.body.error, 'daily_limit'); assert.ok(third.body.reset);
+});

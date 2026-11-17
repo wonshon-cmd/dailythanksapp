@@ -1522,3 +1522,13 @@ body.capturing #app{filter:blur(18px)}
 .cat-h { margin-top: 18px; }
 .ps-last { margin: 6px 0 0; font-size: 13px; line-height: 1.6; color: #4a4f54; } .ps-last small { display: block; color: #9aa0a6; }
 .ps-notes { margin-top: 6px; font-size: 13px; } .ps-notes summary { color: #6b7075; cursor: pointer; } .ps-notes p { margin: 4px 0; }
+/* usage meter: small and quiet */
+.us-title { font-size: 15px; font-weight: 500; color: #6b7075; }
+.us { display: grid; gap: 14px; padding-bottom: 6px; }
+.us-row { display: grid; gap: 5px; }
+.us-top { display: flex; justify-content: space-between; font-size: 12px; color: #6b7075; }
+.us-n { font-variant-numeric: tabular-nums; color: #9aa0a6; }
+.us-bar { display: block; height: 4px; border-radius: 2px; background: #ececec; overflow: hidden; }
+.us-bar b { display: block; height: 100%; background: #8a9094; border-radius: 2px; }
+.us-row small { font-size: 11px; color: #a4a9ac; }
+.us-more { justify-self: start; font-size: 12px; color: #8a8f94; padding: 0; }

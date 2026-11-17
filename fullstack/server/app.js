@@ -241,12 +241,19 @@ export function createApp({ config, store, transcribe = defaultTranscribe, summa
   const quota = user => {
     const plan = store.getPlan(user), P = config.sermonPlans;
     const month = new Date(Date.now() - 30 * 864e5).toISOString();
+    const now = Date.now(), dayT = store.sermonTimes(user, new Date(now - 864e5).toISOString()), weekT = store.sermonTimes(user, new Date(now - 7 * 864e5).toISOString());
+    // rolling windows: a slot frees up 24 h / 7 days after it was used
+    const resetAt = (times, span) => times.length ? new Date(new Date(times[0]).getTime() + span).toISOString() : null;
     return { plan: plan?.plan || 'free', until: plan?.until || null, used: store.storageUsed(user), limit: plan ? P.paidBytes : P.freeBytes, unit: 'bytes',
-      notes: store.countSermons(user), monthUsed: store.countSermons(user, month), monthLimit: plan ? P.fairUsePerMonth : null };
+      notes: store.countSermons(user), monthUsed: store.countSermons(user, month), monthLimit: plan ? P.fairUsePerMonth : null,
+      dayUsed: dayT.length, dayLimit: plan ? P.paidDay : P.freeDay, dayReset: resetAt(dayT, 864e5),
+      weekUsed: weekT.length, weekLimit: plan ? P.paidWeek : P.freeWeek, weekReset: resetAt(weekT, 7 * 864e5) };
   };
   const checkQuota = (user, adding = 0) => {
     const q = quota(user);
     if (q.used + adding > q.limit || (adding === 0 && q.used >= q.limit)) throw new HttpError(402, 'storage_full', null, { used: q.used, limit: q.limit });
+    if (q.dayUsed >= q.dayLimit) throw new HttpError(429, 'daily_limit', null, { reset: q.dayReset });
+    if (q.weekUsed >= q.weekLimit) throw new HttpError(429, 'weekly_limit', null, { reset: q.weekReset });
     if (q.plan !== 'free' && q.monthUsed >= q.monthLimit) throw new HttpError(429, 'fair_use', null, { monthUsed: q.monthUsed, monthLimit: q.monthLimit });
   };
   route('GET', '/api/sermons/quota', ({ user }) => quota(user), 'sermon');

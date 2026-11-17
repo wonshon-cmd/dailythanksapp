@@ -29,7 +29,10 @@ export function loadConfig(env = process.env) {
       // Google-style: plenty of free space; when it fills up, delete recordings or get more space.
       freeBytes: Math.round(Number(env.FREE_STORAGE_MB || 1024) * 1024 * 1024),      // 1 GB ≈ 50 hours of recordings
       paidBytes: Math.round(Number(env.PAID_STORAGE_GB || 100) * 1024 * 1024 * 1024), // monthly / yearly plans
-      fairUsePerMonth: Number(env.SERMON_FAIR_USE || 60),   // monthly / yearly plans: "almost unlimited"
+      fairUsePerMonth: Number(env.SERMON_FAIR_USE || 60),
+      // rolling limits on automatic summaries (like a usage meter): per 24 hours and per 7 days
+      freeDay: Number(env.FREE_SUMMARIES_DAY || 3), freeWeek: Number(env.FREE_SUMMARIES_WEEK || 10),
+      paidDay: Number(env.PAID_SUMMARIES_DAY || 10), paidWeek: Number(env.PAID_SUMMARIES_WEEK || 40),   // monthly / yearly plans: "almost unlimited"
       devBilling: on(env.BILLING_DEV)                        // dev only: activate a plan without a store receipt
     },
     ytdlpPath: env.YTDLP_PATH || '',   // optional: yt-dlp binary for "sermon from a YouTube link"
