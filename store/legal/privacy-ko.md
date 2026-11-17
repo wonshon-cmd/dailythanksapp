@@ -86,7 +86,7 @@ Daily Journey, Inc.(이하 "운영자")는 Daily Journey 앱과 웹사이트(웹
 
 - 담당: Daily Journey, Inc. 개인정보 보호 담당
 - 이메일: hi@dailyjourney.org
-- 주소: 105 Challenger Rd, Ridgefield Park, NJ 07660, USA
+- 주소: 105 Challenger Rd, Suite 401, Ridgefield Park, NJ 07660, USA
 
 개인정보 침해 신고·상담은 다음 기관에도 문의할 수 있습니다.
 

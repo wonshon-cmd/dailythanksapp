@@ -26,7 +26,7 @@
 - Daily Journey, Inc.
 - A New Jersey nonprofit corporation · 501(c)(3) application pending with the IRS
   (ko: 미국 뉴저지주에 설립된 비영리 법인 · 미국 국세청(IRS) 501(c)(3) 승인 신청 중)
-- 105 Challenger Rd, Ridgefield Park, NJ 07660, United States
+- 105 Challenger Rd, Suite 401, Ridgefield Park, NJ 07660, United States (서류와 똑같이 Suite 401 포함)
 - hi@dailyjourney.org
 - 첫 화면에 schema.org `Organization` 데이터(이름·주소·이메일)와 canonical URL 있음.
 
