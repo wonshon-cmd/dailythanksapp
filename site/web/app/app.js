@@ -10,7 +10,7 @@ const STR = {
   ko: {
     's.legal': '정보', 's.privacy': '개인정보처리방침', 's.terms': '이용약관', 's.support': '문의하기', 's.delete': '계정 삭제', 'del.body': '계정과 내가 쓴 감사, 저장·좋아요 기록이 모두 삭제돼요. 삭제하면 되돌릴 수 없어요.', 'del.ok': '삭제', 'del.done': '계정을 삭제했어요. 함께해 주셔서 고마웠어요.', 's.version': '버전',
     'card.feed': '피드 4:5', 'card.story': '스토리 9:16', 'card.shareImg': '이미지로 공유', 'card.noShare': '이 화면에서는 이미지 공유가 막혀 있어요. 앱에서는 바로 인스타그램·카카오톡으로 보낼 수 있어요.',
-    'wg.title': '홈 화면에 오늘의 말씀', 'wg.sub': '매일 감사의 말씀 한 구절이 홈 화면에 떠요. 누르면 바로 오늘의 감사를 쓸 수 있어요.',
+    'wg.title': '홈 화면 위젯', 'wg.sub': '오늘의 말씀 · 오늘의 감사 · 오늘의 묵상. 원하는 것을 홈 화면에 두고, 누르면 바로 쓸 수 있어요.',
     'wg.ios': '아이폰', 'wg.android': '안드로이드', 'wg.write': '한 줄 쓰기', 'wg.done': '오늘 감사 완료',
     'wg.iosSteps': '홈 화면 빈 곳을 길게 누르기|왼쪽 위 「+」 누르기|「Daily Thanks」 찾기|원하는 크기를 골라 「위젯 추가」',
     'wg.androidSteps': '홈 화면 빈 곳을 길게 누르기|「위젯」 누르기|「Daily Thanks」 찾기|위젯을 길게 눌러 홈 화면에 놓기',
@@ -117,7 +117,7 @@ const STR = {
     'gate.saved': '오늘의 감사가 저장되었어요.', 'gate.savedSub': '위로 넘겨 다른 사람들의 감사를 계속 보세요.',
     'login.title': '계속 보려면<br>로그인해 주세요.', 'login.sub': '한 번만 로그인하면 다음부터는 바로 열려요. 오늘 쓴 감사도 안전하게 보관돼요.',
     'login.apple': 'Apple로 계속하기', 'login.google': 'Google로 계속하기', 'login.phone': '휴대폰 번호로 계속하기',
-    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'verse.kicker': "말씀 한 구절", 'verse.title': "말씀 구절", 'verse.freq': "얼마나 자주", 'verse.hint': "감사 글 사이에 성경 한 구절이 보여요. 얼마나 자주 볼지 골라 주세요.", 'verse.often': "자주", 'verse.normal': "보통", 'verse.rare': "가끔", 'verse.off': "끄기", 'verse.note.often': "감사 4개쯤마다 한 구절", 'verse.note.normal': "감사 8개쯤마다 한 구절", 'verse.note.rare': "감사 15개쯤마다 한 구절", 'verse.note.off': "말씀 구절을 보여 주지 않아요", 'verse.read': "통독 이어 읽기", 'rd.loading': "말씀을 불러오는 중…", 'rd.offline': "말씀을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.", 'rd.retry': "다시 시도", 'rd.end': "요한계시록까지 다 읽었어요. 정말 수고했어요.", 'rd.pick': "성경 통독", 'rd.progress': "통독 {n} / {total}장", 'rd.ot': "구약", 'rd.nt': "신약", 'devo.kicker': "오늘의 말씀", 'devo.sub': "말씀을 읽고, 받은 은혜를 소그룹과 나눠요.", 'devo.count': "오늘 묵상 {n}개", 'devo.read': "말씀 읽기", 'devo.share': "묵상 나누기", 'devo.change': "본문 바꾸기", 'devo.none': "오늘 함께 읽을 본문을 정해 주세요", 'devo.noneSub': "정한 본문은 소그룹 모두에게 보여요.", 'devo.set': "오늘 본문 정하기", 'devo.ph': "예: 요한복음 3:1-15", 'devo.hint': "책 이름과 장·절을 적어 주세요. 예: 시편 23, 빌 4:6-7", 'devo.bad': "본문을 알아보지 못했어요. 예: 요한복음 3:1-15", 'devo.save': "정하기", 'devo.ph2': "오늘 말씀에서 받은 은혜는?", 'kind.meditation': "묵상", 'ch.type': "무엇을 함께 할까요?", 'ch.t.thanks': "감사", 'ch.q.meditation': "오늘 말씀에서 받은 은혜는?", 'ch.q.prayer': "오늘 함께 기도할 제목은?", 'share.link': "링크 복사", 'verse.saved': "저장했어요 · 나의 감사 › 저장", 'verse.unsaved': "저장을 취소했어요.", 'act.like': "좋아요", 'hint.swipeRead': "왼쪽으로 밀면 성경 읽기", 'hint.swipeBack': "오른쪽으로 밀면 돌아가기", 'day.today': "오늘", 'day.yesterday': "어제", 'j.month': "{m} · 감사한 날 {n}일", 'j.monthTitle': "이번 달", 'imm.all': "모두", 'imm.group': "소그룹", 'gs.week': "이번 주", 'gs.people': "{n}명이 함께했어요", 'gs.quiet': "이번 주 첫 나눔을 기다려요", 'gs.counts': "감사 {t} · 묵상 {m} · 기도 제목 {p}", 'gs.chDay': "{n}일째", 'gs.write': "나누기", 'gs.nudge': "함께하자고 알리기", 'gs.nudged': "오늘 알렸어요", 'gs.nudgeDone': "소그룹 모두에게 살짝 알렸어요.", 'gs.privacy': "누가 했는지는 보이지 않아요. 우리가 함께한 모습만 보여요.", 'pl.kicker': "기도 제목", 'pl.others': "다른 사람들의 기도 제목", 'pl.othersSub': "모르는 누군가를 위해서도 함께 기도해요.", 'pl.empty': "아직 나눈 기도 제목이 없어요", 'pl.back': "왼쪽으로 밀면 돌아가기", 'ct.title': "이 내용은 나눌 수 없어요", 'ct.body': "연락처, 팔로우·홍보, 돈 요청은 모두나 소그룹에 올릴 수 없어요. 감사만 나눠 주세요.", 'ct.email': "이메일", 'ct.phone': "전화번호", 'ct.link': "링크", 'ct.social': "연락처·팔로우 요청", 'ct.money': "돈·후원 요청", 'gs.chToday': "오늘 쓰기", 'gs.chStart': "동행 시작", 'pl.caught': "소그룹 기도 제목을 다 봤어요.", 'pl.ask': "다른 사람들의 기도 제목도 함께 볼까요?", 'pl.yes': "함께 기도하기", 'ch.t.bible': "성경 읽기", 'ch.len': "얼마 동안 할까요?", 'ch.days': "{n}일", 'ch.read': "오늘 읽기", 'gs.peopleShort': "이번 주 {n}명", 'gs.quietShort': "이번 주 조용해요", 'mp.load': "불러오기", 'share.sendLink': "링크 보내기", 'share.linkMsg': "daily thanks에서 감사를 나눠요", 'act.note': "노트", 'mp.addPrev': "＋ 앞 절", 'mp.addNext': "뒷 절 ＋", 'fs.open': "크게 보기", 'gs.today': "오늘 {n}명이 함께했어요", 'gs.weekPeople': "이번 주 {n}명이 함께했어요", 'col.line': "모아보기", 'col.title': "모아보기", 'col.month': "월", 'col.season': "계절", 'col.year': "한 해", 'col.mTitle': "{m}월의 {k}", 'col.sTitle': "{s}의 {k}", 'col.yTitle': "나의 {y}년", 'col.sub': "{n}개 · {d}일", 'col.spring': "봄", 'col.summer': "여름", 'col.autumn': "가을", 'col.winter': "겨울", 'col.post': "인스타그램에 올리기", 'col.save': "사진 저장", 'col.hint': "사진 {n}장 · 옆으로 넘겨 보세요. 비공개 감사와 기도 제목은 빠져요.", 'col.empty': "아직 모을 감사가 없어요.", 'col.saved': "사진을 저장했어요.", 'wg.label': "오늘의 말씀", 'gs.new': "새 글", 'gs.todayShort': "오늘", 'bp.title': "성경 고르기", 'bp.ok': "확인", 'bp.pick': "본문 고르기", 'bp.hintV': "절을 두 번 누르면 범위로 골라져요", 'bp.law': "율법서", 'bp.hist': "역사서", 'bp.poet': "시가서", 'bp.major': "대선지서", 'bp.minor': "소선지서", 'bp.gosp': "복음서", 'bp.acts': "역사서", 'bp.paul': "바울서신", 'bp.gen': "일반서신", 'bp.proph': "예언서", 'bp.ch': "{n}장", 'bp.v': "{n}절", 'f.thanks': "감사", 'f.med': "묵상", 'f.prayer': "기도", 'col.kAll': "모두", 'col.kTitle.thanks': "감사", 'col.kTitle.meditation': "묵상", 'col.kTitle.prayer': "기도", 'col.kTitle.all': "기록", 'col.hintP': "사진 {n}장 · 옆으로 넘겨 보세요. 비공개로 쓴 글은 빠져요.", 'draft.saved': "자동 저장됨", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
+    'inv.copy': "링크 복사", 'inv.btn': "초대", 'inv.title': "초대 링크", 'inv.desc': "이 링크를 받은 사람은 ‘{name}’에 들어올 수 있어요.", 'inv.share': "링크 보내기", 'inv.msg': "‘{name}’ 소그룹에서 함께 감사를 나눠요. daily thanks에서 참여하세요:", 'join.title': "소그룹 초대", 'join.body': "‘{name}’ 소그룹에 참여할까요? 소그룹에 나눈 감사는 멤버들만 볼 수 있어요.", 'join.ok': "참여하기", 'join.done': "‘{name}’에 참여했어요.", 'join.already': "이미 참여한 소그룹이에요.", 'verse.kicker': "말씀 한 구절", 'verse.title': "말씀 구절", 'verse.freq': "얼마나 자주", 'verse.hint': "감사 글 사이에 성경 한 구절이 보여요. 얼마나 자주 볼지 골라 주세요.", 'verse.often': "자주", 'verse.normal': "보통", 'verse.rare': "가끔", 'verse.off': "끄기", 'verse.note.often': "감사 4개쯤마다 한 구절", 'verse.note.normal': "감사 8개쯤마다 한 구절", 'verse.note.rare': "감사 15개쯤마다 한 구절", 'verse.note.off': "말씀 구절을 보여 주지 않아요", 'verse.read': "통독 이어 읽기", 'rd.loading': "말씀을 불러오는 중…", 'rd.offline': "말씀을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.", 'rd.retry': "다시 시도", 'rd.end': "요한계시록까지 다 읽었어요. 정말 수고했어요.", 'rd.pick': "성경 통독", 'rd.progress': "통독 {n} / {total}장", 'rd.ot': "구약", 'rd.nt': "신약", 'devo.kicker': "오늘의 말씀", 'devo.sub': "말씀을 읽고, 받은 은혜를 소그룹과 나눠요.", 'devo.count': "오늘 묵상 {n}개", 'devo.read': "말씀 읽기", 'devo.share': "묵상 나누기", 'devo.change': "본문 바꾸기", 'devo.none': "오늘 함께 읽을 본문을 정해 주세요", 'devo.noneSub': "정한 본문은 소그룹 모두에게 보여요.", 'devo.set': "오늘 본문 정하기", 'devo.ph': "예: 요한복음 3:1-15", 'devo.hint': "책 이름과 장·절을 적어 주세요. 예: 시편 23, 빌 4:6-7", 'devo.bad': "본문을 알아보지 못했어요. 예: 요한복음 3:1-15", 'devo.save': "정하기", 'devo.ph2': "오늘 말씀에서 받은 은혜는?", 'kind.meditation': "묵상", 'ch.type': "무엇을 함께 할까요?", 'ch.t.thanks': "감사", 'ch.q.meditation': "오늘 말씀에서 받은 은혜는?", 'ch.q.prayer': "오늘 함께 기도할 제목은?", 'share.link': "링크 복사", 'verse.saved': "저장했어요 · 나의 감사 › 저장", 'verse.unsaved': "저장을 취소했어요.", 'act.like': "좋아요", 'hint.swipeRead': "왼쪽으로 밀면 성경 읽기", 'hint.swipeBack': "오른쪽으로 밀면 돌아가기", 'day.today': "오늘", 'day.yesterday': "어제", 'j.month': "{m} · 감사한 날 {n}일", 'j.monthTitle': "이번 달", 'imm.all': "모두", 'imm.group': "소그룹", 'gs.week': "이번 주", 'gs.people': "{n}명이 함께했어요", 'gs.quiet': "이번 주 첫 나눔을 기다려요", 'gs.counts': "감사 {t} · 묵상 {m} · 기도 제목 {p}", 'gs.chDay': "{n}일째", 'gs.write': "나누기", 'gs.nudge': "함께하자고 알리기", 'gs.nudged': "오늘 알렸어요", 'gs.nudgeDone': "소그룹 모두에게 살짝 알렸어요.", 'gs.privacy': "누가 했는지는 보이지 않아요. 우리가 함께한 모습만 보여요.", 'pl.kicker': "기도 제목", 'pl.others': "다른 사람들의 기도 제목", 'pl.othersSub': "모르는 누군가를 위해서도 함께 기도해요.", 'pl.empty': "아직 나눈 기도 제목이 없어요", 'pl.back': "왼쪽으로 밀면 돌아가기", 'ct.title': "이 내용은 나눌 수 없어요", 'ct.body': "연락처, 팔로우·홍보, 돈 요청은 모두나 소그룹에 올릴 수 없어요. 감사만 나눠 주세요.", 'ct.email': "이메일", 'ct.phone': "전화번호", 'ct.link': "링크", 'ct.social': "연락처·팔로우 요청", 'ct.money': "돈·후원 요청", 'gs.chToday': "오늘 쓰기", 'gs.chStart': "동행 시작", 'pl.caught': "소그룹 기도 제목을 다 봤어요.", 'pl.ask': "다른 사람들의 기도 제목도 함께 볼까요?", 'pl.yes': "함께 기도하기", 'ch.t.bible': "성경 읽기", 'ch.len': "얼마 동안 할까요?", 'ch.days': "{n}일", 'ch.read': "오늘 읽기", 'gs.peopleShort': "이번 주 {n}명", 'gs.quietShort': "이번 주 조용해요", 'mp.load': "불러오기", 'share.sendLink': "링크 보내기", 'share.linkMsg': "daily thanks에서 감사를 나눠요", 'act.note': "노트", 'mp.addPrev': "＋ 앞 절", 'mp.addNext': "뒷 절 ＋", 'fs.open': "크게 보기", 'gs.today': "오늘 {n}명이 함께했어요", 'gs.weekPeople': "이번 주 {n}명이 함께했어요", 'col.line': "모아보기", 'col.title': "모아보기", 'col.month': "월", 'col.season': "계절", 'col.year': "한 해", 'col.mTitle': "{m}월의 {k}", 'col.sTitle': "{s}의 {k}", 'col.yTitle': "나의 {y}년", 'col.sub': "{n}개 · {d}일", 'col.spring': "봄", 'col.summer': "여름", 'col.autumn': "가을", 'col.winter': "겨울", 'col.post': "인스타그램에 올리기", 'col.save': "사진 저장", 'col.hint': "사진 {n}장 · 옆으로 넘겨 보세요. 비공개 감사와 기도 제목은 빠져요.", 'col.empty': "아직 모을 감사가 없어요.", 'col.saved': "사진을 저장했어요.", 'wg.label': "오늘의 말씀", 'gs.new': "새 글", 'gs.todayShort': "오늘", 'bp.title': "성경 고르기", 'bp.ok': "확인", 'bp.pick': "본문 고르기", 'bp.hintV': "절을 두 번 누르면 범위로 골라져요", 'bp.law': "율법서", 'bp.hist': "역사서", 'bp.poet': "시가서", 'bp.major': "대선지서", 'bp.minor': "소선지서", 'bp.gosp': "복음서", 'bp.acts': "역사서", 'bp.paul': "바울서신", 'bp.gen': "일반서신", 'bp.proph': "예언서", 'bp.ch': "{n}장", 'bp.v': "{n}절", 'f.thanks': "감사", 'f.med': "묵상", 'f.prayer': "기도", 'col.kAll': "모두", 'col.kTitle.thanks': "감사", 'col.kTitle.meditation': "묵상", 'col.kTitle.prayer': "기도", 'col.kTitle.all': "기록", 'col.hintP': "사진 {n}장 · 옆으로 넘겨 보세요. 비공개로 쓴 글은 빠져요.", 'draft.saved': "자동 저장됨", 'st.line': "{n}일 연속 감사", 'st.none': "오늘 감사로 연속 기록을 시작해요", 'gd.back': "소그룹", 'gd.week': "이번 주", 'gd.thanks': "감사", 'gd.med': "묵상", 'gd.prayer': "기도 제목", 'gd.recent': "최근 나눔", 'gd.all': "모두 보기", 'gd.invite': "초대", 'gd.share': "나누기", 'gd.empty': "아직 나눈 글이 없어요", 'col.reel': "릴스 영상 만들기", 'col.reeling': "영상 만드는 중… {p}%", 'col.reelPost': "영상 올리기", 'col.reelSave': "영상 저장", 'col.photos': "사진", 'col.video': "영상", 'wg.thanksLabel': "오늘의 감사", 'wg.medLabel': "오늘의 묵상", 'wg.write2': "감사 쓰기", 'wg.medWrite': "묵상 쓰기", 'wg.medDone': "오늘 묵상 완료", 'wg.streak': "{n}일 연속", 'share.linkSub': "누르면 글을 바로 볼 수 있는 링크", 'upd.title': "새 버전이 있어요", 'upd.body': "더 나은 daily thanks를 위해 앱을 업데이트해 주세요.", 'upd.go': "업데이트", 'login.terms': "계속하면 <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">이용약관</a>과 <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">개인정보처리방침</a>에 동의하는 것으로 봐요. 다른 사람을 해치거나 불쾌하게 하는 글은 허용되지 않아요.", 'login.demo': '시안에서는 실제 계정에 연결하지 않고 로그인 상태만 이 기기에 저장해요.', 'login.done': '로그인했어요. 다음부터는 바로 열려요.',
     'phone.title': '휴대폰 번호로 로그인', 'phone.number': '휴대폰 번호', 'phone.send': '인증번호 받기', 'phone.code': '인증번호 6자리', 'phone.verify': '확인',
     'phone.sent': '인증번호를 보냈어요.', 'phone.demo': '시안에서는 문자가 가지 않아요. 아무 6자리 숫자나 입력하세요.', 'phone.bad': '번호를 다시 확인해 주세요.', 'phone.badCode': '6자리 숫자를 입력해 주세요.',
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '데모에서 추가한 기록과 설정을 모두 초기화할까요?', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
@@ -125,7 +125,7 @@ const STR = {
   en: {
     's.legal': 'About', 's.privacy': 'Privacy Policy', 's.terms': 'Terms of Use', 's.support': 'Contact support', 's.delete': 'Delete account', 'del.body': 'Your account, your notes, and your saves and likes will be deleted. This can’t be undone.', 'del.ok': 'Delete', 'del.done': 'Your account was deleted. Thank you for being here.', 's.version': 'Version',
     'card.feed': 'Feed 4:5', 'card.story': 'Story 9:16', 'card.shareImg': 'Share as image', 'card.noShare': 'Image sharing is blocked on this screen. In the app it goes straight to Instagram or KakaoTalk.',
-    'wg.title': 'Today’s verse on your home screen', 'wg.sub': 'A verse about thanks on your home screen each day. Tap it to write today’s thanks.',
+    'wg.title': 'Home screen widgets', 'wg.sub': 'Daily verse · Today’s thanks · Today’s reflection. Put the ones you like on your home screen and tap to write.',
     'wg.ios': 'iPhone', 'wg.android': 'Android', 'wg.write': 'Write a line', 'wg.done': 'Done for today',
     'wg.iosSteps': 'Touch and hold an empty spot on the Home Screen|Tap “+” at the top left|Find “Daily Thanks”|Pick a size and tap “Add Widget”',
     'wg.androidSteps': 'Touch and hold an empty spot on the home screen|Tap “Widgets”|Find “Daily Thanks”|Touch and hold the widget, then place it',
@@ -232,7 +232,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'verse.read': "Keep reading", 'rd.loading': "Loading…", 'rd.offline': "Couldn’t load the passage. Check your internet connection.", 'rd.retry': "Try again", 'rd.end': "You’ve read through to Revelation. Well done.", 'rd.pick': "Read through the Bible", 'rd.progress': "{n} of {total} chapters read", 'rd.ot': "Old Testament", 'rd.nt': "New Testament", 'devo.kicker': "Today’s passage", 'devo.sub': "Read it, then share what you received with your group.", 'devo.count': "{n} shared today", 'devo.read': "Read", 'devo.share': "Share a reflection", 'devo.change': "Change passage", 'devo.none': "Pick today’s passage for your group", 'devo.noneSub': "Everyone in the group will see it.", 'devo.set': "Set today’s passage", 'devo.ph': "e.g. John 3:1-15", 'devo.hint': "Type a book and chapter, e.g. Psalm 23 or Philippians 4:6-7.", 'devo.bad': "Couldn’t read that passage. e.g. John 3:1-15", 'devo.save': "Set", 'devo.ph2': "What did today’s passage give you?", 'kind.meditation': "Reflection", 'ch.type': "What will you do together?", 'ch.t.thanks': "Thanks", 'ch.q.meditation': "What did today’s passage give you?", 'ch.q.prayer': "What shall we pray for today?", 'share.link': "Copy link", 'verse.saved': "Saved · My Thanks › Saved", 'verse.unsaved': "Removed from saved.", 'act.like': "Like", 'hint.swipeRead': "Swipe left to read the Bible", 'hint.swipeBack': "Swipe right to go back", 'day.today': "Today", 'day.yesterday': "Yesterday", 'j.month': "{m} · {n} days of thanks", 'j.monthTitle': "This month", 'imm.all': "Everyone", 'imm.group': "Group", 'gs.week': "This week", 'gs.people': "{n} of us took part", 'gs.quiet': "Waiting for this week’s first share", 'gs.counts': "Thanks {t} · Reflections {m} · Prayer requests {p}", 'gs.chDay': "day {n}", 'gs.write': "Share", 'gs.nudge': "Nudge the group", 'gs.nudged': "Invited today", 'gs.nudgeDone': "A gentle note went to the whole group.", 'gs.privacy': "No one’s name is shown here, only what we did together.", 'pl.kicker': "Prayer requests", 'pl.others': "Prayer requests from others", 'pl.othersSub': "Pray for someone you have never met.", 'pl.empty': "No prayer requests yet", 'pl.back': "Swipe left to go back", 'ct.title': "This can’t be shared", 'ct.body': "Contact details, follow or promotion requests, and requests for money can’t be posted to Everyone or a group. Please share just the thanks.", 'ct.email': "Email", 'ct.phone': "Phone number", 'ct.link': "Link", 'ct.social': "Contact or follow request", 'ct.money': "Money request", 'gs.chToday': "Write today", 'gs.chStart': "Start a challenge", 'pl.caught': "You’re caught up on your groups.", 'pl.ask': "Would you like to pray for others too?", 'pl.yes': "Pray for others", 'ch.t.bible': "Bible reading", 'ch.len': "For how long?", 'ch.days': "{n} days", 'ch.read': "Read today", 'gs.peopleShort': "{n} this week", 'gs.quietShort': "Quiet this week", 'mp.load': "Load", 'share.sendLink': "Send link", 'share.linkMsg': "A line of thanks on daily thanks", 'act.note': "Note", 'mp.addPrev': "+ Earlier verse", 'mp.addNext': "Next verse +", 'fs.open': "Expand", 'gs.today': "{n} of us took part today", 'gs.weekPeople': "{n} of us took part this week", 'col.line': "Collections", 'col.title': "Collections", 'col.month': "Month", 'col.season': "Season", 'col.year': "Year", 'col.mTitle': "{m} {k}", 'col.sTitle': "{s} {k}", 'col.yTitle': "My {y}", 'col.sub': "{n} notes · {d} days", 'col.spring': "Spring", 'col.summer': "Summer", 'col.autumn': "Autumn", 'col.winter': "Winter", 'col.post': "Post to Instagram", 'col.save': "Save images", 'col.hint': "{n} images · swipe to see them. Private notes and prayer requests are left out.", 'col.empty': "Nothing to collect yet.", 'col.saved': "Images saved.", 'wg.label': "Daily verse", 'gs.new': "New", 'gs.todayShort': "Today", 'bp.title': "Choose a passage", 'bp.ok': "Done", 'bp.pick': "Choose a passage", 'bp.hintV': "Tap a second verse to pick a range", 'bp.law': "Law", 'bp.hist': "History", 'bp.poet': "Poetry", 'bp.major': "Major prophets", 'bp.minor': "Minor prophets", 'bp.gosp': "Gospels", 'bp.acts': "History", 'bp.paul': "Paul’s letters", 'bp.gen': "General letters", 'bp.proph': "Prophecy", 'bp.ch': "Ch. {n}", 'bp.v': "v. {n}", 'f.thanks': "Thanks", 'f.med': "Reflections", 'f.prayer': "Prayers", 'col.kAll': "All", 'col.kTitle.thanks': "thanks", 'col.kTitle.meditation': "reflections", 'col.kTitle.prayer': "prayers", 'col.kTitle.all': "moments", 'col.hintP': "{n} images · swipe to see them. Private notes are left out.", 'draft.saved': "Saved", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'verse.read': "Keep reading", 'rd.loading': "Loading…", 'rd.offline': "Couldn’t load the passage. Check your internet connection.", 'rd.retry': "Try again", 'rd.end': "You’ve read through to Revelation. Well done.", 'rd.pick': "Read through the Bible", 'rd.progress': "{n} of {total} chapters read", 'rd.ot': "Old Testament", 'rd.nt': "New Testament", 'devo.kicker': "Today’s passage", 'devo.sub': "Read it, then share what you received with your group.", 'devo.count': "{n} shared today", 'devo.read': "Read", 'devo.share': "Share a reflection", 'devo.change': "Change passage", 'devo.none': "Pick today’s passage for your group", 'devo.noneSub': "Everyone in the group will see it.", 'devo.set': "Set today’s passage", 'devo.ph': "e.g. John 3:1-15", 'devo.hint': "Type a book and chapter, e.g. Psalm 23 or Philippians 4:6-7.", 'devo.bad': "Couldn’t read that passage. e.g. John 3:1-15", 'devo.save': "Set", 'devo.ph2': "What did today’s passage give you?", 'kind.meditation': "Reflection", 'ch.type': "What will you do together?", 'ch.t.thanks': "Thanks", 'ch.q.meditation': "What did today’s passage give you?", 'ch.q.prayer': "What shall we pray for today?", 'share.link': "Copy link", 'verse.saved': "Saved · My Thanks › Saved", 'verse.unsaved': "Removed from saved.", 'act.like': "Like", 'hint.swipeRead': "Swipe left to read the Bible", 'hint.swipeBack': "Swipe right to go back", 'day.today': "Today", 'day.yesterday': "Yesterday", 'j.month': "{m} · {n} days of thanks", 'j.monthTitle': "This month", 'imm.all': "Everyone", 'imm.group': "Group", 'gs.week': "This week", 'gs.people': "{n} of us took part", 'gs.quiet': "Waiting for this week’s first share", 'gs.counts': "Thanks {t} · Reflections {m} · Prayer requests {p}", 'gs.chDay': "day {n}", 'gs.write': "Share", 'gs.nudge': "Nudge the group", 'gs.nudged': "Invited today", 'gs.nudgeDone': "A gentle note went to the whole group.", 'gs.privacy': "No one’s name is shown here, only what we did together.", 'pl.kicker': "Prayer requests", 'pl.others': "Prayer requests from others", 'pl.othersSub': "Pray for someone you have never met.", 'pl.empty': "No prayer requests yet", 'pl.back': "Swipe left to go back", 'ct.title': "This can’t be shared", 'ct.body': "Contact details, follow or promotion requests, and requests for money can’t be posted to Everyone or a group. Please share just the thanks.", 'ct.email': "Email", 'ct.phone': "Phone number", 'ct.link': "Link", 'ct.social': "Contact or follow request", 'ct.money': "Money request", 'gs.chToday': "Write today", 'gs.chStart': "Start a challenge", 'pl.caught': "You’re caught up on your groups.", 'pl.ask': "Would you like to pray for others too?", 'pl.yes': "Pray for others", 'ch.t.bible': "Bible reading", 'ch.len': "For how long?", 'ch.days': "{n} days", 'ch.read': "Read today", 'gs.peopleShort': "{n} this week", 'gs.quietShort': "Quiet this week", 'mp.load': "Load", 'share.sendLink': "Send link", 'share.linkMsg': "A line of thanks on daily thanks", 'act.note': "Note", 'mp.addPrev': "+ Earlier verse", 'mp.addNext': "Next verse +", 'fs.open': "Expand", 'gs.today': "{n} of us took part today", 'gs.weekPeople': "{n} of us took part this week", 'col.line': "Collections", 'col.title': "Collections", 'col.month': "Month", 'col.season': "Season", 'col.year': "Year", 'col.mTitle': "{m} {k}", 'col.sTitle': "{s} {k}", 'col.yTitle': "My {y}", 'col.sub': "{n} notes · {d} days", 'col.spring': "Spring", 'col.summer': "Summer", 'col.autumn': "Autumn", 'col.winter': "Winter", 'col.post': "Post to Instagram", 'col.save': "Save images", 'col.hint': "{n} images · swipe to see them. Private notes and prayer requests are left out.", 'col.empty': "Nothing to collect yet.", 'col.saved': "Images saved.", 'wg.label': "Daily verse", 'gs.new': "New", 'gs.todayShort': "Today", 'bp.title': "Choose a passage", 'bp.ok': "Done", 'bp.pick': "Choose a passage", 'bp.hintV': "Tap a second verse to pick a range", 'bp.law': "Law", 'bp.hist': "History", 'bp.poet': "Poetry", 'bp.major': "Major prophets", 'bp.minor': "Minor prophets", 'bp.gosp': "Gospels", 'bp.acts': "History", 'bp.paul': "Paul’s letters", 'bp.gen': "General letters", 'bp.proph': "Prophecy", 'bp.ch': "Ch. {n}", 'bp.v': "v. {n}", 'f.thanks': "Thanks", 'f.med': "Reflections", 'f.prayer': "Prayers", 'col.kAll': "All", 'col.kTitle.thanks': "thanks", 'col.kTitle.meditation': "reflections", 'col.kTitle.prayer': "prayers", 'col.kTitle.all': "moments", 'col.hintP': "{n} images · swipe to see them. Private notes are left out.", 'draft.saved': "Saved", 'st.line': "{n}-day streak", 'st.none': "Start a streak with today’s thanks", 'gd.back': "Groups", 'gd.week': "This week", 'gd.thanks': "Thanks", 'gd.med': "Reflections", 'gd.prayer': "Prayer requests", 'gd.recent': "Recent", 'gd.all': "See all", 'gd.invite': "Invite", 'gd.share': "Share", 'gd.empty': "Nothing shared yet", 'col.reel': "Make a reel", 'col.reeling': "Making the video… {p}%", 'col.reelPost': "Post the video", 'col.reelSave': "Save video", 'col.photos': "Photos", 'col.video': "Video", 'wg.thanksLabel': "Today’s thanks", 'wg.medLabel': "Today’s reflection", 'wg.write2': "Write", 'wg.medWrite': "Reflect", 'wg.medDone': "Reflected today", 'wg.streak': "{n}-day streak", 'share.linkSub': "A link that opens your thanks", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -243,8 +243,8 @@ const STR = {
     'card.story': 'Historia 9:16',
     'card.shareImg': 'Compartir como imagen',
     'card.noShare': 'Esta pantalla no permite compartir imágenes. En la app se envía directo a Instagram o KakaoTalk.',
-    'wg.title': 'El versículo del día en tu pantalla de inicio',
-    'wg.sub': 'Cada día, un versículo sobre la gratitud en tu pantalla de inicio. Tócalo para escribir tu gratitud de hoy.',
+    'wg.title': 'Widgets de inicio',
+    'wg.sub': 'Versículo del día · Gratitud de hoy · Reflexión de hoy. Pon los que quieras en tu pantalla de inicio y tócalos para escribir.',
     'wg.ios': 'iPhone',
     'wg.android': 'Android',
     'wg.write': 'Escribir una línea',
@@ -605,7 +605,7 @@ const STR = {
     'login.apple': 'Continuar con Apple',
     'login.google': 'Continuar con Google',
     'login.phone': 'Continuar con número de teléfono',
-    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'verse.kicker': "Un versículo", 'verse.title': "Versículos", 'verse.freq': "Con qué frecuencia", 'verse.hint': "Entre las publicaciones aparece un versículo. Elige con qué frecuencia verlo.", 'verse.often': "A menudo", 'verse.normal': "Normal", 'verse.rare': "Poco", 'verse.off': "No", 'verse.note.often': "Un versículo cada 4 publicaciones aprox.", 'verse.note.normal': "Un versículo cada 8 publicaciones aprox.", 'verse.note.rare': "Un versículo cada 15 publicaciones aprox.", 'verse.note.off': "Sin versículos en el feed", 'verse.read': "Seguir leyendo", 'rd.loading': "Cargando…", 'rd.offline': "No se pudo cargar el pasaje. Revisa tu conexión a internet.", 'rd.retry': "Reintentar", 'rd.end': "Leíste hasta Apocalipsis. ¡Bien hecho!", 'rd.pick': "Leer toda la Biblia", 'rd.progress': "{n} de {total} capítulos leídos", 'rd.ot': "Antiguo Testamento", 'rd.nt': "Nuevo Testamento", 'devo.kicker': "Pasaje de hoy", 'devo.sub': "Léelo y comparte con tu grupo lo que recibiste.", 'devo.count': "{n} compartidos hoy", 'devo.read': "Leer", 'devo.share': "Compartir reflexión", 'devo.change': "Cambiar pasaje", 'devo.none': "Elige el pasaje de hoy para tu grupo", 'devo.noneSub': "Todo el grupo lo verá.", 'devo.set': "Elegir el pasaje de hoy", 'devo.ph': "p. ej. Juan 3:1-15", 'devo.hint': "Escribe libro y capítulo, p. ej. Salmos 23 o Filipenses 4:6-7.", 'devo.bad': "No se reconoció el pasaje. p. ej. Juan 3:1-15", 'devo.save': "Elegir", 'devo.ph2': "¿Qué te dio el pasaje de hoy?", 'kind.meditation': "Reflexión", 'ch.type': "¿Qué harán juntos?", 'ch.t.thanks': "Gratitud", 'ch.q.meditation': "¿Qué te dio el pasaje de hoy?", 'ch.q.prayer': "¿Por qué oramos hoy?", 'share.link': "Copiar enlace", 'verse.saved': "Guardado · Mi gratitud › Guardado", 'verse.unsaved': "Quitado de guardados.", 'act.like': "Me gusta", 'hint.swipeRead': "Desliza a la izquierda para leer la Biblia", 'hint.swipeBack': "Desliza a la derecha para volver", 'day.today': "Hoy", 'day.yesterday': "Ayer", 'j.month': "{m} · {n} días de gratitud", 'j.monthTitle': "Este mes", 'imm.all': "Todos", 'imm.group': "Grupo", 'gs.week': "Esta semana", 'gs.people': "{n} participaron", 'gs.quiet': "Esperando lo primero de esta semana", 'gs.counts': "Gratitud {t} · Reflexiones {m} · Peticiones {p}", 'gs.chDay': "día {n}", 'gs.write': "Compartir", 'gs.nudge': "Invitar a todos hoy", 'gs.nudged': "Invitados hoy", 'gs.nudgeDone': "Se envió una nota suave a todo el grupo.", 'gs.privacy': "Aquí no se ve quién participó, solo lo que hicimos juntos.", 'pl.kicker': "Peticiones de oración", 'pl.others': "Peticiones de otras personas", 'pl.othersSub': "Ora también por alguien que no conoces.", 'pl.empty': "Aún no hay peticiones", 'pl.back': "Desliza a la izquierda para volver", 'ct.title': "Esto no se puede compartir", 'ct.body': "No se pueden publicar datos de contacto, pedidos de seguidores o promoción, ni pedidos de dinero en Todos o en un grupo. Comparte solo la gratitud.", 'ct.email': "Correo", 'ct.phone': "Teléfono", 'ct.link': "Enlace", 'ct.social': "Contacto o pedido de seguir", 'ct.money': "Pedido de dinero", 'gs.chToday': "Escribir hoy", 'gs.chStart': "Empezar un reto", 'pl.caught': "Ya viste las peticiones de tus grupos.", 'pl.ask': "¿Quieres orar también por otras personas?", 'pl.yes': "Orar por otros", 'ch.t.bible': "Lectura bíblica", 'ch.len': "¿Por cuánto tiempo?", 'ch.days': "{n} días", 'ch.read': "Leer hoy", 'gs.peopleShort': "{n} esta semana", 'gs.quietShort': "Tranquilo esta semana", 'mp.load': "Cargar", 'share.sendLink': "Enviar enlace", 'share.linkMsg': "Una gratitud en daily thanks", 'act.note': "Nota", 'mp.addPrev': "+ Versículo anterior", 'mp.addNext': "Versículo siguiente +", 'fs.open': "Ampliar", 'gs.today': "Hoy participaron {n}", 'gs.weekPeople': "Esta semana participaron {n}", 'col.line': "Colecciones", 'col.title': "Colecciones", 'col.month': "Mes", 'col.season': "Estación", 'col.year': "Año", 'col.mTitle': "{K} de {m}", 'col.sTitle': "{K} de {s}", 'col.yTitle': "Mi {y}", 'col.sub': "{n} notas · {d} días", 'col.spring': "primavera", 'col.summer': "verano", 'col.autumn': "otoño", 'col.winter': "invierno", 'col.post': "Publicar en Instagram", 'col.save': "Guardar imágenes", 'col.hint': "{n} imágenes · desliza para verlas. Las notas privadas y peticiones de oración no se incluyen.", 'col.empty': "Aún no hay nada que reunir.", 'col.saved': "Imágenes guardadas.", 'wg.label': "Versículo del día", 'gs.new': "Nuevo", 'gs.todayShort': "Hoy", 'bp.title': "Elegir un pasaje", 'bp.ok': "Listo", 'bp.pick': "Elegir un pasaje", 'bp.hintV': "Toca un segundo versículo para elegir un rango", 'bp.law': "Ley", 'bp.hist': "Historia", 'bp.poet': "Poesía", 'bp.major': "Profetas mayores", 'bp.minor': "Profetas menores", 'bp.gosp': "Evangelios", 'bp.acts': "Historia", 'bp.paul': "Cartas de Pablo", 'bp.gen': "Cartas generales", 'bp.proph': "Profecía", 'bp.ch': "Cap. {n}", 'bp.v': "v. {n}", 'f.thanks': "Gratitud", 'f.med': "Reflexiones", 'f.prayer': "Oraciones", 'col.kAll': "Todo", 'col.kTitle.thanks': "gratitud", 'col.kTitle.meditation': "reflexiones", 'col.kTitle.prayer': "oraciones", 'col.kTitle.all': "momentos", 'col.hintP': "{n} imágenes · desliza para verlas. Las notas privadas no se incluyen.", 'draft.saved': "Guardado", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
+    'inv.copy': "Copiar enlace", 'inv.btn': "Invitar", 'inv.title': "Enlace de invitación", 'inv.desc': "Quien tenga este enlace puede unirse a “{name}”.", 'inv.share': "Enviar enlace", 'inv.msg': "Únete a “{name}” en daily thanks y compartamos gratitud:", 'join.title': "Invitación al grupo", 'join.body': "¿Unirte a “{name}”? Lo que se comparte en un grupo solo lo ven sus miembros.", 'join.ok': "Unirme", 'join.done': "Te uniste a “{name}”.", 'join.already': "Ya estás en este grupo.", 'verse.kicker': "Un versículo", 'verse.title': "Versículos", 'verse.freq': "Con qué frecuencia", 'verse.hint': "Entre las publicaciones aparece un versículo. Elige con qué frecuencia verlo.", 'verse.often': "A menudo", 'verse.normal': "Normal", 'verse.rare': "Poco", 'verse.off': "No", 'verse.note.often': "Un versículo cada 4 publicaciones aprox.", 'verse.note.normal': "Un versículo cada 8 publicaciones aprox.", 'verse.note.rare': "Un versículo cada 15 publicaciones aprox.", 'verse.note.off': "Sin versículos en el feed", 'verse.read': "Seguir leyendo", 'rd.loading': "Cargando…", 'rd.offline': "No se pudo cargar el pasaje. Revisa tu conexión a internet.", 'rd.retry': "Reintentar", 'rd.end': "Leíste hasta Apocalipsis. ¡Bien hecho!", 'rd.pick': "Leer toda la Biblia", 'rd.progress': "{n} de {total} capítulos leídos", 'rd.ot': "Antiguo Testamento", 'rd.nt': "Nuevo Testamento", 'devo.kicker': "Pasaje de hoy", 'devo.sub': "Léelo y comparte con tu grupo lo que recibiste.", 'devo.count': "{n} compartidos hoy", 'devo.read': "Leer", 'devo.share': "Compartir reflexión", 'devo.change': "Cambiar pasaje", 'devo.none': "Elige el pasaje de hoy para tu grupo", 'devo.noneSub': "Todo el grupo lo verá.", 'devo.set': "Elegir el pasaje de hoy", 'devo.ph': "p. ej. Juan 3:1-15", 'devo.hint': "Escribe libro y capítulo, p. ej. Salmos 23 o Filipenses 4:6-7.", 'devo.bad': "No se reconoció el pasaje. p. ej. Juan 3:1-15", 'devo.save': "Elegir", 'devo.ph2': "¿Qué te dio el pasaje de hoy?", 'kind.meditation': "Reflexión", 'ch.type': "¿Qué harán juntos?", 'ch.t.thanks': "Gratitud", 'ch.q.meditation': "¿Qué te dio el pasaje de hoy?", 'ch.q.prayer': "¿Por qué oramos hoy?", 'share.link': "Copiar enlace", 'verse.saved': "Guardado · Mi gratitud › Guardado", 'verse.unsaved': "Quitado de guardados.", 'act.like': "Me gusta", 'hint.swipeRead': "Desliza a la izquierda para leer la Biblia", 'hint.swipeBack': "Desliza a la derecha para volver", 'day.today': "Hoy", 'day.yesterday': "Ayer", 'j.month': "{m} · {n} días de gratitud", 'j.monthTitle': "Este mes", 'imm.all': "Todos", 'imm.group': "Grupo", 'gs.week': "Esta semana", 'gs.people': "{n} participaron", 'gs.quiet': "Esperando lo primero de esta semana", 'gs.counts': "Gratitud {t} · Reflexiones {m} · Peticiones {p}", 'gs.chDay': "día {n}", 'gs.write': "Compartir", 'gs.nudge': "Invitar a todos hoy", 'gs.nudged': "Invitados hoy", 'gs.nudgeDone': "Se envió una nota suave a todo el grupo.", 'gs.privacy': "Aquí no se ve quién participó, solo lo que hicimos juntos.", 'pl.kicker': "Peticiones de oración", 'pl.others': "Peticiones de otras personas", 'pl.othersSub': "Ora también por alguien que no conoces.", 'pl.empty': "Aún no hay peticiones", 'pl.back': "Desliza a la izquierda para volver", 'ct.title': "Esto no se puede compartir", 'ct.body': "No se pueden publicar datos de contacto, pedidos de seguidores o promoción, ni pedidos de dinero en Todos o en un grupo. Comparte solo la gratitud.", 'ct.email': "Correo", 'ct.phone': "Teléfono", 'ct.link': "Enlace", 'ct.social': "Contacto o pedido de seguir", 'ct.money': "Pedido de dinero", 'gs.chToday': "Escribir hoy", 'gs.chStart': "Empezar un reto", 'pl.caught': "Ya viste las peticiones de tus grupos.", 'pl.ask': "¿Quieres orar también por otras personas?", 'pl.yes': "Orar por otros", 'ch.t.bible': "Lectura bíblica", 'ch.len': "¿Por cuánto tiempo?", 'ch.days': "{n} días", 'ch.read': "Leer hoy", 'gs.peopleShort': "{n} esta semana", 'gs.quietShort': "Tranquilo esta semana", 'mp.load': "Cargar", 'share.sendLink': "Enviar enlace", 'share.linkMsg': "Una gratitud en daily thanks", 'act.note': "Nota", 'mp.addPrev': "+ Versículo anterior", 'mp.addNext': "Versículo siguiente +", 'fs.open': "Ampliar", 'gs.today': "Hoy participaron {n}", 'gs.weekPeople': "Esta semana participaron {n}", 'col.line': "Colecciones", 'col.title': "Colecciones", 'col.month': "Mes", 'col.season': "Estación", 'col.year': "Año", 'col.mTitle': "{K} de {m}", 'col.sTitle': "{K} de {s}", 'col.yTitle': "Mi {y}", 'col.sub': "{n} notas · {d} días", 'col.spring': "primavera", 'col.summer': "verano", 'col.autumn': "otoño", 'col.winter': "invierno", 'col.post': "Publicar en Instagram", 'col.save': "Guardar imágenes", 'col.hint': "{n} imágenes · desliza para verlas. Las notas privadas y peticiones de oración no se incluyen.", 'col.empty': "Aún no hay nada que reunir.", 'col.saved': "Imágenes guardadas.", 'wg.label': "Versículo del día", 'gs.new': "Nuevo", 'gs.todayShort': "Hoy", 'bp.title': "Elegir un pasaje", 'bp.ok': "Listo", 'bp.pick': "Elegir un pasaje", 'bp.hintV': "Toca un segundo versículo para elegir un rango", 'bp.law': "Ley", 'bp.hist': "Historia", 'bp.poet': "Poesía", 'bp.major': "Profetas mayores", 'bp.minor': "Profetas menores", 'bp.gosp': "Evangelios", 'bp.acts': "Historia", 'bp.paul': "Cartas de Pablo", 'bp.gen': "Cartas generales", 'bp.proph': "Profecía", 'bp.ch': "Cap. {n}", 'bp.v': "v. {n}", 'f.thanks': "Gratitud", 'f.med': "Reflexiones", 'f.prayer': "Oraciones", 'col.kAll': "Todo", 'col.kTitle.thanks': "gratitud", 'col.kTitle.meditation': "reflexiones", 'col.kTitle.prayer': "oraciones", 'col.kTitle.all': "momentos", 'col.hintP': "{n} imágenes · desliza para verlas. Las notas privadas no se incluyen.", 'draft.saved': "Guardado", 'st.line': "{n} días seguidos", 'st.none': "Empieza una racha con la gratitud de hoy", 'gd.back': "Grupos", 'gd.week': "Esta semana", 'gd.thanks': "Gratitud", 'gd.med': "Reflexiones", 'gd.prayer': "Peticiones", 'gd.recent': "Reciente", 'gd.all': "Ver todo", 'gd.invite': "Invitar", 'gd.share': "Compartir", 'gd.empty': "Aún no hay nada compartido", 'col.reel': "Crear un reel", 'col.reeling': "Creando el video… {p}%", 'col.reelPost': "Publicar el video", 'col.reelSave': "Guardar video", 'col.photos': "Fotos", 'col.video': "Video", 'wg.thanksLabel': "Gratitud de hoy", 'wg.medLabel': "Reflexión de hoy", 'wg.write2': "Escribir", 'wg.medWrite': "Reflexionar", 'wg.medDone': "Reflexión hecha", 'wg.streak': "{n} días seguidos", 'share.linkSub': "Un enlace que abre tu gratitud", 'upd.title': "Hay una nueva versión", 'upd.body': "Actualiza daily thanks para seguir usándola sin problemas.", 'upd.go': "Actualizar", 
     'login.terms': "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
     'login.demo': 'En este prototipo nada se conecta a una cuenta real; solo se guarda en este dispositivo que iniciaste sesión.',
     'login.done': 'Iniciaste sesión. La próxima vez se abre directo.',
@@ -1284,7 +1284,7 @@ function immBack() {
   return false;
 }
 // Phone / browser back gesture: reader first, then a group or the prayer lane.
-window.addEventListener('popstate', () => { if (!closePicker() && !closeReader()) immBack(); });
+window.addEventListener('popstate', () => { if (!closePicker() && !closeReader() && !immBack() && state.groupDetail && !state.immersive) { state.groupDetail = null; render(); } });
 function closeReader() {
   if (!readerEl || readerEl.hidden) return false;
   readerObs?.disconnect(); readerEl.hidden = true; readerEl.innerHTML = ''; state.reader = null;
@@ -1381,7 +1381,10 @@ function todaysPassage(gid) {
   const planFor = CONTENT.qtPlan?.[lang()] && typeof CONTENT.qtPlan[lang()] === 'object' ? CONTENT.qtPlan[lang()] : CONTENT.qtPlan;
   const plan = planFor?.[today()];
   const name = CONTENT.qtPlanName && typeof CONTENT.qtPlanName === 'object' ? CONTENT.qtPlanName[lang()] : CONTENT.qtPlanName;
-  return plan ? { ref: parseRef(plan), source: name || '' } : null;
+  if (plan) return { ref: parseRef(plan), source: name || '' };
+  const gospel = [[40, 28], [41, 16], [42, 24], [43, 21]], all = gospel.flatMap(([b, n]) => Array.from({ length: n }, (_, i) => [b, i + 1]));
+  const [b, c] = all[(dayOfYear() - 1) % all.length];
+  return { ref: { b, c, v: 0, v2: 0 }, source: '' };
 }
 function groupWeek(gid) {
   const days = Array.from({ length: 7 }, (_, i) => { const d = new Date(); d.setDate(d.getDate() - (6 - i)); return d.toLocaleDateString('en-CA'); });
@@ -1414,8 +1417,7 @@ function devoCard(gid) {
     <div class="post-kind">${icon('book')}<span>${t('devo.kicker')}${p?.source ? ' · ' + esc(p.source) : ''}</span></div>
     ${p?.ref ? `<p class="card-title">${esc(refText(p.ref))}</p><p class="card-sub">${t('devo.sub')}${n ? ' ' + t('devo.count').replace('{n}', n) : ''}</p>
       <div class="card-actions"><button class="primary" data-action="devo-read" data-id="${esc(gid)}">${t('devo.read')}</button>
-      <button class="secondary" data-action="devo-share" data-id="${esc(gid)}">${t('devo.share')}</button></div>
-      <button class="subtle-link" data-action="devo-set" data-id="${esc(gid)}">${t('devo.change')}</button>`
+      <button class="secondary" data-action="devo-share" data-id="${esc(gid)}">${t('devo.share')}</button></div>`
     : `<p class="card-title">${t('devo.none')}</p><p class="card-sub">${t('devo.noneSub')}</p>
       <div class="card-actions"><button class="primary" data-action="devo-set" data-id="${esc(gid)}">${t('devo.set')}</button></div>`}
   </div></article>`;
@@ -1650,6 +1652,8 @@ function groupMenu(gid) {
   </div>` });
 }
 function renderGroups() {
+  if (state.groupDetail && data.groups.some(g => g.id === state.groupDetail)) return renderGroupDetail(state.groupDetail);
+  state.groupDetail = null;
   main.innerHTML = `<div class="screen"><div class="page">
     ${pageHead(t('gr.title'), t('gr.desc'), roundBtn('new-group', 'plus', t('gr.new')))}
     <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
@@ -1657,6 +1661,35 @@ function renderGroups() {
   </div></div>`;
 }
 
+function renderGroupDetail(gid) {
+  const g = data.groups.find(x => x.id === gid), w = groupWeek(gid), ch = data.challenges.find(c => c.group === gid);
+  const todayPeople = new Set(data.posts.filter(p => inGroup(p, gid) && p.date === today() && !data.hidden.includes(p.id)).map(p => p.mine ? 'me' : authorKey(p))).size;
+  const who = todayPeople ? t('gs.today').replace('{n}', todayPeople) : w.people ? t('gs.weekPeople').replace('{n}', w.people) : t('gs.quiet');
+  const p = todaysPassage(gid), medN = data.posts.filter(x => x.kind === 'meditation' && inGroup(x, gid) && x.date === today()).length;
+  const recent = data.posts.filter(x => inGroup(x, gid) && !data.hidden.includes(x.id)).sort((a, b) => a.date < b.date ? 1 : -1).slice(0, 3);
+  const tile = (n, label, kind) => `<button class="gd-tile" data-action="gd-all" data-id="${esc(gid)}|${kind}"><b>${n}</b><span>${label}</span></button>`;
+  main.innerHTML = `<div class="screen"><div class="page gd">
+    <div class="gd-top"><button class="gd-back" data-action="gd-back">${icon('chevron')}<span>${t('gd.back')}</span></button>
+      <button class="g-more" data-action="group-menu" data-id="${esc(gid)}" aria-label="${t('more')}">${icon('more')}</button></div>
+    <h1 class="gd-name">${esc(L(g.name))}</h1>
+    <p class="g-people">${who}</p>
+    <div class="gs-week">${w.days.map((on, i) => { const d = new Date(); d.setDate(d.getDate() - (6 - i));
+      return `<span class="gs-day${i === 6 ? ' today' : ''}"><i class="${on ? 'on' : ''}"></i><small>${i === 6 ? t('gs.todayShort') : esc(d.toLocaleDateString(lang(), { weekday: 'narrow' }))}</small></span>`; }).join('')}</div>
+    ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('book')}<span>${t('devo.kicker')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
+      <p class="gd-ref">${esc(refText(p.ref))}</p>${medN ? `<p class="gd-sub">${t('devo.count').replace('{n}', medN)}</p>` : ''}
+      <div class="gd-acts"><button class="primary" data-action="devo-read" data-id="${esc(gid)}">${t('devo.read')}</button><button class="secondary" data-action="devo-share" data-id="${esc(gid)}">${t('devo.share')}</button></div></section>` : ''}
+    <p class="gd-label">${t('gd.week')}</p>
+    <div class="gd-tiles">${tile(w.thanks, t('gd.thanks'), 'thanks')}${tile(w.meditation, t('gd.med'), 'meditation')}${tile(w.prayer, t('gd.prayer'), 'prayer')}</div>
+    ${ch ? `<button class="g-ch" data-action="challenge-write" data-id="${esc(ch.id)}"><span>${t('ch.title')} · ${chTypeLabel(ch)}</span>
+      ${chLen(ch) <= 7 ? `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => `<i class="${i < ch.days.length ? 'on' : ''}"></i>`).join('')}</span>`
+        : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
+      <span class="g-ch-go">${ch.type === 'bible' ? t('ch.read') : t('gs.chToday')} ›</span></button>` : ''}
+    <p class="gd-label">${t('gd.recent')}</p>
+    ${recent.length ? `<div class="gd-recent">${recent.map(x => `<button class="gd-post" data-action="gd-all" data-id="${esc(gid)}|all"><span class="gd-meta">${esc(authorName(x))} · ${esc(x.kind && x.kind !== 'today' ? kindLabel(x) : dayLabel(x.date))}</span><span class="gd-text">${esc(L(x.text))}</span></button>`).join('')}</div>` : `<p class="hint">${t('gd.empty')}</p>`}
+    <button class="primary block gd-allbtn" data-action="gd-all" data-id="${esc(gid)}|all">${t('gd.all')}</button>
+    <div class="gd-row"><button class="secondary" data-action="group-write" data-id="${esc(gid)}">${icon('pencil')}${t('gd.share')}</button><button class="secondary" data-action="invite-group" data-id="${esc(gid)}">${icon('userplus')}${t('gd.invite')}</button></div>
+  </div></div>`;
+}
 function renderChallenges() {
   main.innerHTML = `<div class="screen"><div class="page">
     ${pageHead(t('ch.title'), t('ch.desc'), roundBtn('new-challenge', 'plus', t('ch.new')))}
@@ -2052,12 +2085,14 @@ function collectionSheet(type = state.colType || 'm', id) {
     <div class="card-row"><div class="seg card-seg">${[['feed', t('card.feed')], ['story', t('card.story')]].map(([k, l]) => `<button type="button" class="${state.cardKind === k ? 'active' : ''}" data-action="col-kind" data-id="${k}"><span>${l}</span></button>`).join('')}</div></div>
     <p class="hint" id="col-hint"></p>
     <button class="primary block" data-action="col-share">${icon('camera')}${t('col.post')}</button>
-    <button class="secondary block" data-action="col-save" style="margin-top:8px">${icon('download')}${t('col.save')}</button>`
+    <button class="secondary block" data-action="col-save" style="margin-top:8px">${icon('download')}${t('col.save')}</button>
+    <div class="col-reel" id="col-reel"><button class="secondary block" data-action="col-reel">${icon('sparkle')}${t('col.reel')}</button></div>`
     : `<p class="hint">${t('col.empty')}</p>`}` });
   if (id) drawCollection();
 }
 async function drawCollection() {
   const tr = $('#col-track'); if (!tr) return;
+  const rb = $('#col-reel'); if (rb && !state.reeling) { rb.innerHTML = `<button class="secondary block" data-action="col-reel">${icon('sparkle')}${t('col.reel')}</button>`; state.reelFile = null; }
   const cs = await renderCollection(state.colId, state.cardKind);
   state.colCanvases = cs;
   tr.innerHTML = cs.map(c => `<img class="col-img ${state.cardKind}" alt="" src="${c.toDataURL('image/png')}">`).join('');
@@ -2076,6 +2111,75 @@ async function saveCollection(files) {
   files = files || await collectionFiles();
   files.forEach((f, i) => setTimeout(() => { const a = document.createElement('a'); a.href = URL.createObjectURL(f); a.download = f.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }, i * 250));
   toast(t('col.saved'));
+}
+/* Reel: the same collection as a short vertical video (9:16) — a soft cover, one note at a time fading in, and the
+   wordmark at the end. Drawn on a canvas and recorded in the browser (MP4 where the phone supports it). */
+function reelScenes(id) {
+  const posts = colPosts().filter(p => periodOf(p.date, id[0]) === id);
+  const pick = posts.length <= 8 ? posts : Array.from({ length: 8 }, (_, i) => posts[Math.round(i * (posts.length - 1) / 7)]);
+  return { title: periodTitle(id), sub: t('col.sub').replace('{n}', posts.length).replace('{d}', new Set(posts.map(p => p.date)).size), year: id.slice(2, 6), pick };
+}
+function drawReel(x, W, H, sc, time) {
+  const serif = '"Newsreader", Georgia, serif', sans = '"Noto Sans KR", "Apple SD Gothic Neo", sans-serif', M = Math.round(W * .11), maxW = W - M * 2;
+  const COVER = 2.8, EACH = 2.6, END = 2.4, total = COVER + sc.pick.length * EACH + END;
+  const ease = v => v < 0 ? 0 : v > 1 ? 1 : v * v * (3 - 2 * v);
+  x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H); x.textBaseline = 'alphabetic';
+  const fade = (t0, len) => { const a = ease((time - t0) / .5), b = 1 - ease((time - (t0 + len - .5)) / .5); return Math.min(a, b); };
+  // faint wordmark top-left (not on the last scene)
+  if (time < total - END) { x.globalAlpha = .9; x.fillStyle = '#9BA0A3'; x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30); const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('thanks', M + dw, M + 30); x.globalAlpha = 1; }
+  if (time < COVER) {
+    const a = fade(0, COVER), rise = (1 - ease(time / .9)) * 24;
+    x.globalAlpha = a; x.fillStyle = '#B4B8BA'; x.font = `400 34px ${sans}`; x.fillText(sc.year, M, H * .44 - 150 + rise);
+    x.fillStyle = '#303438'; x.font = `300 96px ${sans}`; x.fillText(sc.title, M, H * .44 + rise);
+    x.fillStyle = '#8E9396'; x.font = `300 40px ${sans}`; x.fillText(sc.sub, M, H * .44 + 92 + rise); x.globalAlpha = 1;
+  } else if (time < total - END) {
+    const i = Math.floor((time - COVER) / EACH), t0 = COVER + i * EACH, p = sc.pick[i];
+    const a = fade(t0, EACH), rise = (1 - ease((time - t0) / .8)) * 30, size = 56, lh = size * 1.7;
+    x.font = `300 ${size}px ${sans}`;
+    let lines = wrapLines(x, L(p.kind === 'thanks' ? `Thank you, ${p.to}\n${L(p.text)}` : p.text), maxW);
+    if (lines.length > 7) { lines = lines.slice(0, 7); lines[6] = lines[6].replace(/.$/, '…'); }
+    const top = H * .46 - lines.length * lh / 2;
+    x.globalAlpha = a;
+    x.fillStyle = '#A9AEB1'; x.font = `400 32px ${sans}`; x.fillText(`${shortDate(p.date)}${p.kind && p.kind !== 'today' ? ' · ' + kindLabel(p) : ''}`, M, top - 30 + rise);
+    x.fillStyle = '#303438'; x.font = `300 ${size}px ${sans}`; lines.forEach((l, k) => x.fillText(l, M, top + size + k * lh + rise));
+    // progress dots
+    x.globalAlpha = 1; sc.pick.forEach((_, k) => { x.fillStyle = k === i ? '#8A9094' : '#E3E5E6'; x.beginPath(); x.arc(M + k * 22, H - M - 120, 5, 0, 7); x.fill(); });
+    x.fillStyle = '#B4B8BA'; x.font = `400 30px ${sans}`; x.fillText(sc.title, M, H - M + 10);
+  } else {
+    const a = ease((time - (total - END)) / .6);
+    x.globalAlpha = a; x.fillStyle = '#383D42'; x.font = `400 92px ${serif}`;
+    const w1 = x.measureText('daily ').width; x.font = `italic 400 92px ${serif}`; const w2 = x.measureText('thanks').width;
+    const sx = (W - w1 - w2) / 2; x.font = `400 92px ${serif}`; x.fillText('daily', sx, H * .48); x.font = `italic 400 92px ${serif}`; x.fillText('thanks', sx + w1, H * .48);
+    x.fillStyle = '#9BA0A3'; x.font = `italic 400 40px ${serif}`; const tg = 'Give thanks daily.'; x.fillText(tg, (W - x.measureText(tg).width) / 2, H * .48 + 80);
+    x.globalAlpha = 1;
+  }
+  return total;
+}
+async function makeReel() {
+  const box = $('#col-reel'); if (!box || state.reeling) return;
+  try { await document.fonts.ready; } catch {}
+  const W = 1080, H = 1920, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  const sc = reelScenes(state.colId); const total = drawReel(x, W, H, sc, 0);
+  const types = ['video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'];
+  const type = window.MediaRecorder ? types.find(m => MediaRecorder.isTypeSupported?.(m)) : null;
+  if (!type || !c.captureStream) { toast(t('card.noShare')); return; }
+  state.reeling = true;
+  box.innerHTML = `<p class="hint" id="reel-p">${t('col.reeling').replace('{p}', 0)}</p>`;
+  const stream = c.captureStream(30), rec = new MediaRecorder(stream, { mimeType: type, videoBitsPerSecond: 6e6 }), chunks = [];
+  rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  const done = new Promise(r => rec.onstop = r);
+  rec.start(250); const start = performance.now();
+  await new Promise(r => { const step = () => { const time = (performance.now() - start) / 1000; drawReel(x, W, H, sc, Math.min(time, total));
+    const pe = $('#reel-p'); if (pe) pe.textContent = t('col.reeling').replace('{p}', Math.min(100, Math.round(time / total * 100)));
+    if (time < total + .2) requestAnimationFrame(step); else r(); }; requestAnimationFrame(step); });
+  rec.stop(); await done; state.reeling = false;
+  const ext = type.includes('mp4') ? 'mp4' : 'webm';
+  state.reelFile = new File([new Blob(chunks, { type: type.split(';')[0] })], `daily-thanks-${state.colId.slice(2)}.${ext}`, { type: type.split(';')[0] });
+  const url = URL.createObjectURL(state.reelFile);
+  if (!$('#col-reel')) return;
+  $('#col-reel').innerHTML = `<video class="reel-video" src="${url}" autoplay muted loop playsinline></video>
+    <button class="primary block" data-action="reel-share">${icon('camera')}${t('col.reelPost')}</button>
+    <button class="secondary block" data-action="reel-save" style="margin-top:8px">${icon('download')}${t('col.reelSave')}</button>`;
 }
 async function showCardPreview(id) {
   const p = data.posts.find(x => x.id === id), img = $('#card-img'); if (!p || !img) return;
@@ -2106,13 +2210,13 @@ const withLink = (text, p) => `${text}\n\n${postLink(p)}`;
 function share(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
   state.cardKind = state.cardKind || 'feed';
-  showSheet({ title: t('share.title'), body: `<div class="card-frame"><img id="card-img" alt="" class="card-img"></div>
-    <div class="card-row"><div class="seg card-seg">${[['feed', t('card.feed')], ['story', t('card.story')]].map(([k, label]) => `<button type="button" class="${state.cardKind === k ? 'active' : ''}" data-action="card-kind" data-id="${esc(id)}|${k}"><span>${label}</span></button>`).join('')}</div>
-      <button type="button" class="link-send" data-action="send-link" data-id="${esc(id)}">${icon('send')}<span>${t('share.sendLink')}</span></button></div>
+  showSheet({ title: t('share.title'), body: `<button class="link-first" data-action="send-link" data-id="${esc(id)}"><span class="lf-ic">${icon('send')}</span><span class="lf-main"><span>${t('share.sendLink')}</span><small>${t('share.linkSub')}</small></span>${icon('chevron')}</button>
+    <div class="card-frame"><img id="card-img" alt="" class="card-img"></div>
+    <div class="card-row"><div class="seg card-seg">${[['feed', t('card.feed')], ['story', t('card.story')]].map(([k, label]) => `<button type="button" class="${state.cardKind === k ? 'active' : ''}" data-action="card-kind" data-id="${esc(id)}|${k}"><span>${label}</span></button>`).join('')}</div></div>
     <div class="list">
+      <button class="list-row" data-action="copy-link" data-id="${esc(id)}"><span class="row-icon">${icon('copy')}</span><span class="row-main"><span class="row-title">${t('share.link')}</span></span></button>
       <button class="list-row" data-action="share-kakao" data-id="${esc(id)}"><span class="row-icon">${icon('chat')}</span><span class="row-main"><span class="row-title">${t('share.kakao')}</span></span></button>
       <button class="list-row" data-action="share-insta-img" data-id="${esc(id)}"><span class="row-icon">${icon('camera')}</span><span class="row-main"><span class="row-title">${t('share.insta')}</span></span></button>
-      <button class="list-row" data-action="copy-link" data-id="${esc(id)}"><span class="row-icon">${icon('copy')}</span><span class="row-main"><span class="row-title">${t('share.link')}</span></span></button>
       <button class="list-row" data-action="copy-share" data-id="${esc(id)}"><span class="row-icon">${icon('copy')}</span><span class="row-main"><span class="row-title">${t('share.copy')}</span></span></button>
       <button class="list-row" data-action="send-group" data-id="${esc(id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${t('share.toGroup')}</span></span><span class="row-end">${icon('chevron')}</span></button>
       <button class="list-row" data-action="native-share" data-id="${esc(id)}"><span class="row-icon">${icon('upload')}</span><span class="row-main"><span class="row-title">${t('share.native')}</span></span></button>
@@ -2358,6 +2462,8 @@ function streak() {
   let n = 0; while (days.has(daysAgo(n))) n++;
   return n;
 }
+// For showing: a streak stays alive through today even before today's note is written.
+const liveStreak = () => { const days = new Set(data.posts.filter(p => p.mine).map(p => p.date)); let i = days.has(today()) ? 0 : 1, n = 0; while (days.has(daysAgo(i))) { n++; i++; } return n; };
 function weekDots() {
   return Array.from({ length: 7 }, (_, i) => { const d = daysAgo(6 - i); return data.posts.some(p => p.mine && p.date === d); });
 }
@@ -2579,8 +2685,36 @@ function widgetPreview() {
     <div class="vw vw-medium"><div class="vw-top"><div><span class="vw-label">${t('wg.label')}</span><span class="vw-ref">${esc(v.ref)}</span></div><span class="hw-light" aria-hidden="true"></span></div>
       <p class="vw-text">${esc(v.text)}</p>
       <div class="vw-foot"><span class="vw-badge">${esc(v.tr)}</span><span class="vw-mark">daily <em>thanks</em></span></div></div>
-    <div class="vw vw-small"><span class="vw-label">${t('wg.label')}</span><p class="vw-text">${esc(v.text)}</p><span class="vw-ref">${esc(v.ref)}</span></div>
+    <div class="vw-pair">
+      <div class="vw vw-small"><span class="vw-label">${t('wg.label')}</span><p class="vw-text">${esc(v.text)}</p><span class="vw-ref">${esc(v.ref)}</span></div>
+      ${thanksWidget()}
+    </div>
+    ${medWidget()}
   </div>`;
+}
+// 오늘의 감사: today's own thanks (or the question), the streak, and a write button.
+function thanksWidget() {
+  const mine = data.posts.filter(x => x.mine && x.date === today() && kindGroup(x) === 'thanks').slice(-1)[0], sk = liveStreak();
+  return `<div class="vw vw-small vw-thanks"><span class="vw-top2"><span class="vw-label">${t('wg.thanksLabel')}</span>${sk ? `<span class="vw-streak">${t('wg.streak').replace('{n}', sk)}</span>` : ''}</span>
+    <p class="vw-text${mine ? '' : ' q'}">${esc(mine ? L(mine.text) : dailyQ())}</p>
+    <span class="vw-pill">${icon(mine ? 'check' : 'plus')}${mine ? t('wg.done') : t('wg.write2')}</span></div>`;
+}
+// 오늘의 묵상: today's passage (생명의 삶 when available) and a reflect button.
+function medWidget() {
+  const p = todaysPassage(data.groups[0]?.id), done = data.posts.some(x => x.mine && x.date === today() && x.kind === 'meditation');
+  return `<div class="vw vw-medium vw-med"><div class="vw-top"><div><span class="vw-label">${t('wg.medLabel')}${p?.source ? ' · ' + esc(p.source) : ''}</span><span class="vw-ref">${esc(p?.ref ? refText(p.ref) : '')}</span></div><span class="hw-light" aria-hidden="true"></span></div>
+    <p class="vw-text" id="vw-med-text">${esc(state.medPreview || '')}</p>
+    <div class="vw-foot"><span class="vw-pill">${icon(done ? 'check' : 'pencil')}${done ? t('wg.medDone') : t('wg.medWrite')}</span><span class="vw-mark">daily <em>thanks</em></span></div></div>`;
+}
+// What the phone widgets show (the native shell hands this to the home-screen widgets).
+async function widgetData() {
+  const p = todaysPassage(data.groups[0]?.id); let ptext = '';
+  try { if (p?.ref) { const vs = await fetchChapter(p.ref.b, p.ref.c); ptext = (vs.find(x => x.v === (p.ref.v || 1)) || vs[0])?.text || ''; } } catch {}
+  const mine = data.posts.filter(x => x.mine && x.date === today() && kindGroup(x) === 'thanks').slice(-1)[0], v = todayVerse(), sk = liveStreak();
+  return { date: today(), lang: lang(), streak: sk, streakText: sk ? t('wg.streak').replace('{n}', sk) : '', thanks: mine ? L(mine.text) : '', question: dailyQ(),
+    passage: p?.ref ? refText(p.ref) : '', passageSource: p?.source || '', passageText: ptext, meditated: data.posts.some(x => x.mine && x.date === today() && x.kind === 'meditation'),
+    verseRef: v.ref, verseText: v.text, verseTr: v.tr,
+    labels: { verse: t('wg.label'), thanks: t('wg.thanksLabel'), med: t('wg.medLabel'), write: t('wg.write2'), done: t('wg.done'), medWrite: t('wg.medWrite'), medDone: t('wg.medDone') } };
 }
 function widgetGuide(fromSettings = false) {
   data.settings.widgetAsked = data.settings.widgetAsked || today(); save();
@@ -2595,6 +2729,7 @@ function widgetGuide(fromSettings = false) {
     ${fromSettings ? '' : `<button class="primary block" data-action="wg-ok">${t('wg.ok')}</button><button class="subtle-link" data-action="wg-later">${t('wg.later')}</button>`}
     <p class="fine-print center">${t('wg.note')}</p></div>` });
   state.wgSteps = steps;
+  widgetData().then(d => { const el = $('#vw-med-text'); if (el && d.passageText) { state.medPreview = d.passageText; el.textContent = d.passageText; } });
 }
 
 // After saving a note: celebrate a full week, cheer at 3 and 5 days. Shown once per day reached.
@@ -2639,7 +2774,9 @@ function journalSummary() {
   const f = influence(), now = new Date(), y = now.getFullYear(), m = now.getMonth();
   const days = new Set(data.posts.filter(p => p.mine && p.date && p.date.startsWith(`${y}-${String(m + 1).padStart(2, '0')}`)).map(p => p.date)).size;
   const month = lang() === 'ko' ? `${m + 1}월` : now.toLocaleDateString(lang(), { month: 'long' });
+  const sk = liveStreak();
   return `<div class="j-sum">
+    <button class="j-line j-streak" data-action="month-sheet"><span class="j-ic">${icon('sparkle')}</span><span>${sk ? t('st.line').replace('{n}', sk) : t('st.none')}</span><span class="mini-dots">${weekDots().map(on => `<i class="${on ? 'on' : ''}"></i>`).join('')}</span></button>
     <button class="j-line" data-action="influence"><span class="glow-wrap">${glow(f.score)}</span><span>${t('inf.people').replace('{n}', f.people)}</span><span class="j-go">›</span></button>
     <button class="j-line" data-action="month-sheet"><span class="j-ic">${icon('calendar')}</span><span>${t('j.month').replace('{m}', month).replace('{n}', days)}</span><span class="j-go">›</span></button>
     <button class="j-line" data-action="collection"><span class="j-ic">${icon('camera')}</span><span>${t('col.line')}</span><span class="j-go">›</span></button>
@@ -2917,6 +3054,9 @@ const actions = {
   'col-pick': id => { state.colId = id; document.querySelectorAll('[data-action="col-pick"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); drawCollection(); },
   'col-kind': k => { state.cardKind = k; document.querySelectorAll('[data-action="col-kind"]').forEach(b => b.classList.toggle('active', b.dataset.id === k)); drawCollection(); },
   'col-share': () => shareCollection(),
+  'col-reel': () => makeReel(),
+  'reel-share': async () => { const f = state.reelFile; if (!f) return; try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: periodTitle(state.colId) }); return; } } catch { return; } saveCollection([f]); },
+  'reel-save': () => { if (state.reelFile) saveCollection([state.reelFile]); },
   'col-save': () => saveCollection(),
   'cel-share': () => { if (navigator.share) navigator.share({ title: 'Daily Thanks', text: t('cel.shareText') }).catch(() => {}); else copyText(t('cel.shareText')); },
   'ty-copy': id => { const p = data.posts.find(x => x.id === id); if (p) copyText(withLink(thanksText(p), p)); },
@@ -2982,7 +3122,9 @@ const actions = {
     save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
   },
   'imm-back': () => immBack(),
-  'open-group': id => { close(); markGroupSeen(id); try { history.pushState({ dt: 'imm' }, ''); } catch {} state.group = id; state.immFeed = 'group'; state.immersive = true; state.tab = 'group'; render(0); },
+  'open-group': id => { close(); state.groupDetail = id; state.group = id; state.tab = 'group'; state.immersive = false; render(); window.scrollTo?.(0, 0); try { history.pushState({ dt: 'gd' }, ''); } catch {} },
+  'gd-back': () => { state.groupDetail = null; render(); },
+  'gd-all': pair => { const [id] = pair.split('|'); close(); markGroupSeen(id); try { history.pushState({ dt: 'imm' }, ''); } catch {} state.group = id; state.immFeed = 'group'; state.immersive = true; state.tab = 'group'; render(0); },
   'new-challenge': createChallenge,
   'challenge-write': id => {
     const ch = data.challenges.find(c => c.id === id); close();
@@ -3069,7 +3211,7 @@ document.addEventListener('click', e => {
   const cut = state.immersive && e.target.closest('.post-text[data-cut="1"]'); // in the regular feed a tap opens the big view instead
   if (cut) { const id = cut.closest('[data-post]')?.dataset.post; if (id) { actions['read-more'](id); return; } }
   const tab = e.target.closest('[data-tab]');
-  if (tab) { state.tab = tab.dataset.tab; if (state.tab === 'feed') state.feed = 'public'; close(); render(); return; }
+  if (tab) { state.tab = tab.dataset.tab; state.groupDetail = null; if (state.tab === 'feed') state.feed = 'public'; close(); render(); return; }
   const b = e.target.closest('[data-action]');
   if (b && b.tagName !== 'SELECT') { actions[b.dataset.action]?.(b.dataset.id); return; }
   const card = !state.immersive && state.tab === 'feed' && !e.target.closest('a,button,input,textarea,select,label') && e.target.closest('.post[data-post]:not(.imm)');
@@ -3098,9 +3240,11 @@ window.DailyThanks = {
   // native shell: a reminder tap or the home-screen widget opens the writing sheet
   joinGroup: (code, name) => joinGroup(code, name),
   closeReader: () => closeReader(),
-  back: () => closePicker() || closeReader() || immBack(),
+  back: () => closePicker() || closeReader() || immBack() || (state.groupDetail && !state.immersive ? (state.groupDetail = null, render(), true) : false),
   parseRef, refText,
-  openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); }
+  openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); },
+  openMeditation: () => { document.getElementById('splash')?.remove(); close(); const g = data.groups[0]?.id; if (g) devoShare(g); else compose('meditation', null); },
+  widgetData: () => widgetData()
 };
 if (CONTENT_URL) fetch(CONTENT_URL, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(c => window.DailyThanks.applyContent(c)).catch(() => {});
 afterContent();

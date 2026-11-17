@@ -30,6 +30,26 @@
 
         <!-- Home-screen widget: today's question + "write" button -->
         <receiver
+            android:name=".TodayThanksWidget"
+            android:label="@string/tw_name"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/today_thanks_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".MeditationWidget"
+            android:label="@string/mw_name"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/meditation_widget_info" />
+        </receiver>
+
+        <receiver
             android:name=".VerseWidget"
             android:label="@string/verse_widget_name"
             android:exported="false">

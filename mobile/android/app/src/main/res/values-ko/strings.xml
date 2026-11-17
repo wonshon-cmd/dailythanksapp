@@ -36,4 +36,15 @@
         <item>내 영혼아 여호와를 송축하며 그 모든 은택을 잊지 말지어다</item>
         <item>각양 좋은 은사와 온전한 선물이 다 위로부터 빛들의 아버지께로서 내려오나니 그는 변함도 없으시고 회전하는 그림자도 없으시니라</item>
     </string-array>
+    <string name="tw_name">오늘의 감사</string>
+    <string name="tw_description">오늘의 감사와 연속 기록</string>
+    <string name="tw_label">오늘의 감사</string>
+    <string name="tw_write">감사 쓰기</string>
+    <string name="tw_done">오늘 감사 완료</string>
+    <string name="mw_name">오늘의 묵상</string>
+    <string name="mw_description">오늘의 본문과 묵상 쓰기</string>
+    <string name="mw_label">오늘의 묵상</string>
+    <string name="mw_passage">오늘의 본문</string>
+    <string name="mw_write">묵상 쓰기</string>
+    <string name="mw_done">오늘 묵상 완료</string>
 </resources>

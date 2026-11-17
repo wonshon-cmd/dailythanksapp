@@ -94,6 +94,7 @@
   const route = url => {
     if (!url) return;
     if (/join/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n')), 300)); }
+    else if (/meditat/.test(url)) ready(DT => setTimeout(() => DT.openMeditation(), 300));
     else if (/write/.test(url)) ready(DT => setTimeout(() => DT.openWrite(), 300));
   };
   P.App.addListener('appUrlOpen', e => route(e.url));
@@ -107,6 +108,15 @@
     if (window.DailyThanks?.back()) return; // Bible reader, a group or prayer requests open → back one step
     P.App.minimizeApp();
   });
+
+  /* ---------- home-screen widgets: hand today's verse / thanks / passage to the widgets ---------- */
+  let wgTimer = null;
+  const pushWidgets = () => { clearTimeout(wgTimer); wgTimer = setTimeout(async () => {
+    const DT = window.DailyThanks; if (!DT?.widgetData || !P.WidgetBridge) return;
+    try { await P.WidgetBridge.update({ json: JSON.stringify(await DT.widgetData()) }); } catch {}
+  }, 800); };
+  document.addEventListener('dt:render', pushWidgets);
+  P.App.addListener('pause', pushWidgets);
 
   /* ---------- look ---------- */
   // The app is already full screen: hide the browser-only full-screen button.

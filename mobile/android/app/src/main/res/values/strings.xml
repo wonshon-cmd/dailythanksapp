@@ -40,4 +40,15 @@
         <item>Bless the Lord, O my soul, and forget not all his benefits:</item>
         <item>Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning.</item>
     </string-array>
+    <string name="tw_name">Today’s Thanks</string>
+    <string name="tw_description">Your thanks today and your streak</string>
+    <string name="tw_label">TODAY’S THANKS</string>
+    <string name="tw_write">Write</string>
+    <string name="tw_done">Done for today</string>
+    <string name="mw_name">Today’s Reflection</string>
+    <string name="mw_description">Today’s passage and a place to reflect</string>
+    <string name="mw_label">TODAY’S REFLECTION</string>
+    <string name="mw_passage">Today’s passage</string>
+    <string name="mw_write">Reflect</string>
+    <string name="mw_done">Reflected today</string>
 </resources>

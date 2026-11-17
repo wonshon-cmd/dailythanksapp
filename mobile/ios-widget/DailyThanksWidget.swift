@@ -1,7 +1,11 @@
 // Home-screen widgets for iOS (WidgetKit). Add them in Xcode: File › New › Target › Widget Extension
 // named "DailyThanksWidget", then replace the generated Swift file with this one (see mobile/README_KO.md).
 //   • "오늘의 말씀"  — a verse about thanks, new each day (small / medium / large). Follows light and dark mode.
+//   • "오늘의 감사" — your thanks today (or today's question), the streak, a write button.
+//   • "오늘의 묵상" — today's passage (생명의 삶 when available) and a reflect button.
 //   • "감사 쓰기"   — today's question and a write button.
+// The app writes today's data to the App Group "group.org.dailyjourney.dailythanks" (WidgetBridge, SceneDelegate.swift);
+// turn on App Groups with that name for both the App target and this widget target (Signing & Capabilities).
 // Tapping either opens the app's writing sheet (daily-thanks://write).
 import WidgetKit
 import SwiftUI
@@ -145,6 +149,95 @@ struct WriteView: View {
     }
 }
 
+// Today's data from the app (JSON written by the WidgetBridge plugin). Missing → friendly defaults.
+struct Shared {
+    let d: [String: Any]
+    init() {
+        let raw = UserDefaults(suiteName: "group.org.dailyjourney.dailythanks")?.string(forKey: "widget") ?? "{}"
+        d = (try? JSONSerialization.jsonObject(with: Data(raw.utf8))) as? [String: Any] ?? [:]
+    }
+    func s(_ k: String) -> String { d[k] as? String ?? "" }
+    func label(_ k: String, _ fallback: String) -> String { (d["labels"] as? [String: String])?[k] ?? fallback }
+    var isToday: Bool { s("date") == { let f = DateFormatter(); f.dateFormat = "yyyy-MM-dd"; return f.string(from: .now) }() }
+}
+
+struct ThanksView: View {
+    var entry: Entry
+    @Environment(\.colorScheme) var scheme
+    var body: some View {
+        let x = Shared(), today = x.isToday, mine = today ? x.s("thanks") : ""
+        let ink: Color = scheme == .dark ? .white : Color(red: 0.19, green: 0.20, blue: 0.22)
+        let faint: Color = scheme == .dark ? Color(white: 0.62) : Color(red: 0.60, green: 0.62, blue: 0.64)
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text(x.label("thanks", t("오늘의 감사", "TODAY’S THANKS", "GRATITUD DE HOY"))).font(.system(size: 11, weight: .semibold)).foregroundColor(faint)
+                Spacer()
+                if !x.s("streakText").isEmpty { Text(x.s("streakText")).font(.system(size: 10)).foregroundColor(faint) }
+            }
+            Spacer(minLength: 6)
+            Text(mine.isEmpty ? (x.s("question").isEmpty ? t("오늘 감사한 것은?", "What are you thankful for today?", "¿Por qué estás agradecido hoy?") : x.s("question")) : mine)
+                .font(.system(size: 14, weight: mine.isEmpty ? .regular : .semibold)).foregroundColor(ink).lineLimit(4)
+            Spacer(minLength: 6)
+            Text(mine.isEmpty ? "+ " + x.label("write", t("감사 쓰기", "Write", "Escribir")) : "✓ " + x.label("done", t("오늘 감사 완료", "Done for today", "Listo por hoy")))
+                .font(.system(size: 12)).foregroundColor(ink).padding(.horizontal, 10).padding(.vertical, 5)
+                .background(Capsule().fill(faint.opacity(0.18)))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .containerBackground(for: .widget) { scheme == .dark ? Color(red: 0.16, green: 0.16, blue: 0.17) : Color.white }
+        .widgetURL(URL(string: "daily-thanks://write"))
+    }
+}
+
+struct MeditationView: View {
+    var entry: Entry
+    @Environment(\.colorScheme) var scheme
+    var body: some View {
+        let x = Shared(), today = x.isToday
+        let ink: Color = scheme == .dark ? .white : Color(red: 0.19, green: 0.20, blue: 0.22)
+        let faint: Color = scheme == .dark ? Color(white: 0.62) : Color(red: 0.60, green: 0.62, blue: 0.64)
+        let source = x.s("passageSource")
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(x.label("med", t("오늘의 묵상", "TODAY’S REFLECTION", "REFLEXIÓN DE HOY")) + (source.isEmpty ? "" : " · \(source)"))
+                        .font(.system(size: 11, weight: .semibold)).foregroundColor(faint)
+                    Text(today ? x.s("passage") : t("오늘의 본문", "Today’s passage", "Pasaje de hoy")).font(.system(size: 16, weight: .bold)).foregroundColor(ink).lineLimit(1)
+                }
+                Spacer()
+                Light()
+            }
+            Rectangle().fill(faint.opacity(0.25)).frame(height: 1).padding(.top, 10)
+            Spacer(minLength: 6)
+            Text(today ? x.s("passageText") : "").font(.system(size: 14)).foregroundColor(ink).lineLimit(3)
+            Spacer(minLength: 6)
+            Text(today && (x.d["meditated"] as? Bool ?? false) ? "✓ " + x.label("medDone", t("오늘 묵상 완료", "Reflected today", "Reflexión hecha")) : "✎ " + x.label("medWrite", t("묵상 쓰기", "Reflect", "Reflexionar")))
+                .font(.system(size: 12)).foregroundColor(ink).padding(.horizontal, 10).padding(.vertical, 5)
+                .background(Capsule().fill(faint.opacity(0.18)))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .containerBackground(for: .widget) { scheme == .dark ? Color(red: 0.16, green: 0.16, blue: 0.17) : Color.white }
+        .widgetURL(URL(string: "daily-thanks://meditation"))
+    }
+}
+
+struct ThanksTodayWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "DailyThanksToday", provider: Provider()) { ThanksView(entry: $0) }
+            .configurationDisplayName(t("오늘의 감사", "Today’s Thanks", "Gratitud de hoy"))
+            .description(t("오늘의 감사와 연속 기록", "Your thanks today and your streak", "Tu gratitud de hoy y tu racha"))
+            .supportedFamilies([.systemSmall])
+    }
+}
+
+struct MeditationWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "DailyThanksMeditation", provider: Provider()) { MeditationView(entry: $0) }
+            .configurationDisplayName(t("오늘의 묵상", "Today’s Reflection", "Reflexión de hoy"))
+            .description(t("오늘의 본문과 묵상 쓰기", "Today’s passage and a place to reflect", "El pasaje de hoy y un lugar para reflexionar"))
+            .supportedFamilies([.systemMedium])
+    }
+}
+
 struct VerseWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "DailyThanksVerse", provider: Provider()) { VerseView(entry: $0) }
@@ -167,6 +260,8 @@ struct WriteWidget: Widget {
 struct DailyThanksWidgets: WidgetBundle {
     var body: some Widget {
         VerseWidget()
+        ThanksTodayWidget()
+        MeditationWidget()
         WriteWidget()
     }
 }

@@ -36,4 +36,15 @@
         <item>Bendice, alma mía á Jehová, y no olvides ninguno de sus beneficios.</item>
         <item>Toda buena dádiva y todo don perfecto es de lo alto, que desciende del Padre de las luces, en el cual no hay mudanza, ni sombra de variación.</item>
     </string-array>
+    <string name="tw_name">Gratitud de hoy</string>
+    <string name="tw_description">Tu gratitud de hoy y tu racha</string>
+    <string name="tw_label">GRATITUD DE HOY</string>
+    <string name="tw_write">Escribir</string>
+    <string name="tw_done">Listo por hoy</string>
+    <string name="mw_name">Reflexión de hoy</string>
+    <string name="mw_description">El pasaje de hoy y un lugar para reflexionar</string>
+    <string name="mw_label">REFLEXIÓN DE HOY</string>
+    <string name="mw_passage">Pasaje de hoy</string>
+    <string name="mw_write">Reflexionar</string>
+    <string name="mw_done">Reflexión hecha</string>
 </resources>

@@ -16,7 +16,7 @@
 - **매일 알림:** 앱에서 고른 시간에 "오늘 감사한 것은?"을 보내요.
   - 그날 이미 썼으면 보내지 않아요.
   - 알림을 누르면 글쓰기 화면이 바로 열려요.
-- **홈 화면 위젯 두 가지:** 「오늘의 말씀」(감사 말씀 한 구절, 매일 바뀜, 작은·중간·큰 크기, 다크 모드 자동)과 「감사 쓰기」(오늘의 질문 + 버튼). 둘 다 누르면 글쓰기 화면이 열려요. 안드로이드는 `VerseWidget`과 `ThanksWidget`이에요.
+- **홈 화면 위젯 네 가지:** 「오늘의 말씀」(감사 말씀, 매일 바뀜), 「오늘의 감사」(오늘 쓴 감사 또는 질문 + 연속 기록), 「오늘의 묵상」(오늘 본문 + 묵상 쓰기), 「감사 쓰기」. 다크 모드 자동. 앱이 오늘 내용을 위젯에 넘겨줘요(WidgetBridge).
   - Android는 완성돼 있어요.
   - iOS는 Xcode에서 한 번 추가해야 해요(아래 4번).
 - **Android 뒤로가기 버튼:** 열린 창이 있으면 먼저 닫고, 없으면 앱을 내려요.
@@ -68,7 +68,8 @@ npm run ios
    1. File › New › Target › **Widget Extension**을 골라요.
    2. 이름은 `DailyThanksWidget`으로 하고, "Include Configuration App Intent"는 체크하지 않아요.
    3. 만들어진 Swift 파일 내용을 `mobile/ios-widget/DailyThanksWidget.swift`로 바꿔요.
-   4. 다시 ▶ 실행 → 홈 화면을 길게 눌러 위젯을 추가해요.
+   4. **App Groups 켜기:** App 타깃과 위젯 타깃 둘 다 Signing & Capabilities › + Capability › App Groups → `group.org.dailyjourney.dailythanks` 체크. (오늘의 감사·묵상 위젯이 앱 내용을 읽는 통로예요.)
+   5. 다시 ▶ 실행 → 홈 화면을 길게 눌러 위젯을 추가해요.
 4. **App Store 제출:** Product › Archive → Distribute App → App Store Connect를 차례로 눌러요.
 
 ## 아이콘·시작 화면 다시 만들기
