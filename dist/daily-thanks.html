@@ -1030,6 +1030,10 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .mp-open span{flex:1}
 .mp-open .ico{font-size:17px}
 .col-kinds{margin:0 0 12px}
+/* 닫기 on cards in the full-screen feed (same place as on posts) */
+.card-page{position:relative}
+.card-page .card-close{bottom:calc(96px + var(--safe-bottom))}
+@media (max-height:700px){.card-page .card-close{bottom:64px}}
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -2741,7 +2745,10 @@ function renderImmersive(keepIndex = 0) {
       ${it.empty || it.asked ? `<p class="card-title">${t('pl.others')}</p>` : `<p class="card-title">${t('pl.ask')}</p>
         <div class="card-actions"><button class="secondary" data-action="pl-others">${t('pl.yes')}</button></div>`}</div></article>`;
     if (it.type === 'devo') return devoCard(it.gid);
-    if (it.type !== 'post') return cardFor(it);
+    if (it.type !== 'post') { // verse, writing and other cards get the same 닫기 as posts, in the same spot
+      const html = cardFor(it), i = html.lastIndexOf('</article>');
+      return i < 0 ? html : html.slice(0, i) + `<aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span>${t('fs.close')}</span></button></aside>` + html.slice(i);
+    }
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     return `<article class="post imm" data-post="${esc(p.id)}">
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
