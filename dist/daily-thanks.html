@@ -1913,14 +1913,34 @@ function parseRef(input) {
   return { b: best, c, v, v2: Math.max(v, v2) };
 }
 const refText = r => r ? `${bookName(r.b)} ${r.c}${r.v ? `:${r.v}${r.v2 > r.v ? '-' + r.v2 : ''}` : (lang() === 'ko' ? '장' : '')}` : '';
-const chapterMem = {};
+const chapterMem = {}, bookMem = {};
+// Bible text: one file per book (bible/<tr>/<book>.json). Looked for next to the app first (phone app, preview,
+// dailyjourney.org/app), then on dailyjourney.org, then the getBible API as a last resort.
+async function fetchBook(tr, b) {
+  const key = `${tr}/${b}`;
+  if (!bookMem[key]) bookMem[key] = (async () => {
+    for (const url of [`bible/${key}.json`, `${LEGAL_BASE}/bible/${key}.json`]) {
+      try { const r = await fetch(url); if (r.ok) { const j = await r.json(); if (Array.isArray(j.chapters)) return j.chapters; } } catch { /* next */ }
+    }
+    return null;
+  })();
+  const book = await bookMem[key];
+  if (!book) delete bookMem[key]; // allow a retry later
+  return book;
+}
 async function fetchChapter(b, c) {
   const tr = BIBLE_TR[lang()] || 'kjv', key = `${tr}/${b}/${c}`;
   if (chapterMem[key]) return chapterMem[key];
-  const norm = j => (j && Array.isArray(j.verses) ? j.verses : []).map(x => ({ v: +(x.verse ?? x.v), text: String(x.text ?? x.t ?? '').replace(/\s+/g, ' ').trim() })).filter(x => x.v && x.text);
-  for (const url of [`${LEGAL_BASE}/bible/${key}.json`, `https://api.getbible.net/v2/${key}.json`]) {
-    try { const r = await fetch(url); if (r.ok) { const verses = norm(await r.json()); if (verses.length) return (chapterMem[key] = verses); } } catch { /* try the next source */ }
-  }
+  const book = await fetchBook(tr, b);
+  const tidy = x => String(x).replace(/^([A-ZÁÉÍÓÚÑ])([A-ZÁÉÍÓÚÑ]+)\b/, (m, f, r) => f + r.toLowerCase()); // RV 1909 opens chapters in capitals
+  if (book && Array.isArray(book[c - 1]) && book[c - 1].length) return (chapterMem[key] = book[c - 1].map(([v, text]) => ({ v: +v, text: tidy(text) })));
+  try {
+    const r = await fetch(`https://api.getbible.net/v2/${key}.json`);
+    if (r.ok) {
+      const verses = ((await r.json()).verses || []).map(x => ({ v: +x.verse, text: String(x.text || '').replace(/\s+/g, ' ').trim() })).filter(x => x.v && x.text);
+      if (verses.length) return (chapterMem[key] = verses);
+    }
+  } catch { /* offline */ }
   throw new Error('bible_unavailable');
 }
 const nextChapter = (b, c) => c < BOOKS[b - 1][4] ? [b, c + 1] : b < 66 ? [b + 1, 1] : null;
@@ -2045,22 +2065,22 @@ function devoShare(gid) {
    content.json "verses": { ko: [{ ref, text }], … } can replace the list without an app update. */
 const VERSES = [
   { ref: {"ko": "고린도후서 9:15", "en": "2 Corinthians 9:15", "es": "2 Corintios 9:15"}, text: {"ko": "말할 수 없는 그의 은사를 인하여 하나님께 감사하노라", "en": "Thanks be unto God for his unspeakable gift.", "es": "Gracias á Dios por su don inefable."}, thanks: true },
-  { ref: {"ko": "시편 9:1", "en": "Psalm 9:1", "es": "Salmos 9:1"}, text: {"ko": "내가 전심으로 여호와께 감사하오며 주의 모든 기사를 전파하리이다", "en": "I will praise thee, O LORD, with my whole heart; I will shew forth all thy marvellous works.", "es": "Alabarte he, oh Jehová, con todo mi corazón; contaré todas tus maravillas."}, thanks: true },
-  { ref: {"ko": "에베소서 5:20", "en": "Ephesians 5:20", "es": "Efesios 5:20"}, text: {"ko": "범사에 우리 주 예수 그리스도의 이름으로 항상 하나님 아버지께 감사하며", "en": "Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ.", "es": "Dando gracias siempre de todo al Dios y Padre en el nombre de nuestro Señor Jesucristo."}, thanks: true },
-  { ref: {"ko": "시편 107:1", "en": "Psalm 107:1", "es": "Salmos 107:1"}, text: {"ko": "여호와께 감사하라 그는 선하시며 그 인자하심이 영원함이로다", "en": "O give thanks unto the LORD, for he is good: for his mercy endureth for ever.", "es": "Alabad á Jehová, porque es bueno; porque para siempre es su misericordia."}, thanks: true },
-  { ref: {"ko": "데살로니가전서 5:16-18", "en": "1 Thessalonians 5:16-18", "es": "1 Tesalonicenses 5:16-18"}, text: {"ko": "항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라 이것이 그리스도 예수 안에서 너희를 향하신 하나님의 뜻이니라", "en": "Rejoice evermore. Pray without ceasing. In every thing give thanks: for this is the will of God in Christ Jesus concerning you.", "es": "Estad siempre gozosos. Orad sin cesar. Dad gracias en todo; porque esta es la voluntad de Dios para con vosotros en Cristo Jesús."}, thanks: true },
-  { ref: {"ko": "시편 118:24", "en": "Psalm 118:24", "es": "Salmos 118:24"}, text: {"ko": "이 날은 여호와의 정하신 것이라 이 날에 우리가 즐거워하고 기뻐하리로다", "en": "This is the day which the LORD hath made; we will rejoice and be glad in it.", "es": "Este es el día que hizo Jehová; nos gozaremos y alegraremos en él."}, thanks: true },
-  { ref: {"ko": "빌립보서 4:6", "en": "Philippians 4:6", "es": "Filipenses 4:6"}, text: {"ko": "아무 것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희 구할 것을 감사함으로 하나님께 아뢰라", "en": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.", "es": "Por nada estéis afanosos; sino sean notorias vuestras peticiones delante de Dios en toda oración y ruego, con hacimiento de gracias."}, thanks: true },
-  { ref: {"ko": "예레미야애가 3:22-23", "en": "Lamentations 3:22-23", "es": "Lamentaciones 3:22-23"}, text: {"ko": "여호와의 자비와 긍휼이 무궁하시므로 우리가 진멸되지 아니함이니이다 이것들이 아침마다 새로우니 주의 성실이 크도소이다", "en": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.", "es": "Es por la misericordia de Jehová que no somos consumidos, porque nunca decayeron sus misericordias. Nuevas son cada mañana; grande es tu fidelidad."}, thanks: true },
+  { ref: {"ko": "시편 9:1", "en": "Psalm 9:1", "es": "Salmos 9:1"}, text: {"ko": "내가 전심으로 여호와께 감사하오며 주의 모든 기사를 전하리이다", "en": "I will praise thee, O Lord, with my whole heart; I will shew forth all thy marvellous works.", "es": "Te alabaré, oh Jehová, con todo mi corazón; contaré todas tus maravillas."}, thanks: true },
+  { ref: {"ko": "에베소서 5:20", "en": "Ephesians 5:20", "es": "Efesios 5:20"}, text: {"ko": "범사에 우리 주 예수 그리스도의 이름으로 항상 아버지 하나님께 감사하며", "en": "Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ;", "es": "Dando gracias siempre de todo al Dios y Padre en el nombre de nuestro Señor Jesucristo:"}, thanks: true },
+  { ref: {"ko": "시편 107:1", "en": "Psalm 107:1", "es": "Salmos 107:1"}, text: {"ko": "여호와께 감사하라 그는 선하시며 그 인자하심이 영원함이로다", "en": "O give thanks unto the Lord, for he is good: for his mercy endureth for ever.", "es": "Alabad á Jehová, porque es bueno; porque para siempre es su misericordia."}, thanks: true },
+  { ref: {"ko": "데살로니가전서 5:16-18", "en": "1 Thessalonians 5:16-18", "es": "1 Tesalonicenses 5:16-18"}, text: {"ko": "항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라 이는 그리스도 예수 안에서 너희를 향하신 하나님의 뜻이니라", "en": "Rejoice evermore. Pray without ceasing. In every thing give thanks: for this is the will of God in Christ Jesus concerning you.", "es": "Estad siempre gozosos. Orad sin cesar. Dad gracias en todo; porque esta es la voluntad de Dios para con vosotros en Cristo Jesús."}, thanks: true },
+  { ref: {"ko": "시편 118:24", "en": "Psalm 118:24", "es": "Salmos 118:24"}, text: {"ko": "이 날은 여호와의 정하신 것이라 이 날에 우리가 즐거워하고 기뻐하리로다", "en": "This is the day which the Lord hath made; we will rejoice and be glad in it.", "es": "Este es el día que hizo Jehová: nos gozaremos y alegraremos en él."}, thanks: true },
+  { ref: {"ko": "빌립보서 4:6", "en": "Philippians 4:6", "es": "Filipenses 4:6"}, text: {"ko": "아무 것도 염려하지 말고 오직 모든 일에 기도와 간구로, 너희 구할 것을 감사함으로 하나님께 아뢰라", "en": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.", "es": "Por nada estéis afanosos; sino sean notorias vuestras peticiones delante de Dios en toda oración y ruego, con hacimiento de gracias."}, thanks: true },
+  { ref: {"ko": "예레미야애가 3:22-23", "en": "Lamentations 3:22-23", "es": "Lamentaciones 3:22-23"}, text: {"ko": "여호와의 자비와 긍휼이 무궁하시므로 우리가 진멸되지 아니함이니이다 이것이 아침마다 새로우니 주의 성실이 크도소이다", "en": "It is of the Lord’s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.", "es": "Es por la misericordia de Jehová que no somos consumidos, porque nunca decayeron sus misericordias. Nuevas son cada mañana; grande es tu fidelidad."}, thanks: true },
   { ref: {"ko": "시편 100:4", "en": "Psalm 100:4", "es": "Salmos 100:4"}, text: {"ko": "감사함으로 그 문에 들어가며 찬송함으로 그 궁정에 들어가서 그에게 감사하며 그 이름을 송축할지어다", "en": "Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.", "es": "Entrad por sus puertas con reconocimiento, por sus atrios con alabanza: alabadle, bendecid su nombre."}, thanks: true },
-  { ref: {"ko": "골로새서 3:15", "en": "Colossians 3:15", "es": "Colosenses 3:15"}, text: {"ko": "그리스도의 평강이 너희 마음을 주장하게 하라 너희는 평강을 위하여 한 몸으로 부르심을 받았나니 너희는 또한 감사하는 자가 되라", "en": "And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful.", "es": "Y la paz de Dios gobierne en vuestros corazones, á la cual asimismo sois llamados en un cuerpo; y sed agradecidos."}, thanks: true },
-  { ref: {"ko": "시편 103:2", "en": "Psalm 103:2", "es": "Salmos 103:2"}, text: {"ko": "내 영혼아 여호와를 송축하며 그 모든 은택을 잊지 말지어다", "en": "Bless the LORD, O my soul, and forget not all his benefits.", "es": "Bendice, alma mía, á Jehová, y no olvides ninguno de sus beneficios."}, thanks: true },
+  { ref: {"ko": "골로새서 3:15", "en": "Colossians 3:15", "es": "Colosenses 3:15"}, text: {"ko": "그리스도의 평강이 너희 마음을 주장하게 하라 평강을 위하여 너희가 한 몸으로 부르심을 받았나니 또한 너희는 감사하는 자가 되라", "en": "And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful.", "es": "Y la paz de Dios gobierne en vuestros corazones, á la cual asimismo sois llamados en un cuerpo; y sed agradecidos."}, thanks: true },
+  { ref: {"ko": "시편 103:2", "en": "Psalm 103:2", "es": "Salmos 103:2"}, text: {"ko": "내 영혼아 여호와를 송축하며 그 모든 은택을 잊지 말지어다", "en": "Bless the Lord, O my soul, and forget not all his benefits:", "es": "Bendice, alma mía á Jehová, y no olvides ninguno de sus beneficios."}, thanks: true },
   { ref: {"ko": "야고보서 1:17", "en": "James 1:17", "es": "Santiago 1:17"}, text: {"ko": "각양 좋은 은사와 온전한 선물이 다 위로부터 빛들의 아버지께로서 내려오나니 그는 변함도 없으시고 회전하는 그림자도 없으시니라", "en": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning.", "es": "Toda buena dádiva y todo don perfecto es de lo alto, que desciende del Padre de las luces, en el cual no hay mudanza, ni sombra de variación."}, thanks: true },
-  { ref: {"ko": "시편 23:1", "en": "Psalm 23:1", "es": "Salmos 23:1"}, text: {"ko": "여호와는 나의 목자시니 내가 부족함이 없으리로다", "en": "The LORD is my shepherd; I shall not want.", "es": "Jehová es mi pastor; nada me faltará."} },
-  { ref: {"ko": "마태복음 11:28", "en": "Matthew 11:28", "es": "Mateo 11:28"}, text: {"ko": "수고하고 무거운 짐 진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라", "en": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.", "es": "Venid á mí todos los que estáis trabajados y cargados, que yo os haré descansar."} },
+  { ref: {"ko": "시편 23:1", "en": "Psalm 23:1", "es": "Salmos 23:1"}, text: {"ko": "여호와는 나의 목자시니 내가 부족함이 없으리로다", "en": "The Lord is my shepherd; I shall not want.", "es": "Jehová es mi pastor; nada me faltará."} },
+  { ref: {"ko": "마태복음 11:28", "en": "Matthew 11:28", "es": "Mateo 11:28"}, text: {"ko": "수고하고 무거운 짐진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라", "en": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.", "es": "Venid á mí todos los que estáis trabajados y cargados, que yo os haré descansar."} },
   { ref: {"ko": "로마서 8:28", "en": "Romans 8:28", "es": "Romanos 8:28"}, text: {"ko": "우리가 알거니와 하나님을 사랑하는 자 곧 그 뜻대로 부르심을 입은 자들에게는 모든 것이 합력하여 선을 이루느니라", "en": "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.", "es": "Y sabemos que á los que á Dios aman, todas las cosas les ayudan á bien, es á saber, á los que conforme al propósito son llamados."} },
   { ref: {"ko": "빌립보서 4:13", "en": "Philippians 4:13", "es": "Filipenses 4:13"}, text: {"ko": "내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라", "en": "I can do all things through Christ which strengtheneth me.", "es": "Todo lo puedo en Cristo que me fortalece."} },
-  { ref: {"ko": "이사야 41:10", "en": "Isaiah 41:10", "es": "Isaías 41:10"}, text: {"ko": "두려워 말라 내가 너와 함께 함이니라 놀라지 말라 나는 네 하나님이 됨이니라 내가 너를 굳세게 하리라 참으로 너를 도와 주리라 참으로 나의 의로운 오른손으로 너를 붙들리라", "en": "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.", "es": "No temas, que yo soy contigo; no desmayes, que yo soy tu Dios que te esfuerzo: siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia."} }
+  { ref: {"ko": "이사야 41:10", "en": "Isaiah 41:10", "es": "Isaías 41:10"}, text: {"ko": "두려워 말라 내가 너와 함께 함이니라 놀라지 말라 나는 네 하나님이 됨이니라 내가 너를 굳세게 하리라 참으로 너를 도와주리라 참으로 나의 의로운 오른손으로 너를 붙들리라", "en": "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.", "es": "No temas, que yo soy contigo; no desmayes, que yo soy tu Dios que te esfuerzo: siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia."} }
 ];
 const VERSE_TR = { ko: '개역한글', en: 'KJV', es: 'RV 1909' };
 const VERSE_EVERY = { often: 4, normal: 8, rare: 15, off: 0 };

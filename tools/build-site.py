@@ -136,6 +136,10 @@ shutil.copy(ROOT / 'store' / 'instagram' / 'feed-en-1.png', WEB / 'og.png')
 # The web version of the app itself at dailyjourney.org/app/ (same files as the phone app; invite links and the Bible reader work here)
 app_dir = WEB / 'app'; app_dir.mkdir(exist_ok=True)
 for f in ('index.html', 'styles.css', 'app.js'): shutil.copy(ROOT / f, app_dir / f)
+bible = ROOT / 'bible'
+if bible.exists():  # public-domain Bible text: dailyjourney.org/bible/… and dailyjourney.org/app/bible/…
+    shutil.copytree(bible, WEB / 'bible', dirs_exist_ok=True)
+    shutil.copytree(bible, app_dir / 'bible', dirs_exist_ok=True)
 content = ROOT / 'content' / 'content.json'
 if content.exists(): shutil.copy(content, WEB / 'content.json')   # the app can read its text from here too
 print('wrote', WEB.relative_to(ROOT), sorted(p.name for p in WEB.iterdir()))

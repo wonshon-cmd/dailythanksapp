@@ -13,6 +13,8 @@ fs.mkdirSync(path.join(www, 'i18n'), { recursive: true });
 for (const f of ['styles.css', 'app.js']) fs.copyFileSync(path.join(root, f), path.join(www, f));
 for (const f of fs.readdirSync(path.join(root, 'i18n'))) fs.copyFileSync(path.join(root, 'i18n', f), path.join(www, 'i18n', f));
 fs.copyFileSync(path.resolve(here, '../src/native.js'), path.join(www, 'native.js'));
+// Bible text travels with the app, so read-through works offline.
+if (fs.existsSync(path.join(root, 'bible'))) fs.cpSync(path.join(root, 'bible'), path.join(www, 'bible'), { recursive: true });
 
 // native.js must run before app.js (it sets the content URL and fills in share/notification APIs).
 let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
