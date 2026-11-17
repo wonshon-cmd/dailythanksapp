@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="widget_name">Daily Bible</string>
+    <string name="widget_name">Daily Journey</string>
     <string name="widget_description">한 번에 오늘의 감사 쓰기</string>
     <string name="widget_question">오늘 감사한 것은?</string>
     <string name="widget_write">+ 감사 쓰기</string>

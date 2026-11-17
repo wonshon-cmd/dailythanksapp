@@ -17,7 +17,7 @@ public class VerseWidget extends AppWidgetProvider {
         Resources r = context.getResources();
         String[] refs = r.getStringArray(R.array.verse_refs), texts = r.getStringArray(R.array.verse_texts);
         int i = (Calendar.getInstance().get(Calendar.DAY_OF_YEAR) - 1) % refs.length;
-        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-bible://write"), context, MainActivity.class);
+        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("daily-journey://write"), context, MainActivity.class);
         open.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent tap = PendingIntent.getActivity(context, 1, open, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         for (int id : ids) {

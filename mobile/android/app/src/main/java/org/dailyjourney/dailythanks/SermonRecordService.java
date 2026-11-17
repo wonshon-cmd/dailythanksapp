@@ -68,7 +68,7 @@ public class SermonRecordService extends Service {
         recorder = r; state = "recording"; userPaused = false;
         startedAt = SystemClock.elapsedRealtime(); pausedTotal = 0; pausedAt = 0;
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wake = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "dailybible:sermon");
+        wake = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "dailyjourney:sermon");
         wake.acquire(4 * 60 * 60 * 1000L);   // at most 4 hours
         watchCalls();
         notifyChanged();

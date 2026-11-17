@@ -1,12 +1,12 @@
 // Home-screen widgets for iOS (WidgetKit). Add them in Xcode: File › New › Target › Widget Extension
-// named "DailyBibleWidget", then replace the generated Swift file with this one (see mobile/README_KO.md).
+// named "DailyJourneyWidget" (bundle id org.dailyjourney.app.widget), then replace the generated Swift file with this one (see mobile/README_KO.md).
 //   • "오늘의 말씀"  — a verse about thanks, new each day (small / medium / large). Follows light and dark mode.
 //   • "오늘의 감사" — your thanks today (or today's question), the streak, a write button.
 //   • "오늘의 묵상" — today's passage (생명의 삶 when available) and a reflect button.
 //   • "감사 쓰기"   — today's question and a write button.
-// The app writes today's data to the App Group "group.org.dailyjourney.dailybible" (WidgetBridge, SceneDelegate.swift);
+// The app writes today's data to the App Group "group.org.dailyjourney.app" (WidgetBridge, SceneDelegate.swift);
 // turn on App Groups with that name for both the App target and this widget target (Signing & Capabilities).
-// Tapping either opens the app's writing sheet (daily-bible://write).
+// Tapping either opens the app's writing sheet (daily-journey://write).
 import WidgetKit
 import SwiftUI
 
@@ -114,7 +114,7 @@ struct VerseView: View {
                             .padding(.horizontal, 8).padding(.vertical, 3)
                             .background(Capsule().fill(faint.opacity(0.18)))
                         Spacer()
-                        (Text("daily ").font(.custom("Georgia", size: 13)) + Text("bible").font(.custom("Georgia-Italic", size: 13)))
+                        (Text("daily ").font(.custom("Georgia", size: 13)) + Text("journey").font(.custom("Georgia-Italic", size: 13)))
                             .foregroundColor(faint)
                     }
                 }
@@ -122,7 +122,7 @@ struct VerseView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .containerBackground(for: .widget) { scheme == .dark ? Color(red: 0.16, green: 0.16, blue: 0.17) : Color.white }
-        .widgetURL(URL(string: "daily-bible://write"))
+        .widgetURL(URL(string: "daily-journey://write"))
     }
 }
 
@@ -145,7 +145,7 @@ struct WriteView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .containerBackground(.white, for: .widget)
-        .widgetURL(URL(string: "daily-bible://write"))
+        .widgetURL(URL(string: "daily-journey://write"))
     }
 }
 
@@ -153,7 +153,7 @@ struct WriteView: View {
 struct Shared {
     let d: [String: Any]
     init() {
-        let raw = UserDefaults(suiteName: "group.org.dailyjourney.dailybible")?.string(forKey: "widget") ?? "{}"
+        let raw = UserDefaults(suiteName: "group.org.dailyjourney.app")?.string(forKey: "widget") ?? "{}"
         d = (try? JSONSerialization.jsonObject(with: Data(raw.utf8))) as? [String: Any] ?? [:]
     }
     func s(_ k: String) -> String { d[k] as? String ?? "" }
@@ -184,7 +184,7 @@ struct ThanksView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .containerBackground(for: .widget) { scheme == .dark ? Color(red: 0.16, green: 0.16, blue: 0.17) : Color.white }
-        .widgetURL(URL(string: "daily-bible://write"))
+        .widgetURL(URL(string: "daily-journey://write"))
     }
 }
 
@@ -216,13 +216,13 @@ struct MeditationView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .containerBackground(for: .widget) { scheme == .dark ? Color(red: 0.16, green: 0.16, blue: 0.17) : Color.white }
-        .widgetURL(URL(string: "daily-bible://meditation"))
+        .widgetURL(URL(string: "daily-journey://meditation"))
     }
 }
 
 struct ThanksTodayWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DailyBibleToday", provider: Provider()) { ThanksView(entry: $0) }
+        StaticConfiguration(kind: "DailyJourneyToday", provider: Provider()) { ThanksView(entry: $0) }
             .configurationDisplayName(t("오늘의 감사", "Today’s Thanks", "Gratitud de hoy"))
             .description(t("오늘의 감사와 연속 기록", "Your thanks today and your streak", "Tu gratitud de hoy y tu racha"))
             .supportedFamilies([.systemSmall])
@@ -231,7 +231,7 @@ struct ThanksTodayWidget: Widget {
 
 struct MeditationWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DailyBibleMeditation", provider: Provider()) { MeditationView(entry: $0) }
+        StaticConfiguration(kind: "DailyJourneyMeditation", provider: Provider()) { MeditationView(entry: $0) }
             .configurationDisplayName(t("오늘의 묵상", "Today’s Reflection", "Reflexión de hoy"))
             .description(t("오늘의 본문과 묵상 쓰기", "Today’s passage and a place to reflect", "El pasaje de hoy y un lugar para reflexionar"))
             .supportedFamilies([.systemMedium])
@@ -240,7 +240,7 @@ struct MeditationWidget: Widget {
 
 struct VerseWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DailyBibleVerse", provider: Provider()) { VerseView(entry: $0) }
+        StaticConfiguration(kind: "DailyJourneyVerse", provider: Provider()) { VerseView(entry: $0) }
             .configurationDisplayName(t("오늘의 말씀", "Daily Verse", "Versículo del día"))
             .description(t("매일 감사의 말씀 한 구절", "A verse about thanks, new each day", "Un versículo sobre la gratitud cada día"))
             .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
@@ -249,7 +249,7 @@ struct VerseWidget: Widget {
 
 struct WriteWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DailyBibleWrite", provider: Provider()) { WriteView(entry: $0) }
+        StaticConfiguration(kind: "DailyJourneyWrite", provider: Provider()) { WriteView(entry: $0) }
             .configurationDisplayName(t("감사 쓰기", "Write thanks", "Escribir gratitud"))
             .description(t("한 번에 오늘의 감사 쓰기", "Write today's thanks in one tap", "Escribe tu gratitud de hoy con un toque"))
             .supportedFamilies([.systemSmall, .systemMedium])
@@ -257,7 +257,7 @@ struct WriteWidget: Widget {
 }
 
 @main
-struct DailyBibleWidgets: WidgetBundle {
+struct DailyJourneyWidgets: WidgetBundle {
     var body: some Widget {
         VerseWidget()
         ThanksTodayWidget()

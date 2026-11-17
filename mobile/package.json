@@ -1,8 +1,8 @@
 {
-  "name": "daily-bible-mobile",
+  "name": "daily-journey-mobile",
   "private": true,
   "version": "1.0.0",
-  "description": "iOS and Android app for Daily Bible (Capacitor shell around the web app in the repo root, in Bible mode).",
+  "description": "iOS and Android app for Daily Journey (Capacitor shell around the web app in the repo root, in Bible mode).",
   "type": "module",
   "scripts": {
     "build": "node scripts/build-web.mjs",

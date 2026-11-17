@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Daily Bible</string>
-    <string name="title_activity_main">Daily Bible</string>
-    <string name="package_name">org.dailyjourney.dailybible</string>
-    <string name="custom_url_scheme">org.dailyjourney.dailybible</string>
-    <string name="widget_name">Daily Bible</string>
+    <string name="app_name">Daily Journey</string>
+    <string name="title_activity_main">Daily Journey</string>
+    <string name="package_name">org.dailyjourney.app</string>
+    <string name="custom_url_scheme">org.dailyjourney.app</string>
+    <string name="widget_name">Daily Journey</string>
     <string name="widget_description">Write today\'s thanks in one tap</string>
     <string name="widget_question">What are you thankful for today?</string>
     <string name="widget_write">+ Write</string>
