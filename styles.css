@@ -1201,3 +1201,19 @@ body.capturing #app{filter:blur(18px)}
 #ch-opts .ch-sum{margin:-6px 0 14px}
 #ch-opts .ch-plan{margin:0 0 6px}
 #challenge-form .ch-types{margin-bottom:0}
+/* quiz answer + explanation */
+.qz-ans{margin-top:18px;padding:16px 18px;border-radius:16px;background:#F6F6F6}
+.qz-verdict{margin:0 0 6px;font-size:15px;font-weight:600}
+.qz-verdict.ok{color:#4F7A5B}
+.qz-verdict.no{color:#A2564E}
+.qz-correct{margin:0 0 12px;font-size:15px;color:var(--ink)}
+.qz-label{margin:0 0 4px;font-size:12px;color:#A9AEB1}
+.qz-ans .qz-fact{margin:0 0 6px}
+.quiz-card .card-inner{overflow-y:auto;max-height:100%}
+.quiz-card .card-inner{overflow:visible;max-height:none}
+.quiz-card .qz-q{font-size:19px;line-height:1.55}
+.quiz-card .qz-opts{gap:8px;margin-top:14px}
+.quiz-card .qz-opt{padding:10px 14px;font-size:14.5px}
+.quiz-card .qz-ans{margin-top:12px;padding:12px 14px}
+.quiz-card .qz-correct{margin-bottom:8px}
+.quiz-card .qz-fact{font-size:13.5px;line-height:1.6}

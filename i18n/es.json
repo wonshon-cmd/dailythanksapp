@@ -705,5 +705,7 @@
   "chu.today": "Hoy {n}/{t}",
   "chu.shared": "Mismo pasaje para todos los grupos (plan diario)",
   "chu.allStarted": "Se inició un reto en todos los grupos.",
-  "chu.entry": "Administración · {name}"
+  "chu.entry": "Administración · {name}",
+  "qz.answer": "Respuesta",
+  "qz.why": "Explicación"
 }
