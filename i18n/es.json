@@ -512,5 +512,6 @@
   "col.empty": "Aún no hay nada que reunir.",
   "col.saved": "Imágenes guardadas.",
   "wg.label": "Versículo del día",
-  "gs.new": "Nuevo"
+  "gs.new": "Nuevo",
+  "gs.todayShort": "Hoy"
 }
