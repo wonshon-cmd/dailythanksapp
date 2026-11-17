@@ -3,7 +3,7 @@
 > For Squarespace: paste into the dailyjourney.org/privacy page.
 > Replace every `[bracket]`. Have it reviewed by a privacy professional before launch.
 
-**Effective date: [December 1, 2026]**
+**Effective date: November 17, 2026**
 
 Daily Journey, Inc. ("we") runs the Daily Thanks and Daily Bible apps and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
 
@@ -53,7 +53,7 @@ Daily Journey, Inc. ("we") runs the Daily Thanks and Daily Bible apps and websit
 | Apple Inc. · Google LLC | App notifications |
 | [SMS provider] | Phone verification codes |
 | Anthropic PBC (optional feature) | Tidying sermon notes |
-| [Speech-to-text provider] (optional feature) | Sermon transcription |
+| Speech-recognition provider: NAVER Cloud, Returnzero or OpenAI, depending on language (optional feature) | Sermon transcription |
 
 Data is encrypted in transit.
 
@@ -84,4 +84,4 @@ We will post changes in the app or on our website at least 7 days before they ta
 
 ## 9. Contact
 
-Daily Journey, Inc. · hi@dailyjourney.org · [mailing address]
+Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, USA · hi@dailyjourney.org

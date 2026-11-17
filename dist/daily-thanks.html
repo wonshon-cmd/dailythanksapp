@@ -1722,6 +1722,8 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 'use strict';
 // The same code runs two apps: daily thanks, and daily bible (window.DT_APP = 'bible'), sharing one set of data.
 const BIBLE_MODE = window.DT_APP === 'bible';
+// The Bible app's name: 'daily bible', or 'daily journey' where the page sets window.DT_BRAND = 'journey' (dailyjourney.org).
+const BRAND2 = window.DT_BRAND === 'journey' ? 'journey' : 'bible', BRAND = 'daily ' + BRAND2;
 
 const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week of my notes
 
@@ -2666,8 +2668,9 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
 let LEGAL_BASE = 'https://dailyjourney.org';
-// daily bible (web and phone app): privacy, terms, support, invite and plan links live on the public site
-if (BIBLE_MODE) LEGAL_BASE = 'https://wonshon-cmd.github.io/dailybible';       // Squarespace pages: /privacy, /terms, /support, /delete-account
+// daily bible (github.io site and phone app): privacy, terms, support, invite and plan links live on the public site.
+// daily journey (dailyjourney.org) keeps its own address.
+if (BIBLE_MODE && BRAND2 !== 'journey') LEGAL_BASE = 'https://wonshon-cmd.github.io/dailybible';
 let SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
@@ -2790,7 +2793,7 @@ function startTour() {
   const end = () => { clearInterval(timer); el.remove(); data.settings.toured = true; save(); if (CLOUD && !Cloud.on()) welcomeSheet(); };
   function demo() {
     el.innerHTML = `<div class="tour-demo">
-      <span class="wordmark tour-mark">daily <em>bible</em></span>
+      <span class="wordmark tour-mark">daily <em>${BRAND2}</em></span>
       <div class="tour-stage"><div class="tour-track">${cards.map(c => `<div class="tour-post">
         <p class="tour-kind">${icon(ic[c.k])}<span>${t('tour.k.' + c.k)}</span></p>
         <p class="tour-text">${esc(c.text)}</p><p class="tour-meta">${esc(c.meta)}</p>
@@ -2812,7 +2815,7 @@ function startTour() {
   function features() {
     clearInterval(timer);
     const f = k => `<div class="tour-f"><span class="row-icon">${icon({ read: 'book', notes: 'mic', group: 'people' }[k])}</span><span><b>${t('tour.f.' + k)}</b><small>${t('tour.f.' + k + 'Sub')}</small></span></div>`;
-    el.innerHTML = `<div class="tour-demo tour-feat"><span class="wordmark tour-mark">daily <em>bible</em></span>
+    el.innerHTML = `<div class="tour-demo tour-feat"><span class="wordmark tour-mark">daily <em>${BRAND2}</em></span>
       <p class="tour-title">${t('tour.f.title')}</p>
       <div class="tour-fs">${f('read')}${f('notes')}${f('group')}</div>
       <div class="tour-acts"><span></span><button class="primary" data-tour="done">${t('tour.done')}</button></div></div>`;
@@ -3856,7 +3859,7 @@ function loginCard() {
     <p class="fine-print">${t('login.demo')}</p></div></article>`;
 }
 const cardFor = item => item.type === 'devoread' ? `<article class="post card-page devo-load"><div class="card-inner"><div class="post-kind">${icon('sun')}<span>${t('bf.devo')}</span></div><p class="hint">${t('rd.loading')}</p></div></article>`
-  : item.type === 'bbend' ? `<article class="post card-page bb-end"><div class="card-inner"><div class="post-kind">${icon('book')}<span>daily bible</span></div>
+  : item.type === 'bbend' ? `<article class="post card-page bb-end"><div class="card-inner"><div class="post-kind">${icon('book')}<span>${BRAND}</span></div>
     <p class="card-title">${t('bf.endTitle')}</p><p class="card-sub">${t('bf.endSub')}</p>
     <div class="card-actions"><button class="primary" data-action="bb-continue">${icon('book')}${t('bf.cont')}</button><button class="secondary" data-action="sermon-new">${icon('mic')}${t('bf.note')}</button></div>
     <p class="fo-links"><button data-action="fullscreen">${t('bf.home')}</button></p></div></article>`
@@ -4467,8 +4470,8 @@ function renderGroupDetail(gid) {
 /* ======================= daily bible =======================
    Read (where you left off · the dial · today's passage), Sermon notes (AI, one page) and Me. */
 function bibleShell() {
-  document.querySelectorAll('.wordmark').forEach(w => { w.innerHTML = 'daily <em>bible</em>'; });
-  const sp = document.getElementById('splash'); if (sp) sp.setAttribute('aria-label', 'daily bible');
+  document.querySelectorAll('.wordmark').forEach(w => { w.innerHTML = `daily <em>${BRAND2}</em>`; });
+  const sp = document.getElementById('splash'); if (sp) sp.setAttribute('aria-label', BRAND);
   const tag = document.querySelector('#splash .splash-tag'); if (tag) tag.innerHTML = '<span>Read the Word daily.</span><span>Take notes.</span><span>Live it.</span>';
   const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'bible-write'; pill.classList.add('plus-only'); pill.setAttribute('aria-label', '+'); pill.querySelector('.label').remove(); } // sermon notes have their own tab; + is for writing
   const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
@@ -5152,7 +5155,7 @@ async function yearCanvas(kind = 'feed', prog = 1) {
 function drawYear(x, W, H, st, prog) {
   const M = Math.round(W * .11), serif = '"Newsreader", Georgia, serif', sans = '"Noto Sans KR", "Apple SD Gothic Neo", sans-serif', ease = v => 1 - Math.pow(1 - Math.max(0, Math.min(1, v)), 3);
   x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H);
-  x.fillStyle = '#9BA0A3'; x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30); const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('bible', M + dw, M + 30);
+  x.fillStyle = '#9BA0A3'; x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30); const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText(BRAND2, M + dw, M + 30);
   x.fillStyle = '#B5453F'; x.beginPath(); const rx = W - M - 18; x.moveTo(rx, M - 6); x.lineTo(rx + 22, M - 6); x.lineTo(rx + 22, M + 52); x.lineTo(rx + 11, M + 42); x.lineTo(rx, M + 52); x.closePath(); x.fill();
   const top = H * .25, a = ease(prog * 1.4), gap = H > 1500 ? 160 : 126;
   x.globalAlpha = a; x.fillStyle = '#80868A'; x.font = `400 40px ${sans}`; x.fillText(t('yr.title').replace('{y}', st.y), M, top);
@@ -5384,7 +5387,7 @@ function renderImmersive(keepIndex = 0) {
   ${prayerMode && !data.settings.prayerBackHint ? backHint('left', t('pl.back')) : ''}
   ${groupMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${esc(L(data.groups.find(g => g.id === state.group)?.name || t('nav.group')))}${state.groupKind ? ' · ' + t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[state.groupKind]) : ''}</span></button>`
     : prayerMode ? `<button class="imm-backbar" data-action="imm-back">${icon('chevron')}<span>${t('pr.section')}</span></button>`
-    : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>${BIBLE_MODE ? 'bible' : 'thanks'}</em></span></div>`}
+    : `<div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>${BIBLE_MODE ? BRAND2 : 'thanks'}</em></span></div>`}
   <button class="imm-plus" data-action="${BIBLE_MODE ? 'bible-write' : 'imm-write'}" aria-label="${BIBLE_MODE ? t('bp.title2') : t('top.write')}">${icon('plus')}</button>
   ${!groupMode && !prayerMode ? safeHtml(immStreak) : ''}
   <div class="imm-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button><button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button></div>
@@ -7305,9 +7308,9 @@ const actions = {
   'rt-history': () => readHistory(),
   'yr-kind': k => { state.yrKind = k; yearShare(); },
   'yr-post': async () => { const c = await yearCanvas(state.yrKind || 'feed'); const blob = await new Promise(r => c.toBlob(r, 'image/png')); const f = new File([blob], `daily-bible-${new Date().getFullYear()}.png`, { type: 'image/png' });
-    try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
+    try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: BRAND }); return; } } catch { return; } saveCollection([f]); },
   'yr-reel': () => yearReel(),
-  'yr-reel-share': async () => { const f = state.reelFile; if (!f) return; try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
+  'yr-reel-share': async () => { const f = state.reelFile; if (!f) return; try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: BRAND }); return; } } catch { return; } saveCollection([f]); },
   'us-refresh': async () => { state.snChecked = false; await sermonSync(); usageSheet(); },
   'off-sheet': () => offSheet(),
   'mc-quiet': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; g.muted = !g.muted; state.firstPrIds = null; save(); render(); toast(g.muted ? t('mc.quietDone') : t('mc.loudDone')); },
@@ -7599,7 +7602,7 @@ document.addEventListener('dt:render', updateFsButton);
 
 if (BIBLE_MODE) bibleShell();
 applyStatic();
-if (BIBLE_MODE) document.title = t('bb.title');
+if (BIBLE_MODE) document.title = t('bb.title').replace('Daily Bible', BRAND2 === 'journey' ? 'Daily Journey' : 'Daily Bible');
 applyTextSize();
 render();
 // Widget / notification deep link: daily-thanks://write → #write opens the writing sheet straight away.
@@ -7680,7 +7683,7 @@ if (splash) {
   ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev => window.addEventListener(ev, hide, { capture: true, passive: true }));
   // 1) wordmark  2) "Give thanks daily. Live abundantly. Share the joy."  3) feed
   // daily bible: just the wordmark, then the app (no tagline step)
-  if (BIBLE_MODE) { splash.querySelector('.splash-tag')?.remove(); splash.setAttribute('aria-label', 'daily bible. © 2026 Daily Journey, Inc.'); setTimeout(hide, 2400); }
+  if (BIBLE_MODE) { splash.querySelector('.splash-tag')?.remove(); splash.setAttribute('aria-label', `${BRAND}. © 2026 Daily Journey, Inc.`); setTimeout(hide, 2400); }
   else { setTimeout(() => { if (!gone) splash.classList.add('step2'); }, 1400); setTimeout(hide, 4200); }
 }
 })();

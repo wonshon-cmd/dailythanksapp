@@ -126,8 +126,10 @@ doc = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
        '<meta property="og:image" content="https://dailyjourney.org/og.png">\n<meta name="theme-color" content="#FFFFFF">\n'
        '<script>window.SITE_MODE = "web";</script>\n'
        + head + '</style>\n</head>\n<body>' + body + '\n</body>\n</html>\n')
-for sub in ('', 'privacy', 'terms', 'support', 'delete-account', 'join', 't'):
+for sub in ('thanks', 'privacy', 'terms', 'support', 'delete-account', 'join', 't'):   # daily thanks intro lives at /thanks/
     d = WEB / sub; d.mkdir(exist_ok=True); (d / 'index.html').write_text(doc)
+# dailyjourney.org/ itself: the Daily Journey front page (daily bible + daily thanks)
+(WEB / 'index.html').write_text((ROOT / 'site' / 'dailyjourney.html').read_text())
 (WEB / '404.html').write_text(doc)
 (WEB / 'CNAME').write_text('dailyjourney.org\n')
 shutil.copy(ROOT / 'store' / 'icons' / 'play-512.png', WEB / 'favicon.png')
@@ -144,7 +146,9 @@ if bible.exists():  # public-domain Bible text: dailyjourney.org/bible/… and d
 bb_dir = WEB / 'daily-bible'; bb_dir.mkdir(exist_ok=True)
 for f in ('styles.css', 'app.js'): shutil.copy(ROOT / f, bb_dir / f)
 bb_html = (ROOT / 'index.html').read_text().replace('<script src="app.js" defer></script>', '<script>window.DT_APP = "bible";</script>\n<script src="app.js" defer></script>')
-bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Bible · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Bible"')
+bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Journey · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Journey"')
+# on dailyjourney.org the Bible app is called "daily journey" (tools/build-live.py turns it back into "daily bible" for the github.io site)
+bb_html = bb_html.replace('<script>window.DT_APP = "bible";</script>', '<script>window.DT_APP = "bible"; window.DT_BRAND = "journey";</script>')
 (bb_dir / 'index.html').write_text(bb_html)
 if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
 # daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
