@@ -513,5 +513,21 @@
   "col.saved": "Imágenes guardadas.",
   "wg.label": "Versículo del día",
   "gs.new": "Nuevo",
-  "gs.todayShort": "Hoy"
+  "gs.todayShort": "Hoy",
+  "bp.title": "Elegir un pasaje",
+  "bp.ok": "Listo",
+  "bp.pick": "Elegir un pasaje",
+  "bp.hintV": "Toca un segundo versículo para elegir un rango",
+  "bp.law": "Ley",
+  "bp.hist": "Historia",
+  "bp.poet": "Poesía",
+  "bp.major": "Profetas mayores",
+  "bp.minor": "Profetas menores",
+  "bp.gosp": "Evangelios",
+  "bp.acts": "Historia",
+  "bp.paul": "Cartas de Pablo",
+  "bp.gen": "Cartas generales",
+  "bp.proph": "Profecía",
+  "bp.ch": "Cap. {n}",
+  "bp.v": "v. {n}"
 }
