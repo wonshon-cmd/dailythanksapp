@@ -911,3 +911,8 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .mp-text sup{font-size:.6em;color:#B4B8BA;margin-right:2px}
 .mp-pick{display:flex;gap:8px}
 .mp-pick .field{flex:1}
+/* share sheet: card size choice + "send link" side by side */
+.card-row{display:flex;gap:8px;align-items:stretch}
+.card-row .card-seg{flex:1;min-width:0}
+.link-send{flex:none;display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;background:#F1F1F1;padding:0 14px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;white-space:nowrap}
+.link-send svg{width:15px;height:15px}

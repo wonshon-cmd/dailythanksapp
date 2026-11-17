@@ -484,5 +484,7 @@
 "ch.read": "Leer hoy",
 "gs.peopleShort": "{n} esta semana",
 "gs.quietShort": "Tranquilo esta semana",
-"mp.load": "Cargar"
+"mp.load": "Cargar",
+"share.sendLink": "Enviar enlace",
+"share.linkMsg": "Una gratitud en daily thanks"
 }
