@@ -840,7 +840,8 @@ function applyContent(c, persist = true) {
   if (typeof c.supportEmail === 'string' && /^\S+@\S+\.\S+$/.test(c.supportEmail)) SUPPORT_EMAIL = c.supportEmail;
   syncFeatured();
   const tag = document.querySelector('#splash .splash-tag');
-  if (tag && Array.isArray(c.tagline) && c.tagline.length) tag.innerHTML = c.tagline.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join('');
+  const tl = Array.isArray(c.tagline) ? c.tagline : c.tagline && c.tagline[lang()];
+  if (tag && Array.isArray(tl) && tl.length) tag.innerHTML = tl.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join('');
   const copy = document.querySelector('#splash .splash-copy');
   if (copy && typeof c.copyright === 'string') copy.textContent = c.copyright;
   return true;
@@ -2680,6 +2681,14 @@ render();
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n')), 80); }
 if (location.hash === '#write') { document.getElementById('splash')?.remove(); setTimeout(() => compose('today', null), 50); }
 
+/* Splash second line follows the language: Korean gets its own words; the wordmark stays as it is.
+   content.json "tagline" may be a list (all languages) or { ko: [...], en: [...] }. */
+(() => {
+  const tag = document.querySelector('#splash .splash-tag'); if (!tag) return;
+  const remote = CONTENT.tagline && !Array.isArray(CONTENT.tagline) ? CONTENT.tagline[lang()] : null;
+  const lines = Array.isArray(remote) && remote.length ? remote : lang() === 'ko' ? ['매일 감사하기.', '온전히 살기.', '기쁨 나누기.'] : null;
+  if (lines) { tag.innerHTML = lines.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join(''); tag.classList.toggle('ko', lang() === 'ko'); }
+})();
 /* Splash: white screen with the wordmark only, then fades into the app (tap to skip). */
 const splash = $('#splash');
 if (splash) {

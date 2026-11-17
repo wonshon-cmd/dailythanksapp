@@ -1,11 +1,23 @@
 {
   "_help": "Text the app downloads at launch. Edit this file and the app shows it next time it opens, with no store update. Leave a field out (or null) to use the text built into the app.",
   "version": 1,
-  "tagline": [
-    "Give <em>thanks</em> daily.",
-    "Live fully.",
-    "Share the joy."
-  ],
+  "tagline": {
+    "ko": [
+      "매일 감사하기.",
+      "온전히 살기.",
+      "기쁨 나누기."
+    ],
+    "en": [
+      "Give <em>thanks</em> daily.",
+      "Live fully.",
+      "Share the joy."
+    ],
+    "es": [
+      "Give <em>thanks</em> daily.",
+      "Live fully.",
+      "Share the joy."
+    ]
+  },
   "copyright": "© 2026 Daily Journey, Inc.",
   "supportEmail": "hi@dailyjourney.org",
   "legalBase": "https://dailyjourney.org",
