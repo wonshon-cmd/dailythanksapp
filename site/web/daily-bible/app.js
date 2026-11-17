@@ -4643,7 +4643,7 @@ if (location.hash === '#write') { document.getElementById('splash')?.remove(); s
 /* Splash second line follows the language: Korean gets its own words; the wordmark stays as it is.
    content.json "tagline" may be a list (all languages) or { ko: [...], en: [...] }. */
 (() => {
-  const tag = document.querySelector('#splash .splash-tag'); if (!tag) return;
+  const tag = document.querySelector('#splash .splash-tag'); if (!tag || BIBLE_MODE) return;
   const remote = CONTENT.tagline && !Array.isArray(CONTENT.tagline) ? CONTENT.tagline[lang()] : null;
   const lines = Array.isArray(remote) && remote.length ? remote : lang() === 'ko' ? ['매일 감사', '풍성한 하루', '나눔의 기쁨'] : null;
   if (lines) { tag.innerHTML = lines.slice(0, 4).map(l => `<span>${safeEm(l)}</span>`).join(''); tag.classList.toggle('ko', lang() === 'ko'); }
@@ -4660,7 +4660,8 @@ if (splash) {
   // underneath right away, and any touch, scroll or key press fades the splash out immediately.
   ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev => window.addEventListener(ev, hide, { capture: true, passive: true }));
   // 1) wordmark  2) "Give thanks daily. Live abundantly. Share the joy."  3) feed
-  setTimeout(() => { if (!gone) splash.classList.add('step2'); }, 1400);
-  setTimeout(hide, 4200);
+  // daily bible: just the wordmark, then the app (no tagline step)
+  if (BIBLE_MODE) { splash.querySelector('.splash-tag')?.remove(); splash.setAttribute('aria-label', 'daily bible'); setTimeout(hide, 1600); }
+  else { setTimeout(() => { if (!gone) splash.classList.add('step2'); }, 1400); setTimeout(hide, 4200); }
 }
 })();
