@@ -877,5 +877,15 @@
   "rec.listen": "Grabación",
   "rec.bar": "Grabando {t} · Abrir",
   "rec.delQ": "¿Borrar esta grabación?",
-  "rec.typing": "Puedes tomar notas mientras grabas"
+  "rec.typing": "Puedes tomar notas mientras grabas",
+  "rec.kRec": "Grabar",
+  "rec.kLive": "En vivo",
+  "rec.kFile": "Archivo",
+  "rec.ctxPh": "Si escribes la iglesia, el predicador, el pasaje o el tema, la transcripción será mucho más precisa. (Opcional)",
+  "rec.btn": "Grabar",
+  "rec.pick": "Elegir un archivo de audio",
+  "rec.liveHint": "Muestra las palabras mientras se dicen. Al guardar, la grabación se transcribe otra vez con más precisión.",
+  "rec.fileHint": "Elige un archivo del video de tu iglesia o de una app de grabación (m4a, mp3, wav, mp4).",
+  "rec.liveWait": "Escuchando…",
+  "rec.file": "Archivo {t}"
 }

@@ -38,11 +38,12 @@ The transcript comes from speech recognition, so names and verse numbers can be 
  * Summarise a transcript into structured sermon notes.
  * Returns { summary, references, model } or throws (err.code === 'refused' when Claude declines).
  */
-export async function summarizeSermon({ transcript, title, preacher }, client = new Anthropic()) {
+export async function summarizeSermon({ transcript, title, preacher, context: about }, client = new Anthropic()) {
   const references = findSpokenReferences(transcript);
   const context = [
     title ? `Title given by the listener: ${title}` : null,
     preacher ? `Preacher: ${preacher}` : null,
+    about ? `What the listener said about this sermon (church, passage, topic): ${about}` : null,
     references.length ? `Bible references detected in the transcript (normalised): ${[...new Set(references.map(r => r.label))].join(', ')}` : null
   ].filter(Boolean).join('\n');
 

@@ -55,3 +55,14 @@ test('stt: long recordings are cleaned and split into 10-minute pieces (ffmpeg)'
     assert.equal(out.text, '조각 1\n조각 2\n조각 3');
   } finally { globalThis.fetch = realFetch; fs.rmSync(dir, { recursive: true, force: true }); }
 });
+
+test('stt: what the listener typed about the sermon helps recognition', async () => {
+  const { contextWords } = await import('../server/sermons/stt.js');
+  assert.deepEqual(contextWords('새생명교회, 김요한 목사 · 로마서 8장 성령의 열매'), ['새생명교회', '김요한', '목사', '로마서', '8장', '성령의', '열매']);
+  const seen = []; const realFetch = globalThis.fetch;
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ctx-')); const f = path.join(dir, 'a.mp3'); fs.writeFileSync(f, Buffer.alloc(2000));
+  globalThis.fetch = async (url, init) => { seen.push(init.body.get('prompt')); return new Response('{"text":"ok"}', { status: 200, headers: { 'content-type': 'application/json' } }); };
+  try { await transcribe({ filePath: f, mimeType: 'audio/mpeg', language: 'en', context: 'Grace Church, Pastor Kim, Romans 8' }, { provider: 'openai', openaiKey: 'k', ffmpegPath: '/nonexistent' }); }
+  finally { globalThis.fetch = realFetch; fs.rmSync(dir, { recursive: true, force: true }); }
+  assert.match(seen[0], /Grace Church, Pastor Kim, Romans 8/);
+});
