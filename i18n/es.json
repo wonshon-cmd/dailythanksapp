@@ -460,5 +460,10 @@
 "gs.nudge": "Invitar a todos hoy",
 "gs.nudged": "Invitados hoy",
 "gs.nudgeDone": "Se envió una nota suave a todo el grupo.",
-"gs.privacy": "Aquí no se ve quién participó, solo lo que hicimos juntos."
+"gs.privacy": "Aquí no se ve quién participó, solo lo que hicimos juntos.",
+"pl.kicker": "Peticiones de oración",
+"pl.others": "Peticiones de otras personas",
+"pl.othersSub": "Ora también por alguien que no conoces.",
+"pl.empty": "Aún no hay peticiones",
+"pl.back": "Desliza a la derecha para volver"
 }

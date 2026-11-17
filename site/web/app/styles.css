@@ -845,3 +845,10 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .gs-groups{margin-bottom:4px}
 .gstatus-card .card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .gstatus-card .secondary[disabled]{color:#A9AEB1}
+/* prayer lane (swipe left) */
+.imm-title{font-size:13px;color:var(--ink);padding:6px 2px}
+.imm-back-hint{bottom:calc(20px + var(--safe-bottom))}
+.pdivider-card .card-title{font-size:22px}
+.imm-back-hint{position:absolute;top:calc(84px + var(--safe-top));left:0;right:0;justify-content:center;margin:0;z-index:3;pointer-events:none}
+.imm-back-hint span{display:inline-block;animation:nudge-x 2.4s ease-in-out infinite}
+.imm-back-hint{bottom:auto}
