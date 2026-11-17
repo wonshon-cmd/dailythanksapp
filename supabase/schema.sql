@@ -54,14 +54,17 @@ create or replace function is_member(gid uuid) returns boolean language sql stab
 $$;
 create or replace function is_leader(gid uuid) returns boolean language sql stable security definer set search_path = public as $$
   select exists (select 1 from group_members where group_id = gid and user_id = auth.uid() and status = 'active' and role in ('owner', 'leader'))
+      or exists (select 1 from groups g where g.id = gid and g.owner = auth.uid())
       or exists (select 1 from groups g join church_roles r on r.church_id = g.church_id where g.id = gid and r.user_id = auth.uid())
 $$;
 
 -- joining with an invite link: the only way to see a group you're not in yet
 create or replace function join_group(code text) returns table (group_id uuid, name text, status text)
 language plpgsql security definer set search_path = public as $$
+#variable_conflict use_column
 declare g groups;
 begin
+  if auth.uid() is null then raise exception 'not_signed_in'; end if;
   select * into g from groups where invite_code = code;
   if not found then raise exception 'invalid_code'; end if;
   insert into group_members (group_id, user_id, status)
@@ -157,7 +160,7 @@ create policy "church staff read" on churches for select using (exists (select 1
 create policy "church roles by owner" on church_roles for all using (exists (select 1 from churches c where c.id = church_id and c.owner = auth.uid()));
 create policy "my church role" on church_roles for select using (user_id = auth.uid());
 
-create policy "members read group" on groups for select using (is_member(id) or is_leader(id));
+create policy "members read group" on groups for select using (owner = auth.uid() or is_member(id) or is_leader(id));
 create policy "create group" on groups for insert with check (owner = auth.uid());
 create policy "leaders edit group" on groups for update using (is_leader(id));
 create policy "owner deletes group" on groups for delete using (owner = auth.uid());
@@ -192,6 +195,7 @@ create policy "leaders: member notes" on member_notes for all using (is_leader(g
 create or replace function join_challenge(code text) returns uuid language plpgsql security definer set search_path = public as $$
 declare c challenges;
 begin
+  if auth.uid() is null then raise exception 'not_signed_in'; end if;
   select * into c from challenges where invite_code = code;
   if not found then raise exception 'invalid_code'; end if;
   insert into challenge_members (challenge_id, user_id) values (c.id, auth.uid()) on conflict do nothing;
