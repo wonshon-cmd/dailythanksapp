@@ -35,6 +35,9 @@ shutil.copy2(WEB / 'index.html', out / 'thanks' / 'index.html')
 for p in (WEB / 'dailybible').iterdir():     # the daily bible page is the front page (and its icons win)
     (shutil.copytree(p, out / p.name, dirs_exist_ok=True) if p.is_dir() else shutil.copy2(p, out / p.name))
 shutil.copy2(ROOT / 'content' / 'content.json', out / 'content.json')
+# e-mail sign-in links that land on the front page (Supabase Site URL) go on to the app with their tokens
+front = out / 'index.html'
+front.write_text(front.read_text().replace('<head>', '<head>\n<script>if (/(^#|&)(access_token|error_description)=/.test(location.hash)) location.replace(\'daily-bible/\' + location.hash);</script>', 1))
 (out / '.nojekyll').write_text('')
 shutil.copy2(ROOT / 'supabase' / 'schema.sql', out / 'schema.txt')   # easy to open and copy on a phone (Supabase › SQL Editor)
 

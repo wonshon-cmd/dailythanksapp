@@ -29,8 +29,13 @@ python3 tools/build-live.py <dailybible 저장소 경로>   # 공개 사이트 �
 - "특허 출원 중" 표시는 실제 출원 전까지 끄기 (`content/content.json` `ipNotice.show: false`).
 - 용어: 소그룹 → **공동체**.
 
+## 연결된 것 (Supabase)
+- 로그인: 이름 + 메일 → 메일 링크(또는 메일 템플릿에 `{{ .Token }}`을 넣으면 숫자 코드). 이름 = 감사 카드 보내는 사람. `app.js`의 `Cloud` / `emailLogin` / `sync`.
+- 공동체 만들기(로그인 필요) · 초대 링크(`/daily-bible/#join?c=…&k=…`, 열쇠는 # 뒤에만) · 승인/거절/내보내기 · 초대 설정 · 새 링크.
+- 링크가 Site URL(앞 페이지)로 와도 `build-live.py`가 넣은 스크립트가 앱으로 넘겨줌.
+- "가장 꾸준한 사람": 관리자만. 관리 화면 스위치로 순장에게도 보이게(기본 꺼짐). `groups.top_to_leaders` — schema.sql 다시 실행 필요.
+
 ## 다음 할 일
-1. Supabase 연결 (URL·키는 위에 있음): 로그인(메일 링크), 가입 이름 = 감사 카드 보내는 사람,
-   공동체 만들기·초대 링크·승인, 기도제목/감사/묵상 나눔과 좋아요·기도했어요, 읽기 계획 함께하기,
+1. Supabase 나머지: 기도제목/감사/묵상 나눔과 좋아요·기도했어요, 읽기 계획 함께하기,
    순장 도구·목사님 보기를 실제 권한으로 연결, 오늘의 본문(content.json) 매일 갱신
-2. 작은 것: 공동체 탭 "Gratitude challenge  D-3" 꼬리표가 두 줄로 깨짐
+2. 계정 삭제를 Supabase에서도 (Edge Function 필요 — 비밀 키는 앱에 넣지 않기)

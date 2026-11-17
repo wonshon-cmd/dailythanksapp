@@ -878,6 +878,9 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .ch-chip small{font-size:9px;color:#B4B8BA}
 /* 함께 7일 inside a group */
 .g-ch{display:flex;align-items:center;gap:12px;border:0;background:#F4F4F4;border-radius:14px;padding:12px 14px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;text-align:left;margin-top:4px}
+.g-ch>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto}
+.g-ch-d{white-space:nowrap}
+.g-ch-days,.g-ch-go{flex-shrink:0}
 .g-ch-days{display:flex;gap:4px;flex:1}
 .g-ch-days i{width:7px;height:7px;border-radius:50%;background:#DADDDF}
 .g-ch-days i.on{background:#8A9094}

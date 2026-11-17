@@ -10,6 +10,8 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'adm.topLeaders': "순장도 ‘가장 꾸준한 사람’ 보기",
+    'cl.title': "로그인", 'cl.name': "이름", 'cl.namePh': "감사 카드에 보내는 사람으로 보여요", 'cl.email': "메일 주소", 'cl.send': "로그인 링크 받기", 'cl.sending': "보내는 중…", 'cl.badEmail': "메일 주소를 확인해 주세요.", 'cl.sendFail': "메일을 보내지 못했어요. 잠시 뒤에 다시 해 주세요.", 'cl.tooMany': "메일을 너무 자주 보냈어요. 잠시 뒤에 다시 해 주세요.", 'cl.sentTitle': "메일을 확인해 주세요", 'cl.sentBody': "{email}로 로그인 링크를 보냈어요. 메일의 링크를 누르면 바로 로그인돼요.", 'cl.code': "메일에 숫자 코드가 있다면", 'cl.verify': "코드로 로그인", 'cl.codeBad': "코드가 맞지 않거나 시간이 지났어요.", 'cl.resend': "메일 다시 보내기", 'cl.resent': "메일을 다시 보냈어요.", 'cl.linkBad': "로그인 링크가 만료되었어요. 다시 받아 주세요.", 'cl.needGroup': "공동체를 만들려면 먼저 로그인해 주세요. 초대한 사람만 들어올 수 있어요.", 'cl.needJoin': "‘{name}’에 들어가려면 로그인해 주세요. 로그인하면 바로 참여돼요.", 'cl.badInvite': "초대 링크가 바뀌었거나 없어졌어요. 새 링크를 받아 주세요.", 'cl.fail': "저장하지 못했어요. 인터넷 연결을 확인해 주세요.", 'cl.waiting': "참여 요청", 'cl.approve': "승인", 'cl.decline': "거절", 'cl.approved': "승인했어요.", 'cl.removed': "공동체에서 내보냈어요.", 'cl.noName': "이름 없음", 'cl.signIn': "로그인",
     's.legal': '정보', 's.privacy': '개인정보처리방침', 's.terms': '이용약관', 's.support': '문의하기', 's.delete': '계정 삭제', 'del.body': '계정과 내가 쓴 감사, 저장·좋아요 기록이 모두 삭제돼요. 삭제하면 되돌릴 수 없어요.', 'del.ok': '삭제', 'del.done': '계정을 삭제했어요. 함께해 주셔서 고마웠어요.', 's.version': '버전',
     'card.feed': '피드 4:5', 'card.story': '스토리 9:16', 'card.shareImg': '이미지로 공유', 'card.noShare': '이 화면에서는 이미지 공유가 막혀 있어요. 앱에서는 바로 인스타그램·카카오톡으로 보낼 수 있어요.',
     'wg.title': '홈 화면 위젯', 'wg.sub': '오늘의 말씀 · 오늘의 감사 · 오늘의 묵상. 원하는 것을 홈 화면에 두고, 누르면 바로 쓸 수 있어요.',
@@ -150,6 +152,8 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'adm.topLeaders': "Leaders can see “Most consistent” too",
+    'cl.title': "Sign in", 'cl.name': "Name", 'cl.namePh': "Shown as the sender on thank-you cards", 'cl.email': "Email", 'cl.send': "Email me a sign-in link", 'cl.sending': "Sending…", 'cl.badEmail': "Please check the email address.", 'cl.sendFail': "Couldn’t send the email. Please try again shortly.", 'cl.tooMany': "Too many emails for now. Please try again shortly.", 'cl.sentTitle': "Check your email", 'cl.sentBody': "We sent a sign-in link to {email}. Tap the link in the email to sign in.", 'cl.code': "If the email has a number code", 'cl.verify': "Sign in with code", 'cl.codeBad': "That code is wrong or has expired.", 'cl.resend': "Send the email again", 'cl.resent': "Sent again.", 'cl.linkBad': "That sign-in link has expired. Please request a new one.", 'cl.needGroup': "Sign in first to create a group. Only people you invite can join.", 'cl.needJoin': "Sign in to join “{name}”. You’ll be in as soon as you do.", 'cl.badInvite': "This invite link has changed or no longer exists. Please ask for a new one.", 'cl.fail': "Couldn’t save. Please check your connection.", 'cl.waiting': "Waiting to join", 'cl.approve': "Approve", 'cl.decline': "Decline", 'cl.approved': "Approved.", 'cl.removed': "Removed from the group.", 'cl.noName': "No name", 'cl.signIn': "Sign in",
     's.legal': 'About', 's.privacy': 'Privacy Policy', 's.terms': 'Terms of Use', 's.support': 'Contact support', 's.delete': 'Delete account', 'del.body': 'Your account, your notes, and your saves and likes will be deleted. This can’t be undone.', 'del.ok': 'Delete', 'del.done': 'Your account was deleted. Thank you for being here.', 's.version': 'Version',
     'card.feed': 'Feed 4:5', 'card.story': 'Story 9:16', 'card.shareImg': 'Share as image', 'card.noShare': 'Image sharing is blocked on this screen. In the app it goes straight to Instagram or KakaoTalk.',
     'wg.title': 'Home screen widgets', 'wg.sub': 'Daily verse · Today’s thanks · Today’s reflection. Put the ones you like on your home screen and tap to write.',
@@ -290,6 +294,8 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'adm.topLeaders': "Los líderes también ven “Más constantes”",
+    'cl.title': "Iniciar sesión", 'cl.name': "Nombre", 'cl.namePh': "Aparece como remitente en las tarjetas de gratitud", 'cl.email': "Correo", 'cl.send': "Enviarme un enlace", 'cl.sending': "Enviando…", 'cl.badEmail': "Revisa el correo.", 'cl.sendFail': "No se pudo enviar el correo. Inténtalo en un momento.", 'cl.tooMany': "Demasiados correos por ahora. Inténtalo en un momento.", 'cl.sentTitle': "Revisa tu correo", 'cl.sentBody': "Enviamos un enlace a {email}. Tócalo en el correo para iniciar sesión.", 'cl.code': "Si el correo trae un código numérico", 'cl.verify': "Entrar con el código", 'cl.codeBad': "El código no es correcto o ya venció.", 'cl.resend': "Enviar el correo otra vez", 'cl.resent': "Enviado otra vez.", 'cl.linkBad': "El enlace venció. Pide uno nuevo.", 'cl.needGroup': "Inicia sesión para crear un grupo. Solo entran las personas que invites.", 'cl.needJoin': "Inicia sesión para unirte a “{name}”. Entrarás enseguida.", 'cl.badInvite': "Este enlace cambió o ya no existe. Pide uno nuevo.", 'cl.fail': "No se pudo guardar. Revisa tu conexión.", 'cl.waiting': "Esperando unirse", 'cl.approve': "Aprobar", 'cl.decline': "Rechazar", 'cl.approved': "Aprobado.", 'cl.removed': "Salió del grupo.", 'cl.noName': "Sin nombre", 'cl.signIn': "Iniciar sesión",
     's.legal': 'Acerca de', 's.privacy': 'Política de privacidad', 's.terms': 'Términos de uso', 's.support': 'Contactar soporte', 's.delete': 'Eliminar cuenta', 'del.body': 'Se eliminarán tu cuenta, tus notas y tus guardados y me gusta. No se puede deshacer.', 'del.ok': 'Eliminar', 'del.done': 'Eliminamos tu cuenta. Gracias por estar aquí.', 's.version': 'Versión',
     'card.feed': 'Feed 4:5',
     'card.story': 'Historia 9:16',
@@ -932,6 +938,160 @@ function save() {
   try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { toast(t('toast.noStore')); }
   document.dispatchEvent(new CustomEvent('dt:save', { detail: data }));
 }
+
+/* ---------------- Supabase (daily bible): e-mail link sign-in · 공동체 ----------------
+   Only the Project URL and the publishable (public) key live here — never a secret key. What anyone may read
+   is enforced by the database rules (supabase/schema.sql). Group keys stay in the invite link's # part. */
+const SUPA = { url: 'https://puhaycwpfpqsmxubvzkt.supabase.co', key: 'sb_publishable_NYYC9G102Ct3YYuY_unhVA_pGGXFGBa' };
+const CLOUD = BIBLE_MODE && !!SUPA.url && !!SUPA.key;
+const Cloud = (() => {
+  const AKEY = 'daily-bible-auth';
+  let auth = null;
+  try { auth = JSON.parse(localStorage.getItem(AKEY)); } catch { auth = null; }
+  const keep = a => { auth = a; try { a ? localStorage.setItem(AKEY, JSON.stringify(a)) : localStorage.removeItem(AKEY); } catch {} };
+  const fail = async res => { const j = await res.json().catch(() => ({})); throw Object.assign(new Error(j.msg || j.message || j.error_description || j.error || res.statusText), { status: res.status, code: j.code || j.error_code }); };
+  const call = async (path, { method = 'GET', body, token, prefer } = {}) => {
+    const headers = { apikey: SUPA.key, ...(body ? { 'Content-Type': 'application/json' } : {}), ...(token ? { Authorization: 'Bearer ' + token } : {}), ...(prefer ? { Prefer: prefer } : {}) };
+    const res = await fetch(SUPA.url + path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    if (!res.ok) await fail(res);
+    return res.status === 204 ? null : res.json().catch(() => null);
+  };
+  const store = (j, email) => keep({ access: j.access_token, refresh: j.refresh_token, exp: Date.now() + (+j.expires_in || 3600) * 1000, id: j.user?.id || auth?.id, email: j.user?.email || email || auth?.email });
+  let refreshing = null;
+  async function token() {
+    if (!auth) return null;
+    if (Date.now() < auth.exp - 60e3) return auth.access;
+    refreshing = refreshing || call('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: auth.refresh } })
+      .then(j => { store(j); return auth.access; })
+      .catch(e => { if (e.status === 400 || e.status === 401) signedOut(); return null; })
+      .finally(() => { refreshing = null; });
+    return refreshing;
+  }
+  const rest = async (path, opts = {}) => { const tk = await token(); if (!tk) throw Object.assign(new Error('not_signed_in'), { code: 'not_signed_in' }); return call('/rest/v1/' + path, { ...opts, token: tk }); };
+  const appUrl = () => location.origin + location.pathname;
+  function signedIn() {
+    setSession({ ...(session || {}), method: 'email', email: auth.email, since: session?.since || new Date().toISOString(), lang: lang(), termsAcceptedAt: session?.termsAcceptedAt || new Date().toISOString(), termsVersion: '2026-12-01' });
+    sync();
+  }
+  function signedOut() { keep(null); if (session?.method === 'email') setSession(null); }
+  return {
+    on: () => CLOUD && !!auth,
+    email: () => auth?.email || '',
+    uid: () => auth?.id || '',
+    // 1) send the e-mail (link, and a code if the mail template includes {{ .Token }})
+    sendLink: (email, name) => call('/auth/v1/otp?redirect_to=' + encodeURIComponent(appUrl()), { method: 'POST', body: { email, create_user: true, data: name ? { name } : {} } }),
+    // 2a) typed the code from the e-mail
+    verify: async (email, code) => { const j = await call('/auth/v1/verify', { method: 'POST', body: { type: 'email', email, token: code } }); store(j, email); signedIn(); },
+    // 2b) came back from the link: #access_token=…&refresh_token=…
+    fromRedirect() {
+      const h = location.hash.slice(1); if (!/(^|&)(access_token|error_description)=/.test(h)) return false;
+      const q = new URLSearchParams(h);
+      try { history.replaceState(null, '', location.pathname + location.search); } catch { location.hash = ''; }
+      if (q.get('error_description')) { setTimeout(() => toast(t('cl.linkBad')), 300); return true; }
+      store({ access_token: q.get('access_token'), refresh_token: q.get('refresh_token'), expires_in: q.get('expires_in') });
+      call('/auth/v1/user', { token: auth.access }).then(u => { keep({ ...auth, id: u.id, email: u.email }); signedIn(); render(); setTimeout(() => toast(t('login.done')), 200); })
+        .catch(() => { signedOut(); toast(t('cl.linkBad')); });
+      return true;
+    },
+    async signOut() { const tk = auth?.access; signedOut(); if (tk) call('/auth/v1/logout', { method: 'POST', token: tk }).catch(() => {}); },
+    rest, rpc: (fn, args) => rest('rpc/' + fn, { method: 'POST', body: args }),
+    resume() { if (CLOUD && auth) { if (!session) signedIn(); else sync(); } }
+  };
+})();
+
+// The sign-in sheet: name (shown on thanks cards) + e-mail → link in the mail (or the code from it).
+function emailLogin(reason = '', after = null) {
+  state.afterLogin = after;
+  showSheet({ title: t('cl.title'), body: `<form id="cl-form" class="sheet-form">
+    ${reason ? `<p class="hint">${esc(reason)}</p>` : ''}
+    <label class="field-label" for="cl-name">${t('cl.name')}</label>
+    <input id="cl-name" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('cl.namePh'))}" required>
+    <label class="field-label" for="cl-email">${t('cl.email')}</label>
+    <input id="cl-email" class="field" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required>
+    <button class="primary block" type="submit" id="cl-send">${t('cl.send')}</button>
+    <p class="fine-print">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p></form>` });
+  $('#cl-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('#cl-name').value.trim().slice(0, 30), email = $('#cl-email').value.trim().toLowerCase();
+    if (!name) { $('#cl-name').focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast(t('cl.badEmail')); return; }
+    data.settings.myName = name; save();
+    const b = $('#cl-send'); b.disabled = true; b.textContent = t('cl.sending');
+    try { await Cloud.sendLink(email, name); emailSent(email, name); }
+    catch (err) { b.disabled = false; b.textContent = t('cl.send'); toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail')); }
+  });
+}
+function emailSent(email, name) {
+  showSheet({ title: t('cl.sentTitle'), body: `<p class="hint">${esc(t('cl.sentBody').replace('{email}', email))}</p>
+    <form id="cl-code-form" class="sheet-form">
+    <label class="field-label" for="cl-code">${t('cl.code')}</label>
+    <input id="cl-code" class="field" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="000000">
+    <button class="secondary block" type="submit">${t('cl.verify')}</button></form>
+    <button class="subtle-link" data-action="cl-resend">${t('cl.resend')}</button>` });
+  state.clEmail = { email, name };
+  $('#cl-code-form').addEventListener('submit', async e => {
+    e.preventDefault(); const code = $('#cl-code').value.replace(/\D/g, '');
+    if (code.length < 6) { toast(t('phone.badCode')); return; }
+    try { await Cloud.verify(email, code); close(); render(); toast(t('login.done')); const next = state.afterLogin; state.afterLogin = null; if (next) setTimeout(next, 300); }
+    catch { toast(t('cl.codeBad')); }
+  });
+}
+
+/* Keeps this device's 공동체 in step with Supabase: registers groups made here, finishes joins made from a link
+   (also ones made before signing in), and brings in names, member counts and people waiting for approval. */
+let syncing = null;
+function sync() {
+  if (!Cloud.on()) return Promise.resolve();
+  return syncing = syncing || (async () => {
+    const uid = Cloud.uid();
+    if (data.settings.myName) Cloud.rest('profiles?id=eq.' + uid, { method: 'PATCH', body: { name: data.settings.myName } }).catch(() => {});
+    for (const g of data.groups.filter(x => x.cloud && !x.sid)) {
+      try {
+        if (g.owner) {
+          const [row] = await Cloud.rest('groups', { method: 'POST', prefer: 'return=representation', body: { name: L(g.name), invite_code: g.invite, owner: uid, approve: !!g.approve, members_invite: g.membersInvite !== false } });
+          await Cloud.rest('group_members', { method: 'POST', body: { group_id: row.id, user_id: uid, role: 'owner', status: 'active' } });
+          g.sid = row.id;
+        } else {
+          const [row] = await Cloud.rpc('join_group', { code: g.invite });
+          g.sid = row.group_id; g.name = row.name || g.name; g.pending = row.status === 'pending';
+          toast(g.pending ? t('join.pending') : t('join.done').replace('{name}', L(g.name)));
+        }
+      } catch (err) {
+        if (/invalid_code/.test(err.message)) { data.groups = data.groups.filter(x => x !== g); toast(t('cl.badInvite')); }
+        else if (err.code === '23505' && g.owner) { g.invite = newCode(); }   // that invite code is taken: try a new one next time
+      }
+    }
+    // my memberships on the server
+    try {
+      const mine = await Cloud.rest(`group_members?user_id=eq.${uid}&select=group_id,role,status,groups(*)`);
+      const ids = new Set(mine.map(m => m.group_id));
+      for (const m of mine) {
+        let g = data.groups.find(x => x.sid === m.group_id);
+        if (!g) { g = { id: 'g' + m.group_id.slice(0, 8), sid: m.group_id, cloud: true, name: m.groups?.name || '', invite: m.groups?.invite_code || newCode(), owner: m.role === 'owner' }; data.groups.push(g); }
+        g.pending = m.status === 'pending'; g.role = m.role;
+        if (m.groups) { g.name = m.groups.name; if (m.groups.invite_code) g.invite = m.groups.invite_code; g.approve = !!m.groups.approve; g.membersInvite = m.groups.members_invite !== false; g.topToLeaders = !!m.groups.top_to_leaders; }
+      }
+      // removed from a group (or a pending request turned down)
+      data.groups = data.groups.filter(g => !(g.cloud && g.sid && !ids.has(g.sid)));
+      for (const g of data.groups.filter(x => x.sid && !x.pending)) {
+        const people = await Cloud.rest(`group_members?group_id=eq.${g.sid}&select=user_id,role,status,profiles(name)`).catch(() => null);
+        if (!people) continue;
+        g.size = people.filter(p => p.status === 'active').length;
+        g.people = people.map(p => ({ id: p.user_id, name: p.profiles?.name || '', role: p.role, pending: p.status === 'pending' }));
+      }
+    } catch {}
+    save(); render();
+  })().finally(() => { syncing = null; });
+}
+// group admin: approve / turn down / remove someone (the database lets only the group's leaders do this)
+async function cloudMember(gid, uid, approve) {
+  const g = data.groups.find(x => x.id === gid); if (!g?.sid) return;
+  const where = `group_members?group_id=eq.${g.sid}&user_id=eq.${uid}`;
+  try { approve ? await Cloud.rest(where, { method: 'PATCH', body: { status: 'active' } }) : await Cloud.rest(where, { method: 'DELETE' }); }
+  catch { toast(t('cl.fail')); return; }
+  await sync(); groupAdmin(gid); toast(approve ? t('cl.approved') : t('cl.removed'));
+}
+function cloudGroupSet(g, fields) { if (Cloud.on() && g?.sid) Cloud.rest('groups?id=eq.' + g.sid, { method: 'PATCH', body: fields }).catch(() => toast(t('cl.fail'))); }
 
 /* ---------------- remote content: change text without a store update ----------------
    Text that changes often (tagline, daily questions, notices, featured posts, which optional features exist,
@@ -1882,11 +2042,20 @@ function groupAdmin(gid) {
   showSheet({ title: t('adm.title'), body: `<div class="list">
       ${sw('adm-invite', g.membersInvite !== false, t('adm.invite'))}
       ${sw('adm-approve', !!g.approve, t('adm.approve'))}
+      ${sw('adm-top', !!g.topToLeaders, t('adm.topLeaders'))}
       <button class="list-row" data-action="adm-newlink" data-id="${esc(gid)}"><span class="row-icon">${icon('reset')}</span><span class="row-main"><span class="row-title">${t('adm.newLink')}</span></span></button></div>
-    ${g.approve ? `<p class="hint">${t('adm.pending')}</p>` : ''}
-    <p class="field-label">${t('adm.members')} · ${groupSize(gid)}</p>
+    ${g.approve && !g.sid ? `<p class="hint">${t('adm.pending')}</p>` : ''}
+    ${g.sid ? cloudPeople(g) : `<p class="field-label">${t('adm.members')} · ${groupSize(gid)}</p>
     <div class="list"><div class="list-row static"><span class="row-main"><span class="row-title">${t('adm.you')}</span></span></div>
-      ${people.filter(([k]) => !(g.removed || []).includes(k)).map(([k, name]) => `<div class="list-row static"><span class="row-main"><span class="row-title">${esc(data.nicknames?.[k] || name)}</span>${data.nicknames?.[k] ? `<span class="row-sub">${t('nick.orig').replace('{name}', esc(name))}</span>` : ''}</span><button class="link-btn" data-action="nick-edit" data-id="${esc(gid)}|${esc(k)}|${esc(name)}">${t('nick.edit')}</button><button class="link-btn adm-rm" data-action="adm-remove" data-id="${esc(gid)}|${esc(k)}">${t('adm.remove')}</button></div>`).join('')}</div>` });
+      ${people.filter(([k]) => !(g.removed || []).includes(k)).map(([k, name]) => `<div class="list-row static"><span class="row-main"><span class="row-title">${esc(data.nicknames?.[k] || name)}</span>${data.nicknames?.[k] ? `<span class="row-sub">${t('nick.orig').replace('{name}', esc(name))}</span>` : ''}</span><button class="link-btn" data-action="nick-edit" data-id="${esc(gid)}|${esc(k)}|${esc(name)}">${t('nick.edit')}</button><button class="link-btn adm-rm" data-action="adm-remove" data-id="${esc(gid)}|${esc(k)}">${t('adm.remove')}</button></div>`).join('')}</div>`}` });
+}
+function cloudPeople(g) {
+  const ppl = (g.people || []).filter(p => p.id !== Cloud.uid()), waiting = ppl.filter(p => p.pending), active = ppl.filter(p => !p.pending);
+  const who = p => esc(p.name || t('cl.noName'));
+  return `${waiting.length ? `<p class="field-label">${t('cl.waiting')} · ${waiting.length}</p><div class="list">${waiting.map(p => `<div class="list-row static"><span class="row-main"><span class="row-title">${who(p)}</span></span><button class="secondary" data-action="cl-approve" data-id="${esc(g.id)}|${esc(p.id)}">${t('cl.approve')}</button><button class="link-btn adm-rm" data-action="cl-remove" data-id="${esc(g.id)}|${esc(p.id)}">${t('cl.decline')}</button></div>`).join('')}</div>` : ''}
+    <p class="field-label">${t('adm.members')} · ${active.length + 1}</p>
+    <div class="list"><div class="list-row static"><span class="row-main"><span class="row-title">${t('adm.you')}</span></span></div>
+      ${active.map(p => `<div class="list-row static"><span class="row-main"><span class="row-title">${who(p)}</span></span><button class="link-btn adm-rm" data-action="cl-remove" data-id="${esc(g.id)}|${esc(p.id)}">${t('adm.remove')}</button></div>`).join('')}</div>`;
 }
 function leaderStart(gid) {
   const g = data.groups.find(x => x.id === gid); if (!g) return;
@@ -3470,7 +3639,7 @@ function chResult(id) {
     <p class="cel-title">${t('chr.title').replace('{name}', esc(chName(ch)))}</p>
     <p class="cel-body">${t('chr.sub').replace('{n}', chLen(ch))}</p>
     <div class="chr-nums"><span><b>${st.mine}/${chLen(ch)}</b><small>${t('me')}</small></span>${g ? `<span><b>${st.people}</b><small>${esc(L(g.name))}</small></span><span><b>${st.total}</b><small>${t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[ch.type || 'thanks'] || 'thanks')}</small></span>` : ''}</div>
-    ${st.top.length > 1 ? `<div class="ch-top">${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''}
+    ${seesTop(ch) && st.top.length > 1 ? `<div class="ch-top">${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''}
     ${g ? `<button class="primary block" data-action="chr-post" data-id="${esc(id)}">${icon('people')}${t('chr.toGroup')}</button>` : ''}
     <button class="secondary block" data-action="chr-card" data-id="${esc(id)}" style="margin-top:8px">${icon('share')}${t('chr.shareCard')}</button>
   </div>` });
@@ -3871,6 +4040,7 @@ const groupKeyOf = g => { if (!g.key) { g.key = Vault.newGroupKey(); save(); } r
 const protectedPost = p => !!p && !p.mine && p.scope !== 'public';
 function inviteLink(g) {
   if (!g.invite) { g.invite = newCode(); save(); }
+  if (BIBLE_MODE) return `${LEGAL_BASE}/daily-bible/#join?c=${encodeURIComponent(g.invite)}&n=${encodeURIComponent(L(g.name))}${g.approve ? '&a=1' : ''}&k=${groupKeyOf(g)}`;
   return `${INVITE_BASE()}?c=${encodeURIComponent(g.invite)}&n=${encodeURIComponent(L(g.name))}${g.approve ? '&a=1' : ''}#k=${groupKeyOf(g)}`;
 }
 function inviteSheet(id) {
@@ -3926,13 +4096,14 @@ function joinGroup(code, name, key) {
   state.pendingJoin = { code, name: name || t('scope.group'), key, approve };
 }
 function createGroup() {
+  if (CLOUD && !Cloud.on()) { emailLogin(t('cl.needGroup'), createGroup); return; }
   showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
     <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
     <button class="primary block" type="submit">${t('gr.create')}</button>
     ${data.church || !featureOn('leader') ? '' : `<button type="button" class="subtle-link" data-action="church-create">${t('chu.make')}</button>`}</form>` });
   $('#group-form').addEventListener('submit', e => {
     e.preventDefault(); const name = $('#group-name').value.trim(); if (!name) return;
-    const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true, key: Vault.newGroupKey() }; data.groups.push(g); if (data.church) data.church.groups.push(g.id); save(); close(); renderGroups();
+    const g = { id: 'g' + Date.now(), name, invite: newCode(), owner: true, key: Vault.newGroupKey(), ...(CLOUD ? { cloud: true } : {}) }; data.groups.push(g); if (CLOUD) sync(); if (data.church) data.church.groups.push(g.id); save(); close(); renderGroups();
     document.dispatchEvent(new CustomEvent('dt:group-created', { detail: g })); // server add-on registers the invite code
     toast(t('toast.grCreated'));
     // invite people right away — but only if they're still on the 공동체 tab and nothing else is open
@@ -4042,7 +4213,9 @@ function chStats(ch) {
   const top = [...per.values()].map(x => ({ name: x.name, n: x.days.size })).filter(x => x.n > 0).sort((a, b) => b.n - a.n).slice(0, 3);
   return { total: posts.length, people: per.size, mine: meDays, top };
 }
-const chTopHtml = ch => { const st = chStats(ch); return st.top.length > 1 ? `<div class="ch-top"><p class="gd-label">${icon('sparkle')}${t('chr.top')}</p>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''; };
+// "가장 꾸준한 사람": the group's admin only; 순장 too when the admin turns it on (off by default)
+const seesTop = ch => { if (!ch?.group || ch.group === 'pair') return true; const g = data.groups.find(x => x.id === ch.group); return !!g && (g.owner || (g.role === 'leader' && !!g.topToLeaders)); };
+const chTopHtml = ch => { const st = chStats(ch); return seesTop(ch) && st.top.length > 1 ? `<div class="ch-top"><p class="gd-label">${icon('sparkle')}${t('chr.top')}</p>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''; };
 const chTypeLabel = ch => ch.type === 'meditation' ? t('kind.meditation') : ch.type === 'prayer' ? t('kind.prayer') : ch.type === 'bible' ? t('ch.t.bible') : t('ch.t.thanks');
 const chLen = ch => ch.length || 7;
 function challengeDetail(id) {
@@ -4095,7 +4268,7 @@ function bibleSettings() {
     </div>
     <p class="field-label">${t('bs.data')}</p>
     <div class="list">
-      ${session
+      ${CLOUD ? (Cloud.on() ? row('logout', 'user', `${t('s.account')} · ${esc(Cloud.email())}`, `<span class="row-link">${t('acct.logout')}</span>`) : row('email-login', 'user', t('s.account'), `<span class="row-sub">${t('cl.signIn')}</span>${icon('chevron')}`)) : session
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
       ${row('vault', 'lock', t('vault.title'))}
@@ -4753,7 +4926,7 @@ function phoneLogin() {
     }
   });
 }
-const methodName = m => ({ apple: 'Apple', google: 'Google', phone: lang() === 'ko' ? '휴대폰' : 'Phone' })[m] || m;
+const methodName = m => m === 'email' ? (session?.email || 'Email') : ({ apple: 'Apple', google: 'Google', phone: lang() === 'ko' ? '휴대폰' : 'Phone' })[m] || m;
 
 /* ---------------- actions ---------------- */
 function setLang(l) {
@@ -5105,9 +5278,10 @@ const actions = {
   'ls-invite': gid => { state.lsInvited = { ...(state.lsInvited || {}), [gid]: true }; inviteSheet(gid); },
   'ls-challenge': gid => { if (!data.challenges.some(c => c.group === gid)) data.challenges.unshift({ id: 'ch' + Date.now(), name: t('chn.thanks'), type: 'thanks', length: 7, group: gid, members: [{ ko: '나', en: 'Me', es: 'Yo' }], start: today(), days: [] });
     save(); toast(t('toast.chStarted')); leaderStart(gid); },
-  'adm-invite': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.membersInvite = g.membersInvite === false; save(); groupAdmin(gid); },
-  'adm-approve': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.approve = !g.approve; save(); groupAdmin(gid); },
-  'adm-newlink': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; const old = g.invite; g.invite = newCode(); g.key = Vault.newGroupKey(); save();
+  'adm-invite': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.membersInvite = g.membersInvite === false; save(); cloudGroupSet(g, { members_invite: g.membersInvite }); groupAdmin(gid); },
+  'adm-top': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.topToLeaders = !g.topToLeaders; save(); cloudGroupSet(g, { top_to_leaders: g.topToLeaders }); groupAdmin(gid); },
+  'adm-approve': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; g.approve = !g.approve; save(); cloudGroupSet(g, { approve: g.approve }); groupAdmin(gid); },
+  'adm-newlink': gid => { const g = data.groups.find(x => x.id === gid); if (!g?.owner) return; const old = g.invite; g.invite = newCode(); g.key = Vault.newGroupKey(); save(); cloudGroupSet(g, { invite_code: g.invite });
     document.dispatchEvent(new CustomEvent('dt:group-relink', { detail: { old, code: g.invite } })); toast(t('adm.newLinkDone')); },
   'adm-remove': pair => { const [gid, k] = pair.split('|'); const g = data.groups.find(x => x.id === gid); if (!g?.owner) return;
     if (state.rmArm !== pair) { state.rmArm = pair; const b = [...document.querySelectorAll('[data-action="adm-remove"]')].find(x => x.dataset.id === pair); if (b) { b.textContent = t('adm.sure'); b.classList.add('armed'); } return; }
@@ -5117,6 +5291,11 @@ const actions = {
   'join-ok': () => {
     const j = state.pendingJoin; if (!j) return close();
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}), ...(j.approve ? { pending: true } : {}) }; data.groups.push(g); state.pendingJoin = null;
+    if (CLOUD) { // Supabase finishes the join (right away, or after signing in); until then it waits as pending
+      g.cloud = true; g.pending = true; save(); close(); state.tab = 'group'; state.immersive = false; render();
+      if (Cloud.on()) sync(); else emailLogin(t('cl.needJoin').replace('{name}', j.name));
+      return;
+    }
     if (j.approve) { document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code, approve: true } })); save(); close(); state.tab = 'group'; render(); toast(t('join.pending')); return; }
     document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code } }));
     save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
@@ -5203,8 +5382,12 @@ const actions = {
   },
   export: exportData,
   fullscreen: toggleFullscreen,
-  login: id => id === 'phone' ? phoneLogin() : completeLogin(id),
-  logout: () => { setSession(null); close(); render(); toast(t('acct.loggedOut')); },
+  login: id => CLOUD ? emailLogin() : id === 'phone' ? phoneLogin() : completeLogin(id),
+  'email-login': () => emailLogin(),
+  'cl-resend': () => { const c = state.clEmail; if (!c) return; Cloud.sendLink(c.email, c.name).then(() => toast(t('cl.resent')), err => toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail'))); },
+  'cl-approve': pair => { const [gid, uid] = pair.split('|'); cloudMember(gid, uid, true); },
+  'cl-remove': pair => { const [gid, uid] = pair.split('|'); if (state.rmArm !== pair) { state.rmArm = pair; const b = [...document.querySelectorAll('[data-action="cl-remove"]')].find(x => x.dataset.id === pair); if (b) { b.textContent = t('adm.sure'); b.classList.add('armed'); } return; } state.rmArm = null; cloudMember(gid, uid, false); },
+  logout: () => { if (CLOUD) Cloud.signOut(); setSession(null); close(); render(); toast(t('acct.loggedOut')); },
   'gate-scope': id => { state.composeScope = id; document.querySelectorAll('[data-action="gate-scope"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'gate-later': () => { const sc = $('#feed-scroll'), card = $('#compose-card'); if (sc && card) sc.scrollTo({ top: card.offsetTop + sc.clientHeight, behavior: 'smooth' }); },
   'intro-again': () => { Object.assign(data.settings, { gestureHint: false, hintArmed: false, triedLeft: false, triedRight: false, swipedBack: false, prayerBackHint: false, quiz: {}, readerOpened: false }); save(); close(); state.tab = 'feed'; state.immersive = true; render(0); toast(t('toast.intro')); },
@@ -5356,6 +5539,7 @@ function doubleTap(el, x, y) {
   h.style.left = x + 'px'; h.style.top = y + 'px'; document.body.appendChild(h); setTimeout(() => h.remove(), 750);
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
+if (CLOUD) { if (!Cloud.fromRedirect()) Cloud.resume(); document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
