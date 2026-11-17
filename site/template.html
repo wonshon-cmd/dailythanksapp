@@ -221,7 +221,9 @@ function post(t) {
 function join(t) {
   const q = new URLSearchParams(WEB ? location.search : (location.hash.split('?')[1] || ''));
   const code = (q.get('c') || '').replace(/[^a-z0-9]/gi, '').slice(0, 24), name = (q.get('n') || '').slice(0, 30);
-  const app = `daily-thanks://join?c=${encodeURIComponent(code)}&n=${encodeURIComponent(name)}`;
+  const key = ((WEB ? location.hash : location.hash.split('#').slice(2).join('#')).match(/k=([A-Za-z0-9_-]{43})/) || [])[1] || '';
+  // the group key stays in the # part: browsers never send it to any server
+  const app = `daily-thanks://join?c=${encodeURIComponent(code)}&n=${encodeURIComponent(name)}${key ? '&k=' + key : ''}`;
   return `<section class="hero join"><span class="wordmark">daily <em>thanks</em></span>
     <p class="join-kicker">${t.joinTitle}</p>
     <h1 class="join-name">${esc(name || t.joinGroup)}</h1>

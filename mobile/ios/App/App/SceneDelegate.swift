@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 class AppViewController: CAPBridgeViewController {
     override open func capacitorDidLoad() {
         bridge?.registerPluginInstance(WidgetBridgePlugin())
+        bridge?.registerPluginInstance(PrivacyPlugin())
     }
 }
 
@@ -41,6 +42,31 @@ public class WidgetBridgePlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func update(_ call: CAPPluginCall) {
         UserDefaults(suiteName: "group.org.dailyjourney.dailythanks")?.set(call.getString("json") ?? "{}", forKey: "widget")
         WidgetCenter.shared.reloadAllTimelines()
+        call.resolve()
+    }
+}
+
+/// Privacy: iOS doesn't let apps block screenshots. While other people's group posts are on screen this plugin
+/// tells the web app when the screen is being recorded / mirrored (it blurs itself) and when a screenshot was taken.
+@objc(PrivacyPlugin)
+public class PrivacyPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "PrivacyPlugin"
+    public let jsName = "Privacy"
+    public let pluginMethods: [CAPPluginMethod] = [CAPPluginMethod(name: "protect", returnType: CAPPluginReturnPromise)]
+    private var observers: [NSObjectProtocol] = []
+
+    override public func load() {
+        let nc = NotificationCenter.default
+        observers.append(nc.addObserver(forName: UIApplication.userDidTakeScreenshotNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.notifyListeners("screenshot", data: [:])
+        })
+        observers.append(nc.addObserver(forName: UIScreen.capturedDidChangeNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.notifyListeners("captured", data: ["on": UIScreen.main.isCaptured])
+        })
+    }
+
+    @objc func protect(_ call: CAPPluginCall) {
+        DispatchQueue.main.async { self.notifyListeners("captured", data: ["on": UIScreen.main.isCaptured]) }
         call.resolve()
     }
 }

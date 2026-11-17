@@ -93,7 +93,7 @@
   // daily-thanks://write → writing sheet; daily-thanks://join?c=CODE&n=NAME (group invite) → join sheet
   const route = url => {
     if (!url) return;
-    if (/join/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n')), 300)); }
+    if (/join/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n'), q.get('k')), 300)); }
     else if (/meditat/.test(url)) ready(DT => setTimeout(() => DT.openMeditation(), 300));
     else if (/write/.test(url)) ready(DT => setTimeout(() => DT.openWrite(), 300));
   };
@@ -108,6 +108,16 @@
     if (window.DailyThanks?.back()) return; // Bible reader, a group or prayer requests open → back one step
     P.App.minimizeApp();
   });
+
+  /* ---------- no screenshots of other people's group posts ----------
+     Android: the screen is marked secure (screenshots and recordings come out black) while such posts are shown.
+     iOS can't block a screenshot; the app blurs the screen while it's being recorded or mirrored, and says so after a screenshot. */
+  let prot = null;
+  const syncProtect = () => { const on = !!window.DailyThanks?.isProtectedView?.(); if (on === prot) return; prot = on; P.Privacy?.protect({ on }).catch(() => {}); };
+  document.addEventListener('dt:render', () => setTimeout(syncProtect, 50));
+  document.addEventListener('scroll', () => setTimeout(syncProtect, 50), { capture: true, passive: true });
+  P.Privacy?.addListener?.('captured', e => document.body.classList.toggle('capturing', !!e.on && !!window.DailyThanks?.isProtectedView?.()));
+  P.Privacy?.addListener?.('screenshot', () => { if (window.DailyThanks?.isProtectedView?.()) window.DailyThanks.toast(window.DailyThanks.t('prot.shot')); });
 
   /* ---------- home-screen widgets: hand today's verse / thanks / passage to the widgets ---------- */
   let wgTimer = null;

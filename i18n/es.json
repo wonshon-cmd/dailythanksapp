@@ -583,5 +583,18 @@
   "chn.thanks": "Reto de gratitud",
   "chn.prayer": "Reto de oración",
   "chn.meditation": "Reto de reflexión",
-  "chn.bible": "Reto de lectura bíblica"
+  "chn.bible": "Reto de lectura bíblica",
+  "vault.title": "Bloqueo de privacidad",
+  "vault.body": "Tus notas se bloquean en este dispositivo antes de ir al servidor. La llave queda en tu dispositivo, así que ni quienes administran el servicio pueden leerlas. Solo lo que compartes con todos es legible.",
+  "vault.code": "Llave de recuperación",
+  "vault.codeHint": "La necesitarás para abrir tus notas en un teléfono nuevo. Guárdala en un lugar seguro: si se pierde, nadie puede recuperarla.",
+  "vault.copy": "Copiar llave",
+  "vault.restore": "Ingresar la llave de otro dispositivo",
+  "vault.restorePh": "Llave de recuperación",
+  "vault.restored": "Llave añadida.",
+  "vault.bad": "La llave no coincide.",
+  "vault.locked": "Este dispositivo necesita tu llave de recuperación. Añádela en Ajustes › Bloqueo de privacidad.",
+  "vault.group": "Las publicaciones del grupo se bloquean con la llave del grupo. Solo viaja dentro del enlace de invitación y nunca llega al servidor.",
+  "prot.noShare": "Solo quien escribió una publicación del grupo puede compartirla.",
+  "prot.shot": "Las publicaciones del grupo no se pueden compartir con capturas."
 }

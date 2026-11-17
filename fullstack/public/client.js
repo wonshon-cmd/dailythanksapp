@@ -7,6 +7,10 @@
   if (!DT) return;
 
   const USER = 'demo'; // TODO(auth): replace with the signed-in user's session
+  // Privacy lock: the server only ever receives sealed state (plus posts shared with everyone).
+  const V = DT.vault;
+  let locked = false; // this device can't open the server copy (no recovery key yet) → never overwrite it
+  const pushState = async st => { if (locked) return; return api('PUT', '/api/state', { state: V ? await V.sealState(st) : st }); };
   const api = async (method, url, body, headers = {}) => {
     const res = await fetch(url, {
       method, headers: { 'x-user-id': USER, ...(body && !(body instanceof Blob) ? { 'Content-Type': 'application/json' } : {}), ...headers },
@@ -58,7 +62,7 @@
   let syncTimer;
   document.addEventListener('dt:save', e => {
     clearTimeout(syncTimer);
-    syncTimer = setTimeout(() => api('PUT', '/api/state', { state: e.detail }).catch(() => DT.toast('Server sync failed')), 400);
+    syncTimer = setTimeout(() => pushState(e.detail).catch(() => DT.toast('Server sync failed')), 400);
   });
 
   // Appeals ("wrongly flagged") go to the moderator review queue. On boot, decisions are applied to the post.
@@ -82,13 +86,19 @@
   document.addEventListener('dt:report', e => { const { postId, author, reason, note } = e.detail; api('POST', '/api/reports', { postId, author, reason, note }).catch(() => {}); });
 
   // After sign-in, attach what the guest wrote before signing in to the account.
-  document.addEventListener('dt:session', e => { if (e.detail) api('PUT', '/api/state', { state: DT.getData() }).catch(() => {}); });
+  document.addEventListener('dt:session', e => { if (e.detail) pushState(DT.getData()).catch(() => {}); });
+  // A recovery key was entered: try opening the server copy again.
+  document.addEventListener('dt:vault-restored', () => { locked = false; boot(); });
 
   async function boot() {
     try {
       const [{ features: f }, { state }] = await Promise.all([api('GET', '/api/config'), api('GET', '/api/state')]);
       features = f;
-      if (state) DT.replaceData(state); else await api('PUT', '/api/state', { state: DT.getData() });
+      if (state) {
+        let opened = null;
+        try { opened = V ? await V.openState(state) : state; } catch { opened = null; }
+        if (opened) DT.replaceData(opened); else { locked = true; DT.toast(DT.t('vault.locked')); }
+      } else await pushState(DT.getData());
       await applyReviewDecisions().catch(() => {});
       DT.render();
     } catch { /* server unreachable: the app keeps working on local data */ }
