@@ -3806,7 +3806,7 @@ async function fillPlanCards() {
   const n = verses.length;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };   // a note on a later verse covers what was read so far
   const cu = c.cuDismissed === today() ? '' : catchUpCard(c);
-  slot.outerHTML = cu + verseCards(verses, `<button class="fv-src why-btn" data-action="first-why" data-id="plan|${esc(c.id)}">${esc(L(c.name) || chName(c))} · ${t('fc.dayN').replace('{n}', c.days.length + 1)}<i class="why-i">?</i></button>
+  slot.outerHTML = cu + verseCards(verses, `<button class="fv-src why-btn" data-action="first-why" data-id="plan|${esc(c.id)}">${esc(L(c.name) || chName(c))} · ${t('fc.dayN').replace('{n}', c.days.length + 1)}</button>
         <div class="post-kind">${icon('book')}<span>${esc(t('fv.kick').replace('{r}', range))}</span></div>`, c.id) + `<article class="post card-page fv-end" data-fvend="${esc(c.id)}"><div class="card-inner">
       <div class="post-kind">${icon('check')}<span>${esc(range)}</span></div>
       <p class="card-title">${t('fv.doneTitle')}</p>
@@ -5006,7 +5006,7 @@ function renderImmersive(keepIndex = 0) {
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
     return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
-      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}"><span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span><i class="why-i">?</i></button>` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
+      <div class="post-body">${fp ? `<button class="post-kind fp-kick why-btn" data-action="first-why" data-id="pr|${esc(L(fpg) || t('fc.group'))}"><span>${esc(t('fp.kick').replace('{g}', L(fpg) || t('fc.group')).replace('{i}', fp.i).replace('{n}', fp.n))}</span></button>` : ''}<p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
