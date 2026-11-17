@@ -483,5 +483,6 @@
 "ch.days": "{n} días",
 "ch.read": "Leer hoy",
 "gs.peopleShort": "{n} esta semana",
-"gs.quietShort": "Tranquilo esta semana"
+"gs.quietShort": "Tranquilo esta semana",
+"mp.load": "Cargar"
 }
