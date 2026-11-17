@@ -51,7 +51,7 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (including dai
 | Supabase, Inc. | Sign-in, storage |
 | Google LLC · Microsoft Corp. (optional) | Confirming who you are if you sign in with them |
 | Apple Inc. · Google LLC | App notifications |
-| [SMS provider] | Phone verification codes |
+| Text-message provider used by Supabase (only if you sign in with your phone) | Sending sign-in codes by text |
 | Anthropic PBC (optional feature) | Tidying sermon notes |
 | Speech-recognition provider: NAVER Cloud, Returnzero or OpenAI, depending on language (optional feature) | Sermon transcription |
 
@@ -72,7 +72,8 @@ Depending on where you live (for example, under the GDPR in the EU/UK or the CCP
 We protect your data with:
 
 - Encryption in transit (HTTPS)
-- **End-to-end encryption:** private notes and personal settings are encrypted on your device before they are stored on our servers. The key stays on your device, so not even we can read them. Group posts are encrypted with the group’s key, which travels only inside the invite link and is never sent to our servers. Only posts you share with “Everyone” can be read by us, to run the service and handle reports.
+- **Only-me notes:** private notes are locked (encrypted) on your device and are not sent to our servers. The key stays on your device, so not even we can read them.
+- **Posts you share with a community or with everyone:** stored on our servers (Supabase). Database access rules let only that community’s members (or signed-in users) read them. They are not end-to-end encrypted, so we can read them to run the service and handle reports.
 - Other people’s group posts can’t be shared or copied in the app, and screenshots are blocked on Android (on iPhone the screen is hidden while it’s being recorded).
 - Server-side access rules, so no one else can read your private notes
 - Access logging

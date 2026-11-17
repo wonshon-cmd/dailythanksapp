@@ -65,7 +65,13 @@ python3 tools/build-single.py && node tools/make-journey-screenshots.js
    - Supabase에 심사용 테스트 계정을 만들어 고정 코드로 들어갈 수 있게 해 두고, 심사 메모의 `[…]` 자리에 적어요.
    - 그 계정이 공동체 하나에 들어가 있고, 다른 사람 글이 보이게 해 두세요(신고·차단을 눌러 볼 수 있게).
    - Google·Apple 로그인을 Supabase에서 켜면 **Sign in with Apple도 같이** 있어야 해요(Apple 4.8).
-6. **신고 처리 담당**: 신고를 24시간 안에 확인할 사람과 알림(메일 등)을 정해요.
+6. **신고 처리 (Apple 1.2 · Google UGC 필수)**
+   - 담당자: 신고를 **24시간 안에** 확인할 사람을 정해요(예: 대표 + 1명).
+   - 보는 곳: Supabase › Table Editor › `reports` (status가 `open`인 것).
+   - 알림: Supabase › Database › Webhooks › `reports` INSERT → 메일/Slack으로 보내는 웹훅을 걸어 두면 바로 알 수 있어요.
+   - 자동 조치: 서로 다른 3명이 신고한 글은 자동으로 숨겨져요(`posts.hidden`, 작성자 본인만 보임).
+   - 처리: 문제가 있으면 `posts`에서 그 글을 지우거나 `hidden = true`로 두고, 반복되면 Authentication › Users에서 그 사람을 지워요. 처리 후 `reports.status`를 `done`으로.
+   - 문제없으면 `hidden = false`로 되돌리고 `status = done`.
 7. **출시 전 마지막 확인**: 아래 "알려진 문제"를 고쳤는지, 스크린샷을 다시 만들었는지.
 
 ## 스토어 이름을 다시 바꾼다면
