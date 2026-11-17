@@ -440,5 +440,8 @@
 "ch.t.thanks": "Gratitud",
 "ch.q.meditation": "¿Qué te dio el pasaje de hoy?",
 "ch.q.prayer": "¿Por qué oramos hoy?",
-"share.link": "Copiar enlace"
+"share.link": "Copiar enlace",
+"verse.saved": "Guardado · Mi gratitud › Guardado",
+"verse.unsaved": "Quitado de guardados.",
+"act.like": "Me gusta"
 }
