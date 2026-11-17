@@ -218,3 +218,23 @@ test('sermons: YouTube link needs yt-dlp on the server', async () => {
   assert.equal((await call('POST', '/api/sermons/youtube', { url: 'https://example.com/x' })).status, 422);
   assert.equal((await call('POST', '/api/sermons/youtube', { url: 'https://www.youtube.com/watch?v=abcdefghijk' })).status, 501);
 });
+
+test('small-group meeting: recording → notes per member', async () => {
+  const one = MOCK_TRANSCRIPT;
+  const config = loadConfig({ FEATURE_SERMON: '1', STT_PROVIDER: 'mock', DATA_FILE: path.join(tmp, 'meet.json'), UPLOAD_DIR: path.join(tmp, 'up') });
+  const store = createStore(config.dataFile);
+  let got = null;
+  const summarizeMeeting = async x => { got = x; return { summary: { overview: 'o', members: x.members.map(n => ({ name: n, sharing: 's', prayer_request: '' })), prayer_topics: [], next_steps: [] }, references: [], model: 'stub' }; };
+  const server = http.createServer(createApp({ config, store, summarizeMeeting, summarize: async () => { throw new Error('not for meetings'); } }));
+  await new Promise(r => server.listen(0, r)); servers.push(server);
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const up = await (await fetch(`${base}/api/sermons/upload?type=audio/mp4&kind=meeting&members=${encodeURIComponent('하은,민서')}`, { method: 'POST', headers: { 'x-user-id': 'lead' } })).json();
+  await fetch(`${base}/api/sermons/${up.id}/chunk?i=0`, { method: 'PUT', headers: { 'x-user-id': 'lead', 'Content-Type': 'application/octet-stream' }, body: new Uint8Array(500) });
+  await fetch(`${base}/api/sermons/${up.id}/finish`, { method: 'POST', headers: { 'x-user-id': 'lead', 'Content-Type': 'application/json' }, body: JSON.stringify({ passage: '요한복음 15:1-8' }) });
+  let s; for (let i = 0; i < 50; i++) { s = (await (await fetch(`${base}/api/sermons/${up.id}`, { headers: { 'x-user-id': 'lead' } })).json()).sermon; if (s.status === 'done') break; await new Promise(r => setTimeout(r, 20)); }
+  assert.equal(s.status, 'done');
+  assert.deepEqual(got.members, ['하은', '민서']);
+  assert.equal(got.passage, '요한복음 15:1-8');
+  assert.deepEqual(s.summary.members.map(m => m.name), ['하은', '민서']);
+  void one;
+});

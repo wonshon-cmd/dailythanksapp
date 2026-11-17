@@ -88,3 +88,46 @@ export async function summarizeSermon({ transcript, title, preacher, context: ab
   const text = response.content.filter(b => b.type === 'text').map(b => b.text).join('');
   return { summary: JSON.parse(text), references, model: response.model };
 }
+
+/* ---------- small-group meeting (순모임) ----------
+   The leader records the meeting; notes come back per member: what each person shared and their prayer request. */
+export const MEETING_SCHEMA = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['overview', 'members', 'prayer_topics', 'next_steps'],
+  properties: {
+    overview: { type: 'string', description: 'Two or three sentences: what the group talked about, anchored in the passage' },
+    members: {
+      type: 'array', description: 'One entry per person who spoke, in the order they first spoke',
+      items: {
+        type: 'object', additionalProperties: false, required: ['name', 'sharing', 'prayer_request'],
+        properties: {
+          name: { type: 'string', description: 'As in the member list when you can tell who it is; otherwise as they were called in the recording' },
+          sharing: { type: 'string', description: 'What they shared, 1-3 sentences, in their own spirit' },
+          prayer_request: { type: 'string', description: 'Their prayer request, or empty' }
+        }
+      }
+    },
+    prayer_topics: { type: 'array', items: { type: 'string' }, description: 'Prayer topics for the whole group' },
+    next_steps: { type: 'array', items: { type: 'string' }, description: 'Anything decided or planned (next meeting, who brings what)' }
+  }
+};
+const MEETING_SYSTEM = `You write notes for a church small-group leader (순장) from a recording of their group meeting (순모임).
+Write in the language the meeting was held in.
+Be faithful and gentle: only what people actually said; no judgement, no diagnosis, no added advice.
+Each member's sharing and prayer request goes under their name. Use the member list to spell names; if you can't tell who spoke, use how they were addressed, or "순원" / "Member".
+Personal details stay brief — these notes are read by the leader and, in summary, by the pastor.`;
+export async function summarizeMeeting({ transcript, members = [], passage, passageText, title }, client = new Anthropic()) {
+  const response = await client.beta.messages.create({
+    model: MODEL,
+    max_tokens: 12000,
+    betas: ['server-side-fallback-2026-07-01'],
+    fallbacks: 'default',
+    system: MEETING_SYSTEM,
+    output_config: { effort: 'medium', format: { type: 'json_schema', schema: MEETING_SCHEMA } },
+    messages: [{ role: 'user', content: `${title ? `Group: ${title}\n` : ''}Members: ${members.join(', ') || '(not given)'}${passage ? `\n\n<passage ref="${passage}">\n${String(passageText || '').slice(0, 12000)}\n</passage>` : ''}\n\n<transcript>\n${transcript}\n</transcript>` }]
+  });
+  if (response.stop_reason === 'refusal') { const err = new Error('The model declined to summarise this meeting.'); err.code = 'refused'; throw err; }
+  if (response.stop_reason === 'max_tokens') { const err = new Error('The summary was cut off.'); err.code = 'truncated'; throw err; }
+  return { summary: JSON.parse(response.content.filter(b => b.type === 'text').map(b => b.text).join('')), references: [], model: response.model };
+}
