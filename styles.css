@@ -1334,3 +1334,25 @@ body.capturing #app{filter:blur(18px)}
 .sn-aibusy svg, .sn-aitag svg { width: 16px; height: 16px; }
 .sn-aibusy { animation: snPulse 1.4s ease-in-out infinite; }
 @keyframes snPulse { 50% { opacity: .45; } }
+
+/* sermon recorder */
+.rec-card { display: grid; gap: 8px; }
+.rec-big { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; border: 0; border-radius: 999px; background: #f1f1f1; color: #2c3135; font-size: 16px; font-weight: 500; }
+.rec-dot { width: 10px; height: 10px; border-radius: 50%; background: #d93025; display: inline-block; flex: none; }
+.rec-live { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #f6f6f6; }
+.rec-live.recording .rec-dot { animation: recBlink 1.2s ease-in-out infinite; }
+.rec-live.paused .rec-dot, .rec-live.interrupted .rec-dot { background: #9aa0a6; }
+.rec-time { font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; min-width: 64px; }
+.rec-lv { flex: 1; height: 6px; border-radius: 3px; background: #e3e3e3; overflow: hidden; }
+.rec-lv i { display: block; height: 100%; background: #3a3f44; border-radius: 3px; transition: width .4s; }
+.rec-st { margin: 0; font-size: 13px; color: #6b7075; }
+.rec-live.interrupted + .rec-st { color: #b3261e; }
+.rec-ctl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rec-done { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 15px; }
+.rec-done span { display: inline-flex; align-items: center; gap: 6px; }
+.rec-done svg { width: 16px; height: 16px; }
+.rec-card audio { width: 100%; height: 40px; }
+#sn-form.has-rec .sn-ai { display: none; }
+.rec-bar { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 16px; margin: 0 0 12px; border: 0; border-radius: 14px; background: #fdecec; color: #b3261e; font-size: 15px; text-align: left; }
+.rec-bar .rec-dot { animation: recBlink 1.2s ease-in-out infinite; }
+@keyframes recBlink { 50% { opacity: .25; } }

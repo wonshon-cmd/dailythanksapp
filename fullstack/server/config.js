@@ -13,8 +13,11 @@ export function loadConfig(env = process.env) {
       moderation: on(env.FEATURE_MODERATION) // 신고 검토 API (운영자용)
     },
     stt: {
-      provider: env.STT_PROVIDER || 'mock', // mock | openai | clova | rtzr
+      // auto: Korean → CLOVA, then RETURN ZERO; English/Spanish → OpenAI. mock when no key is set.
+      provider: env.STT_PROVIDER || (env.OPENAI_API_KEY || env.CLOVA_SPEECH_SECRET || env.RTZR_CLIENT_ID ? 'auto' : 'mock'), // auto | mock | openai | clova | rtzr
       openaiKey: env.OPENAI_API_KEY || '',
+      openaiModel: env.OPENAI_STT_MODEL || 'gpt-4o-transcribe',
+      ffmpegPath: env.FFMPEG_PATH || 'ffmpeg',   // cleans and splits long recordings
       clovaInvokeUrl: env.CLOVA_SPEECH_INVOKE_URL || '',
       clovaSecret: env.CLOVA_SPEECH_SECRET || '',
       rtzrClientId: env.RTZR_CLIENT_ID || '',

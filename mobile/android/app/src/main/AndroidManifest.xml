@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="false"
@@ -73,6 +75,12 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/thanks_widget_info" />
         </receiver>
+
+        <!-- Sermon recording: keeps the microphone running with the screen off (notification shows while recording) -->
+        <service
+            android:name=".SermonRecordService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
