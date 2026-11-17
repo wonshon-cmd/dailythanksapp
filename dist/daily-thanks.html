@@ -1635,6 +1635,17 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .write-pill.plus-only{width:42px;padding:0;justify-content:center}
 .write-pill.plus-only .plus{font-size:18px}
 
+/* first-visit tour: a soft spotlight and a small white card */
+#tour{position:fixed;inset:0;z-index:9999}
+#tour .tour-dim{position:absolute;inset:0;background:rgba(22,25,28,.45)}
+#tour .tour-hole{position:absolute;border-radius:16px;box-shadow:0 0 0 9999px rgba(22,25,28,.45);transition:all .25s ease;pointer-events:none}
+#tour .tour-card{position:absolute;left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border-radius:18px;padding:18px 18px 14px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+#tour .tour-step{margin:0 0 6px;font-size:12px;color:var(--faint,#9BA0A3)}
+#tour .tour-title{margin:0 0 6px;font-size:17px;color:var(--ink,#16191C)}
+#tour .tour-body{margin:0;font-size:14px;line-height:1.55;color:var(--sub,#686E73)}
+#tour .tour-acts{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+#tour .tour-acts .primary{padding:0 20px;height:40px;border-radius:999px}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -1671,6 +1682,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'tour.skip': "건너뛰기", 'tour.done': "시작하기", 'tour.again': "둘러보기 다시 보기", 'tour.feed': "여기는 피드예요", 'tour.feedSub': "지금 보이는 글은 샘플이에요. 공동체 사람들의 기도제목·감사·묵상이 한 장씩 보여요. 위로 밀면 다음 글이에요.", 'tour.rail': "마음 표현하기", 'tour.railSub': "좋아요, 저장, 더 보기. 남의 글은 공개된 것만 공유할 수 있어요.", 'tour.plus': "나도 쓰기", 'tour.plusSub': "감사, 기도제목, 묵상, 감사 전하기를 여기서 써요.", 'tour.close': "피드 닫기", 'tour.closeSub': "닫으면 언제나 읽기 화면으로 가요.", 'tour.read': "읽기", 'tour.readSub': "오늘의 본문, 이어 읽기, 함께 읽는 읽기 계획이 있어요.", 'tour.notes': "설교 노트", 'tour.notesSub': "설교를 녹음하거나 받아쓴 글을 넣으면 노트로 정리돼요.", 'tour.group': "공동체", 'tour.groupSub': "공동체를 만들고 초대 링크로 함께해요. 지금은 샘플 공동체가 보여요.", 'tour.me': "나", 'tour.meSub': "내 기록과 설정, 로그인이 여기 있어요.", 'tour.back': "피드로 돌아가기", 'tour.backSub': "여기를 누르면 다시 피드가 열려요. 이제 시작해 볼까요?",
     'wl.title': "반가워요", 'wl.nameQ': "처음 오셨네요. 이름을 알려 주세요. 감사 카드와 공동체에서 이 이름이 보여요.", 'wl.next': "다음", 'wl.hi': "{name}님, 반가워요", 'wl.sub': "가입하면 기기를 바꿔도 이어서 쓰고, 공동체와 함께할 수 있어요.", 'wl.google': "Google로 계속하기", 'wl.ms': "Microsoft로 계속하기", 'wl.kakao': "카카오로 계속하기", 'wl.email': "메일로 계속하기", 'wl.phone': "휴대폰 문자로 계속하기", 'wl.notYet': "이 방법은 곧 열려요. 지금은 메일로 계속해 주세요.",
     'bp.thankSomeone': "감사 전하기",
     'adm.topLeaders': "순장도 ‘가장 꾸준한 사람’ 보기",
@@ -1815,6 +1827,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'tour.skip': "Skip", 'tour.done': "Get started", 'tour.again': "See the tour again", 'tour.feed': "This is the feed", 'tour.feedSub': "These posts are samples. Prayer requests, thanks and reflections from your group, one at a time. Swipe up for the next.", 'tour.rail': "Respond", 'tour.railSub': "Like, save, more. Other people’s posts can be shared only if they made them public.", 'tour.plus': "Write", 'tour.plusSub': "Thanks, a prayer request, a reflection, or a thank-you to someone.", 'tour.close': "Close the feed", 'tour.closeSub': "Closing always takes you to Read.", 'tour.read': "Read", 'tour.readSub': "Today’s passage, where you left off, and reading plans together.", 'tour.notes': "Sermon notes", 'tour.notesSub': "Record a sermon or paste a transcript and it becomes tidy notes.", 'tour.group': "Community", 'tour.groupSub': "Make a group and invite people with a link. A sample group is shown for now.", 'tour.me': "Me", 'tour.meSub': "Your records, settings and sign-in.", 'tour.back': "Back to the feed", 'tour.backSub': "Tap here to open the feed again. Ready to start?",
     'wl.title': "Welcome", 'wl.nameQ': "First time here? What’s your name? It’s shown on thank-you cards and in your groups.", 'wl.next': "Next", 'wl.hi': "Welcome, {name}", 'wl.sub': "Sign up to keep going on any device and join a group.", 'wl.google': "Continue with Google", 'wl.ms': "Continue with Microsoft", 'wl.kakao': "Continue with Kakao", 'wl.email': "Continue with email", 'wl.phone': "Continue with a text message", 'wl.notYet': "This option opens soon. For now, please continue with email.",
     'bp.thankSomeone': "Thank someone",
     'adm.topLeaders': "Leaders can see “Most consistent” too",
@@ -1959,6 +1972,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'tour.skip': "Omitir", 'tour.done': "Empezar", 'tour.again': "Ver el recorrido otra vez", 'tour.feed': "Este es el feed", 'tour.feedSub': "Estas publicaciones son de ejemplo. Peticiones, gratitud y reflexiones de tu grupo, una a la vez. Desliza hacia arriba para ver la siguiente.", 'tour.rail': "Responder", 'tour.railSub': "Me gusta, guardar, más. Lo de otros solo se comparte si lo hicieron público.", 'tour.plus': "Escribir", 'tour.plusSub': "Gratitud, una petición, una reflexión o un agradecimiento a alguien.", 'tour.close': "Cerrar el feed", 'tour.closeSub': "Al cerrar siempre vas a Leer.", 'tour.read': "Leer", 'tour.readSub': "El pasaje de hoy, donde te quedaste y planes de lectura en grupo.", 'tour.notes': "Notas de sermón", 'tour.notesSub': "Graba un sermón o pega la transcripción y se convierte en notas ordenadas.", 'tour.group': "Comunidad", 'tour.groupSub': "Crea un grupo e invita con un enlace. Por ahora ves un grupo de ejemplo.", 'tour.me': "Yo", 'tour.meSub': "Tus registros, ajustes e inicio de sesión.", 'tour.back': "Volver al feed", 'tour.backSub': "Toca aquí para abrir el feed otra vez. ¿Empezamos?",
     'wl.title': "Bienvenido", 'wl.nameQ': "¿Primera vez aquí? ¿Cómo te llamas? Se verá en las tarjetas de gratitud y en tus grupos.", 'wl.next': "Siguiente", 'wl.hi': "Bienvenido, {name}", 'wl.sub': "Regístrate para seguir en cualquier dispositivo y unirte a un grupo.", 'wl.google': "Continuar con Google", 'wl.ms': "Continuar con Microsoft", 'wl.kakao': "Continuar con Kakao", 'wl.email': "Continuar con correo", 'wl.phone': "Continuar con un mensaje de texto", 'wl.notYet': "Esta opción abre pronto. Por ahora, continúa con tu correo.",
     'bp.thankSomeone': "Agradecer a alguien",
     'adm.topLeaders': "Los líderes también ven “Más constantes”",
@@ -2674,6 +2688,48 @@ const Cloud = (() => {
   };
 })();
 
+
+/* ---------------- first-visit tour (daily bible) ----------------
+   A few spotlights over the sample screens, then the name / sign-up sheet. */
+const TOUR = [
+  { sel: '.post .post-text, .post .card-inner', k: 'feed' },
+  { sel: '.post-rail', k: 'rail' },
+  { sel: '.imm-plus', k: 'plus' },
+  { sel: '.post-rail [data-action="fullscreen"]', k: 'close' },
+  { sel: '.bottom-nav [data-tab="read"]', k: 'read', leaveFeed: true },
+  { sel: '.bottom-nav [data-tab="notes"]', k: 'notes' },
+  { sel: '.bottom-nav [data-tab="group"]', k: 'group' },
+  { sel: '.bottom-nav [data-tab="me"]', k: 'me' },
+  { sel: '.bottom-nav .nav-feed', k: 'back' }
+];
+const onScreen = sel => [...document.querySelectorAll(sel)].find(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.top >= -1 && r.bottom <= innerHeight + 1; });
+function startTour() {
+  close(); document.getElementById('splash')?.remove();
+  if (!state.immersive) toggleFullscreen();
+  let i = 0;
+  const el = document.createElement('div'); el.id = 'tour'; el.setAttribute('role', 'dialog'); document.body.append(el);
+  const end = () => { el.remove(); removeEventListener('resize', draw); data.settings.toured = true; save(); if (CLOUD && !Cloud.on()) welcomeSheet(); };
+  function draw() {
+    const st = TOUR[i];
+    const target = onScreen(st.sel);
+    const r = target ? target.getBoundingClientRect() : null, pad = 8;
+    const hole = r ? `<div class="tour-hole" style="left:${r.left - pad}px;top:${r.top - pad}px;width:${r.width + pad * 2}px;height:${r.height + pad * 2}px"></div>` : '<div class="tour-dim"></div>';
+    const below = !r || r.top + r.height / 2 < innerHeight / 2;
+    const pos = !r ? 'top:50%;transform:translateY(-50%)' : below ? `top:${Math.min(r.bottom + pad + 12, innerHeight - 220)}px` : `bottom:${Math.min(innerHeight - r.top + pad + 12, innerHeight - 220)}px`;
+    el.innerHTML = `${hole}<div class="tour-card" style="${pos}">
+      <p class="tour-step">${i + 1} / ${TOUR.length}</p>
+      <p class="tour-title">${t('tour.' + st.k)}</p><p class="tour-body">${t('tour.' + st.k + 'Sub')}</p>
+      <div class="tour-acts"><button class="subtle-link" data-tour="skip">${t('tour.skip')}</button><button class="primary" data-tour="next">${i === TOUR.length - 1 ? t('tour.done') : t('wl.next')}</button></div></div>`;
+  }
+  el.addEventListener('click', e => {
+    const b = e.target.closest('[data-tour]'); if (!b) return;
+    if (b.dataset.tour === 'skip' || i === TOUR.length - 1) { end(); return; }
+    i++;
+    if (TOUR[i].leaveFeed && state.immersive) { toggleFullscreen(); setTimeout(draw, 250); } else draw();
+  });
+  addEventListener('resize', draw);
+  draw();
+}
 /* First visit: name first, then one tap to sign up — Google · Microsoft · e-mail · text message.
    A button whose provider isn't switched on in Supabase yet says so instead of failing. */
 function welcomeSheet(reason = '') {
@@ -5990,6 +6046,7 @@ function bibleSettings() {
       ${CLOUD ? (Cloud.on() ? row('logout', 'user', `${t('s.account')} · ${esc(Cloud.email())}`, `<span class="row-link">${t('acct.logout')}</span>`) : row('wl-open', 'user', t('s.account'), `<span class="row-sub">${t('cl.signIn')}</span>${icon('chevron')}`)) : session
         ? row('logout', 'user', `${t('s.account')} · ${esc(methodName(session.method))}${session.phone ? ' ' + esc(session.phone) : ''}`, `<span class="row-link">${t('acct.logout')}</span>`)
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
+      ${row('tour', 'history', t('tour.again'))}
       ${row('vault', 'lock', t('vault.title'))}
       ${row('export', 'copy', t('s.export'), '')}
       <a class="list-row" href="${LEGAL_BASE}/app/" target="_blank" rel="noopener"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('bs.thanks')}</span></span><span class="row-end">${icon('chevron')}</span></a>
@@ -7106,6 +7163,7 @@ const actions = {
   login: id => CLOUD ? welcomeSheet() : id === 'phone' ? phoneLogin() : completeLogin(id),
   'email-login': () => emailLogin(),
   'wl-open': () => welcomeSheet(),
+  tour: () => startTour(),
   'wl-sign': id => welcomeSign(id),
   'wl-later': () => { try { sessionStorage.setItem('wl-later', '1'); } catch {} close(); },
   'cl-resend': () => { const c = state.clEmail; if (!c) return; Cloud.sendLink(c.email, c.name).then(() => toast(t('cl.resent')), err => toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail'))); },
@@ -7265,7 +7323,7 @@ function doubleTap(el, x, y) {
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
-  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }

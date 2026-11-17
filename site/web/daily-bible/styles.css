@@ -1622,3 +1622,14 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 /* daily bible: the top + is a round button (sermon notes have their own tab) */
 .write-pill.plus-only{width:42px;padding:0;justify-content:center}
 .write-pill.plus-only .plus{font-size:18px}
+
+/* first-visit tour: a soft spotlight and a small white card */
+#tour{position:fixed;inset:0;z-index:9999}
+#tour .tour-dim{position:absolute;inset:0;background:rgba(22,25,28,.45)}
+#tour .tour-hole{position:absolute;border-radius:16px;box-shadow:0 0 0 9999px rgba(22,25,28,.45);transition:all .25s ease;pointer-events:none}
+#tour .tour-card{position:absolute;left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border-radius:18px;padding:18px 18px 14px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+#tour .tour-step{margin:0 0 6px;font-size:12px;color:var(--faint,#9BA0A3)}
+#tour .tour-title{margin:0 0 6px;font-size:17px;color:var(--ink,#16191C)}
+#tour .tour-body{margin:0;font-size:14px;line-height:1.55;color:var(--sub,#686E73)}
+#tour .tour-acts{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+#tour .tour-acts .primary{padding:0 20px;height:40px;border-radius:999px}
