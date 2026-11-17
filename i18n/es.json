@@ -465,5 +465,14 @@
 "pl.others": "Peticiones de otras personas",
 "pl.othersSub": "Ora también por alguien que no conoces.",
 "pl.empty": "Aún no hay peticiones",
-"pl.back": "Desliza a la derecha para volver"
+"pl.back": "Desliza a la derecha para volver",
+"ct.title": "Esto no se puede compartir",
+"ct.body": "No se pueden publicar datos de contacto, pedidos de seguidores o promoción, ni pedidos de dinero en Todos o en un grupo. Comparte solo la gratitud.",
+"ct.email": "Correo",
+"ct.phone": "Teléfono",
+"ct.link": "Enlace",
+"ct.social": "Contacto o pedido de seguir",
+"ct.money": "Pedido de dinero",
+"gs.chToday": "Escribir hoy",
+"gs.chStart": "Empezar 7 días"
 }

@@ -872,3 +872,14 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .kind-chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
 .kind-chip{border:1px solid var(--line);background:#FFFFFF;border-radius:999px;height:34px;padding:0 14px;font:inherit;font-size:13px;color:var(--sub);cursor:pointer}
 .kind-chip.active{background:#F1F1F1;border-color:#F1F1F1;color:var(--ink);font-weight:500}
+/* tiny read date (where you've read before, for the read-through) */
+.vs-read{margin-left:8px;font-size:10px;color:#C4C8CA;letter-spacing:.02em}
+.ch-chip{flex-direction:column;height:auto;min-height:40px;padding:4px 8px;line-height:1.2}
+.ch-chip small{font-size:9px;color:#B4B8BA}
+/* 함께 7일 inside a group */
+.g-ch{display:flex;align-items:center;gap:12px;border:0;background:#F4F4F4;border-radius:14px;padding:12px 14px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;text-align:left;margin-top:4px}
+.g-ch-days{display:flex;gap:4px;flex:1}
+.g-ch-days i{width:7px;height:7px;border-radius:50%;background:#DADDDF}
+.g-ch-days i.on{background:#8A9094}
+.g-ch-go{color:#8A9094;white-space:nowrap}
+.bottom-nav button{flex:1}
