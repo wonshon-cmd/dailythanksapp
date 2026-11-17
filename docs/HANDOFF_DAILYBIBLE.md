@@ -6,7 +6,8 @@
 - 문구: `app.js` 안의 STR (ko / en / es), 스페인어는 `i18n/es.json`에도 같이 넣기.
 - 서버(설교 녹음 요약 등): `fullstack/` (테스트 `npm test`, 31개 통과)
 - 모바일(Capacitor, 화면 꺼져도 녹음): `mobile/`
-- 데이터베이스 규칙: `supabase/schema.sql` (아직 실제 Supabase에서 실행 전 — 사용자가 실행 중)
+- 데이터베이스 규칙: `supabase/schema.sql` — ✅ Supabase에서 실행 완료 (다시 실행해도 안전)
+- Supabase Project URL: `https://puhaycwpfpqsmxubvzkt.supabase.co` (anon/publishable 키는 사용자에게 받기)
 
 ## 빌드 · 공개
 ```
@@ -26,8 +27,8 @@ python3 tools/build-live.py <dailybible 저장소 경로>   # 공개 사이트 �
 - 용어: 소그룹 → **공동체**.
 
 ## 다음 할 일
-1. 사용자가 Supabase에서 `schema.txt` 실행 → 오류 나면 고치기
-2. Project URL + anon 키 받으면: 로그인(메일 링크), 가입 이름 = 감사 카드 보내는 사람,
+1. anon(publishable) 키 받기 (Project URL은 위에 있음)
+2. 키를 받으면: 로그인(메일 링크), 가입 이름 = 감사 카드 보내는 사람,
    공동체 만들기·초대 링크·승인, 기도제목/감사/묵상 나눔과 좋아요·기도했어요, 읽기 계획 함께하기,
    순장 도구·목사님 보기를 실제 권한으로 연결, 오늘의 본문(content.json) 매일 갱신
 3. 작은 것: 공동체 탭 "Gratitude challenge  D-3" 꼬리표가 두 줄로 깨짐
