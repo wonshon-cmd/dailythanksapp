@@ -847,5 +847,11 @@
   "med.recDel": "Borrar grabación",
   "med.recNote": "Las grabaciones quedan cifradas en este dispositivo.",
   "med.recFail": "No se puede usar el micrófono. Permítelo en Ajustes.",
-  "med.voice": "Nota de voz"
+  "med.voice": "Nota de voz",
+  "sn.aiOn": "Crear también un resumen con IA",
+  "sn.aiBtn": "Resumir con IA",
+  "sn.aiBusy": "La IA está resumiendo…",
+  "sn.aiLater": "Podrás resumir cuando estés conectado.",
+  "sn.aiTag": "Resumen con IA",
+  "sn.aiShort": "Escribe un poco más para resumir."
 }
