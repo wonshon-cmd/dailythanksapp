@@ -490,5 +490,7 @@
   "act.note": "Nota",
   "mp.addPrev": "+ Versículo anterior",
   "mp.addNext": "Versículo siguiente +",
-  "fs.open": "Ampliar"
+  "fs.open": "Ampliar",
+  "gs.today": "Hoy participaron {n}",
+  "gs.weekPeople": "Esta semana participaron {n}"
 }
