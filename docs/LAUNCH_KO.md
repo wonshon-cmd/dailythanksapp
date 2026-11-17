@@ -1,14 +1,10 @@
 # 실제로 공개하기 — GitHub 공개 주소 + Supabase 로그인
 
-## 1. 공개 주소 (GitHub Pages, 새 저장소)
-dailyjourney.org와 따로, GitHub 주소로 먼저 공개해요.
-
-1. GitHub에서 **새 공개 저장소**를 만들어요. 예: `dailybible` (README 없이 빈 저장소)
-2. 저장소 **Settings › Pages › Source: GitHub Actions**
-3. 저장소 이름을 알려주시면, 앱을 그 저장소에 올리고 자동 배포 설정을 넣어요.
-   - 주소: `https://wonshon-cmd.github.io/dailybible/`
-     - `/` 소개 페이지 · `/bible/` daily bible · `/thanks/` daily thanks
-   - 지금 저장소(dailythanksapp)가 바뀌면 그 저장소도 같이 갱신되게 해 둘 수 있어요.
+## 1. 공개 주소 (GitHub Pages) — ✅ 공개됨
+- https://wonshon-cmd.github.io/dailybible/ — daily bible 소개
+- https://wonshon-cmd.github.io/dailybible/daily-bible/ — daily bible 앱
+- https://wonshon-cmd.github.io/dailybible/app/ — daily thanks 앱
+- 다시 올릴 때: `python3 tools/build-site.py` → `python3 tools/build-live.py <dailybible 저장소>` → 그 저장소에 push (자동 배포)
 
 ## 2. 로그인 · 초대 · 소그룹 공유 (Supabase)
 1. https://supabase.com 에서 무료 계정 → **New project** (지역: Northeast Asia (Seoul) 추천)
