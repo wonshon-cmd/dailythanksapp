@@ -811,3 +811,20 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 @keyframes nudge-x{0%,60%,100%{transform:none}30%{transform:translateX(4px)}}
 @keyframes nudge-x-back{0%,60%,100%{transform:none}30%{transform:translateX(-4px)}}
 @media (prefers-reduced-motion:reduce){.swipe-hint span{animation:none}}
+
+/* ---------- calmer screens after the swipe feed: fewer boxes, fewer lines ---------- */
+.page-desc{display:none}
+.post-line{margin:0;font-size:13px;color:#A9AEB1}
+.post-foot{gap:0}
+.feed-sub:empty{display:none}
+/* boxes become plain rows separated by hairlines */
+.ch-card,.mem-card,.cal-card,.inf-card{border:0;box-shadow:none;background:transparent;border-radius:0;padding-left:0;padding-right:0}
+.ch-card{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:22px}
+.ch-card .primary.block{height:44px}
+.invite-btn{border:0;background:none;color:#9BA0A3;padding:0 4px;height:auto;font-size:13px}
+.j-sum{display:flex;flex-direction:column;margin:4px 0 22px;border-top:1px solid var(--line)}
+.j-line{display:flex;align-items:center;gap:12px;border:0;border-bottom:1px solid var(--line);background:none;padding:15px 0;font:inherit;font-size:15px;color:var(--ink);text-align:left;cursor:pointer}
+.j-line .glow-wrap{width:22px;height:22px}
+.j-ic{width:22px;display:grid;place-items:center;color:#9BA0A3}
+.j-ic svg{width:17px;height:17px}
+.j-go{margin-left:auto;color:#C4C8CA;font-size:18px}

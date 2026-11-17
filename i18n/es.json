@@ -445,5 +445,9 @@
 "verse.unsaved": "Quitado de guardados.",
 "act.like": "Me gusta",
 "hint.swipeRead": "Desliza a la derecha para leer la Biblia",
-"hint.swipeBack": "Desliza a la izquierda para volver"
+"hint.swipeBack": "Desliza a la izquierda para volver",
+"day.today": "Hoy",
+"day.yesterday": "Ayer",
+"j.month": "{m} · {n} días de gratitud",
+"j.monthTitle": "Este mes"
 }
