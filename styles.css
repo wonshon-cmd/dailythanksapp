@@ -888,3 +888,17 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .g-ch-bar{flex:1;height:4px;border-radius:4px;background:#DADDDF;overflow:hidden}
 .g-ch-bar b{display:block;height:100%;background:#8A9094}
 .g-ch-n{font-size:12px;color:#8A9094}
+/* swipe hints follow the directions: ‹ Bible (left), › prayer (right) */
+.swipe-hint.left span{display:inline-block;animation:nudge-x-back 2.4s ease-in-out infinite}
+.imm-back-hint span{animation:nudge-x-back 2.4s ease-in-out infinite}
+.swipe-hint.back span{animation:nudge-x 2.4s ease-in-out infinite}
+/* double-tap: a small heart (or praying hands) that rises and fades */
+.tap-heart{position:fixed;z-index:200;width:64px;height:64px;margin:-32px 0 0 -32px;pointer-events:none;color:#C46B76;animation:tap-pop .75s ease-out forwards}
+.tap-heart svg{width:64px;height:64px;fill:currentColor;stroke:currentColor}
+@keyframes tap-pop{0%{transform:scale(.4);opacity:0}25%{transform:scale(1.05);opacity:.95}100%{transform:translateY(-36px) scale(.9);opacity:0}}
+@media (prefers-reduced-motion:reduce){.tap-heart{animation-duration:.3s}}
+/* 소그룹 tab, minimal: name, one faint line, ⋯ for the rest */
+.g-block{gap:4px;padding:18px 0}
+.g-row{display:flex;align-items:center;justify-content:space-between}
+.g-more{border:0;background:none;color:#A9AEB1;width:36px;height:36px;display:grid;place-items:center;cursor:pointer}
+.g-line{border:0;background:none;padding:0;font:inherit;font-size:13px;color:#A9AEB1;text-align:left;cursor:pointer}

@@ -444,8 +444,8 @@
 "verse.saved": "Guardado · Mi gratitud › Guardado",
 "verse.unsaved": "Quitado de guardados.",
 "act.like": "Me gusta",
-"hint.swipeRead": "Desliza a la derecha para leer la Biblia",
-"hint.swipeBack": "Desliza a la izquierda para volver",
+"hint.swipeRead": "Desliza a la izquierda para leer la Biblia",
+"hint.swipeBack": "Desliza a la derecha para volver",
 "day.today": "Hoy",
 "day.yesterday": "Ayer",
 "j.month": "{m} · {n} días de gratitud",
@@ -465,7 +465,7 @@
 "pl.others": "Peticiones de otras personas",
 "pl.othersSub": "Ora también por alguien que no conoces.",
 "pl.empty": "Aún no hay peticiones",
-"pl.back": "Desliza a la derecha para volver",
+"pl.back": "Desliza a la izquierda para volver",
 "ct.title": "Esto no se puede compartir",
 "ct.body": "No se pueden publicar datos de contacto, pedidos de seguidores o promoción, ni pedidos de dinero en Todos o en un grupo. Comparte solo la gratitud.",
 "ct.email": "Correo",
@@ -481,5 +481,7 @@
 "ch.t.bible": "Lectura bíblica",
 "ch.len": "¿Por cuánto tiempo?",
 "ch.days": "{n} días",
-"ch.read": "Leer hoy"
+"ch.read": "Leer hoy",
+"gs.peopleShort": "{n} esta semana",
+"gs.quietShort": "Tranquilo esta semana"
 }
