@@ -1658,3 +1658,11 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .top-lang{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3;cursor:pointer}
 .top-lang .ico{font-size:15px}
 .top-lang[hidden]{display:none}
+
+/* 나 › 내 공동체 */
+.mc-form{display:flex;gap:8px;margin:0 0 10px}
+.mc-form .field{flex:1;min-width:0;margin:0}
+.mc-form .secondary{flex:none;padding:0 18px;border-radius:999px}
+.mc-list{margin-bottom:22px}
+.mc-list .link-btn{white-space:nowrap}
+.snz .field-label{margin:18px 0 10px}.snz .field-label:first-child{margin-top:4px}.snz .chips{display:flex;flex-wrap:wrap;gap:8px}.snz .primary.block{margin-top:22px}

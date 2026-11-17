@@ -1671,6 +1671,14 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .top-lang .ico{font-size:15px}
 .top-lang[hidden]{display:none}
 
+/* 나 › 내 공동체 */
+.mc-form{display:flex;gap:8px;margin:0 0 10px}
+.mc-form .field{flex:1;min-width:0;margin:0}
+.mc-form .secondary{flex:none;padding:0 18px;border-radius:999px}
+.mc-list{margin-bottom:22px}
+.mc-list .link-btn{white-space:nowrap}
+.snz .field-label{margin:18px 0 10px}.snz .field-label:first-child{margin-top:4px}.snz .chips{display:flex;flex-wrap:wrap;gap:8px}.snz .primary.block{margin-top:22px}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -1708,6 +1716,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'snz.ok': "끄기", 'snz.title': "무엇을 끌까요?", 'snz.what': "끌 것", 'snz.all': "전부", 'snz.for': "얼마 동안", 'snz.until': "다시 켤 때까지", 'snz.hint': "설정 › 보기 설정에서 언제든 다시 켤 수 있어요.", 'mc.title': "내 공동체", 'mc.ph': "교회·소그룹·챕터·수련회 코드", 'mc.connect': "연결", 'mc.none': "받은 코드를 넣으면 공동체와 연결돼요.", 'mc.bad': "코드를 확인해 주세요.", 'mc.needSign': "공동체와 연결하려면 로그인해 주세요. 로그인하면 바로 연결돼요.", 'mc.joining': "연결 중…", 'mc.admin': "관리자", 'mc.quiet': "조용히", 'mc.loud': "알림 켜기", 'mc.quietOn': "조용히 · 새 글 표시와 알림 없음", 'mc.quietDone': "조용히 해 두었어요. 새 글 표시와 알림이 오지 않아요.", 'mc.loudDone': "다시 알려 드릴게요.", 'mc.leave': "나가기", 'mc.leaveQ': "‘{name}’에서 나갈까요? 다시 들어오려면 코드나 초대 링크가 필요해요.", 'mc.left': "공동체에서 나왔어요.", 'mc.ownerStay': "관리자는 나갈 수 없어요. 공동체 관리에서 정리해 주세요.", 'join.pendingShort': "승인 대기",
     'tour.k.verse': "오늘의 말씀", 'tour.k.prayer': "공동체 기도제목", 'tour.k.thanks': "감사", 'tour.s.verse': "밀어 올리며 성경을 읽어요", 'tour.s.prayer': "공동체의 기도제목을 바로 받아 봐요", 'tour.s.thanks': "나의 감사를 함께 나눠요", 'tour.f.title': "이런 것도 있어요", 'tour.f.read': "읽기", 'tour.f.readSub': "오늘의 본문, 이어 읽기, 함께 읽는 계획", 'tour.f.notes': "설교 노트", 'tour.f.notesSub': "설교를 녹음하면 노트로 정리돼요", 'tour.f.group': "공동체", 'tour.f.groupSub': "만들고, 초대 링크로 함께해요",
     'tour.skip': "건너뛰기", 'tour.done': "시작하기", 'tour.again': "둘러보기 다시 보기",
     'wl.title': "반가워요", 'wl.nameQ': "처음 오셨네요. 이름을 알려 주세요. 감사 카드와 공동체에서 이 이름이 보여요.", 'wl.next': "다음", 'wl.hi': "{name}님, 반가워요", 'wl.sub': "가입하면 기기를 바꿔도 이어서 쓰고, 공동체와 함께할 수 있어요.", 'wl.google': "Google로 계속하기", 'wl.ms': "Microsoft로 계속하기", 'wl.kakao': "카카오로 계속하기", 'wl.email': "메일로 계속하기", 'wl.phone': "휴대폰 문자로 계속하기", 'wl.notYet': "이 방법은 곧 열려요. 지금은 메일로 계속해 주세요.",
@@ -1854,6 +1863,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
     'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and it becomes tidy notes", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
     'tour.skip': "Skip", 'tour.done': "Get started", 'tour.again': "See the tour again",
     'wl.title': "Welcome", 'wl.nameQ': "First time here? What’s your name? It’s shown on thank-you cards and in your groups.", 'wl.next': "Next", 'wl.hi': "Welcome, {name}", 'wl.sub': "Sign up to keep going on any device and join a group.", 'wl.google': "Continue with Google", 'wl.ms': "Continue with Microsoft", 'wl.kakao': "Continue with Kakao", 'wl.email': "Continue with email", 'wl.phone': "Continue with a text message", 'wl.notYet': "This option opens soon. For now, please continue with email.",
@@ -2000,6 +2010,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
     'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y se vuelve notas ordenadas", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
     'tour.skip': "Omitir", 'tour.done': "Empezar", 'tour.again': "Ver el recorrido otra vez",
     'wl.title': "Bienvenido", 'wl.nameQ': "¿Primera vez aquí? ¿Cómo te llamas? Se verá en las tarjetas de gratitud y en tus grupos.", 'wl.next': "Siguiente", 'wl.hi': "Bienvenido, {name}", 'wl.sub': "Regístrate para seguir en cualquier dispositivo y unirte a un grupo.", 'wl.google': "Continuar con Google", 'wl.ms': "Continuar con Microsoft", 'wl.kakao': "Continuar con Kakao", 'wl.email': "Continuar con correo", 'wl.phone': "Continuar con un mensaje de texto", 'wl.notYet': "Esta opción abre pronto. Por ahora, continúa con tu correo.",
@@ -2989,7 +3000,7 @@ const inGroup = (p, gid) => p.scope === 'group' && postGroups(p).includes(gid) &
 // Who may invite: the admin always; members only while the admin allows it (on by default).
 const canInvite = g => !!g && (g.owner || g.membersInvite !== false);
 // A small red dot (on the 공동체 tab and on the group) while a group has posts you haven't caught up on.
-const unseenIn = gid => data.posts.filter(p => !p.mine && inGroup(p, gid) && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
+const unseenIn = gid => data.groups.find(g => g.id === gid)?.muted ? 0 : data.posts.filter(p => !p.mine && inGroup(p, gid) && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
 const unseenKind = (gid, kind) => data.posts.filter(p => !p.mine && inGroup(p, gid) && kindGroup(p) === kind && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
 const anyUnseen = () => data.groups.some(g => unseenIn(g.id));
 function markGroupSeen(gid, kind) {
@@ -3926,7 +3937,7 @@ function quizResultCard() {
    challenge or reading plan I haven't done yet. Each one is a card at the very top of the feed. */
 // What-you-see preferences (Settings › What you see). Defaults: opening cards on, feed = me + people I'm connected to.
 const PREF_DEFAULTS = { firstPr: true, firstVerse: true, firstCh: true, firstMax: 5, feedThanks: true, feedPrayer: true, feedMed: true, strangers: false };
-const pref = k => { const v = data.settings.prefs?.[k]; return v === undefined ? PREF_DEFAULTS[k] : v; };
+const pref = k => { if ((data.settings.prefs?.offUntil?.[k] || '') > new Date().toISOString()) return false; const v = data.settings.prefs?.[k]; return v === undefined ? PREF_DEFAULTS[k] : v; };
 const setPref = (k, v) => { data.settings.prefs = { ...(data.settings.prefs || {}), [k]: v }; save(); };
 const firstSnoozed = () => data.settings.prefs?.firstOff || (data.settings.prefs?.firstUntil || '') > new Date().toISOString();
 // People I'm connected to: anyone who posts in my groups (and anyone who joined my plans / challenges).
@@ -3937,7 +3948,7 @@ function connectedKeys() {
   return keys;
 }
 const newGroupPrayers = () => data.posts.filter(p => p.kind === 'prayer' && !p.mine && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))
-  && p.date >= daysAgo(6) && !data.prayed.includes(p.id) && !(data.settings.prayerSeen || []).includes(p.id));
+  && p.date >= daysAgo(6) && !postGroups(p).every(gid => data.groups.find(g => g.id === gid)?.muted) && !data.prayed.includes(p.id) && !(data.settings.prayerSeen || []).includes(p.id));
 function firstItems() {
   if (!state.openedBefore && !BIBLE_MODE) return [];   // the very first visit of daily thanks: its feed and first-visit steps come first
   if (firstSnoozed()) return [];
@@ -4020,7 +4031,26 @@ function immStreak() {
   if (!n && !unseen) return '';
   return `<div class="imm-streak" aria-live="polite">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</div>`;
 }
-const firstOffLinks = () => `<p class="fo-links"><button data-action="first-off">${t('fo.off')}</button><span>·</span><button data-action="first-snooze">${t('fo.h24')}</button></p>`;
+const firstOffLinks = () => `<p class="fo-links"><button data-action="off-sheet">${t('fo.off')}</button></p>`;
+// "끄기": what to turn off (prayer cards, today's reading, challenges, or all of them) and for how long
+function offSheet() {
+  const what = state.offWhat || 'firstPr', dur = state.offFor || 'h24';
+  const chip = (k, label) => `<button type="button" class="chip ${what === k ? 'active' : ''}" data-action="off-what" data-id="${k}">${label}</button>`;
+  showSheet({ title: t('snz.title'), body: `<div class="snz"><p class="field-label">${t('snz.what')}</p>
+    <div class="chips">${chip('firstPr', t('vw.fPr'))}${chip('firstVerse', t('vw.fVerse'))}${chip('firstCh', t('vw.fCh'))}${chip('all', t('snz.all'))}</div>
+    <p class="field-label">${t('snz.for')}</p>
+    ${seg([['h24', t('vw.h24')], ['w1', t('vw.w1')], ['off', t('snz.until')]], 'off-for', dur)}
+    <button class="primary block" data-action="off-ok">${t('snz.ok')}</button>
+    <p class="hint">${t('snz.hint')}</p></div>` });
+}
+function offApply() {
+  const what = state.offWhat || 'firstPr', dur = state.offFor || 'h24', P = { ...(data.settings.prefs || {}) };
+  const until = dur === 'h24' ? new Date(Date.now() + 864e5).toISOString() : dur === 'w1' ? new Date(Date.now() + 7 * 864e5).toISOString() : '';
+  if (what === 'all') { P.firstOff = dur === 'off'; P.firstUntil = until; }
+  else if (dur === 'off') { P[what] = false; }
+  else P.offUntil = { ...(P.offUntil || {}), [what]: until };
+  data.settings.prefs = P; state.firstPrIds = null; save(); close(); render(0); toast(t('fo.offDone'));
+}
 function viewSettings() {
   const sw = (k, label, sub = '') => `<label class="list-row"><span class="row-main"><span class="row-title">${label}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span><input class="switch" type="checkbox" data-pref="${k}" ${pref(k) ? 'checked' : ''}></label>`;
   const until = data.settings.prefs?.firstUntil, snoozed = !data.settings.prefs?.firstOff && until > new Date().toISOString();
@@ -5046,11 +5076,39 @@ async function yearReel() {
   $('#yr-reel').innerHTML = `<video class="reel-video" src="${URL.createObjectURL(state.reelFile)}" autoplay muted loop playsinline></video>
     <button class="primary block" data-action="yr-reel-share">${icon('camera')}${t('yr.post')}</button><button class="secondary block" data-action="reel-save" style="margin-top:8px">${icon('download')}${t('yr.save')}</button>`;
 }
+// 나 › 내 공동체: type a code from your church, small group, chapter or retreat; keep each one loud, quiet, or leave it
+function myCommunities() {
+  const row = g => { const sub = g.pending ? t('join.pendingShort') : g.muted ? t('mc.quietOn') : g.owner ? t('mc.admin') : '';
+    return `<div class="list-row static"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span>
+      <button class="link-btn" data-action="mc-quiet" data-id="${esc(g.id)}">${g.muted ? t('mc.loud') : t('mc.quiet')}</button>
+      <button class="link-btn adm-rm" data-action="mc-leave" data-id="${esc(g.id)}">${t('mc.leave')}</button></div>`; };
+  return `<p class="gd-label">${t('mc.title')}</p>
+    <form id="mc-form" class="mc-form"><input id="mc-code" class="field" maxlength="24" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${esc(t('mc.ph'))}"><button class="secondary" type="submit">${t('mc.connect')}</button></form>
+    ${data.groups.length ? `<div class="list mc-list">${data.groups.map(row).join('')}</div>` : `<p class="hint">${t('mc.none')}</p>`}`;
+}
+function joinByCode(raw) {
+  const code = String(raw || '').replace(/[^a-z0-9]/gi, '').toLowerCase().slice(0, 24);
+  if (code.length < 4) { toast(t('mc.bad')); return; }
+  if (data.groups.some(g => g.invite === code)) { toast(t('join.already')); return; }
+  data.groups.push({ id: 'g' + code, name: '', invite: code, cloud: true, pending: true }); save(); render();
+  if (!CLOUD) return;
+  if (Cloud.on()) sync(); else welcomeSheet(t('mc.needSign'));
+}
+document.addEventListener('submit', e => { if (e.target.id === 'mc-form') { e.preventDefault(); joinByCode($('#mc-code').value); } });
+function leaveGroup(gid) {
+  const g = data.groups.find(x => x.id === gid); if (!g) return;
+  if (g.owner) { toast(t('mc.ownerStay')); return; }
+  confirmSheet(t('mc.leave'), esc(t('mc.leaveQ').replace('{name}', L(g.name) || t('scope.group'))), t('mc.leave'), async () => {
+    if (g.sid && Cloud.on()) { try { await Cloud.rest(`group_members?group_id=eq.${g.sid}&user_id=eq.${Cloud.uid()}`, { method: 'DELETE' }); } catch { toast(t('cl.fail')); return; } }
+    data.groups = data.groups.filter(x => x !== g); if (state.group === gid) state.group = data.groups[0]?.id; save(); render(); toast(t('mc.left'));
+  });
+}
 function renderBibleMe() {
   const saved = data.savedVerses || [], medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).sort((a, b) => chIndex(a.ref.b, a.ref.c) - chIndex(b.ref.b, b.ref.c));
   const q = noteQuota(), d = readDays();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
+    ${myCommunities()}
     ${readGauge()}${dashHtml()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
     ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
@@ -7038,6 +7096,12 @@ const actions = {
   'yr-reel': () => yearReel(),
   'yr-reel-share': async () => { const f = state.reelFile; if (!f) return; try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], title: 'daily bible' }); return; } } catch { return; } saveCollection([f]); },
   'us-refresh': async () => { state.snChecked = false; await sermonSync(); usageSheet(); },
+  'off-sheet': () => offSheet(),
+  'mc-quiet': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; g.muted = !g.muted; state.firstPrIds = null; save(); render(); toast(g.muted ? t('mc.quietDone') : t('mc.loudDone')); },
+  'mc-leave': gid => leaveGroup(gid),
+  'off-what': k => { state.offWhat = k; offSheet(); },
+  'off-for': k => { state.offFor = k; offSheet(); },
+  'off-ok': () => offApply(),
   'first-off': () => { setPref('firstOff', true); state.firstPrIds = []; toast(t('fo.offDone')); render(0); },
   'first-snooze': () => { setPref('firstUntil', new Date(Date.now() + 864e5).toISOString()); toast(t('fo.snoozed')); render(0); },
   'first-why': id => { const [k, v] = id.split('|'); const c = k === 'plan' ? data.challenges.find(x => x.id === v) : null;
