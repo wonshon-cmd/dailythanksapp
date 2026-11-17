@@ -579,5 +579,9 @@
   "ch.sumBible2": "{total} capítulos · {per} al día · {days} días",
   "ch.pick": "Elegir",
   "ch.today": "Hoy {r}",
-  "ch.chUnit": "cap."
+  "ch.chUnit": "cap.",
+  "chn.thanks": "Reto de gratitud",
+  "chn.prayer": "Reto de oración",
+  "chn.meditation": "Reto de reflexión",
+  "chn.bible": "Reto de lectura bíblica"
 }

@@ -1105,3 +1105,8 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .ch-arrow{color:#B4B8BB}
 .ch-plan{margin:8px 0 2px;text-align:center;font-size:13.5px;color:var(--ink);background:#F4F4F4;border-radius:12px;padding:10px}
 .ch-range{margin-bottom:16px}
+/* pure white background everywhere */
+:root{--bg:#FFFFFF;--paper:#FFFFFF}
+html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.reader-foot,.feed-scroll,.imm-scroll,.screen,.bpick,.bp-foot{background:#FFFFFF}
+.gd-tile{position:relative;background:#F7F7F7;border-color:transparent}
+.tile-dot{position:absolute;top:12px;right:12px;margin:0}
