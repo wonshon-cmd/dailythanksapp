@@ -852,3 +852,14 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .imm-back-hint{position:absolute;top:calc(84px + var(--safe-top));left:0;right:0;justify-content:center;margin:0;z-index:3;pointer-events:none}
 .imm-back-hint span{display:inline-block;animation:nudge-x 2.4s ease-in-out infinite}
 .imm-back-hint{bottom:auto}
+
+/* 소그룹 tab: each group = name, this week together, three quiet actions */
+.g-list{display:flex;flex-direction:column}
+.g-block{display:flex;flex-direction:column;gap:10px;padding:20px 0 22px;border-top:1px solid var(--line)}
+.g-block:last-child{border-bottom:1px solid var(--line)}
+.g-head{display:flex;align-items:center;border:0;background:none;padding:0;font:inherit;cursor:pointer;text-align:left}
+.g-name{font-size:18px;color:var(--ink);font-weight:400}
+.g-people{margin:2px 0 0;font-size:15px;color:var(--ink);font-weight:300}
+.g-actions{display:flex;gap:22px;margin-top:4px}
+.g-actions .link-btn{color:#8A9094;font-size:13px;padding:4px 0}
+.g-actions .link-btn[disabled]{color:#C4C8CA}

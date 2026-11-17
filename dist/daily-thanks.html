@@ -865,6 +865,17 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .imm-back-hint span{display:inline-block;animation:nudge-x 2.4s ease-in-out infinite}
 .imm-back-hint{bottom:auto}
 
+/* 소그룹 tab: each group = name, this week together, three quiet actions */
+.g-list{display:flex;flex-direction:column}
+.g-block{display:flex;flex-direction:column;gap:10px;padding:20px 0 22px;border-top:1px solid var(--line)}
+.g-block:last-child{border-bottom:1px solid var(--line)}
+.g-head{display:flex;align-items:center;border:0;background:none;padding:0;font:inherit;cursor:pointer;text-align:left}
+.g-name{font-size:18px;color:var(--ink);font-weight:400}
+.g-people{margin:2px 0 0;font-size:15px;color:var(--ink);font-weight:300}
+.g-actions{display:flex;gap:22px;margin-top:4px}
+.g-actions .link-btn{color:#8A9094;font-size:13px;padding:4px 0}
+.g-actions .link-btn[disabled]{color:#C4C8CA}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -1124,7 +1135,7 @@ const STR = {
     'gate.saved': 'Your thanks for today is saved.', 'gate.savedSub': 'Swipe up to keep reading others’ thanks.',
     'login.title': 'Sign in<br>to keep reading.', 'login.sub': 'Sign in once and the app opens straight in next time. Your thanks stays safe too.',
     'login.apple': 'Continue with Apple', 'login.google': 'Continue with Google', 'login.phone': 'Continue with phone number',
-    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'verse.read': "Keep reading", 'rd.loading': "Loading…", 'rd.offline': "Couldn’t load the passage. Check your internet connection.", 'rd.retry': "Try again", 'rd.end': "You’ve read through to Revelation. Well done.", 'rd.pick': "Read through the Bible", 'rd.progress': "{n} of {total} chapters read", 'rd.ot': "Old Testament", 'rd.nt': "New Testament", 'devo.kicker': "Today’s passage", 'devo.sub': "Read it, then share what you received with your group.", 'devo.count': "{n} shared today", 'devo.read': "Read", 'devo.share': "Share a reflection", 'devo.change': "Change passage", 'devo.none': "Pick today’s passage for your group", 'devo.noneSub': "Everyone in the group will see it.", 'devo.set': "Set today’s passage", 'devo.ph': "e.g. John 3:1-15", 'devo.hint': "Type a book and chapter, e.g. Psalm 23 or Philippians 4:6-7.", 'devo.bad': "Couldn’t read that passage. e.g. John 3:1-15", 'devo.save': "Set", 'devo.ph2': "What did today’s passage give you?", 'kind.meditation': "Reflection", 'ch.type': "What will you do together?", 'ch.t.thanks': "Thanks", 'ch.q.meditation': "What did today’s passage give you?", 'ch.q.prayer': "What shall we pray for today?", 'share.link': "Copy link", 'verse.saved': "Saved · My Thanks › Saved", 'verse.unsaved': "Removed from saved.", 'act.like': "Like", 'hint.swipeRead': "Swipe right to read the Bible", 'hint.swipeBack': "Swipe left to go back", 'day.today': "Today", 'day.yesterday': "Yesterday", 'j.month': "{m} · {n} days of thanks", 'j.monthTitle': "This month", 'imm.all': "Everyone", 'imm.group': "Group", 'gs.week': "This week", 'gs.people': "{n} of us took part", 'gs.quiet': "Waiting for this week’s first share", 'gs.counts': "Thanks {t} · Reflections {m} · Prayer requests {p}", 'gs.chDay': "day {n}", 'gs.write': "Share", 'gs.nudge': "Invite everyone today", 'gs.nudged': "Invited today", 'gs.nudgeDone': "A gentle note went to the whole group.", 'gs.privacy': "No one’s name is shown here, only what we did together.", 'pl.kicker': "Prayer requests", 'pl.others': "Prayer requests from others", 'pl.othersSub': "Pray for someone you have never met.", 'pl.empty': "No prayer requests yet", 'pl.back': "Swipe right to go back", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
+    'inv.copy': "Copy link", 'inv.btn': "Invite", 'inv.title': "Invite link", 'inv.desc': "Anyone with this link can join “{name}”.", 'inv.share': "Send link", 'inv.msg': "Join “{name}” on daily thanks and share gratitude together:", 'join.title': "Group invite", 'join.body': "Join “{name}”? Thanks shared in a group are visible to its members only.", 'join.ok': "Join", 'join.done': "You joined “{name}”.", 'join.already': "You’re already in this group.", 'verse.kicker': "A verse", 'verse.title': "Bible verses", 'verse.freq': "How often", 'verse.hint': "A Bible verse appears between posts. Choose how often you’d like to see one.", 'verse.often': "Often", 'verse.normal': "Normal", 'verse.rare': "Rarely", 'verse.off': "Off", 'verse.note.often': "About one verse every 4 posts", 'verse.note.normal': "About one verse every 8 posts", 'verse.note.rare': "About one verse every 15 posts", 'verse.note.off': "No verses in the feed", 'verse.read': "Keep reading", 'rd.loading': "Loading…", 'rd.offline': "Couldn’t load the passage. Check your internet connection.", 'rd.retry': "Try again", 'rd.end': "You’ve read through to Revelation. Well done.", 'rd.pick': "Read through the Bible", 'rd.progress': "{n} of {total} chapters read", 'rd.ot': "Old Testament", 'rd.nt': "New Testament", 'devo.kicker': "Today’s passage", 'devo.sub': "Read it, then share what you received with your group.", 'devo.count': "{n} shared today", 'devo.read': "Read", 'devo.share': "Share a reflection", 'devo.change': "Change passage", 'devo.none': "Pick today’s passage for your group", 'devo.noneSub': "Everyone in the group will see it.", 'devo.set': "Set today’s passage", 'devo.ph': "e.g. John 3:1-15", 'devo.hint': "Type a book and chapter, e.g. Psalm 23 or Philippians 4:6-7.", 'devo.bad': "Couldn’t read that passage. e.g. John 3:1-15", 'devo.save': "Set", 'devo.ph2': "What did today’s passage give you?", 'kind.meditation': "Reflection", 'ch.type': "What will you do together?", 'ch.t.thanks': "Thanks", 'ch.q.meditation': "What did today’s passage give you?", 'ch.q.prayer': "What shall we pray for today?", 'share.link': "Copy link", 'verse.saved': "Saved · My Thanks › Saved", 'verse.unsaved': "Removed from saved.", 'act.like': "Like", 'hint.swipeRead': "Swipe right to read the Bible", 'hint.swipeBack': "Swipe left to go back", 'day.today': "Today", 'day.yesterday': "Yesterday", 'j.month': "{m} · {n} days of thanks", 'j.monthTitle': "This month", 'imm.all': "Everyone", 'imm.group': "Group", 'gs.week': "This week", 'gs.people': "{n} of us took part", 'gs.quiet': "Waiting for this week’s first share", 'gs.counts': "Thanks {t} · Reflections {m} · Prayer requests {p}", 'gs.chDay': "day {n}", 'gs.write': "Share", 'gs.nudge': "Nudge the group", 'gs.nudged': "Invited today", 'gs.nudgeDone': "A gentle note went to the whole group.", 'gs.privacy': "No one’s name is shown here, only what we did together.", 'pl.kicker': "Prayer requests", 'pl.others': "Prayer requests from others", 'pl.othersSub': "Pray for someone you have never met.", 'pl.empty': "No prayer requests yet", 'pl.back': "Swipe right to go back", 'upd.title': "A new version is ready", 'upd.body': "Please update daily thanks to keep using it smoothly.", 'upd.go': "Update", 'login.terms': "By continuing, you agree to the <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Terms of Use</a> and <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. There is no tolerance for abusive or objectionable content.", 'login.demo': 'In this prototype nothing connects to a real account; only the signed-in state is saved on this device.', 'login.done': 'You’re signed in. Next time it opens straight in.',
     'phone.title': 'Sign in with your phone', 'phone.number': 'Phone number', 'phone.send': 'Send code', 'phone.code': '6-digit code', 'phone.verify': 'Verify',
     'phone.sent': 'Code sent.', 'phone.demo': 'No text is sent in this prototype. Enter any 6 digits.', 'phone.bad': 'Please check the number.', 'phone.badCode': 'Enter the 6-digit code.',
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Reset all notes and settings added in this demo?', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
@@ -2378,19 +2389,26 @@ function renderFeed(keepIndex = 0) {
 const pageHead = (title, desc, tools = '') => `<header class="page-head"><h1 class="page-title">${title}</h1>${tools ? `<div class="page-tools">${tools}</div>` : ''}</header>`; // titles speak for themselves
 const roundBtn = (action, ic, label) => `<button class="round-btn" data-action="${action}" aria-label="${esc(label)}">${icon(ic)}</button>`;
 
+// One group in the 소그룹 tab: name (tap → swipe through its posts), this week together, and three actions.
+function groupBlock(g) {
+  const w = groupWeek(g.id), ch = data.challenges.find(c => c.group === g.id), nudged = data.groupNudges?.[g.id] === today();
+  return `<section class="g-block">
+    <button class="g-head" data-action="open-group" data-id="${esc(g.id)}"><span class="g-name">${esc(L(g.name))}</span><span class="j-go">›</span></button>
+    <p class="g-people">${w.people ? t('gs.people').replace('{n}', w.people) : t('gs.quiet')}</p>
+    <div class="gs-days" aria-hidden="true">${w.days.map(on => `<i class="${on ? 'on' : ''}"></i>`).join('')}</div>
+    <p class="gs-counts">${t('gs.counts').replace('{t}', w.thanks).replace('{m}', w.meditation).replace('{p}', w.prayer)}${ch ? ` · ${t('ch.title')} ${t('gs.chDay').replace('{n}', Math.min(7, ch.days.length + (ch.days.length < 7 ? 1 : 0)))}` : ''}</p>
+    <div class="g-actions">
+      <button class="link-btn" data-action="group-write" data-id="${esc(g.id)}">${t('gs.write')}</button>
+      <button class="link-btn" data-action="group-nudge" data-id="${esc(g.id)}" ${nudged ? 'disabled' : ''}>${nudged ? t('gs.nudged') : t('gs.nudge')}</button>
+      <button class="link-btn" data-action="invite-group" data-id="${esc(g.id)}">${t('inv.btn')}</button>
+    </div>
+  </section>`;
+}
 function renderGroups() {
   main.innerHTML = `<div class="screen"><div class="page">
     ${pageHead(t('gr.title'), t('gr.desc'), roundBtn('new-group', 'plus', t('gr.new')))}
-    <div class="list">${data.groups.map(g => {
-      const n = data.posts.filter(p => inGroup(p, g.id)).length;
-      return `<div class="group-row"><button class="list-row" data-action="open-group" data-id="${esc(g.id)}">
-        <span class="row-icon">${icon('people')}</span>
-        <span class="row-main"><span class="row-title">${esc(L(g.name))}</span><span class="row-sub">${t('gr.count').replace('{n}', n)}</span></span>
-        <span class="row-end">${icon('chevron')}</span></button>
-        <button class="secondary invite-btn" data-action="invite-group" data-id="${esc(g.id)}">${t('inv.btn')}</button></div>`;
-    }).join('')}</div>
+    <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
-    ${featureOn('prayer') ? prayerSection() : ''}
   </div></div>`;
 }
 
@@ -2441,7 +2459,7 @@ function renderImmersive(keepIndex = 0) {
   let posts = groupMode ? pool.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')) : rankedOnce('imm', pool);
   const focus = state.immFocus && data.posts.find(p => p.id === state.immFocus);
   if (focus) { posts = [focus, ...posts.filter(p => p.id !== focus.id)]; keepIndex = 0; }
-  let seq = groupMode ? [{ type: 'gstatus', gid }, { type: 'devo', gid }, ...posts.map(p => ({ type: 'post', p }))] : feedSequence(posts.filter(p => p.kind !== 'prayer'));
+  let seq = groupMode ? [{ type: 'devo', gid }, ...posts.map(p => ({ type: 'post', p }))] : feedSequence(posts.filter(p => p.kind !== 'prayer'));
   if (prayerMode) { // swipe left: my groups' prayer requests first, then requests from people I don't know
     const newest = list => list.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     const mine = newest(data.posts.filter(p => p.kind === 'prayer' && visible(p) && p.scope === 'group' && data.groups.some(g => inGroup(p, g.id))));
@@ -2469,7 +2487,7 @@ function renderImmersive(keepIndex = 0) {
   }).join('')}</div>
   <div class="imm-brand" aria-hidden="true"><span class="wordmark">daily <em>thanks</em></span></div>
   ${prayerMode ? `<div class="imm-switch"><span class="imm-title">${t('pl.kicker')}</span></div>${data.settings.prayerBackHint ? '' : `<p class="swipe-hint imm-back-hint">${t('pl.back')}<span aria-hidden="true">›</span></p>`}`
-    : data.groups.length ? `<div class="imm-switch" role="tablist">${[['public', t('imm.all')], ['group', t('imm.group')]].map(([k, label]) => `<button role="tab" class="${(state.immFeed || 'public') === k ? 'on' : ''}" aria-selected="${(state.immFeed || 'public') === k}" data-action="imm-feed" data-id="${k}">${label}</button>`).join('')}</div>` : ''}
+    : groupMode ? `<div class="imm-switch"><span class="imm-title">${esc(L(data.groups.find(g => g.id === gid)?.name))}</span></div>` : ''}
   <button class="imm-lang" data-action="lang-menu" aria-label="${t('aria.lang')}">${icon('globe')}<span>${LANGS.find(x => x[0] === lang())[1]}</span></button>
   ${showNudge() && !prayerMode ? `<div class="imm-nudge" id="imm-nudge" aria-hidden="true">${icon('down')}<span>${t('nudge')}</span></div>` : ''}`;
   const sc = $('#feed-scroll');
@@ -3504,7 +3522,7 @@ const actions = {
     document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code } }));
     save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
   },
-  'open-group': id => { state.tab = 'feed'; state.feed = 'group'; state.group = id; render(); },
+  'open-group': id => { close(); state.group = id; state.immFeed = 'group'; state.immersive = true; state.tab = 'group'; render(0); },
   'new-challenge': createChallenge,
   'challenge-write': id => {
     const ch = data.challenges.find(c => c.id === id); close();
@@ -3521,7 +3539,7 @@ const actions = {
     if (data.groupNudges[gid] === today()) return;
     data.groupNudges[gid] = today(); save();
     document.dispatchEvent(new CustomEvent('dt:group-nudge', { detail: { groupId: gid, code: data.groups.find(g => g.id === gid)?.invite } }));
-    render(Math.round(($('#feed-scroll')?.scrollTop || 0) / Math.max(1, $('#feed-scroll')?.clientHeight || 1)));
+    if (state.immersive) render(Math.round(($('#feed-scroll')?.scrollTop || 0) / Math.max(1, $('#feed-scroll')?.clientHeight || 1))); else render();
     toast(t('gs.nudgeDone'));
   },
   'verse-like': k => {
@@ -3618,7 +3636,9 @@ async function toggleFullscreen() {
   const sc = $('#feed-scroll'), idx = sc ? Math.round(sc.scrollTop / sc.clientHeight) : 0;
   const entering = !state.immersive;
   state.immersive = entering;
-  if (entering) { state.tab = 'feed'; state.feed = 'public'; }
+  if (entering) { state.tab = 'feed'; state.feed = 'public'; state.immFeed = 'public'; }
+  else if (state.immFeed === 'group') { state.immFeed = 'public'; state.tab = 'group'; } // closing a group returns to the 소그룹 tab
+  else state.immFeed = 'public';
   render(state.tab === 'feed' && state.feed === 'public' ? idx : 0);
   if (!fsSupported()) return;
   const root = document.documentElement;
