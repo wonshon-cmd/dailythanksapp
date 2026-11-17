@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- dark mode: same layout, dark card -->
+<resources>
+    <color name="vw_bg">#29292B</color>
+    <color name="vw_ink">#FFFFFF</color>
+    <color name="vw_faint">#9C9EA1</color>
+    <color name="vw_line">#3A3A3D</color>
+    <color name="vw_badge">#3A3A3D</color>
+</resources>

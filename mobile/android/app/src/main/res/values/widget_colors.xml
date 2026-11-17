@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vw_bg">#FFFFFF</color>
+    <color name="vw_ink">#303438</color>
+    <color name="vw_faint">#999EA3</color>
+    <color name="vw_line">#E6E8E9</color>
+    <color name="vw_badge">#F0F1F2</color>
+</resources>

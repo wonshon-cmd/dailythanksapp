@@ -3,8 +3,8 @@
   "card.story": "Historia 9:16",
   "card.shareImg": "Compartir como imagen",
   "card.noShare": "Esta pantalla no permite compartir imágenes. En la app se envía directo a Instagram o KakaoTalk.",
-  "wg.title": "Una línea de gratitud en tu pantalla de inicio",
-  "wg.sub": "Con el widget puedes escribir tu gratitud de hoy sin buscar la app. El hábito diario se vuelve mucho más fácil.",
+  "wg.title": "El versículo del día en tu pantalla de inicio",
+  "wg.sub": "Cada día, un versículo sobre la gratitud en tu pantalla de inicio. Tócalo para escribir tu gratitud de hoy.",
   "wg.ios": "iPhone",
   "wg.android": "Android",
   "wg.write": "Escribir una línea",
@@ -510,5 +510,6 @@
   "col.save": "Guardar imágenes",
   "col.hint": "{n} imágenes · desliza para verlas. Las notas privadas y peticiones de oración no se incluyen.",
   "col.empty": "Aún no hay nada que reunir.",
-  "col.saved": "Imágenes guardadas."
+  "col.saved": "Imágenes guardadas.",
+  "wg.label": "Versículo del día"
 }
