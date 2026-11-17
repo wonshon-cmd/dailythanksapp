@@ -1469,3 +1469,9 @@ body.capturing #app{filter:blur(18px)}
 .note-ref { display: block; font-size: 13px; color: #6b7075; margin-top: 2px; }
 .sn-where { font-size: 11px; color: #9aa0a6; margin-right: 2px; }
 .notes mark, .sn-trtext mark { background: #eceef0; color: inherit; border-radius: 3px; padding: 0 2px; font-weight: 500; }
+/* first thing on opening: group prayer requests and today's verses, one per card */
+.fp-kick { margin-bottom: 18px; }
+.fv-card .card-inner { justify-content: center; }
+.fv-text { font-size: clamp(24px, 6.4vw, 30px); line-height: 1.65; color: #16191c; margin: 18px 0 0; letter-spacing: -.01em; text-wrap: pretty; }
+.fv-ref { display: flex; gap: 10px; align-items: baseline; margin-top: 22px; font-size: 14px; color: #6b7075; }
+.fv-ref span { font-size: 12px; color: #a4a9ac; font-variant-numeric: tabular-nums; }

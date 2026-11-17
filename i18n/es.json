@@ -961,5 +961,12 @@
   "ss.none": "No se encontró “{q}”",
   "ss.count": "{n} encontradas",
   "ss.clear": "Borrar",
-  "ss.inTr": "Transcripción"
+  "ss.inTr": "Transcripción",
+  "fp.kick": "Petición de {g} · {i}/{n}",
+  "fv.kick": "Lectura de hoy · {r}",
+  "fv.count": "{i} / {n}",
+  "fv.doneTitle": "Esa es la lectura de hoy",
+  "fv.done": "Ya lo leí",
+  "fv.doneSub": "{name} · día {d}",
+  "fv.marked": "Lectura de hoy completa"
 }
