@@ -9,13 +9,14 @@
 | 보내요 (Supabase) | 안 보내요 |
 |---|---|
 | 메일 주소 또는 휴대폰 번호 (로그인) | 설교 녹음 파일 — 휴대폰에만 남아요 |
-| 표시 이름 | 받아쓰기 음성 — 휴대폰(OS)·브라우저의 음성 인식 서비스가 처리해요. 우리 서버로 오지 않아요 |
+| 표시 이름 | 실시간 받아쓰기 음성 — 우리 서버로 오지 않아요. 단, 휴대폰(OS)·브라우저의 음성 인식 서비스를 쓰므로 Apple·Google이 처리할 수 있어요 |
 | 사용자 ID | 나만 보는 글의 내용 — 휴대폰에서 잠근 뒤 올라가서, 서버에는 열 수 없는 암호문만 있어요 |
 | 공동체 가입·승인 상태 | 위치, 연락처 목록, 광고 ID, 결제 정보 |
 | 공동체나 모두에게 나눈 글 (기도제목, 감사, 묵상, 설교 노트) | 분석·광고 SDK 없음 |
 | 반응 (좋아요·저장·함께 기도) | |
 | 신고 (사유, 대상 글) | |
 
+첫 출시의 설교 노트는 **녹음 + 실시간 받아쓰기(지원 기기) + 내가 직접 쓰는 노트**예요. 자동 요약·자동 정리는 없어요.
 알림은 휴대폰 안에서 예약하는 방식이라 푸시 토큰을 보내지 않아요.
 나중에 설교 녹음을 서버에서 정리하게 바꾸면(`window.DT_API` 설정) 아래 "오디오" 답이 바뀌어야 해요.
 
@@ -32,7 +33,7 @@
 | 식별자 › 사용자 ID | 계정 ID |
 | 사용 데이터 › 제품 상호작용 | 좋아요·저장·함께 기도, 공동체 가입 |
 
-- 오디오 데이터: **수집 안 함** (녹음은 휴대폰에만).
+- 오디오 데이터: **수집 안 함** (녹음은 휴대폰에만). 실시간 받아쓰기는 OS·브라우저의 음성 인식(Apple·Google)을 거치지만 우리에게 오지 않아요. Apple 기준으로는 수집이 아니에요. 다만 개인정보처리방침에는 이 사실을 적어 두세요.
 - 나만 보는 글: 휴대폰에서 암호화되어 우리가 읽을 수 없으므로 수집으로 보지 않아요.
 - 추적: **아니요**. 앱 추적 투명성(ATT) 팝업 필요 없음.
 
@@ -50,7 +51,7 @@
 | 메시지 › 기타 인앱 메시지 (나눈 글) | 선택 | 앱 기능 |
 | 앱 활동 › 앱 상호작용 (반응, 공동체 가입) | 선택 | 앱 기능 |
 
-권한: 마이크 (설교 녹음·받아쓰기, 녹음은 휴대폰에만), 알림 (읽기 알림).
+권한: 마이크 (설교 녹음과 실시간 받아쓰기. 녹음은 휴대폰에만, 받아쓰기는 기기·브라우저 음성 인식 서비스 사용), 알림 (읽기 알림).
 
 ## 3. 사용자 생성 콘텐츠 (Apple 1.2 · Google UGC 정책)
 
@@ -64,7 +65,8 @@
 Thank you for reviewing Daily Journey, a daily Bible reading app.
 
 What it does: read the Bible (built-in public-domain text: KJV, Korean 1961, Reina-Valera 1909),
-reading plans shared with friends, reflections, sermon notes, and small private communities
+reading plans shared with friends, reflections, sermon notes (a recording plus the notes you
+write yourself), and small private communities
 where members share prayer requests, thanks and reflections.
 
 Sign-in is optional: reading and sermon notes work without an account. Communities need an account
@@ -80,7 +82,9 @@ User-generated content (Guideline 1.2):
 - Community owners can require approval before someone joins; members can mute or leave.
 - Reports are reviewed within 24 hours. Contact: hi@dailyjourney.org, https://dailyjourney.org/support
 
-Microphone: used only to record a sermon into notes; recordings stay on the device.
+Microphone: used only while recording a sermon. Recordings stay on the device. On supported
+devices, live captions use the system / browser speech recognition service. There are no
+automatic summaries; the notes are what the user writes.
 Notifications: optional daily reading reminder, scheduled on the device.
 No ads, no tracking, no in-app purchases.
 ```
