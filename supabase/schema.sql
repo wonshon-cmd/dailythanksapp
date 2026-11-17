@@ -198,6 +198,15 @@ begin
   return c.id;
 end $$;
 
+-- ---------- who may use the tables at all ----------
+-- Only signed-in people (role "authenticated") can reach the tables, and then only the rows the rules above allow.
+-- Visitors who are not signed in (role "anon") get nothing. Works with "Automatically expose new tables" turned off.
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on all tables in schema public to authenticated;
+revoke all on all tables in schema public from anon;
+grant execute on function join_group(text), join_challenge(text) to authenticated;
+revoke execute on function join_group(text), join_challenge(text) from anon, public;
+
 -- a profile row for every new sign-in
 create or replace function on_new_user() returns trigger language plpgsql security definer set search_path = public as $$
 begin insert into profiles (id, name) values (new.id, coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1), '')) on conflict do nothing; return new; end $$;
