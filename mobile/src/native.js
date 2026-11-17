@@ -94,6 +94,7 @@
   const route = url => {
     if (!url) return;
     if (/join/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n'), q.get('k')), 300)); }
+    else if (/reply/.test(url)) { const q = new URL(url.replace(/^daily-thanks:\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.replyThanks(q.get('to'), q.get('from')), 300)); }
     else if (/meditat/.test(url)) ready(DT => setTimeout(() => DT.openMeditation(), 300));
     else if (/write/.test(url)) ready(DT => setTimeout(() => DT.openWrite(), 300));
   };
