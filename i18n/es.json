@@ -1255,5 +1255,8 @@
   "tidy.done": "Ordenado",
   "tidy.go": "Ordenar",
   "tidy.undo": "Deshacer",
-  "tidy.note": "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto."
+  "tidy.note": "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto.",
+  "cl.sample": "Ejemplo",
+  "cl.sentBodyApp": "Enviamos un correo a {email}. Escribe abajo el código numérico del correo.",
+  "pw.free": "Por ahora es gratis. Si te quedas sin espacio, borra grabaciones antiguas."
 }

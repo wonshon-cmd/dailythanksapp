@@ -1690,6 +1690,7 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .rec-mini.on .rec-dot{width:7px;height:7px;border-radius:50%;background:#E25B55}
 .rec-mini.on b{font-weight:400;font-variant-numeric:tabular-nums}
 .tidy-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0 2px;font-size:13px;color:var(--sub)}
+.sample-tag{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:999px;background:#ECECEC;color:var(--sub);font-size:11px;vertical-align:1px}
 
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
@@ -1728,6 +1729,9 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'pw.free': "지금은 무료로 쓰고 있어요. 공간이 모자라면 오래된 녹음을 정리해 주세요.",
+    'cl.sentBodyApp': "{email}로 메일을 보냈어요. 메일에 있는 숫자 코드를 아래에 넣어 주세요.",
+    'cl.sample': "샘플",
     'tidy.said': "말한 그대로 적었어요", 'tidy.done': "정리했어요", 'tidy.go': "정리하기", 'tidy.undo': "원래대로", 'tidy.note': "말하는 동안 휴대폰·브라우저의 받아쓰기로 글이 채워져요.",
     'med.recShort': "녹음",
     'rc2.title': "나의 선한 영향력", 'rc2.sub': "내가 나눈 말씀과 감사, 기도제목이 이만큼 닿았어요.", 'rc2.peopleV': "{n}명", 'rc2.timesV': "{n}번", 'rc2.people': "마음을 표현한 사람", 'rc2.outside': "공동체 밖으로", 'rc2.inside': "공동체 안에서", 'rc2.shared': "내가 나눈 횟수", 'rc2.foot': "나눈 글 {p}개 · 앱 밖으로 보낸 것 {e}번", 'rc2.more': "자세히 보기",
@@ -1879,6 +1883,9 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'pw.free': "It’s free for now. If you run out of space, clear out older recordings.",
+    'cl.sentBodyApp': "We emailed {email}. Enter the number code from the email below.",
+    'cl.sample': "Sample",
     'tidy.said': "Written down as you said it", 'tidy.done': "Tidied up", 'tidy.go': "Tidy up", 'tidy.undo': "Undo", 'tidy.note': "While you speak, your phone or browser’s dictation fills in the text.",
     'med.recShort': "Record",
     'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
@@ -2030,6 +2037,9 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'pw.free': "Por ahora es gratis. Si te quedas sin espacio, borra grabaciones antiguas.",
+    'cl.sentBodyApp': "Enviamos un correo a {email}. Escribe abajo el código numérico del correo.",
+    'cl.sample': "Ejemplo",
     'tidy.said': "Escrito tal como lo dijiste", 'tidy.done': "Ordenado", 'tidy.go': "Ordenar", 'tidy.undo': "Deshacer", 'tidy.note': "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto.",
     'med.recShort': "Grabar",
     'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
@@ -2656,7 +2666,9 @@ if (!data.settings.lang) data.settings.lang = deviceLang();
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
 const SESSION_KEY = 'daily-thanks-session';
 // Public pages required by the App Store and Google Play. Host store/legal/*.html at this address before submitting.
-let LEGAL_BASE = 'https://dailyjourney.org';       // Squarespace pages: /privacy, /terms, /support, /delete-account
+let LEGAL_BASE = 'https://dailyjourney.org';
+// daily bible (web and phone app): privacy, terms, support, invite and plan links live on the public site
+if (BIBLE_MODE) LEGAL_BASE = 'https://wonshon-cmd.github.io/dailybible';       // Squarespace pages: /privacy, /terms, /support, /delete-account
 let SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
@@ -2682,9 +2694,10 @@ const t = k => STR[lang()]?.[k] ?? STR.en[k] ?? STR.ko[k] ?? k;
 const L = v => (v && typeof v === 'object') ? (v[lang()] ?? (lang() === 'es' ? v.en : undefined) ?? v.ko ?? v.en) : (v ?? '');
 const today = () => new Date().toLocaleDateString('en-CA');
 
-function save() {
+function save(quiet) {
   try { localStorage.setItem(KEY, JSON.stringify(data)); } catch { toast(t('toast.noStore')); }
   document.dispatchEvent(new CustomEvent('dt:save', { detail: data }));
+  if (!quiet && save.cloud) { clearTimeout(save.t); save.t = setTimeout(() => { if (Cloud.on()) pushPosts(); }, 1200); }
 }
 
 /* ---------------- Supabase (daily bible): e-mail link sign-in · 공동체 ----------------
@@ -2692,6 +2705,7 @@ function save() {
    is enforced by the database rules (supabase/schema.sql). Group keys stay in the invite link's # part. */
 const SUPA = { url: 'https://puhaycwpfpqsmxubvzkt.supabase.co', key: 'sb_publishable_NYYC9G102Ct3YYuY_unhVA_pGGXFGBa' };
 const CLOUD = BIBLE_MODE && !!SUPA.url && !!SUPA.key;
+save.cloud = CLOUD;   // a normal save also sends newly shared posts up
 const Cloud = (() => {
   const AKEY = 'daily-bible-auth';
   let auth = null;
@@ -2820,17 +2834,21 @@ function welcomeSheet(reason = '') {
     $('#wl-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#wl-name').value.trim().slice(0, 30); if (!n) return; data.settings.myName = n; save(); welcomeSheet(reason); });
     return;
   }
-  const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
+  // only the ways that are switched on in Supabase show up (e-mail always); Google/Microsoft only on the web for now
+  const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}" ${id === 'email' ? '' : 'hidden'}>${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>
     <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t('np.later')}</button>` });
+  const native = !!window.Capacitor?.isNativePlatform?.();
+  Cloud.providers().then(on => document.querySelectorAll('[data-action="wl-sign"]').forEach(x => { const id = x.dataset.id;
+    if (id !== 'email') x.hidden = !on[id] || (native && id !== 'phone'); }));
 }
 async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
   const on = await Cloud.providers();
-  if (id === 'phone') { if (on.phone) smsLogin(); else toast(t('wl.notYet')); return; }
-  if (on[id]) Cloud.oauth(id); else toast(t('wl.notYet'));
+  if (id === 'phone') { if (on.phone) smsLogin(); return; }
+  if (on[id]) Cloud.oauth(id);
 }
 // Korean numbers (010-…) become +8210…; numbers typed with + stay as they are
 const e164 = v => { const d = String(v).replace(/[^\d+]/g, ''); return d.startsWith('+') ? d : d.startsWith('0') ? '+82' + d.slice(1) : '+' + d; };
@@ -2877,7 +2895,8 @@ function emailLogin(reason = '', after = null) {
   });
 }
 function emailSent(email, name) {
-  showSheet({ title: t('cl.sentTitle'), body: `<p class="hint">${esc(t('cl.sentBody').replace('{email}', email))}</p>
+  const native = !!window.Capacitor?.isNativePlatform?.();   // in the phone app the mail link opens the browser, so use the code
+  showSheet({ title: t('cl.sentTitle'), body: `<p class="hint">${esc(t(native ? 'cl.sentBodyApp' : 'cl.sentBody').replace('{email}', email))}</p>
     <form id="cl-code-form" class="sheet-form">
     <label class="field-label" for="cl-code">${t('cl.code')}</label>
     <input id="cl-code" class="field" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="000000">
@@ -2898,7 +2917,7 @@ let syncing = null;
 function sync() {
   if (!Cloud.on()) return Promise.resolve();
   return syncing = syncing || (async () => {
-    const uid = Cloud.uid();
+    const uid = Cloud.uid(); clearSamples();
     if (data.settings.myName) Cloud.rest('profiles?id=eq.' + uid, { method: 'PATCH', body: { name: data.settings.myName } }).catch(() => {});
     for (const g of data.groups.filter(x => x.cloud && !x.sid)) {
       try {
@@ -2935,9 +2954,69 @@ function sync() {
         g.people = people.map(p => ({ id: p.user_id, name: p.profiles?.name || '', role: p.role, pending: p.status === 'pending' }));
       }
     } catch {}
+    await pushPosts(); await pullPosts();
     save(); render();
   })().finally(() => { syncing = null; });
 }
+
+/* ---------------- Supabase: sharing for real ----------------
+   Posts shared with a community or with everyone go up to Supabase; the database rules decide who can read them.
+   Private posts never leave the device (they stay sealed here). Likes and "기도했어요" are reactions. */
+function clearSamples() {
+  if (data.settings.samplesCleared) return;
+  const keepG = new Set(data.groups.filter(g => g.cloud).map(g => g.id));
+  data.posts = data.posts.filter(p => (p.mine && !isSeedMine(p)) || p.cloudPost);
+  data.posts.forEach(p => { if (p.mine && p.scope === 'group' && !postGroups(p).some(id => keepG.has(id))) { p.scope = 'private'; delete p.group; delete p.groups; } });
+  data.groups = data.groups.filter(g => keepG.has(g.id));
+  data.challenges = data.challenges.filter(c => !c.group || c.group === 'pair' || keepG.has(c.group));
+  if (!data.groups.some(g => g.id === state.group)) state.group = data.groups[0]?.id;
+  data.settings.samplesCleared = true;
+}
+const KIND_UP = { today: 'today', ahead: 'ahead', thanks: 'thanks', meditation: 'meditation', prayer: 'prayer' };
+async function pushPosts() {
+  if (!Cloud.on()) return;
+  const uid = Cloud.uid();
+  for (const p of data.posts.filter(x => x.mine && !isSeedMine(x) && !x.sids && !x.status && (x.scope === 'public' || x.scope === 'group') && KIND_UP[x.kind])) {
+    const base = { author: uid, kind: KIND_UP[p.kind], text: String(L(p.text) || '').slice(0, 4000), ref: p.ref || null, prayer: p.prayer || null, date: p.date || today() };
+    const gs = p.scope === 'group' ? postGroups(p).map(id => data.groups.find(g => g.id === id)?.sid).filter(Boolean) : [];
+    if (p.scope === 'group' && !gs.length) continue;              // its community isn't connected yet
+    const rows = p.scope === 'public' ? [{ ...base, scope: 'public' }] : gs.map(group_id => ({ ...base, scope: 'group', group_id }));
+    try { const out = await Cloud.rest('posts', { method: 'POST', prefer: 'return=representation', body: rows }); p.sids = out.map(r => r.id); }
+    catch { return; }
+  }
+  save(true);
+}
+async function pullPosts() {
+  if (!Cloud.on()) return;
+  const uid = Cloud.uid(), since = daysAgo(30);
+  let rows; try { rows = await Cloud.rest(`posts?select=id,author,kind,scope,group_id,text,ref,prayer,date,created_at,profiles(name)&date=gte.${since}&order=created_at.desc&limit=300`); } catch { return; }
+  const mineSids = new Set(data.posts.flatMap(p => p.sids || []));
+  const others = rows.filter(r => r.author !== uid && !mineSids.has(r.id));
+  let reacts = [];
+  const ids = rows.map(r => r.id);
+  if (ids.length) { try { reacts = await Cloud.rest(`reactions?select=post_id,user_id,kind&post_id=in.(${ids.join(',')})`); } catch {} }
+  const by = (id, k) => reacts.filter(x => x.post_id === id && x.kind === k);
+  const gOf = sid => data.groups.find(g => g.sid === sid)?.id;
+  const fresh = others.map(r => ({ id: 's' + r.id, sid: r.id, cloudPost: true, authorId: r.author, name: r.profiles?.name || t('cl.noName'),
+    kind: r.kind, scope: r.scope, ...(r.scope === 'group' && gOf(r.group_id) ? { group: gOf(r.group_id), groups: [gOf(r.group_id)] } : {}),
+    text: r.text || '', ...(r.ref ? { ref: r.ref } : {}), ...(r.prayer ? { prayer: r.prayer } : {}), date: r.date,
+    likes: by(r.id, 'like').filter(x => x.user_id !== uid).length, prayedBy: by(r.id, 'pray').filter(x => x.user_id !== uid).map(x => x.user_id) }))
+    .filter(p => p.scope === 'public' || p.group);
+  // my reactions, as this device shows them
+  fresh.forEach(p => { if (by(p.sid, 'like').some(x => x.user_id === uid) && !data.liked.includes(p.id)) data.liked.push(p.id); if (by(p.sid, 'pray').some(x => x.user_id === uid) && !data.prayed.includes(p.id)) data.prayed.push(p.id); });
+  // reach of my own posts (others' likes and prayers)
+  data.posts.filter(p => p.mine && p.sids).forEach(p => { p.likes = p.sids.reduce((n, id) => n + by(id, 'like').filter(x => x.user_id !== uid).length, 0); p.prayedBy = [...new Set(p.sids.flatMap(id => by(id, 'pray').filter(x => x.user_id !== uid).map(x => x.user_id)))]; });
+  data.posts = [...data.posts.filter(p => !p.cloudPost), ...fresh];
+  save(true);
+}
+function cloudReact(id, kind, on) {
+  const p = data.posts.find(x => x.id === id); if (!Cloud.on() || !p?.sid) return;
+  const where = `reactions?post_id=eq.${p.sid}&user_id=eq.${Cloud.uid()}&kind=eq.${kind}`;
+  (on ? Cloud.rest('reactions', { method: 'POST', prefer: 'resolution=ignore-duplicates', body: { post_id: p.sid, user_id: Cloud.uid(), kind } }) : Cloud.rest(where, { method: 'DELETE' })).catch(() => {});
+}
+function cloudDeletePost(p) { if (Cloud.on() && p?.sids?.length) Cloud.rest(`posts?id=in.(${p.sids.join(',')})`, { method: 'DELETE' }).catch(() => {}); }
+document.addEventListener('dt:report', e => { const r = e.detail, p = data.posts.find(x => x.id === r.postId);
+  if (Cloud.on()) Cloud.rest('reports', { method: 'POST', body: { post_id: p?.sid || null, reported_user: p?.authorId || null, reason: r.reason, note: r.note || null, text: String(L(p?.text) || '').slice(0, 1000) } }).catch(() => {}); });
 // group admin: approve / turn down / remove someone (the database lets only the group's leaders do this)
 async function cloudMember(gid, uid, approve) {
   const g = data.groups.find(x => x.id === gid); if (!g?.sid) return;
@@ -3808,7 +3887,10 @@ function renderKeep(selector) {
 }
 
 // Posts the viewer hid, or whose author they blocked, never appear in any feed.
-const authorKey = p => p.mine ? 'me' : String(L(p.name) && (p.name.ko || p.name));
+const authorKey = p => p.mine ? 'me' : p.authorId ? 'u:' + p.authorId : String(L(p.name) && (p.name.ko || p.name));
+// sample posts and groups that come with the app (before signing in); real ones come from Supabase
+const isSeedMine = p => /^mine\d+$/.test(p.id || '');   // the sample "my posts" that come with the app
+const isSample = p => CLOUD && !p.cloudPost && (!p.mine || isSeedMine(p));
 const featureAvailable = k => CONTENT.features?.[k] !== false;
 const featureOn = k => featureAvailable(k) && !!data.settings.features?.[k];
 const visible = p => !p.status && !(p.kind === 'prayer' && !featureOn('prayer')) && p.kind !== 'share' && !data.hidden.includes(p.id) && !data.blocked.includes(authorKey(p)); // 'review' / 'rejected' posts stay off feeds
@@ -4511,7 +4593,7 @@ function usageSheet() {
     ${card(t('us.spaceCard'), q.used || 0, q.limit, `${fmtBytes(q.used || 0)} / ${fmtBytes(q.limit)}`)}
     <p class="us-sec">${t('us.secExtra')}</p>
     <div class="us-card">${extra.length ? extra.map(x => `<div class="us-top"><b>${esc(x.label)}</b><span>${esc(when(x.until))}</span></div>`).join('') : `<b class="us-none">${t('us.noExtra')}</b><small>${t('us.noExtraSub')}</small>`}</div>
-    <button class="link-btn us-more" data-action="pw-open">${t('us.more')}</button></div>` });
+    ${payOn() ? `<button class="link-btn us-more" data-action="pw-open">${t('us.more')}</button>` : ''}</div>` });
 }
 function renderSermons() {
   sermonSync();
@@ -5000,8 +5082,12 @@ function sermonPoll(id) {
     if (sermon.status === 'done' || sermon.status === 'error' || n > 90) { state.snChecked = false; await sermonSync(); render(); return; } } catch { return; }
     setTimeout(tick, 2000); }; setTimeout(tick, 1500);
 }
+// Plans show only where in-app purchase really works (the phone app's store billing); otherwise just the space note
+const payOn = () => !!window.DTBilling?.purchase;
 function paywall() {
   const q = noteQuota();
+  if (!payOn()) { showSheet({ title: t('pw.title').replace('{t}', q.limit || NOTE_FREE), body: `<p class="hint">${t('pw.free')}</p>
+    <button class="secondary block" data-action="pw-clean">${icon('trash')}${t('pw.clean')}</button>` }); return; }
   showSheet({ title: t('pw.title').replace('{t}', q.limit || NOTE_FREE), body: `<p class="hint">${t('pw.body')}</p>
     <div class="pw-plans">
       <button class="pw-plan" data-action="pw-buy" data-id="monthly"><b>${t('pw.monthly')}</b><span>${t('pw.mPrice')}</span></button>
@@ -5174,7 +5260,7 @@ function renderBibleMe() {
     <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
     <div class="list" style="margin-top:18px">
       <button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>
-      <a class="list-row" href="/app/"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('me.thanks')}</span></span></a>
+      <a class="list-row" href="${LEGAL_BASE}/app/" target="_blank" rel="noopener"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('me.thanks')}</span></span></a>
     </div>
   </div></div>`;
 }
@@ -5286,7 +5372,7 @@ function renderImmersive(keepIndex = 0) {
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
     return `<article class="post imm${protectedPost(p) ? ' protected' : ''}${p.mine ? ' mine' : ''}" data-post="${esc(p.id)}"${fp ? ' data-firstpr="1"' : ''}>
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
-        <p class="imm-by">${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
+        <p class="imm-by">${isSample(p) ? `<span class="sample-tag">${t('cl.sample')}</span>` : ''}${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
       <aside class="post-rail">
         ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
@@ -6535,7 +6621,7 @@ function togglePray(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
   const i = data.prayed.indexOf(id);
   i >= 0 ? data.prayed.splice(i, 1) : data.prayed.push(id);
-  save(); render(keepPlace());
+  save(); cloudReact(id, 'pray', i < 0); render(keepPlace());
   if (i < 0) toast(t('pr.prayedToast'));
 }
 function prayedWho(id) {
@@ -6946,7 +7032,7 @@ function setLang(l) {
 
 function like(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
-  const i = data.liked.indexOf(id); i >= 0 ? data.liked.splice(i, 1) : data.liked.push(id); save();
+  const i = data.liked.indexOf(id); i >= 0 ? data.liked.splice(i, 1) : data.liked.push(id); save(); cloudReact(id, 'like', i < 0);
   const sc = $('#feed-scroll'), idx = sc ? Math.round(sc.scrollTop / sc.clientHeight) : 0;
   render(idx);
   if (i < 0) toast(p.kind === 'ahead' ? t('toast.likeAhead') : t('toast.likeToday'));
@@ -6977,7 +7063,7 @@ const actions = {
   settings, notification: notifications, widget, close,
   'toggle-lang': () => setLang(lang() === 'ko' ? 'en' : 'ko'),
   'set-lang': id => setLang(id),
-  like, share, 'send-group': sendToGroup, reflect,
+  like, share, 'send-group': sendToGroup, reflect, recap,
   'pick-kind': id => { state.vis = state.vis || {}; state.vis.compose = visDefault(id); state.tyName = $('#ty-name')?.value || state.tyName; if (id !== 'meditation') { state.medRef = null; state.medSource = null; state.medNote = false; } compose(id, state.challenge, $('#gratitude-text')?.value || ''); },
   'mp-next': () => { const tr = $('.mp-track'); if (tr) tr.scrollBy({ left: tr.clientWidth, behavior: 'smooth' }); },
   'mp-prev': () => { const tr = $('.mp-track'); if (tr) tr.scrollBy({ left: -tr.clientWidth, behavior: 'smooth' }); },
@@ -7006,7 +7092,8 @@ const actions = {
   note: noteSheet,
   'copy-support': () => copyText(SUPPORT_EMAIL),
   // Account deletion (App Store 5.1.1(v) / Google Play): removes the account and everything written by it.
-  'delete-account': () => confirmSheet(t('s.delete'), t('del.body'), t('del.ok'), () => {
+  'delete-account': () => confirmSheet(t('s.delete'), t('del.body'), t('del.ok'), async () => {
+    if (Cloud.on()) { try { await Cloud.rpc('delete_my_account', {}); } catch { toast(t('cl.fail')); return; } await Cloud.signOut(); data.groups = data.groups.filter(g => !g.cloud); data.posts = data.posts.filter(p => !p.cloudPost); }
     document.dispatchEvent(new CustomEvent('dt:delete-account'));
     data.posts = data.posts.filter(p => !p.mine);
     Object.assign(data, { liked: [], saved: [], prayed: [], seen: [], sermons: [], reports: [], celebrated: [], sharesGiven: 0, extSharesGiven: 0 });
@@ -7109,7 +7196,7 @@ const actions = {
   'med-rec-del': k => { medRecDel(k); medRecPaint(); },
   tidy: k => { const tx = state.medTx?.[k], b = recBox(k); if (!tx || !b) return; tx.before = b.value; b.value = [tx.base, tidySpeech(tx.said)].filter(Boolean).join('\n'); tx.tidied = true; medRecPaint(); },
   'tidy-undo': k => { const tx = state.medTx?.[k], b = recBox(k); if (!tx || !b) return; b.value = tx.before ?? tx.raw; tx.tidied = false; medRecPaint(); },
-  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { { const q = data.posts.find(p => p.id === id); if (q?.voice) AudioStore.del(id); if (q?.prayerVoice) AudioStore.del(id + ':pr'); } data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
+  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { { const q = data.posts.find(p => p.id === id); if (q?.voice) AudioStore.del(id); if (q?.prayerVoice) AudioStore.del(id + ':pr'); cloudDeletePost(q); } data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
   'copy-share': id => { const p = data.posts.find(x => x.id === id); if (p) { countShare(id); copyText(withLink(`${L(p.text)}\n\n— ${authorName(p)} · Daily Thanks`, p)); } },
   'send-link': id => { // just the link: opens the thanks on dailyjourney.org
     const p = data.posts.find(x => x.id === id); if (!p) return;

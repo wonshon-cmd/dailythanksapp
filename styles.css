@@ -1678,3 +1678,4 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .rec-mini.on .rec-dot{width:7px;height:7px;border-radius:50%;background:#E25B55}
 .rec-mini.on b{font-weight:400;font-variant-numeric:tabular-nums}
 .tidy-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0 2px;font-size:13px;color:var(--sub)}
+.sample-tag{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:999px;background:#ECECEC;color:var(--sub);font-size:11px;vertical-align:1px}

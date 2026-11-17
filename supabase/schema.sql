@@ -244,3 +244,31 @@ create or replace function on_new_user() returns trigger language plpgsql securi
 begin insert into profiles (id, name) values (new.id, coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1), '')) on conflict do nothing; return new; end $$;
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created after insert on auth.users for each row execute function on_new_user();
+
+-- ---------- reports (신고) ----------
+-- Anyone signed in can report a post; only the project owner reads them (Supabase › Table Editor › reports).
+create table if not exists reports (
+  id uuid primary key default gen_random_uuid(),
+  reporter uuid not null references profiles on delete cascade default auth.uid(),
+  post_id uuid references posts on delete set null,
+  reported_user uuid references profiles on delete set null,
+  reason text not null,
+  note text,
+  text text,                     -- what the post said when it was reported
+  status text not null default 'open' check (status in ('open', 'done')),
+  created_at timestamptz not null default now()
+);
+alter table reports enable row level security;
+drop policy if exists "file a report" on reports;
+create policy "file a report" on reports for insert with check (reporter = auth.uid());
+grant insert on reports to authenticated;
+
+-- ---------- delete my account (Apple / Google require it in the app) ----------
+-- Removes the signed-in person's login; their profile, posts, reactions and memberships go with it (on delete cascade).
+create or replace function delete_my_account() returns void language plpgsql security definer set search_path = public, auth as $$
+begin
+  if auth.uid() is null then raise exception 'not_signed_in'; end if;
+  delete from auth.users where id = auth.uid();
+end $$;
+revoke execute on function delete_my_account() from anon, public;
+grant execute on function delete_my_account() to authenticated;
