@@ -5987,7 +5987,7 @@ const recapText = () => `${t('rc.shareHead')}\n\n${weekNotes().filter(p => p.sco
 /* ---------------- optional features (Settings › Features) ---------------- */
 // Prayer requests: others tap "I prayed"; the author sees who prayed (quietly, no ranking).
 // Counts are private: in feeds a heart shows no number; only the author sees counts on their own posts.
-const countLabel = (p, n) => p.mine ? `<span>${n}</span>` : '';
+const countLabel = (p, n) => p.mine && !BIBLE_MODE ? `<span>${n}</span>` : ''; // daily bible: no like numbers at all
 function prayBtn(p) {
   const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
   return `<button class="rail-btn ${on ? 'prayed' : ''}" data-action="pray" data-id="${esc(p.id)}" aria-pressed="${on}" aria-label="${t('pr.prayed')}">${icon('heart')}${countLabel(p, n)}</button>`;
