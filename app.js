@@ -1985,12 +1985,19 @@ let firstSeenObs = null;
 function watchFirstPrayers() {
   firstSeenObs?.disconnect(); if (!window.IntersectionObserver) return;
   firstSeenObs = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const id = e.target.dataset.post;
-    const seen = data.settings.prayerSeen = data.settings.prayerSeen || []; if (!seen.includes(id)) { seen.push(id); if (seen.length > 300) seen.shift(); clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600); } }), { threshold: 0.6 });
-  document.querySelectorAll('[data-firstpr]').forEach(el => firstSeenObs.observe(el));
+    if (e.target.dataset.firstpr) { const seen = data.settings.prayerSeen = data.settings.prayerSeen || []; if (!seen.includes(id)) { seen.push(id); if (seen.length > 300) seen.shift(); } }
+    // every card scrolled past counts as seen, so the "new" number goes down as you go
+    const gs = data.groupSeen = data.groupSeen || []; if (!gs.includes(id)) { gs.push(id); if (gs.length > 2000) gs.shift(); refreshNewPill(); }
+    clearTimeout(readSaveTimer); readSaveTimer = setTimeout(save, 600); }), { threshold: 0.6 });
+  document.querySelectorAll('article.post.imm[data-post]:not(.mine)').forEach(el => firstSeenObs.observe(el));
 }
+function refreshNewPill() { const el = document.querySelector('.imm-streak'); if (!el) return; const h = immStreak(); if (!h) { el.remove(); return; } const tmp = document.createElement('div'); tmp.innerHTML = h; el.replaceWith(tmp.firstElementChild); }
 function writeStreak() { const days = new Set(data.posts.filter(p => p.mine).map(p => p.date)); let i = days.has(today()) ? 0 : 1, n = 0; while (days.has(daysAgo(i))) { n++; i++; } return n; }
 function immStreak() {
-  const n = BIBLE_MODE ? readDays() : writeStreak(), unseen = data.groups.reduce((x, g) => x + unseenIn(g.id), 0);
+  const n = BIBLE_MODE ? readDays() : writeStreak(), unseen = BIBLE_MODE
+    // daily bible: count only what the feed itself shows, so scrolling to the end takes it to zero
+    ? data.posts.filter(p => !p.mine && visible(p) && data.groups.some(g => inGroup(p, g.id)) && !(data.groupSeen || []).includes(p.id)).length
+    : data.groups.reduce((x, g) => x + unseenIn(g.id), 0);
   if (!n && !unseen) return '';
   return `<button class="imm-streak" data-action="imm-streak">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</button>`;
 }
