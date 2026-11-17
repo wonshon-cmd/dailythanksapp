@@ -17,3 +17,8 @@ out = f"{title}\n{metas}\n{links}\n<style>\n{css}\n{HOSTED_CSS}\n</style>\n{body
 (root / 'dist').mkdir(exist_ok=True)
 (root / 'dist' / 'daily-thanks.html').write_text(out, encoding='utf-8')
 print('wrote dist/daily-thanks.html', len(out), 'bytes')
+
+# daily bible: the same app in Bible mode (reading, sermon notes, me), sharing the same data
+bible = out.replace(title, '<title>Daily Bible · 말씀을 매일</title>').replace('<script>\n', '<script>window.DT_APP = "bible";</script>\n<script>\n', 1)
+(root / 'dist' / 'daily-bible.html').write_text(bible, encoding='utf-8')
+print('wrote dist/daily-bible.html', len(bible), 'bytes')

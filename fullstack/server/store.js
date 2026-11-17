@@ -7,7 +7,7 @@ import path from 'node:path';
  * the route handlers only call the methods below.
  */
 export function createStore(file) {
-  const empty = { states: {}, passages: [], sermons: [], reports: [], reviews: [], groups: [], nudges: [] };
+  const empty = { states: {}, passages: [], sermons: [], reports: [], reviews: [], groups: [], nudges: [], plans: {} };
   let db = empty;
   try { db = { ...empty, ...JSON.parse(fs.readFileSync(file, 'utf8')) }; } catch { /* first run */ }
   let timer = null;
@@ -36,6 +36,11 @@ export function createStore(file) {
     updateSermon: (id, patch) => { const s = db.sermons.find(x => x.id === id); if (s) { Object.assign(s, patch); persist(); } return s; },
     getSermon: id => db.sermons.find(x => x.id === id) || null,
     listSermons: userId => db.sermons.filter(s => s.ownerId === userId).map(({ transcript, ...rest }) => rest),
+    deleteSermon: (id, userId) => { const before = db.sermons.length; db.sermons = db.sermons.filter(s => !(s.id === id && s.ownerId === userId)); persist(); return db.sermons.length < before; },
+    countSermons: (userId, since) => db.sermons.filter(s => s.ownerId === userId && (!since || s.createdAt >= since)).length,
+    // Subscription per user: { plan: 'monthly' | 'yearly', until: ISO date, source }
+    getPlan: userId => { const p = db.plans[userId]; return p && p.until > new Date().toISOString() ? p : null; },
+    setPlan: (userId, plan) => { db.plans[userId] = plan; persist(); return plan; },
     addReport: r => { db.reports.push(r); persist(); return r; },
     listReports: ({ status } = {}) => db.reports.filter(r => !status || r.status === status),
     updateReport: (id, patch) => { const r = db.reports.find(x => x.id === id); if (r) { Object.assign(r, patch); persist(); } return r; },
@@ -57,6 +62,7 @@ export function createStore(file) {
       delete db.states[userId];
       db.passages = db.passages.filter(p => p.createdBy !== userId);
       db.sermons = db.sermons.filter(x => x.ownerId !== userId);
+      delete db.plans[userId];
       db.reviews = db.reviews.filter(x => x.userId !== userId);
       db.reports = db.reports.map(r => r.reporter === userId ? { ...r, reporter: 'deleted' } : r);
       persist();

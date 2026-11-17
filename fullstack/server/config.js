@@ -20,6 +20,13 @@ export function loadConfig(env = process.env) {
       rtzrClientId: env.RTZR_CLIENT_ID || '',
       rtzrClientSecret: env.RTZR_CLIENT_SECRET || ''
     },
-    maxUploadBytes: Number(env.MAX_UPLOAD_MB || 200) * 1024 * 1024
+    maxUploadBytes: Number(env.MAX_UPLOAD_MB || 200) * 1024 * 1024,
+    // Sermon notes: the first notes are free (kept); after that, delete some or subscribe.
+    sermonPlans: {
+      freeNotes: Number(env.FREE_SERMON_NOTES || 10),
+      fairUsePerMonth: Number(env.SERMON_FAIR_USE || 60),   // monthly / yearly plans: "almost unlimited"
+      devBilling: on(env.BILLING_DEV)                        // dev only: activate a plan without a store receipt
+    },
+    corsOrigins: String(env.CORS_ORIGINS || 'https://dailyjourney.org,capacitor://localhost,http://localhost,https://localhost').split(',').map(x => x.trim()).filter(Boolean)
   };
 }

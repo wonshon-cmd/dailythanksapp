@@ -140,6 +140,13 @@ bible = ROOT / 'bible'
 if bible.exists():  # public-domain Bible text: dailyjourney.org/bible/… and dailyjourney.org/app/bible/…
     shutil.copytree(bible, WEB / 'bible', dirs_exist_ok=True)
     shutil.copytree(bible, app_dir / 'bible', dirs_exist_ok=True)
+# daily bible on the web: dailyjourney.org/daily-bible/ (same files, Bible mode; shares data with /app/ on this site)
+bb_dir = WEB / 'daily-bible'; bb_dir.mkdir(exist_ok=True)
+for f in ('styles.css', 'app.js'): shutil.copy(ROOT / f, bb_dir / f)
+bb_html = (ROOT / 'index.html').read_text().replace('<script src="app.js" defer></script>', '<script>window.DT_APP = "bible";</script>\n<script src="app.js" defer></script>')
+bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Bible · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Bible"')
+(bb_dir / 'index.html').write_text(bb_html)
+if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
 content = ROOT / 'content' / 'content.json'
 if content.exists(): shutil.copy(content, WEB / 'content.json')   # the app can read its text from here too
 print('wrote', WEB.relative_to(ROOT), sorted(p.name for p in WEB.iterdir()))

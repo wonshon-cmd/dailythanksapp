@@ -160,3 +160,32 @@ test('group nudge: once a day, members only', async () => {
   assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'a' })).status, 429);
   assert.equal((await call('POST', '/api/groups/nudge', { code: 'grace2345' }, { 'x-user-id': 'stranger' })).status, 404);
 });
+
+test('sermon notes: 10 free, then delete or subscribe', async () => {
+  const call = await start({ FEATURE_SERMON: '1', FREE_SERMON_NOTES: '3', BILLING_DEV: '1' });
+  const ids = [];
+  for (let i = 0; i < 3; i++) ids.push((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).body.id);
+  let q = (await call('GET', '/api/sermons/quota')).body;
+  assert.deepEqual([q.plan, q.used, q.limit], ['free', 3, 3]);
+  const full = await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT });
+  assert.equal(full.status, 402); assert.equal(full.body.error, 'quota_full'); assert.equal(full.body.limit, 3);
+  assert.equal((await call('DELETE', `/api/sermons/${ids[0]}`)).status, 200);           // delete one → room again
+  assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+  assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 402);
+  assert.equal((await call('DELETE', `/api/sermons/${ids[1]}`, null, { 'x-user-id': 'other' })).status, 404); // only your own
+  q = (await call('POST', '/api/billing/activate', { plan: 'yearly' })).body;            // subscribe → almost unlimited
+  assert.equal(q.plan, 'yearly'); assert.equal(q.limit, null);
+  assert.equal((await call('POST', '/api/sermons/text', { transcript: MOCK_TRANSCRIPT })).status, 202);
+});
+
+test('billing: no plan without a verified receipt unless dev billing is on', async () => {
+  const call = await start({ FEATURE_SERMON: '1' });
+  assert.equal((await call('POST', '/api/billing/activate', { plan: 'monthly' })).status, 501);
+});
+
+test('daily bible page is served in Bible mode', async () => {
+  const call = await start({});
+  const page = await call('GET', '/daily-bible/');
+  assert.equal(page.status, 200); assert.match(page.body, /window\.DT_APP = "bible"/);
+  assert.equal((await call('GET', '/daily-bible/app.js')).status, 200);
+});
