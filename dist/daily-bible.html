@@ -1681,6 +1681,15 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .mp-track{cursor:grab;touch-action:pan-x pan-y;user-select:none}.mp-track:active{cursor:grabbing}
 .reach{margin-bottom:22px}.reach-sub{margin:-4px 0 12px;font-size:13px;color:var(--sub)}.reach .secondary.block{margin-top:10px}
 
+/* reflection: a small record button beside 느낀 점 and beside 기도 */
+.med-lab{display:flex;align-items:center;justify-content:space-between}
+.rec-mini{display:inline-flex;align-items:center;gap:5px;border:0;background:#F1F1F1;border-radius:999px;padding:5px 12px;font:inherit;font-size:12.5px;color:var(--text);cursor:pointer;letter-spacing:0;text-transform:none}
+.rec-mini .ico{font-size:14px}
+.rec-mini[disabled]{opacity:.4}
+.rec-mini.on{background:#16191C;color:#fff}
+.rec-mini.on .rec-dot{width:7px;height:7px;border-radius:50%;background:#E25B55}
+.rec-mini.on b{font-weight:400;font-variant-numeric:tabular-nums}
+
 :root{--safe-top:0px;--safe-bottom:0px}
 </style>
 <button class="fs-btn" id="fs-btn" data-action="fullscreen" hidden></button>
@@ -1718,6 +1727,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'med.recShort': "녹음",
     'rc2.title': "나의 선한 영향력", 'rc2.sub': "내가 나눈 말씀과 감사, 기도제목이 이만큼 닿았어요.", 'rc2.peopleV': "{n}명", 'rc2.timesV': "{n}번", 'rc2.people': "마음을 표현한 사람", 'rc2.outside': "공동체 밖으로", 'rc2.inside': "공동체 안에서", 'rc2.shared': "내가 나눈 횟수", 'rc2.foot': "나눈 글 {p}개 · 앱 밖으로 보낸 것 {e}번", 'rc2.more': "자세히 보기",
     'yr.verse': "올해의 말씀", 'yr.most': "가장 많이 펼친 말씀 · {r}", 'yr.times': "{n}번 펼쳤어요",
     'snz.ok': "끄기", 'snz.title': "무엇을 끌까요?", 'snz.what': "끌 것", 'snz.all': "전부", 'snz.for': "얼마 동안", 'snz.until': "다시 켤 때까지", 'snz.hint': "설정 › 보기 설정에서 언제든 다시 켤 수 있어요.", 'mc.title': "내 공동체", 'mc.ph': "교회·소그룹·챕터·수련회 코드", 'mc.connect': "연결", 'mc.none': "받은 코드를 넣으면 공동체와 연결돼요.", 'mc.bad': "코드를 확인해 주세요.", 'mc.needSign': "공동체와 연결하려면 로그인해 주세요. 로그인하면 바로 연결돼요.", 'mc.joining': "연결 중…", 'mc.admin': "관리자", 'mc.quiet': "조용히", 'mc.loud': "알림 켜기", 'mc.quietOn': "조용히 · 새 글 표시와 알림 없음", 'mc.quietDone': "조용히 해 두었어요. 새 글 표시와 알림이 오지 않아요.", 'mc.loudDone': "다시 알려 드릴게요.", 'mc.leave': "나가기", 'mc.leaveQ': "‘{name}’에서 나갈까요? 다시 들어오려면 코드나 초대 링크가 필요해요.", 'mc.left': "공동체에서 나왔어요.", 'mc.ownerStay': "관리자는 나갈 수 없어요. 공동체 관리에서 정리해 주세요.", 'join.pendingShort': "승인 대기",
@@ -1867,6 +1877,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'med.recShort': "Record",
     'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
     'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
     'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
@@ -2016,6 +2027,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'med.recShort': "Grabar",
     'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
     'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
     'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
@@ -5415,7 +5427,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   showSheet({ title: med && state.medRef ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form">
     ${med && state.medRef ? '' : kinds}
     ${ahead || med || kind === 'prayer' ? '' : dailyQLine()}
-    ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label">${t('med.felt')}</p>` : ''}
+    ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label med-lab"><span>${t('med.felt')}</span><span id="med-mini-felt">${recMini('felt')}</span></p>` : ''}
     <textarea id="gratitude-text" data-draft="compose" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${med ? medExtras() : ''}
     ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
@@ -5432,14 +5444,14 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     e.preventDefault();
     const kind = state.composeKind, prayer = kind === 'meditation' ? ($('#med-prayer')?.value.trim() || '') : '';
     if (state.medRecOn) medRecStop();
-    const voice = kind === 'meditation' && state.medAudio;
-    const text = $('#gratitude-text').value.trim() || (kind === 'meditation' && (prayer || voice) ? (prayer ? '' : t('med.voice')) : ''); if (!text && !prayer) { $('#gratitude-text').focus(); return; }
+    const voice = kind === 'meditation' && recSlot('felt'), prVoice = kind === 'meditation' && recSlot('prayer');
+    const text = $('#gratitude-text').value.trim() || (kind === 'meditation' && (prayer || voice || prVoice) ? (prayer ? '' : t('med.voice')) : ''); if (!text && !prayer && !prVoice) { $('#gratitude-text').focus(); return; }
     const asReq = kind === 'meditation' && prayer && $('#med-asreq')?.checked;
     const vis = visScope('compose'); visRemember(kind);
     const pid = 'p' + Date.now();
-    const post = (v = vis) => ({ id: pid, mine: true, ...v, kind, text: text || prayer, date: today(), likes: 0, ...(kind === 'meditation' && state.medRef ? { ref: state.medRef } : {}), ...(prayer && text ? { prayer } : {}), ...(voice ? { voice: { dur: state.medAudioDur || 0 } } : {}) });
+    const post = (v = vis) => ({ id: pid, mine: true, ...v, kind, text: text || prayer, date: today(), likes: 0, ...(kind === 'meditation' && state.medRef ? { ref: state.medRef } : {}), ...(prayer && text ? { prayer } : {}), ...(voice ? { voice: { dur: voice.dur || 0 } } : {}), ...(prVoice ? { prayerVoice: { dur: prVoice.dur || 0 } } : {}) });
     // the voice note stays on this device, sealed with the vault key; a prayer can also go out as its own prayer request
-    const extras = p => { if (voice) AudioStore.put(p.id, state.medAudio).catch(() => {}); medRecReset();
+    const extras = p => { if (voice) AudioStore.put(p.id, voice.blob).catch(() => {}); if (prVoice) AudioStore.put(p.id + ':pr', prVoice.blob).catch(() => {}); medRecReset();
       if (asReq) data.posts.splice(1, 0, { id: pid + 'r', mine: true, ...visScope('compose'), kind: 'prayer', text: prayer, date: today(), likes: 0, ...(state.medRef ? { ref: state.medRef } : {}) }); };
     if (!passesFilter(text || prayer, vis.scope, (choice, terms) => {
       if (choice === 'edit') return compose(kind, state.challenge, text);
@@ -5451,29 +5463,38 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   });
 }
 /* ---------- meditation extras: a prayer line, "also a prayer request", and a voice note ---------- */
-const medExtras = () => `<p class="field-label">${t('med.prayer')}</p>
+const medExtras = () => `<div id="med-play-felt">${recPlayer('felt')}</div>
+    <p class="field-label med-lab"><span>${t('med.prayer')}</span><span id="med-mini-prayer">${recMini('prayer')}</span></p>
     <textarea id="med-prayer" data-draft="compose-prayer" class="big-input med-prayer" maxlength="800" rows="2" placeholder="${esc(t('med.prayerPh'))}"></textarea>
-    <label class="med-check"><input type="checkbox" id="med-asreq"><span>${t('med.asReq')}</span></label>
-    <div class="med-rec" id="med-rec">${medRecHtml()}</div>`;
+    <div id="med-play-prayer">${recPlayer('prayer')}</div>
+    <label class="med-check"><input type="checkbox" id="med-asreq"><span>${t('med.asReq')}</span></label>`;
 const fmtDur = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-function medRecHtml() {
-  if (state.medRecOn) return `<button type="button" class="med-recbtn on" data-action="med-rec">${icon('mic')}<span>${t('med.recStop')}</span><b id="med-rect">0:00</b></button>`;
-  if (state.medAudio) { if (!state.medAudioUrl) state.medAudioUrl = URL.createObjectURL(state.medAudio);
-    return `<div class="med-recrow"><audio controls preload="metadata" src="${state.medAudioUrl}"></audio><button type="button" class="link-btn" data-action="med-rec-del">${t('med.recDel')}</button></div>`; }
-  return `<button type="button" class="med-recbtn" data-action="med-rec">${icon('mic')}<span>${t('med.rec')}</span></button><p class="hint">${t('med.recNote')}</p>`;
+// Two small recorders: one beside 느낀 점, one beside 기도. Recordings stay on this device, sealed.
+const recSlot = k => (state.medRec = state.medRec || {})[k] || null;
+function recMini(k) {
+  if (state.medRecOn === k) return `<button type="button" class="rec-mini on" data-action="med-rec" data-id="${k}"><i class="rec-dot"></i><b id="med-rect">0:00</b><span>${t('med.recStop')}</span></button>`;
+  if (recSlot(k)) return '';
+  return `<button type="button" class="rec-mini" data-action="med-rec" data-id="${k}" ${state.medRecOn ? 'disabled' : ''}>${icon('mic')}<span>${t('med.recShort')}</span></button>`;
 }
-const medRecPaint = () => { const el = $('#med-rec'); if (el) el.innerHTML = medRecHtml(); };
-function medRecReset() { if (state.medRecOn) medRecStop(true); if (state.medAudioUrl) URL.revokeObjectURL(state.medAudioUrl); state.medAudio = null; state.medAudioUrl = null; state.medAudioDur = 0; }
-async function medRecStart() {
+function recPlayer(k) {
+  const r = recSlot(k); if (!r) return '';
+  if (!r.url) r.url = URL.createObjectURL(r.blob);
+  return `<div class="med-recrow"><audio controls preload="metadata" src="${r.url}"></audio><button type="button" class="link-btn" data-action="med-rec-del" data-id="${k}">${t('med.recDel')}</button></div><p class="hint">${t('med.recNote')}</p>`;
+}
+const medRecPaint = () => ['felt', 'prayer'].forEach(k => { const m = $('#med-mini-' + k), pl = $('#med-play-' + k); if (m) m.innerHTML = recMini(k); if (pl) pl.innerHTML = recPlayer(k); });
+function medRecDel(k) { const r = recSlot(k); if (r?.url) URL.revokeObjectURL(r.url); if (state.medRec) delete state.medRec[k]; }
+function medRecReset() { if (state.medRecOn) medRecStop(true); ['felt', 'prayer'].forEach(medRecDel); }
+async function medRecStart(k = 'felt') {
+  if (state.medRecOn) return;
   let stream; try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); } catch { toast(t('med.recFail')); return; }
   const type = ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm'].find(m => window.MediaRecorder?.isTypeSupported?.(m)) || '';
   const rec = new MediaRecorder(stream, type ? { mimeType: type, audioBitsPerSecond: 32000 } : undefined), chunks = [], t0 = Date.now();
   rec.ondataavailable = e => e.data.size && chunks.push(e.data);
   rec.onstop = () => { stream.getTracks().forEach(x => x.stop()); clearInterval(state.medRecTimer);
-    if (state.medRecDrop) { state.medRecDrop = false; return; }
-    state.medAudio = new Blob(chunks, { type: rec.mimeType || type || 'audio/webm' }); state.medAudioDur = Math.round((Date.now() - t0) / 1000); medRecPaint(); };
-  rec.start(1000); state.medRecorder = rec; state.medRecOn = true; medRecPaint();
-  state.medRecTimer = setInterval(() => { const s = (Date.now() - t0) / 1000; const el = $('#med-rect'); if (el) el.textContent = fmtDur(s); if (s >= 600) medRecStop(); }, 500);   // 10 minutes at most
+    if (state.medRecDrop) { state.medRecDrop = false; medRecPaint(); return; }
+    (state.medRec = state.medRec || {})[k] = { blob: new Blob(chunks, { type: rec.mimeType || type || 'audio/webm' }), dur: Math.round((Date.now() - t0) / 1000) }; medRecPaint(); };
+  rec.start(1000); state.medRecorder = rec; state.medRecOn = k; medRecPaint();
+  state.medRecTimer = setInterval(() => { const sec = (Date.now() - t0) / 1000; const el = $('#med-rect'); if (el) el.textContent = fmtDur(sec); if (sec >= 600) medRecStop(); }, 500);   // 10 minutes at most
 }
 function medRecStop(drop) { state.medRecOn = false; state.medRecDrop = !!drop; try { state.medRecorder?.stop(); } catch {} state.medRecorder = null; }
 // Voice notes live in IndexedDB on this device, sealed with the same vault key as everything else personal.
@@ -5607,13 +5628,15 @@ function noteSheet(id) {
   if (p.kind === 'thanks') return thanksCard(id);
   showSheet({ title: t('j.title'), body: `${p.ref ? `<p class="gd-label">${esc(refText(p.ref))}</p>` : ''}<p class="quote">${esc(L(p.text))}</p>
     ${p.prayer ? `<p class="field-label">${t('med.prayer')}</p><p class="quote med-pr">${esc(p.prayer)}</p>` : ''}
-    ${p.voice ? `<p class="field-label">${t('med.voice')} · ${fmtDur(p.voice.dur || 0)}</p><audio class="med-play" id="note-audio" controls preload="none"></audio>` : ''}
+    ${p.voice ? `<p class="field-label">${t('med.felt')} · ${t('med.voice')} · ${fmtDur(p.voice.dur || 0)}</p><audio class="med-play" id="note-audio" controls preload="none"></audio>` : ''}
+    ${p.prayerVoice ? `<p class="field-label">${t('med.prayer')} · ${t('med.voice')} · ${fmtDur(p.prayerVoice.dur || 0)}</p><audio class="med-play" id="note-audio-pr" controls preload="none"></audio>` : ''}
     <div class="list">
       <button class="list-row" data-action="share" data-id="${esc(p.id)}"><span class="row-icon">${icon('upload')}</span><span class="row-main"><span class="row-title">${t('note.share')}</span></span></button>
       ${p.kind === 'ahead' ? `<button class="list-row" data-action="reflect" data-id="${esc(p.id)}"><span class="row-icon">${icon('pencil')}</span><span class="row-main"><span class="row-title">${t('note.reflect')}</span></span></button>` : ''}
       <button class="list-row danger" data-action="delete" data-id="${esc(p.id)}"><span class="row-icon">${icon('trash')}</span><span class="row-main"><span class="row-title">${t('note.delete')}</span></span></button>
     </div>` });
   if (p.voice) AudioStore.url(p.id).then(u => { const a = $('#note-audio'); if (a && u) a.src = u; }).catch(() => {});
+  if (p.prayerVoice) AudioStore.url(p.id + ':pr').then(u => { const a = $('#note-audio-pr'); if (a && u) a.src = u; }).catch(() => {});
 }
 
 function reflect(id) {
@@ -7042,9 +7065,9 @@ const actions = {
   },
   sample: id => { const ta = $('#gratitude-text'); ta.value = SAMPLES[lang()][id]; ta.focus(); },
   'journal-filter': id => { state.filter = id; renderJournal(); },
-  'med-rec': () => state.medRecOn ? medRecStop() : medRecStart(),
-  'med-rec-del': () => { medRecReset(); medRecPaint(); },
-  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { if (data.posts.find(p => p.id === id)?.voice) AudioStore.del(id); data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
+  'med-rec': k => state.medRecOn ? medRecStop() : medRecStart(k || 'felt'),
+  'med-rec-del': k => { medRecDel(k); medRecPaint(); },
+  delete: id => confirmSheet(t('j.delete'), t('j.confirmDelete'), t('j.delete'), () => { { const q = data.posts.find(p => p.id === id); if (q?.voice) AudioStore.del(id); if (q?.prayerVoice) AudioStore.del(id + ':pr'); } data.posts = data.posts.filter(p => p.id !== id); save(); render(); }),
   'copy-share': id => { const p = data.posts.find(x => x.id === id); if (p) { countShare(id); copyText(withLink(`${L(p.text)}\n\n— ${authorName(p)} · Daily Thanks`, p)); } },
   'send-link': id => { // just the link: opens the thanks on dailyjourney.org
     const p = data.posts.find(x => x.id === id); if (!p) return;

@@ -1249,5 +1249,6 @@
   "rc2.inside": "dentro de tus comunidades",
   "rc2.shared": "veces que compartiste",
   "rc2.foot": "{p} publicaciones compartidas · {e} enviadas fuera de la app",
-  "rc2.more": "Ver detalles"
+  "rc2.more": "Ver detalles",
+  "med.recShort": "Grabar"
 }
