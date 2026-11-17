@@ -58,7 +58,7 @@ async function rawShots(b, lang) {
   }, [NAME[lang], BRAND, NOTE[lang]]);
   const p = await ctx.newPage();
   p.on('pageerror', e => console.warn('page error:', e.message));
-  await p.goto('http://app.local/'); await p.waitForTimeout(2500);
+  await p.goto('https://app.local/'); await p.waitForTimeout(2500);
   await p.evaluate(() => window.DailyThanks?.save?.());
   await p.reload(); await p.waitForTimeout(4500); // let the splash finish
   if (!(await p.evaluate(() => !!sessionStorage.getItem('shot-seeded')))) throw new Error('could not seed the sermon note');
@@ -78,7 +78,16 @@ async function rawShots(b, lang) {
   files.push(prayer);
   // 4 a sermon note the user wrote (recording + their own notes)
   await p.click('[data-tab=notes]'); await p.waitForTimeout(500);
-  await p.click('[data-action=note-open][data-id=shot-note]'); await p.waitForTimeout(1000); await snap(4);
+  // a recording on the device, so the player shows its length (30:40)
+  await p.evaluate(async () => { const sec = 1840, rate = 8000, n = sec * rate, buf = new ArrayBuffer(44 + 4000), v = new DataView(buf), w = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
+    new Uint8Array(buf, 44).fill(128); // the header claims 30:40; only a sliver of silence is stored
+    // same format as the app's AudioStore: IndexedDB 'dt-voice' / 'v', value sealed by the vault
+    const d = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(String(fr.result)); fr.readAsDataURL(new Blob([buf], { type: 'audio/wav' })); });
+    const sealed = await window.DailyThanks.vault.seal({ d });
+    const db = await new Promise((res, rej) => { const q = indexedDB.open('dt-voice', 1); q.onupgradeneeded = () => q.result.createObjectStore('v'); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); });
+    await new Promise((res, rej) => { const q = db.transaction('v', 'readwrite').objectStore('v').put(sealed, 'shot-note'); q.onsuccess = res; q.onerror = () => rej(q.error); }); });
+  await p.click('[data-action=note-open][data-id=shot-note]'); await p.waitForTimeout(1500); await snap(4);
   await p.click('[data-tab=read]'); await p.waitForTimeout(300);
   // 5 communities
   await p.click('[data-tab=group]'); await p.waitForTimeout(800); await snap(5);

@@ -260,7 +260,7 @@ function join(t) {
     <p class="join-note">${t.joinAfter}</p>` : `<p class="join-note">${t.joinBad}</p>`}</section>`;
 }
 function legal(t, page) {
-  return `<article class="legal col"><a class="back" href="#">${t.back}</a><h1>${t.titles[page]}</h1>${PAGES[page][lang] || PAGES[page].en}</article>`;
+  return `<article class="legal col"><a class="back" href="#">← daily journey</a><h1>${t.titles[page]}</h1>${PAGES[page][lang] || PAGES[page].en}</article>`;
 }
 function render() {
   const t = S[lang], page = WEB ? (location.pathname.split('/').filter(Boolean)[0] || '') : location.hash.slice(1).split('?')[0];
@@ -271,8 +271,10 @@ function render() {
   const isLegal = PAGES && PAGES[page], isJoin = page === 'join', isPost = page === 't';
   document.body.classList.toggle('home', !isLegal && !isPost); // home and invite pages show the big wordmark, so the small header one is hidden
   document.getElementById('view').innerHTML = isPost ? post(t) : isJoin ? join(t) : isLegal ? legal(t, page) : home(t);
+  // legal pages belong to Daily Journey (the app in the stores); the rest of this template is daily thanks
+  { const wm = document.querySelector('header .wordmark'); if (wm) { wm.innerHTML = isLegal ? 'daily <em>journey</em>' : 'daily <em>thanks</em>'; wm.setAttribute('aria-label', isLegal ? 'daily journey' : 'daily thanks'); } }
   if (WEB) document.querySelectorAll('a[href^="#"]').forEach(a => { const h = a.getAttribute('href').slice(1); a.setAttribute('href', h ? `/${h}/` : '/'); });
-  document.title = isPost ? `${t.postTitle} · daily thanks` : isJoin ? `${t.joinTitle} · daily thanks` : isLegal ? `${t.titles[page]} · daily thanks` : 'daily thanks';
+  document.title = isPost ? `${t.postTitle} · daily thanks` : isJoin ? `${t.joinTitle} · daily thanks` : isLegal ? `${t.titles[page]} · daily journey` : 'daily thanks';
 }
 document.getElementById('lang').addEventListener('change', e => { lang = e.target.value; store('dt-site-lang', lang); render(); });
 addEventListener('hashchange', () => { render(); scrollTo(0, 0); });

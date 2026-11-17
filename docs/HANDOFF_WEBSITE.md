@@ -1,6 +1,6 @@
 # dailyjourney.org 웹사이트 — 이어서 작업하기 (새 세션용)
 
-앱(daily bible) 작업은 다른 세션이 `docs/HANDOFF_DAILYBIBLE.md`로 하고 있어요. 이 문서는 **웹사이트 dailyjourney.org** 담당이에요.
+이제 앱(daily bible / Daily Journey)과 **웹사이트 dailyjourney.org** 모두 한 세션에서 해요(앱은 `docs/HANDOFF_DAILYBIBLE.md`, 스토어 제출은 `store/SUBMISSION_CHECKLIST_KO.md`).
 같은 브랜치 `claude/nifty-hopper-7tgmna`를 같이 써요 → push 전에 항상 `git fetch origin claude/nifty-hopper-7tgmna && git merge --no-edit FETCH_HEAD`.
 
 ## 어떻게 공개되나
@@ -37,8 +37,8 @@
 - 개인정보·키: Supabase는 publishable 키만. secret / service_role 키는 받지도 쓰지도 않기.
 
 ## 남은 일 (사용자 확인 필요)
-1. 개인정보처리방침·약관 본문과 페이지 위 이름이 아직 "Daily Thanks" 기준 → **daily journey** 기준으로 다시 쓸지 물어보기.
-2. Supabase › Authentication › URL Configuration › Redirect URLs에 `https://dailyjourney.org/**` 추가하도록 안내 (사용자가 직접).
+1. ✅ 개인정보처리방침·약관·문의·계정 삭제 페이지와 제목을 Daily Journey 기준으로 고침 (첫 화면 기능 소개도 첫 버전 앱에 맞춤: 설교 노트 자동 요약 없음).
+2. Supabase › Authentication › URL Configuration › Redirect URLs에 `https://dailyjourney.org/**` 추가 (사용자가 직접). 휴대폰 앱은 메일 숫자 코드로 로그인해서 따로 넣을 주소가 없음.
 3. 회사 전화번호를 사이트에 넣을지 (DUNS가 물어볼 수 있음).
 4. 501(c)(3) 승인 / NJ 자선단체 등록이 되면 문구 바꾸기 (+ EIN).
 5. HTTPS(🔒) 확인.

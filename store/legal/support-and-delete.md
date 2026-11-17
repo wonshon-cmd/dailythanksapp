@@ -11,7 +11,7 @@
 
 ### 한국어
 
-**Daily Thanks 고객 문의**
+**Daily Journey 고객 문의**
 
 궁금한 점이나 불편한 점이 있으면 언제든 알려 주세요. 보통 2영업일 안에 답장드려요.
 
@@ -40,7 +40,7 @@
 
 ### English
 
-**Daily Thanks Support**
+**Daily Journey Support**
 
 Questions or problems? Email hi@dailyjourney.org. We usually reply within 2 business days.
 
@@ -65,7 +65,7 @@ Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, USA
 
 ### Español
 
-**Soporte de Daily Thanks**
+**Soporte de Daily Journey**
 
 Escríbenos a hi@dailyjourney.org. Respondemos en unos 2 días hábiles.
 
@@ -82,48 +82,48 @@ Daily Journey, Inc. · 105 Challenger Rd, Ridgefield Park, NJ 07660, EE. UU.
 
 ### 한국어
 
-**Daily Thanks 계정 삭제 요청**
+**Daily Journey 계정 삭제 요청**
 
-- **앱에서 바로 삭제하기 (권장):** 앱을 열고 나의 감사 › ⋯(설정) › 정보 › **계정 삭제**를 누르세요.
+- **앱에서 바로 삭제하기 (권장):** 앱을 열고 「나」 › ⋯(설정) › **계정 삭제**를 누르세요. 누르는 즉시 계정이 지워져요.
 - **앱이 없을 때:** hi@dailyjourney.org로 아래 내용을 보내 주세요.
   - 제목: 계정 삭제 요청
-  - 로그인 방법: Apple / Google / 휴대폰 번호
-  - Apple·Google 로그인이라면 그 계정의 이메일, 휴대폰 로그인이라면 휴대폰 번호
+  - 로그인 방법: 메일 / 휴대폰 번호 / Google / Microsoft
+  - 로그인에 쓴 메일 주소 또는 휴대폰 번호
 - 본인 확인 후 **7일 안에** 삭제하고 결과를 알려 드려요.
 
 **삭제되는 정보**
-- 계정 정보
-- 내가 쓴 감사 글과 감사 카드, 돌아보며 쓴 글
-- 좋아요·저장·숨김·차단 기록
-- 알림 설정과 기기 알림 토큰
+- 계정 정보(이름, 메일 또는 휴대폰 번호)
+- 내가 올린 감사 · 기도제목 · 묵상
+- 공동체 참여 기록, 좋아요 · 기도했어요 기록
+- 기기에만 있던 기록은 앱을 지우면 함께 지워져요
 
 **보관되는 정보**
 - 신고 처리 기록은 안전을 위해 처리 완료 후 1년간 보관해요. 신고한 사람은 익명으로 바뀌어요.
 
 ### English
 
-**Request account deletion — Daily Thanks**
+**Request account deletion — Daily Journey**
 
-- **In the app (fastest):** My Thanks › ⋯ (Settings) › About › **Delete account**.
+- **In the app (fastest):** Me › ⋯ (Settings) › **Delete account**. Your account is deleted right away.
 - **Without the app:** email hi@dailyjourney.org with:
   - Subject: Delete my account
-  - How you sign in: Apple, Google, or phone
-  - Your account email or phone number
+  - How you sign in: email, phone, Google or Microsoft
+  - The email address or phone number you sign in with
 - We verify and delete within **7 days**, then confirm by email.
 
 **Deleted:**
-- Your account
-- Your notes, cards, and reflections
-- Likes, saves, hidden posts, and blocks
-- Reminder settings and push tokens
+- Your account (name, email or phone number)
+- The thanks, prayer requests and reflections you shared
+- Your community memberships, likes and prayers
+- Anything kept only on your device is removed when you delete the app
 
 **Kept:** report records, for one year after resolution for safety. The reporter is anonymized.
 
 ### Español
 
-**Solicitar la eliminación de la cuenta**
+**Solicitar la eliminación de la cuenta — Daily Journey**
 
-- **En la app:** Mi gratitud › ⋯ › Acerca de › **Eliminar cuenta**.
+- **En la app:** Yo › ⋯ (Ajustes) › **Eliminar cuenta**. Se elimina al instante.
 - **Sin la app:** escribe a hi@dailyjourney.org con el asunto "Eliminar mi cuenta". Incluye cómo inicias sesión y tu correo o teléfono.
 
 Eliminamos tus datos en **7 días**. Los registros de reportes se guardan un año, de forma anónima.

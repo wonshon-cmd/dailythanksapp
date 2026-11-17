@@ -249,7 +249,7 @@ create trigger on_auth_user_created after insert on auth.users for each row exec
 -- Anyone signed in can report a post; only the project owner reads them (Supabase › Table Editor › reports).
 create table if not exists reports (
   id uuid primary key default gen_random_uuid(),
-  reporter uuid not null references profiles on delete cascade default auth.uid(),
+  reporter uuid references profiles on delete set null default auth.uid(),   -- kept (anonymous) if the reporter deletes their account
   post_id uuid references posts on delete set null,
   reported_user uuid references profiles on delete set null,
   reason text not null,
@@ -258,6 +258,7 @@ create table if not exists reports (
   status text not null default 'open' check (status in ('open', 'done')),
   created_at timestamptz not null default now()
 );
+alter table reports alter column reporter drop not null;
 alter table reports enable row level security;
 drop policy if exists "file a report" on reports;
 create policy "file a report" on reports for insert with check (reporter = auth.uid());
