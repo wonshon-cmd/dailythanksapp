@@ -30,8 +30,7 @@ skip = {'CNAME', 'dailybible', 'index.html'}
 for p in WEB.iterdir():
     if p.name in skip: continue
     (shutil.copytree(p, out / p.name) if p.is_dir() else shutil.copy2(p, out / p.name))
-(out / 'thanks').mkdir(exist_ok=True)
-shutil.copy2(WEB / 'index.html', out / 'thanks' / 'index.html')
+# (the daily thanks intro is already at site/web/thanks/)
 for p in (WEB / 'dailybible').iterdir():     # the daily bible page is the front page (and its icons win)
     (shutil.copytree(p, out / p.name, dirs_exist_ok=True) if p.is_dir() else shutil.copy2(p, out / p.name))
 shutil.copy2(ROOT / 'content' / 'content.json', out / 'content.json')

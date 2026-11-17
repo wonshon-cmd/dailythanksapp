@@ -126,8 +126,10 @@ doc = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
        '<meta property="og:image" content="https://dailyjourney.org/og.png">\n<meta name="theme-color" content="#FFFFFF">\n'
        '<script>window.SITE_MODE = "web";</script>\n'
        + head + '</style>\n</head>\n<body>' + body + '\n</body>\n</html>\n')
-for sub in ('', 'privacy', 'terms', 'support', 'delete-account', 'join', 't'):
+for sub in ('thanks', 'privacy', 'terms', 'support', 'delete-account', 'join', 't'):   # daily thanks intro lives at /thanks/
     d = WEB / sub; d.mkdir(exist_ok=True); (d / 'index.html').write_text(doc)
+# dailyjourney.org/ itself: the Daily Journey front page (daily bible + daily thanks)
+(WEB / 'index.html').write_text((ROOT / 'site' / 'dailyjourney.html').read_text())
 (WEB / '404.html').write_text(doc)
 (WEB / 'CNAME').write_text('dailyjourney.org\n')
 shutil.copy(ROOT / 'store' / 'icons' / 'play-512.png', WEB / 'favicon.png')
