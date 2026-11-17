@@ -4875,7 +4875,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
       const to = $('#ty-name').value.trim(), text = $('#gratitude-text').value.trim();
       if (!to) { toast(t('ty.needName')); $('#ty-name').focus(); return; }
       if (!text) { $('#gratitude-text').focus(); return; }
-      const from = ($('#ty-from')?.value || '').trim().slice(0, 30); if (from) data.settings.myName = from;
+      const from = (data.settings.myName || '').trim().slice(0, 30); // the name from sign-up
       const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}) };
       data.posts.unshift(p); state.tyName = ''; save(); render(); thanksCard(p.id);
     });
@@ -6211,7 +6211,6 @@ function countShare(id, external = false) {
 function thanksForm(keep = {}) {
   return `<div class="ty-head">Thank you,</div>
     <input id="ty-name" class="ty-name" maxlength="30" placeholder="${esc(t('ty.to'))}" value="${esc(keep.name || '')}" aria-label="${esc(t('ty.to'))}">
-    <input id="ty-from" class="field ty-from" maxlength="30" placeholder="${esc(t('ty.from'))}" value="${esc(data.settings.myName || '')}" aria-label="${esc(t('ty.from'))}">
     <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t('ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
     <button class="primary block" type="submit">${icon('send')}${t('ty.make')}</button>`;
 }
