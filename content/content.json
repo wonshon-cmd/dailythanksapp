@@ -29,11 +29,6 @@
     "prayer": true,
     "sermon": true
   },
-  "qtPlanName": {
-    "ko": "생명의 삶",
-    "en": "Our Daily Bread",
-    "es": "Nuestro Pan Diario"
-  },
   "qtPlan": {
     "ko": {
       "2026-11-16": "아모스 7:10-17",
@@ -102,12 +97,9 @@
         "2026-12-01": "요한복음 3:1-15",
         "2026-12-02": "요한복음 3:16-21"
       }
-    },
-    "qtPlanName": {
-      "ko": "생명의 삶"
     }
   },
-  "_help_qt": "qtPlan: today's passage per language (YYYY-MM-DD → reference), filled every day by .github/workflows/daily-passage.yml (tools/fetch-daily-passage.py): ko 생명의 삶, en Our Daily Bread, es Nuestro Pan Diario. Only the reference is stored. You can also type a date here by hand; a hand-typed date wins until the next run changes it.",
+  "_help_qt": "qtPlan: today's passage per language (YYYY-MM-DD → reference), filled every day by .github/workflows/daily-passage.yml (tools/fetch-daily-passage.py). Only the reference is stored and no source name is shown in the app. You can also type a date here by hand; a hand-typed date wins until the next run changes it.",
   "ipNotice": {
     "_comment": "Turn on only after filing. Each item needs its application number, e.g. 30-2026-0001234 (KR design), 10-2026-0005678 (KR patent), US 63/123,456 (US provisional).",
     "show": false,
