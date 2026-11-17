@@ -973,3 +973,8 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .vw-badge{font-size:10.5px;font-weight:600;color:#A1A6A9;background:#F1F2F3;border-radius:99px;padding:2px 8px}
 .vw-mark{font-family:var(--serif);font-size:12.5px;color:#A1A6A9}
 .vw-label{text-transform:uppercase}
+/* red dot: a group has posts you haven't seen yet */
+.bottom-nav .nav-ico{position:relative}
+.bottom-nav button.has-new .nav-ico::after{content:"";position:absolute;right:-4px;bottom:-2px;width:6px;height:6px;border-radius:50%;background:#FF3B30}
+.new-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#FF3B30;margin-left:8px;vertical-align:middle;flex:none}
+.g-head{display:flex;align-items:center}

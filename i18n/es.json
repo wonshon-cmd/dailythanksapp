@@ -511,5 +511,6 @@
   "col.hint": "{n} imágenes · desliza para verlas. Las notas privadas y peticiones de oración no se incluyen.",
   "col.empty": "Aún no hay nada que reunir.",
   "col.saved": "Imágenes guardadas.",
-  "wg.label": "Versículo del día"
+  "wg.label": "Versículo del día",
+  "gs.new": "Nuevo"
 }
