@@ -90,7 +90,7 @@ Daily Thanks · Gratitude Diary
 ### appstore.subtitle  (30/30)
 
 ```
-Give thanks daily. Live fully.
+Give thanks daily. Live abundantly.
 ```
 
 ### appstore.promo  (148/170)
@@ -126,7 +126,7 @@ One line of thanks a day. Read warm gratitude, write yours, share the joy.
 ### description  (1498/4000)
 
 ```
-Give thanks daily. Live fully. Share the joy.
+Give thanks daily. Live abundantly. Share the joy.
 
 Daily Thanks is the simplest gratitude journal: thirty seconds a day, one line about what you're thankful for.
 

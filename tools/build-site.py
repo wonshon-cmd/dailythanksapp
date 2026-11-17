@@ -122,7 +122,7 @@ head, body = page_html.split('</style>', 1)
 doc = ('<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
        '<link rel="icon" type="image/png" href="/favicon.png">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
-       '<meta property="og:title" content="daily thanks">\n<meta property="og:description" content="Give thanks daily. Live fully. Share the joy.">\n'
+       '<meta property="og:title" content="daily thanks">\n<meta property="og:description" content="Give thanks daily. Live abundantly. Share the joy.">\n'
        '<meta property="og:image" content="https://dailyjourney.org/og.png">\n<meta name="theme-color" content="#FFFFFF">\n'
        '<script>window.SITE_MODE = "web";</script>\n'
        + head + '</style>\n</head>\n<body>' + body + '\n</body>\n</html>\n')

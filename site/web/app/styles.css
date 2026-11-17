@@ -935,3 +935,6 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 /* meditation note: widen the passage a verse at a time */
 .mp-range{display:flex;justify-content:space-between;margin-top:2px}
 .mp-range .link-btn{font-size:12.5px;color:#8E9396;padding:6px 2px}
+/* "I prayed" uses the same heart as a like */
+.rail-btn.prayed .ico{fill:#C46B76;stroke:#C46B76;color:#C46B76;stroke-width:1.5}
+.post-rail .rail-btn span{white-space:nowrap}
