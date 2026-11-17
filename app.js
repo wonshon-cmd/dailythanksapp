@@ -1459,12 +1459,8 @@ function postTemplate(p, i, count) {
 
 function renderFeed(keepIndex = 0) {
   const posts = feedPosts();
-  const isGroup = state.feed === 'group';
+  state.feed = 'public'; const isGroup = false; // 오늘 = everyone's thanks; each group opens from the 소그룹 tab
   main.innerHTML = `
-    <div class="feed-tabs" role="tablist">
-      <button role="tab" class="${isGroup ? 'active' : ''}" aria-selected="${isGroup}" data-action="feed-group">${t('feed.mygroup')}</button>
-      <button role="tab" class="${!isGroup ? 'active' : ''}" aria-selected="${!isGroup}" data-action="feed-public">${t('feed.public')}</button>
-    </div>
     ${isGroup ? `<div class="feed-sub">
       ${isGroup
         ? `<select class="group-select" data-action="change-group" aria-label="${t('compose.groupLabel')}">${data.groups.map(g => `<option value="${esc(g.id)}" ${state.group === g.id ? 'selected' : ''}>${esc(L(g.name))}</option>`).join('')}</select><button class="link-btn" data-action="invite-group" data-id="${esc(state.group || '')}">${icon('plus')}${t('inv.btn')}</button>`
