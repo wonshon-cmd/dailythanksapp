@@ -3241,6 +3241,7 @@ function render(keepIndex) {
     b.classList.toggle('has-new', b.dataset.tab === 'group' && anyUnseen());
     on ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current');
   });
+  { const wp = document.querySelector('.write-pill'); if (wp) wp.hidden = BIBLE_MODE && state.tab === 'group'; } // Community has its own +
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal, read: renderBibleHome, notes: renderSermons, me: renderBibleMe })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
   requestAnimationFrame(markClamped); restoreDrafts($('#app'));
