@@ -947,3 +947,13 @@ html,body,.app-shell,.device,.feed-tabs,.bottom-nav,.sheet,.splash,.reader,.read
 .g-sum .gs-days{width:100%}
 .g-sum .gs-counts{margin:0;font-size:14px;color:var(--sub)}
 .g-card .g-ch{width:100%;margin-top:6px;text-align:left;cursor:pointer}
+/* collections: slides to swipe through before posting */
+.col-chips{margin:12px 0 4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.col-chips::-webkit-scrollbar{display:none}
+.col-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 0 4px;scrollbar-width:none;overscroll-behavior-x:contain}
+.col-track::-webkit-scrollbar{display:none}
+.col-img{flex:0 0 72%;scroll-snap-align:start;border-radius:12px;border:1px solid var(--line);aspect-ratio:4/5;object-fit:cover;background:#fff}
+.col-img.story{flex-basis:52%;aspect-ratio:9/16}
+.col-track .hint{margin:40px auto}
+.col-chips .chip{white-space:nowrap;flex:none}
+.col-track .col-img{width:72%;max-width:72%;min-width:0;height:auto}.col-track .col-img.story{width:52%;max-width:52%}
