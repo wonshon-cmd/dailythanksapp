@@ -3087,7 +3087,7 @@ function biblePicker(opts = {}) {
   if (!bpEl) { bpEl = document.createElement('div'); bpEl.className = 'bpick'; bpEl.id = 'bpick'; document.body.appendChild(bpEl); }
   bpEl.hidden = false;
   bpEl.innerHTML = `<header class="bp-top"><span class="bp-title">${t('bp.title')}</span><button class="close" data-action="bp-close" aria-label="${t('aria.close')}">${icon('x')}</button></header>
-    ${state.bp.mode === 'reader' ? readGauge() + readStatsRow() : ''}
+    ${state.bp.mode === 'reader' ? readStatsRow() : ''}
     <div class="bp-cols"><div class="bp-col bp-books">${BOOK_SECTIONS.map(([k, a, z]) => `<p class="bp-sec">${t('bp.' + k)}</p>${Array.from({ length: z - a + 1 }, (_, i) => a + i).map(b =>
       `<button class="bp-book" data-action="bp-book" data-id="${b}" id="bp-b-${b}"><span>${esc(bookName(b))}${tick(bookRead(b))}</span>${lang() === 'ko' ? `<small>${esc(BOOKS[b - 1][2])}</small>` : ''}</button>`).join('')}`).join('')}</div>
       <div class="bp-col bp-chs" id="bp-chs"></div><div class="bp-col bp-vs" id="bp-vs"></div></div>
@@ -3968,7 +3968,7 @@ function renderBibleHome() {
       ${r?.at ? `<p class="gd-sub">${esc(dayLabel(r.at.slice(0, 10)))}</p>` : ''}
       <div class="gd-acts"><button class="primary" data-action="bb-continue">${icon('book')}${t('bb.continue')}</button><button class="secondary" data-action="reader-pick">${t('bb.pick')}</button></div>
     </section>
-    ${readGauge()}${readStatsRow()}
+    ${readStatsRow()}
     ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
       <p class="gd-ref">${esc(refText(p.ref))}</p>
       <div class="gd-acts"><button class="primary" data-action="bb-today">${t('bb.readToday')}</button></div></section>` : ''}
