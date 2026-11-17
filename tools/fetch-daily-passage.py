@@ -23,9 +23,9 @@ SOURCES = {
     'ko': {'url': os.environ.get('KO_URL', 'https://www.duranno.com/qt/default.asp'), 'tz': 'Asia/Seoul',
            'name': '생명의 삶', 'prefer': ['본문', '오늘의 말씀', 'QT'], 'avoid': ['통독', '일년일독']},
     'en': {'url': os.environ.get('EN_URL', 'https://www.odbm.org/en/devotionals'), 'tz': 'America/New_York',
-           'name': 'Our Daily Bread', 'prefer': ['Today’s Scripture', "Today's Scripture", 'Scripture & Insight', 'Read:'], 'avoid': ['Bible in a Year', 'Bible in One Year']},
-    'es': {'url': os.environ.get('ES_URL', 'https://nuestropandiario.org/'), 'tz': 'America/New_York',
-           'name': 'Nuestro Pan Diario', 'prefer': ['Lectura:', 'Escritura de hoy', 'Lectura de hoy'], 'avoid': ['La Biblia en un año', 'Biblia en un año']},
+           'name': 'Our Daily Bread', 'item': r'href="((?:https://www\.odbm\.org)?/en/devotionals/[a-z0-9][a-z0-9-]+/?)"', 'prefer': ['Today’s Scripture', "Today's Scripture", 'Scripture & Insight', 'Read:'], 'avoid': ['Bible in a Year', 'Bible in One Year']},
+    'es': {'url': os.environ.get('ES_URL', 'https://www.odbm.org/es/devotionals'), 'tz': 'America/New_York',
+           'name': 'Nuestro Pan Diario', 'item': r'href="((?:https://(?:www\.)?(?:nuestropandiario\.org|odbm\.org))?/(?:es/devocionales|devocionales|es/devotionals)/[a-z0-9][a-z0-9-]+/?)"', 'prefer': ['Lectura:', 'Escritura de hoy', 'Lectura de hoy'], 'avoid': ['La Biblia en un año', 'Biblia en un año']},
 }
 
 # Book names in the three languages, from the app itself (BOOKS in app.js) so they always match parseRef.
@@ -100,7 +100,16 @@ def main():
         day = datetime.datetime.now(ZoneInfo(cfg['tz'])).date().isoformat()
         try:
             page = fetch(cfg['url'])
-            ref = find_ref(lang, page) if page else None
+            ref = None
+            # A list page (e.g. odbm.org/en/devotionals): open the newest devotional and read its
+            # "Today's Scripture" line; the list itself only shows the key verse.
+            link = page and re.search(cfg.get('item', r'$^'), page)
+            if link:
+                try:
+                    item = fetch(urllib.parse.urljoin(cfg['url'], html.unescape(link.group(1))))
+                    ref = find_ref(lang, item) if item else None
+                except Exception as e: print(f'  {lang}: could not open today\'s devotional: {e}')
+            ref = ref or (find_ref(lang, page) if page else None)
         except Exception as e:
             print(f'{lang}: could not read {cfg["url"]}: {e}'); continue
         print(f'{lang} {day}: {ref or "no reference found"}')
