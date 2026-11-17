@@ -1015,16 +1015,16 @@ const Cloud = (() => {
 
 /* First visit: name first, then one tap to sign up — Google · Microsoft · Kakao · e-mail · text message.
    A button whose provider isn't switched on in Supabase yet says so instead of failing. */
-function welcomeSheet() {
+function welcomeSheet(reason = '') {
   if (!data.settings.myName) {
     showSheet({ title: t('wl.title'), body: `<form id="wl-form" class="sheet-form"><p class="hint">${t('wl.nameQ')}</p>
       <input id="wl-name" class="field" maxlength="30" autocomplete="name" placeholder="${esc(t('cl.namePh'))}" required>
       <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
-    $('#wl-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#wl-name').value.trim().slice(0, 30); if (!n) return; data.settings.myName = n; save(); welcomeSheet(); });
+    $('#wl-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#wl-name').value.trim().slice(0, 30); if (!n) return; data.settings.myName = n; save(); welcomeSheet(reason); });
     return;
   }
   const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
-  showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${t('wl.sub')}</p>
+  showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>
     <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('kakao', 'chat', t('wl.kakao'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t('np.later')}</button>` });
@@ -4154,7 +4154,7 @@ function joinGroup(code, name, key) {
   state.pendingJoin = { code, name: name || t('scope.group'), key, approve };
 }
 function createGroup() {
-  if (CLOUD && !Cloud.on()) { emailLogin(t('cl.needGroup'), createGroup); return; }
+  if (CLOUD && !Cloud.on()) { welcomeSheet(t('cl.needGroup')); return; }
   showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
     <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
     <button class="primary block" type="submit">${t('gr.create')}</button>
@@ -5353,7 +5353,7 @@ const actions = {
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}), ...(j.approve ? { pending: true } : {}) }; data.groups.push(g); state.pendingJoin = null;
     if (CLOUD) { // Supabase finishes the join (right away, or after signing in); until then it waits as pending
       g.cloud = true; g.pending = true; save(); close(); state.tab = 'group'; state.immersive = false; render();
-      if (Cloud.on()) sync(); else emailLogin(t('cl.needJoin').replace('{name}', j.name));
+      if (Cloud.on()) sync(); else welcomeSheet(t('cl.needJoin').replace('{name}', j.name)); // signed in once = stays signed in
       return;
     }
     if (j.approve) { document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code, approve: true } })); save(); close(); state.tab = 'group'; render(); toast(t('join.pending')); return; }
