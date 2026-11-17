@@ -5469,6 +5469,7 @@ async function toggleFullscreen() {
   const entering = !state.immersive;
   state.immersive = entering;
   if (entering) { if (!BIBLE_MODE) state.tab = 'feed'; state.feed = 'public'; state.immFeed = 'public'; }
+  else if (BIBLE_MODE) { state.immFeed = 'public'; state.tab = 'read'; state.groupDetail = null; } // daily bible: closing the feed always lands on 읽기
   else if (state.immFeed === 'group') { state.immFeed = 'public'; state.tab = 'group'; } // closing a group returns to the 공동체 tab
   else state.immFeed = 'public';
   render(state.tab === 'feed' && state.feed === 'public' ? idx : 0);

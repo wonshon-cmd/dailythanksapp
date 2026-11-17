@@ -41,6 +41,16 @@ front.write_text(front.read_text().replace('<head>', '<head>\n<script>if (/(^#|&
 (out / '.nojekyll').write_text('')
 shutil.copy2(ROOT / 'supabase' / 'schema.sql', out / 'schema.txt')   # easy to open and copy on a phone (Supabase › SQL Editor)
 
+# cache-busting: GitHub Pages caches files ~10 min, so the pages ask for app.js / styles.css by content version
+import hashlib
+for page in out.rglob('index.html'):
+    d = page.parent; t = page.read_text()
+    for name in ('app.js', 'styles.css'):
+        if (d / name).exists() and f'"{name}"' in t:
+            v = hashlib.sha1((d / name).read_bytes()).hexdigest()[:10]
+            t = t.replace(f'"{name}"', f'"{name}?v={v}"')
+    page.write_text(t)
+
 n = 0
 for f in out.rglob('*'):
     if f.suffix not in ('.html', '.js', '.json') or '.git' in f.parts or f.parent.name in ('korean', 'kjv', 'valera'): continue
