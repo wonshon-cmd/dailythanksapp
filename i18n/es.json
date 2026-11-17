@@ -345,7 +345,7 @@
   "s.widget": "Widget de inicio",
   "s.export": "Copiar mis datos de demo (JSON)",
   "cancel": "Cancelar",
-  "s.reset": "Reiniciar demo",
+  "s.reset": "Empezar de nuevo",
   "fs.enter": "Pantalla completa",
   "fs.exit": "Salir de pantalla completa",
   "fs.close": "Cerrar",
@@ -382,7 +382,7 @@
   "fs.ios": "En iPhone, ábrela desde el botón Compartir de Safari → “Agregar a inicio” para verla a pantalla completa como una app.",
   "fs.blocked": "Aquí no está disponible la pantalla completa.",
   "s.fine": "Tus notas se guardan solo en este navegador y no se sincronizan con otros navegadores o dispositivos.",
-  "s.confirmReset": "¿Reiniciar todas las notas y ajustes de esta demo?",
+  "s.confirmReset": "¿Borrar tus notas y ajustes y empezar de nuevo? No se puede deshacer.",
   "toast.reset": "Demo reiniciada.",
   "toast.noStore": "Este navegador no puede guardar datos ahora.",
   "login.terms": "Al continuar, aceptas los <a href=\"{base}/terms\" target=\"_blank\" rel=\"noopener\">Términos de uso</a> y la <a href=\"{base}/privacy\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>. No se tolera contenido ofensivo o abusivo.",
@@ -707,5 +707,10 @@
   "chu.allStarted": "Se inició un reto en todos los grupos.",
   "chu.entry": "Administración · {name}",
   "qz.answer": "Respuesta",
-  "qz.why": "Explicación"
+  "qz.why": "Explicación",
+  "gh.left": "Desliza a la izquierda para leer la Biblia",
+  "gh.right": "Desliza a la derecha para peticiones de oración",
+  "gh.up": "Desliza hacia arriba para la siguiente",
+  "s.intro": "Volver a ver los consejos iniciales",
+  "toast.intro": "Los consejos iniciales se verán de nuevo."
 }
