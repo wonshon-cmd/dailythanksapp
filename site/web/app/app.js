@@ -1310,6 +1310,7 @@ function trackReading() {
   const b = +cur.dataset.b, c = +cur.dataset.c, v = +cur.dataset.v;
   data.reading = { b, c, v };
   data.reading.at = new Date().toISOString();
+  data.readMax = data.readMax || {}; if ((data.readMax[readKey(b, c)] || 0) < v) data.readMax[readKey(b, c)] = v;
   if (v === +cur.dataset.last) { // reached the chapter's last verse: count it and remember the day
     if (!data.readDone.includes(readKey(b, c))) data.readDone.push(readKey(b, c));
     data.readLog = data.readLog || {}; data.readLog[readKey(b, c)] = today();
@@ -1363,7 +1364,7 @@ function biblePicker(opts = {}) {
   bpEl.innerHTML = `<header class="bp-top"><span class="bp-title">${t('bp.title')}</span><button class="close" data-action="bp-close" aria-label="${t('aria.close')}">${icon('x')}</button></header>
     ${state.bp.mode === 'reader' ? readGauge() : ''}
     <div class="bp-cols"><div class="bp-col bp-books">${BOOK_SECTIONS.map(([k, a, z]) => `<p class="bp-sec">${t('bp.' + k)}</p>${Array.from({ length: z - a + 1 }, (_, i) => a + i).map(b =>
-      `<button class="bp-book" data-action="bp-book" data-id="${b}" id="bp-b-${b}"><span>${esc(bookName(b))}</span>${lang() === 'ko' ? `<small>${esc(BOOKS[b - 1][2])}</small>` : ''}</button>`).join('')}`).join('')}</div>
+      `<button class="bp-book" data-action="bp-book" data-id="${b}" id="bp-b-${b}"><span>${esc(bookName(b))}${tick(bookRead(b))}</span>${lang() === 'ko' ? `<small>${esc(BOOKS[b - 1][2])}</small>` : ''}</button>`).join('')}`).join('')}</div>
       <div class="bp-col bp-chs" id="bp-chs"></div><div class="bp-col bp-vs" id="bp-vs"></div></div>
     <footer class="bp-foot"><span class="bp-sel" id="bp-sel"></span><button class="primary" data-action="bp-ok" id="bp-ok">${t('bp.ok')}</button></footer>`;
   bpBook(state.bp.b, true);
@@ -1382,11 +1383,15 @@ function readGauge() {
       <p class="rg-row"><span>${t('rd.nt')}</span><i><b style="width:${(nt / 260 * 100).toFixed(1)}%"></b></i><small>${nt}/260</small></p></div>
   </div>`;
 }
+const chRead = (b, c) => (data.readDone || []).includes(readKey(b, c));
+const verseRead = (b, c, v) => chRead(b, c) || (data.readMax?.[readKey(b, c)] || 0) >= v;
+const bookRead = b => Array.from({ length: BOOKS[b - 1][4] }, (_, i) => i + 1).every(c => chRead(b, c));
+const tick = on => on ? `<i class="bp-tick" aria-label="✓">${icon('check')}</i>` : '';
 function bpBook(b, first) {
   const r = state.bp; r.b = b; if (!first) { r.c = 0; } r.v = r.v2 = 0;
   bpEl.querySelectorAll('.bp-book').forEach(x => x.classList.toggle('on', +x.dataset.id === b));
   const n = BOOKS[b - 1][4];
-  $('#bp-chs').innerHTML = Array.from({ length: n }, (_, i) => `<button class="bp-ch ${(data.readDone || []).includes(readKey(b, i + 1)) ? 'read' : ''}" data-action="bp-ch" data-id="${i + 1}">${t('bp.ch').replace('{n}', i + 1)}</button>`).join('');
+  $('#bp-chs').innerHTML = Array.from({ length: n }, (_, i) => `<button class="bp-ch" data-action="bp-ch" data-id="${i + 1}">${tick(chRead(b, i + 1))}${t('bp.ch').replace('{n}', i + 1)}</button>`).join('');
   $('#bp-vs').innerHTML = '';
   if (first) requestAnimationFrame(() => $(`#bp-b-${b}`)?.scrollIntoView({ block: 'center' }));
   bpSel();
@@ -1399,10 +1404,11 @@ async function bpChapter(c, first) {
   let n = verseCount(r.b, c);
   if (!n) { try { n = (await fetchChapter(r.b, c)).slice(-1)[0].v; } catch { vs.innerHTML = `<p class="bp-load">${t('rd.offline')}</p>`; return; } }
   if (state.bp !== r || r.c !== c) return;
-  vs.innerHTML = Array.from({ length: n }, (_, i) => `<button class="bp-v" data-action="bp-v" data-id="${i + 1}">${t('bp.v').replace('{n}', i + 1)}</button>`).join('') + `<p class="bp-hint">${t('bp.hintV')}</p>`;
+  vs.innerHTML = Array.from({ length: n }, (_, i) => `<button class="bp-v" data-action="bp-v" data-id="${i + 1}">${tick(verseRead(r.b, c, i + 1))}${t('bp.v').replace('{n}', i + 1)}</button>`).join('') + (r.mode === 'reader' ? '' : `<p class="bp-hint">${t('bp.hintV')}</p>`);
 }
 function bpVerse(v) {
   const r = state.bp;
+  if (r.mode === 'reader') { r.v = v; r.v2 = 0; bpDone(); return; }
   if (r.v && !r.v2 && v > r.v) r.v2 = v; else { r.v = v; r.v2 = 0; }
   bpEl.querySelectorAll('.bp-v').forEach(x => { const n = +x.dataset.id; x.classList.toggle('on', n === r.v || (r.v2 && n >= r.v && n <= r.v2)); });
   bpSel();

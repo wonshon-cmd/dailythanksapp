@@ -1217,3 +1217,7 @@ body.capturing #app{filter:blur(18px)}
 .quiz-card .qz-ans{margin-top:12px;padding:12px 14px}
 .quiz-card .qz-correct{margin-bottom:8px}
 .quiz-card .qz-fact{font-size:13.5px;line-height:1.6}
+/* picker: tiny checks for what's been read */
+.bp-tick{display:inline-flex;font-style:normal;color:#A9AEB1;margin:0 5px;vertical-align:middle}
+.bp-tick .ico{font-size:11px;stroke-width:2.2}
+.bp-ch.read::before{display:none}
