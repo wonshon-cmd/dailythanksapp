@@ -1800,7 +1800,7 @@ async function loadChapter(b, c, first) {
   const readOn = data.readLog?.[readKey(b, c)];
   const pages = verses.map(x => { const k = verseKey(b, c, x.v), liked = data.verseLikes.includes(k), saved = data.savedVerses.some(s => s.key === k);
     return `<article class="vs-page${hl(x) ? ' hl' : ''}" id="v-${b}-${c}-${x.v}" data-b="${b}" data-c="${c}" data-v="${x.v}" data-last="${last}">
-    <div class="vs-body"><p class="vs-text">${esc(x.text)}</p><p class="vs-ref"><button class="vs-ref-btn" data-action="reader-pick">${esc(refText({ b, c, v: x.v, v2: x.v }))}</button>${hl(x) && r.group ? ` · ${t('devo.kicker')}` : ''}${readOn ? `<span class="vs-read">${esc(shortDate(readOn))}</span>` : ''}</p>
+    <div class="vs-body"><p class="vs-text">${esc(x.text)}</p><p class="vs-ref"><button class="vs-ref-btn" data-action="reader-pick">${esc(refText({ b, c, v: x.v, v2: x.v }))}</button>${hl(x) && r.group ? ` · ${t('devo.kicker')}` : ''}${r.passage && x === verses[verses.length - 1] && c === (r.c2 || r.c) ? `<span class="fv-done">${icon('check')}</span>` : ''}${readOn ? `<span class="vs-read">${esc(shortDate(readOn))}</span>` : ''}</p>
       ${(() => { const n = notesAt(b, c, x.v)[0]; return n ? `<button class="vs-note" data-action="note" data-id="${esc(n.id)}">${icon('pencil')}<span>${t('note.mine')} · ${esc(refText(n.ref))}</span></button>` : ''; })()}</div>
     <aside class="post-rail vs-rail">
       <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
@@ -2431,7 +2431,7 @@ function verseCards(verses, head, cid = '', label = '') {
     return `<article class="post card-page fv-card" id="v-${x.b}-${x.c}-${x.v}"${cid ? ` data-fv="${esc(cid)}"` : ''}>
       <div class="card-inner">${head}
         <p class="vs-text fv-text">${esc(x.text)}</p>
-        <p class="fv-ref">${label ? `<b class="fv-lab">${label}</b>` : ''}${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}<span>${t('fv.count').replace('{i}', i + 1).replace('{n}', n)}</span></p></div>
+        <p class="fv-ref">${label ? `<b class="fv-lab">${label}</b>` : ''}${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}<span>${t('fv.count').replace('{i}', i + 1).replace('{n}', n)}</span>${i === n - 1 ? `<span class="fv-done">${icon('check')}</span>` : ''}</p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
         <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
@@ -2484,6 +2484,7 @@ function floatSync(o) {
 }
 document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.matches?.(x.sc)); if (o) floatSync(o);
   if (e.target.id === 'feed-scroll') { const sc = e.target, cur = sc.children[Math.round(sc.scrollTop / Math.max(1, sc.clientHeight))];
+    if (cur?.classList.contains('fv-card') && cur.nextElementSibling?.classList.contains('devo-end') && !data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); }
     if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); } onbDone(); } } }, true);
 // a tap on a floating copy changes the verse's own buttons; show their new state
 document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(() => FLOAT.forEach(floatSync), 0); });
