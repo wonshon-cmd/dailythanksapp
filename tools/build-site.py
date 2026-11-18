@@ -149,7 +149,10 @@ bb_html = (ROOT / 'index.html').read_text().replace('<script src="app.js" defer>
 bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Journey · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Journey"')
 # on dailyjourney.org the Bible app is called "daily journey" (tools/build-live.py turns it back into "daily bible" for the github.io site)
 bb_html = bb_html.replace('<script>window.DT_APP = "bible";</script>', '<script>window.DT_APP = "bible"; window.DT_BRAND = "journey";</script>')
+# link previews (a shared verse link opens here): daily journey, not daily thanks
+bb_html = bb_html.replace('<meta name="theme-color"', '<meta property="og:title" content="daily journey">\n<meta property="og:description" content="말씀을 매일 · A day focused on the Word">\n<meta property="og:image" content="https://dailyjourney.org/og-journey.png">\n<meta name="theme-color"', 1)
 (bb_dir / 'index.html').write_text(bb_html)
+shutil.copy(ROOT / 'brand' / 'og-journey.png', WEB / 'og-journey.png')
 if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
 # daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
 db_site = WEB / 'dailybible'

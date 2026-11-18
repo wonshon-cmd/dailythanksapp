@@ -33,7 +33,7 @@ for p in WEB.iterdir():
 # (the daily thanks intro is already at site/web/thanks/)
 # this site is "daily bible": undo the dailyjourney.org name on the app page
 bbi = out / 'daily-bible' / 'index.html'
-bbi.write_text(bbi.read_text().replace(' window.DT_BRAND = "journey";', '').replace('Daily Journey · 말씀을 매일', 'Daily Bible · 말씀을 매일').replace('content="Daily Journey"', 'content="Daily Bible"'))
+bbi.write_text(bbi.read_text().replace(' window.DT_BRAND = "journey";', '').replace('og:title" content="daily journey"', 'og:title" content="daily bible"').replace('https://dailyjourney.org/og-journey.png', BASE + '/og.png').replace('Daily Journey · 말씀을 매일', 'Daily Bible · 말씀을 매일').replace('content="Daily Journey"', 'content="Daily Bible"'))
 for p in (WEB / 'dailybible').iterdir():     # the daily bible page is the front page (and its icons win)
     (shutil.copytree(p, out / p.name, dirs_exist_ok=True) if p.is_dir() else shutil.copy2(p, out / p.name))
 shutil.copy2(ROOT / 'content' / 'content.json', out / 'content.json')
