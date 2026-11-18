@@ -1790,6 +1790,7 @@ async function loadChapter(b, c, first) {
       <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
       <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
+      <button class="rail-btn" data-action="reader-close" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button>
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
   if (r.passage) {
