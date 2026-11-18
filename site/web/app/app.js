@@ -5819,12 +5819,12 @@ const actions = {
   'verse-like': k => {
     const on = !data.verseLikes.includes(k);
     data.verseLikes = on ? [...data.verseLikes, k] : data.verseLikes.filter(x => x !== k); save();
-    const btn = $(`[data-action="verse-like"][data-id="${k}"]`); if (btn) { btn.classList.toggle('liked', on); btn.setAttribute('aria-pressed', on); }
+    document.querySelectorAll(`[data-action="verse-like"][data-id="${k}"]`).forEach(btn => { btn.classList.toggle('liked', on); btn.setAttribute('aria-pressed', on); });   // the verse's own button and the floating copy
   },
   'verse-save': k => {
     const on = !data.savedVerses.some(x => x.key === k);
     data.savedVerses = on ? [{ ...verseFromKey(k), date: today() }, ...data.savedVerses] : data.savedVerses.filter(x => x.key !== k); save();
-    const btn = $(`[data-action="verse-save"][data-id="${k}"]`); if (btn) { btn.classList.toggle('saved', on); btn.setAttribute('aria-pressed', on); }
+    document.querySelectorAll(`[data-action="verse-save"][data-id="${k}"]`).forEach(btn => { btn.classList.toggle('saved', on); btn.setAttribute('aria-pressed', on); });   // the verse's own button and the floating copy
     toast(on ? t('verse.saved') : t('verse.unsaved'));
   },
   'verse-send': k => {
@@ -6004,7 +6004,7 @@ render();
 // Double tap on a post or a verse: like it (prayer requests: "I prayed"). Only turns it on, like a heart tap.
 function doubleTap(el, x, y) {
   if (!el || el.closest('button,a,input,textarea,.sheet')) return;
-  const post = el.closest('.post.imm[data-post]'), verse = el.closest('.vs-page');
+  const post = el.closest('.post.imm[data-post]'), fv = !post && el.closest('.fv-card'), verse = el.closest('.vs-page') || (fv && (([, b, c, v]) => ({ dataset: { b, c, v } }))(fv.id.split('-')));   // today's passage cards too
   let done = false;
   if (post) {
     const p = data.posts.find(q => q.id === post.dataset.post); if (!p) return;
