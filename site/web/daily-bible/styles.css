@@ -1701,3 +1701,7 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .fl-ref { background: #fff; padding-right: 10px; box-shadow: 0 0 0 6px #fff; }
 /* the text never sits under the fixed reference */
 .vs-page.fl-hide { padding-bottom: calc(110px + var(--safe-bottom)); }
+/* verse pages: the icons stay light so the verse comes first; a liked or saved verse still shows */
+.vs-rail .rail-btn .ico, .fv-card .post-rail .rail-btn .ico, .fl-rail .rail-btn .ico { color: #B8BDC0; }
+.vs-rail .rail-btn.saved .ico, .fv-card .post-rail .rail-btn.saved .ico, .fl-rail .rail-btn.saved .ico { color: #8A9094; fill: #8A9094; }
+.vs-rail .rail-btn.liked .ico, .fv-card .post-rail .rail-btn.liked .ico, .fl-rail .rail-btn.liked .ico { color: #C46B76; }
