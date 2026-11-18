@@ -14,6 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
     'wl.apple': "Apple로 계속하기", 'wl.tag': "말씀을 매일, 공동체와 함께", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
     'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
     'mc.code': "코드",
@@ -175,6 +176,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
     'wl.apple': "Continue with Apple", 'wl.tag': "The Word daily, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
     'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
     'mc.code': "Code",
@@ -336,6 +338,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
     'wl.apple': "Continuar con Apple", 'wl.tag': "La Palabra cada día, en comunidad", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
     'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
     'mc.code': "Código",
@@ -3028,7 +3031,7 @@ function noteList(notes, status) {
   if (terms.length && !rows.length) return `<p class="hint sn-none">${esc(t('ss.none').replace('{q}', state.snQuery.trim()))}</p>`;
   const m = x => terms.length ? markTerms(x, terms) : esc(x);
   return `${terms.length ? `<p class="sn-count">${esc(t('ss.count').replace('{n}', rows.length))}</p>` : ''}<div class="notes">${rows.map(({ n, hit }) => `<button class="note" data-action="note-open" data-id="${esc(n.id)}">
-      <span class="note-meta"><span>${m(dayLabel(n.date || today()) + (n.preacher ? ' · ' + n.preacher : '') + (terms.length && n.church ? ' · ' + n.church : ''))}</span>${status(n) ? `<span class="badge">${esc(status(n))}</span>` : ''}</span>
+      <span class="note-meta"><span>${m([dayLabel(n.date || today()), n.preacher, n.church, serviceName(n.service)].filter(Boolean).join(' · '))}</span>${status(n) ? `<span class="badge">${esc(status(n))}</span>` : ''}</span>
       <span class="note-text">${m(n.title || n.summary?.title || t('sn.title'))}</span>
       ${terms.length && (n.summary?.passages || []).length ? `<span class="note-ref">${m(n.summary.passages.join(', '))}</span>` : ''}
       ${hit?.snip ? `<span class="note-reflect">${hit.where === 'tr' ? `<small class="sn-where">${t('ss.inTr')}</small> ` : ''}${m(hit.snip)}</span>`
@@ -3161,6 +3164,17 @@ function readPlace() {
   if (sel && sel.value !== 'new') { const x = (data.sermonPlaces || [])[+sel.value] || {}; return { preacher: x.preacher || '', church: x.church || '' }; }
   return { preacher: $('#sn-preacher')?.value.trim() || '', church: $('#sn-church')?.value.trim() || '' };
 }
+// Which service: 주일 · 수요 · 금요 · 새벽 (or one you type). Guessed from the day and time, and you can change it.
+const SERVICES = ['sun', 'wed', 'fri', 'dawn'];
+function guessService(dateStr) {
+  const now = new Date(), d = dateStr ? new Date(dateStr + 'T12:00:00') : now, h = dateStr === today() || !dateStr ? now.getHours() : 12;
+  if (h < 7) return 'dawn';
+  return d.getDay() === 0 ? 'sun' : d.getDay() === 3 ? 'wed' : d.getDay() === 5 ? 'fri' : '';
+}
+const serviceName = v => SERVICES.includes(v) ? t('sv.' + v) : (v || '');
+const serviceField = (val = guessService(today())) => `<select id="sn-service" class="field sn-select" aria-label="${esc(t('sv.label'))}">
+    <option value="" ${val ? '' : 'selected'}>${t('sv.none')}</option>${SERVICES.map(v => `<option value="${v}" ${val === v ? 'selected' : ''}>${t('sv.' + v)}</option>`).join('')}
+    ${val && !SERVICES.includes(val) ? `<option value="${esc(val)}" selected>${esc(val)}</option>` : ''}<option value="other">${t('sv.other')}</option></select>`;
 // A sermon can have more than one passage (e.g. 룻기 4:4-9 and 마태복음 1:5): the first is required, up to two more.
 const snAllRefs = () => [state.snRef, ...(state.snRefs || [])].filter(Boolean);
 const snMoreHtml = () => `${(state.snRefs || []).map((r, i) => `<span class="sn-ref2">${icon('book')}<span>${esc(refText(r))}</span><button type="button" data-action="sn-ref-rm" data-id="${i}" aria-label="${esc(t('sn.rmRef'))}">${icon('x')}</button></span>`).join('')}${state.snRef && (state.snRefs || []).length < 2 ? `<button type="button" class="link-btn sn-addref" data-action="sn-ref-add">${t('sn.addRef')}</button>` : ''}`;
@@ -3179,12 +3193,16 @@ function sermonNew() {
     <input id="sn-title" class="field" maxlength="120" placeholder="${esc(t('sn.titleF'))}">
     <div id="sn-placebox">${placeField()}</div>
     <label class="sn-date"><span>${t('sn.date')}</span><input id="sn-date" type="date" class="field" value="${state.snDate && keep ? state.snDate : today()}" max="${today()}"></label>
+    <div id="sn-servicebox">${serviceField(state.snService && keep ? state.snService : guessService(state.snDate && keep ? state.snDate : today()))}</div>
     <div id="rec-card" class="rec-card">${recCard()}</div>
     <div id="sn-input">${snInput()}</div>
     <button class="primary block" type="submit">${t('sn.make')}</button></form>` });
   $('#sn-form').addEventListener('submit', e => { e.preventDefault(); sermonSubmit(); });
   $('#sn-place')?.addEventListener('change', e => { if (e.target.value === 'new') { state.snPlace = 'new'; $('#sn-placebox').innerHTML = placeField(); $('#sn-preacher')?.focus(); } else state.snPlace = +e.target.value; });
-  $('#sn-date')?.addEventListener('change', e => { state.snDate = e.target.value; });
+  $('#sn-date')?.addEventListener('change', e => { state.snDate = e.target.value; const box = $('#sn-servicebox'); if (box && !state.snServiceSet) box.innerHTML = serviceField(guessService(e.target.value)); });
+  state.snServiceSet = false;
+  $('#sn-servicebox')?.addEventListener('change', e => { if (e.target.id !== 'sn-service') return; state.snServiceSet = true;
+    if (e.target.value === 'other') { e.target.parentElement.innerHTML = `<input id="sn-service" class="field" maxlength="30" placeholder="${esc(t('sv.otherQ'))}">`; $('#sn-service').focus(); } else state.snService = e.target.value; });
   recPaint(true);
 }
 const snInput = () => state.snMode === 'write' ? `<input id="sn-main" class="field" maxlength="200" placeholder="${esc(t('sn.mainF'))}">
@@ -3215,7 +3233,7 @@ async function snRecord() {
   } catch { toast(t('sn.need')); }
 }
 async function sermonSubmit() {
-  const title = $('#sn-title')?.value.trim() || '', { preacher, church } = readPlace(), date = $('#sn-date')?.value || today();
+  const title = $('#sn-title')?.value.trim() || '', { preacher, church } = readPlace(), date = $('#sn-date')?.value || today(), service = $('#sn-service')?.value || '';
   if (state.snMode === 'write') {
     placeRemember(preacher, church); state.snDate = null;
     const main = $('#sn-main')?.value.trim() || '', body = $('#sn-body')?.value.trim() || '';
@@ -3224,7 +3242,7 @@ async function sermonSubmit() {
       const blob = Rec.blob, id = 'n' + Date.now();
       const context = [Rec.ctx.trim(), church, ...snAllRefs().map(refText)].filter(Boolean).join(' · ').slice(0, 500);
       const passageText = (await state.snPassageText?.catch?.(() => '')) || '';
-      data.sermonNotes = [{ id, manual: true, slang: sermonLang(), rec: { dur: Math.round(Rec.dur || 0), bytes: blob.size, ...(Rec.fileName ? { file: Rec.fileName.slice(0, 80) } : {}) }, date, title, preacher, church, status: 'done', body,
+      data.sermonNotes = [{ id, manual: true, slang: sermonLang(), rec: { dur: Math.round(Rec.dur || 0), bytes: blob.size, ...(Rec.fileName ? { file: Rec.fileName.slice(0, 80) } : {}) }, date, title, preacher, church, service, status: 'done', body,
         ...(state.snRef ? { ref: state.snRef, ...(state.snRefs?.length ? { refs: [...state.snRefs] } : {}), passageText: passageText.slice(0, 20000) } : {}),
         ...(context ? { context } : {}), ...(Rec.live.final.trim() ? { liveText: Rec.live.final.trim() } : {}),
         summary: { title, passages: snAllRefs().map(refText), main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } }, ...(data.sermonNotes || [])];
@@ -3235,7 +3253,7 @@ async function sermonSubmit() {
     }
     if (!main && !body) { toast(t('sn.need')); return; }
     const passageText = state.snRef ? ((await state.snPassageText?.catch?.(() => '')) || '') : '';
-    data.sermonNotes = [{ id: 'n' + Date.now(), manual: true, date, title, preacher, church, status: 'done', body, ...(church ? { context: church } : {}),
+    data.sermonNotes = [{ id: 'n' + Date.now(), manual: true, date, title, preacher, church, service, status: 'done', body, ...(church ? { context: church } : {}),
       ...(state.snRef ? { ref: state.snRef, ...(state.snRefs?.length ? { refs: [...state.snRefs] } : {}), passageText: passageText.slice(0, 20000) } : {}),
       summary: { title, passages: snAllRefs().map(refText), main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } }, ...(data.sermonNotes || [])];
     const wantAi = $('#sn-ai')?.checked;
