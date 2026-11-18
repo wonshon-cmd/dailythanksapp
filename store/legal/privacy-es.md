@@ -5,7 +5,7 @@
 
 **Fecha de vigencia: 17 de noviembre de 2026**
 
-Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (incluidos daily Bible y daily thanks en la web) (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
+Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
 
 ## 1. Qué recogemos
 
