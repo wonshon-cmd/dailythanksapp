@@ -1148,21 +1148,20 @@ function welcomeSheet(reason = '', first = false) {
     return;
   }
   // only the ways that are switched on in Supabase show up (e-mail always); Google/Microsoft only on the web for now
-  const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}" ${id === 'email' ? '' : 'hidden'}>${icon(ic)}<span>${label}</span></button>`;
+  const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: first ? '' : t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `${first ? `<div class="wl-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p>${t('wl.tag')}</p></div>` : `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>`}
     <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('apple', 'apple', t('wl.apple'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t(first ? 'wl.look' : 'np.later')}</button>` });
   sheet.classList.toggle('sheet-full', first);
   const native = !!window.Capacitor?.isNativePlatform?.();
-  Cloud.providers().then(on => document.querySelectorAll('[data-action="wl-sign"]').forEach(x => { const id = x.dataset.id;
-    if (id !== 'email') x.hidden = !on[id] || (native && id !== 'phone'); }));
+
 }
 async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
   const on = await Cloud.providers();
-  if (id === 'phone') { if (on.phone) smsLogin(); return; }
-  if (on[id]) Cloud.oauth(id);
+  if (id === 'phone') { if (on.phone) smsLogin(); else toast(t('wl.notYet')); return; }
+  if (on[id]) Cloud.oauth(id); else toast(t('wl.notYet'));
 }
 // Korean numbers (010-…) become +8210…; numbers typed with + stay as they are
 const e164 = v => { const d = String(v).replace(/[^\d+]/g, ''); return d.startsWith('+') ? d : d.startsWith('0') ? '+82' + d.slice(1) : '+' + d; };
@@ -2181,12 +2180,17 @@ function composeCard() {
 }
 function loginCard() {
   return `<article class="post card-page" id="login-card"><div class="card-inner">
-    <span class="wordmark card-mark">daily <em>thanks</em></span>
+    <span class="wordmark card-mark">daily <em>${BIBLE_MODE ? BRAND2 : 'thanks'}</em></span>
     <p class="card-title">${t('login.title')}</p><p class="card-sub">${t('login.sub')}</p>
-    <div class="login-buttons">
+    <div class="login-buttons">${CLOUD ? `
+      <button class="login-btn" data-action="wl-sign" data-id="google">${icon('google')}<span>${t('wl.google')}</span></button>
+      <button class="login-btn apple" data-action="wl-sign" data-id="apple">${icon('apple')}<span>${t('wl.apple')}</span></button>
+      <button class="login-btn" data-action="wl-sign" data-id="azure">${icon('microsoft')}<span>${t('wl.ms')}</span></button>
+      <button class="login-btn" data-action="wl-sign" data-id="email">${icon('mail')}<span>${t('wl.email')}</span></button>
+      <button class="login-btn" data-action="wl-sign" data-id="phone">${icon('phoneMsg')}<span>${t('wl.phone')}</span></button>` : `
       <button class="login-btn apple" data-action="login" data-id="apple">${icon('apple')}<span>${t('login.apple')}</span></button>
       <button class="login-btn" data-action="login" data-id="google">${icon('google')}<span>${t('login.google')}</span></button>
-      <button class="login-btn" data-action="login" data-id="phone">${icon('phoneMsg')}<span>${t('login.phone')}</span></button>
+      <button class="login-btn" data-action="login" data-id="phone">${icon('phoneMsg')}<span>${t('login.phone')}</span></button>`}
     </div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <p class="fine-print">${t('login.demo')}</p></div></article>`;
