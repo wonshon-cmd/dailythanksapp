@@ -1857,6 +1857,7 @@ function passageCount() {
   const sc = $('#reader-scroll'), gap = $('.reader-gap'); if (!sc || !gap) return;
   const pages = sc.querySelectorAll('.vs-page'), i = Math.min(pages.length - 1, Math.round(sc.scrollTop / Math.max(1, sc.clientHeight)));
   gap.innerHTML = pages.length > 1 ? `<span class="pg-count">${i + 1} / ${pages.length}</span>` : '';
+  if (pages.length && i === pages.length - 1 && !data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); }   // today's passage: read to the end
 }
 // Leaving a group's full-screen view (back to the 공동체 tab) or the prayer lane (back to where you were).
 function immBack() {
@@ -2891,9 +2892,8 @@ function renderBibleHome() {
       ${r?.at ? `<p class="gd-sub">${esc(dayLabel(r.at.slice(0, 10)))}</p>` : ''}
       <div class="gd-acts"><button class="primary" data-action="bb-continue">${icon('book')}${t('bb.continue')}</button><button class="secondary" data-action="reader-pick">${t('bb.pick')}</button></div>
     </section>
-    ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
-      <p class="gd-ref">${esc(refText(p.ref))}</p>
-      <div class="gd-acts"><button class="primary" data-action="bb-today">${t('bb.readToday')}</button></div></section>` : ''}
+    ${p?.ref ? `<button class="gd-devo gd-devo-btn" data-action="bb-today"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span>${data.readDevo?.[today()] ? `<span class="devo-done">${icon('check')}</span>` : ''}</p>
+      <p class="gd-ref">${esc(refText(p.ref))}</p></button>` : ''}
     ${plans.some(c => c.lastDay !== today()) ? '' : planSection(plans)}
   </div></div>`;  fitScreen();
 }
