@@ -6130,7 +6130,13 @@ function onbPassage() {
 function onbArrow() {
   if (state.onb !== 'passage' || $('#onb-arrow')) return;
   const a = Object.assign(document.createElement('div'), { id: 'onb-arrow', className: 'onb-arrow', innerHTML: icon('down') });
-  document.getElementById('app').append(a);
+  const app = document.getElementById('app'); app.append(a);
+  // halfway between the verse and the reference line under it
+  const place = () => { const sc0 = $('#feed-scroll'); if (!sc0) return; const cur = sc0.children[Math.round(sc0.scrollTop / Math.max(1, sc0.clientHeight))];
+    const tx = cur?.querySelector('.fv-text'), ref = $('#fl-ref-fv-card') || cur?.querySelector('.fv-ref'); if (!tx || !ref) return;
+    const ar = app.getBoundingClientRect(), mid = (tx.getBoundingClientRect().bottom + ref.getBoundingClientRect().top) / 2;
+    a.style.top = (mid - ar.top - 11) + 'px'; a.style.bottom = 'auto'; };
+  place(); setTimeout(place, 300);
   const sc = $('#feed-scroll'), y0 = sc?.scrollTop || 0;
   sc?.addEventListener('scroll', function off() { if (Math.abs(sc.scrollTop - y0) > 40) { a.classList.add('gone'); setTimeout(() => a.remove(), 600); sc.removeEventListener('scroll', off); } });
 }
