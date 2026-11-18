@@ -1651,7 +1651,7 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 @media (prefers-reduced-motion:reduce){#tour .tour-track{transition:none}#tour .tour-finger{display:none}}
 
 /* daily bible top bar: language (first visits) + write */
-.top-right{display:flex;align-items:center;gap:6px}
+.top-right{display:flex;align-items:center;gap:16px}
 .top-lang{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 4px;font-size:12.5px;color:#9BA0A3;cursor:pointer}
 .top-lang .ico{font-size:15px}
 .top-lang[hidden]{display:none}
