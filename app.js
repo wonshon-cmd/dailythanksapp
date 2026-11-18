@@ -810,7 +810,7 @@ const ICONS = {
   history: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/>',
   chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.3 9.3 0 0 1-3.6-.7L3 21l1.6-4.3A8 8 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>',
   camera: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>',
-  pray: '<path d="M12 9.2c-1-1.6-3.6-1.3-3.6.8 0 1.6 2.2 3 3.6 4 1.4-1 3.6-2.4 3.6-4 0-2.1-2.6-2.4-3.6-.8z"/><path d="M3.5 13.5l3.2 4.2a3 3 0 0 0 2.4 1.2H15a3 3 0 0 0 2.4-1.2l3.2-4.2"/>',   // hands holding a heart
+  pray: '<path d="M12 7.4V20"/><path d="M12 7.4c0-1.4-2.1-1.5-2.3 0L8 15.4 6.8 17.2"/><path d="M12 7.4c0-1.4 2.1-1.5 2.3 0l1.7 8 1.2 1.8"/><path d="M10.6 16.4v-2.9c0-1.4 2.8-1.4 2.8 0v2.9"/><path d="M6.8 17.2 3 18.4M17.2 17.2l3.8 1.2"/><path d="M6.8 17.2l1.6 2.9M17.2 17.2l-1.6 2.9"/><path d="M8 19.6c1.8 0 4-.4 4-1.3 0 .9 2.2 1.3 4 1.3"/><path d="M12 1.8v2.2M7.6 3.2l1 1.4M16.4 3.2l-1 1.4M5.2 6.6h1.8M17 6.6h1.8"/>',   // praying hands
   mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
   send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
   candle: '<path d="M12 2.5c1.4 1.8 1.9 3 1.9 3.9a1.9 1.9 0 0 1-3.8 0c0-.9.5-2.1 1.9-3.9z"/><rect x="9" y="10" width="6" height="11" rx="1"/><path d="M7 21h10"/>',
@@ -1770,6 +1770,7 @@ function openReader(opts = {}) {
   if (!readerEl) { readerEl = document.createElement('div'); readerEl.className = 'reader'; readerEl.id = 'reader'; sheet.parentElement.appendChild(readerEl); }
   readerEl.innerHTML = `<header class="reader-top">
       <button class="reader-x" data-action="reader-close" aria-label="${t('aria.close')}">${icon('x')}</button>
+      <span class="reader-brand" aria-hidden="true"><span class="wordmark">daily <em>${BIBLE_MODE ? BRAND2 : 'thanks'}</em></span></span>
       <span class="reader-gap"></span>
       <span class="reader-tr"><button class="size-btn" data-action="size-cycle" aria-label="${esc(t('size.btn'))}">${lang() === 'ko' ? '가' : 'A'}<small>±</small></button>${esc(VERSE_TR[lang()] || VERSE_TR.en)}</span></header>
     <div class="reader-scroll${passage ? ' passage' : ''}" id="reader-scroll"><div class="reader-more" id="reader-more">${t('rd.loading')}</div></div>

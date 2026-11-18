@@ -1763,10 +1763,8 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .done-check { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: #F1F2F3; color: #3a3f44; margin-bottom: 16px; }
 .done-check .ico { font-size: 24px; stroke-width: 2; }
 /* prayer icon (hands holding a heart): when prayed, only the heart fills */
-.rail-btn.prayed .ico { fill: none; }
-.rail-btn.prayed .ico path:first-child { fill: #C46B76; }
+.rail-btn.prayed .ico { fill: none; stroke: #C46B76; color: #C46B76; }
 .tap-heart.pray svg { fill: none; stroke-width: 1.5; }
-.tap-heart.pray svg path:first-child { fill: currentColor; }
 .sheet.sheet-full::before { display: none; }
 .fv-card .fv-text { padding-right: 30px; }   /* clear of the icons on the right */
 /* Read tab: the whole today's-passage box opens it; a check once it's read */
@@ -1780,3 +1778,11 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .imm-brand { left: 40px; top: calc(64px + var(--safe-top)); }
 .imm-tr { right: 34px; }
 @media (max-height:700px) { .imm-brand { top: calc(48px + var(--safe-top)); } }
+/* reader: same frame as the feed — wordmark top left over the verse, A± / translation top right over the icons, verse and reference on one left edge */
+.reader-top { padding: calc(58px + var(--safe-top)) 38px 10px 40px; }
+@media (max-height:700px) { .reader-top { padding-top: calc(42px + var(--safe-top)); } }
+.reader-brand .wordmark { font-size: 20px; color: #B4B8BA; }
+.reader:has(.vs-page) .reader-x { display: none; }
+.reader:not(:has(.vs-page)) .reader-brand { display: none; }
+.vs-page { padding-left: 40px; padding-right: 40px; }
+.reader-brand { transform: translateY(-2px); }
