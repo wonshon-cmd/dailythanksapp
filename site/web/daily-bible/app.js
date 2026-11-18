@@ -1861,7 +1861,7 @@ function passageCount() {
   const sc = $('#reader-scroll'), gap = $('.reader-gap'); if (!sc || !gap) return;
   const pages = sc.querySelectorAll('.vs-page'), i = Math.min(pages.length - 1, Math.round(sc.scrollTop / Math.max(1, sc.clientHeight)));
   gap.innerHTML = pages.length > 1 ? `<span class="pg-count">${i + 1} / ${pages.length}</span>` : '';
-  if (pages.length && i === pages.length - 1 && !data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); }   // today's passage: read to the end
+  if (pages.length && i === pages.length - 1 && !data.readDevo?.[today()]) { markDevoRead(); save(true); }   // today's passage: read to the end
 }
 // Leaving a group's full-screen view (back to the 공동체 tab) or the prayer lane (back to where you were).
 function immBack() {
@@ -2443,6 +2443,15 @@ function verseCards(verses, head, cid = '', label = '') {
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${fsDot()}</button>
       </aside></article>`; }).join('');
 }
+// Today's passage read to the end: it shows a check, counts for today's reading streak, and becomes "where you left off".
+function markDevoRead() {
+  data.readDevo = { ...(data.readDevo || {}), [today()]: true };
+  const p = todaysPassage(data.groups[0]?.id)?.ref; if (!p) return;
+  const last = p.c2 && p.c2 > p.c ? [p.c2, p.e2 || p.v2 || 1] : [p.c, p.v2 || p.v || 1];
+  data.readLog = data.readLog || {}; for (let c = p.c; c <= (p.c2 || p.c); c++) data.readLog[readKey(p.b, c)] = today();
+  if (!data.rtStart) data.rtStart = today();
+  data.reading = { b: p.b, c: last[0], v: last[1], at: new Date().toISOString() };
+}
 // One verse per page: the icons on the right and the verse's reference stay put while only the verse text slides.
 // A floating rail + reference show the verse on screen; each page's own copies are hidden while they're up.
 const FLOAT = [
@@ -2488,8 +2497,8 @@ function floatSync(o) {
 }
 document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.matches?.(x.sc)); if (o) floatSync(o);
   if (e.target.id === 'feed-scroll') { const sc = e.target, cur = sc.children[Math.round(sc.scrollTop / Math.max(1, sc.clientHeight))];
-    if (cur?.classList.contains('fv-card') && cur.nextElementSibling?.classList.contains('devo-end') && !data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); }
-    if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); } onbDone(); } } }, true);
+    if (cur?.classList.contains('fv-card') && cur.nextElementSibling?.classList.contains('devo-end') && !data.readDevo?.[today()]) { markDevoRead(); save(true); }
+    if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { markDevoRead(); save(true); } onbDone(); } } }, true);
 // a tap on a floating copy changes the verse's own buttons; show their new state
 document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(() => FLOAT.forEach(floatSync), 0); });
 window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
