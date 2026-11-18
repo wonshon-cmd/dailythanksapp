@@ -1794,6 +1794,7 @@ async function loadChapter(b, c, first) {
   const sc = $('#reader-scroll');
   if (r.passage) {
     if (first) { more.remove(); sc.innerHTML = pages; sc.scrollLeft = 0; } else sc.insertAdjacentHTML('beforeend', pages);
+    setTimeout(fvRail, 0);
     passageCount();
     if (r.c2 > c) await loadChapter(b, c + 1, false);
     return true;
@@ -1804,6 +1805,7 @@ async function loadChapter(b, c, first) {
   const target = first ? ($(`#v-${b}-${c}-${r.v || 1}`) || $(`#v-${b}-${c}-1`)) : onLoadingPage ? $(`#v-${b}-${c}-1`) : null;
   if (target && sc) { sc.scrollTop = target.offsetTop; requestAnimationFrame(() => { sc.scrollTop = target.offsetTop; trackReading(); }); }
   more.textContent = nextChapter(b, c) ? t('rd.loading') : t('rd.end');
+  setTimeout(fvRail, 0);
   return true;
 }
 function loadNextChapter() {
@@ -2421,24 +2423,42 @@ function verseCards(verses, head, cid = '') {
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button>
       </aside></article>`; }).join('');
 }
-// One verse per page: the icons on the right stay put while the verses slide past them.
-// A single floating rail shows the buttons of the verse on screen; each card's own rail is hidden while it's up.
-function fvRail() {
-  const sc = $('#feed-scroll'), old = $('#fv-rail');
-  const cards = sc ? [...sc.children] : [], h = sc?.clientHeight || 1, pos = sc ? sc.scrollTop / h : 0;
+// One verse per page: the icons on the right and the verse's reference stay put while only the verse text slides.
+// A floating rail + reference show the verse on screen; each page's own copies are hidden while they're up.
+const FLOAT = [
+  { sc: '#feed-scroll', card: 'fv-card', rail: '.post-rail', ref: '.fv-ref' },
+  { sc: '#reader-scroll', card: 'vs-page', rail: '.vs-rail', ref: '.vs-ref' }
+];
+function fvRail() { FLOAT.forEach(floatSync); }
+function floatSync(o) {
+  const sc = $(o.sc), fr = $('#fl-rail-' + o.card), ff = $('#fl-ref-' + o.card);
+  const off = () => { fr?.remove(); ff?.remove(); sc?.querySelectorAll('.fl-hide').forEach(c => c.classList.remove('fl-hide')); };
+  if (!sc || !sc.offsetParent) return off();
+  const horiz = sc.classList.contains('passage'), cards = [...sc.children];
+  const pos = horiz ? sc.scrollLeft / (sc.clientWidth || 1) : sc.scrollTop / (sc.clientHeight || 1);
   const lo = cards[Math.floor(pos + 0.01)], hi = cards[Math.ceil(pos - 0.01)], cur = cards[Math.round(pos)];
-  const on = lo?.classList.contains('fv-card') && hi?.classList.contains('fv-card') && cur?.querySelector(':scope > .post-rail');
-  if (!on) { old?.remove(); sc?.querySelectorAll('.fv-card.rail-hide').forEach(c => c.classList.remove('rail-hide')); return; }
-  const src = cur.querySelector(':scope > .post-rail'), sr = sc.getBoundingClientRect(), cr = cur.getBoundingClientRect(), rr = src.getBoundingClientRect();
-  const f = old || Object.assign(document.createElement('aside'), { id: 'fv-rail', className: 'post-rail fv-rail' });
-  if (f.dataset.for !== cur.id || f.dataset.v !== src.innerHTML.length + '') { f.innerHTML = src.innerHTML; f.dataset.for = cur.id; f.dataset.v = src.innerHTML.length + ''; }
-  if (!old) { f.style.left = rr.left + 'px'; f.style.top = (sr.top + rr.top - cr.top) + 'px'; sc.parentElement.append(f); }
-  sc.querySelectorAll('.fv-card').forEach(c => c.classList.add('rail-hide'));
+  const src = cur?.querySelector(o.rail), ref = cur?.querySelector(o.ref);
+  if (!(lo?.classList.contains(o.card) && hi?.classList.contains(o.card) && src)) return off();
+  const sr = sc.getBoundingClientRect(), cr = cur.getBoundingClientRect(), rr = src.getBoundingClientRect();
+  const at = r => ({ left: horiz ? r.left - cr.left + sr.left : r.left, top: (horiz ? r.top : sr.top + r.top - cr.top) });
+  const copy = (el, from, id, cls) => {
+    const f = el || Object.assign(document.createElement(from.tagName), { id, className: from.className + ' ' + cls });
+    if (f.dataset.for !== cur.id || f.dataset.v !== from.innerHTML) { f.innerHTML = from.innerHTML; f.dataset.for = cur.id; f.dataset.v = from.innerHTML; }
+    if (!el) sc.parentElement.append(f);
+    return f;
+  };
+  const r = copy(fr, src, 'fl-rail-' + o.card, 'fl-rail');
+  if (!fr) { const a = at(rr); Object.assign(r.style, { left: a.left + 'px', top: a.top + 'px' }); }
+  if (ref) {   // the reference sits at the bottom left, lined up with the last icon
+    const f = copy(ff, ref, 'fl-ref-' + o.card, 'fl-ref');
+    if (!ff) { const a = at(ref.getBoundingClientRect()), bottom = at(rr).top + rr.height; Object.assign(f.style, { left: a.left + 'px', top: (bottom - f.offsetHeight) + 'px' }); }
+  }
+  sc.querySelectorAll('.' + o.card).forEach(c => c.classList.add('fl-hide'));
 }
-document.addEventListener('scroll', e => { if (e.target.id === 'feed-scroll') fvRail(); }, true);
-// a tap on the floating rail changes the verse's own buttons; show their new state
-document.addEventListener('click', e => { if (e.target.closest('#fv-rail')) setTimeout(() => { const f = $('#fv-rail'); if (f) { f.dataset.v = ''; fvRail(); } }, 0); });
-window.addEventListener('resize', () => { $('#fv-rail')?.remove(); fvRail(); });
+document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.matches?.(x.sc)); if (o) floatSync(o); }, true);
+// a tap on a floating copy changes the verse's own buttons; show their new state
+document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(fvRail, 0); });
+window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
 // daily bible with no reading plan today: today's passage, one verse per card
 async function fillDevoCards() {
   const slot = document.querySelector('.devo-load'); if (!slot) return;
