@@ -2404,6 +2404,7 @@ async function fillPlanCards() {
       <p class="card-title">${t('fv.doneTitle')}</p>
       <p class="card-sub">${esc(t('fv.doneSub').replace('{name}', L(c.name) || chName(c)).replace('{d}', c.days.length + 1))}</p>
       <div class="card-actions"><button class="primary" data-action="plan-read-done" data-id="${esc(c.id)}">${icon('check')}${t('fv.done')}</button></div>${firstOffLinks()}</div></article>`;
+  fvRail();
 }
 function verseCards(verses, head, cid = '') {
   const n = verses.length;
@@ -2420,6 +2421,24 @@ function verseCards(verses, head, cid = '') {
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button>
       </aside></article>`; }).join('');
 }
+// One verse per page: the icons on the right stay put while the verses slide past them.
+// A single floating rail shows the buttons of the verse on screen; each card's own rail is hidden while it's up.
+function fvRail() {
+  const sc = $('#feed-scroll'), old = $('#fv-rail');
+  const cards = sc ? [...sc.children] : [], h = sc?.clientHeight || 1, pos = sc ? sc.scrollTop / h : 0;
+  const lo = cards[Math.floor(pos + 0.01)], hi = cards[Math.ceil(pos - 0.01)], cur = cards[Math.round(pos)];
+  const on = lo?.classList.contains('fv-card') && hi?.classList.contains('fv-card') && cur?.querySelector(':scope > .post-rail');
+  if (!on) { old?.remove(); sc?.querySelectorAll('.fv-card.rail-hide').forEach(c => c.classList.remove('rail-hide')); return; }
+  const src = cur.querySelector(':scope > .post-rail'), sr = sc.getBoundingClientRect(), cr = cur.getBoundingClientRect(), rr = src.getBoundingClientRect();
+  const f = old || Object.assign(document.createElement('aside'), { id: 'fv-rail', className: 'post-rail fv-rail' });
+  if (f.dataset.for !== cur.id || f.dataset.v !== src.innerHTML.length + '') { f.innerHTML = src.innerHTML; f.dataset.for = cur.id; f.dataset.v = src.innerHTML.length + ''; }
+  if (!old) { f.style.left = rr.left + 'px'; f.style.top = (sr.top + rr.top - cr.top) + 'px'; sc.parentElement.append(f); }
+  sc.querySelectorAll('.fv-card').forEach(c => c.classList.add('rail-hide'));
+}
+document.addEventListener('scroll', e => { if (e.target.id === 'feed-scroll') fvRail(); }, true);
+// a tap on the floating rail changes the verse's own buttons; show their new state
+document.addEventListener('click', e => { if (e.target.closest('#fv-rail')) setTimeout(() => { const f = $('#fv-rail'); if (f) { f.dataset.v = ''; fvRail(); } }, 0); });
+window.addEventListener('resize', () => { $('#fv-rail')?.remove(); fvRail(); });
 // daily bible with no reading plan today: today's passage, one verse per card
 async function fillDevoCards() {
   const slot = document.querySelector('.devo-load'); if (!slot) return;
@@ -2428,6 +2447,7 @@ async function fillDevoCards() {
   if (!document.body.contains(slot) || !verses.length) return;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };
   slot.outerHTML = verseCards(verses, `<div class="post-kind">${icon('sun')}<span>${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''} · ${esc(refText(p.ref))}</span></div>`);
+  fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
 let firstSeenObs = null;

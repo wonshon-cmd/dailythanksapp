@@ -1694,3 +1694,7 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .cel-dots span.on{background:#ECEDEE;border-color:#C9CCCE;color:var(--ink)}
 .hw-light{background:radial-gradient(circle,#9BA0A3 0 3px,#B4B8BAcc 5px,#DADDDF66 9px,#FFFFFF00 15px)}
 .vc-banner{background:#F1F1F1;color:var(--ink)}
+
+/* one verse per page: the right-side icons stay still while verses slide */
+.fv-card.rail-hide > .post-rail { visibility: hidden; }
+.fv-rail { position: fixed; right: auto; bottom: auto; z-index: 5; }
