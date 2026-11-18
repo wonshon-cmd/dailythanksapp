@@ -59,11 +59,20 @@ footer nav a:hover{color:var(--ink)}
 .co a{text-decoration:none}
 .cr{margin:0}
 /* live preview: scroll a verse, like it, scroll to the end → today's done */
-.demo{display:flex;flex-direction:column;align-items:center;padding-bottom:64px}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:40px;padding-block:40px 64px}
+.top-row .hero{padding:0;text-align:left;flex:1}
+.top-row .btns.center{justify-content:flex-start}
+.top-row .hero .lead{margin-left:0;margin-right:0}
+@media (max-width:820px){.top-row .hero .lead{margin-inline:auto}}
+@media (max-width:820px){.top-row{flex-direction:column;gap:44px;padding-top:40px}.top-row .hero{text-align:center}.top-row .btns.center{justify-content:center}}
+.demo{display:flex;flex-direction:column;align-items:center;flex:none}
+.hint{position:absolute;left:50%;bottom:44px;margin-left:-11px;width:22px;height:22px;z-index:3;color:#C4C8CB;animation:bob 2.2s ease-in-out infinite;transition:opacity .4s}
+.hint svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:1}}
 .phone{position:relative;width:300px;height:560px;border-radius:44px;border:1px solid #E3E5E6;box-shadow:0 18px 50px #2a30361a;background:#fff;overflow:hidden}
 .phone .bar{position:absolute;top:22px;left:26px;right:26px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:12px;color:#9BA0A3}
 .phone .bar .wm{font-family:var(--serif);font-size:16px;color:#B4B8BA}
-.reel{position:absolute;inset:0;transition:transform .9s cubic-bezier(.65,0,.35,1)}
+.reel{position:absolute;inset:0;transition:transform 1.5s cubic-bezier(.65,0,.35,1)}
 .vcard{position:absolute;left:0;right:0;height:560px;padding:0 64px 0 28px;display:flex;flex-direction:column;justify-content:center}
 .vcard p{margin:0;font-size:21px;line-height:1.7;font-weight:300;color:var(--ink)}
 .vcard.end{align-items:center;text-align:center;padding:0 28px}
@@ -98,25 +107,25 @@ footer nav a:hover{color:var(--ink)}
     <select class="lang" id="lang" aria-label="Language"><option value="ko">한국어</option><option value="en">English</option><option value="es">Español</option></select>
   </header>
 
+  <div class="top-row">
   <section class="hero">
     <img class="hero-icon" src="/dailybible/apple-touch-icon.png" alt="" width="84" height="84">
     <h1>daily <em>journey</em></h1>
-    <p class="lead" data-k="tag"></p>
-    <p data-k="sub"></p>
+    <p class="lead">One verse at a time</p>
     <div class="btns center"><a class="btn primary" href="/daily-bible/" data-k="open"></a></div>
-    <p class="note" data-k="note"></p>
   </section>
 
   <section class="demo" aria-label="preview">
     <div class="phone" id="phone">
-      <div class="bar"><span class="wm">daily <em>journey</em></span><span>가±</span></div>
+      <div class="bar"><span class="wm">daily <em>journey</em></span><span id="sz">가±</span></div>
       <div class="reel" id="reel"></div>
       <div class="rail" id="rail"><span class="heart" id="heart"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-4-5 4z"/></svg></span><span><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg></span></div>
       <div class="ref" id="ref"></div>
       <div class="pop" id="pop"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
-      <div class="finger" id="finger"></div>
+      <div class="hint" id="hint"><svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
     </div>
   </section>
+  </div>
 
   <section class="feats">
     <article><h3 data-k="f1"></h3><p data-k="f1d"></p></article>
@@ -186,21 +195,22 @@ let demoT = [];
 function buildDemo() {
   demoT.forEach(clearTimeout); demoT = [];
   const L = S[lang], n = L.vs.length;
+  $('sz').textContent = lang === 'ko' ? '가±' : 'A±';
   $('reel').innerHTML = L.vs.map((v, i) => `<div class="vcard" style="top:${i * 560}px"><p>${v}</p></div>`).join('') +
     `<div class="vcard end" id="vend" style="top:${n * 560}px"><div class="ck"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#3a3f44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><b>${L.done}</b><span>${L.book}:1-${n}</span></div>`;
   const ref = i => { $('ref').innerHTML = `☼ ${L.today} <i>·</i> ${L.book}:${i + 1} <i>${i + 1} / ${n}</i>`; };
   const step = () => {};   // (no captions under the phone)
   const go = i => { $('reel').style.transform = `translateY(${-i * 560}px)`; };
-  const fx = (cls) => { const f = $('finger'); f.className = 'finger'; void f.offsetWidth; f.classList.add(cls); };
+  const fx = () => {};   // the faint arrow at the bottom shows the way (as in the app)
   const at = (ms, fn) => demoT.push(setTimeout(fn, ms));
   const loop = () => {
-    go(0); ref(0); step(-1); $('heart').classList.remove('on'); $('vend').classList.remove('on'); $('rail').style.opacity = 1; $('ref').style.opacity = 1;
-    at(1400, () => { step(1); fx('tap'); }); at(1700, () => { const p = $('pop'); p.className = 'pop'; void p.offsetWidth; p.classList.add('go'); $('heart').classList.add('on'); });
-    at(3300, () => { step(0); fx('swipe'); }); at(3500, () => { go(1); ref(1); $('heart').classList.remove('on'); });
-    at(5300, () => fx('swipe')); at(5500, () => { go(2); ref(2); });
-    at(7300, () => fx('swipe')); at(7500, () => { go(3); $('rail').style.opacity = 0; $('ref').style.opacity = 0; });
-    at(8300, () => { $('vend').classList.add('on'); step(2); });
-    at(11000, loop);
+    go(0); ref(0); $('heart').classList.remove('on'); $('vend').classList.remove('on'); $('rail').style.opacity = 1; $('ref').style.opacity = 1; $('hint').style.opacity = 1;
+    at(2200, () => { const p = $('pop'); p.className = 'pop'; void p.offsetWidth; p.classList.add('go'); $('heart').classList.add('on'); });
+    at(4800, () => { go(1); ref(1); $('heart').classList.remove('on'); });
+    at(8000, () => { go(2); ref(2); });
+    at(11200, () => { go(3); $('rail').style.opacity = 0; $('ref').style.opacity = 0; $('hint').style.opacity = 0; });
+    at(12600, () => { $('vend').classList.add('on'); });
+    at(17000, loop);
   };
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { go(0); ref(0); return; }
   loop();
