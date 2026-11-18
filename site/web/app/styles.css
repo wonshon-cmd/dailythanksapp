@@ -1695,6 +1695,9 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .hw-light{background:radial-gradient(circle,#9BA0A3 0 3px,#B4B8BAcc 5px,#DADDDF66 9px,#FFFFFF00 15px)}
 .vc-banner{background:#F1F1F1;color:var(--ink)}
 
-/* one verse per page: the right-side icons stay still while verses slide */
-.fv-card.rail-hide > .post-rail { visibility: hidden; }
-.fv-rail { position: fixed; right: auto; bottom: auto; z-index: 5; }
+/* one verse per page: the right-side icons and the reference stay still while only the verse text slides */
+.fl-hide .post-rail, .fl-hide .fv-ref, .fl-hide .vs-ref { visibility: hidden; }
+.fl-rail, .fl-ref { position: fixed; right: auto; bottom: auto; margin: 0; z-index: 5; }
+.fl-ref { background: #fff; padding-right: 10px; box-shadow: 0 0 0 6px #fff; }
+/* the text never sits under the fixed reference */
+.vs-page.fl-hide { padding-bottom: calc(110px + var(--safe-bottom)); }
