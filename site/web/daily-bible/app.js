@@ -7,7 +7,7 @@ const BIBLE_MODE = window.DT_APP === 'bible';
 // bytes → binary string in pieces (one big String.fromCharCode(...bytes) overflows the stack on long recordings)
 function binStr(u8) { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return s; }
 // The Bible app's name: 'daily bible', or 'daily journey' where the page sets window.DT_BRAND = 'journey' (dailyjourney.org).
-const BRAND2 = window.DT_BRAND === 'journey' ? 'journey' : 'bible', BRAND = 'daily ' + BRAND2;
+const BRAND2 = window.DT_BRAND === 'journey' ? 'journey' : 'Bible', BRAND = 'daily ' + BRAND2;   // Bible always with a capital B
 
 const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week of my notes
 
