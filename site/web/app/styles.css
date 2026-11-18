@@ -1747,3 +1747,24 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .write-pill.fab-plus .plus { font-size: 22px; }
 .app-shell.immersive .write-pill.fab-plus, body.reading .write-pill.fab-plus { display: none; }
 .app-shell[data-screen="me"] .write-pill.fab-plus { display: none; }
+/* first open: a full-page sign-in with the logo */
+.sheet.sheet-full { top: 0; max-height: none; border-radius: 0; display: flex; flex-direction: column; justify-content: center; }
+.sheet.sheet-full .sheet-top { position: absolute; top: calc(14px + var(--safe-top)); right: 18px; }
+.sheet.sheet-full .sheet-top h2:empty { display: none; }
+.wl-logo { text-align: center; margin: 0 0 34px; }
+.wl-logo .wordmark { font-size: 40px; color: var(--ink); }
+.wl-logo p { margin: 10px 0 0; font-size: 14px; color: #8A9094; }
+/* first steps: a faint arrow that says "scroll down" */
+.onb-arrow { position: absolute; left: 50%; bottom: calc(64px + var(--safe-bottom)); transform: translateX(-50%); z-index: 6; color: #C4C8CB; font-size: 22px; pointer-events: none; animation: onb-bob 2.2s ease-in-out infinite; transition: opacity .5s; }
+.onb-arrow.gone { opacity: 0; }
+@keyframes onb-bob { 0%, 100% { transform: translate(-50%, 0); opacity: .55; } 50% { transform: translate(-50%, 6px); opacity: 1; } }
+/* end of today's passage */
+.devo-end .card-inner { align-items: center; text-align: center; justify-content: center; }
+.done-check { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: #F1F2F3; color: #3a3f44; margin-bottom: 16px; }
+.done-check .ico { font-size: 24px; stroke-width: 2; }
+/* prayer icon (hands holding a heart): when prayed, only the heart fills */
+.rail-btn.prayed .ico { fill: none; }
+.rail-btn.prayed .ico path:first-child { fill: #C46B76; }
+.tap-heart.pray svg { fill: none; stroke-width: 1.5; }
+.tap-heart.pray svg path:first-child { fill: currentColor; }
+.sheet.sheet-full::before { display: none; }
