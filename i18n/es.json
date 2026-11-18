@@ -1279,5 +1279,13 @@
   "ob.nameTitle": "¿Cómo te llamas?",
   "ob.nameSub": "Tu comunidad y las tarjetas de gratitud muestran este nombre.",
   "ob.welcome": "Welcome, {name}",
-  "ob.welcomeSub": "Toca el punto rojo abajo a la derecha para ir a Leer."
+  "ob.welcomeSub": "Toca el punto rojo abajo a la derecha para ir a Leer.",
+  "sv.label": "Culto",
+  "sv.none": "Elige el culto",
+  "sv.sun": "Culto dominical",
+  "sv.wed": "Culto del miércoles",
+  "sv.fri": "Culto del viernes",
+  "sv.dawn": "Oración de madrugada",
+  "sv.other": "Escribir otro…",
+  "sv.otherQ": "¿Qué culto? (p. ej. jóvenes, retiro)"
 }

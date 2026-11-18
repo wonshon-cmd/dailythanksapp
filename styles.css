@@ -1776,3 +1776,7 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .gd-kicker .devo-done .ico { font-size: 11px; stroke-width: 2.6; }
 .fv-done { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #E6E8E9; color: #3a3f44; margin-left: 4px; align-self: center; }
 .fv-done .ico { font-size: 11px; stroke-width: 2.6; }
+/* feed header lines up with the page: wordmark over the verse's left edge, size/language over the icons' right edge, both on one line */
+.imm-brand { left: 40px; top: calc(64px + var(--safe-top)); }
+.imm-tr { right: 34px; }
+@media (max-height:700px) { .imm-brand { top: calc(48px + var(--safe-top)); } }
