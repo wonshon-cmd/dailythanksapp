@@ -1806,7 +1806,6 @@ async function loadChapter(b, c, first) {
       <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
       <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
-      <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
       <button class="rail-btn" data-action="reader-close" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${data.settings.readerClosed ? '' : '<i class="new-dot rail-dot fs-dot"></i>'}</button>
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
@@ -2436,7 +2435,6 @@ function verseCards(verses, head, cid = '', label = '') {
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
         <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
         <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
-        <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
         <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${fsDot()}</button>
       </aside></article>`; }).join('');
 }
