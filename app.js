@@ -1150,12 +1150,23 @@ function welcomeSheet(reason = '', first = false) {
   // only the ways that are switched on in Supabase show up (e-mail always); Google/Microsoft only on the web for now
   const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: first ? '' : t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `${first ? `<div class="wl-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p>${t('wl.tag')}</p></div>` : `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>`}
+    ${first ? wlVerses() : ''}
     <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('apple', 'apple', t('wl.apple'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t(first ? 'wl.look' : 'np.later')}</button>` });
   sheet.classList.toggle('sheet-full', first);
   const native = !!window.Capacitor?.isNativePlatform?.();
 
+}
+// First-open sign-in on a phone: verses drift up slowly in the space above the buttons.
+const WL_VERSES = {
+  ko: ['여호와는 나의 목자시니 내가 부족함이 없으리로다', '항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라', '주의 말씀은 내 발에 등이요 내 길에 빛이니이다', '수고하고 무거운 짐 진 자들아 다 내게로 오라', '너희 염려를 다 주께 맡기라 이는 저가 너희를 권고하심이니라', '여호와의 인자와 긍휼이 무궁하시므로 아침마다 새로우니'],
+  en: ['The LORD is my shepherd; I shall not want.', 'Rejoice evermore. Pray without ceasing. In every thing give thanks.', 'Thy word is a lamp unto my feet, and a light unto my path.', 'Come unto me, all ye that labour and are heavy laden.', 'Casting all your care upon him; for he careth for you.', 'His compassions fail not. They are new every morning.'],
+  es: ['Jehová es mi pastor; nada me faltará.', 'Estad siempre gozosos. Orad sin cesar. Dad gracias en todo.', 'Lámpara es á mis pies tu palabra, y lumbrera á mi camino.', 'Venid á mí todos los que estáis trabajados y cargados.', 'Echando toda vuestra solicitud en él, porque él tiene cuidado de vosotros.', 'Nunca decayeron sus misericordias. Nuevas son cada mañana.']
+};
+function wlVerses() {
+  const v = WL_VERSES[lang()] || WL_VERSES.en, list = v.map(x => `<p>${esc(x)}</p>`).join('');
+  return `<div class="wl-verses" aria-hidden="true"><div class="wl-track">${list}${list}</div></div>`;   // twice, so the loop is seamless
 }
 async function welcomeSign(id) {
   if (id === 'email') return emailLogin();

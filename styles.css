@@ -1788,3 +1788,13 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .reader-brand { transform: translateY(-2px); }
 @media (max-width: 600px) { .wl-logo { display: none; } }   /* on a phone the sign-in page is just the buttons (the logo was on the splash) */
 @media (max-width: 600px) { .sheet.sheet-full { justify-content: flex-end; padding-bottom: calc(56px + var(--safe-bottom)); } }   /* phone: the sign-in buttons sit low, near the thumb */
+/* first-open sign-in (phone): verses drifting up above the buttons */
+.wl-verses { display: none; }
+@media (max-width: 600px) {
+  .sheet.sheet-full .wl-verses { display: block; flex: 1; min-height: 0; overflow: hidden; margin: 72px 0 18px;
+    -webkit-mask-image: linear-gradient(transparent 8%, #000 42%, #000 58%, transparent 92%); mask-image: linear-gradient(transparent 8%, #000 42%, #000 58%, transparent 92%); }
+  .wl-track { animation: wl-drift 60s linear infinite; }
+  .wl-track p { margin: 0 0 56px; text-align: center; font-size: 19px; line-height: 1.65; font-weight: 300; color: var(--ink); word-break: keep-all; padding: 0 8px; }
+  @keyframes wl-drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .wl-track { animation: none; } }
+}
