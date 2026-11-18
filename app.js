@@ -1161,7 +1161,7 @@ async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
   const on = await Cloud.providers();
   if (id === 'phone') { if (on.phone) smsLogin(); else toast(t('wl.notYet')); return; }
-  if (on[id]) Cloud.oauth(id); else toast(t('wl.notYet'));
+  if (on[id] && !window.Capacitor?.isNativePlatform?.()) Cloud.oauth(id); else toast(t('wl.notYet'));   // the phone app needs its own return link first
 }
 // Korean numbers (010-…) become +8210…; numbers typed with + stay as they are
 const e164 = v => { const d = String(v).replace(/[^\d+]/g, ''); return d.startsWith('+') ? d : d.startsWith('0') ? '+82' + d.slice(1) : '+' + d; };
