@@ -1768,3 +1768,4 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .tap-heart.pray svg { fill: none; stroke-width: 1.5; }
 .tap-heart.pray svg path:first-child { fill: currentColor; }
 .sheet.sheet-full::before { display: none; }
+.fv-card .fv-text { padding-right: 30px; }   /* clear of the icons on the right */
