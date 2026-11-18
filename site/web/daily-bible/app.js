@@ -2852,7 +2852,7 @@ function streakHtml() {
   return `<section class="stk ${done ? 'done' : ''}">
     <div class="stk-main"><span class="stk-flame">${icon('book')}</span><div><b class="stk-n">${n ? esc(t('stk.n').replace('{n}', n)) : esc(t('stk.sub'))}</b>
       <span class="stk-sub">${n ? (done ? t('stk.todayDone') : t('stk.todayNot')) : t('stk.start')}${best > n ? ' · ' + esc(t('stk.best').replace('{n}', best)) : ''}</span></div></div>
-    <div class="stk-week">${week.map(d => `<span class="${days.has(d) ? 'on' : ''} ${d === today() ? 'today' : ''}"><i></i><small>${esc(wd(d))}</small></span>`).join('')}</div>
+    <div class="stk-week">${week.map(d => `<span class="${days.has(d) ? 'on' : ''} ${d === today() ? 'today' : ''}"><i>${days.has(d) ? icon('check') : ''}</i><small>${esc(wd(d))}</small></span>`).join('')}</div>
   </section>`;
 }
 function readDays() { const days = readDaySet(); let i = days.has(today()) ? 0 : 1, n = 0; while (days.has(daysAgo(i))) { n++; i++; } return n; }
@@ -5267,7 +5267,7 @@ function influenceCard() {
   return `<button class="inf-card" data-action="influence">
     <span class="inf-top"><span class="glow-wrap">${glow(f.score)}</span><span class="inf-label"><span class="inf-people">${t('inf.people').replace('{n}', f.people)}</span><span class="row-sub">${t('inf.title')} · ${f.score}${t('inf.score')}</span></span><span class="row-end">${icon('chevron')}</span></span>
     <span class="inf-stats"><span>${icon('heart')}${f.received.likes}</span><span>${icon('bookmark')}${f.received.saves}</span><span>${icon('upload')}${f.received.shares}</span>
-      <span class="inf-week">${t('inf.week')}<span class="mini-dots">${dots.map(on => `<i class="${on ? 'on' : ''}"></i>`).join('')}</span></span></span>
+      <span class="inf-week">${t('inf.week')}<span class="mini-dots">${dots.map(on => `<i class="${on ? 'on' : ''}">${on ? icon('check') : ''}</i>`).join('')}</span></span></span>
   </button>`;
 }
 function influenceSheet() {
