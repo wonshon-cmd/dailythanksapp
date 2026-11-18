@@ -1786,3 +1786,4 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .reader:not(:has(.vs-page)) .reader-brand { display: none; }
 .vs-page { padding-left: 40px; padding-right: 40px; }
 .reader-brand { transform: translateY(-2px); }
+@media (max-width: 600px) { .wl-logo { display: none; } }   /* on a phone the sign-in page is just the buttons (the logo was on the splash) */
