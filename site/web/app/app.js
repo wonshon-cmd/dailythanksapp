@@ -3615,7 +3615,6 @@ function renderBibleMe() {
     <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
     <div class="list" style="margin-top:18px">
       ${PAID ? `<button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>` : ''}
-      <a class="list-row" href="${LEGAL_BASE}/app/" target="_blank" rel="noopener"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('me.thanks')}</span></span></a>
     </div>
   </div></div>`;
 }
@@ -4731,7 +4730,6 @@ function bibleSettings() {
       ${row('tour', 'history', t('tour.again'))}
       ${row('vault', 'lock', t('vault.title'))}
       ${row('export', 'copy', t('s.export'), '')}
-      <a class="list-row" href="${LEGAL_BASE}/app/" target="_blank" rel="noopener"><span class="row-icon">${icon('sun')}</span><span class="row-main"><span class="row-title">${t('bs.thanks')}</span></span><span class="row-end">${icon('chevron')}</span></a>
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
     <p class="field-label">${t('s.legal')}</p>
