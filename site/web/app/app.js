@@ -1461,7 +1461,7 @@ function markClamped() {
     el.dataset.cut = cut ? '1' : '';
   });
 }
-function applyTextSize() { if (data.settings.textSize === 'xl') data.settings.textSize = 'l'; document.documentElement.dataset.size = data.settings.textSize || 'm'; }   // no extra large any more
+function applyTextSize() { if (data.settings.textSize === 'xl') data.settings.textSize = 'l'; document.documentElement.dataset.size = data.settings.textSize || 'm'; if (typeof fitVerses === 'function') requestAnimationFrame(fitVerses); }   // no extra large any more
 
 function applyStatic() {
   document.documentElement.lang = lang();
@@ -2446,7 +2446,18 @@ const FLOAT = [
   { sc: '#feed-scroll', card: 'fv-card', rail: '.post-rail', ref: '.fv-ref' },
   { sc: '#reader-scroll', card: 'vs-page', rail: '.vs-rail', ref: '.vs-ref' }
 ];
-function fvRail() { FLOAT.forEach(floatSync); }
+function fvRail() { FLOAT.forEach(floatSync); fitVerses(); }
+// A long verse at a big text size: make its letters smaller until it fits above the reference line.
+function fitVerses() {
+  document.querySelectorAll('.fv-card .fv-text, .vs-page .vs-text').forEach(el => {
+    const card = el.closest('.fv-card, .vs-page'), ch = card.clientHeight; if (!ch) return;
+    el.style.fontSize = '';
+    const room = ch - (card.classList.contains('fv-card') ? 200 : 150);   // keep clear of the reference, icons and tab bar
+    let size = parseFloat(getComputedStyle(el).fontSize), guard = 0;
+    const top = card.getBoundingClientRect().top, bottom = () => el.getBoundingClientRect().bottom - top;
+    while (bottom() > room && size > 15 && guard++ < 40) { size -= 1; el.style.fontSize = size + 'px'; }
+  });
+}
 function floatSync(o) {
   const sc = $(o.sc), fr = $('#fl-rail-' + o.card), ff = $('#fl-ref-' + o.card);
   const off = () => { fr?.remove(); ff?.remove(); sc?.querySelectorAll('.fl-hide').forEach(c => c.classList.remove('fl-hide')); };
@@ -2476,7 +2487,7 @@ document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.ma
   if (e.target.id === 'feed-scroll') { const sc = e.target, cur = sc.children[Math.round(sc.scrollTop / Math.max(1, sc.clientHeight))];
     if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); } onbDone(); } } }, true);
 // a tap on a floating copy changes the verse's own buttons; show their new state
-document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(fvRail, 0); });
+document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(() => FLOAT.forEach(floatSync), 0); });
 window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
 // daily bible with no reading plan today: today's passage, one verse per card
 async function fillDevoCards() {
