@@ -1271,5 +1271,6 @@
   "inv.codeCopy": "Copiar código",
   "inv.qrTitle": "Código QR",
   "inv.qrDesc": "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
-  "mc.code": "Código"
+  "mc.code": "Código",
+  "emp.noneYet": "Aún nadie ha compartido gratitud con todos. Sé el primero."
 }

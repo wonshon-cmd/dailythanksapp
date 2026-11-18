@@ -14,6 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
     'mc.code': "코드",
     'inv.code': "코드 만들기", 'inv.qr': "QR 코드", 'inv.codeTitle': "공동체 코드", 'inv.codeDesc': "받은 사람이 나 › 내 공동체에 이 코드를 넣으면 ‘{name}’에 들어와요.", 'inv.codeCopy': "코드 복사", 'inv.qrTitle': "QR 코드", 'inv.qrDesc': "휴대폰 카메라로 찍으면 ‘{name}’ 초대가 열려요.",
     'cl.pw': "비밀번호", 'cl.pwBad': "비밀번호가 맞지 않아요.",
@@ -173,6 +174,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
     'mc.code': "Code",
     'inv.code': "Make a code", 'inv.qr': "QR code", 'inv.codeTitle': "Community code", 'inv.codeDesc': "Anyone who enters this code in Me › My communities joins “{name}”.", 'inv.codeCopy': "Copy code", 'inv.qrTitle': "QR code", 'inv.qrDesc': "Point a phone camera here to open the invite to “{name}”.",
     'cl.pw': "Password", 'cl.pwBad': "That password isn’t right.",
@@ -332,6 +334,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
     'mc.code': "Código",
     'inv.code': "Crear un código", 'inv.qr': "Código QR", 'inv.codeTitle': "Código de la comunidad", 'inv.codeDesc': "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.", 'inv.codeCopy': "Copiar código", 'inv.qrTitle': "Código QR", 'inv.qrDesc': "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
     'cl.pw': "Contraseña", 'cl.pwBad': "La contraseña no es correcta.",
@@ -1420,6 +1423,8 @@ function groupSize(gid) {
 }
 const inGroup = (p, gid) => p.scope === 'group' && postGroups(p).includes(gid) && !(p.mine ? false : (data.groups.find(g => g.id === gid)?.removed || []).includes(authorKey(p)));
 // Who may invite: the admin always; members only while the admin allows it (on by default).
+// open / close the full-screen view: a small red dot shows where it is until it's been used once
+const fsDot = () => data.settings.fsUsed ? '' : '<i class="new-dot rail-dot fs-dot"></i>';
 const canInvite = g => !!g && (g.owner || g.membersInvite !== false);
 // A small red dot (on the 공동체 tab and on the group) while a group has posts you haven't caught up on.
 const unseenIn = gid => data.groups.find(g => g.id === gid)?.muted ? 0 : data.posts.filter(p => !p.mine && inGroup(p, gid) && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
@@ -1451,11 +1456,11 @@ function markClamped() {
     el.dataset.cut = cut ? '1' : '';
   });
 }
-function applyTextSize() { document.documentElement.dataset.size = data.settings.textSize || 'm'; }
+function applyTextSize() { if (data.settings.textSize === 'xl') data.settings.textSize = 'l'; document.documentElement.dataset.size = data.settings.textSize || 'm'; }   // no extra large any more
 
 function applyStatic() {
   document.documentElement.lang = lang();
-  document.title = t('doc.title');
+  document.title = BIBLE_MODE ? t('bb.title').replace('Daily Bible', BRAND2 === 'journey' ? 'Daily Journey' : 'Daily Bible') : t('doc.title');
   document.querySelectorAll('[data-i18n]').forEach(el => el.innerHTML = t(el.dataset.i18n));
   document.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
   document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon));
@@ -1797,7 +1802,7 @@ async function loadChapter(b, c, first) {
       <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
       <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
       <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
-      <button class="rail-btn" data-action="reader-close" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button>
+      <button class="rail-btn" data-action="reader-close" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${data.settings.readerClosed ? '' : '<i class="new-dot rail-dot fs-dot"></i>'}</button>
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
   if (r.passage) {
@@ -2182,7 +2187,7 @@ const cardFor = item => item.type === 'devoread' ? `<article class="post card-pa
     <p class="card-title">${t('bf.endTitle')}</p><p class="card-sub">${t('bf.endSub')}</p>
     <div class="card-actions"><button class="primary" data-action="bb-continue">${icon('book')}${t('bf.cont')}</button><button class="secondary" data-action="sermon-new">${icon('mic')}${t('bf.note')}</button></div>
     <p class="fo-links"><button data-action="fullscreen">${t('bf.home')}</button></p></div></article>`
-  : item.type === 'empty' ? `<article class="post card-page"><div class="card-inner"><div class="post-kind">${icon('people')}<span>daily thanks</span></div>
+  : item.type === 'empty' ? `<article class="post card-page"><div class="card-inner"><div class="post-kind">${icon('people')}<span>${BRAND}</span></div>
     <p class="card-title">${t('emp.title')}</p><p class="card-sub">${t('emp.sub')}</p>
     <div class="card-actions"><button class="primary" data-action="new-group">${t('emp.group')}</button><button class="secondary" data-action="emp-strangers">${t('emp.strangers')}</button></div></div></article>` : item.type === 'planread' ? `<article class="post card-page plan-load" data-id="${esc(item.c.id)}"><div class="card-inner"><div class="post-kind">${icon('book')}<span>${esc(L(item.c.name) || chName(item.c))}</span></div><p class="hint">${t('rd.loading')}</p></div></article>` : item.type === 'first' ? firstCard(item) : item.type === 'quiz' ? quizCard(item.i) : item.type === 'quizres' ? quizResultCard() : item.type === 'compose' ? composeCard() : item.type === 'verse' ? verseCard(item.v) : item.type === 'camp' ? campaignCard(item.c) : item.type === 'wrecap' ? weekRecapCard(item.n) : loginCard();
 function bindGateForm() {
@@ -2240,7 +2245,7 @@ function postTemplate(p, i, count) {
       <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span class="rl">${t('act.share')}</span></button>`}
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
-      ${state.tab === 'feed' ? `<button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.enter')}">${icon('maximize')}<span>${t('fs.open')}</span></button>` : ''}
+      ${state.tab === 'feed' ? `<button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.enter')}">${icon('maximize')}<span>${t('fs.open')}</span>${fsDot()}</button>` : ''}
     </aside>
     <footer class="post-foot"><p class="post-line">${esc(name)}${p.scope === 'group' ? ' · ' + esc(groupNames(p)) : ''} · ${esc(dayLabel(p.date))}</p></footer>
   </article>`;
@@ -2427,7 +2432,7 @@ function verseCards(verses, head, cid = '', label = '') {
         <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
         <button class="rail-btn" data-action="verse-send" data-id="${k}">${icon('share')}<span class="rl">${t('act.share')}</span></button>
         <button class="rail-btn" data-action="verse-note" data-id="${k}">${icon('pencil')}<span class="rl">${t('act.note')}</span></button>
-        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button>
+        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${fsDot()}</button>
       </aside></article>`; }).join('');
 }
 // One verse per page: the icons on the right and the verse's reference stay put while only the verse text slides.
@@ -3732,7 +3737,7 @@ function renderImmersive(keepIndex = 0) {
     if (it.type === 'gend') return groupEndCard(it.gid, it.kind);
     if (it.type !== 'post') { // verse, writing and other cards get the same 닫기 as posts, in the same spot
       const html = cardFor(it), i = html.lastIndexOf('</article>');
-      return i < 0 ? html : html.slice(0, i) + `<aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside>` + html.slice(i);
+      return i < 0 ? html : html.slice(0, i) + `<aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${fsDot()}</button></aside>` + html.slice(i);
     }
     const p = it.p, liked = data.liked.includes(p.id), text = L(p.text);
     const fp = it.firstPr, fpg = fp ? (data.groups.find(g => inGroup(p, g.id))?.name) : null, fpLast = fp && fp.i === fp.n;
@@ -3745,7 +3750,7 @@ function renderImmersive(keepIndex = 0) {
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
       ${protectedPost(p) ? '' : `<button class="rail-btn" data-action="share" data-id="${esc(p.id)}">${icon('share')}<span class="rl">${t('act.share')}</span></button>`}
       <button class="rail-btn rail-more" data-action="post-menu" data-id="${esc(p.id)}" aria-label="${t('more')}">${icon('more')}</button>
-        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${groupMode || prayerMode || !anyUnseen() ? '' : '<i class="new-dot rail-dot"></i>'}</button>
+        <button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span>${!data.settings.fsUsed ? fsDot() : groupMode || prayerMode || !anyUnseen() ? '' : '<i class="new-dot rail-dot"></i>'}</button>
       </aside></article>`;
   }).join('')}</div>
   ${prayerMode && !data.settings.prayerBackHint ? backHint('left', t('pl.back')) : ''}
@@ -4751,7 +4756,7 @@ function bibleSettings() {
   showSheet({ title: t('s.title'), body: `
     ${seg(LANGS, 'set-lang', lang())}
     <p class="field-label">${t('bs.size')}</p>
-    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')], ['xl', t('size.xl')]], 'set-size', data.settings.textSize || 'm', 'seg-size four')}
+    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
     <p class="field-label">${t('bs.reading')}</p>
     <div class="list">
       ${row(data.settings.notificationEnabled ? 'notification' : 'notify-prime', 'bell', t('bs.remind'), `<span class="row-sub">${data.settings.notificationEnabled ? esc(data.settings.notificationTime) : t('bs.off')}</span>${icon('chevron')}`)}
@@ -4796,7 +4801,7 @@ function settings() {
   showSheet({ title: t('s.title'), body: `
     ${seg(LANGS, 'set-lang', lang())}
     <p class="field-label">${t('size.title')}</p>
-    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')], ['xl', t('size.xl')]], 'set-size', data.settings.textSize || 'm', 'seg-size four')}
+    ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
     <p class="field-label">${t('verse.title')}</p>
     ${seg([['often', t('verse.often')], ['normal', t('verse.normal')], ['rare', t('verse.rare')], ['off', t('verse.off')]], 'set-verse', data.settings.verseEvery || 'normal', 'four')}
     <div class="list">
@@ -5710,7 +5715,7 @@ const actions = {
   'bible-write': () => { const row = (ic, label, kind) => `<button class="list-row" data-action="bp-write" data-id="${kind}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
     showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sun', t('bp.thanks'), 'today')}${row('pray', t('bp.prayer'), 'prayer')}${row('book', t('bp.med'), 'meditation')}${row('heart', t('bp.thankSomeone'), 'thanks')}</div>` }); },
   'bp-write': kind => { close(); state.medRef = null; state.medSource = null; state.medNote = false; compose(kind, null); },
-  'size-cycle': () => { const order = ['s', 'm', 'l', 'xl'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
+  'size-cycle': () => { const order = ['s', 'm', 'l'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
   'imm-streak': () => { if (anyUnseen() && !BIBLE_MODE) { state.immersive = false; state.tab = 'group'; render(); } else if (anyUnseen()) { state.prevFeed = 'public'; state.immFeed = 'prayer'; render(0); } else toast(t('stk.write').replace('{n}', BIBLE_MODE ? readDays() : writeStreak())); },
   'yr-share': () => yearShare(),
   'rt-history': () => readHistory(),
@@ -5736,7 +5741,9 @@ const actions = {
   'vw-max': n => { setPref('firstMax', +n); viewSettings(); },
   'vw-pause': k => { const P = { ...(data.settings.prefs || {}) }; P.firstOff = k === 'off'; P.firstUntil = k === 'h24' ? new Date(Date.now() + 864e5).toISOString() : k === 'w1' ? new Date(Date.now() + 7 * 864e5).toISOString() : '';
     data.settings.prefs = P; save(); viewSettings(); },
-  'emp-strangers': () => { setPref('strangers', true); render(0); },
+  'emp-strangers': () => { setPref('strangers', true); render(0);
+    const sc = $('#feed-scroll'), first = sc && [...sc.children].findIndex(c => c.matches('.post[data-post]'));
+    if (sc && first >= 0) sc.scrollTop = first * sc.clientHeight; else toast(t('emp.noneYet')); },
   'cu-yes': id => { catchUp(id); if (BIBLE_MODE) { close(); render(); } else { state.firstPrIds = state.firstPrIds || []; render(0); } },
   'cu-no': id => { const c = data.challenges.find(x => x.id === id); if (c) { c.cuDismissed = today(); save(); } document.querySelector(`[data-cu="${id}"]`)?.remove(); close(); },
   'cu-ask': id => { const c = data.challenges.find(x => x.id === id), b = planBehind(c); if (!b) return;
@@ -5876,7 +5883,7 @@ const actions = {
   },
   'open-saved-verse': k => { const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
   'verse-read': ref => { const r = parseRef(ref); openReader(r ? { ...r } : {}); },
-  'reader-close': () => { closeReader(); if (state.immersive) toggleFullscreen(); }, // ✕ goes to the regular app; swiping right still returns to the feed
+  'reader-close': () => { if (!data.settings.readerClosed) { data.settings.readerClosed = true; save(true); } closeReader(); if (state.immersive) toggleFullscreen(); }, // ✕ goes to the regular app; swiping right still returns to the feed
   'reader-pick': () => biblePicker({ mode: 'reader', start: state.reader?.loaded?.length ? { b: data.reading?.b, c: data.reading?.c } : null }),
   'bp-book': b => bpBook(+b),
   'bp-ch': c => bpChapter(+c),
@@ -5897,7 +5904,7 @@ const actions = {
     save(); close(); toast(t('toast.nSaved'));
   },
   export: exportData,
-  fullscreen: toggleFullscreen,
+  fullscreen: () => { if (!data.settings.fsUsed) { data.settings.fsUsed = true; save(true); } toggleFullscreen(); },
   login: id => CLOUD ? welcomeSheet() : id === 'phone' ? phoneLogin() : completeLogin(id),
   'email-login': () => emailLogin(),
   'wl-open': () => welcomeSheet(),

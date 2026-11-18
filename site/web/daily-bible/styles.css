@@ -1739,3 +1739,6 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .imm-brand { top: calc(66px + var(--safe-top)); }
 .imm-tr { top: calc(58px + var(--safe-top)); }
 @media (max-height:700px) { .imm-brand { top: calc(50px + var(--safe-top)); } .imm-tr { top: calc(42px + var(--safe-top)); } }
+/* no scrollbar on the reader or any screen (desktop browsers show one) */
+.reader-scroll, .feed-scroll, .screen, .sheet { scrollbar-width: none; }
+.reader-scroll::-webkit-scrollbar, .feed-scroll::-webkit-scrollbar, .screen::-webkit-scrollbar, .sheet::-webkit-scrollbar { display: none; }
