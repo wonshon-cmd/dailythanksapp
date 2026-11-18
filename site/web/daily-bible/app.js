@@ -2410,13 +2410,13 @@ async function fillPlanCards() {
       <div class="card-actions"><button class="primary" data-action="plan-read-done" data-id="${esc(c.id)}">${icon('check')}${t('fv.done')}</button></div>${firstOffLinks()}</div></article>`;
   fvRail();
 }
-function verseCards(verses, head, cid = '') {
+function verseCards(verses, head, cid = '', label = '') {
   const n = verses.length;
   return verses.map((x, i) => { const k = verseKey(x.b, x.c, x.v), liked = (data.verseLikes || []).includes(k), saved = (data.savedVerses || []).some(s => s.key === k);
     return `<article class="post card-page fv-card" id="v-${x.b}-${x.c}-${x.v}"${cid ? ` data-fv="${esc(cid)}"` : ''}>
       <div class="card-inner">${head}
         <p class="vs-text fv-text">${esc(x.text)}</p>
-        <p class="fv-ref">${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}<span>${t('fv.count').replace('{i}', i + 1).replace('{n}', n)}</span></p></div>
+        <p class="fv-ref">${label ? `<b class="fv-lab">${label}</b>` : ''}${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}<span>${t('fv.count').replace('{i}', i + 1).replace('{n}', n)}</span></p></div>
       <aside class="post-rail">
         <button class="rail-btn ${liked ? 'liked' : ''}" data-action="verse-like" data-id="${k}" aria-pressed="${liked}" aria-label="${t('act.like')}">${icon('heart')}</button>
         <button class="rail-btn ${saved ? 'saved' : ''}" data-action="verse-save" data-id="${k}" aria-pressed="${saved}" aria-label="${t('save')}">${icon('bookmark')}</button>
@@ -2468,7 +2468,7 @@ async function fillDevoCards() {
   let verses = []; try { verses = (await passageVerses(p.ref)).map(x => ({ b: p.ref.b, c: x.c, v: x.v, text: x.text })); } catch { slot.querySelector('.card-inner').innerHTML = `<p class="hint">${t('rd.offline')}</p>`; return; }
   if (!document.body.contains(slot) || !verses.length) return;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };
-  slot.outerHTML = verseCards(verses, `<div class="post-kind">${icon('sun')}<span>${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''} · ${esc(refText(p.ref))}</span></div>`);
+  slot.outerHTML = verseCards(verses, '', '', `${icon('sun')}${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''}`);   // "오늘의 말씀" sits with the verse reference at the bottom
   fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
@@ -2864,6 +2864,7 @@ function renderBibleHome() {
     </section>
     ${readStatsRow()}
     ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
+      <p class="gd-ref">${esc(refText(p.ref))}</p>
       <div class="gd-acts"><button class="primary" data-action="bb-today">${t('bb.readToday')}</button></div></section>` : ''}
     ${plans.some(c => c.lastDay !== today()) ? '' : planSection(plans)}
   </div></div>`;

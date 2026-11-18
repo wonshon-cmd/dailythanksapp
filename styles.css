@@ -1708,3 +1708,6 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 
 /* the reader closes from the icons on the right; the ✕ only shows until the verses load (or if they can't) */
 .reader:has(.vs-page) .reader-x { visibility: hidden; }
+.fv-lab { display: inline-flex; align-items: center; gap: 5px; font-weight: 400; color: #8A9094; }
+.fv-lab .ico { font-size: 14px; }
+.fv-lab::after { content: '·'; margin-left: 5px; color: #C4C8CB; }
