@@ -59,7 +59,12 @@
 - 로그인할 때 약관 동의 문구가 보이고, 약관에 "부적절한 글·사용자 무관용" 조항이 있어야 해요.
 - 신고는 **24시간 안에** 확인해요. 담당자와 알림을 출시 전에 정하세요.
 
-## 4. App Review 메모 (App Store Connect › 앱 심사 정보)
+## 4. App Review 메모 (App Store Connect › 앱 심사 정보 · Google Play › 앱 액세스)
+
+심사용 계정 준비 (제출할 때마다):
+1. Supabase › Authentication › Users › **Add user › Create new user**: `review@dailyjourney.org`, 비밀번호 직접 정하기, **Auto Confirm User** 체크 (처음 한 번만).
+2. Supabase › SQL Editor에 `supabase/review_demo.sql` 붙여넣고 **Run** → 데모 공동체와 글이 오늘 날짜로 새로 만들어져요. (앱은 최근 30일 글만 보여 줘서, 제출 전에 다시 실행해요.)
+3. 아래 메모의 `[the password set in Supabase]` 자리에 그 비밀번호를 넣어요. 앱에서 이 주소만 코드 대신 비밀번호를 물어요.
 
 ```
 Thank you for reviewing Daily Journey, a daily Bible reading app.
@@ -71,8 +76,11 @@ where members share prayer requests, thanks and reflections.
 
 Sign-in is optional: reading and sermon notes work without an account. Communities need an account
 (email or phone number with a one-time code).
-Demo account: [email or phone]  /  code: [fixed test code]
-  This account is already a member of a community with posts from other people.
+Demo account (no code needed): Me › Sign in › Continue with email
+  Name: any   Email: review@dailyjourney.org   →  a password field appears
+  Password: [the password set in Supabase]
+  This account owns the community "Daily Journey Demo" with posts from two other members
+  (a prayer request, a reflection, thanks), so you can pray, react, report, hide and block.
 
 Account deletion: Me › ⋯ (settings) › About › Delete account (in the app).
 

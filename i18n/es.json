@@ -1262,5 +1262,7 @@
   "sn.saved": "Grabación y notas guardadas.",
   "rec.afterLocal": "Al guardar, la grabación y tus notas quedan juntas.",
   "rec.liveHintLocal": "Muestra al instante lo que se dice como texto. Al guardar, queda con la grabación.",
-  "nt.note": "Notas"
+  "nt.note": "Notas",
+  "cl.pw": "Contraseña",
+  "cl.pwBad": "La contraseña no es correcta."
 }

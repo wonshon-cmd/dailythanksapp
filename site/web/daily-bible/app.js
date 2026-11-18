@@ -14,6 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'cl.pw': "비밀번호", 'cl.pwBad': "비밀번호가 맞지 않아요.",
     'nt.note': "노트",
     'sn.saved': "녹음과 노트를 저장했어요.", 'rec.afterLocal': "저장하면 녹음과 내가 적은 노트가 함께 남아요.", 'rec.liveHintLocal': "말하는 대로 바로 글자로 보여 줘요. 저장하면 녹음과 함께 남아요.",
     'pw.free': "지금은 무료로 쓰고 있어요. 공간이 모자라면 오래된 녹음을 정리해 주세요.",
@@ -170,6 +171,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'cl.pw': "Password", 'cl.pwBad': "That password isn’t right.",
     'nt.note': "Notes",
     'sn.saved': "Recording and notes saved.", 'rec.afterLocal': "When you save, the recording and your own notes are kept together.", 'rec.liveHintLocal': "Shows what’s said as text right away. When you save, it’s kept with the recording.",
     'pw.free': "It’s free for now. If you run out of space, clear out older recordings.",
@@ -326,6 +328,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'cl.pw': "Contraseña", 'cl.pwBad': "La contraseña no es correcta.",
     'nt.note': "Notas",
     'sn.saved': "Grabación y notas guardadas.", 'rec.afterLocal': "Al guardar, la grabación y tus notas quedan juntas.", 'rec.liveHintLocal': "Muestra al instante lo que se dice como texto. Al guardar, queda con la grabación.",
     'pw.free': "Por ahora es gratis. Si te quedas sin espacio, borra grabaciones antiguas.",
@@ -1052,6 +1055,8 @@ const Cloud = (() => {
     oauth(provider) { location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
     // which sign-in methods are switched on in Supabase (Authentication › Sign In / Providers)
     providers: () => call('/auth/v1/settings').then(j => j.external || {}).catch(() => ({})),
+    // the store reviewers' account only (no mailbox to read a code from): e-mail + password
+    password: async (email, password) => { const j = await call('/auth/v1/token?grant_type=password', { method: 'POST', body: { email, password } }); store(j, email); signedIn(); },
     sendSms: phone => call('/auth/v1/otp', { method: 'POST', body: { phone, create_user: true } }),
     verifySms: async (phone, code) => { const j = await call('/auth/v1/verify', { method: 'POST', body: { type: 'sms', phone, token: code } }); store(j, phone); signedIn(); },
     rest, rpc: (fn, args) => rest('rpc/' + fn, { method: 'POST', body: args }),
@@ -1181,9 +1186,23 @@ function emailLogin(reason = '', after = null) {
     if (!name) { $('#cl-name').focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast(t('cl.badEmail')); return; }
     data.settings.myName = name; save();
+    if (email === REVIEW_EMAIL) return reviewLogin(email);
     const b = $('#cl-send'); b.disabled = true; b.textContent = t('cl.sending');
     try { await Cloud.sendLink(email, name); emailSent(email, name); }
     catch (err) { b.disabled = false; b.textContent = t('cl.send'); toast(err.status === 429 ? t('cl.tooMany') : t('cl.sendFail')); }
+  });
+}
+// App Store / Google Play review: the reviewers can't open our mailbox, so this one address signs in with a password.
+const REVIEW_EMAIL = 'review@dailyjourney.org';
+function reviewLogin(email) {
+  showSheet({ title: t('cl.title'), body: `<form id="cl-pw-form" class="sheet-form">
+    <label class="field-label" for="cl-pw">${t('cl.pw')}</label>
+    <input id="cl-pw" class="field" type="password" autocomplete="current-password" required>
+    <button class="primary block" type="submit">${t('cl.verify')}</button></form>` });
+  $('#cl-pw-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    try { await Cloud.password(email, $('#cl-pw').value); close(); render(); toast(t('login.done')); const next = state.afterLogin; state.afterLogin = null; if (next) setTimeout(next, 300); }
+    catch { toast(t('cl.pwBad')); }
   });
 }
 function emailSent(email, name) {
