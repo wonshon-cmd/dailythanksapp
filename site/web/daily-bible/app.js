@@ -2873,8 +2873,15 @@ function renderBibleHome() {
       <p class="gd-ref">${esc(refText(p.ref))}</p>
       <div class="gd-acts"><button class="primary" data-action="bb-today">${t('bb.readToday')}</button></div></section>` : ''}
     ${plans.some(c => c.lastDay !== today()) ? '' : planSection(plans)}
-  </div></div>`;
+  </div></div>`;  fitScreen();
 }
+// The Read tab stays put when everything fits on the screen (no bouncing up and down); a long plan list still scrolls.
+function fitScreen() {
+  const sc = main.querySelector('.screen'); if (!sc) return;
+  sc.classList.remove('fit');
+  requestAnimationFrame(() => sc.classList.toggle('fit', sc.scrollHeight <= sc.clientHeight + 1));
+}
+window.addEventListener('resize', () => { if (state.tab === 'read' && main.querySelector('.page.bb .stk, .page.bb .bb-cont')) fitScreen(); });
 function planSection(plans) {
   return `<section class="pl">
       <div class="pl-head"><p class="gd-label">${t('pl.title')}</p><button class="secondary pl-new" data-action="plan-new">${icon('plus')}${t('pl.new')}</button></div>
@@ -6057,7 +6064,7 @@ function doubleTap(el, x, y) {
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
   if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 // Reading: a drag that starts on the reader's top or bottom bar doesn't pull the page (iPhone rubber-band); only the verses scroll.
-document.addEventListener('touchmove', e => { if (document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) e.preventDefault(); }, { passive: false });
+document.addEventListener('touchmove', e => { if ((document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) || e.target.closest?.('.screen.fit')) e.preventDefault(); }, { passive: false });
 // a shared verse: #v=BOOK-CHAPTER-VERSE opens the Bible at that verse
 { const m = location.hash.match(/^#v=(\d+)-(\d+)-(\d+)$/);
   if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch {} document.getElementById('splash')?.remove();

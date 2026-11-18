@@ -1725,3 +1725,13 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .mini-dots i, .mini-dots i.on { display: grid; place-items: center; width: 9px; height: 9px; background: transparent; color: #6b7075; }
 .mini-dots i:not(.on)::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: #D5D8DA; }
 .mini-dots i.on .ico { font-size: 9px; stroke-width: 3; }
+/* Read tab: a little tighter so it fits one screen, and then it doesn't move */
+.screen.fit { overflow: hidden; overscroll-behavior: none; touch-action: none; }
+.screen.fit button, .screen.fit a { touch-action: manipulation; }
+.page.bb .stk { margin-bottom: 12px; padding: 12px 16px; }
+.page.bb .bb-cont { padding: 2px 0 14px; }
+.page.bb .rg, .page.bb .rs-wrap { padding: 12px 0; }
+.page.bb .gd-devo { padding: 14px 18px; margin-bottom: 12px; }
+.page.bb .gd-devo .gd-ref { margin: 4px 0 10px; }
+.page.bb { padding-bottom: 12px; }
+.page.bb .pl { margin-top: 6px; }
