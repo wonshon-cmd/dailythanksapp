@@ -2806,7 +2806,7 @@ function renderGroups() {
   if (state.groupDetail && data.groups.some(g => g.id === state.groupDetail)) return renderGroupDetail(state.groupDetail);
   state.groupDetail = null;
   main.innerHTML = `<div class="screen"><div class="page">
-    ${pageHead(BIBLE_MODE ? t('bn.group') : t('gr.title'), t('gr.desc'), roundBtn('new-group', 'plus', t('gr.new')))}
+    ${pageHead(BIBLE_MODE ? t('bn.group') : t('gr.title'), t('gr.desc'), BIBLE_MODE ? '' : roundBtn('new-group', 'plus', t('gr.new')))}
     ${data.church && featureOn('leader') ? `<button class="j-line chu-entry" data-action="church-open"><span class="j-ic">${icon('people')}</span><span>${t('chu.entry').replace('{name}', esc(data.church.name))}</span><span class="j-go">›</span></button>` : ''}
     <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
@@ -2993,9 +2993,9 @@ function renderSermons() {
   const q = noteQuota(), notes = sermonNotes();
   const status = n => n.example ? t('sn.example') : n.aiBusy ? t('sn.working') : n.recPending && autoNotes() ? t('sn.offline') : n.status === 'done' ? '' : n.status === 'error' ? t('sn.failed') : !state.snOnline && n.status === 'waiting' && false ? t('sn.offline') : n.status === 'queued' ? t('sn.queued') : t('sn.working');
   main.innerHTML = `<div class="screen"><div class="page bb">
-    ${pageHead(t('sn.title'), '', roundBtn('sermon-new', 'plus', t('sn.new')))}
+    ${pageHead(t('sn.title'), '', roundBtn('sn-search', 'search', t('ss.ph')))}
     ${recLive() ? `<button class="rec-bar" id="rec-bar" data-action="sermon-new"><i class="rec-dot"></i><span>${t('rec.bar').replace('{t}', fmtDur(Rec.seconds))}</span></button>` : ''}
-    <label class="sn-search">${icon('search')}<input id="sn-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="${esc(t('ss.ph'))}" value="${esc(state.snQuery || '')}">
+    <label class="sn-search" ${state.snSearch || state.snQuery ? '' : 'hidden'}>${icon('search')}<input id="sn-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="${esc(t('ss.ph'))}" value="${esc(state.snQuery || '')}">
       <button type="button" class="link-btn sn-qx" data-action="sn-q-clear" ${state.snQuery ? '' : 'hidden'}>${t('ss.clear')}</button></label>
     <p class="hint" ${state.snQuery ? 'hidden' : ''} id="sn-sub">${t('sn.sub')}</p>
     ${'' && `<div class="sn-quota"><span>${q.plan === 'free' ? t('sn.free').replace('{n}', q.used).replace('{t}', q.limit) : t('sn.plan').replace('{plan}', t('sn.' + q.plan)).replace('{n}', q.monthUsed).replace('{t}', q.monthLimit)}</span>
@@ -3823,7 +3823,7 @@ function render(keepIndex) {
     on ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current');
   });
   { const tl = document.querySelector('.top-lang'); if (tl) { tl.hidden = (data.settings.opens || 0) > 5; tl.setAttribute('aria-label', t('aria.lang')); tl.innerHTML = `${icon('globe')}<span>${LANGS.find(x => x[0] === lang())?.[1] || ''}</span>`; } }
-  { const wp = document.querySelector('.write-pill'); if (wp) wp.hidden = BIBLE_MODE && state.tab === 'group'; } // Community has its own +
+  { const wp = document.querySelector('.write-pill'); if (wp && BIBLE_MODE) { wp.hidden = false; wp.dataset.action = state.tab === 'notes' ? 'sermon-new' : state.tab === 'group' && !state.groupDetail ? 'new-group' : 'bible-write'; } } // the bottom-right + : new sermon note / new community / write
   document.getElementById('app').dataset.screen = state.tab;   // e.g. no + on Me (not data-tab: that marks the tab buttons)
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal, read: renderBibleHome, notes: renderSermons, me: renderBibleMe })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
@@ -5703,6 +5703,7 @@ const actions = {
   'note-open': id => { const n = sermonNotes().find(x => x.id === id), terms = snTerms(), hit = n && terms.length ? noteHit(n, terms) : null;
     state.noteOpen = id; state.noteTab = hit?.where === 'tr' ? 'tr' : 'sum'; render(); window.scrollTo?.(0, 0);
     if (hit?.where === 'tr') setTimeout(() => document.querySelector('.sn-trtext mark')?.scrollIntoView({ block: 'center' }), 60); },
+  'sn-search': () => { state.snSearch = !state.snSearch; if (!state.snSearch) state.snQuery = ''; render(); if (state.snSearch) setTimeout(() => $('#sn-q')?.focus(), 30); },
   'sn-q-clear': () => { state.snQuery = ''; render(); },
   'note-tab': k => { state.noteTab = k; if (state.noteOpen) renderSermonNote(state.noteOpen); },
   'vc-yes': pair => { const [id, k] = pair.split('|'), n = (data.sermonNotes || []).find(x => x.id === id), c = n?.summary?.verse_checks?.[+k]; if (!c) return; c.confirmed = true; save(); renderSermonNote(id); },
