@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'wl.apple': "Apple로 계속하기", 'wl.tag': "말씀을 매일, 공동체와 함께", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "이제 오늘의 감사를 하나 남겨 볼까요?",
+    'wl.apple': "Apple로 계속하기", 'wl.tag': "말씀을 매일, 공동체와 함께", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
     'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
     'mc.code': "코드",
     'inv.code': "코드 만들기", 'inv.qr': "QR 코드", 'inv.codeTitle': "공동체 코드", 'inv.codeDesc': "받은 사람이 나 › 내 공동체에 이 코드를 넣으면 ‘{name}’에 들어와요.", 'inv.codeCopy': "코드 복사", 'inv.qrTitle': "QR 코드", 'inv.qrDesc': "휴대폰 카메라로 찍으면 ‘{name}’ 초대가 열려요.",
@@ -175,7 +175,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'wl.apple': "Continue with Apple", 'wl.tag': "The Word daily, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Now, one thing you’re thankful for today?",
+    'wl.apple': "Continue with Apple", 'wl.tag': "The Word daily, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
     'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
     'mc.code': "Code",
     'inv.code': "Make a code", 'inv.qr': "QR code", 'inv.codeTitle': "Community code", 'inv.codeDesc': "Anyone who enters this code in Me › My communities joins “{name}”.", 'inv.codeCopy': "Copy code", 'inv.qrTitle': "QR code", 'inv.qrDesc': "Point a phone camera here to open the invite to “{name}”.",
@@ -336,7 +336,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'wl.apple': "Continuar con Apple", 'wl.tag': "La Palabra cada día, en comunidad", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "¿Algo por lo que das gracias hoy?",
+    'wl.apple': "Continuar con Apple", 'wl.tag': "La Palabra cada día, en comunidad", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
     'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
     'mc.code': "Código",
     'inv.code': "Crear un código", 'inv.qr': "Código QR", 'inv.codeTitle': "Código de la comunidad", 'inv.codeDesc': "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.", 'inv.codeCopy': "Copiar código", 'inv.qrTitle': "Código QR", 'inv.qrDesc': "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
@@ -3592,9 +3592,6 @@ function reachHtml() {
   const r = reachStats(), tile = (v, l) => `<div class="db-tile"><b>${v}</b><span>${l}</span></div>`;
   return `<section class="db reach">
     <p class="gd-label">${t('rc2.title')}</p>
-    <p class="reach-sub">${t('rc2.sub')}</p>
-    <div class="db-tiles">${tile(t('rc2.peopleV').replace('{n}', r.people), t('rc2.people'))}${tile(t('rc2.timesV').replace('{n}', r.outside), t('rc2.outside'))}${tile(t('rc2.timesV').replace('{n}', r.inside), t('rc2.inside'))}${tile(t('rc2.timesV').replace('{n}', r.shared), t('rc2.shared'))}</div>
-    <p class="db-foot">${t('rc2.foot').replace('{p}', r.posts).replace('{e}', r.ext)}</p>
     ${influenceCard()}
   </section>`;
 }
@@ -5296,6 +5293,9 @@ function influenceSheet() {
   const stat = (ic, label, n) => `<div class="stat">${icon(ic)}<strong>${n}</strong><span>${label}</span></div>`;
   showSheet({ title: t('inf.title'), body: `
     <div class="inf-hero"><span class="glow-stage">${glow(f.score, 2)}</span><p class="inf-hero-score">${t('inf.peopleBig').replace('{n}', f.people)}</p><p class="row-sub">${t('inf.peopleSub')}</p><p class="row-sub">${f.score}${t('inf.score')} · ${t('inf.glow')}</p></div>
+    ${(() => { const r = reachStats(), tile = (v, l) => `<div class="db-tile"><b>${v}</b><span>${l}</span></div>`;
+      return `<div class="db reach"><div class="db-tiles">${tile(t('rc2.peopleV').replace('{n}', r.people), t('rc2.people'))}${tile(t('rc2.timesV').replace('{n}', r.outside), t('rc2.outside'))}${tile(t('rc2.timesV').replace('{n}', r.inside), t('rc2.inside'))}${tile(t('rc2.timesV').replace('{n}', r.shared), t('rc2.shared'))}</div>
+      <p class="db-foot">${t('rc2.foot').replace('{p}', r.posts).replace('{e}', r.ext)}</p></div>`; })()}
     <p class="field-label">${t('inf.received')}</p>
     <div class="stats">${stat('heart', t('inf.likes'), f.received.likes)}${stat('bookmark', t('inf.saves'), f.received.saves)}${stat('upload', t('inf.shares'), f.received.shares)}</div>
     ${f.received.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.received.ext)}</p>` : ''}
@@ -5915,7 +5915,7 @@ const actions = {
     save(); close(); toast(t('toast.nSaved'));
   },
   export: exportData,
-  fullscreen: () => { if (!data.settings.fsUsed) { data.settings.fsUsed = true; save(true); } toggleFullscreen(); },
+  fullscreen: () => { if (!data.settings.fsUsed) { data.settings.fsUsed = true; save(true); if (BIBLE_MODE && state.immersive) state.tab = 'read'; } toggleFullscreen(); },   // the first time: out to Read
   login: id => CLOUD ? welcomeSheet() : id === 'phone' ? phoneLogin() : completeLogin(id),
   'email-login': () => emailLogin(),
   'wl-open': () => welcomeSheet(),
@@ -6115,7 +6115,7 @@ function onbDone() {
       data.settings.myName = n; save();
       if (Cloud.on()) Cloud.rest(`profiles?id=eq.${Cloud.uid()}`, { method: 'PATCH', body: { name: n } }).catch(() => {});
       showSheet({ title: esc(t('ob.welcome').replace('{name}', n)), body: `<p class="hint">${t('ob.welcomeSub')}</p>` });
-      setTimeout(() => { if (state.onb !== 'name') return; state.onb = null; data.settings.onboarded = true; save(true); close(); compose('today', null); }, 1800);
+      setTimeout(() => { if (state.onb !== 'name') return; state.onb = null; data.settings.onboarded = true; save(true); close(); }, 1800);
     });
   }, 900);
 }

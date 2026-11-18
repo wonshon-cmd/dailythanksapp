@@ -151,6 +151,10 @@ bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루<
 bb_html = bb_html.replace('<script>window.DT_APP = "bible";</script>', '<script>window.DT_APP = "bible"; window.DT_BRAND = "journey";</script>')
 # link previews (a shared verse link opens here): daily journey, not daily thanks
 bb_html = bb_html.replace('<meta name="theme-color"', '<meta property="og:title" content="daily journey">\n<meta property="og:description" content="말씀을 매일 · A day focused on the Word">\n<meta property="og:image" content="https://dailyjourney.org/og-journey.png">\n<meta name="theme-color"', 1)
+# cache-busting (Safari keeps app.js otherwise): ask for app.js / styles.css by content version
+import hashlib
+for f_ in ('app.js', 'styles.css'):
+    bb_html = bb_html.replace(f'"{f_}"', f'"{f_}?v=' + hashlib.sha1((ROOT / f_).read_bytes()).hexdigest()[:10] + '"')
 (bb_dir / 'index.html').write_text(bb_html)
 shutil.copy(ROOT / 'brand' / 'og-journey.png', WEB / 'og-journey.png')
 if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
