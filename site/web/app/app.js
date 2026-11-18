@@ -2864,7 +2864,6 @@ function renderBibleHome() {
     </section>
     ${readStatsRow()}
     ${p?.ref ? `<section class="gd-devo"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span></p>
-      <p class="gd-ref">${esc(refText(p.ref))}</p>
       <div class="gd-acts"><button class="primary" data-action="bb-today">${t('bb.readToday')}</button></div></section>` : ''}
     ${plans.some(c => c.lastDay !== today()) ? '' : planSection(plans)}
   </div></div>`;
@@ -2872,7 +2871,6 @@ function renderBibleHome() {
 function planSection(plans) {
   return `<section class="pl">
       <div class="pl-head"><p class="gd-label">${t('pl.title')}</p><button class="secondary pl-new" data-action="plan-new">${icon('plus')}${t('pl.new')}</button></div>
-      ${plans.length ? '' : `<p class="hint">${t('pl.sub')}</p>`}
       ${plans.map(c => `<div class="pl-row"><button class="g-ch${c.lastDay === today() ? ' today-done' : ''}" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${c.lastDay === today() ? icon('check') : ''}${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
         ${planBehind(c) && c.cuDismissed !== today() ? `<span class="pl-behind" data-action="cu-ask" data-id="${esc(c.id)}">${esc(t('cu.short').replace('{n}', planBehind(c).behind))} ›</span>` : ''}
