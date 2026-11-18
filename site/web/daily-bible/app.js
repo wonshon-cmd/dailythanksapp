@@ -14,6 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'wl.apple': "Apple로 계속하기", 'wl.tag': "말씀을 매일, 공동체와 함께", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "이제 오늘의 감사를 하나 남겨 볼까요?",
     'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
     'mc.code': "코드",
     'inv.code': "코드 만들기", 'inv.qr': "QR 코드", 'inv.codeTitle': "공동체 코드", 'inv.codeDesc': "받은 사람이 나 › 내 공동체에 이 코드를 넣으면 ‘{name}’에 들어와요.", 'inv.codeCopy': "코드 복사", 'inv.qrTitle': "QR 코드", 'inv.qrDesc': "휴대폰 카메라로 찍으면 ‘{name}’ 초대가 열려요.",
@@ -174,6 +175,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'wl.apple': "Continue with Apple", 'wl.tag': "The Word daily, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Now, one thing you’re thankful for today?",
     'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
     'mc.code': "Code",
     'inv.code': "Make a code", 'inv.qr': "QR code", 'inv.codeTitle': "Community code", 'inv.codeDesc': "Anyone who enters this code in Me › My communities joins “{name}”.", 'inv.codeCopy': "Copy code", 'inv.qrTitle': "QR code", 'inv.qrDesc': "Point a phone camera here to open the invite to “{name}”.",
@@ -185,7 +187,7 @@ const STR = {
     'cl.sample': "Sample",
     'tidy.said': "Written down as you said it", 'tidy.done': "Tidied up", 'tidy.go': "Tidy up", 'tidy.undo': "Undo", 'tidy.note': "While you speak, your phone or browser’s dictation fills in the text.",
     'med.recShort': "Record",
-    'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
+    'rc2.title': "My positive influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
     'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
     'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
     'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and keep notes with the passage", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
@@ -226,7 +228,7 @@ const STR = {
     'inf.ext': '{n} of them on KakaoTalk / Instagram',
     'kind.thanks': 'Give thanks to', 'ty.to': 'Their name', 'ty.ph': 'Write your thank-you message.', 'ty.make': 'Make a thank-you card', 'ty.card': 'Thank-you card', 'ty.send': 'Send',
     'ty.copy': 'Copy text', 'ty.toGroup': 'Share with a group', 'ty.saved': 'Your card is kept in My Thanks.', 'ty.needName': 'Add their name.',
-    'inf.title': 'My gratitude reach', 'inf.received': 'Received', 'inf.given': 'Given', 'inf.likes': 'Likes', 'inf.shares': 'Shares', 'inf.saves': 'Saves', 'inf.score': 'pts',
+    'inf.title': 'My gratitude influence', 'inf.received': 'Received', 'inf.given': 'Given', 'inf.likes': 'Likes', 'inf.shares': 'Shares', 'inf.saves': 'Saves', 'inf.score': 'pts',
     'inf.candle': 'Candle', 'inf.lantern': 'Lantern', 'inf.sunlight': 'Sunlight', 'inf.starlight': 'Starlight', 'inf.glow': 'The further your thanks travels, the brighter it glows.', 'inf.next': '{n} pts to {level}', 'inf.max': 'Top level reached',
     'inf.top': 'Thanks that reached most this week', 'inf.how': 'Likes on your posts count 1, saves 2, in-app shares 3, KakaoTalk/Instagram shares 5. It isn’t a contest — it shows how far your thanks travelled.',
     'inf.week': 'This week', 'top.badge': 'Reached many',
@@ -334,6 +336,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'wl.apple': "Continuar con Apple", 'wl.tag': "La Palabra cada día, en comunidad", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "¿Algo por lo que das gracias hoy?",
     'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
     'mc.code': "Código",
     'inv.code': "Crear un código", 'inv.qr': "Código QR", 'inv.codeTitle': "Código de la comunidad", 'inv.codeDesc': "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.", 'inv.codeCopy': "Copiar código", 'inv.qrTitle': "Código QR", 'inv.qrDesc': "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
@@ -345,7 +348,7 @@ const STR = {
     'cl.sample': "Ejemplo",
     'tidy.said': "Escrito tal como lo dijiste", 'tidy.done': "Ordenado", 'tidy.go': "Ordenar", 'tidy.undo': "Deshacer", 'tidy.note': "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto.",
     'med.recShort': "Grabar",
-    'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
+    'rc2.title': "Mi influencia positiva", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
     'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
     'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
     'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y toma notas con el pasaje", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
@@ -804,7 +807,7 @@ const ICONS = {
   history: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/>',
   chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.3 9.3 0 0 1-3.6-.7L3 21l1.6-4.3A8 8 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>',
   camera: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>',
-  pray: '<path d="M11 21H7l-1.6-3.2a3 3 0 0 1-.3-1.3V10a1.5 1.5 0 0 1 3 0v4"/><path d="M11 21V6.5a1.5 1.5 0 0 0-3 0"/><path d="M13 21h4l1.6-3.2a3 3 0 0 0 .3-1.3V10a1.5 1.5 0 0 0-3 0v4"/><path d="M13 21V6.5a1.5 1.5 0 0 1 3 0"/>',
+  pray: '<path d="M12 9.2c-1-1.6-3.6-1.3-3.6.8 0 1.6 2.2 3 3.6 4 1.4-1 3.6-2.4 3.6-4 0-2.1-2.6-2.4-3.6-.8z"/><path d="M3.5 13.5l3.2 4.2a3 3 0 0 0 2.4 1.2H15a3 3 0 0 0 2.4-1.2l3.2-4.2"/>',   // hands holding a heart
   mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
   send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
   candle: '<path d="M12 2.5c1.4 1.8 1.9 3 1.9 3.9a1.9 1.9 0 0 1-3.8 0c0-.9.5-2.1 1.9-3.9z"/><rect x="9" y="10" width="6" height="11" rx="1"/><path d="M7 21h10"/>',
@@ -1036,6 +1039,7 @@ const Cloud = (() => {
   const rest = async (path, opts = {}) => { const tk = await token(); if (!tk) throw Object.assign(new Error('not_signed_in'), { code: 'not_signed_in' }); return call('/rest/v1/' + path, { ...opts, token: tk }); };
   const appUrl = () => location.origin + location.pathname;
   function signedIn() {
+    setTimeout(() => document.dispatchEvent(new CustomEvent('dt:signed-in')), 0);
     setSession({ ...(session || {}), method: 'email', email: auth.email, since: session?.since || new Date().toISOString(), lang: lang(), termsAcceptedAt: session?.termsAcceptedAt || new Date().toISOString(), termsVersion: '2026-11-17' });
     sync();
   }
@@ -1061,7 +1065,7 @@ const Cloud = (() => {
     },
     async signOut() { const tk = auth?.access; signedOut(); if (tk) call('/auth/v1/logout', { method: 'POST', token: tk }).catch(() => {}); },
     // Google · Microsoft: off to the provider, back with #access_token (handled by fromRedirect)
-    oauth(provider) { location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
+    oauth(provider) { try { if (!data.settings.onboarded) localStorage.setItem('dt-onboard', '1'); } catch {} location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
     // which sign-in methods are switched on in Supabase (Authentication › Sign In / Providers)
     providers: () => call('/auth/v1/settings').then(j => j.external || {}).catch(() => ({})),
     // the store reviewers' account only (no mailbox to read a code from): e-mail + password
@@ -1132,8 +1136,8 @@ function startTour() {
 }
 /* First visit: name first, then one tap to sign up — Google · Microsoft · e-mail · text message.
    A button whose provider isn't switched on in Supabase yet says so instead of failing. */
-function welcomeSheet(reason = '') {
-  if (!data.settings.myName) {
+function welcomeSheet(reason = '', first = false) {
+  if (!first && !data.settings.myName) {
     showSheet({ title: t('wl.title'), body: `<form id="wl-form" class="sheet-form"><p class="hint">${t('wl.nameQ')}</p>
       <input id="wl-name" class="field" maxlength="30" autocomplete="name" placeholder="${esc(t('cl.namePh'))}" required>
       <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
@@ -1141,11 +1145,12 @@ function welcomeSheet(reason = '') {
     return;
   }
   // only the ways that are switched on in Supabase show up (e-mail always); Google/Microsoft only on the web for now
-  const b = (id, ic, label) => `<button class="login-btn" data-action="wl-sign" data-id="${id}" ${id === 'email' ? '' : 'hidden'}>${icon(ic)}<span>${label}</span></button>`;
-  showSheet({ title: t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>
-    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
+  const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}" ${id === 'email' ? '' : 'hidden'}>${icon(ic)}<span>${label}</span></button>`;
+  showSheet({ title: first ? '' : t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `${first ? `<div class="wl-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p>${t('wl.tag')}</p></div>` : `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>`}
+    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('apple', 'apple', t('wl.apple'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}${b('phone', 'phoneMsg', t('wl.phone'))}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
-    <button class="subtle-link" data-action="wl-later">${t('np.later')}</button>` });
+    <button class="subtle-link" data-action="wl-later">${t(first ? 'wl.look' : 'np.later')}</button>` });
+  sheet.classList.toggle('sheet-full', first);
   const native = !!window.Capacitor?.isNativePlatform?.();
   Cloud.providers().then(on => document.querySelectorAll('[data-action="wl-sign"]').forEach(x => { const id = x.dataset.id;
     if (id !== 'email') x.hidden = !on[id] || (native && id !== 'phone'); }));
@@ -1498,7 +1503,7 @@ document.addEventListener('submit', e => {
 }, true);
 function close() {
   if (state.medRecOn) medRecStop();   // never leave the microphone running behind a closed sheet
-  sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = '';
+  sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = ''; sheet.classList.remove('sheet-full');
   if (state.verseChanged) { // verse frequency changed: rebuild the feed, staying near the same place
     state.verseChanged = false; const sc = $('#feed-scroll');
     render(sc ? Math.round(sc.scrollTop / Math.max(1, sc.clientHeight)) : 0);
@@ -2467,7 +2472,9 @@ function floatSync(o) {
   }
   sc.querySelectorAll('.' + o.card).forEach(c => c.classList.add('fl-hide'));
 }
-document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.matches?.(x.sc)); if (o) floatSync(o); }, true);
+document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.matches?.(x.sc)); if (o) floatSync(o);
+  if (e.target.id === 'feed-scroll') { const sc = e.target, cur = sc.children[Math.round(sc.scrollTop / Math.max(1, sc.clientHeight))];
+    if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { data.readDevo = { ...(data.readDevo || {}), [today()]: true }; save(true); } onbDone(); } } }, true);
 // a tap on a floating copy changes the verse's own buttons; show their new state
 document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(fvRail, 0); });
 window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
@@ -2478,7 +2485,8 @@ async function fillDevoCards() {
   let verses = []; try { verses = (await passageVerses(p.ref)).map(x => ({ b: p.ref.b, c: x.c, v: x.v, text: x.text })); } catch { slot.querySelector('.card-inner').innerHTML = `<p class="hint">${t('rd.offline')}</p>`; return; }
   if (!document.body.contains(slot) || !verses.length) return;
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };
-  slot.outerHTML = verseCards(verses, '', '', `${icon('sun')}${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''}`);   // "오늘의 말씀" sits with the verse reference at the bottom
+  slot.outerHTML = verseCards(verses, '', '', `${icon('sun')}${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''}`) +
+    `<article class="post card-page devo-end"><div class="card-inner"><span class="done-check">${icon('check')}</span><p class="card-title">${t('ob.doneTitle')}</p><p class="card-sub">${esc(refText(p.ref))}</p></div></article>`;   // "오늘의 말씀" sits with the verse reference at the bottom
   fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
@@ -2839,7 +2847,9 @@ function bibleShell() {
   const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
   // language switch beside the + (shown on every screen for the first few visits)
   if (pill && !document.querySelector('.top-right')) { const box = document.createElement('div'); box.className = 'top-right'; pill.before(box);
-    box.innerHTML = `<button class="top-lang" data-action="lang-menu" hidden></button>`; box.append(pill); }
+    box.innerHTML = `<button class="top-lang" data-action="lang-menu" hidden></button>`; }
+  // + sits at the bottom right, just above Me, on Read, Sermon notes, Community and Me (like the feed's +)
+  if (pill) { pill.classList.add('fab-plus'); document.getElementById('app').append(pill); }
   const nav = document.querySelector('.bottom-nav');
   // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the + button at the top right (감사 · 기도제목 · 묵상 · 감사 전하기)
   const tabBtn = ([id, ic, k]) => `<button data-tab="${id}"><span class="nav-ico" data-icon="${ic}"></span><span data-i18n="${k}"></span></button>`;
@@ -3806,6 +3816,7 @@ function render(keepIndex) {
   });
   { const tl = document.querySelector('.top-lang'); if (tl) { tl.hidden = (data.settings.opens || 0) > 5; tl.setAttribute('aria-label', t('aria.lang')); tl.innerHTML = `${icon('globe')}<span>${LANGS.find(x => x[0] === lang())?.[1] || ''}</span>`; } }
   { const wp = document.querySelector('.write-pill'); if (wp) wp.hidden = BIBLE_MODE && state.tab === 'group'; } // Community has its own +
+  document.getElementById('app').dataset.screen = state.tab;   // e.g. no + on Me (not data-tab: that marks the tab buttons)
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal, read: renderBibleHome, notes: renderSermons, me: renderBibleMe })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
   requestAnimationFrame(markClamped); restoreDrafts($('#app'));
@@ -6062,14 +6073,52 @@ function doubleTap(el, x, y) {
     if (!data.verseLikes.includes(k)) { actions['verse-like'](k); done = true; }
   }
   if (!done && !post && !verse) return;
-  const h = document.createElement('span'); h.className = 'tap-heart'; h.innerHTML = icon(post && data.posts.find(q => q.id === post.dataset.post)?.kind === 'prayer' ? 'pray' : 'heart');
+  const pr = post && data.posts.find(q => q.id === post.dataset.post)?.kind === 'prayer';
+  const h = document.createElement('span'); h.className = 'tap-heart' + (pr ? ' pray' : ''); h.innerHTML = icon(pr ? 'pray' : 'heart');
   h.style.left = x + 'px'; h.style.top = y + 'px'; document.body.appendChild(h); setTimeout(() => h.remove(), 750);
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
-  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) welcomeSheet('', !data.settings.onboarded); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 // Reading: a drag that starts on the reader's top or bottom bar doesn't pull the page (iPhone rubber-band); only the verses scroll.
 document.addEventListener('touchmove', e => { if ((document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) || e.target.closest?.('.screen.fit')) e.preventDefault(); }, { passive: false });
+/* First steps after the first sign-in: today's passage (scroll; a faint arrow shows the way) → ✓ done →
+   your name → "Welcome, name" → today's thanks → then the red dots on open / close show where they are. */
+document.addEventListener('dt:signed-in', () => {
+  let flag = false; try { flag = !!localStorage.getItem('dt-onboard'); localStorage.removeItem('dt-onboard'); } catch {}
+  if (data.settings.onboarded || (!flag && data.settings.onboardStarted)) return;
+  data.settings.onboardStarted = true; data.settings.toured = true; save(true);
+  setTimeout(onbPassage, 400);
+});
+function onbPassage() {
+  if (!sheet.hidden) close();
+  state.onb = 'passage'; state.tab = 'feed'; state.immersive = true; render(0);
+  const go = () => { const sc = $('#feed-scroll'); if (!sc) return; const i = [...sc.children].findIndex(c => c.matches('.fv-card, .devo-load'));
+    if (i >= 0) sc.scrollTop = i * sc.clientHeight; onbArrow(); };
+  setTimeout(go, 60); setTimeout(go, 900);   // again once the verses have loaded
+}
+function onbArrow() {
+  if (state.onb !== 'passage' || $('#onb-arrow')) return;
+  const a = Object.assign(document.createElement('div'), { id: 'onb-arrow', className: 'onb-arrow', innerHTML: icon('down') });
+  document.getElementById('app').append(a);
+  const sc = $('#feed-scroll'), y0 = sc?.scrollTop || 0;
+  sc?.addEventListener('scroll', function off() { if (Math.abs(sc.scrollTop - y0) > 40) { a.classList.add('gone'); setTimeout(() => a.remove(), 600); sc.removeEventListener('scroll', off); } });
+}
+// reached the end of today's passage
+function onbDone() {
+  if (state.onb !== 'passage') return; state.onb = 'name';
+  setTimeout(() => {
+    showSheet({ title: t('ob.nameTitle'), body: `<form id="ob-name" class="sheet-form"><p class="hint">${t('ob.nameSub')}</p>
+      <input id="ob-name-in" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('cl.namePh'))}" required>
+      <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
+    $('#ob-name').addEventListener('submit', e => { e.preventDefault(); const n = $('#ob-name-in').value.trim().slice(0, 30); if (!n) return;
+      data.settings.myName = n; save();
+      if (Cloud.on()) Cloud.rest(`profiles?id=eq.${Cloud.uid()}`, { method: 'PATCH', body: { name: n } }).catch(() => {});
+      showSheet({ title: esc(t('ob.welcome').replace('{name}', n)), body: `<p class="hint">${t('ob.welcomeSub')}</p>` });
+      setTimeout(() => { if (state.onb !== 'name') return; state.onb = null; data.settings.onboarded = true; save(true); close(); compose('today', null); }, 1800);
+    });
+  }, 900);
+}
 // a shared verse: #v=BOOK-CHAPTER-VERSE opens the Bible at that verse
 { const m = location.hash.match(/^#v=(\d+)-(\d+)-(\d+)$/);
   if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch {} document.getElementById('splash')?.remove();

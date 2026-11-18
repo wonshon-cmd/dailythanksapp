@@ -1239,7 +1239,7 @@
   "yr.verse": "Versículo del año",
   "yr.most": "Lo más abierto · {r}",
   "yr.times": "Abierto {n} veces",
-  "rc2.title": "Mi buena influencia",
+  "rc2.title": "Mi influencia positiva",
   "rc2.sub": "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.",
   "rc2.peopleV": "{n}",
   "rc2.timesV": "{n}×",
@@ -1272,5 +1272,13 @@
   "inv.qrTitle": "Código QR",
   "inv.qrDesc": "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
   "mc.code": "Código",
-  "emp.noneYet": "Aún nadie ha compartido gratitud con todos. Sé el primero."
+  "emp.noneYet": "Aún nadie ha compartido gratitud con todos. Sé el primero.",
+  "wl.apple": "Continuar con Apple",
+  "wl.tag": "La Palabra cada día, en comunidad",
+  "wl.look": "Primero quiero mirar",
+  "ob.doneTitle": "Leíste el pasaje de hoy",
+  "ob.nameTitle": "¿Cómo te llamas?",
+  "ob.nameSub": "Tu comunidad y las tarjetas de gratitud muestran este nombre.",
+  "ob.welcome": "Welcome, {name}",
+  "ob.welcomeSub": "¿Algo por lo que das gracias hoy?"
 }
