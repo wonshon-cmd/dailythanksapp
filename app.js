@@ -1731,6 +1731,7 @@ function verseFromKey(k) {
   return { key: k, b, c, v, text, tr: VERSE_TR[lang()] || VERSE_TR.en };
 }
 function verseLink(x) {
+  if (BIBLE_MODE) return `${LEGAL_BASE}/daily-bible/#v=${x.b}-${x.c}-${x.v}`;   // short: opens the app at this verse
   const payload = { t: x.text, n: refText({ b: x.b, c: x.c, v: x.v, v2: x.v }) + ' · ' + x.tr, k: 'verse', d: today(), l: lang() };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   return `${LEGAL_BASE}/t/#${b64}`;
@@ -5830,7 +5831,7 @@ const actions = {
   'verse-send': k => {
     const x = verseFromKey(k); if (!x.text) return;
     const text = `${x.text}\n— ${refText({ b: x.b, c: x.c, v: x.v, v2: x.v })} (${x.tr})\n\n${verseLink(x)}`;
-    if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
+    if (navigator.share) navigator.share({ text }).catch(() => {}); else copyText(text);
     data.verseShares = (data.verseShares || 0) + 1; data.extSharesGiven = (data.extSharesGiven || 0) + 1; save();
   },
   'open-saved-verse': k => { const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
@@ -6020,7 +6021,11 @@ function doubleTap(el, x, y) {
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
-  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+// a shared verse: #v=BOOK-CHAPTER-VERSE opens the Bible at that verse
+{ const m = location.hash.match(/^#v=(\d+)-(\d+)-(\d+)$/);
+  if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch {} document.getElementById('splash')?.remove();
+    const [b, c, v] = m.slice(1).map(Number); if (b >= 1 && b <= 66) setTimeout(() => openReader({ b, c, v }), 120); } }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
