@@ -1744,7 +1744,7 @@ function openReader(opts = {}) {
   data.reading = data.reading || { b: 1, c: 1 }; data.readDone = data.readDone || [];
   data.verseLikes = data.verseLikes || []; data.savedVerses = data.savedVerses || [];
   const start = opts.b ? opts : { b: data.reading.b, c: data.reading.c, v: data.reading.v || 1 };
-  // Today's passage from a group: only those verses, one card at a time, turned sideways.
+  // Today's passage from a group: only those verses, one card at a time, up and down like the rest.
   const passage = !!(opts.group && opts.b && opts.v);
   state.reader = { ...start, group: opts.group || null, loaded: [], passage };
   state.readSpan = { b: start.b, c: start.c, v: start.v || 1 };   // where this reading started (for "note what I just read")
@@ -1778,7 +1778,7 @@ async function loadChapter(b, c, first) {
   if (r.passage) verses = verses.filter(x => r.c2 > r.c ? (c === r.c ? x.v >= r.v : x.v <= r.e2) : x.v >= r.v && x.v <= (r.v2 || r.v));
   r.loaded.push([b, c]); r.last = [b, c];
   { const y = today().slice(0, 4), v = data.chViews = data.chViews || {}; v[y] = v[y] || {}; v[y][readKey(b, c)] = (v[y][readKey(b, c)] || 0) + 1; }
-  const hl = x => first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v);
+  const hl = x => r.passage || (first && r.v && x.v >= r.v && x.v <= (r.v2 || r.v));   // today's passage: every verse in it
   const last = verses[verses.length - 1].v;
   // One verse per page; swipe up for the next one (same feel as the thanks feed).
   const readOn = data.readLog?.[readKey(b, c)];
@@ -1795,7 +1795,7 @@ async function loadChapter(b, c, first) {
     </aside></article>`; }).join('');
   const sc = $('#reader-scroll');
   if (r.passage) {
-    if (first) { more.remove(); sc.innerHTML = pages; sc.scrollLeft = 0; } else sc.insertAdjacentHTML('beforeend', pages);
+    if (first) { more.remove(); sc.innerHTML = pages; sc.scrollTop = 0; } else sc.insertAdjacentHTML('beforeend', pages);
     setTimeout(fvRail, 0);
     passageCount();
     if (r.c2 > c) await loadChapter(b, c + 1, false);
@@ -1840,7 +1840,7 @@ function trackReading() {
 }
 function passageCount() {
   const sc = $('#reader-scroll'), gap = $('.reader-gap'); if (!sc || !gap) return;
-  const pages = sc.querySelectorAll('.vs-page'), i = Math.min(pages.length - 1, Math.round(sc.scrollLeft / Math.max(1, sc.clientWidth)));
+  const pages = sc.querySelectorAll('.vs-page'), i = Math.min(pages.length - 1, Math.round(sc.scrollTop / Math.max(1, sc.clientHeight)));
   gap.innerHTML = pages.length > 1 ? `<span class="pg-count">${i + 1} / ${pages.length}</span>` : '';
 }
 // Leaving a group's full-screen view (back to the 공동체 tab) or the prayer lane (back to where you were).
@@ -2436,7 +2436,7 @@ function floatSync(o) {
   const sc = $(o.sc), fr = $('#fl-rail-' + o.card), ff = $('#fl-ref-' + o.card);
   const off = () => { fr?.remove(); ff?.remove(); sc?.querySelectorAll('.fl-hide').forEach(c => c.classList.remove('fl-hide')); };
   if (!sc || !sc.offsetParent) return off();
-  const horiz = sc.classList.contains('passage'), cards = [...sc.children];
+  const horiz = false, cards = [...sc.children];   // every verse view scrolls up and down
   const pos = horiz ? sc.scrollLeft / (sc.clientWidth || 1) : sc.scrollTop / (sc.clientHeight || 1);
   const lo = cards[Math.floor(pos + 0.01)], hi = cards[Math.ceil(pos - 0.01)], cur = cards[Math.round(pos)];
   const src = cur?.querySelector(o.rail), ref = cur?.querySelector(o.ref);
@@ -5986,7 +5986,6 @@ render();
     }
     if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.4) return; // mostly sideways, anywhere on the screen
     if (startEl?.closest('#bpick')) return; // inside the Bible picker
-    if (inReader && state.reader?.passage && startEl?.closest('#reader-scroll')) return; // sideways turns the verse
     if (BIBLE_MODE && !inReader) return; // daily bible: no sideways jumps between screens
     if (inReader) { if (dx > 0) { data.settings.swipedBack = true; closeReader(); } return; } // Bible ← reached by swiping left; swipe right to come back
     if (document.getElementById('sheet')?.hidden === false) return;
