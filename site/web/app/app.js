@@ -1168,6 +1168,30 @@ function wlVerses() {
   const v = WL_VERSES[lang()] || WL_VERSES.en, list = v.map(x => `<p>${esc(x)}</p>`).join('');
   return `<div class="wl-verses" aria-hidden="true"><div class="wl-track">${list}${list}</div></div>`;   // twice, so the loop is seamless
 }
+/* First open: the logo slides up like the feed, then Proverbs 3:5 and 3:6 one card each, then sign-in.
+   It moves on by itself; a swipe or tap moves it sooner. */
+const INTRO = {
+  ko: [['너는 마음을 다하여 여호와를 의뢰하고 네 명철을 의지하지 말라', '잠언 3:5'], ['너는 범사에 그를 인정하라 그리하면 네 길을 지도하시리라', '잠언 3:6']],
+  en: [['Trust in the LORD with all thine heart; and lean not unto thine own understanding.', 'Proverbs 3:5'], ['In all thy ways acknowledge him, and he shall direct thy paths.', 'Proverbs 3:6']],
+  es: [['Fíate de Jehová de todo tu corazón, Y no estribes en tu prudencia.', 'Proverbios 3:5'], ['Reconócelo en todos tus caminos, Y él enderezará tus veredas.', 'Proverbios 3:6']]
+};
+function introCards(done) {
+  const app = document.getElementById('app'); if (!app || $('#intro')) return done();
+  const v = INTRO[lang()] || INTRO.en;
+  const el = Object.assign(document.createElement('div'), { id: 'intro', className: 'intro' });
+  el.innerHTML = `<div class="intro-reel"><section class="intro-page intro-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p class="intro-tag">${esc(({ ko: '한 장씩, 공동체와 함께', es: 'Una a la vez, con tu comunidad' })[lang()] || 'One slide at a time, with your community')}</p></section>
+    ${v.map(([text, ref]) => `<section class="intro-page"><p class="intro-text">${esc(text)}</p><p class="intro-ref">${esc(ref)}</p></section>`).join('')}</div>
+    <div class="intro-hint">${icon('down')}</div>`;
+  app.append(el);
+  const reel = el.querySelector('.intro-reel'), n = v.length + 1; let i = 0, timer, y0 = null, finished = false;
+  const finish = () => { if (finished) return; finished = true; clearTimeout(timer); el.classList.add('out'); setTimeout(() => el.remove(), 450); done(); };
+  const next = () => { clearTimeout(timer); if (i >= n - 1) return finish(); i++; reel.style.transform = `translateY(${-i * 100}%)`; el.classList.toggle('last', i === n - 1); timer = setTimeout(next, i === n - 1 ? 3200 : 3000); };
+  timer = setTimeout(next, 1400);
+  el.addEventListener('click', next);
+  el.addEventListener('wheel', e => { if (e.deltaY > 20) next(); }, { passive: true });
+  el.addEventListener('touchstart', e => { y0 = e.touches[0].clientY; }, { passive: true });
+  el.addEventListener('touchend', e => { if (y0 != null && y0 - e.changedTouches[0].clientY > 40) next(); y0 = null; }, { passive: true });
+}
 async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
   const on = await Cloud.providers();
@@ -6134,7 +6158,7 @@ function doubleTap(el, x, y) {
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
-  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) welcomeSheet('', !data.settings.onboarded); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) { if (!data.settings.onboarded) introCards(() => welcomeSheet('', true)); else welcomeSheet(); } }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 // Reading: a drag that starts on the reader's top or bottom bar doesn't pull the page (iPhone rubber-band); only the verses scroll.
 document.addEventListener('touchmove', e => { if ((document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) || e.target.closest?.('.screen.fit')) e.preventDefault(); }, { passive: false });
 /* First steps after the first sign-in: today's passage (scroll; a faint arrow shows the way) → ✓ done →
