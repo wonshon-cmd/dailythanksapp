@@ -6,7 +6,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'site/template.html'
+      - 'site/**'
+      - 'brand/**'
       - 'tools/build-site.py'
       - 'store/legal/**'
       - 'content/**'
