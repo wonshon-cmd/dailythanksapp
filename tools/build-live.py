@@ -5,8 +5,8 @@
   python3 tools/build-live.py OUT_DIR    # then: copy into the dailybible repo checkout
 
 Layout at https://wonshon-cmd.github.io/dailybible/
-  /               daily Bible introduction page
-  /daily-bible/   daily Bible app
+  /               Daily Journey front page (same as dailyjourney.org)
+  /daily-bible/   the Daily Journey app
   /app/           daily thanks app
   /thanks/        daily thanks introduction page
   /join/ /t/ /privacy/ /terms/ /support/ /delete-account/   links and legal pages
@@ -26,16 +26,12 @@ for p in out.iterdir():                      # keep the repo's own files (.git, 
     if p.name in ('.git', '.github', 'README.md'): continue
     shutil.rmtree(p) if p.is_dir() else p.unlink()
 
-skip = {'CNAME', 'dailybible', 'index.html'}
+skip = {'CNAME'}   # the same pages as dailyjourney.org, front page included
 for p in WEB.iterdir():
     if p.name in skip: continue
     (shutil.copytree(p, out / p.name) if p.is_dir() else shutil.copy2(p, out / p.name))
 # (the daily thanks intro is already at site/web/thanks/)
-# this site is "daily Bible": undo the dailyjourney.org name on the app page
-bbi = out / 'daily-bible' / 'index.html'
-bbi.write_text(bbi.read_text().replace(' window.DT_BRAND = "journey";', '').replace('og:title" content="daily journey"', 'og:title" content="daily Bible"').replace('https://dailyjourney.org/og-journey.png', BASE + '/og.png').replace('Daily Journey · 말씀을 매일', 'Daily Bible · 말씀을 매일').replace('content="Daily Journey"', 'content="Daily Bible"'))
-for p in (WEB / 'dailybible').iterdir():     # the daily Bible page is the front page (and its icons win)
-    (shutil.copytree(p, out / p.name, dirs_exist_ok=True) if p.is_dir() else shutil.copy2(p, out / p.name))
+# the app keeps its name: daily journey (same as dailyjourney.org)
 shutil.copy2(ROOT / 'content' / 'content.json', out / 'content.json')
 # e-mail sign-in links that land on the front page (Supabase Site URL) go on to the app with their tokens
 front = out / 'index.html'
