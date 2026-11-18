@@ -15,7 +15,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 const STR = {
   ko: {
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
-    'wl.apple': "Apple로 계속하기", 'wl.tag': "말씀을 매일, 공동체와 함께", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
+    'wl.apple': "Apple로 계속하기", 'wl.tag': "One slide at a time, with your community", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
     'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
     'mc.code': "코드",
     'inv.code': "코드 만들기", 'inv.qr': "QR 코드", 'inv.codeTitle': "공동체 코드", 'inv.codeDesc': "받은 사람이 나 › 내 공동체에 이 코드를 넣으면 ‘{name}’에 들어와요.", 'inv.codeCopy': "코드 복사", 'inv.qrTitle': "QR 코드", 'inv.qrDesc': "휴대폰 카메라로 찍으면 ‘{name}’ 초대가 열려요.",
@@ -177,7 +177,7 @@ const STR = {
   },
   en: {
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
-    'wl.apple': "Continue with Apple", 'wl.tag': "The Word daily, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
+    'wl.apple': "Continue with Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
     'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
     'mc.code': "Code",
     'inv.code': "Make a code", 'inv.qr': "QR code", 'inv.codeTitle': "Community code", 'inv.codeDesc': "Anyone who enters this code in Me › My communities joins “{name}”.", 'inv.codeCopy': "Copy code", 'inv.qrTitle': "QR code", 'inv.qrDesc': "Point a phone camera here to open the invite to “{name}”.",
@@ -339,7 +339,7 @@ const STR = {
   },
   es: {
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
-    'wl.apple': "Continuar con Apple", 'wl.tag': "La Palabra cada día, en comunidad", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
+    'wl.apple': "Continuar con Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
     'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
     'mc.code': "Código",
     'inv.code': "Crear un código", 'inv.qr': "Código QR", 'inv.codeTitle': "Código de la comunidad", 'inv.codeDesc': "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.", 'inv.codeCopy': "Copiar código", 'inv.qrTitle': "Código QR", 'inv.qrDesc': "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
@@ -1179,7 +1179,7 @@ function introCards(done) {
   const app = document.getElementById('app'); if (!app || $('#intro')) return done();
   const v = INTRO[lang()] || INTRO.en;
   const el = Object.assign(document.createElement('div'), { id: 'intro', className: 'intro' });
-  el.innerHTML = `<div class="intro-reel"><section class="intro-page intro-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p class="intro-tag">${esc(({ ko: '한 장씩, 공동체와 함께', es: 'Una a la vez, con tu comunidad' })[lang()] || 'One slide at a time, with your community')}</p></section>
+  el.innerHTML = `<div class="intro-reel"><section class="intro-page intro-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p class="intro-tag">One slide at a time, with your community</p></section>
     ${v.map(([text, ref]) => `<section class="intro-page"><p class="intro-text">${esc(text)}</p><p class="intro-ref">${esc(ref)}</p></section>`).join('')}</div>
     <div class="intro-hint">${icon('down')}</div>`;
   app.append(el);
