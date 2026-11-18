@@ -6018,6 +6018,8 @@ function doubleTap(el, x, y) {
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
   if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!data.settings.toured) startTour(); else if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+// Reading: a drag that starts on the reader's top or bottom bar doesn't pull the page (iPhone rubber-band); only the verses scroll.
+document.addEventListener('touchmove', e => { if (document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) e.preventDefault(); }, { passive: false });
 // a shared verse: #v=BOOK-CHAPTER-VERSE opens the Bible at that verse
 { const m = location.hash.match(/^#v=(\d+)-(\d+)-(\d+)$/);
   if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch {} document.getElementById('splash')?.remove();
