@@ -1711,3 +1711,9 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 /* reading: the top (page count, text size, translation) and the bottom (묵상 나누기) never move; only the verses scroll */
 body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: none; }
 .reader-top, .reader-foot { touch-action: none; }
+/* community code and QR */
+.inv-more { margin-top: 8px; }
+.inv-code { margin: 18px 0 20px; text-align: center; font-size: 34px; letter-spacing: .22em; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+.inv-code.small { font-size: 18px; margin: 12px 0 0; color: #8A9094; }
+.inv-qr { width: min(260px, 70vw); margin: 16px auto 0; }
+.inv-qr svg { display: block; width: 100%; height: auto; }

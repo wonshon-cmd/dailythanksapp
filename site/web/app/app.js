@@ -14,6 +14,8 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'mc.code': "코드",
+    'inv.code': "코드 만들기", 'inv.qr': "QR 코드", 'inv.codeTitle': "공동체 코드", 'inv.codeDesc': "받은 사람이 나 › 내 공동체에 이 코드를 넣으면 ‘{name}’에 들어와요.", 'inv.codeCopy': "코드 복사", 'inv.qrTitle': "QR 코드", 'inv.qrDesc': "휴대폰 카메라로 찍으면 ‘{name}’ 초대가 열려요.",
     'cl.pw': "비밀번호", 'cl.pwBad': "비밀번호가 맞지 않아요.",
     'nt.note': "노트",
     'sn.saved': "녹음과 노트를 저장했어요.", 'rec.afterLocal': "저장하면 녹음과 내가 적은 노트가 함께 남아요.", 'rec.liveHintLocal': "말하는 대로 바로 글자로 보여 줘요. 저장하면 녹음과 함께 남아요.",
@@ -171,6 +173,8 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'mc.code': "Code",
+    'inv.code': "Make a code", 'inv.qr': "QR code", 'inv.codeTitle': "Community code", 'inv.codeDesc': "Anyone who enters this code in Me › My communities joins “{name}”.", 'inv.codeCopy': "Copy code", 'inv.qrTitle': "QR code", 'inv.qrDesc': "Point a phone camera here to open the invite to “{name}”.",
     'cl.pw': "Password", 'cl.pwBad': "That password isn’t right.",
     'nt.note': "Notes",
     'sn.saved': "Recording and notes saved.", 'rec.afterLocal': "When you save, the recording and your own notes are kept together.", 'rec.liveHintLocal': "Shows what’s said as text right away. When you save, it’s kept with the recording.",
@@ -328,6 +332,8 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'mc.code': "Código",
+    'inv.code': "Crear un código", 'inv.qr': "Código QR", 'inv.codeTitle': "Código de la comunidad", 'inv.codeDesc': "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.", 'inv.codeCopy': "Copiar código", 'inv.qrTitle': "Código QR", 'inv.qrDesc': "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
     'cl.pw': "Contraseña", 'cl.pwBad': "La contraseña no es correcta.",
     'nt.note': "Notas",
     'sn.saved': "Grabación y notas guardadas.", 'rec.afterLocal': "Al guardar, la grabación y tus notas quedan juntas.", 'rec.liveHintLocal': "Muestra al instante lo que se dice como texto. Al guardar, queda con la grabación.",
@@ -3576,6 +3582,7 @@ function reachHtml() {
 function myCommunities() {
   const row = g => { const sub = g.pending ? t('join.pendingShort') : g.muted ? t('mc.quietOn') : g.owner ? t('mc.admin') : '';
     return `<div class="list-row static"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span>${sub ? `<span class="row-sub">${sub}</span>` : ''}</span>
+      ${!g.pending && canInvite(g) ? `<button class="link-btn" data-action="invite-code" data-id="${esc(g.id)}">${t('mc.code')}</button>` : ''}
       <button class="link-btn" data-action="mc-quiet" data-id="${esc(g.id)}">${g.muted ? t('mc.loud') : t('mc.quiet')}</button>
       <button class="link-btn adm-rm" data-action="mc-leave" data-id="${esc(g.id)}">${t('mc.leave')}</button></div>`; };
   return `<p class="gd-label">${t('mc.title')}</p>
@@ -3604,8 +3611,8 @@ function renderBibleMe() {
   const q = noteQuota(), d = readDays();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
-    ${myCommunities()}
     ${reachHtml()}
+    ${myCommunities()}
     ${readGauge()}${dashHtml()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
     ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
@@ -4507,8 +4514,36 @@ function inviteSheet(id) {
   showSheet({ title: t('inv.title'), body: `<p class="hint">${esc(t('inv.desc').replace('{name}', name))}</p>
     <div class="invite-link selectable">${esc(decodeURIComponent(link))}</div>
     <div class="sheet-actions"><button class="primary" data-action="invite-share" data-id="${esc(id)}">${icon('share')}${t('inv.share')}</button>
-    <button class="secondary" data-action="invite-copy" data-id="${esc(id)}">${t('inv.copy')}</button></div>` });
+    <button class="secondary" data-action="invite-copy" data-id="${esc(id)}">${t('inv.copy')}</button></div>
+    <div class="sheet-actions inv-more"><button class="secondary" data-action="invite-code" data-id="${esc(id)}">${t('inv.code')}</button>
+    <button class="secondary" data-action="invite-qr" data-id="${esc(id)}">${t('inv.qr')}</button></div>` });
   state.inviteMsg = msg;
+}
+// A short code people type into Me › My communities (works on the phone app and the web).
+function inviteCode(id) {
+  const g = data.groups.find(x => x.id === id); if (!g) return;
+  if (!canInvite(g)) { toast(t('adm.inviteOff')); return; }
+  inviteLink(g);   // makes the code if this community doesn't have one yet
+  const code = g.invite.toUpperCase();
+  showSheet({ title: t('inv.codeTitle'), body: `<p class="hint">${esc(t('inv.codeDesc').replace('{name}', L(g.name)))}</p>
+    <p class="inv-code selectable">${esc(code)}</p>
+    <div class="sheet-actions"><button class="primary" data-action="invite-code-copy" data-id="${esc(id)}">${t('inv.codeCopy')}</button>
+    <button class="secondary" data-action="invite-qr" data-id="${esc(id)}">${t('inv.qr')}</button></div>` });
+}
+// QR code of the invite link: point a phone camera at it and the invite opens.
+let qrLib = null;
+const loadQr = () => qrLib || (qrLib = new Promise((ok, no) => { if (window.qrcode) return ok(window.qrcode);
+  const sc = Object.assign(document.createElement('script'), { src: 'qrcode.js', onload: () => ok(window.qrcode), onerror: () => { qrLib = null; no(); } }); document.head.append(sc); }));
+async function inviteQr(id) {
+  const g = data.groups.find(x => x.id === id); if (!g) return;
+  if (!canInvite(g)) { toast(t('adm.inviteOff')); return; }
+  const link = inviteLink(g);
+  let svg = '';
+  try { const qrcode = await loadQr(); const q = qrcode(0, 'M'); q.addData(link); q.make(); svg = q.createSvgTag({ cellSize: 6, margin: 2, scalable: true }); }
+  catch { toast(t('cl.fail')); return; }
+  showSheet({ title: t('inv.qrTitle'), body: `<p class="hint">${esc(t('inv.qrDesc').replace('{name}', L(g.name)))}</p>
+    <div class="inv-qr" role="img" aria-label="${esc(t('inv.qr'))}">${svg}</div>
+    <p class="inv-code small">${esc(g.invite.toUpperCase())}</p>` });
 }
 /* Reading-plan invite: the plan travels in the link (range, length, start date), so whoever opens it reads the
    same portion on the same day — no account needed. dailyjourney.org/daily-bible/#plan?f=1.1&t=1.50&d=30&s=2026-11-17 */
@@ -5585,6 +5620,9 @@ const actions = {
   'plan-invite-done': () => { close(); askReminders('plan'); },
   'plan-copy': id => { const ch = data.challenges.find(x => x.id === id); if (ch) copyText(planLink(ch)); },
   'plan-join': () => { const c = state.planJoin; close(); if (!c) { toast(t('pl.already')); return; } data.challenges.unshift(c); state.planJoin = null; save(); state.tab = BIBLE_MODE ? 'read' : 'group'; render(); toast(t('pl.joined')); askReminders('plan'); },
+  'invite-code': id => inviteCode(id),
+  'invite-qr': id => inviteQr(id),
+  'invite-code-copy': id => { const g = data.groups.find(x => x.id === id); if (g?.invite) copyText(g.invite.toUpperCase()); },
   'invite-copy': id => { const g = data.groups.find(x => x.id === id); if (g) copyText(inviteLink(g)); },
   vault: () => vaultSheet(),
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),

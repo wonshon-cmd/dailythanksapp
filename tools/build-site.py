@@ -137,14 +137,14 @@ shutil.copy(ROOT / 'store' / 'icons' / 'appstore-1024.png', WEB / 'apple-touch-i
 shutil.copy(ROOT / 'store' / 'instagram' / 'feed-en-1.png', WEB / 'og.png')
 # The web version of the app itself at dailyjourney.org/app/ (same files as the phone app; invite links and the Bible reader work here)
 app_dir = WEB / 'app'; app_dir.mkdir(exist_ok=True)
-for f in ('index.html', 'styles.css', 'app.js'): shutil.copy(ROOT / f, app_dir / f)
+for f in ('index.html', 'styles.css', 'app.js', 'qrcode.js'): shutil.copy(ROOT / f, app_dir / f)
 bible = ROOT / 'bible'
 if bible.exists():  # public-domain Bible text: dailyjourney.org/bible/… and dailyjourney.org/app/bible/…
     shutil.copytree(bible, WEB / 'bible', dirs_exist_ok=True)
     shutil.copytree(bible, app_dir / 'bible', dirs_exist_ok=True)
 # daily bible on the web: dailyjourney.org/daily-bible/ (same files, Bible mode; shares data with /app/ on this site)
 bb_dir = WEB / 'daily-bible'; bb_dir.mkdir(exist_ok=True)
-for f in ('styles.css', 'app.js'): shutil.copy(ROOT / f, bb_dir / f)
+for f in ('styles.css', 'app.js', 'qrcode.js'): shutil.copy(ROOT / f, bb_dir / f)
 bb_html = (ROOT / 'index.html').read_text().replace('<script src="app.js" defer></script>', '<script>window.DT_APP = "bible";</script>\n<script src="app.js" defer></script>')
 bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루</title>', '<title>Daily Journey · 말씀을 매일</title>').replace('content="Daily Thanks"', 'content="Daily Journey"')
 # on dailyjourney.org the Bible app is called "daily journey" (tools/build-live.py turns it back into "daily bible" for the github.io site)
