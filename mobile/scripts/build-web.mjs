@@ -10,7 +10,7 @@ const www = path.resolve(here, '../www');
 fs.rmSync(www, { recursive: true, force: true });
 fs.mkdirSync(path.join(www, 'i18n'), { recursive: true });
 
-for (const f of ['styles.css', 'app.js']) fs.copyFileSync(path.join(root, f), path.join(www, f));
+for (const f of ['styles.css', 'app.js', 'qrcode.js']) fs.copyFileSync(path.join(root, f), path.join(www, f));
 for (const f of fs.readdirSync(path.join(root, 'i18n'))) fs.copyFileSync(path.join(root, 'i18n', f), path.join(www, 'i18n', f));
 fs.copyFileSync(path.resolve(here, '../src/native.js'), path.join(www, 'native.js'));
 // Bible text travels with the app, so read-through works offline.

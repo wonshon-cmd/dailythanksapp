@@ -1264,5 +1264,13 @@
   "rec.liveHintLocal": "Muestra al instante lo que se dice como texto. Al guardar, queda con la grabación.",
   "nt.note": "Notas",
   "cl.pw": "Contraseña",
-  "cl.pwBad": "La contraseña no es correcta."
+  "cl.pwBad": "La contraseña no es correcta.",
+  "inv.code": "Crear un código",
+  "inv.qr": "Código QR",
+  "inv.codeTitle": "Código de la comunidad",
+  "inv.codeDesc": "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.",
+  "inv.codeCopy": "Copiar código",
+  "inv.qrTitle": "Código QR",
+  "inv.qrDesc": "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
+  "mc.code": "Código"
 }
