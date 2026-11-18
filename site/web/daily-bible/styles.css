@@ -1811,3 +1811,9 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .intro.last .intro-hint { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .intro-reel { transition: none; } }
 .intro-tag { margin: 12px 0 0; font-size: 14px; color: #8A9094; text-align: center; }
+/* sign-in looks the same on every screen: logo + tagline, the buttons in the middle (the verses come before it, in the intro) */
+@media (max-width: 600px) {
+  .wl-logo { display: block; }
+  .sheet.sheet-full { justify-content: center; padding-bottom: calc(28px + var(--safe-bottom)); }
+  .sheet.sheet-full .wl-verses { display: none; }
+}
