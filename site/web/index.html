@@ -58,6 +58,37 @@ footer nav a:hover{color:var(--ink)}
 .co strong{color:var(--ink);font-weight:500}
 .co a{text-decoration:none}
 .cr{margin:0}
+/* live preview: scroll a verse, like it, scroll to the end → today's done */
+.demo{display:flex;flex-direction:column;align-items:center;padding-bottom:64px}
+.phone{position:relative;width:300px;height:560px;border-radius:44px;border:1px solid #E3E5E6;box-shadow:0 18px 50px #2a30361a;background:#fff;overflow:hidden}
+.phone .bar{position:absolute;top:22px;left:26px;right:26px;display:flex;justify-content:space-between;align-items:center;z-index:3;font-size:12px;color:#9BA0A3}
+.phone .bar .wm{font-family:var(--serif);font-size:16px;color:#B4B8BA}
+.reel{position:absolute;inset:0;transition:transform .9s cubic-bezier(.65,0,.35,1)}
+.vcard{position:absolute;left:0;right:0;height:560px;padding:0 64px 0 28px;display:flex;flex-direction:column;justify-content:center}
+.vcard p{margin:0;font-size:21px;line-height:1.7;font-weight:300;color:var(--ink)}
+.vcard.end{align-items:center;text-align:center;padding:0 28px}
+.vcard.end .ck{width:52px;height:52px;border-radius:50%;background:#F1F2F3;display:grid;place-items:center;margin-bottom:16px;transform:scale(.6);opacity:0;transition:.5s}
+.vcard.end.on .ck{transform:scale(1);opacity:1}
+.vcard.end b{font-weight:400;font-size:19px;color:var(--ink)}
+.vcard.end span{margin-top:6px;font-size:13px;color:var(--sub)}
+.rail{position:absolute;right:20px;bottom:110px;display:grid;gap:22px;z-index:3;color:#B8BDC0;transition:opacity .4s}
+.rail svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.rail .heart.on svg{fill:#C46B76;stroke:#C46B76}
+.ref{position:absolute;left:28px;bottom:112px;z-index:3;font-size:12px;color:#8A9094;display:flex;gap:6px;align-items:center;transition:opacity .4s}
+.ref i{font-style:normal;color:#B4B8BA}
+.pop{position:absolute;left:50%;top:44%;width:76px;height:76px;margin:-38px 0 0 -38px;z-index:4;opacity:0;pointer-events:none}
+.pop svg{width:100%;height:100%;fill:#C46B76}
+.pop.go{animation:pop .9s ease-out}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}25%{opacity:.95;transform:scale(1.1)}60%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.15)}}
+.finger{position:absolute;left:50%;top:62%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:#1F232614;z-index:5;opacity:0}
+.finger.swipe{animation:swipe 1s ease-in-out}
+.finger.tap{animation:tap .7s ease-out}
+@keyframes swipe{0%{opacity:0;transform:translateY(40px)}20%{opacity:1}80%{opacity:1;transform:translateY(-120px)}100%{opacity:0;transform:translateY(-140px)}}
+@keyframes tap{0%,100%{opacity:0;transform:scale(.6)}30%,60%{opacity:1;transform:scale(1)}}
+.steps{display:flex;gap:18px;margin-top:22px;font-size:14px;color:#B4B8BA}
+.steps span{transition:color .3s}
+.steps span.on{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.reel,.pop,.finger{transition:none;animation:none}}
 </style>
 </head>
 <body>
@@ -74,6 +105,17 @@ footer nav a:hover{color:var(--ink)}
     <p data-k="sub"></p>
     <div class="btns center"><a class="btn primary" href="/daily-bible/" data-k="open"></a></div>
     <p class="note" data-k="note"></p>
+  </section>
+
+  <section class="demo" aria-label="preview">
+    <div class="phone" id="phone">
+      <div class="bar"><span class="wm">daily <em>journey</em></span><span>가±</span></div>
+      <div class="reel" id="reel"></div>
+      <div class="rail" id="rail"><span class="heart" id="heart"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-4-5 4z"/></svg></span><span><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg></span></div>
+      <div class="ref" id="ref"></div>
+      <div class="pop" id="pop"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+      <div class="finger" id="finger"></div>
+    </div>
   </section>
 
   <section class="feats">
@@ -105,6 +147,8 @@ const S = {
     f4: '공동체', f4d: '교회 · 공동체 · 수련회 코드나 초대 링크로 들어가 기도제목과 묵상을 나눠요. 공동체 글은 멤버만 볼 수 있어요.',
     f5: '통독 기록', f5d: '몇 번 읽었는지, 언제 시작해 언제 마쳤는지, 날마다 읽은 장이 남아요.',
     f6: '내 기록은 내 것', f6d: '나만 보기 기록은 기기에서 잠가 두고 밖으로 보내지 않아요. 운영자도 읽을 수 없어요.',
+    d1: '넘기고', d2: '마음에 담고', d3: '오늘 완료 ✓', today: '오늘의 말씀', done: '오늘의 말씀을 다 읽었어요', book: '시편 23',
+    vs: ['여호와는 나의 목자시니 내가 부족함이 없으리로다', '그가 나를 푸른 초장에 누이시며 쉴만한 물 가으로 인도하시는도다', '내 영혼을 소생시키시고 자기 이름을 위하여 의의 길로 인도하시는도다'],
     np: '미국 뉴저지주에 설립된 비영리 법인 · 미국 국세청(IRS) 501(c)(3) 승인 신청 중', privacy: '개인정보 처리방침', terms: '이용약관', support: '고객지원', delete: '계정 삭제' },
   en: { tag: 'A day focused on the Word', sub: 'Read one verse at a time, keep your sermons, and pray with your community.', open: 'Open on the web', note: 'No download needed. On your phone, add it to your Home Screen to use it like an app.',
     f1: 'One verse at a time', f1d: 'Scroll through Scripture one verse per screen, on a quiet white page.',
@@ -113,6 +157,8 @@ const S = {
     f4: 'Community', f4d: 'Join with a code or invite link from your church, community or retreat, and share prayer requests and reflections. Only members see community posts.',
     f5: 'Read-through history', f5d: 'How many times you’ve read the Bible, when each round started and ended, and what you read each day.',
     f6: 'Your notes stay yours', f6d: 'Only-me notes stay locked on your device and never leave it, so even we can’t read them.',
+    d1: 'Scroll', d2: 'Keep what speaks', d3: 'Done for today ✓', today: 'Today’s passage', done: 'You read today’s passage', book: 'Psalm 23',
+    vs: ['The LORD is my shepherd; I shall not want.', 'He maketh me to lie down in green pastures: he leadeth me beside the still waters.', 'He restoreth my soul: he leadeth me in the paths of righteousness for his name’s sake.'],
     np: 'A New Jersey nonprofit corporation · 501(c)(3) application pending with the IRS', privacy: 'Privacy', terms: 'Terms', support: 'Support', delete: 'Delete account' },
   es: { tag: 'Un día centrado en la Palabra', sub: 'Lee versículo a versículo, guarda tus sermones y ora con tu comunidad.', open: 'Abrir en la web', note: 'Sin descargas. En tu teléfono, añádela a la pantalla de inicio para usarla como app.',
     f1: 'Versículo a versículo', f1d: 'La Escritura un versículo por pantalla, en una página blanca y tranquila.',
@@ -121,6 +167,8 @@ const S = {
     f4: 'Comunidad', f4d: 'Únete con un código o enlace de tu iglesia, comunidad o retiro y comparte peticiones y reflexiones. Solo los miembros ven lo de la comunidad.',
     f5: 'Historial de lectura', f5d: 'Cuántas veces has leído la Biblia, cuándo empezó y terminó cada vuelta y qué leíste cada día.',
     f6: 'Tus notas son tuyas', f6d: 'Lo que guardas solo para ti queda cifrado en tu dispositivo y no sale de él; ni nosotros podemos leerlo.',
+    d1: 'Desliza', d2: 'Guarda lo que te habla', d3: 'Hecho por hoy ✓', today: 'Pasaje de hoy', done: 'Leíste el pasaje de hoy', book: 'Salmos 23',
+    vs: ['Jehová es mi pastor; nada me faltará.', 'En lugares de delicados pastos me hará yacer: Junto á aguas de reposo me pastoreará.', 'Confortará mi alma; Guiaráme por sendas de justicia por amor de su nombre.'],
     np: 'Corporación sin fines de lucro de Nueva Jersey · solicitud 501(c)(3) pendiente ante el IRS', privacy: 'Privacidad', terms: 'Términos', support: 'Soporte', delete: 'Eliminar cuenta' }
 };
 let lang = 'ko';
@@ -130,6 +178,32 @@ const sel = document.getElementById('lang');
 function paint() {
   document.documentElement.lang = lang; sel.value = lang;
   document.querySelectorAll('[data-k]').forEach(el => { el.textContent = S[lang][el.dataset.k]; });
+  buildDemo();
+}
+// the live preview: verse 1 → double tap (heart) → verse 2 → verse 3 → ✓ done, then again
+const $ = id => document.getElementById(id);
+let demoT = [];
+function buildDemo() {
+  demoT.forEach(clearTimeout); demoT = [];
+  const L = S[lang], n = L.vs.length;
+  $('reel').innerHTML = L.vs.map((v, i) => `<div class="vcard" style="top:${i * 560}px"><p>${v}</p></div>`).join('') +
+    `<div class="vcard end" id="vend" style="top:${n * 560}px"><div class="ck"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#3a3f44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><b>${L.done}</b><span>${L.book}:1-${n}</span></div>`;
+  const ref = i => { $('ref').innerHTML = `☼ ${L.today} <i>·</i> ${L.book}:${i + 1} <i>${i + 1} / ${n}</i>`; };
+  const step = () => {};   // (no captions under the phone)
+  const go = i => { $('reel').style.transform = `translateY(${-i * 560}px)`; };
+  const fx = (cls) => { const f = $('finger'); f.className = 'finger'; void f.offsetWidth; f.classList.add(cls); };
+  const at = (ms, fn) => demoT.push(setTimeout(fn, ms));
+  const loop = () => {
+    go(0); ref(0); step(-1); $('heart').classList.remove('on'); $('vend').classList.remove('on'); $('rail').style.opacity = 1; $('ref').style.opacity = 1;
+    at(1400, () => { step(1); fx('tap'); }); at(1700, () => { const p = $('pop'); p.className = 'pop'; void p.offsetWidth; p.classList.add('go'); $('heart').classList.add('on'); });
+    at(3300, () => { step(0); fx('swipe'); }); at(3500, () => { go(1); ref(1); $('heart').classList.remove('on'); });
+    at(5300, () => fx('swipe')); at(5500, () => { go(2); ref(2); });
+    at(7300, () => fx('swipe')); at(7500, () => { go(3); $('rail').style.opacity = 0; $('ref').style.opacity = 0; });
+    at(8300, () => { $('vend').classList.add('on'); step(2); });
+    at(11000, loop);
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { go(0); ref(0); return; }
+  loop();
 }
 sel.addEventListener('change', () => { lang = sel.value; try { localStorage.setItem('dj-lang', lang); } catch (e) {} paint(); });
 document.getElementById('yr').textContent = new Date().getFullYear();
