@@ -114,7 +114,7 @@ Read today’s passage, and read the same verses on the same day as your friends
 ### appstore.keywords  (92/100)
 
 ```
-bible,scripture,reading plan,devotional,sermon notes,prayer,church,kjv,verse,community,faith
+Bible,scripture,reading plan,devotional,sermon notes,prayer,church,kjv,verse,community,faith
 ```
 
 ### appstore.whatsnew  (84/4000)

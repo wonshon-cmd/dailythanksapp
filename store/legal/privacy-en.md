@@ -5,7 +5,7 @@
 
 **Effective date: November 17, 2026**
 
-Daily Journey, Inc. ("we") runs the Daily Journey app and website (including daily bible and daily thanks on the web) (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
+Daily Journey, Inc. ("we") runs the Daily Journey app and website (including daily Bible and daily thanks on the web) (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
 
 ## 1. What we collect
 
