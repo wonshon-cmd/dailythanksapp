@@ -1798,3 +1798,16 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
   @keyframes wl-drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
   @media (prefers-reduced-motion: reduce) { .wl-track { animation: none; } }
 }
+/* first open: logo → Proverbs 3:5 → 3:6, sliding up like the feed */
+.intro { position: absolute; inset: 0; z-index: 9; background: #fff; overflow: hidden; transition: opacity .45s; }
+.intro.out { opacity: 0; }
+.intro-reel { height: 100%; transition: transform .9s cubic-bezier(.65, 0, .35, 1); }
+.intro-page { height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 40px; box-sizing: border-box; }
+.intro-logo { align-items: center; }
+.intro-logo .wordmark { font-size: 40px; color: var(--ink); }
+.intro-text { margin: 0; font-size: calc(var(--read) + 3px); line-height: 1.7; font-weight: 300; color: var(--ink); word-break: keep-all; }
+.intro-ref { margin: 22px 0 0; font-size: 13px; color: #8A9094; }
+.intro-hint { position: absolute; left: 50%; bottom: calc(40px + var(--safe-bottom)); transform: translateX(-50%); color: #C4C8CB; font-size: 22px; animation: onb-bob 2.2s ease-in-out infinite; }
+.intro.last .intro-hint { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .intro-reel { transition: none; } }
+.intro-tag { margin: 12px 0 0; font-size: 14px; color: #8A9094; text-align: center; }
