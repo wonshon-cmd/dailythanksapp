@@ -3842,6 +3842,7 @@ function render(keepIndex) {
   });
   { const tl = document.querySelector('.top-lang'); if (tl) { tl.hidden = (data.settings.opens || 0) > 5; tl.setAttribute('aria-label', t('aria.lang')); tl.innerHTML = `${icon('globe')}<span>${LANGS.find(x => x[0] === lang())?.[1] || ''}</span>`; } }
   { const wp = document.querySelector('.write-pill'); if (wp && BIBLE_MODE) { wp.hidden = false; wp.dataset.action = state.tab === 'notes' ? 'sermon-new' : state.tab === 'group' && !state.groupDetail ? 'new-group' : 'bible-write'; } } // the bottom-right + : new sermon note / new community / write
+  if (!state.immersive || state.tab !== 'feed' || state.onb !== 'passage') $('#onb-arrow')?.remove();   // the scroll-down arrow is only for today's passage
   document.getElementById('app').dataset.screen = state.tab;   // e.g. no + on Me (not data-tab: that marks the tab buttons)
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal, read: renderBibleHome, notes: renderSermons, me: renderBibleMe })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
@@ -6155,6 +6156,22 @@ function onbDone() {
     });
   }, 900);
 }
+// Always the newest version: when the app comes back to the screen (and every 10 minutes), check whether a newer
+// app.js was published; if so, reload — but never while something is being written in a sheet.
+(() => {
+  const mine = document.querySelector('script[src*="app.js?v="]')?.getAttribute('src').split('v=')[1]; if (!mine || window.Capacitor?.isNativePlatform?.()) return;
+  let last = 0;
+  const check = async () => {
+    if (Date.now() - last < 60e3) return; last = Date.now();
+    try { const html = await (await fetch(location.pathname + '?fresh=' + Date.now(), { cache: 'no-store' })).text();
+      const v = html.match(/app\.js\?v=([a-z0-9]+)/)?.[1];
+      let tried = ''; try { tried = sessionStorage.getItem('dt-reloaded-for') || ''; } catch {}
+      if (v && v !== mine && v !== tried && sheet.hidden && !document.body.classList.contains('reading')) { try { sessionStorage.setItem('dt-reloaded-for', v); } catch {} location.reload(); } } catch {}   // once per version, never a loop
+  };
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+  setInterval(() => { if (!document.hidden) check(); }, 10 * 60e3);
+  setTimeout(check, 5000);
+})();
 // a shared verse: #v=BOOK-CHAPTER-VERSE opens the Bible at that verse
 { const m = location.hash.match(/^#v=(\d+)-(\d+)-(\d+)$/);
   if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch {} document.getElementById('splash')?.remove();
