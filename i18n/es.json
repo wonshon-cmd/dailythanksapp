@@ -1093,7 +1093,6 @@
   "cel.dayOf": "{name} · {d}/{t} días",
   "cel.book": "Terminaste {book}",
   "cel.bible": "Leíste toda la Biblia",
-  "size.xl": "Muy grande",
   "size.btn": "Tamaño del texto",
   "stk.write": "Racha de {n} días",
   "stk.new": "{n} nuevas",
