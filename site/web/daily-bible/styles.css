@@ -1742,3 +1742,8 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 /* no scrollbar on the reader or any screen (desktop browsers show one) */
 .reader-scroll, .feed-scroll, .screen, .sheet { scrollbar-width: none; }
 .reader-scroll::-webkit-scrollbar, .feed-scroll::-webkit-scrollbar, .screen::-webkit-scrollbar, .sheet::-webkit-scrollbar { display: none; }
+/* + at the bottom right, above the tab bar */
+.write-pill.fab-plus { position: absolute; right: 18px; bottom: calc(60px + var(--safe-bottom) + 14px); z-index: 5; width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 50%; background: #F1F1F1; box-shadow: 0 3px 10px #3034381a; }
+.write-pill.fab-plus .plus { font-size: 22px; }
+.app-shell.immersive .write-pill.fab-plus, body.reading .write-pill.fab-plus { display: none; }
+.app-shell[data-screen="me"] .write-pill.fab-plus { display: none; }

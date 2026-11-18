@@ -185,7 +185,7 @@ const STR = {
     'cl.sample': "Sample",
     'tidy.said': "Written down as you said it", 'tidy.done': "Tidied up", 'tidy.go': "Tidy up", 'tidy.undo': "Undo", 'tidy.note': "While you speak, your phone or browser’s dictation fills in the text.",
     'med.recShort': "Record",
-    'rc2.title': "My good influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
+    'rc2.title': "My positive influence", 'rc2.sub': "How far the verses, thanks and prayer requests you shared have gone.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "people who responded", 'rc2.outside': "beyond your communities", 'rc2.inside': "within your communities", 'rc2.shared': "times you shared", 'rc2.foot': "{p} posts shared · {e} sent outside the app", 'rc2.more': "See details",
     'yr.verse': "Verse of the year", 'yr.most': "Most opened · {r}", 'yr.times': "Opened {n} times",
     'snz.ok': "Turn off", 'snz.title': "What should we turn off?", 'snz.what': "Turn off", 'snz.all': "All of it", 'snz.for': "For how long", 'snz.until': "Until I turn it on", 'snz.hint': "Turn it back on any time in Settings › What you see.", 'mc.title': "My communities", 'mc.ph': "Code from your church, group, chapter or retreat", 'mc.connect': "Connect", 'mc.none': "Enter a code you were given to connect with a community.", 'mc.bad': "Please check the code.", 'mc.needSign': "Sign in to connect with a community. You’ll be connected right after.", 'mc.joining': "Connecting…", 'mc.admin': "Admin", 'mc.quiet': "Quiet", 'mc.loud': "Unmute", 'mc.quietOn': "Quiet · no new-post dots or alerts", 'mc.quietDone': "Quiet now. No new-post dots or alerts.", 'mc.loudDone': "You’ll hear from them again.", 'mc.leave': "Leave", 'mc.leaveQ': "Leave “{name}”? You’ll need a code or invite link to come back.", 'mc.left': "You left the community.", 'mc.ownerStay': "Admins can’t leave. Manage it from the group’s settings.", 'join.pendingShort': "Waiting for approval",
     'tour.k.verse': "Today’s verse", 'tour.k.prayer': "Group prayer request", 'tour.k.thanks': "Thanks", 'tour.s.verse': "Scroll to read the Bible", 'tour.s.prayer': "Get updated on your community’s prayer requests", 'tour.s.thanks': "Share your gratitude", 'tour.f.title': "Also here", 'tour.f.read': "Read", 'tour.f.readSub': "Today’s passage, where you left off, plans together", 'tour.f.notes': "Sermon notes", 'tour.f.notesSub': "Record a sermon and keep notes with the passage", 'tour.f.group': "Community", 'tour.f.groupSub': "Make a group and invite people with a link",
@@ -226,7 +226,7 @@ const STR = {
     'inf.ext': '{n} of them on KakaoTalk / Instagram',
     'kind.thanks': 'Give thanks to', 'ty.to': 'Their name', 'ty.ph': 'Write your thank-you message.', 'ty.make': 'Make a thank-you card', 'ty.card': 'Thank-you card', 'ty.send': 'Send',
     'ty.copy': 'Copy text', 'ty.toGroup': 'Share with a group', 'ty.saved': 'Your card is kept in My Thanks.', 'ty.needName': 'Add their name.',
-    'inf.title': 'My gratitude reach', 'inf.received': 'Received', 'inf.given': 'Given', 'inf.likes': 'Likes', 'inf.shares': 'Shares', 'inf.saves': 'Saves', 'inf.score': 'pts',
+    'inf.title': 'My gratitude influence', 'inf.received': 'Received', 'inf.given': 'Given', 'inf.likes': 'Likes', 'inf.shares': 'Shares', 'inf.saves': 'Saves', 'inf.score': 'pts',
     'inf.candle': 'Candle', 'inf.lantern': 'Lantern', 'inf.sunlight': 'Sunlight', 'inf.starlight': 'Starlight', 'inf.glow': 'The further your thanks travels, the brighter it glows.', 'inf.next': '{n} pts to {level}', 'inf.max': 'Top level reached',
     'inf.top': 'Thanks that reached most this week', 'inf.how': 'Likes on your posts count 1, saves 2, in-app shares 3, KakaoTalk/Instagram shares 5. It isn’t a contest — it shows how far your thanks travelled.',
     'inf.week': 'This week', 'top.badge': 'Reached many',
@@ -345,7 +345,7 @@ const STR = {
     'cl.sample': "Ejemplo",
     'tidy.said': "Escrito tal como lo dijiste", 'tidy.done': "Ordenado", 'tidy.go': "Ordenar", 'tidy.undo': "Deshacer", 'tidy.note': "Mientras hablas, el dictado de tu teléfono o navegador escribe el texto.",
     'med.recShort': "Grabar",
-    'rc2.title': "Mi buena influencia", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
+    'rc2.title': "Mi influencia positiva", 'rc2.sub': "Hasta dónde llegaron los versículos, la gratitud y las peticiones que compartiste.", 'rc2.peopleV': "{n}", 'rc2.timesV': "{n}×", 'rc2.people': "personas que respondieron", 'rc2.outside': "fuera de tus comunidades", 'rc2.inside': "dentro de tus comunidades", 'rc2.shared': "veces que compartiste", 'rc2.foot': "{p} publicaciones compartidas · {e} enviadas fuera de la app", 'rc2.more': "Ver detalles",
     'yr.verse': "Versículo del año", 'yr.most': "Lo más abierto · {r}", 'yr.times': "Abierto {n} veces",
     'snz.ok': "Apagar", 'snz.title': "¿Qué quieres apagar?", 'snz.what': "Apagar", 'snz.all': "Todo", 'snz.for': "Por cuánto tiempo", 'snz.until': "Hasta que lo active", 'snz.hint': "Actívalo cuando quieras en Ajustes › Qué ves.", 'mc.title': "Mis comunidades", 'mc.ph': "Código de tu iglesia, grupo, capítulo o retiro", 'mc.connect': "Conectar", 'mc.none': "Escribe el código que te dieron para conectarte con una comunidad.", 'mc.bad': "Revisa el código.", 'mc.needSign': "Inicia sesión para conectarte. Te conectamos enseguida.", 'mc.joining': "Conectando…", 'mc.admin': "Admin", 'mc.quiet': "Silenciar", 'mc.loud': "Activar", 'mc.quietOn': "Silenciado · sin avisos ni puntos nuevos", 'mc.quietDone': "Silenciado. Sin avisos ni puntos nuevos.", 'mc.loudDone': "Volverás a recibir avisos.", 'mc.leave': "Salir", 'mc.leaveQ': "¿Salir de “{name}”? Necesitarás un código o enlace para volver.", 'mc.left': "Saliste de la comunidad.", 'mc.ownerStay': "Los administradores no pueden salir. Gestiónalo desde el grupo.", 'join.pendingShort': "Esperando aprobación",
     'tour.k.verse': "Versículo de hoy", 'tour.k.prayer': "Petición del grupo", 'tour.k.thanks': "Gratitud", 'tour.s.verse': "Desliza para leer la Biblia", 'tour.s.prayer': "Entérate de las peticiones de tu comunidad", 'tour.s.thanks': "Comparte tu gratitud", 'tour.f.title': "También aquí", 'tour.f.read': "Leer", 'tour.f.readSub': "El pasaje de hoy, donde te quedaste, planes en grupo", 'tour.f.notes': "Notas de sermón", 'tour.f.notesSub': "Graba un sermón y toma notas con el pasaje", 'tour.f.group': "Comunidad", 'tour.f.groupSub': "Crea un grupo e invita con un enlace",
@@ -2839,7 +2839,9 @@ function bibleShell() {
   const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
   // language switch beside the + (shown on every screen for the first few visits)
   if (pill && !document.querySelector('.top-right')) { const box = document.createElement('div'); box.className = 'top-right'; pill.before(box);
-    box.innerHTML = `<button class="top-lang" data-action="lang-menu" hidden></button>`; box.append(pill); }
+    box.innerHTML = `<button class="top-lang" data-action="lang-menu" hidden></button>`; }
+  // + sits at the bottom right, just above Me, on Read, Sermon notes, Community and Me (like the feed's +)
+  if (pill) { pill.classList.add('fab-plus'); document.getElementById('app').append(pill); }
   const nav = document.querySelector('.bottom-nav');
   // feed (the full-screen scroll) · read · sermon notes · groups · me — writing is the + button at the top right (감사 · 기도제목 · 묵상 · 감사 전하기)
   const tabBtn = ([id, ic, k]) => `<button data-tab="${id}"><span class="nav-ico" data-icon="${ic}"></span><span data-i18n="${k}"></span></button>`;
@@ -3806,6 +3808,7 @@ function render(keepIndex) {
   });
   { const tl = document.querySelector('.top-lang'); if (tl) { tl.hidden = (data.settings.opens || 0) > 5; tl.setAttribute('aria-label', t('aria.lang')); tl.innerHTML = `${icon('globe')}<span>${LANGS.find(x => x[0] === lang())?.[1] || ''}</span>`; } }
   { const wp = document.querySelector('.write-pill'); if (wp) wp.hidden = BIBLE_MODE && state.tab === 'group'; } // Community has its own +
+  document.getElementById('app').dataset.screen = state.tab;   // e.g. no + on Me (not data-tab: that marks the tab buttons)
   ({ feed: () => renderFeed(keepIndex), group: renderGroups, challenges: renderChallenges, journal: renderJournal, read: renderBibleHome, notes: renderSermons, me: renderBibleMe })[state.tab]();
   document.dispatchEvent(new CustomEvent('dt:render', { detail: { tab: state.tab } }));
   requestAnimationFrame(markClamped); restoreDrafts($('#app'));
