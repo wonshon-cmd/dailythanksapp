@@ -156,6 +156,11 @@ import hashlib
 for f_ in ('app.js', 'styles.css'):
     bb_html = bb_html.replace(f'"{f_}"', f'"{f_}?v=' + hashlib.sha1((ROOT / f_).read_bytes()).hexdigest()[:10] + '"')
 (bb_dir / 'index.html').write_text(bb_html)
+# phone app updates without the store (mobile/src/native.js): the newest app.js / styles.css and their version.
+# Same version formula as mobile/scripts/build-web.mjs. Raise minNative when an update needs a newer native.js / plugins.
+_v = hashlib.sha1((ROOT / 'app.js').read_bytes() + (ROOT / 'styles.css').read_bytes()).hexdigest()[:10]
+import json as _json
+(WEB / 'app-update.json').write_text(_json.dumps({'v': _v, 'js': f'/daily-bible/app.js?v={_v}', 'css': f'/daily-bible/styles.css?v={_v}', 'minNative': 1}) + '\n')
 shutil.copy(ROOT / 'brand' / 'og-journey.png', WEB / 'og-journey.png')
 if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
 # daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)

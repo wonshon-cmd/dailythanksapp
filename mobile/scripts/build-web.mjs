@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import crypto from 'node:crypto';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -26,7 +27,11 @@ const brand = (process.env.APP_BRAND || 'journey').toLowerCase();
 if (!['bible', 'journey'].includes(brand)) throw new Error(`APP_BRAND must be "bible" or "journey", not "${brand}"`);
 const NAME = brand === 'journey' ? 'Daily Journey' : 'Daily Bible';
 const flags = '<script>window.DT_APP = "bible";' + (brand === 'journey' ? ' window.DT_BRAND = "journey";' : '') + '</script>';
-html = html.replace('<script src="app.js"', `${flags}\n<script src="native.js"></script>\n<script src="app.js"`);
+// The version of the app.js + styles.css inside the app (same formula as tools/build-site.py's app-update.json),
+// so native.js knows whether dailyjourney.org has something newer. native.js loads app.js itself (its own copy, or a newer one).
+const bundledV = crypto.createHash('sha1').update(Buffer.concat(['app.js', 'styles.css'].map(f => fs.readFileSync(path.join(root, f))))).digest('hex').slice(0, 10);
+html = html.replace('<script src="app.js" defer></script>', `${flags.replace('</script>', ` window.DT_BUNDLED_V = "${bundledV}";</script>`)}\n<script src="native.js"></script>`);
+if (html.includes('<script src="app.js"')) throw new Error('index.html: app.js tag still there');
 html = html.replace(/<title>[^<]*<\/title>/, `<title>${NAME}</title>`)
   .replace(/(name="apple-mobile-web-app-title" content=")[^"]*"/, `$1${NAME}"`)
   .replace(/(name="description" content=")[^"]*"/, `$1${NAME} — 말씀을 매일"`);

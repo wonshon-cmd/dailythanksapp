@@ -6,6 +6,35 @@
    - daily reminder              → scheduled at the time chosen in the app, skipped on days you already wrote
    - reminder tap, widget link   → opens the writing sheet (daily-journey://write)
    - Android back button, status bar, launch screen */
+/* ---------- updates without the store ----------
+   The app ships with its own copy of app.js and styles.css. Every website deploy also publishes
+   https://dailyjourney.org/app-update.json (version + where the newest files are). The app checks it on start and
+   whenever it comes back to the screen, downloads a newer version in the background, and uses it the next time it
+   opens or comes back (never in the middle of reading or writing). If a downloaded version ever fails to start,
+   the app goes back to its own copy. Changes to this file (native.js) or to native plugins still need a store update:
+   bump NATIVE_VERSION then, and set minNative in tools/build-site.py so older apps keep their own copy. */
+const DT_NATIVE_VERSION = 1;
+(() => {
+  'use strict';
+  const KEY = 'dt-ota', BOOT = 'dt-ota-boot', BUNDLED = window.DT_BUNDLED_V || '';
+  let ota = null;
+  try { ota = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { ota = null; }
+  try { if (ota && localStorage.getItem(BOOT) === ota.v) { localStorage.removeItem(KEY); ota = null; } } catch {}   // it didn't start last time: back to the app's own copy
+  const ready = () => document.dispatchEvent(new CustomEvent('dt:app-ready'));
+  const s = document.createElement('script');
+  if (ota && ota.js && ota.css && ota.v !== BUNDLED) {
+    try { localStorage.setItem(BOOT, ota.v); } catch {}
+    const st = document.createElement('style'); st.textContent = ota.css;
+    const link = document.querySelector('link[href^="styles.css"]'); if (link) link.replaceWith(st); else document.head.append(st);
+    s.src = URL.createObjectURL(new Blob([ota.js], { type: 'text/javascript' }));
+    window.DT_RUNNING_V = ota.v;
+  } else { s.src = 'app.js'; window.DT_RUNNING_V = BUNDLED; }
+  s.onload = () => { ready(); setTimeout(() => { if (window.DailyThanks) try { localStorage.removeItem(BOOT); } catch {} }, 4000); };
+  s.onerror = () => { try { localStorage.removeItem(KEY); localStorage.removeItem(BOOT); } catch {} if (!/app\.js$/.test(s.src)) location.reload(); };
+  const go = () => document.body.append(s);
+  if (document.body) go(); else document.addEventListener('DOMContentLoaded', go);
+})();
+
 (() => {
   'use strict';
   const Cap = window.Capacitor;
@@ -17,7 +46,29 @@
   // Text that changes without an app update comes from the website (content/content.json).
   window.DT_CONTENT_URL = 'https://dailyjourney.org/content.json';
 
-  const ready = fn => { if (window.DailyThanks) fn(window.DailyThanks); else document.addEventListener('DOMContentLoaded', () => window.DailyThanks && fn(window.DailyThanks)); };
+  const ready = fn => { if (window.DailyThanks) fn(window.DailyThanks); else document.addEventListener('dt:app-ready', () => window.DailyThanks && fn(window.DailyThanks), { once: true }); };
+
+  /* ---------- check for a newer version (see the top of this file) ---------- */
+  const SITE = 'https://dailyjourney.org';
+  let checking = false, pending = false;
+  async function checkUpdate() {
+    if (checking) return; checking = true;
+    try {
+      const u = await (await fetch(SITE + '/app-update.json?t=' + Date.now(), { cache: 'no-store' })).json();
+      if (!u || !u.v || u.v === window.DT_RUNNING_V || (u.minNative || 1) > DT_NATIVE_VERSION) return;
+      let have = null; try { have = JSON.parse(localStorage.getItem('dt-ota') || 'null'); } catch {}
+      if (have && have.v === u.v) { pending = true; return; }
+      const [js, css] = await Promise.all([u.js, u.css].map(async p => { const r = await fetch(SITE + p, { cache: 'no-store' }); if (!r.ok) throw new Error(p); return r.text(); }));
+      if (js.length < 100000 || !js.includes('window.DailyThanks') || css.length < 10000) return;   // only a complete app
+      localStorage.setItem('dt-ota', JSON.stringify({ v: u.v, js, css, at: Date.now() }));
+      pending = true;
+    } catch { /* offline or not published yet: try again next time */ }
+    finally { checking = false; }
+  }
+  // use the new version when the app comes back to the screen and nothing is open
+  const quiet = () => { const sh = document.getElementById('sheet'); return (!sh || sh.hidden) && !document.body.classList.contains('reading') && !document.querySelector('textarea:focus, input:focus'); };
+  P.App?.addListener('appStateChange', ({ isActive }) => { if (!isActive) return; if (pending && quiet()) location.reload(); else checkUpdate(); });
+  setTimeout(checkUpdate, 4000);
 
   /* ---------- share sheet ---------- */
   const toBase64 = blob => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(blob); });
