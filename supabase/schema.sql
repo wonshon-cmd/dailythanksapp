@@ -303,3 +303,52 @@ begin
 end $$;
 revoke execute on function delete_my_account() from anon, public;
 grant execute on function delete_my_account() to authenticated;
+
+-- ---------- reading together (공동체 오늘 완료 · 짝 읽기) ----------
+-- Only the fact that someone finished a day's reading — no text. Group mates see each other's; people reading the
+-- same plan (짝 읽기, joined with the same plan link) see each other's for that plan.
+create table if not exists plan_members (
+  key text not null,                                   -- the plan's shared code (it travels in the plan link)
+  user_id uuid not null references profiles on delete cascade default auth.uid(),
+  joined_at timestamptz not null default now(),
+  primary key (key, user_id)
+);
+create table if not exists reads (
+  user_id uuid not null references profiles on delete cascade default auth.uid(),
+  day date not null default current_date,
+  kind text not null default 'devo' check (kind in ('devo', 'plan')),
+  key text not null default '',                        -- '' for today's passage, the plan's code for a plan
+  created_at timestamptz not null default now(),
+  primary key (user_id, day, kind, key)
+);
+alter table plan_members enable row level security;
+alter table reads enable row level security;
+
+create or replace function in_plan(k text) returns boolean language sql stable security definer set search_path = public as $$
+  select exists (select 1 from plan_members where key = k and user_id = auth.uid())
+$$;
+create or replace function shares_group(other uuid) returns boolean language sql stable security definer set search_path = public as $$
+  select exists (select 1 from group_members a join group_members b on a.group_id = b.group_id
+    where a.user_id = auth.uid() and b.user_id = other and a.status = 'active' and b.status = 'active')
+$$;
+create or replace function shares_plan(other uuid) returns boolean language sql stable security definer set search_path = public as $$
+  select exists (select 1 from plan_members a join plan_members b on a.key = b.key where a.user_id = auth.uid() and b.user_id = other)
+$$;
+grant execute on function in_plan(text), shares_group(uuid), shares_plan(uuid) to authenticated;
+
+drop policy if exists "my plans" on plan_members;
+create policy "my plans" on plan_members for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+drop policy if exists "people in my plans" on plan_members;
+create policy "people in my plans" on plan_members for select using (in_plan(key));
+
+drop policy if exists "my reads" on reads;
+create policy "my reads" on reads for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+drop policy if exists "reads of people I read with" on reads;
+create policy "reads of people I read with" on reads for select using (
+  (kind = 'devo' and shares_group(user_id)) or (kind = 'plan' and in_plan(key)));
+
+-- the name of someone reading the same plan with me (짝 읽기)
+drop policy if exists "people in my plans" on profiles;
+create policy "people in my plans" on profiles for select using (shares_plan(id));
+grant select, insert, update, delete on plan_members, reads to authenticated;
+revoke all on plan_members, reads from anon;
