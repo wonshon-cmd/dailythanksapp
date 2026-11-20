@@ -1287,5 +1287,22 @@
   "sv.fri": "Culto del viernes",
   "sv.dawn": "Oración de madrugada",
   "sv.other": "Escribir otro…",
-  "sv.otherQ": "¿Qué culto? (p. ej. jóvenes, retiro)"
+  "sv.otherQ": "¿Qué culto? (p. ej. jóvenes, retiro)",
+  "tg.share": "Compartir",
+  "tg.together": "leyendo juntos",
+  "tg.streak": "{n} días seguidos",
+  "tg.readCount": "Hoy {n} lo leyeron juntos",
+  "tg.footer": "Lee con nuestra comunidad · dailyjourney.org",
+  "tg.shareText": "Leí el pasaje de hoy con “{name}”. Lee con nosotros:",
+  "tg.partnerRead": "{name} leyó “{plan}” hoy ✓",
+  "tg.prayed": "{who} oró por tu petición",
+  "tg.andMore": "{name} y {n} más",
+  "tg.prayedTitle": "Quién oró",
+  "tg.prayedTail": "oraron por ti.",
+  "tg.prayedCount": "{n} oraron",
+  "tg.thank": "Dar las gracias",
+  "tg.me": "Yo",
+  "tg.who": "{names} oraron",
+  "tg.whoMore": "{names} y {n} más oraron",
+  "tg.one": "{name}"
 }

@@ -14,6 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
     'wl.apple': "Apple로 계속하기", 'wl.tag': "One slide at a time, with your community", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
     'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
@@ -176,6 +177,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
     'wl.apple': "Continue with Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
     'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
@@ -338,6 +340,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
     'wl.apple': "Continuar con Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
     'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
@@ -1316,7 +1319,7 @@ function sync() {
         g.people = people.map(p => ({ id: p.user_id, name: p.profiles?.name || '', role: p.role, pending: p.status === 'pending' }));
       }
     } catch {}
-    await pushPosts(); await pullPosts();
+    await pushPosts(); await pullPosts(); await pullTogether();
     save(); render();
   })().finally(() => { syncing = null; });
 }
@@ -1372,6 +1375,110 @@ async function pullPosts() {
   data.posts.filter(p => p.mine && p.sids).forEach(p => { p.likes = p.sids.reduce((n, id) => n + by(id, 'like').filter(x => x.user_id !== uid).length, 0); p.prayedBy = [...new Set(p.sids.flatMap(id => by(id, 'pray').filter(x => x.user_id !== uid).map(x => x.user_id)))]; });
   data.posts = [...data.posts.filter(p => !p.cloudPost), ...fresh];
   save(true);
+}
+/* ---------- reading together: 공동체 오늘 완료 · 짝 읽기 · 기도해 줬어요 ----------
+   The server keeps only "who finished which day" (table reads) and who reads a shared plan (plan_members).
+   Notices show inside the app when it opens (push notifications come with the store apps). */
+function cloudRead(kind, key) {
+  if (!Cloud.on()) return;
+  Cloud.rest('reads', { method: 'POST', prefer: 'resolution=ignore-duplicates', body: { day: today(), kind, key } }).catch(() => {});
+}
+function planSync() {
+  if (!Cloud.on()) return Promise.resolve();
+  const todo = data.challenges.filter(c => c.pk && !c.pkOn);
+  return Promise.all(todo.map(c => Cloud.rest('plan_members', { method: 'POST', prefer: 'resolution=ignore-duplicates', body: { key: c.pk } })
+    .then(() => { c.pkOn = true; }).catch(() => {}))).then(() => save(true));
+}
+const names = () => { const m = {}; data.groups.forEach(g => (g.people || []).forEach(p => { if (p.name) m[p.id] = p.name; })); return Object.assign(m, data.settings.names || {}); };
+async function pullTogether() {
+  if (!Cloud.on()) return;
+  const uid = Cloud.uid(), seen = data.settings.seenNotes = data.settings.seenNotes || {};
+  await planSync();
+  // today's passage: who in my communities finished it
+  try { const r = await Cloud.rest(`reads?kind=eq.devo&day=eq.${today()}&select=user_id`); if (Array.isArray(r)) state.devoReaders = [...new Set(r.map(x => x.user_id))]; } catch {}
+  // 짝 읽기: who reads my plans, and which days they finished
+  const plans = data.challenges.filter(c => c.pk);
+  if (plans.length) {
+    try {
+      const keys = plans.map(c => c.pk).join(',');
+      const mem = await Cloud.rest(`plan_members?key=in.(${keys})&select=key,user_id,profiles(name)`);
+      const rd = await Cloud.rest(`reads?kind=eq.plan&key=in.(${keys})&day=gte.${daysAgo(60)}&select=user_id,day,key`);
+      const nm = data.settings.names = data.settings.names || {};
+      plans.forEach(c => {
+        c.partners = (Array.isArray(mem) ? mem : []).filter(m => m.key === c.pk && m.user_id !== uid).map(m => { if (m.profiles?.name) nm[m.user_id] = m.profiles.name; return { id: m.user_id, name: m.profiles?.name || '' }; });
+        c.partnerDays = {}; (Array.isArray(rd) ? rd : []).filter(x => x.key === c.pk && x.user_id !== uid).forEach(x => { (c.partnerDays[x.user_id] = c.partnerDays[x.user_id] || []).push(x.day); });
+        c.partners.forEach(pt => { const k = `pr:${c.pk}:${pt.id}:${today()}`;
+          if ((c.partnerDays[pt.id] || []).includes(today()) && !seen[k]) { seen[k] = 1; notice(t('tg.partnerRead').replace('{name}', pt.name || t('pl.someone')).replace('{plan}', L(c.name) || chName(c)), c.lastDay === today() ? null : () => actions['challenge-write']?.(c.id)); } });
+      });
+    } catch {}
+  }
+  // 기도해 줬어요: new people praying for my prayer requests
+  const mine = data.posts.filter(p => p.mine && p.kind === 'prayer' && (p.prayedBy || []).length);
+  const fresh = mine.flatMap(p => p.prayedBy.filter(id => !(p.prayedSeen || []).includes(id)).map(id => ({ p, id })));
+  if (fresh.length) {
+    const unknown = [...new Set(fresh.map(x => x.id))].filter(id => !names()[id]);
+    if (unknown.length) { try { const pr = await Cloud.rest(`profiles?id=in.(${unknown.join(',')})&select=id,name`); const nm = data.settings.names = data.settings.names || {}; (pr || []).forEach(x => { if (x.name) nm[x.id] = x.name; }); } catch {} }
+    const who = [...new Set(fresh.map(x => names()[x.id] || t('pl.someone')))];
+    notice(t('tg.prayed').replace('{who}', who.length > 1 ? t('tg.andMore').replace('{name}', who[0]).replace('{n}', who.length - 1) : t('tg.one').replace('{name}', who[0])), () => prayedSheet(fresh[0].p.id));
+    mine.forEach(p => { p.prayedSeen = [...p.prayedBy]; });
+  }
+  save(true);
+}
+// who prayed for one of my prayer requests, and a way to thank them
+function prayedSheet(id) {
+  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const nm = names(), list = (p.prayedBy || []).map(u => nm[u]).filter(Boolean);
+  showSheet({ title: t('tg.prayedTitle'), body: `<p class="hint">${esc(L(p.text)).slice(0, 140)}</p>
+    <p class="prayed-list">${list.length ? esc(list.join(', ')) + ' ' + t('tg.prayedTail') : esc(t('tg.prayedCount').replace('{n}', (p.prayedBy || []).length))}</p>
+    <button class="primary block" data-action="tg-thank" data-id="${esc(list[0] || '')}">${t('tg.thank')}</button>` });
+}
+// a small banner at the top; tap to act
+const noticeQ = [];
+function notice(text, act) { noticeQ.push({ text, act }); if (noticeQ.length === 1) setTimeout(showNotice, 800); }
+function showNotice() {
+  const n = noticeQ[0]; if (!n) return;
+  if (!sheet.hidden) { setTimeout(showNotice, 3000); return; }
+  const el = Object.assign(document.createElement('button'), { className: 'app-notice', innerHTML: `<span class="an-mark">dj</span><span>${esc(n.text)}</span>` });
+  document.getElementById('app').append(el); requestAnimationFrame(() => el.classList.add('on'));
+  const done = () => { el.classList.remove('on'); setTimeout(() => el.remove(), 400); noticeQ.shift(); if (noticeQ.length) setTimeout(showNotice, 900); };
+  const timer = setTimeout(done, 6500);
+  el.addEventListener('click', () => { clearTimeout(timer); done(); n.act?.(); });
+}
+// 공동체 오늘 완료 카드: 9:16, with the community, today's readers and the invite link
+async function shareDone() {
+  const g = data.groups.find(x => x.sid && !x.pending), p = todaysPassage(data.groups[0]?.id);
+  const verse = (document.querySelector('.fv-card .fv-text, .vs-page.hl .vs-text')?.textContent || state.devoFirst || '').trim();
+  const people = g?.people || [], readers = people.filter(m => (state.devoReaders || []).includes(m.id) || m.id === Cloud.uid());
+  const W = 1080, H = 1920, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  try { await Promise.all(['400 60px "Noto Sans KR"', '300 40px "Noto Sans KR"', 'italic 400 60px Newsreader', '400 60px Newsreader'].map(f => document.fonts.load(f))); } catch {}
+  x.fillStyle = '#fff'; x.fillRect(0, 0, W, H); x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+  // wordmark
+  x.fillStyle = '#9BA0A3'; x.font = '400 54px Newsreader'; const a = 'daily ', bw = x.measureText(a).width; x.font = 'italic 400 54px Newsreader'; const jw = x.measureText(BRAND2).width;
+  x.textAlign = 'left'; x.font = '400 54px Newsreader'; x.fillText(a, (W - bw - jw) / 2, 230); x.font = 'italic 400 54px Newsreader'; x.fillText(BRAND2, (W - bw - jw) / 2 + bw, 230); x.textAlign = 'center';
+  let y = 640;
+  if (g) { // community pill
+    x.font = '400 36px "Noto Sans KR"'; const label = `${L(g.name)} · ${t('tg.together')}`, lw = x.measureText(label).width + 80;
+    x.fillStyle = '#F3F4F5'; x.beginPath(); x.roundRect((W - lw) / 2, y - 52, lw, 76, 38); x.fill(); x.fillStyle = '#5B6064'; x.fillText(label, W / 2, y); y += 110;
+  }
+  x.fillStyle = '#F1F2F3'; x.beginPath(); x.arc(W / 2, y + 70, 70, 0, 7); x.fill();
+  x.strokeStyle = '#3a3f44'; x.lineWidth = 9; x.lineCap = 'round'; x.lineJoin = 'round'; x.beginPath(); x.moveTo(W / 2 - 30, y + 72); x.lineTo(W / 2 - 8, y + 94); x.lineTo(W / 2 + 34, y + 48); x.stroke(); y += 250;
+  x.fillStyle = '#1F2326'; x.font = '400 62px "Noto Sans KR"'; x.fillText(t('ob.doneTitle'), W / 2, y); y += 80;
+  x.fillStyle = '#8A9095'; x.font = '300 38px "Noto Sans KR"'; x.fillText([p?.ref ? refText(p.ref) : '', readDays() > 1 ? t('tg.streak').replace('{n}', readDays()) : ''].filter(Boolean).join(' · '), W / 2, y); y += 100;
+  if (verse) { x.fillStyle = '#2C3135'; x.font = '300 46px "Noto Sans KR"'; const lines = []; let line = '';
+    for (const w of ('“' + verse + '”').split(' ')) { if (x.measureText(line + w).width > 840 && line) { lines.push(line.trim()); line = ''; } line += w + ' '; } lines.push(line.trim());
+    lines.slice(0, 4).forEach((l, i) => x.fillText(i === 3 && lines.length > 4 ? l + '…' : l, W / 2, y + i * 72)); y += Math.min(4, lines.length) * 72 + 70; }
+  if (g && readers.length) { // today's readers
+    const shown = readers.slice(0, 5), r = 38, gap = 64, start = W / 2 - ((shown.length - 1) * gap) / 2, cols = ['#8FA3B0', '#B59A8A', '#9AA88E', '#A897B0', '#B0A48F'];
+    shown.forEach((m, i) => { x.fillStyle = cols[i % 5]; x.beginPath(); x.arc(start + i * gap, y, r, 0, 7); x.fill(); x.strokeStyle = '#fff'; x.lineWidth = 6; x.stroke();
+      x.fillStyle = '#fff'; x.font = '400 30px "Noto Sans KR"'; x.fillText((m.name || '?').slice(0, 1), start + i * gap, y + 11); });
+    y += 90; x.fillStyle = '#5B6064'; x.font = '300 36px "Noto Sans KR"'; x.fillText(t('tg.readCount').replace('{n}', readers.length), W / 2, y);
+  }
+  x.fillStyle = '#B4B8BA'; x.font = '300 30px "Noto Sans KR"'; x.fillText(g ? t('tg.footer') : 'dailyjourney.org', W / 2, H - 120);
+  const blob = await new Promise(r => c.toBlob(r, 'image/png')), file = new File([blob], 'daily-journey-today.png', { type: 'image/png' });
+  const text = g && canInvite(g) ? `${t('tg.shareText').replace('{name}', L(g.name))}\n${inviteLink(g)}` : `${t('ob.doneTitle')} · dailyjourney.org`;
+  try { if (navigator.canShare?.({ files: [file] })) { await navigator.share({ files: [file], text }); return; } } catch (e) { if (e?.name === 'AbortError') return; }
+  const u = URL.createObjectURL(blob), a2 = Object.assign(document.createElement('a'), { href: u, download: file.name }); document.body.append(a2); a2.click(); a2.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000);
+  copyText(text);
 }
 function cloudReact(id, kind, on) {
   const p = data.posts.find(x => x.id === id); if (!Cloud.on() || !p?.sid) return;
@@ -2484,7 +2591,7 @@ function verseCards(verses, head, cid = '', label = '') {
 }
 // Today's passage read to the end: it shows a check, counts for today's reading streak, and becomes "where you left off".
 function markDevoRead() {
-  data.readDevo = { ...(data.readDevo || {}), [today()]: true };
+  data.readDevo = { ...(data.readDevo || {}), [today()]: true }; cloudRead('devo', '');
   const p = todaysPassage(data.groups[0]?.id)?.ref; if (!p) return;
   const last = p.c2 && p.c2 > p.c ? [p.c2, p.e2 || p.v2 || 1] : [p.c, p.v2 || p.v || 1];
   data.readLog = data.readLog || {}; for (let c = p.c; c <= (p.c2 || p.c); c++) data.readLog[readKey(p.b, c)] = today();
@@ -2547,9 +2654,10 @@ async function fillDevoCards() {
   const p = todaysPassage(data.groups[0]?.id); if (!p?.ref) { slot.remove(); return; }
   let verses = []; try { verses = (await passageVerses(p.ref)).map(x => ({ b: p.ref.b, c: x.c, v: x.v, text: x.text })); } catch { slot.querySelector('.card-inner').innerHTML = `<p class="hint">${t('rd.offline')}</p>`; return; }
   if (!document.body.contains(slot) || !verses.length) return;
-  state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v };
+  state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v }; state.devoFirst = verses[0].text;   // also for the 'done' card
   slot.outerHTML = verseCards(verses, '', '', `${icon('sun')}${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''}`) +
-    `<article class="post card-page devo-end"><div class="card-inner"><span class="done-check">${icon('check')}</span><p class="card-title">${t('ob.doneTitle')}</p><p class="card-sub">${esc(refText(p.ref))}</p></div></article>`;   // "오늘의 말씀" sits with the verse reference at the bottom
+    `<article class="post card-page devo-end"><div class="card-inner"><span class="done-check">${icon('check')}</span><p class="card-title">${t('ob.doneTitle')}</p><p class="card-sub">${esc(refText(p.ref))}</p>
+      <div class="card-actions"><button class="primary" data-action="share-done">${icon('share')}${t('tg.share')}</button></div></div></article>`;   // "오늘의 말씀" sits with the verse reference at the bottom
   fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
@@ -2963,7 +3071,8 @@ function planSection(plans) {
       ${plans.map(c => `<div class="pl-row"><button class="g-ch${c.lastDay === today() ? ' today-done' : ''}" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${c.lastDay === today() ? icon('check') : ''}${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
         ${planBehind(c) && c.cuDismissed !== today() ? `<span class="pl-behind" data-action="cu-ask" data-id="${esc(c.id)}">${esc(t('cu.short').replace('{n}', planBehind(c).behind))} ›</span>` : ''}
-        ${(c.members || []).length > 1 ? `<span class="pl-with">${icon('people')}${esc((c.members || []).map(m => L(m)).join(', '))}</span>` : ''}</button>
+        ${(c.partners || []).length ? `<span class="pl-with">${icon('people')}${c.partners.map(pt => `${esc(pt.name || t('pl.someone'))}${(c.partnerDays?.[pt.id] || []).includes(today()) ? ' ✓' : ''}`).join(', ')}${c.lastDay === today() ? ` · ${t('tg.me')} ✓` : ''}</span>`
+          : (c.members || []).length > 1 ? `<span class="pl-with">${icon('people')}${esc((c.members || []).map(m => L(m)).join(', '))}</span>` : ''}</button>
         <button class="round-btn pl-inv" data-action="plan-invite" data-id="${esc(c.id)}" aria-label="${esc(t('pl.invite'))}">${icon('share')}</button></div>`).join('')}
     </section>`;
 }
@@ -3829,6 +3938,7 @@ function renderImmersive(keepIndex = 0) {
       <div class="post-body"><p class="post-text ${textClass(text)}">${esc(text)}</p>${readMore(p, text)}
         <p class="imm-by">${isSample(p) ? `<span class="sample-tag">${t('cl.sample')}</span>` : ''}${esc(authorName(p))} · ${prayerMode ? esc(p.scope === 'group' ? groupNames(p) : dayLabel(p.date)) : groupMode ? esc(p.kind === 'ahead' ? t('kind.aheadShort') : p.kind && p.kind !== 'today' ? kindLabel(p) : dayLabel(p.date)) : esc([p.scope === 'group' ? groupNames(p) : '', kindShort(p)].filter(Boolean).join(' · '))}${BIBLE_MODE && p.mine && reachOf(p) ? `<span class="imm-reach">${esc(t('inf.people').replace('{n}', reachOf(p)))}</span>` : ''}${isTop(p) ? ` <span class="top-mark">${icon('sparkle')}${t('top.badge')}</span>` : ''}</p></div>
       ${fpLast ? firstOffLinks() : ''}
+      ${p.mine && p.kind === 'prayer' && (p.prayedBy || []).length ? `<button class="prayed-who" data-action="prayed-who" data-id="${esc(p.id)}">${esc(prayedLine(p))} ›</button>` : ''}
       <aside class="post-rail">
         ${p.kind === 'prayer' ? prayBtn(p) : `<button class="rail-btn ${liked ? 'liked' : ''}" data-action="like" data-id="${esc(p.id)}" aria-pressed="${liked}">${icon('heart')}${countLabel(p, p.likes + (liked ? 1 : 0))}</button>`}
         <button class="rail-btn ${data.saved.includes(p.id) ? 'saved' : ''}" data-action="save-post" data-id="${esc(p.id)}" aria-pressed="${data.saved.includes(p.id)}" aria-label="${t('save')}">${icon('bookmark')}</button>
@@ -4645,7 +4755,8 @@ async function inviteQr(id) {
    same portion on the same day — no account needed. dailyjourney.org/daily-bible/#plan?f=1.1&t=1.50&d=30&s=2026-11-17 */
 function planLink(ch) {
   const p = ch.plan; if (!p) return '';
-  const q = new URLSearchParams({ f: p.from.join('.'), t: p.to.join('.'), d: String(chLen(ch)), s: ch.start, n: ch.name || '', by: data.settings.myName || '' });
+  if (!ch.pk) { ch.pk = newCode() + newCode(); save(true); planSync(); }   // the plan's shared code: who reads it together (짝 읽기)
+  const q = new URLSearchParams({ f: p.from.join('.'), t: p.to.join('.'), d: String(chLen(ch)), s: ch.start, n: ch.name || '', by: data.settings.myName || '', k: ch.pk });
   return `${LEGAL_BASE}/daily-bible/#plan?${q.toString()}`;
 }
 function planInvite(id) {
@@ -4669,7 +4780,7 @@ function planJoin(q) {
   showSheet({ title: t('pl.joinTitle'), body: `<p class="pl-by">${esc(t('pl.joinBy').replace('{by}', by || t('pl.someone')))}</p>
     <h2 class="pl-name">${esc(name)}</h2><p class="pl-sum">${esc(range)} · ${days}${lang() === 'ko' ? '일' : ' ' + t('ch.u.d').toLowerCase()} · ${esc(start === today() ? t('pl.today') : dayLabel(start))}</p>
     <button class="primary block" data-action="plan-join">${t('pl.join')}</button>` });
-  state.planJoin = dup ? null : { id: 'ch' + Date.now(), name, type: 'bible', length: days, group: 'pair', members: [{ ko: '나', en: 'Me', es: 'Yo' }, ...(by ? [by] : [])], start, days: [], plan: { from, to, total } };
+  state.planJoin = dup ? null : { id: 'ch' + Date.now(), name, type: 'bible', length: days, group: 'pair', members: [{ ko: '나', en: 'Me', es: 'Yo' }, ...(by ? [by] : [])], start, days: [], plan: { from, to, total }, ...(/^[a-z0-9]{8,24}$/.test(q.get('k') || '') ? { pk: q.get('k') } : {}) };
 }
 function joinGroup(code, name, key) {
   code = String(code || '').replace(/[^a-z0-9]/gi, '').slice(0, 24); name = String(name || '').trim().slice(0, 30);
@@ -5096,6 +5207,10 @@ const recapText = () => `${t('rc.shareHead')}\n\n${weekNotes().filter(p => p.sco
 // how many people a post of mine reached (liked, saved or shared it)
 const reachOf = p => (p.likes || 0) + (data.liked.includes(p.id) ? 1 : 0) + (p.saves || 0) + sharesOf(p);
 const countLabel = (p, n) => p.mine && !BIBLE_MODE ? `<span>${n}</span>` : ''; // daily bible: no like numbers at all
+function prayedLine(p) {
+  const nm = names(), list = (p.prayedBy || []).map(u => nm[u]).filter(Boolean), n = (p.prayedBy || []).length;
+  return list.length ? (n > list.slice(0, 3).length ? t('tg.whoMore').replace('{names}', list.slice(0, 3).join(', ')).replace('{n}', n - list.slice(0, 3).length) : t('tg.who').replace('{names}', list.join(', '))) : t('tg.prayedCount').replace('{n}', n);
+}
 function prayBtn(p) {
   const on = data.prayed.includes(p.id), n = (p.prayedBy || []).length + (on ? 1 : 0);
   return `<button class="rail-btn ${on ? 'prayed' : ''}" data-action="pray" data-id="${esc(p.id)}" aria-pressed="${on}" aria-label="${t('pr.prayed')}">${icon('heart')}${countLabel(p, n)}</button>`;
@@ -5771,6 +5886,9 @@ const actions = {
     state.noteOpen = id; state.noteTab = hit?.where === 'tr' ? 'tr' : 'sum'; render(); window.scrollTo?.(0, 0);
     if (hit?.where === 'tr') setTimeout(() => document.querySelector('.sn-trtext mark')?.scrollIntoView({ block: 'center' }), 60); },
   'sn-search': () => { state.snSearch = !state.snSearch; if (!state.snSearch) state.snQuery = ''; render(); if (state.snSearch) setTimeout(() => $('#sn-q')?.focus(), 30); },
+  'share-done': () => shareDone(),
+  'tg-thank': name => { close(); state.tyName = name || ''; compose('thanks', null); },
+  'prayed-who': id => prayedSheet(id),
   'sn-q-clear': () => { state.snQuery = ''; render(); },
   'note-tab': k => { state.noteTab = k; if (state.noteOpen) renderSermonNote(state.noteOpen); },
   'vc-yes': pair => { const [id, k] = pair.split('|'), n = (data.sermonNotes || []).find(x => x.id === id), c = n?.summary?.verse_checks?.[+k]; if (!c) return; c.confirmed = true; save(); renderSermonNote(id); },
@@ -5845,6 +5963,7 @@ const actions = {
     planChapters(c).forEach(([b, ch]) => { const k = readKey(b, ch); if (!data.readDone.includes(k)) data.readDone.push(k); data.readLog = data.readLog || {}; data.readLog[k] = today(); }); if (!data.rtStart) data.rtStart = today(); readThroughDone();
     const last = planChapters(c).slice(-1)[0]; if (last) data.reading = { b: last[0], c: last[1], v: 1, at: new Date().toISOString() };
     if (c.lastDay !== today()) { c.days.push(c.days.length + 1); c.lastDay = today(); }
+    if (c.pk) cloudRead('plan', c.pk);
     save(); const card = document.querySelector(`[data-fvend="${id}"] .card-actions`); if (card) card.innerHTML = `<span class="hint">${icon('check')} ${t('fv.marked')}</span>`;
     if (c.days.length >= chLen(c)) setTimeout(() => chFinish(c.id), 600); else celebrateDay(c); },
   'first-prayers': () => { data.settings.prayerSeen = [...new Set([...(data.settings.prayerSeen || []), ...newGroupPrayers().map(p => p.id)])].slice(-300); save();
