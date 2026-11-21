@@ -2061,3 +2061,7 @@ details.ch-top:not([open]){gap:0}
 .dm-input,#gratitude-text,#med-prayer{scrollbar-width:none}
 .dm-input::-webkit-scrollbar,.med-calm textarea::-webkit-scrollbar{display:none}
 .dm-input:not(.dm-window){overflow:hidden}
+#sn-body{scrollbar-width:none;resize:none}
+#sn-body::-webkit-scrollbar{display:none}
+#sn-form .dm-status{margin-top:4px}
+.sn-bodywrap .dm-window ~ .sn-pen,.sn-bodywrap textarea:focus ~ .sn-pen{display:none}

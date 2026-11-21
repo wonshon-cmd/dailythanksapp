@@ -1793,6 +1793,7 @@ document.addEventListener('submit', e => {
 // ✕ or a tap outside: back to Settings if that's where this sheet came from
 function closeBack() { const back = state.sheetBack; state.sheetBack = null; close(); if (back === 'settings') { state.settingsClosedAt = 0; actions.settings(); } }
 function close() {
+  if (state.snDraftId && sheet.dataset.kind !== 'snclosing' && $('#sn-form')) { sheet.dataset.kind = 'snclosing'; clearTimeout(snAutoT); snAutoSave(true); state.snDraftId = null; setTimeout(() => { if (state.tab === 'notes' && !state.noteOpen) render(); }, 0); }
   if (state.medRecOn) medRecStop();   // never leave the microphone running behind a closed sheet
   if (sheet.dataset.kind === 'settings') state.settingsClosedAt = Date.now();
   sheet.dataset.kind = '';
@@ -2409,7 +2410,7 @@ function bpDone() {
     redrawCh(); return;
   }
   if (r.mode === 'meetref') { state.snRef = ref; const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); ['#sn-pv', '#mt-live'].forEach(s2 => { const x = $(s2); if (x) x.hidden = false; }); recPaint(true); return; }
-  if (r.mode === 'sermonref') { state.snRef = ref; const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); const pvb = $('#sn-pv'); if (pvb) pvb.hidden = false;
+  if (r.mode === 'sermonref') { state.snRef = ref; setTimeout(() => snAutoSave(), 0); const b = $('#sn-ref span'); if (b) b.textContent = refText(ref); $('#sn-ref')?.classList.add('set'); const pvb = $('#sn-pv'); if (pvb) pvb.hidden = false;
     snRefsChanged(); recPaint(true); return; }
   if (r.mode === 'sermonref2') { state.snRefs = [...(state.snRefs || []), ref].slice(0, 2); snRefsChanged(); return; }
   if (r.mode === 'note') { closeReader(); state.medRef = ref; state.medSource = ''; state.medNote = true; compose('meditation', state.challenge); return; }
@@ -3772,8 +3773,13 @@ function sermonNew() {
     <input id="sn-title" class="field" maxlength="120" placeholder="${esc(t('sn.titleF'))}">
     ${recLive() || Rec.blob ? `<div id="rec-card" class="rec-card">${recCard()}</div>` : ''}
     <div id="sn-input">${snInput()}</div>
-    <button class="primary block" type="submit">${t('sn.make')}</button></form>` });
-  $('#sn-form').addEventListener('submit', e => { e.preventDefault(); sermonSubmit(); });
+    <p class="dm-status" id="sn-status" aria-live="polite"></p>
+    ${recLive() || Rec.blob ? `<button class="primary block" type="submit">${t('sn.make')}</button>` : ''}</form>` });
+  $('#sn-form').addEventListener('submit', e => { e.preventDefault(); if (state.snMode === 'write' && !recLive() && !Rec.blob) { snAutoSave(true); close(); return; } sermonSubmit(); });
+  // a note saves by itself while you write (저장 중… → 저장됨); the passage and title stay put, the body is a writing window
+  state.snDraftId = null;
+  $('#sn-form').addEventListener('input', e => { if (e.target.id === 'sn-body') dmGrow(e.target); if (state.snMode === 'write') snAutoSave(); });
+  $('#sn-form').addEventListener('change', () => { if (state.snMode === 'write') snAutoSave(); });
   $('#sn-place')?.addEventListener('change', e => { if (e.target.value === 'new') { state.snPlace = 'new'; $('#sn-placebox').innerHTML = placeField(); $('#sn-preacher')?.focus(); } else state.snPlace = +e.target.value; });
   $('#sn-date')?.addEventListener('change', e => { if (!e.target.value) e.target.value = today(); state.snDate = e.target.value; $('#sn-dlabel').textContent = snDateLabel(e.target.value); const box = $('#sn-servicebox'); if (box && !state.snServiceSet) box.innerHTML = serviceField(guessService(e.target.value)); });
   state.snServiceSet = false;
@@ -3781,7 +3787,7 @@ function sermonNew() {
     if (e.target.value === 'other') { e.target.parentElement.innerHTML = `<input id="sn-service" class="field" maxlength="30" placeholder="${esc(t('sv.otherQ'))}">`; $('#sn-service').focus(); } else state.snService = e.target.value; });
   recPaint(true);
 }
-const snInput = () => state.snMode === 'write' ? `<div class="sn-bodywrap"><textarea id="sn-body" data-draft="sermon-write" class="big-input" rows="7" placeholder=" " aria-label="${esc(t('sn.bodyF'))}"></textarea><span class="sn-pen" aria-hidden="true">${icon('pencil')}</span></div>
+const snInput = () => state.snMode === 'write' ? `<div class="sn-bodywrap"><textarea id="sn-body" class="big-input" rows="7" placeholder=" " aria-label="${esc(t('sn.bodyF'))}"></textarea><span class="sn-pen" aria-hidden="true">${icon('pencil')}</span></div>
     ${autoNotes() ? `<label class="med-check sn-ai"><input type="checkbox" id="sn-ai" checked>${icon('sparkle')}<span>${t('sn.aiOn')}</span></label>` : ''}`
   : state.snMode === 'rec' ? `<div class="sn-rec"><button type="button" class="sn-recbtn" data-action="sn-rec" id="sn-recbtn">${icon('mic')}<span>${t('sn.recStart')}</span></button><p class="hint" id="sn-recst"></p><p class="hint center">${t('sn.recNote')}</p></div>`
   : state.snMode === 'yt' ? `<input id="sn-yt" class="field" inputmode="url" placeholder="${esc(t('sn.ytPh'))}" autocomplete="off">`
@@ -3806,6 +3812,29 @@ async function snRecord() {
     rec.start(state.snUp ? 30000 : 1000); state.snRec = rec;
     const b = $('#sn-recbtn'); if (b) b.innerHTML = `${icon('mic')}<span>${t('sn.recStop')}</span>`; b?.classList.add('on');
   } catch { toast(t('sn.need')); }
+}
+let snAutoT = null;
+function snAutoSave(now) {
+  const st = $('#sn-status');
+  const go = () => {
+    const title = $('#sn-title')?.value.trim() || '', body = $('#sn-body')?.value || '', main = $('#sn-main')?.value.trim() || '';
+    const { preacher, church } = readPlace(), date = $('#sn-date')?.value || today(), service = $('#sn-service')?.value || '';
+    let n = state.snDraftId && (data.sermonNotes || []).find(x => x.id === state.snDraftId);
+    if (!n && !body.trim() && !main && !title) { if (st) st.textContent = ''; return; }
+    if (!n) { n = { id: 'n' + Date.now(), manual: true, status: 'done' }; data.sermonNotes = [n, ...(data.sermonNotes || [])]; state.snDraftId = n.id; }
+    Object.assign(n, { date, title, preacher, church, service, body: body.trim(), edited: new Date().toISOString(), ...(church ? { context: church } : {}),
+      summary: { ...(n.summary || {}), title, passages: snAllRefs().map(refText), main_message: main, points: [], application: [], prayer_topics: [], discussion_questions: [] } });
+    if (state.snRef) { n.ref = state.snRef; if (state.snRefs?.length) n.refs = [...state.snRefs];
+      state.snPassageText?.then?.(tx => { if (tx && n.passageText !== tx) { n.passageText = String(tx).slice(0, 20000); save(true); } }).catch?.(() => {}); }
+    if (!body.trim() && !main && !title) { data.sermonNotes = data.sermonNotes.filter(x => x !== n); state.snDraftId = null; }
+    if (preacher || church) placeRemember(preacher, church);
+    if (data.drafts) delete data.drafts['sermon-write'];
+    save(true); try { Backup.soon(); } catch {}
+    if (st) { st.textContent = state.snDraftId ? t('dm.saved2') : ''; }
+    if (state.tab === 'notes' && !state.noteOpen && sheet.hidden) render();
+  };
+  if (st && !now) st.textContent = t('dm.saving');
+  clearTimeout(snAutoT); if (now) go(); else snAutoT = setTimeout(go, 700);
 }
 async function sermonSubmit() {
   const title = $('#sn-title')?.value.trim() || '', { preacher, church } = readPlace(), date = $('#sn-date')?.value || today(), service = $('#sn-service')?.value || '';
