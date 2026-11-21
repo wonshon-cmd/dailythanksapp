@@ -1544,7 +1544,12 @@ async function shareDone() {
       x.fillStyle = '#fff'; x.font = '400 30px "Noto Sans KR"'; x.fillText((m.name || '?').slice(0, 1), start + i * gap, y + 11); });
     y += 90; x.fillStyle = '#5B6064'; x.font = '300 36px "Noto Sans KR"'; x.fillText(t('tg.readCount').replace('{n}', readers.length), W / 2, y);
   }
-  x.fillStyle = '#B4B8BA'; x.font = '300 30px "Noto Sans KR"'; x.fillText(g ? t('tg.footer') : 'dailyjourney.org', W / 2, H - 120);
+  // a small QR code above the footer: dailyjourney.org/get/ (App Store / Google Play once the apps are out, the web app for now)
+  try { const qrcode = await loadQr(), q = qrcode(0, 'M'); q.addData('https://dailyjourney.org/get/'); q.make();
+    const n = q.getModuleCount(), cell = Math.round(132 / n), size = cell * n, top = H - 360, left = Math.round((W - size) / 2);
+    if (y < top - 30) { x.fillStyle = '#6E7378';
+      for (let r = 0; r < n; r++) for (let cc = 0; cc < n; cc++) if (q.isDark(r, cc)) x.fillRect(left + cc * cell, top + r * cell, cell, cell); } } catch {}
+  x.fillStyle = '#B4B8BA'; x.font = '300 30px "Noto Sans KR"'; x.fillText(g ? t('tg.footer') : 'dailyjourney.org', W / 2, H - 150);
   const blob = await new Promise(r => c.toBlob(r, 'image/png')), file = new File([blob], 'daily-journey-today.png', { type: 'image/png' });
   const text = g && canInvite(g) ? `${t('tg.shareText').replace('{name}', L(g.name))}\n${inviteLink(g)}` : `${t('ob.doneTitle')} · dailyjourney.org`;
   try { if (navigator.canShare?.({ files: [file] })) { await navigator.share({ files: [file], text }); return; } } catch (e) { if (e?.name === 'AbortError') return; }

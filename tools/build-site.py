@@ -131,6 +131,8 @@ for sub in ('thanks', 'privacy', 'terms', 'support', 'delete-account', 'join', '
 # dailyjourney.org/ itself: the Daily Journey front page (daily bible + daily thanks)
 (WEB / 'index.html').write_text((ROOT / 'site' / 'dailyjourney.html').read_text())
 (WEB / '404.html').write_text(doc)
+# dailyjourney.org/get/ — the QR code on shared cards: App Store / Google Play once the apps are out, the web app until then
+(WEB / 'get').mkdir(exist_ok=True); shutil.copy(ROOT / 'site' / 'get.html', WEB / 'get' / 'index.html')
 (WEB / 'CNAME').write_text('dailyjourney.org\n')
 shutil.copy(ROOT / 'store' / 'icons' / 'play-512.png', WEB / 'favicon.png')
 shutil.copy(ROOT / 'store' / 'icons' / 'appstore-1024.png', WEB / 'apple-touch-icon.png')
