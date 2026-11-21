@@ -2000,3 +2000,12 @@ details.ch-top:not([open]){gap:0}
 .bb-cont .gd-acts{margin-top:0}
 .screen.t2 .bb-cont > .bb-where{display:flex}
 .screen.t1 .bb-cont .bb-ref{margin:4px 0 10px}
+/* community card: the challenge row fits the width (name and "write today" on top, the week below), and the page only scrolls up and down */
+.gc .g-ch{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name go" "days days";gap:10px 12px;width:100%;box-sizing:border-box}
+.gc .g-ch > span:first-child{grid-area:name;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.gc .g-ch .g-ch-go{grid-area:go}
+.gc .g-ch .g-ch-days{grid-area:days;margin:0;justify-content:flex-start}
+.gc .g-ch .g-ch-bar{grid-area:days;align-self:center;margin-right:44px}
+.gc .g-ch .g-ch-n{grid-area:days;justify-self:end}
+.screen{overflow-x:hidden}
+.page,.gc{max-width:100%;min-width:0}
