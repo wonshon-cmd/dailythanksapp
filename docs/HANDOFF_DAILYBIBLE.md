@@ -48,3 +48,7 @@ python3 tools/build-live.py <dailybible 저장소 경로>   # 공개 사이트 �
    지금은 웹 앱(`/daily-bible/`)으로 가요. 출시 후 `site/get.html`의 `IOS`(App Store 주소)와
    `ANDROID`(Google Play 주소)만 채우면, 아이폰은 App Store로, 안드로이드는 Google Play로, 나머지는 웹으로 가요.
    카드 이미지를 다시 만들 필요 없어요 — 이미 퍼진 카드의 QR도 같은 주소라 자동으로 바뀌어요.
+
+## 앱 아이콘 (확정)
+- App Store · Google Play 아이콘: 흰 바탕에 두 줄 *daily* / *journey* 글자 (`brand/app-icon-journey.png`, 1024×1024). 바꾸지 말 것 — 바꾸라는 말이 있을 때만.
+- 스토어 제출용: `store/icons/journey-appstore-1024.png`, `store/icons/journey-play-512.png`. 휴대폰 앱 아이콘은 `mobile/assets/icon-*.png` → `npm run assets`로 만들어요.
