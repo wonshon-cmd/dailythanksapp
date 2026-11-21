@@ -1954,6 +1954,12 @@ mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-bre
 .g-ch-days{gap:3px;flex:0 1 auto;justify-content:center;margin:0 auto}
 .g-ch-days i{width:15px;height:15px}
 .stk[data-action]{cursor:pointer}
+/* 가장 꾸준한 사람 (admin only): a fold-down */
+details.ch-top summary{list-style:none;cursor:pointer}
+details.ch-top summary::-webkit-details-marker{display:none}
+details.ch-top summary svg:last-child{width:14px;height:14px;margin-left:2px;transform:rotate(90deg);transition:transform .2s}
+details.ch-top[open] summary svg:last-child{transform:rotate(-90deg)}
+details.ch-top:not([open]){gap:0}
 /* 동행 not done yet today: a small red dot after its name */
 .g-ch.todo > span:first-child::after{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#E2847A;margin-left:7px;vertical-align:middle}
 #sheet .db > .gd-label:first-child{display:none}
