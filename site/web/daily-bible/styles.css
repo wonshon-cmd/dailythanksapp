@@ -1957,6 +1957,10 @@ mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-bre
 /* + lines up under the icon rail (same center), a little higher */
 .imm-plus{right:24px;bottom:calc(32px + var(--safe-bottom))}
 .write-pill.fab-plus{right:24px}
+/* "N일 연속" pill: same height line as the + (its center), with a small red dot when something's left for today */
+.imm-streak{bottom:calc(41px + var(--safe-bottom, 0px))!important;top:auto!important}
+.imm-streak .new-dot{width:5px;height:5px;margin-left:0;background:#E2847A}
+.imm-days{display:inline-flex;align-items:center;gap:6px}
 /* 가장 꾸준한 사람 (admin only): a fold-down */
 details.ch-top summary{list-style:none;cursor:pointer}
 details.ch-top summary::-webkit-details-marker{display:none}

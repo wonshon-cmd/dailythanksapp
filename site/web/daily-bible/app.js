@@ -2914,8 +2914,9 @@ function immStreak() {
     // daily bible: count only what the feed itself shows, so scrolling to the end takes it to zero
     ? data.posts.filter(p => !p.mine && visible(p) && data.groups.some(g => inGroup(p, g.id)) && !(data.groupSeen || []).includes(p.id)).length
     : data.groups.reduce((x, g) => x + unseenIn(g.id), 0);
-  if (!n && !unseen) return '';
-  return `<div class="imm-streak" aria-live="polite">${n ? `<span>${esc(t('stk.write').replace('{n}', n))}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</div>`;
+  const todo = BIBLE_MODE && !data.readDevo?.[today()];   // today's passage not read yet: a small red dot
+  if (!n && !unseen && !todo) return '';
+  return `<div class="imm-streak" aria-live="polite">${n || todo ? `<span class="imm-days">${esc(n ? t('stk.write').replace('{n}', n) : t('bb.today'))}${todo && !unseen ? '<i class="new-dot"></i>' : ''}</span>` : ''}${unseen ? `<span class="imm-new"><i class="new-dot"></i>${esc(t('stk.new').replace('{n}', unseen))}</span>` : ''}</div>`;
 }
 const firstOffLinks = () => `<p class="fo-links"><button data-action="off-sheet">${t('fo.off')}</button></p>`;
 // "끄기": what to turn off (prayer cards, today's reading, challenges, or all of them) and for how long
