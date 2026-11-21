@@ -1529,9 +1529,11 @@ async function shareDone() {
     x.font = '400 36px "Noto Sans KR"'; const label = `${L(g.name)} · ${t('tg.together')}`, lw = x.measureText(label).width + 80;
     x.fillStyle = '#F3F4F5'; x.beginPath(); x.roundRect((W - lw) / 2, y - 52, lw, 76, 38); x.fill(); x.fillStyle = '#5B6064'; x.fillText(label, W / 2, y); y += 110;
   }
-  x.fillStyle = '#F1F2F3'; x.beginPath(); x.arc(W / 2, y + 70, 70, 0, 7); x.fill();
-  x.strokeStyle = '#3a3f44'; x.lineWidth = 9; x.lineCap = 'round'; x.lineJoin = 'round'; x.beginPath(); x.moveTo(W / 2 - 30, y + 72); x.lineTo(W / 2 - 8, y + 94); x.lineTo(W / 2 + 34, y + 48); x.stroke(); y += 250;
-  x.fillStyle = '#1F2326'; x.font = '400 62px "Noto Sans KR"'; x.fillText(t('ob.doneTitle'), W / 2, y); y += 80;
+  if (g) { // with a community: the check and "다 읽었어요"; on my own the card is just the passage
+    x.fillStyle = '#F1F2F3'; x.beginPath(); x.arc(W / 2, y + 70, 70, 0, 7); x.fill();
+    x.strokeStyle = '#3a3f44'; x.lineWidth = 9; x.lineCap = 'round'; x.lineJoin = 'round'; x.beginPath(); x.moveTo(W / 2 - 30, y + 72); x.lineTo(W / 2 - 8, y + 94); x.lineTo(W / 2 + 34, y + 48); x.stroke(); y += 250;
+    x.fillStyle = '#1F2326'; x.font = '400 62px "Noto Sans KR"'; x.fillText(t('ob.doneTitle'), W / 2, y); y += 80;
+  } else y = 820;
   x.fillStyle = '#8A9095'; x.font = '300 38px "Noto Sans KR"'; x.fillText([p?.ref ? refText(p.ref) : '', readDays() > 1 ? t('tg.streak').replace('{n}', readDays()) : ''].filter(Boolean).join(' · '), W / 2, y); y += 100;
   if (verse) { x.fillStyle = '#2C3135'; x.font = '300 46px "Noto Sans KR"'; const lines = []; let line = '';
     for (const w of ('“' + verse + '”').split(' ')) { if (x.measureText(line + w).width > 840 && line) { lines.push(line.trim()); line = ''; } line += w + ' '; } lines.push(line.trim());
