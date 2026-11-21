@@ -1034,7 +1034,7 @@ Object.assign(STR.ko, { 'pl.with': "누구와 함께 할까요?" }); Object.assi
 Object.assign(STR.ko, { 'sn.edit': "수정하기", 'sn.saveEdit': "저장", 'sn.edited': "수정했어요.", 'tr.hint': "‘받기’를 누르면 인터넷 없이도 읽을 수 있게 저장해요." });
 Object.assign(STR.en, { 'sn.edit': "Edit", 'sn.saveEdit': "Save", 'sn.edited': "Saved.", 'tr.hint': "‘Download’ saves it for reading offline." });
 Object.assign(STR.es, { 'sn.edit': "Editar", 'sn.saveEdit': "Guardar", 'sn.edited': "Guardado.", 'tr.hint': "‘Descargar’ la guarda para leer sin conexión." });
-Object.assign(STR.ko, { 'dm.done': "오늘의 묵상", 'dm.save': "저장", 'dm.saved': "묵상을 남겼어요 · 나 › 묵상 노트" }); Object.assign(STR.en, { 'dm.done': "Today’s reflection", 'dm.save': "Save", 'dm.saved': "Saved · Me › Reflections" }); Object.assign(STR.es, { 'dm.done': "Reflexión de hoy", 'dm.save': "Guardar", 'dm.saved': "Guardada · Yo › Reflexiones" });
+Object.assign(STR.ko, { 'dm.done': "오늘의 묵상", 'dm.saving': "저장 중…", 'dm.saved2': "저장됨" }); Object.assign(STR.en, { 'dm.done': "Today’s reflection", 'dm.saving': "Saving…", 'dm.saved2': "Saved" }); Object.assign(STR.es, { 'dm.done': "Reflexión de hoy", 'dm.saving': "Guardando…", 'dm.saved2': "Guardado" });
 Object.assign(STR.ko, { 'cl.tooManyTries': "코드를 여러 번 잘못 넣었어요. 15분 뒤에 다시 해 주세요." }); Object.assign(STR.en, { 'cl.tooManyTries': "Too many wrong codes. Please try again in 15 minutes." }); Object.assign(STR.es, { 'cl.tooManyTries': "Demasiados códigos incorrectos. Inténtalo de nuevo en 15 minutos." });
 Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
 Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
@@ -3000,26 +3000,31 @@ document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.ma
 document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(() => FLOAT.forEach(floatSync), 0); });
 window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
 // daily bible with no reading plan today: today's passage, one verse per card
-// After today's passage: one more slide to write today's 묵상 right on it, in the same look as the verses
+// After today's passage: one more slide to write today's 묵상 right on it, in the same look as the verses.
+// It saves by itself while you type (저장 중… → 저장됨); no button.
+const dmMine = p => { const key = p?.ref ? `${p.ref.b}:${p.ref.c}` : ''; return data.posts.find(x => x.mine && x.kind === 'meditation' && x.date === today() && x.ref && `${x.ref.b}:${x.ref.c}` === key); };
 function devoMedCard(p) {
-  state.dmPassage = p;
-  const key = p.ref ? `${p.ref.b}:${p.ref.c}` : '', mine = data.posts.find(x => x.mine && x.kind === 'meditation' && x.date === today() && x.ref && `${x.ref.b}:${x.ref.c}` === key);
+  state.dmPassage = p; const mine = dmMine(p);
   return `<article class="post card-page dm-card"><div class="card-inner">
-      ${mine ? `<p class="fv-text dm-text" data-action="note" data-id="${esc(mine.id)}">${esc(L(mine.text))}</p>`
-        : `<form id="dm-form" class="dm-form"><textarea class="fv-text dm-input" data-draft="devo-med" rows="4" maxlength="2000" placeholder="${esc(t('devo.ph2'))}" aria-label="${esc(t('devo.ph2'))}"></textarea>
-          <button class="dm-save" type="submit" hidden>${t('dm.save')}</button></form>`}
+      <textarea class="fv-text dm-input" rows="4" maxlength="2000" placeholder="${esc(t('devo.ph2'))}" aria-label="${esc(t('devo.ph2'))}">${esc(mine ? L(mine.text) : '')}</textarea>
+      <p class="dm-status" aria-live="polite"></p>
       <p class="fv-ref"><b class="fv-lab">${icon('note')}${t('dm.done')}</b>${esc(refText(p.ref))}</p>
     </div><aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>`;
 }
 const dmGrow = el => { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, innerHeight * 0.55) + 'px'; };
-document.addEventListener('input', e => { const el = e.target; if (!el.matches?.('.dm-input')) return; dmGrow(el); const b = el.form?.querySelector('.dm-save'); if (b) b.hidden = !el.value.trim(); });
-document.addEventListener('submit', e => {
-  if (e.target.id !== 'dm-form') return; e.preventDefault();
-  const ta = e.target.querySelector('.dm-input'), text = ta.value.trim(), p = state.dmPassage; if (!text || !p?.ref) return;
-  data.posts.unshift({ id: 'p' + Date.now(), mine: true, kind: 'meditation', scope: 'private', text, ref: p.ref, date: today(), likes: 0 });
-  if (data.drafts) delete data.drafts['devo-med'];
-  save(); const card = e.target.closest('.dm-card'); if (card) card.outerHTML = devoMedCard(p);
-  toast(t('dm.saved'));
+let dmTimer = null;
+document.addEventListener('input', e => {
+  const el = e.target; if (!el.matches?.('.dm-input')) return; dmGrow(el);
+  const st = el.parentElement.querySelector('.dm-status'); if (st) { st.textContent = t('dm.saving'); st.classList.remove('done'); }
+  clearTimeout(dmTimer); dmTimer = setTimeout(() => {
+    const p = state.dmPassage, text = el.value.trim(); if (!p?.ref) return;
+    let mine = dmMine(p);
+    if (text && !mine) { mine = { id: 'p' + Date.now(), mine: true, kind: 'meditation', scope: 'private', text, ref: p.ref, date: today(), likes: 0 }; data.posts.unshift(mine); }
+    else if (text) mine.text = text;
+    else if (mine) data.posts = data.posts.filter(x => x !== mine);   // all erased: nothing kept
+    save(true); try { Backup.soon(); } catch {}
+    if (st) { st.textContent = text ? t('dm.saved2') : ''; st.classList.add('done'); }
+  }, 700);
 });
 async function fillDevoCards() {
   const slot = document.querySelector('.devo-load'); if (!slot) return;
@@ -3031,7 +3036,7 @@ async function fillDevoCards() {
     `<article class="post card-page devo-end"><div class="card-inner"><span class="done-check">${icon('check')}</span><p class="card-title">${t('ob.doneTitle')}</p><p class="card-sub">${esc(refText(p.ref))}</p>
       <div class="card-actions"><button class="primary" data-action="share-done">${icon('share')}${t('tg.share')}</button></div></div>
       <aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>` + devoMedCard(p);   // open/close the full screen here too; "오늘의 말씀" sits with the verse reference at the bottom
-  { const ta = document.querySelector('.dm-input'); if (ta) { restoreDrafts(ta.closest('form')); if (ta.value.trim()) { dmGrow(ta); ta.form.querySelector('.dm-save').hidden = false; } } }
+  { const ta = document.querySelector('.dm-input'); if (ta?.value.trim()) dmGrow(ta); }
   fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
