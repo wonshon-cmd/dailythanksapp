@@ -5233,7 +5233,7 @@ function bibleSettings() {
         : `<div class="list-row static"><span class="row-icon">${icon('user')}</span><span class="row-main"><span class="row-title">${t('s.account')}</span></span><span class="row-end row-sub">${t('s.guest')}</span></div>`}
       ${row('tour', 'history', t('tour.again'))}
       ${row('vault', 'lock', t('vault.title'))}
-      ${row('export', 'copy', t('s.export'), '')}
+
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
     <p class="field-label">${t('s.legal')}</p>
@@ -5274,7 +5274,7 @@ function settings() {
       ${row('vault', 'lock', t('vault.title'))}
       ${window.Capacitor?.isNativePlatform?.() ? '' : row('bible-offline', 'book', t('off.title'))}
       ${row('fullscreen', 'maximize', t('fs.enter'))}
-      ${row('export', 'copy', t('s.export'), '')}
+
       ${row('intro-again', 'history', t('s.intro'))}
       ${row('reset', 'reset', t('s.reset'), '', 'danger')}
     </div>
