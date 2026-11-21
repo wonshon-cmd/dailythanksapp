@@ -3368,7 +3368,7 @@ function bibleShell() {
   // 매일 · 동행 (the full-screen feed) · 노트 · 공동체 · 나
   if (nav) { nav.classList.add('bb-nav'); nav.innerHTML = tabBtn(['read', 'book', 'bb.read'])
     + `<button data-action="fullscreen" class="nav-feed"><span class="nav-ico" data-icon="sun"></span><span data-i18n="bn.feed"></span></button>`
-    + [['notes', 'note', 'bb.notes'], ['group', 'people', 'bn.group'], ['me', 'user', 'bb.me']].map(tabBtn).join(''); }
+    + [['group', 'people', 'bn.group'], ['notes', 'note', 'bb.notes'], ['me', 'user', 'bb.me']].map(tabBtn).join(''); }
 }
 // A reading day: a chapter finished, or at least a minute spent reading (same rule as the dashboard).
 const readDaySet = () => new Set([...Object.values(data.readLog || {}), ...Object.entries(data.readTime || {}).filter(([, sec]) => sec >= 60).map(([d]) => d)]);
