@@ -24,7 +24,7 @@
   - Android는 완성돼 있어요.
   - iOS는 Xcode에서 한 번 추가해야 해요(아래 4번).
 - **Android 뒤로가기 버튼:** 열린 창이 있으면 먼저 닫고, 없으면 앱을 내려요.
-- **아이콘과 시작 화면:** 흰 바탕에 회색 선의 펼친 성경 아이콘, 흰 바탕에 *daily journey*가 보이는 시작 화면이에요. (원본: `brand/daily-bible/`의 책 모양, 스토어용: `store/icons/journey-*.png`)
+- **아이콘과 시작 화면:** 앱 아이콘은 흰 바탕에 두 줄로 쓴 *daily* / *journey* 글자예요(원본: `brand/app-icon-journey.png`, 1024×1024). 아이콘을 바꿀 때는 이 파일을 바꾸고 `mobile/assets/icon-*.png`를 다시 만든 뒤 `npm run assets`. 스토어용: `store/icons/journey-appstore-1024.png`(Apple), `journey-play-512.png`(Google).
 - **폰 기능 연결 코드:** `src/native.js`예요. 브라우저에서는 아무 일도 하지 않아요.
 
 ## 1. 처음 한 번 (컴퓨터 준비)
