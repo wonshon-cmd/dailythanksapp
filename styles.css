@@ -1986,3 +1986,10 @@ details.ch-top:not([open]){gap:0}
 .me-label{display:flex;justify-content:space-between;align-items:baseline;margin:28px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .me-label + .notes{margin-top:0}
 .me-empty{margin:0;padding:12px 0;font-size:13px;color:var(--faint)}
+/* influence card, simplified: light · "N명에게 닿았어요" with three small counts under it · › */
+.inf-card.inf-simple{flex-direction:row;align-items:center;gap:14px;padding-top:6px;padding-bottom:6px}
+.inf-simple .inf-label{flex:1;display:flex;flex-direction:column;gap:5px}
+.inf-simple .inf-stats{display:flex;gap:12px;font-size:12.5px;color:var(--faint)}
+.inf-simple .inf-stats .ico{font-size:13px}
+.inf-simple .row-end{color:#C9CCCE}
+.screen.t2 .inf-simple .inf-stats{display:flex}
