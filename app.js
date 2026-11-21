@@ -7065,3 +7065,12 @@ if (splash) {
   else { setTimeout(() => { if (!gone) splash.classList.add('step2'); }, 1400); setTimeout(hide, 4200); }
 }
 })();
+
+/* The frame never moves on a phone: a drag that starts on the top bar, the + button or the bottom tabs
+   (or on the still parts of 매일 / 나 / 노트) is held so the page can't be pulled up or down.
+   Lists that really scroll (노트 list, sheets, the reader) keep scrolling. */
+(() => {
+  const held = el => el.closest('.topbar, .bottom-nav, .write-pill.fab-plus') ||
+    (el.closest('.screen.fit, .screen.still') && !el.closest('#sn-list, .sheet, textarea, input, select, [contenteditable]'));
+  document.addEventListener('touchmove', e => { if (e.cancelable && e.target instanceof Element && held(e.target)) e.preventDefault(); }, { passive: false });
+})();
