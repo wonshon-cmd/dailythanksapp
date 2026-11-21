@@ -1855,3 +1855,10 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
     rgba(255,214,110,calc(.11 + var(--g) * .45)) 30%,
     rgba(255,226,150,calc(.04 + var(--g) * .22)) 62%,
     rgba(255,240,200,0) 100%)}
+/* the light: a tiny point at first; grows with a steady week, big after a steady month */
+.glow{--size:calc((5px + var(--g) * 42px) * var(--s));
+  background:radial-gradient(circle closest-side,
+    rgba(255,205,90,calc(.55 + var(--g) * .35)) 0%,
+    rgba(255,214,110,calc(.28 + var(--g) * .35)) 30%,
+    rgba(255,226,150,calc(.08 + var(--g) * .20)) 62%,
+    rgba(255,240,200,0) 100%)}
