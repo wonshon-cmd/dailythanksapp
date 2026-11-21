@@ -473,3 +473,5 @@ language sql stable security definer set search_path = public as $$
 $$;
 revoke execute on function my_link_opens() from public, anon;
 grant execute on function my_link_opens() to authenticated;
+
+-- (security hardening: run supabase/security.sql after this file)

@@ -1035,6 +1035,7 @@ Object.assign(STR.ko, { 'sn.edit': "수정하기", 'sn.saveEdit': "저장", 'sn.
 Object.assign(STR.en, { 'sn.edit': "Edit", 'sn.saveEdit': "Save", 'sn.edited': "Saved.", 'tr.hint': "‘Download’ saves it for reading offline." });
 Object.assign(STR.es, { 'sn.edit': "Editar", 'sn.saveEdit': "Guardar", 'sn.edited': "Guardado.", 'tr.hint': "‘Descargar’ la guarda para leer sin conexión." });
 Object.assign(STR.ko, { 'dm.ph': "오늘 말씀을 묵상하며 적어 보세요", 'dm.done': "오늘의 묵상" }); Object.assign(STR.en, { 'dm.ph': "Write your reflection on today’s passage", 'dm.done': "Today’s reflection" }); Object.assign(STR.es, { 'dm.ph': "Escribe tu reflexión sobre el pasaje de hoy", 'dm.done': "Reflexión de hoy" });
+Object.assign(STR.ko, { 'cl.tooManyTries': "코드를 여러 번 잘못 넣었어요. 15분 뒤에 다시 해 주세요." }); Object.assign(STR.en, { 'cl.tooManyTries': "Too many wrong codes. Please try again in 15 minutes." }); Object.assign(STR.es, { 'cl.tooManyTries': "Demasiados códigos incorrectos. Inténtalo de nuevo en 15 minutos." });
 Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
 Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
 Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
@@ -1355,11 +1356,13 @@ function sync() {
           g.sid = row.id;
         } else {
           const [row] = await Cloud.rpc('join_group', { code: g.invite });
+          if (!row) throw new Error('invalid_code');   // a wrong code comes back empty (the server counts wrong tries)
           g.sid = row.group_id; g.name = row.name || g.name; g.pending = row.status === 'pending';
           toast(g.pending ? t('join.pending') : t('join.done').replace('{name}', L(g.name)));
         }
       } catch (err) {
         if (/invalid_code/.test(err.message)) { data.groups = data.groups.filter(x => x !== g); toast(t('cl.badInvite')); }
+        else if (/too_many_tries/.test(err.message)) { data.groups = data.groups.filter(x => x !== g); toast(t('cl.tooManyTries')); }
         else if (err.code === '23505' && g.owner) { g.invite = newCode(); }   // that invite code is taken: try a new one next time
       }
     }
@@ -1558,7 +1561,7 @@ async function connectFriend(f, inSync) {
     (data.settings.seenNotes = data.settings.seenNotes || {})['pair:' + sid] = 1;
     state.group = g.id; save(); render(); toast(t('fr.done').replace('{name}', f.name || t('pl.someone')));
     if (!inSync) { await syncing; sync(); }
-  } catch (err) { save(); toast(/self/.test(err.message) ? t('fr.self') : t('fr.bad')); }
+  } catch (err) { save(); toast(/self/.test(err.message) ? t('fr.self') : /too_many_tries/.test(err.message) ? t('cl.tooManyTries') : t('fr.bad')); }
 }
 function repliesSheet() {
   const list = data.settings.replies || [];
