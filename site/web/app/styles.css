@@ -2079,3 +2079,8 @@ details.ch-top:not([open]){gap:0}
 html, body { overflow: hidden; overscroll-behavior: none; }
 .topbar, .bottom-nav, .write-pill.fab-plus { touch-action: none; }
 .topbar button, .topbar a, .topbar select, .bottom-nav button, .bottom-nav a, .write-pill.fab-plus { touch-action: none; -webkit-user-select: none; user-select: none; }
+/* 나: the name sits under the title; tapping it lets you write over it right there */
+.me-name { display: block; width: 100%; box-sizing: border-box; margin: 2px 0 14px; padding: 4px 0; border: 0; border-bottom: 1px solid transparent; border-radius: 0; background: transparent; font: inherit; font-size: 20px; color: var(--ink); outline: none; touch-action: manipulation; -webkit-appearance: none; appearance: none; }
+.me-name::placeholder { color: var(--faint); }
+.me-name:focus { border-bottom-color: #E2E2E0; }
+.nm-inline { margin-top: 6px; }

@@ -1044,6 +1044,9 @@ Object.assign(STR.ko, { 'inf.opens': "링크를 열어 본 사람" }); Object.as
 Object.assign(STR.ko, { 'bk.title': "내 기록 열기", 'bk.body': "이 계정에 잠가 둔 기록이 있어요. 전에 쓰던 휴대폰의 나 › 설정 › 기록 보호에서 복구 키를 복사해 여기에 넣으면 그대로 열려요.", 'bk.open': "열기", 'bk.later': "나중에", 'bk.fresh': "이전 기록 없이 새로 시작", 'bk.freshQ': "이전 기록은 더 이상 열 수 없게 돼요. 새로 시작할까요?", 'bk.freshDone': "새로 시작했어요.", 'bk.done': "기록을 가져왔어요." });
 Object.assign(STR.en, { 'bk.title': "Open your records", 'bk.body': "This account has locked records. On your old phone, copy the recovery key from Me › Settings › Privacy lock and enter it here — everything opens as it was.", 'bk.open': "Open", 'bk.later': "Later", 'bk.fresh': "Start fresh without them", 'bk.freshQ': "Your earlier records can’t be opened after this. Start fresh?", 'bk.freshDone': "Started fresh.", 'bk.done': "Your records are here." });
 Object.assign(STR.es, { 'bk.title': "Abrir tus registros", 'bk.body': "Esta cuenta tiene registros bloqueados. En tu teléfono anterior, copia la llave de recuperación en Yo › Ajustes › Bloqueo de privacidad e ingrésala aquí: todo se abre tal como estaba.", 'bk.open': "Abrir", 'bk.later': "Más tarde", 'bk.fresh': "Empezar de nuevo sin ellos", 'bk.freshQ': "Después no podrás abrir tus registros anteriores. ¿Empezar de nuevo?", 'bk.freshDone': "Empezaste de nuevo.", 'bk.done': "Tus registros ya están aquí." });
+Object.assign(STR.ko, { 'nm.title': "공동체에 보일 이름", 'nm.sub': "공동체와 마음 카드에 이렇게 보여요. 나에서 언제든 바꿀 수 있어요.", 'nm.ph': "이름", 'nm.add': "이름 추가", 'nm.saved': "이름을 바꿨어요" });
+Object.assign(STR.en, { 'nm.title': "Name others will see", 'nm.sub': "Your community and cards show this name. You can change it anytime in Me.", 'nm.ph': "Name", 'nm.add': "Add your name", 'nm.saved': "Name updated" });
+Object.assign(STR.es, { 'nm.title': "Nombre que verán los demás", 'nm.sub': "Tu comunidad y tus tarjetas muestran este nombre. Puedes cambiarlo cuando quieras en Yo.", 'nm.ph': "Nombre", 'nm.add': "Agrega tu nombre", 'nm.saved': "Nombre actualizado" });
 const lang = () => data.settings.lang;
 const t = k => STR[lang()]?.[k] ?? STR.en[k] ?? STR.ko[k] ?? k;
 const L = v => (v && typeof v === 'object') ? (v[lang()] ?? (lang() === 'es' ? v.en : undefined) ?? v.ko ?? v.en) : (v ?? '');
@@ -1194,14 +1197,39 @@ function startTour() {
 }
 /* First visit: name first, then one tap to sign up — Google · Microsoft · e-mail · text message.
    A button whose provider isn't switched on in Supabase yet says so instead of failing. */
+/* Your name: Google · Microsoft · Apple fill it in from the account (not asked); it's confirmed once, the first time
+   others would see it (joining or making a community, sharing a post, sending a card). E-mail sign-in has no name until then. */
+const nameOk = () => !!(data.settings.myName && !data.settings.nameAuto);
+function setMyName(n) {
+  n = String(n || '').trim().slice(0, 30); if (!n) return;
+  data.settings.myName = n; delete data.settings.nameAuto; save();
+  if (Cloud.on()) Cloud.rest(`profiles?id=eq.${Cloud.uid()}`, { method: 'PATCH', body: { name: n } }).catch(() => {});
+}
+function accountName() {
+  if (data.settings.myName) return;
+  try { const tk = JSON.parse(localStorage.getItem('daily-bible-auth'))?.access, m = unb64url(tk.split('.')[1]).user_metadata || {};
+    const n = String(m.full_name || m.name || [m.given_name, m.family_name].filter(Boolean).join(' ') || '').trim().slice(0, 30);
+    if (n) { data.settings.myName = n; data.settings.nameAuto = true; save(); } } catch {}
+}
+// signed in just now and already in a community: confirm the name once (Google · Microsoft · Apple show theirs to keep or change)
+document.addEventListener('dt:signed-in', () => setTimeout(() => { accountName(); if (!nameOk() && data.groups.some(g => g.cloud) && $('#sheet').hidden) needName(close); }, 900));
+function needName(go) {
+  if (nameOk()) return go();
+  showSheet({ title: t('nm.title'), body: `<form id="nm-form" class="sheet-form"><p class="hint">${t('nm.sub')}</p>
+    <input id="nm-in" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('nm.ph'))}" required>
+    <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
+  $('#nm-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#nm-in').value.trim(); if (!n) return; setMyName(n); go(); });
+}
+// in a writing sheet: the name field shows up right above the button (filled in when we already know it); one more tap goes on
+function nameInline() {
+  const f = $('#nm-inline');
+  if (f) { if (!f.value.trim()) { f.focus(); return false; } setMyName(f.value); return true; }
+  if (nameOk()) return true;
+  $('#compose-form button[type=submit]')?.insertAdjacentHTML('beforebegin', `<div class="nm-inline"><label class="field-label" for="nm-inline">${t('nm.title')}</label>
+    <input id="nm-inline" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('nm.ph'))}"></div>`);
+  const i = $('#nm-inline'); i?.focus(); i?.select(); return false;
+}
 function welcomeSheet(reason = '', first = false) {
-  if (!first && !data.settings.myName) {
-    showSheet({ title: t('wl.title'), body: `<form id="wl-form" class="sheet-form"><p class="hint">${t('wl.nameQ')}</p>
-      <input id="wl-name" class="field" maxlength="30" autocomplete="name" placeholder="${esc(t('cl.namePh'))}" required>
-      <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
-    $('#wl-form').addEventListener('submit', e => { e.preventDefault(); const n = $('#wl-name').value.trim().slice(0, 30); if (!n) return; data.settings.myName = n; save(); welcomeSheet(reason); });
-    return;
-  }
   // only the ways that are switched on in Supabase show up (e-mail always); Google/Microsoft only on the web for now
   const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: first ? '' : t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `${first ? `<div class="wl-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p>${t('wl.tag')}</p></div>` : `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>`}
@@ -1281,18 +1309,14 @@ function emailLogin(reason = '', after = null) {
   state.afterLogin = after;
   showSheet({ title: t('cl.title'), body: `<form id="cl-form" class="sheet-form">
     ${reason ? `<p class="hint">${esc(reason)}</p>` : ''}
-    <label class="field-label" for="cl-name">${t('cl.name')}</label>
-    <input id="cl-name" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('cl.namePh'))}" required>
     <label class="field-label" for="cl-email">${t('cl.email')}</label>
     <input id="cl-email" class="field" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required>
     <button class="primary block" type="submit" id="cl-send">${t('cl.send')}</button>
     <p class="fine-print">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p></form>` });
   $('#cl-form').addEventListener('submit', async e => {
     e.preventDefault();
-    const name = $('#cl-name').value.trim().slice(0, 30), email = $('#cl-email').value.trim().toLowerCase();
-    if (!name) { $('#cl-name').focus(); return; }
+    const name = (data.settings.myName || '').trim().slice(0, 30), email = $('#cl-email').value.trim().toLowerCase();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast(t('cl.badEmail')); return; }
-    data.settings.myName = name; save();
     if (email === REVIEW_EMAIL) return reviewLogin(email);
     const b = $('#cl-send'); b.disabled = true; b.textContent = t('cl.sending');
     try { await Cloud.sendLink(email, name); emailSent(email, name); }
@@ -1348,7 +1372,8 @@ function sync() {
   return syncing = syncing || (async () => {
     const uid = Cloud.uid(); clearSamples();
     if (data.settings.pendingFriend) { const f = data.settings.pendingFriend; delete data.settings.pendingFriend; await connectFriend(f, true); }
-    if (data.settings.myName) Cloud.rest('profiles?id=eq.' + uid, { method: 'PATCH', body: { name: data.settings.myName } }).catch(() => {});
+    accountName();
+    if (data.settings.myName && !data.settings.nameAuto) Cloud.rest('profiles?id=eq.' + uid, { method: 'PATCH', body: { name: data.settings.myName } }).catch(() => {});
     for (const g of data.groups.filter(x => x.cloud && !x.sid)) {
       try {
         if (g.owner) {
@@ -4270,6 +4295,7 @@ function renderBibleMe() {
   const q = noteQuota();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
+    <input id="me-name" class="me-name" maxlength="30" autocomplete="name" enterkeyhint="done" spellcheck="false" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('nm.add'))}" aria-label="${esc(t('nm.title'))}">
     ${myCommunities()}
     ${readGauge()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
@@ -4282,6 +4308,13 @@ function renderBibleMe() {
     </div>
   </div></div>`;
   fitScreen();   // 나 stays still (the lists open in their own sheet)
+  // tap the name: it's selected right where it is, so typing writes over it; Enter or tapping away saves
+  const nm = $('#me-name');
+  nm?.addEventListener('focus', () => setTimeout(() => nm.select(), 0));
+  nm?.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); nm.blur(); } if (e.key === 'Escape') { nm.value = data.settings.myName || ''; nm.blur(); } });
+  nm?.addEventListener('blur', () => { const n = nm.value.trim().slice(0, 30);
+    if (!n) { nm.value = data.settings.myName || ''; return; }
+    if (n !== data.settings.myName || data.settings.nameAuto) { setMyName(n); toast(t('nm.saved')); } });
 }
 const meMedi = () => data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref);
 // 묵상 노트 / 저장한 구절: in a sheet, with dates, newest or oldest first, and search
@@ -4555,6 +4588,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
       const to = $('#ty-name').value.trim(), text = $('#gratitude-text').value.trim();
       if (!to) { toast(t('ty.needName')); $('#ty-name').focus(); return; }
       if (!text) { $('#gratitude-text').focus(); return; }
+      if (!nameInline()) return;
       const from = (data.settings.myName || '').trim().slice(0, 30); // the name from sign-up
       const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}), ...(tyTone(state.tyTone) !== 'thanks' ? { tone: tyTone(state.tyTone) } : {}) };
       data.posts.unshift(p); state.tyName = ''; save(); render(); thanksCard(p.id);
@@ -4579,6 +4613,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
   if (!med) medRecReset();
   $('#compose-form').addEventListener('submit', e => {
     e.preventDefault();
+    if (visScope('compose').scope !== 'private' && !nameInline()) return;
     const kind = state.composeKind, prayer = kind === 'meditation' ? ($('#med-prayer')?.value.trim() || '') : '';
     if (kind === 'meditation') { clearTimeout(medAutoT); if (state.medAutoId) data.posts = data.posts.filter(x => x.id !== state.medAutoId); state.medAutoId = null; }   // the kept copy becomes the shared one
     if (state.medRecOn) medRecStop();
@@ -5365,6 +5400,7 @@ function joinGroup(code, name, key) {
 }
 function createGroup() {
   if (CLOUD && !Cloud.on()) { welcomeSheet(t('cl.needGroup')); return; }
+  if (!nameOk()) return needName(createGroup);
   showSheet({ title: t('gr.createTitle'), body: `<form id="group-form" class="sheet-form">
     <input id="group-name" class="field" maxlength="30" placeholder="${esc(t('gr.ph'))}" aria-label="${esc(t('gr.name'))}" required>
     <button class="primary block" type="submit">${t('gr.create')}</button>
@@ -6648,7 +6684,7 @@ const actions = {
     document.dispatchEvent(new CustomEvent('dt:group-remove', { detail: { code: g.invite, member: k } })); groupAdmin(gid); toast(t('adm.removed').replace('{name}', name)); },
   'friend-ok': () => { const f = state.pendingFriend; state.pendingFriend = null; close(); if (f) connectFriend(f); },
   'rm-yes': hhmm => remindOn(hhmm),
-  'join-ok': () => {
+  'join-ok': () => (CLOUD && !Cloud.on() ? (f => f()) : needName)(() => {   // signed out: sign in first, the name is confirmed right after
     const j = state.pendingJoin; if (!j) return close();
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}), ...(j.approve ? { pending: true } : {}) }; data.groups.push(g); state.pendingJoin = null;
     if (CLOUD) { // Supabase finishes the join (right away, or after signing in); until then it waits as pending
@@ -6659,7 +6695,7 @@ const actions = {
     if (j.approve) { document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code, approve: true } })); save(); close(); state.tab = 'group'; render(); toast(t('join.pending')); return; }
     document.dispatchEvent(new CustomEvent('dt:group-join', { detail: { code: j.code } }));
     save(); close(); state.tab = 'feed'; state.feed = 'group'; state.group = g.id; render(); toast(t('join.done').replace('{name}', j.name));
-  },
+  }),
   'imm-back': () => immBack(),
   'open-group': id => { if (data.groups.find(g => g.id === id)?.pending) { toast(t('join.pending')); return; } close(); state.groupDetail = id; state.group = id; state.tab = 'group'; state.immersive = false; render(); window.scrollTo?.(0, 0); try { history.pushState({ dt: 'gd' }, ''); } catch {} },
   'gd-back': () => { state.groupDetail = null; render(); },
@@ -6991,15 +7027,8 @@ function onbArrow() {
 function onbDone() {
   if (state.onb !== 'passage') return; state.onb = 'name';
   setTimeout(() => {
-    showSheet({ title: t('ob.nameTitle'), body: `<form id="ob-name" class="sheet-form"><p class="hint">${t('ob.nameSub')}</p>
-      <input id="ob-name-in" class="field" maxlength="30" autocomplete="name" value="${esc(data.settings.myName || '')}" placeholder="${esc(t('cl.namePh'))}" required>
-      <button class="primary block" type="submit">${t('wl.next')}</button></form>` });
-    $('#ob-name').addEventListener('submit', e => { e.preventDefault(); const n = $('#ob-name-in').value.trim().slice(0, 30); if (!n) return;
-      data.settings.myName = n; save();
-      if (Cloud.on()) Cloud.rest(`profiles?id=eq.${Cloud.uid()}`, { method: 'PATCH', body: { name: n } }).catch(() => {});
-      showSheet({ title: esc(t('ob.welcome').replace('{name}', n)), body: `<p class="hint">${t('ob.welcomeSub')}</p>` });
-      setTimeout(() => { if (state.onb !== 'name') return; state.onb = null; data.settings.onboarded = true; save(true); close(); }, 1800);
-    });
+    showSheet({ title: t('ob.doneTitle'), body: `<p class="hint">${t('ob.welcomeSub')}</p>` });
+    setTimeout(() => { if (state.onb !== 'name') return; state.onb = null; data.settings.onboarded = true; save(true); close(); }, 1800);
   }, 900);
 }
 // Always the newest version: when the app comes back to the screen (and every 10 minutes), check whether a newer
