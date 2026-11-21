@@ -941,7 +941,7 @@ const seed = {
   groups: [{ id: 'g1', name: { ko: '은혜 공동체', en: 'Grace Group', es: 'Grupo Gracia' }, size: 7, owner: true }, { id: 'g2', name: { ko: '우리 가족', en: 'Our Family', es: 'Nuestra familia' }, size: 4 }],
   challenges: [{ id: 'ch1', name: { ko: '함께 발견하는 감사', en: 'Finding Thanks Together', es: 'Encontrando gratitud juntos' }, group: 'g1',
     members: [{ ko: '나', en: 'Me', es: 'Yo' }, { ko: '지은', en: 'Sarah', es: 'María' }, { ko: '민서', en: 'Rachel', es: 'Laura' }], start: '2026-11-14', days: [1, 2] }],
-  settings: { lang: null, notificationTime: '21:00', notificationEnabled: false, groupUpdates: false, features: { groupShare: false, prayer: true, sermon: false } }, prayed: [], sermons: []
+  settings: { lang: null, notificationTime: '21:00', notificationEnabled: false, groupUpdates: true, features: { groupShare: false, prayer: true, sermon: false } }, prayed: [], sermons: []
 };
 
 const SAMPLES = {
@@ -964,6 +964,8 @@ data.posts.forEach(p => { const s = seed.posts.find(x => x.id === p.id); if (s &
 (data.challenges || []).forEach(c => { const s = seed.challenges.find(x => x.id === c.id); if (s) c.members = clone(s.members); });
 if (!data.settings.features) data.settings.features = { groupShare: false, prayer: false, sermon: false };
 if (!Array.isArray(data.prayed)) data.prayed = [];
+// 공동체 소식 모아 받기 is on unless I turned it off myself
+if (!data.settings.groupUpdatesSet) data.settings.groupUpdates = true;
 if (!Array.isArray(data.verseLikes)) data.verseLikes = [];
 if (!Array.isArray(data.readDone)) data.readDone = [];
 if (data.settings && !Array.isArray(data.settings.prayerSeen)) data.settings.prayerSeen = [];
@@ -6589,7 +6591,7 @@ const actions = {
   compose: () => compose('today', null),
   'challenge-detail': challengeDetail,
   'save-notifications': () => {
-    Object.assign(data.settings, { notificationTime: $('#notify-time').value, notificationEnabled: $('#notify-enabled').checked, groupUpdates: $('#notify-group').checked });
+    Object.assign(data.settings, { notificationTime: $('#notify-time').value, notificationEnabled: $('#notify-enabled').checked, groupUpdates: $('#notify-group').checked, groupUpdatesSet: true });
     save(); close(); toast(t('toast.nSaved'));
   },
   export: exportData,
