@@ -13,9 +13,9 @@ const page = path.resolve(process.argv[2] || path.join(ROOT, 'dist/daily-bible.h
 const BRAND = process.env.BRAND || 'journey';
 const out = path.resolve(process.argv[3] || path.join(ROOT, 'store/screenshots', BRAND));
 const CAPTIONS = {
-  ko: ['말씀을 매일,<br>한 장씩', '친구와 같은 날,<br>같은 말씀을', '공동체의 기도제목을<br>함께 기도해요', '설교를 녹음하고,<br>본문과 함께 노트로', '가까운 사람들과<br>공동체로 함께', '내가 나눈 말씀이<br>닿은 곳'],
-  en: ['The Word daily,<br>one page at a time', 'Same passage, same day,<br>with friends', 'Pray for your<br>community together', 'Record the sermon,<br>keep your own notes', 'Communities of<br>the people close to you', 'See how far your<br>sharing has reached'],
-  es: ['La Palabra cada día,<br>una página a la vez', 'El mismo pasaje,<br>el mismo día, juntos', 'Ora junto a<br>tu comunidad', 'Graba el sermón,<br>escribe tus notas', 'Comunidades con<br>la gente cercana', 'Mira hasta dónde<br>llegó lo que compartiste']
+  ko: ['말씀을 매일,<br>한 장씩', '친구와 같은 날,<br>같은 말씀을', '공동체의 기도제목을<br>함께 기도해요', '말씀과 설교를,<br>내 노트로', '가까운 사람들과<br>공동체로 함께', '내가 나눈 말씀이<br>닿은 곳'],
+  en: ['The Word daily,<br>one page at a time', 'Same passage, same day,<br>with friends', 'Pray for your<br>community together', 'The Word and the sermon,<br>in your own notes', 'Communities of<br>the people close to you', 'See how far your<br>sharing has reached'],
+  es: ['La Palabra cada día,<br>una página a la vez', 'El mismo pasaje,<br>el mismo día, juntos', 'Ora junto a<br>tu comunidad', 'La Palabra y el sermón,<br>en tus notas', 'Comunidades con<br>la gente cercana', 'Mira hasta dónde<br>llegó lo que compartiste']
 };
 // A sermon note the user wrote themselves (first release: recording + your own notes; no automatic summaries).
 const NOTE = {
@@ -44,16 +44,16 @@ async function rawShots(b, lang) {
   await ctx.addInitScript(([name, brand, n]) => {
     if (brand === 'journey') window.DT_BRAND = 'journey';
     const d = new Date(), date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-    const note = { id: 'shot-note', manual: true, date, title: n.title, preacher: n.preacher, church: n.church, status: 'done', body: n.body, rec: { dur: 1840, bytes: 29e6 },
+    const note = { id: 'shot-note', manual: true, date, title: n.title, preacher: n.preacher, church: n.church, status: 'done', body: n.body,
       ref: { b: 43, c: 15, v: 1, v2: 11 }, summary: { title: n.title, passages: [n.passage], main_message: n.main, points: [], application: [], prayer_topics: [], discussion_questions: [] } };
     // The app only keeps stored data that has its posts list, so add to what it saved on the first open (the page reloads once).
     try {
       sessionStorage.setItem('wl-later', '1');
       const s = JSON.parse(localStorage.getItem('daily-thanks-v4') || 'null');
       if (s && Array.isArray(s.posts) && !sessionStorage.getItem('shot-seeded')) {
-        s.settings = { ...(s.settings || {}), toured: true, myName: name }; s.sermonNotes = [note];
+        s.settings = { ...(s.settings || {}), toured: true, onboarded: true, fsUsed: true, myName: name }; s.sermonNotes = [note];
         localStorage.setItem('daily-thanks-v4', JSON.stringify(s)); sessionStorage.setItem('shot-seeded', '1');
-      } else if (!s) localStorage.setItem('daily-thanks-v4', JSON.stringify({ settings: { toured: true, myName: name } }));
+      } else if (!s) localStorage.setItem('daily-thanks-v4', JSON.stringify({ settings: { toured: true, onboarded: true, fsUsed: true, myName: name } }));
     } catch {}
   }, [NAME[lang], BRAND, NOTE[lang]]);
   const p = await ctx.newPage();
@@ -65,34 +65,24 @@ async function rawShots(b, lang) {
   const files = [];
   const snap = async n => { await p.waitForTimeout(500); const f = path.join(out, `raw-${lang}-${n}.png`); await p.screenshot({ path: f }); files.push(f); };
   const closeSheet = async () => { for (let i = 0; i < 3; i++) if (await p.evaluate(() => !document.getElementById('sheet')?.hidden)) { await p.keyboard.press('Escape'); await p.waitForTimeout(300); } };
-  // 3 (shot first, it is the opening screen): the feed opens on the community's prayer request
-  const prayer = path.join(out, `raw-${lang}-3.png`); await p.screenshot({ path: prayer });
-  // 1 reading: Genesis 1:1 in the reader
+  // 1 (the opening screen): the app opens right on today's passage, one verse per page
+  await snap(1);
+  // 3 the community's prayer request: the first card of the feed
+  await p.evaluate(() => { const sc = document.querySelector('#feed-scroll'); if (sc) sc.scrollTop = 0; }); await p.waitForTimeout(900); await snap(3);
+  // 2 reading plan with friends (매일 tab)
   await p.click('[data-action=fullscreen] >> visible=true'); await p.waitForTimeout(600);
-  await p.click('[data-action=bb-continue]'); await p.waitForTimeout(1500); await snap(1);
-  await p.click('[data-action=reader-close]'); await p.waitForTimeout(500);
-  // 2 reading plan with friends
+  await p.click('[data-tab=read]'); await p.waitForTimeout(600);
   await p.click('[data-action=plan-new]'); await p.waitForTimeout(800);
   await p.evaluate(() => document.activeElement?.blur()); await snap(2);
   await closeSheet();
-  files.push(prayer);
-  // 4 a sermon note the user wrote (recording + their own notes)
+  // 6 매일: streak, today's passage and how far my sharing reached
+  await p.evaluate(() => document.querySelector('#bpick:not([hidden]) [data-action=bp-close]')?.click()); await p.waitForTimeout(300);
+  await snap(6);
+  // 4 a note the user wrote
   await p.click('[data-tab=notes]'); await p.waitForTimeout(500);
-  // a recording on the device, so the player shows its length (30:40)
-  await p.evaluate(async () => { const sec = 1840, rate = 8000, n = sec * rate, buf = new ArrayBuffer(44 + 4000), v = new DataView(buf), w = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
-    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
-    new Uint8Array(buf, 44).fill(128); // the header claims 30:40; only a sliver of silence is stored
-    // same format as the app's AudioStore: IndexedDB 'dt-voice' / 'v', value sealed by the vault
-    const d = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(String(fr.result)); fr.readAsDataURL(new Blob([buf], { type: 'audio/wav' })); });
-    const sealed = await window.DailyThanks.vault.seal({ d });
-    const db = await new Promise((res, rej) => { const q = indexedDB.open('dt-voice', 1); q.onupgradeneeded = () => q.result.createObjectStore('v'); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); });
-    await new Promise((res, rej) => { const q = db.transaction('v', 'readwrite').objectStore('v').put(sealed, 'shot-note'); q.onsuccess = res; q.onerror = () => rej(q.error); }); });
-  await p.click('[data-action=note-open][data-id=shot-note]'); await p.waitForTimeout(1500); await snap(4);
-  await p.click('[data-tab=read]'); await p.waitForTimeout(300);
-  // 5 communities
+  await p.click('[data-id=shot-note]'); await p.waitForTimeout(1200); await snap(4);
+  // 5 communities, one card per screen
   await p.click('[data-tab=group]'); await p.waitForTimeout(800); await snap(5);
-  // 6 me: my communities and my good influence
-  await p.click('[data-tab=me]'); await p.waitForTimeout(900); await snap(6);
   await ctx.close();
   return files.sort();
 }

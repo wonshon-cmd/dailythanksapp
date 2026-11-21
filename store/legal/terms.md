@@ -6,10 +6,10 @@
 
 ## 한국어
 
-**시행일: 2026년 11월 17일**
+**시행일: 2026년 11월 21일**
 
 1. **서비스:** Daily Journey는 성경을 읽고 감사 · 기도제목 · 묵상을 공동체와 나누는 서비스입니다. 운영자는 Daily Journey, Inc.입니다.
-2. **가입:** 만 14세 이상만 가입할 수 있습니다. 메일 주소나 휴대폰 번호로 받은 코드로 로그인합니다(웹에서는 Google·Microsoft 계정도 쓸 수 있어요).
+2. **가입:** 만 14세 이상만 가입할 수 있습니다. 메일로 받은 코드, 또는 Google·Apple 계정으로 로그인합니다.
 3. **내가 쓴 글:**
    - 글의 권리는 작성자에게 있습니다.
    - 「모두」 또는 「공동체」으로 공개한 글은 서비스 안에서 보여주고, 다른 이용자가 공유할 수 있도록 허락하는 것으로 봅니다.
@@ -37,10 +37,10 @@
 
 ## English
 
-**Effective date: November 17, 2026**
+**Effective date: November 21, 2026**
 
 1. **The Service:** Daily Journey is a place to read the Bible and share thanks, prayer requests and reflections with your community. It is operated by Daily Journey, Inc.
-2. **Eligibility:** You must be at least 14. In the U.S., you must be at least 13. You sign in with a code sent to your email address or phone number (on the web, Google or Microsoft accounts can also be used).
+2. **Eligibility:** You must be at least 14. In the U.S., you must be at least 13. You sign in with a code sent to your email address, or with your Google or Apple account.
 3. **Your content:**
    - You own what you write.
    - Posts you share with Everyone or a group may be displayed in the Service and shared by other users.
@@ -68,10 +68,10 @@
 
 ## Español
 
-**Vigencia: 17 de noviembre de 2026**
+**Vigencia: 21 de noviembre de 2026**
 
 1. **El Servicio:** Daily Journey es un lugar para leer la Biblia y compartir gratitud, peticiones y reflexiones con tu comunidad, operado por Daily Journey, Inc.
-2. **Requisitos:** Debes tener al menos 14 años. Inicias sesión con un código enviado a tu correo o teléfono (en la web también con Google o Microsoft).
+2. **Requisitos:** Debes tener al menos 14 años. Inicias sesión con un código enviado a tu correo, o con tu cuenta de Google o Apple.
 3. **Tu contenido:**
    - Lo que escribes es tuyo.
    - Lo que compartes con Todos o con un grupo puede mostrarse en el Servicio y otros usuarios pueden compartirlo.

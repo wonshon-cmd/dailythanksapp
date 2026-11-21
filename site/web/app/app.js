@@ -1066,10 +1066,10 @@ const Cloud = (() => {
     // 2a) typed the code from the e-mail
     verify: async (email, code) => { const j = await call('/auth/v1/verify', { method: 'POST', body: { type: 'email', email, token: code } }); store(j, email); signedIn(); },
     // 2b) came back from the link: #access_token=…&refresh_token=…
-    fromRedirect() {
-      const h = location.hash.slice(1); if (!/(^|&)(access_token|error_description)=/.test(h)) return false;
+    fromRedirect(frag) {   // frag: the phone app hands over the part after # from daily-journey://auth#…
+      const h = frag != null ? String(frag) : location.hash.slice(1); if (!/(^|&)(access_token|error_description)=/.test(h)) return false;
       const q = new URLSearchParams(h);
-      try { history.replaceState(null, '', location.pathname + location.search); } catch { location.hash = ''; }
+      if (frag == null) { try { history.replaceState(null, '', location.pathname + location.search); } catch { location.hash = ''; } }
       if (q.get('error_description')) { setTimeout(() => toast(t('cl.linkBad')), 300); return true; }
       store({ access_token: q.get('access_token'), refresh_token: q.get('refresh_token'), expires_in: q.get('expires_in') });
       call('/auth/v1/user', { token: auth.access }).then(u => { keep({ ...auth, id: u.id, email: u.email }); signedIn(); render(); setTimeout(() => toast(t('login.done')), 200); })
@@ -1078,7 +1078,11 @@ const Cloud = (() => {
     },
     async signOut() { const tk = auth?.access; signedOut(); if (tk) call('/auth/v1/logout', { method: 'POST', token: tk }).catch(() => {}); },
     // Google · Microsoft: off to the provider, back with #access_token (handled by fromRedirect)
-    oauth(provider) { try { if (!data.settings.onboarded) localStorage.setItem('dt-onboard', '1'); } catch {} location.href = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`; },
+    oauth(provider) { try { if (!data.settings.onboarded) localStorage.setItem('dt-onboard', '1'); } catch {} const native = !!window.Capacitor?.isNativePlatform?.();
+      // the phone app: sign in in the system browser, come back through daily-journey://auth#access_token=…
+      const url = `${SUPA.url}/auth/v1/authorize?provider=${provider}&redirect_to=${encodeURIComponent(native ? 'daily-journey://auth' : appUrl())}${provider === 'azure' ? '&scopes=email' : ''}`;
+      if (!native) { location.href = url; return; }
+      const B = window.Capacitor?.Plugins?.Browser; if (B) B.open({ url, presentationStyle: 'popover' }).catch(() => window.open(url, '_system')); else window.open(url, '_system'); },
     // which sign-in methods are switched on in Supabase (Authentication › Sign In / Providers)
     providers: () => call('/auth/v1/settings').then(j => j.external || {}).catch(() => ({})),
     // the store reviewers' account only (no mailbox to read a code from): e-mail + password
@@ -1200,7 +1204,7 @@ async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
   const on = await Cloud.providers();
   if (id === 'phone') { if (on.phone) smsLogin(); else toast(t('wl.notYet')); return; }
-  if (on[id] && !window.Capacitor?.isNativePlatform?.()) Cloud.oauth(id); else toast(t('wl.notYet'));   // the phone app needs its own return link first
+  if (on[id]) Cloud.oauth(id); else toast(t('wl.notYet'));   // the phone app comes back through daily-journey://auth
 }
 // Korean numbers (010-…) become +8210…; numbers typed with + stay as they are
 const e164 = v => { const d = String(v).replace(/[^\d+]/g, ''); return d.startsWith('+') ? d : d.startsWith('0') ? '+82' + d.slice(1) : '+' + d; };
@@ -6451,6 +6455,8 @@ window.DailyThanks = {
   closeReader: () => closeReader(),
   back: () => closePicker() || closeReader() || immBack() || (state.groupDetail && !state.immersive ? (state.groupDetail = null, render(), true) : false),
   parseRef, refText,
+  // phone app: back from Google / Apple sign-in (daily-journey://auth#access_token=…)
+  authReturn: frag => { if (CLOUD) Cloud.fromRedirect(frag || ''); },
   reminderFor: day => reminderFor(day), openToday: () => goToday(true),
   openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); },
   openMeditation: () => { document.getElementById('splash')?.remove(); close(); const g = data.groups[0]?.id; if (g) devoShare(g); else compose('meditation', null); },

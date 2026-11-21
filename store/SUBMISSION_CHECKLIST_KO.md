@@ -61,8 +61,8 @@ python3 tools/build-single.py && node tools/make-journey-screenshots.js
    - **Play 앱 서명**을 켜고, 업로드 키(.jks)를 만들어 안전한 곳에 보관해요(잃어버리면 안 돼요).
    - Android Studio › Build › Generate Signed App Bundle(.aab)로 올려요.
 5. **심사용 로그인 계정**
-   - 로그인은 메일 또는 휴대폰 번호 + 숫자 코드(Supabase)예요.
-   - Supabase에 심사용 테스트 계정을 만들어 고정 코드로 들어갈 수 있게 해 두고, 심사 메모의 `[…]` 자리에 적어요.
+   - 로그인은 메일 코드 · Google · Apple이에요. 심사용 계정(`review@dailyjourney.org`)만 코드 대신 비밀번호로 들어가요.
+   - 만드는 순서는 `store/PRIVACY_LABELS_AND_REVIEW.md` 4번.
    - 그 계정이 공동체 하나에 들어가 있고, 다른 사람 글이 보이게 해 두세요(신고·차단을 눌러 볼 수 있게).
    - Google·Apple 로그인을 Supabase에서 켜면 **Sign in with Apple도 같이** 있어야 해요(Apple 4.8).
 6. **신고 처리 (Apple 1.2 · Google UGC 필수)**
@@ -88,12 +88,9 @@ python3 tools/build-single.py && node tools/make-journey-screenshots.js
 
 ## 알려진 문제 (앱 코드 쪽)
 
-고친 것: 노란색 없음, 「나」 화면 "공동체", 영어·스페인어 "A±", 설교 노트 예시 숨김(첫 출시는 자동 요약 없음).
-
-남은 것:
-- 오늘의 본문에 **"생명의 삶"**(다른 회사 큐티 책 이름)이 보여요. 써도 되는지 확인하세요.
-- **긴 녹음이 휴대폰에 저장되지 않아요.** 녹음 파일을 기기 안에 잠가 둘 때 `Vault`의 `b64`가
-  `String.fromCharCode(...bytes)`로 한 번에 바꾸다가 큰 파일(수백 KB 이상)에서 멈춰요(Maximum call stack size exceeded).
-  `AudioStore.put`이 오류를 조용히 넘겨서, 30분 설교 녹음은 앱을 다시 열면 사라질 수 있어요. 출시 전에 꼭 고쳐 주세요.
-- 설교 노트 화면의 녹음 재생 막대가 처음에 0:00 / 0:00으로 보여요(스크린샷에도 그대로).
-- 설교 노트 화면의 탭 이름이 아직 "요약"이에요. 자동 요약이 없으니 "핵심"이나 "노트"가 더 맞을 수 있어요.
+2026-11-21 출시 점검에서 정리:
+- 설교 녹음·받아쓰기는 꺼 두었어요(노트는 직접 쓰는 것만). 그래서 예전의 "긴 녹음 저장 안 됨", "0:00 재생 막대", "요약 탭 이름" 문제는 첫 출시에 해당 없어요.
+- 휴대폰 앱의 Google·Apple 로그인: 시스템 브라우저로 로그인한 뒤 `daily-journey://auth`로 돌아오게 만들었어요. Supabase에 그 주소를 허용해야 해요(아래 "직접 해야 하는 것").
+- 로그인 버튼은 Google·Apple·메일 세 개예요. 휴대폰 번호·Microsoft 로그인은 뺐어요(방침·약관·심사 메모도 같이 고침).
+- 마이크는 묵상에 목소리로 남길 때만 써요(`Info.plist` 문구도 바꿈).
+- 남은 확인: 오늘의 본문 일정에 다른 회사 큐티 책 이름이 화면에 보이지는 않아요(이름은 숨김). 일정 자체를 써도 되는지는 한 번 확인하세요.
