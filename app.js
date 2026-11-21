@@ -3132,6 +3132,8 @@ function renderGroups() {
     <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
   </div></div>`;
+  // Daily Journey: one community per screen, scrolled like the feed
+  if (BIBLE_MODE) { const sc = main.querySelector('.screen'); if (sc) { sc.classList.add('gc-snap'); sc.style.setProperty('--sh', sc.clientHeight + 'px'); } }
 }
 
 function renderGroupDetail(gid) {
