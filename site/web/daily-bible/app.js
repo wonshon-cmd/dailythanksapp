@@ -4505,12 +4505,12 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     });
     return;
   }
-  showSheet({ title: med && state.medRef ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form">
+  showSheet({ title: med && state.medRef ? t('devo.share') : t('compose.title'), body: `<form id="compose-form" class="sheet-form${med ? ' med-calm' : ''}">
     ${med && state.medRef ? '' : kinds}
     ${ahead || med || kind === 'prayer' ? '' : dailyQLine()}
-    ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label">${t('med.felt')}</p>` : ''}
+    ${med ? `<div class="med-passage" id="med-passage"></div>` : ''}
     <textarea id="gratitude-text" data-draft="compose" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
-    ${med ? medExtras() : ''}
+    ${med ? `<p class="dm-status" id="med-status" aria-live="polite"></p>${medExtras()}` : ''}
     <p class="field-label">${t('compose.who')}</p>
     ${visPicker('compose')}
     ${(() => { const kg = kind === 'meditation' ? 'meditation' : kind === 'prayer' ? 'prayer' : 'thanks', v = visOf('compose'), gids = v.mode === 'private' ? (v.targets || []) : [];
@@ -4519,10 +4519,12 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     <button class="primary block" type="submit">${t('compose.submit')}</button>
   </form>` });
   if (med) fillMedPassage(); // reflection: today's passage above the writing space
+  if (med) medAutoStart(keepText);
   if (!med) medRecReset();
   $('#compose-form').addEventListener('submit', e => {
     e.preventDefault();
     const kind = state.composeKind, prayer = kind === 'meditation' ? ($('#med-prayer')?.value.trim() || '') : '';
+    if (kind === 'meditation') { clearTimeout(medAutoT); if (state.medAutoId) data.posts = data.posts.filter(x => x.id !== state.medAutoId); state.medAutoId = null; }   // the kept copy becomes the shared one
     if (state.medRecOn) medRecStop();
     const voice = kind === 'meditation' && recSlot('felt'), prVoice = kind === 'meditation' && recSlot('prayer');
     const text = $('#gratitude-text').value.trim() || (kind === 'meditation' && (prayer || voice || prVoice) ? (prayer ? '' : t('med.voice')) : ''); if (!text && !prayer && !prVoice) { $('#gratitude-text').focus(); return; }
@@ -4542,10 +4544,30 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     finishCompose(t('toast.saved'));
   });
 }
+/* ---------- 묵상: saves by itself while you write (only for me); 나누기 then shares it ---------- */
+let medAutoT = null;
+function medAutoStart(keepText) {
+  const ref = state.medRef, ex = ref ? dmMine({ ref }) : null;
+  state.medAutoId = ex ? ex.id : null;
+  const ta = $('#gratitude-text'), pr = $('#med-prayer'), st = $('#med-status');
+  if (ex && !keepText && ta && !ta.value.trim()) { ta.value = L(ex.text); if (pr && ex.prayer) pr.value = ex.prayer; }
+  [ta, pr].forEach(el => { if (el) { dmGrow(el); el.addEventListener('input', () => { dmGrow(el); medAutoSave(); }); } });
+  function medAutoSave() {
+    if (st) { st.textContent = t('dm.saving'); st.classList.remove('done'); }
+    clearTimeout(medAutoT); medAutoT = setTimeout(() => {
+      const text = ta?.value.trim() || '', prayer = pr?.value.trim() || '';
+      let p = state.medAutoId && data.posts.find(x => x.id === state.medAutoId);
+      if ((text || prayer) && !p) { p = { id: 'p' + Date.now(), mine: true, kind: 'meditation', scope: 'private', date: today(), likes: 0, ...(state.medRef ? { ref: state.medRef } : {}) }; data.posts.unshift(p); state.medAutoId = p.id; }
+      if (p && (text || prayer)) { p.text = text || prayer; if (prayer && text) p.prayer = prayer; else delete p.prayer; }
+      else if (p) { data.posts = data.posts.filter(x => x !== p); state.medAutoId = null; }
+      save(true); try { Backup.soon(); } catch {}
+      if (st) { st.textContent = text || prayer ? t('dm.saved2') : ''; st.classList.add('done'); }
+    }, 700);
+  }
+}
 /* ---------- meditation extras: a prayer line, "also a prayer request", and a voice note ---------- */
 // reflection: typed by hand only (no recording here)
-const medExtras = () => `<p class="field-label">${t('med.prayer')}</p>
-    <textarea id="med-prayer" data-draft="compose-prayer" class="big-input med-prayer" maxlength="800" rows="2" placeholder="${esc(t('med.prayerPh'))}"></textarea>
+const medExtras = () => `<textarea id="med-prayer" data-draft="compose-prayer" class="big-input med-prayer" maxlength="800" rows="2" placeholder="${esc(t('med.prayerPh'))}"></textarea>
     <label class="med-check"><input type="checkbox" id="med-asreq"><span>${t('med.asReq')}</span></label>`;
 const fmtDur = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 // Two small recorders: one beside 느낀 점, one beside 기도. Recordings stay on this device, sealed.
