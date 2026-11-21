@@ -3,8 +3,9 @@
 Daily Journey · Supabase 프로젝트 `puhaycwpfpqsmxubvzkt`
 비밀번호·비밀 키(Client secret, .p8, API 키)는 **해당 사이트에만** 넣고, 채팅에는 붙여 넣지 마세요.
 
-순서: **① SQL → ② 주소 설정 → ③ 메일 로그인 → ④ Google → ⑤ Apple → ⑥ 확인**
-(⑤ Apple은 개발자 계정이 풀린 다음에 해도 돼요. 나머지는 지금 할 수 있어요.)
+로그인 방법: **Google · Microsoft · 메일(6자리 코드)**. 한 번 로그인하면 **로그아웃할 때까지 계속 로그인돼 있어요.**
+순서: **① SQL → ② 주소 설정 → ③ 메일 로그인 → ④ Google → ④-2 Microsoft → ⑥ 확인**
+⑤ Apple은 **아이폰 앱을 출시할 때만** 필요해요(App Store 규칙: Google 로그인이 있으면 Apple도 있어야 해요). 아이폰 앱 안에서만 Apple 버튼이 보여요.
 
 ---
 
@@ -87,9 +88,28 @@ Supabase 기본 메일은 **프로젝트 팀원 주소로만** 가고 시간당 
 1. 열기: https://supabase.com/dashboard/project/puhaycwpfpqsmxubvzkt/auth/providers → **Google**
 2. Enable 켜기 → Client ID, Client Secret 붙여 넣기 → Save.
 
-## ⑤ Apple로 로그인 (Apple 개발자 계정이 풀린 뒤, 30분)
+## ④-2 Microsoft로 로그인 (15분)
 
-App Store에 Google 로그인이 있으면 Apple 로그인도 있어야 해요(심사 규칙).
+1. 열기: https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
+   (Microsoft 계정으로 로그인. 처음이면 무료 Azure 계정 만들기 안내가 나올 수 있어요 — 앱 등록은 무료예요.)
+2. **New registration**
+   - Name: `Daily Journey`
+   - Supported account types: **Accounts in any organizational directory and personal Microsoft accounts** (개인 Outlook·Hotmail 계정도 되게)
+   - Redirect URI: 플랫폼 **Web** · `https://puhaycwpfpqsmxubvzkt.supabase.co/auth/v1/callback`
+   - **Register**
+3. Overview 화면의 **Application (client) ID** 복사.
+4. 왼쪽 **Certificates & secrets › New client secret** → 설명 `supabase`, 만료 **24 months** → Add
+   → **Value** 열의 값을 복사(Secret ID 말고 Value). 화면을 떠나면 다시 못 봐요.
+5. 왼쪽 **API permissions** → Microsoft Graph에 `email`, `openid`, `profile`, `User.Read` 가 있는지 확인(없으면 Add a permission › Microsoft Graph › Delegated에서 추가).
+6. Supabase: https://supabase.com/dashboard/project/puhaycwpfpqsmxubvzkt/auth/providers → **Azure** (Microsoft)
+   - Enable 켜기 · Application (client) ID 붙여 넣기 · Secret Value 붙여 넣기
+   - Azure Tenant URL: `https://login.microsoftonline.com/common`
+   - Save
+7. ⚠️ Secret은 24개월 뒤 만료돼요. 달력에 알림을 걸어 두고, 4번처럼 새로 만들어 Supabase에 바꿔 넣으세요.
+
+## ⑤ Apple로 로그인 (아이폰 앱 출시 전에, 30분)
+
+App Store에 Google 로그인이 있으면 Apple 로그인도 있어야 해요(심사 규칙). 웹과 안드로이드에는 안 보여요.
 
 ### 5-1. Apple Developer
 1. 앱 ID: https://developer.apple.com/account/resources/identifiers/list
@@ -118,7 +138,8 @@ App Store에 Google 로그인이 있으면 Apple 로그인도 있어야 해요(�
 
 1. 휴대폰 브라우저에서 https://dailyjourney.org/daily-bible/ → 나 › 로그인
    - **메일**: 코드 메일이 1분 안에 오고, 6자리 입력 → 로그인되면 성공. (스팸함도 확인)
-   - **Google**, **Apple**: 각각 눌러서 로그인되면 성공.
+   - **Google**, **Microsoft**: 각각 눌러서 로그인되면 성공.
+   - 앱을 닫았다 다시 열어도 로그인돼 있으면 성공(로그아웃 전까지 유지).
 2. 다른 기기(컴퓨터 등)에서 같은 메일로 로그인 → "내 기록 열기" 창이 뜨면, 첫 휴대폰의 나 › 설정 › 기록 보호에서 복구 키를 복사해 넣기 → 노트·저장한 구절이 그대로 보이면 백업 성공.
 3. 막히면 화면 캡처와 함께 "몇 번 단계에서 막혔어"라고만 알려 주세요.
 

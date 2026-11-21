@@ -1051,7 +1051,12 @@ const Cloud = (() => {
     if (Date.now() < auth.exp - 60e3) return auth.access;
     refreshing = refreshing || call('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: auth.refresh } })
       .then(j => { store(j); return auth.access; })
-      .catch(e => { if (e.status === 400 || e.status === 401) signedOut(); return null; })
+      .catch(e => {
+        // another tab/window may have refreshed first: take its newer sign-in instead of signing out
+        let other = null; try { other = JSON.parse(localStorage.getItem(AKEY)); } catch {}
+        if (other?.refresh && other.refresh !== auth?.refresh) { auth = other; return auth.access; }
+        if (e.status === 400 || e.status === 401) signedOut(); return null;   // (a network error never signs you out)
+      })
       .finally(() => { refreshing = null; });
     return refreshing;
   }
@@ -1171,7 +1176,7 @@ function welcomeSheet(reason = '', first = false) {
   const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: first ? '' : t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `${first ? `<div class="wl-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p>${t('wl.tag')}</p></div>` : `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>`}
     ${first ? wlVerses() : ''}
-    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('apple', 'apple', t('wl.apple'))}${b('email', 'mail', t('wl.email'))}</div>
+    <div class="login-buttons">${loginButtons()}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t(first ? 'wl.look' : 'np.later')}</button>` });
   sheet.classList.toggle('sheet-full', first);
@@ -1205,6 +1210,13 @@ function introCards(done) {
   el.addEventListener('wheel', e => { if (e.deltaY > 20) next(); }, { passive: true });
   el.addEventListener('touchstart', e => { y0 = e.touches[0].clientY; }, { passive: true });
   el.addEventListener('touchend', e => { if (y0 != null && y0 - e.changedTouches[0].clientY > 40) next(); y0 = null; }, { passive: true });
+}
+// Sign-in choices: Google, Microsoft, e-mail code. Inside the iPhone app Apple is added too (App Store rule when Google is offered).
+// Once signed in you stay signed in (the session refreshes itself) until you sign out.
+function loginButtons() {
+  const b = (id, ic, label, cls = '') => `<button class="login-btn${cls}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
+  const ios = window.Capacitor?.getPlatform?.() === 'ios';
+  return `${ios ? b('apple', 'apple', t('wl.apple'), ' apple') : ''}${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}`;
 }
 async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
@@ -2508,9 +2520,7 @@ function loginCard() {
     <span class="wordmark card-mark">daily <em>${BIBLE_MODE ? BRAND2 : 'thanks'}</em></span>
     <p class="card-title">${t('login.title')}</p><p class="card-sub">${t('login.sub')}</p>
     <div class="login-buttons">${CLOUD ? `
-      <button class="login-btn" data-action="wl-sign" data-id="google">${icon('google')}<span>${t('wl.google')}</span></button>
-      <button class="login-btn apple" data-action="wl-sign" data-id="apple">${icon('apple')}<span>${t('wl.apple')}</span></button>
-      <button class="login-btn" data-action="wl-sign" data-id="email">${icon('mail')}<span>${t('wl.email')}</span></button>` : `
+      ${loginButtons()}` : `
       <button class="login-btn apple" data-action="login" data-id="apple">${icon('apple')}<span>${t('login.apple')}</span></button>
       <button class="login-btn" data-action="login" data-id="google">${icon('google')}<span>${t('login.google')}</span></button>
 `}
