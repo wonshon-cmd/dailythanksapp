@@ -171,6 +171,7 @@ _v = hashlib.sha1((ROOT / 'app.js').read_bytes() + (ROOT / 'styles.css').read_by
 import json as _json
 (WEB / 'app-update.json').write_text(_json.dumps({'v': _v, 'js': f'/daily-bible/app.js?v={_v}', 'css': f'/daily-bible/styles.css?v={_v}', 'minNative': 1}) + '\n')
 shutil.copy(ROOT / 'brand' / 'og-dj.png', WEB / 'og-dj.png')
+shutil.copy(ROOT / 'brand' / 'og-dj.png', WEB / 'og-journey.png')   # the old preview address too (KakaoTalk may still ask for it)
 copy_core(bb_dir)
 # daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
 db_site = WEB / 'dailybible'
