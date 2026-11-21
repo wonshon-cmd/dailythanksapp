@@ -11,7 +11,7 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"
 
 | Category | Data | When |
 |---|---|---|
-| Account | Email address and your name / if you sign in with Google or Apple, that account’s identifier and email | When you sign in |
+| Account | Email address and your name / if you sign in with Google, Microsoft or Apple, that account’s identifier and email | When you sign in |
 | Your content | Notes of thanks, thank-you cards (including the recipient name you type), prayer requests, reflections, visibility setting | When you write |
 | Communities | Communities you create or join, your role (admin, leader, member), join requests | When you create or join one |
 | Activity | Likes, saves, shares, reports, blocks, hidden posts, posts viewed, dates written, whether you finished today’s passage or a reading-plan day (no text) | When you use the Service |
@@ -50,7 +50,7 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"
 | Provider | Purpose |
 |---|---|
 | Supabase, Inc. | Sign-in, storage |
-| Google LLC · Apple Inc. (optional) | Confirming who you are if you sign in with them |
+| Google LLC · Microsoft Corp. · Apple Inc. (optional) | Confirming who you are if you sign in with them |
 | Email provider used by Supabase | Sending sign-in codes by email |
 
 Data is encrypted in transit.

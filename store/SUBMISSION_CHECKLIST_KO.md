@@ -91,7 +91,7 @@ python3 tools/build-single.py && node tools/make-journey-screenshots.js
 2026-11-21 출시 점검에서 정리:
 - 설교 녹음·받아쓰기는 꺼 두었어요(노트는 직접 쓰는 것만). 그래서 예전의 "긴 녹음 저장 안 됨", "0:00 재생 막대", "요약 탭 이름" 문제는 첫 출시에 해당 없어요.
 - 휴대폰 앱의 Google·Apple 로그인: 시스템 브라우저로 로그인한 뒤 `daily-journey://auth`로 돌아오게 만들었어요. Supabase에 그 주소를 허용해야 해요(아래 "직접 해야 하는 것").
-- 로그인 버튼은 Google·Apple·메일 세 개예요. 휴대폰 번호·Microsoft 로그인은 뺐어요(방침·약관·심사 메모도 같이 고침).
+- 로그인 버튼: 웹·안드로이드는 Google·Microsoft·메일, 아이폰 앱은 여기에 Apple이 더해져요. 설정 방법: `store/SETUP_LOGIN_KO.md`.
 - 마이크는 묵상에 목소리로 남길 때만 써요(`Info.plist` 문구도 바꿈).
 - 남은 확인: 오늘의 본문 일정에 다른 회사 큐티 책 이름이 화면에 보이지는 않아요(이름은 숨김). 일정 자체를 써도 되는지는 한 번 확인하세요.
 

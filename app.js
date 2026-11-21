@@ -1051,7 +1051,12 @@ const Cloud = (() => {
     if (Date.now() < auth.exp - 60e3) return auth.access;
     refreshing = refreshing || call('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: auth.refresh } })
       .then(j => { store(j); return auth.access; })
-      .catch(e => { if (e.status === 400 || e.status === 401) signedOut(); return null; })
+      .catch(e => {
+        // another tab/window may have refreshed first: take its newer sign-in instead of signing out
+        let other = null; try { other = JSON.parse(localStorage.getItem(AKEY)); } catch {}
+        if (other?.refresh && other.refresh !== auth?.refresh) { auth = other; return auth.access; }
+        if (e.status === 400 || e.status === 401) signedOut(); return null;   // (a network error never signs you out)
+      })
       .finally(() => { refreshing = null; });
     return refreshing;
   }
@@ -1171,7 +1176,7 @@ function welcomeSheet(reason = '', first = false) {
   const b = (id, ic, label) => `<button class="login-btn${id === 'apple' ? ' apple' : ''}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
   showSheet({ title: first ? '' : t('wl.hi').replace('{name}', esc(data.settings.myName)), body: `${first ? `<div class="wl-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p>${t('wl.tag')}</p></div>` : `<p class="hint">${reason ? esc(reason) : t('wl.sub')}</p>`}
     ${first ? wlVerses() : ''}
-    <div class="login-buttons">${b('google', 'google', t('wl.google'))}${b('apple', 'apple', t('wl.apple'))}${b('email', 'mail', t('wl.email'))}</div>
+    <div class="login-buttons">${loginButtons()}</div>
     <p class="fine-print login-terms">${t('login.terms').replaceAll('{base}', LEGAL_BASE)}</p>
     <button class="subtle-link" data-action="wl-later">${t(first ? 'wl.look' : 'np.later')}</button>` });
   sheet.classList.toggle('sheet-full', first);
@@ -1205,6 +1210,13 @@ function introCards(done) {
   el.addEventListener('wheel', e => { if (e.deltaY > 20) next(); }, { passive: true });
   el.addEventListener('touchstart', e => { y0 = e.touches[0].clientY; }, { passive: true });
   el.addEventListener('touchend', e => { if (y0 != null && y0 - e.changedTouches[0].clientY > 40) next(); y0 = null; }, { passive: true });
+}
+// Sign-in choices: Google, Microsoft, e-mail code. Inside the iPhone app Apple is added too (App Store rule when Google is offered).
+// Once signed in you stay signed in (the session refreshes itself) until you sign out.
+function loginButtons() {
+  const b = (id, ic, label, cls = '') => `<button class="login-btn${cls}" data-action="wl-sign" data-id="${id}">${icon(ic)}<span>${label}</span></button>`;
+  const ios = window.Capacitor?.getPlatform?.() === 'ios';
+  return `${ios ? b('apple', 'apple', t('wl.apple'), ' apple') : ''}${b('google', 'google', t('wl.google'))}${b('azure', 'microsoft', t('wl.ms'))}${b('email', 'mail', t('wl.email'))}`;
 }
 async function welcomeSign(id) {
   if (id === 'email') return emailLogin();
@@ -2508,9 +2520,7 @@ function loginCard() {
     <span class="wordmark card-mark">daily <em>${BIBLE_MODE ? BRAND2 : 'thanks'}</em></span>
     <p class="card-title">${t('login.title')}</p><p class="card-sub">${t('login.sub')}</p>
     <div class="login-buttons">${CLOUD ? `
-      <button class="login-btn" data-action="wl-sign" data-id="google">${icon('google')}<span>${t('wl.google')}</span></button>
-      <button class="login-btn apple" data-action="wl-sign" data-id="apple">${icon('apple')}<span>${t('wl.apple')}</span></button>
-      <button class="login-btn" data-action="wl-sign" data-id="email">${icon('mail')}<span>${t('wl.email')}</span></button>` : `
+      ${loginButtons()}` : `
       <button class="login-btn apple" data-action="login" data-id="apple">${icon('apple')}<span>${t('login.apple')}</span></button>
       <button class="login-btn" data-action="login" data-id="google">${icon('google')}<span>${t('login.google')}</span></button>
 `}
@@ -2817,15 +2827,18 @@ function fvRail() { paintHighlights(); FLOAT.forEach(floatSync); fitVerses(); }
 /* ---------------- 형광펜 ----------------
    Select words in a verse → pick a color. Each highlight keeps the day it was made: hover (or tap) it to see the date. */
 const HL_COLORS = ['yellow', 'green', 'blue', 'pink', 'violet'];
-const hlKeyOf = el => { const a = el.closest('.fv-card, .vs-page'); const m = a?.id?.match(/^v-(\d+)-(\d+)-(\d+)$/); return m ? verseKey(+m[1], +m[2], +m[3]) : null; };
+const hlKeyOf = el => { if (el.dataset?.hlKey) return el.dataset.hlKey; const a = el.closest('.fv-card, .vs-page'); const m = a?.id?.match(/^v-(\d+)-(\d+)-(\d+)$/); return m ? verseKey(+m[1], +m[2], +m[3]) : null; };
 const hlDate = iso => { const d = new Date(iso), now = new Date();
   return d.toLocaleDateString(lang() === 'ko' ? 'ko-KR' : lang() === 'es' ? 'es' : 'en-US', { ...(d.getFullYear() !== now.getFullYear() ? { year: 'numeric' } : {}), month: 'long', day: 'numeric' }); };
 function paintHighlights(root = document) {
   const all = data.highlights || [];
-  root.querySelectorAll('.fv-card .fv-text, .vs-page .vs-text').forEach(el => {
+  root.querySelectorAll('.fv-card .fv-text, .vs-page .vs-text, [data-hl-key]').forEach(el => {
     const key = hlKeyOf(el); if (!key) return;
     if (el.dataset.raw == null) el.dataset.raw = el.textContent;
-    const raw = el.dataset.raw, hs = all.filter(h => h.key === key && h.end > h.start).sort((a, b) => a.start - b.start);
+    const raw = el.dataset.raw;
+    // a note can be edited later: a highlight follows its words (or is skipped if they're gone)
+    const hs = all.filter(h => h.key === key && h.end > h.start).map(h => { if (!h.txt || raw.slice(h.start, h.end) === h.txt) return h;
+      const i = raw.indexOf(h.txt); return i < 0 ? null : { ...h, start: i, end: i + h.txt.length }; }).filter(Boolean).sort((a, b) => a.start - b.start);
     if (!hs.length) { if (el.querySelector('mark')) el.textContent = raw; return; }
     let out = '', at = 0;
     hs.forEach(h => { const s0 = Math.max(at, h.start), e0 = Math.min(raw.length, h.end); if (e0 <= s0) return;
@@ -2844,12 +2857,12 @@ function hlPalette(show) {
 document.addEventListener('selectionchange', () => {
   clearTimeout(hlPalette.t); hlPalette.t = setTimeout(() => {
     const sel = getSelection(); if (!sel || sel.isCollapsed || !sel.rangeCount) { if (!document.getElementById('hl-pal')?.matches(':hover')) hlPalette(false); return; }
-    const range = sel.getRangeAt(0), host = n => (n.nodeType === 1 ? n : n.parentElement)?.closest('.fv-text, .vs-text');
+    const range = sel.getRangeAt(0), host = n => (n.nodeType === 1 ? n : n.parentElement)?.closest('.fv-text, .vs-text, [data-hl-key]');
     const el = host(range.startContainer); if (!el || el !== host(range.endContainer)) { hlPalette(false); return; }
     const key = hlKeyOf(el); if (!key) return;
     const pre = document.createRange(); pre.selectNodeContents(el); pre.setEnd(range.startContainer, range.startOffset);
     const start = pre.toString().length, end = start + range.toString().length; if (end <= start) return;
-    hlSel = { key, start, end }; hlPalette(true);
+    hlSel = { key, start, end, ...(key.startsWith('note:') ? { txt: (el.dataset.raw ?? el.textContent).slice(start, end) } : {}) }; hlPalette(true);
   }, 200);
 });
 document.addEventListener('pointerdown', e => { if (e.target.closest?.('#hl-pal')) e.preventDefault(); }, true);   // keep the selection while picking
@@ -3491,7 +3504,7 @@ async function renderSermonNote(id) {
   const tab = 'sum', checks = S?.verse_checks || [], unsure = checks.filter(c => vcStatus(c) === 'unsure' && !c.confirmed).length;
   const tr = n.transcript || n.liveText || '';
   const sumHtml = S ? `${unsure ? `<button class="vc-banner" data-action="note-tab" data-id="pass">${icon('book')}<span>${t('vc.banner').replace('{n}', unsure)}</span>${icon('chevron')}</button>` : ''}
-      ${S.main_message ? `<section class="sn-sec sn-main"><p class="gd-label">${t('sn.main')}</p><p>${esc(S.main_message)}</p></section>` : ''}
+      ${S.main_message ? `<section class="sn-sec sn-main"><p class="gd-label">${t('sn.main')}</p><p data-hl-key="note:${esc(n.id)}:main">${esc(S.main_message)}</p></section>` : ''}
       ${n.rec ? `<section class="sn-sec"><p class="gd-label">${icon('mic')} ${t('rec.listen')} · ${fmtDur(n.rec.dur || 0)}</p><audio class="med-play" id="note-rec" controls preload="none"></audio></section>` : ''}
       ${n.manual && n.aiBusy ? `<p class="sn-aibusy">${icon('sparkle')}${n.rec ? t('rec.busy') : t('sn.aiBusy')}</p>`
         : n.rec && !n.ai && autoNotes() ? `<p class="hint">${t('rec.pending')}</p><button class="secondary block sn-aibtn" data-action="note-upload" data-id="${esc(n.id)}">${icon('upload')}${t('rec.retry')}</button>`
@@ -3501,7 +3514,7 @@ async function renderSermonNote(id) {
       ${S.application?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.apply')}</p>${list(S.application)}</section>` : ''}
       ${S.prayer_topics?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.prayer')}</p>${list(S.prayer_topics)}</section>` : ''}
       ${S.discussion_questions?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.questions')}</p>${list(S.discussion_questions)}</section>` : ''}
-      ${n.body ? `<section class="sn-sec"><p class="sn-body">${esc(n.body)}</p></section>` : ''}`
+      ${n.body ? `<section class="sn-sec"><p class="sn-body" data-hl-key="note:${esc(n.id)}:body">${esc(n.body)}</p></section>` : ''}`
     : `<p class="hint">${n.status === 'error' ? t('sn.failed') : state.snOnline ? t('sn.working') : t('sn.saved')}</p>`;
   const trHtml = tr ? `<div class="sn-trtext">${tr.split(/\n+/).map(x => `<p>${snTerms().length ? markTerms(x, snTerms()) : esc(x)}</p>`).join('')}</div>` : `<p class="hint">${t('nt.noTr')}</p>`;
   const passRef = n.ref || parseRef(S?.passages?.[0] || '');
@@ -3516,6 +3529,7 @@ async function renderSermonNote(id) {
     ${S?.passages?.length ? `<div class="sn-passages">${S.passages.map(x => `<button class="chip" data-action="note-passage" data-id="${esc(x)}">${icon('book')}${esc(x)}</button>`).join('')}</div>` : ''}
     <div class="sn-tabbody">${tab === 'tr' ? trHtml : tab === 'pass' ? passHtml : sumHtml}</div>
   </div></div>`;
+  paintHighlights(main);   // highlighter works in notes too (same colors, same dates)
   if (n.rec && tab === 'sum') AudioStore.url(n.id).then(u => { const a = $('#note-rec'); if (a && u) a.src = u; }).catch(() => {});
   if (tab === 'pass') {
     if (multi) moreRefs.forEach((r, k) => passageVerses(r).then(vs => { const el = $(`#sn-ptext-${k}`); if (el) el.innerHTML = passageHtml(vs.map(x => `${x.c}:${x.v} ${x.text}`).join('\n')); }).catch(() => { const el = $(`#sn-ptext-${k}`); if (el) el.innerHTML = `<p class="hint">${t('vc.noOrig')}</p>`; }));

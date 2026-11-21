@@ -11,7 +11,7 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "
 
 | Categoría | Datos | Cuándo |
 |---|---|---|
-| Cuenta | Correo y tu nombre / si entras con Google o Apple, el identificador y correo de esa cuenta | Al iniciar sesión |
+| Cuenta | Correo y tu nombre / si entras con Google, Microsoft o Apple, el identificador y correo de esa cuenta | Al iniciar sesión |
 | Tu contenido | Notas de gratitud, tarjetas de agradecimiento (incluido el nombre que escribas), reflexiones, visibilidad | Al escribir |
 | Actividad | Me gusta, guardados, compartidos, reportes, bloqueos, ocultos, publicaciones vistas, fechas, si terminaste el pasaje de hoy o un día de un plan (sin texto) | Al usar el Servicio |
 | Ajustes | Idioma, tamaño de texto, hora del recordatorio, funciones activadas | Al cambiarlos |
@@ -41,7 +41,7 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "
 ## 4. Compartir
 
 - No vendemos tus datos.
-- Solo los comparten nuestros proveedores, para prestar el Servicio (Supabase y su proveedor de correo; Google y Apple solo si inicias sesión con ellos), o cuando la ley lo exige.
+- Solo los comparten nuestros proveedores, para prestar el Servicio (Supabase y su proveedor de correo; Google, Microsoft y Apple solo si inicias sesión con ellos), o cuando la ley lo exige.
 - Los datos viajan cifrados.
 - **Notas solo para ti:** se bloquean (cifran) en tu dispositivo y solo esa copia cifrada se respalda en nuestros servidores. La llave (llave de recuperación) queda en tu dispositivo; ni nosotros podemos leerlas. En un dispositivo nuevo entras con la misma cuenta e ingresas la llave una vez. Al eliminar la cuenta se elimina el respaldo.
 - **Lo que compartes con una comunidad o con todos:** se guarda en nuestros servidores (Supabase). Las reglas de acceso permiten leerlo solo a los miembros de esa comunidad (o a usuarios registrados). No tiene cifrado de extremo a extremo, así que podemos leerlo para operar el servicio y atender reportes.

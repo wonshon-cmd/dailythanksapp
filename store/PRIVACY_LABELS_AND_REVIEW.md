@@ -8,7 +8,7 @@
 
 | 보내요 (Supabase) | 안 보내요 |
 |---|---|
-| 메일 주소 (메일 코드 로그인, 또는 Google·Apple 로그인이 알려 주는 주소) | 음성·녹음 — 첫 출시에는 녹음 기능이 없어요 |
+| 메일 주소 (메일 코드 로그인, 또는 Google·Microsoft·Apple 로그인이 알려 주는 주소) | 음성·녹음 — 첫 출시에는 녹음 기능이 없어요 |
 | 잠긴 백업 (나만 보는 기록을 휴대폰에서 암호화한 덩어리 — 열쇠는 휴대폰에만) | |
 | 표시 이름 | 형광펜·노트의 내용 — 잠긴 백업 안에만 있어 우리는 못 열어요 |
 | 사용자 ID | 나만 보는 글의 내용 — 휴대폰에서 잠근 사본만 백업으로 보관하고, 열쇠가 없어 우리는 못 열어요 |
@@ -29,7 +29,7 @@
 
 | 데이터 유형 | 무엇 |
 |---|---|
-| 연락처 정보 › 이메일 주소 | 메일·Google·Apple로 로그인할 때 |
+| 연락처 정보 › 이메일 주소 | 메일·Google·Microsoft·Apple로 로그인할 때 |
 | 연락처 정보 › 이름 | 표시 이름 |
 | 사용자 콘텐츠 › 기타 사용자 콘텐츠 | 공동체·모두에게 나눈 글, 신고 내용 |
 | 식별자 › 사용자 ID | 계정 ID |
@@ -77,7 +77,7 @@ verse highlights, and small private communities
 where members share prayer requests, thanks and reflections.
 
 Sign-in is optional: reading and notes work without an account. Communities need an account
-(Sign in with Apple, Google, or email with a one-time code).
+(Sign in with Apple, Google, Microsoft, or email with a one-time code).
 Demo account (no code needed): Me › Sign in › Continue with email
   Name: any   Email: review@dailyjourney.org   →  a password field appears
   Password: [the password set in Supabase]
