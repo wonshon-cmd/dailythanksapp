@@ -2065,3 +2065,4 @@ details.ch-top:not([open]){gap:0}
 #sn-body::-webkit-scrollbar{display:none}
 #sn-form .dm-status{margin-top:4px}
 .sn-bodywrap .dm-window ~ .sn-pen,.sn-bodywrap textarea:focus ~ .sn-pen{display:none}
+.sheet-top .sn-tstatus{margin-left:auto;margin-right:12px;font-size:13px;color:#B4B8BA;white-space:nowrap}

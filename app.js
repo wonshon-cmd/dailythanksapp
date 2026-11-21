@@ -3790,11 +3790,12 @@ function sermonNew() {
     <input id="sn-title" class="field" maxlength="120" placeholder="${esc(t('sn.titleF'))}">
     ${recLive() || Rec.blob ? `<div id="rec-card" class="rec-card">${recCard()}</div>` : ''}
     <div id="sn-input">${snInput()}</div>
-    <p class="dm-status" id="sn-status" aria-live="polite"></p>
     ${recLive() || Rec.blob ? `<button class="primary block" type="submit">${t('sn.make')}</button>` : ''}</form>` });
   $('#sn-form').addEventListener('submit', e => { e.preventDefault(); if (state.snMode === 'write' && !recLive() && !Rec.blob) { snAutoSave(true); close(); return; } sermonSubmit(); });
   // a note saves by itself while you write (저장 중… → 저장됨); the passage and title stay put, the body is a writing window
   state.snDraftId = null;
+  // Saving… / Saved sits on the date line, at the right (before ✕)
+  $('.sheet-top h2')?.insertAdjacentHTML('afterend', `<span class="sn-tstatus" id="sn-status" aria-live="polite"></span>`);
   $('#sn-form').addEventListener('input', e => { if (e.target.id === 'sn-body') dmGrow(e.target); if (state.snMode === 'write') snAutoSave(); });
   $('#sn-form').addEventListener('change', () => { if (state.snMode === 'write') snAutoSave(); });
   $('#sn-place')?.addEventListener('change', e => { if (e.target.value === 'new') { state.snPlace = 'new'; $('#sn-placebox').innerHTML = placeField(); $('#sn-preacher')?.focus(); } else state.snPlace = +e.target.value; });
