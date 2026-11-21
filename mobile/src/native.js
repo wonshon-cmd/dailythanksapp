@@ -124,7 +124,14 @@ const DT_NATIVE_VERSION = 1;
       const list = [];
       for (let d = 0; d < DAYS; d++) {
         const at = new Date(); at.setDate(at.getDate() + d); at.setHours(hh, mm, 0, 0);
-        if (at <= new Date() || (d === 0 && wroteToday)) continue; // never remind on a day you already wrote
+        if (at <= new Date()) continue;
+        if (DT.reminderFor) { // Daily Journey: "오늘의 말씀 · 잠언 3:5-6 · 첫 구절" — never on a day already read
+          const r = await DT.reminderFor(at.toLocaleDateString('en-CA'));
+          if (r.skip || !r.body) continue;
+          list.push({ id: BASE_ID + d, title: r.title, body: r.body, schedule: { at, allowWhileIdle: true }, channelId: 'reminders', extra: { route: 'today' } });
+          continue;
+        }
+        if (d === 0 && wroteToday) continue; // never remind on a day you already wrote
         list.push({ id: BASE_ID + d, title, body, schedule: { at, allowWhileIdle: true }, channelId: 'reminders', extra: { route: 'write' } });
       }
       if (list.length) await P.LocalNotifications.schedule({ notifications: list });
@@ -138,6 +145,7 @@ const DT_NATIVE_VERSION = 1;
   }
   P.LocalNotifications.addListener('localNotificationActionPerformed', e => {
     if (e?.notification?.extra?.route === 'write') ready(DT => DT.openWrite());
+    if (e?.notification?.extra?.route === 'today') ready(DT => (DT.openToday || DT.openWrite)());
   });
 
   /* ---------- deep links: widget, reminders, group invites ---------- */
