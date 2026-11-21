@@ -1951,6 +1951,9 @@ const TR_NAME = { korean: '개역한글', kjv: 'KJV', valera: 'RV 1909' };
 const TR_LANG = { korean: 'ko', kjv: 'en', valera: 'es' }, TR_FULL = { korean: '개역한글 (1961)', kjv: 'King James Version', valera: 'Reina-Valera 1909' };
 function trAdd(list) { (Array.isArray(list) ? list : []).forEach(x => { if (x && /^[a-z0-9]+$/.test(x.id) && x.name) { TR_NAME[x.id] = String(x.name).slice(0, 24); TR_LANG[x.id] = x.lang; TR_FULL[x.id] = String(x.full || x.name).slice(0, 80); } }); }
 trAdd(data.settings.trList);
+// A Bible picked in another language stays only if it was picked by hand while the app was in its current language;
+// otherwise the Bible follows the app language.
+if (data.settings.bibleTr && data.settings.trLang !== data.settings.lang && (TR_LANG[data.settings.bibleTr] || 'en') !== data.settings.lang) delete data.settings.bibleTr;
 async function trRefresh() {
   for (const url of ['bible/index.json', `${LEGAL_BASE}/bible/index.json`]) {
     try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) continue; const j = await r.json(); if (Array.isArray(j) && j.length) { const was = curTr(); trAdd(j); data.settings.trList = j; save(true); if (curTr() !== was) render(); return; } } catch {}
@@ -2997,7 +3000,8 @@ async function fillDevoCards() {
   state.readSpan = { b: verses[0].b, c: verses[0].c, v: verses[0].v }; state.devoFirst = verses[0].text;   // also for the 'done' card
   slot.outerHTML = verseCards(verses, '', '', `${icon('sun')}${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''}`) +
     `<article class="post card-page devo-end"><div class="card-inner"><span class="done-check">${icon('check')}</span><p class="card-title">${t('ob.doneTitle')}</p><p class="card-sub">${esc(refText(p.ref))}</p>
-      <div class="card-actions"><button class="primary" data-action="share-done">${icon('share')}${t('tg.share')}</button></div></div></article>`;   // "오늘의 말씀" sits with the verse reference at the bottom
+      <div class="card-actions"><button class="primary" data-action="share-done">${icon('share')}${t('tg.share')}</button></div></div>
+      <aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>`;   // open/close the full screen here too; "오늘의 말씀" sits with the verse reference at the bottom
   fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
@@ -6252,7 +6256,7 @@ const actions = {
     const text = `${v.text}\n— ${v.ref}${v.tr ? ' (' + v.tr + ')' : ''}\n\nGive thanks daily. · daily thanks`;
     if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
   },
-  'set-tr': id => { if (!TR_NAME[id]) return; data.settings.bibleTr = id; save(); if (sheet.dataset.kind === 'tr') { trSheet(); } document.querySelectorAll('[data-action="set-tr"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); state.trChanged = true; },
+  'set-tr': id => { if (!TR_NAME[id]) return; data.settings.bibleTr = id; data.settings.trLang = lang(); save(); if (sheet.dataset.kind === 'tr') { trSheet(); } document.querySelectorAll('[data-action="set-tr"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); state.trChanged = true; },
   'set-size': id => { data.settings.textSize = id; save(); applyTextSize(); document.querySelectorAll('[data-action="set-size"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'read-more': id => { const p = data.posts.find(x => x.id === id); if (p) showSheet({ title: esc(p.mine ? t('me') : L(p.name)), body: `<p class="full-text">${esc(L(p.text))}</p>` }); },
   'save-post': toggleSave,
