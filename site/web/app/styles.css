@@ -1993,3 +1993,10 @@ details.ch-top:not([open]){gap:0}
 .inf-simple .inf-stats .ico{font-size:13px}
 .inf-simple .row-end{color:#C9CCCE}
 .screen.t2 .inf-simple .inf-stats{display:flex}
+/* where you left off: label and date on one line, the passage right under it, buttons close below */
+.bb-where{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:0}
+.bb-where .bb-when{color:var(--faint);font-size:12.5px}
+.bb-cont .bb-ref{margin:6px 0 14px;line-height:1.2}
+.bb-cont .gd-acts{margin-top:0}
+.screen.t2 .bb-cont > .bb-where{display:flex}
+.screen.t1 .bb-cont .bb-ref{margin:4px 0 10px}
