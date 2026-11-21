@@ -1036,6 +1036,7 @@ Object.assign(STR.en, { 'sn.edit': "Edit", 'sn.saveEdit': "Save", 'sn.edited': "
 Object.assign(STR.es, { 'sn.edit': "Editar", 'sn.saveEdit': "Guardar", 'sn.edited': "Guardado.", 'tr.hint': "‘Descargar’ la guarda para leer sin conexión." });
 Object.assign(STR.ko, { 'dm.done': "오늘의 묵상", 'dm.saving': "저장 중…", 'dm.saved2': "저장됨" }); Object.assign(STR.en, { 'dm.done': "Today’s reflection", 'dm.saving': "Saving…", 'dm.saved2': "Saved" }); Object.assign(STR.es, { 'dm.done': "Reflexión de hoy", 'dm.saving': "Guardando…", 'dm.saved2': "Guardado" });
 Object.assign(STR.ko, { 'cl.tooManyTries': "코드를 여러 번 잘못 넣었어요. 15분 뒤에 다시 해 주세요." }); Object.assign(STR.en, { 'cl.tooManyTries': "Too many wrong codes. Please try again in 15 minutes." }); Object.assign(STR.es, { 'cl.tooManyTries': "Demasiados códigos incorrectos. Inténtalo de nuevo en 15 minutos." });
+Object.assign(STR.ko, { 'at.open': "이 장 읽기 ↗" }); Object.assign(STR.en, { 'at.open': "Read this chapter ↗" }); Object.assign(STR.es, { 'at.open': "Leer este capítulo ↗" });
 Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
 Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
 Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
@@ -1998,8 +1999,16 @@ const atBooks = q => { const f = fold(q); if (!f) return [];
 function atHide() { document.querySelector('.at-pop')?.remove(); atState.ta = null; atState.key = ''; }
 function atFind(ta) {
   const pre = ta.value.slice(0, ta.selectionStart), m = pre.match(/@([^\s@\d][^@\n]{0,30})$/);
-  return m ? { q: m[1], start: pre.length - m[0].length, end: pre.length } : null;
+  if (m) return { q: m[1], start: pre.length - m[0].length, end: pre.length };
+  // no @: a full book name with a chapter right after it (Mark3:1, 마가복음 3, 1 Peter 4) — a book name alone shows nothing
+  const b = pre.match(/(?:^|[\s(“"'])((?:[1-3]\s?)?[A-Za-zÀ-ÿ가-힣]{2,20})\s?(\d{1,3}(?:\s?:\s?\d{1,3}(?:\s?[-~–]\s?\d{1,3})?)?)$/);
+  if (b && bareBook(b[1])) { const lead = b[0].length - b[0].replace(/^[\s(“"']/, '').length; return { q: `${b[1]} ${b[2]}`, start: pre.length - b[0].length + lead, end: pre.length, bare: true }; }
+  return null;
 }
+// a whole book name (any language), not just the start of one: "Mark", "마가복음", "Psalm(s)", "1 Peter" — never "a", "the", "요"
+const bareBook = name => { const f = fold(name); if (f.length < 2) return 0;
+  const i = BOOKS.findIndex(x => [x[0], x[2], x[3]].some(n => { const g = fold(n); return g === f || g.replace(/s$/, '') === f; }) || (x[1].length >= 2 && fold(x[1]) === f));
+  return i + 1; };
 function atPop(ta, html) {
   let pop = document.querySelector('.at-pop');
   if (!pop || pop.nextElementSibling !== ta) { pop?.remove(); pop = Object.assign(document.createElement('div'), { className: 'at-pop' }); ta.before(pop); }
@@ -2007,7 +2016,8 @@ function atPop(ta, html) {
 }
 async function atUpdate(ta) {
   const hit = atFind(ta); if (!hit) { atHide(); return; }
-  const book = hit.q.match(/^[^\d]*/)[0].trim(), nums = hit.q.slice(hit.q.match(/^[^\d]*/)[0].length).trim();
+  const bm = hit.q.match(/^(?:[1-3]\s?)?[^\d]*/)[0], book = bm.trim(), nums = hit.q.slice(bm.length).trim();
+  if (hit.bare && !nums) { atHide(); return; }
   if (!nums) { // still typing the book: show matching books
     const list = atBooks(book); if (!list.length) { atHide(); return; }
     if (/\s$/.test(hit.q)) { atState.key = ''; atPop(ta, `<p class="at-hint">${esc(t('at.hint'))}</p>`); return; }
@@ -2015,6 +2025,9 @@ async function atUpdate(ta) {
     atPop(ta, list.map(b => `<button type="button" class="at-item" data-at-book="${b}">${icon('book')}<span>${esc(bookName(b))}</span></button>`).join('')); return;
   }
   const ref = parseRef(`${book} ${nums}`);
+  if (hit.bare && ref && !ref.v) { const key = 'c:' + ref.b + ':' + ref.c; if (key === atState.key) return; atState.key = key;
+    atPop(ta, `<button type="button" class="at-item at-ref" data-at-open="${ref.b}:${ref.c}"><span class="at-r">${esc(refText(ref))}</span><span class="at-v">${t('at.open')}</span></button>`); return; }
+  if (hit.bare && !ref) { atHide(); return; }
   if (!ref || !ref.v) { atPop(ta, `<p class="at-hint">${esc(t('at.hint'))}</p>`); atState.key = ''; return; }
   const key = 'r:' + JSON.stringify(ref); if (key === atState.key) return; atState.key = key;
   const seq = ++atState.seq;
@@ -2032,9 +2045,12 @@ function atReplace(ta, text) {
 document.addEventListener('input', e => { if (!e.target.matches?.('textarea')) return; if (!atAuto(e.target)) atUpdate(e.target); });
 // "@잠언3:5-6" then a space or Enter: the passage goes straight in, no tap needed
 function atAuto(ta) {
-  const pre = ta.value.slice(0, ta.selectionStart), m = pre.match(/@([^\s@\d][^@\n]{0,30}?\d+\s*:\s*\d+(?:\s*[-~–]\s*\d+)?)([ \n])$/);
+  const pre = ta.value.slice(0, ta.selectionStart);
+  let m = pre.match(/@([^\s@\d][^@\n]{0,30}?\d+\s*:\s*\d+(?:\s*[-~–]\s*\d+)?)([ \n])$/);
+  if (!m) { const b = pre.match(/(?:^|[\s(])((?:[1-3]\s?)?[A-Za-zÀ-ÿ가-힣]{2,20}\s?\d{1,3}\s?:\s?\d{1,3}(?:\s?[-~–]\s?\d{1,3})?)(\n)$/);
+    if (b && bareBook(b[1].match(/^(?:[1-3]\s?)?[^\d]+/)[0].trim())) m = [b[1] + b[2], b[1], b[2]]; }
   if (!m) return false;
-  const q = m[1], book = q.match(/^[^\d]*/)[0].trim(), ref = parseRef(`${book} ${q.slice(q.match(/^[^\d]*/)[0].length)}`);
+  const q = m[1], bm = q.match(/^(?:[1-3]\s?)?[^\d]*/)[0], book = bm.trim(), ref = parseRef(`${book} ${q.slice(bm.length)}`);
   if (!ref || !ref.v) return false;
   const start = pre.length - m[0].length, end = pre.length, seq = ++atState.seq; atHide();
   passageVerses(ref).then(vs => {
@@ -2052,6 +2068,7 @@ document.addEventListener('pointerdown', e => { if (e.target.closest?.('.at-pop'
 document.addEventListener('click', e => {
   const it = e.target.closest?.('.at-pop .at-item'), ta = atState.ta; if (!it || !ta) return;
   if (it.dataset.atBook) { atReplace(ta, '@' + bookName(+it.dataset.atBook) + ' '); return; }
+  if (it.dataset.atOpen) { const [b, c] = it.dataset.atOpen.split(':').map(Number); atHide(); openReader({ b, c, v: 1 }); return; }
   const vs = atState.vs, ref = atState.ref; if (!vs?.length || !ref) return;
   const body = vs.map(x => (vs.length > 1 ? `${x.v} ` : '') + x.text).join(' ');
   const pre = ta.value.slice(0, atFind(ta)?.start || 0);
