@@ -5747,13 +5747,16 @@ function journalSummary() {
 }
 function monthSheet() { showSheet({ title: t('j.monthTitle'), body: `${calendarCard()}${memoryCard()}` }); }
 function influenceCard() {
-  const f = influence(), dots = weekDots();
-  return `<button class="inf-card" data-action="influence">
-    <span class="inf-top"><span class="glow-wrap">${glow(f.score)}</span><span class="inf-label"><span class="inf-people">${t('inf.people').replace('{n}', f.people)}</span><span class="row-sub">${t('inf.title')} · ${f.score}${t('inf.score')}</span></span><span class="row-end">${icon('chevron')}</span></span>
-    <span class="inf-week inf-week-row">${t('inf.week')}<span class="mini-dots">${dots.map(on => `<i class="${on ? 'on' : ''}">${on ? icon('check') : ''}</i>`).join('')}</span></span>
-    <span class="inf-stats"><span>${icon('heart')}${f.received.likes}</span><span>${icon('bookmark')}${f.received.saves}</span><span>${icon('upload')}${f.received.shares}</span></span>
+  // just the light, how many people it reached, and three small counts — details (points, this week) open on tap
+  const f = influence();
+  return `<button class="inf-card inf-simple" data-action="influence">
+    <span class="glow-wrap">${glow(f.score)}</span>
+    <span class="inf-label"><span class="inf-people">${t('inf.people').replace('{n}', f.people)}</span>
+      <span class="inf-stats"><span>${icon('heart')}${f.received.likes}</span><span>${icon('bookmark')}${f.received.saves}</span><span>${icon('upload')}${f.received.shares}</span></span></span>
+    <span class="row-end">${icon('chevron')}</span>
   </button>`;
 }
+
 function influenceSheet() {
   const f = influence();
   const stat = (ic, label, n) => `<div class="stat">${icon(ic)}<strong>${n}</strong><span>${label}</span></div>`;
