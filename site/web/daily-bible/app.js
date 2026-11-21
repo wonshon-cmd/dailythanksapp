@@ -3938,14 +3938,6 @@ function dashHtml() {
   return `<section class="db">
     <p class="gd-label">${t('db.title')}</p>
     <div class="db-tiles">${tile(t('db.daysV').replace('{n}', D.weekDays), t('db.days'))}${tile(fmtT(D.monthSec), t('db.time'))}${tile(t('db.chV').replace('{n}', D.monthCh), t('db.chs'))}${tile(t('db.min').replace('{n}', D.avgMin), t('db.avg'))}</div>
-    <p class="db-cap">${t('db.c30')}</p>
-    <p class="db-read" id="db-read">${t('db.tap')}</p>
-    <div class="db-bars" role="img" aria-label="${esc(t('db.c30'))}">${D.days30.map(d => { const n = D.perDay[d] || 0, m = Math.round((D.rt[d] || 0) / 60);
-      const lab = t('db.day').replace('{d}', shortDate(d)).replace('{n}', n).replace('{m}', m);
-      return `<button class="db-bar${d === today() ? ' today' : ''}" data-action="db-bar" data-id="${esc(lab)}" aria-label="${esc(lab)}"><i style="height:${n ? Math.max(6, n / max30 * 100) : 0}%"></i></button>`; }).join('')}</div>
-    <div class="db-axis"><span>${esc(shortDate(D.days30[0]))}</span><span>${esc(shortDate(today()))}</span></div>
-    <p class="db-cap">${t('db.wd')}</p>
-    <div class="db-wd">${D.wd.map((v, k) => `<div class="db-wcol"><div class="db-wbar"><i style="height:${v ? Math.max(6, v / maxW * 100) : 0}%"></i></div><small>${esc(wdNames[k])}</small><em>${v ? (Math.round(v * 10) / 10) : ''}</em></div>`).join('')}</div>
     <p class="db-foot">${t('db.streak').replace('{n}', D.streak).replace('{m}', D.longest)}<br>${t('db.notes').replace('{s}', sSer).replace('{m}', sMed)}</p>
   </section>`;
 }
