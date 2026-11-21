@@ -1877,3 +1877,8 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .screen.t2 .bb-ref{font-size:21px;margin-top:0}
 .screen.t2 .inf-stats{display:none}
 .screen.t2 .db.reach > .gd-label{display:none}
+/* 노트: a pencil instead of a placeholder, gone once you write */
+.sn-bodywrap{position:relative}
+.sn-pen{position:absolute;left:2px;top:12px;color:#B9BDC0;pointer-events:none}
+.sn-pen svg{width:18px;height:18px}
+.sn-bodywrap textarea:not(:placeholder-shown) + .sn-pen{display:none}
