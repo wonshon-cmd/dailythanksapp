@@ -1885,3 +1885,7 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 /* 공동체: list button with a dot when another community has something new */
 .g-pickwrap{position:relative;display:inline-flex}
 .g-pickwrap .new-dot{position:absolute;top:4px;right:4px}
+/* 나 › 내 공동체: folded list */
+.mc-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;margin:10px 0 0;padding:12px 2px;border:0;border-bottom:1px solid var(--line);background:none;font:inherit;font-size:15px;color:var(--ink);cursor:pointer}
+.mc-toggle svg{width:16px;height:16px;color:#9BA0A3;transition:transform .2s;transform:rotate(90deg)}
+.mc-toggle.open svg{transform:rotate(-90deg)}
