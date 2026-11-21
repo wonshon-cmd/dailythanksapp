@@ -70,7 +70,7 @@ Depending on where you live (for example, under the GDPR in the EU/UK or the CCP
 We protect your data with:
 
 - Encryption in transit (HTTPS)
-- **Only-me notes:** private notes are locked (encrypted) on your device and are not sent to our servers. The key stays on your device, so not even we can read them.
+- **Only-me notes:** private records are locked (encrypted) on your device, and only that locked copy is backed up to our servers. The key (recovery key) stays on your device, so not even we can read them. On a new device you sign in with the same account and enter the recovery key once. Deleting your account deletes the backup.
 - **Posts you share with a community or with everyone:** stored on our servers (Supabase). Database access rules let only that community’s members (or signed-in users) read them. They are not end-to-end encrypted, so we can read them to run the service and handle reports.
 - Other people’s group posts can’t be shared or copied in the app, and screenshots are blocked on Android (on iPhone the screen is hidden while it’s being recorded).
 - Server-side access rules, so no one else can read your private notes
