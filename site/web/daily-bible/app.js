@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
@@ -179,7 +179,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
@@ -344,7 +344,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
@@ -3338,12 +3338,18 @@ function noteList(notes, status) {
       ${hit?.snip ? `<span class="note-reflect">${hit.where === 'tr' ? `<small class="sn-where">${t('ss.inTr')}</small> ` : ''}${m(hit.snip)}</span>`
         : n.summary?.main_message ? `<span class="note-reflect">${m(n.summary.main_message)}</span>` : ''}</button>`).join('')}</div>`;
 }
+// a note as text (title, passage, what I wrote) and as a link that opens it as a reflection
+function noteText(n, noRef) {
+  const S = n.summary || {}, ref = n.ref || parseRef(S.passages?.[0] || '');
+  return [n.title || S.title, noRef ? '' : ref ? refText(ref) : '', S.main_message, ...(S.points || []).map((p, i) => `${i + 1}. ${p.heading}`), n.body].filter(Boolean).join('\n');
+}
+const noteLink = n => postLink({ mine: true, kind: 'meditation', text: noteText(n, true), date: n.date || today(), ref: n.ref || parseRef(n.summary?.passages?.[0] || '') || undefined });
 async function renderSermonNote(id) {
   let n = sermonNotes().find(x => x.id === id);
   if (n?.remote && !n.summary && state.snOnline) { try { const { sermon } = await sapi('GET', `/api/sermons/${id}`); n = { ...n, ...sermon }; } catch {} }
   if (!n) { state.noteOpen = null; return renderSermons(); }
   const S = n.summary, list = (arr, cls = '') => arr?.length ? `<ul class="sn-list ${cls}">${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
-  const tab = state.noteTab || 'sum', checks = S?.verse_checks || [], unsure = checks.filter(c => vcStatus(c) === 'unsure' && !c.confirmed).length;
+  const tab = 'sum', checks = S?.verse_checks || [], unsure = checks.filter(c => vcStatus(c) === 'unsure' && !c.confirmed).length;
   const tr = n.transcript || n.liveText || '';
   const sumHtml = S ? `${unsure ? `<button class="vc-banner" data-action="note-tab" data-id="pass">${icon('book')}<span>${t('vc.banner').replace('{n}', unsure)}</span>${icon('chevron')}</button>` : ''}
       ${S.main_message ? `<section class="sn-sec sn-main"><p class="gd-label">${t('sn.main')}</p><p>${esc(S.main_message)}</p></section>` : ''}
@@ -3356,9 +3362,7 @@ async function renderSermonNote(id) {
       ${S.application?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.apply')}</p>${list(S.application)}</section>` : ''}
       ${S.prayer_topics?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.prayer')}</p>${list(S.prayer_topics)}</section>` : ''}
       ${S.discussion_questions?.length ? `<section class="sn-sec"><p class="gd-label">${t('sn.questions')}</p>${list(S.discussion_questions)}</section>` : ''}
-      ${n.body ? `<section class="sn-sec"><p class="gd-label">${t('sn.body')}</p><p class="sn-body">${esc(n.body)}</p></section>` : ''}
-      <button class="primary block sn-tomed" data-action="note-tomed" data-id="${esc(n.id)}">${icon('pencil')}${t('sn.toMed')}</button>
-      ${data.groups.length ? `<button class="secondary block sn-tomed" data-action="note-group" data-id="${esc(n.id)}">${icon('people')}${t('sn.toGroup')}</button>` : ''}`
+      ${n.body ? `<section class="sn-sec"><p class="sn-body">${esc(n.body)}</p></section>` : ''}`
     : `<p class="hint">${n.status === 'error' ? t('sn.failed') : state.snOnline ? t('sn.working') : t('sn.saved')}</p>`;
   const trHtml = tr ? `<div class="sn-trtext">${tr.split(/\n+/).map(x => `<p>${snTerms().length ? markTerms(x, snTerms()) : esc(x)}</p>`).join('')}</div>` : `<p class="hint">${t('nt.noTr')}</p>`;
   const passRef = n.ref || parseRef(S?.passages?.[0] || '');
@@ -3371,7 +3375,6 @@ async function renderSermonNote(id) {
     <p class="gd-label">${esc(dayLabel(n.date || today()))}${n.preacher ? ' · ' + esc(n.preacher) : ''}${n.church ? ' · ' + esc(n.church) : ''}${n.example ? ' · ' + t('sn.example') : n.manual ? ' · ' + t('sn.manual') : ''}</p>
     <h1 class="gd-name">${esc(n.title || S?.title || t('sn.title'))}</h1>
     ${S?.passages?.length ? `<div class="sn-passages">${S.passages.map(x => `<button class="chip" data-action="note-passage" data-id="${esc(x)}">${icon('book')}${esc(x)}</button>`).join('')}</div>` : ''}
-    <div class="seg sn-tabs">${[['sum', t(autoNotes() ? 'nt.sum' : 'nt.note')], ['tr', t('nt.tr')], ['pass', t('nt.pass')]].map(([k, l]) => `<button class="${tab === k ? 'active' : ''}" data-action="note-tab" data-id="${k}">${l}${k === 'pass' && unsure ? ` <i class="vc-dot"></i>` : ''}</button>`).join('')}</div>
     <div class="sn-tabbody">${tab === 'tr' ? trHtml : tab === 'pass' ? passHtml : sumHtml}</div>
     ${n.example ? '' : `<div class="gd-row"><button class="secondary" data-action="note-share" data-id="${esc(n.id)}">${icon('share')}${t('sn.share')}</button><button class="secondary" data-action="note-del" data-id="${esc(n.id)}">${icon('trash')}${t('sn.delete')}</button></div>`}
   </div></div>`;
@@ -6139,16 +6142,18 @@ const actions = {
   'rec-del': () => recReset(),
   'sn-ref': () => biblePicker({ mode: 'sermonref', start: state.snRef || null }),
   'note-group': id => showSheet({ title: t('sn.pickGroup'), body: `<div class="list">${data.groups.filter(g => !g.pending).map(g => `<button class="list-row" data-action="note-group-to" data-id="${esc(id)}|${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name))}</span></span></button>`).join('')}</div>` }),
-  'note-group-to': pair => { const [id, gid] = pair.split('|'); const n = sermonNotes().find(x => x.id === id); if (!n?.summary) return; const S = n.summary;
-    const text = [n.title || S.title, S.main_message, ...(S.points || []).map((p, i) => `${i + 1}. ${p.heading}`), n.body].filter(Boolean).join('\n');
-    data.posts.unshift({ id: 'p' + Date.now(), mine: true, kind: 'meditation', scope: 'group', group: gid, groups: [gid], text, ref: parseRef(S.passages?.[0] || '') || undefined, date: today(), likes: 0 });
+  'note-group-to': pair => { const [id, gid] = pair.split('|'); const n = sermonNotes().find(x => x.id === id); if (!n) return; const S = n.summary || {};
+    data.posts.unshift({ id: 'p' + Date.now(), mine: true, kind: 'meditation', scope: 'group', group: gid, groups: [gid], text: noteText(n, true), ref: n.ref || parseRef(S.passages?.[0] || '') || undefined, date: today(), likes: 0 });
     save(); close(); toast(t('sn.shared')); },
   'db-bar': lab => { const el = $('#db-read'); if (el) el.textContent = lab; },
   'note-back': () => { state.noteOpen = null; render(); },
   'note-passage': ref => { const r = parseRef(ref); if (r) openReader({ ...r, group: 'me' }); },
-  'note-share': id => { const n = sermonNotes().find(x => x.id === id); if (!n?.summary) return; const S = n.summary;
-    const txt = [n.title || S.title, S.passages?.join(', '), '', S.main_message, '', ...(S.points || []).map((p, i) => `${i + 1}. ${p.heading} — ${p.detail}`), '', ...(S.application || []).map(x => '· ' + x)].filter(x => x !== undefined).join('\n');
-    if (navigator.share) navigator.share({ title: n.title || S.title, text: txt }).catch(() => {}); else copyText(txt); },
+  'note-share': id => { const n = sermonNotes().find(x => x.id === id); if (!n) return;
+    const row = (act, ic, label) => `<button class="list-row" data-action="${act}" data-id="${esc(id)}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span></button>`;
+    showSheet({ title: t('sn.share'), body: `<div class="list">${data.groups.some(g => !g.pending) ? row('note-group', 'people', t('share.toGroup')) : ''}${row('note-copy', 'copy', t('share.link'))}${row('note-send', 'share', t('nsh.other'))}</div>` }); },
+  'note-copy': id => { const n = sermonNotes().find(x => x.id === id); if (!n) return; close(); copyText(noteLink(n)); },
+  'note-send': id => { const n = sermonNotes().find(x => x.id === id); if (!n) return; close(); const txt = noteText(n), url = noteLink(n);
+    if (navigator.share) navigator.share({ title: n.title || n.summary?.title || t('sn.title'), text: txt, url }).catch(() => {}); else copyText(`${txt}\n\n${url}`); },
   'note-del': id => confirmSheet(t('sn.delete'), t('sn.deleteQ'), t('sn.delete'), async () => {
     if (sermonNotes().find(x => x.id === id)?.remote && state.snOnline) { try { state.snQuota = await sapi('DELETE', `/api/sermons/${id}`); } catch {} state.snChecked = false; await sermonSync(); }
     const mine = (data.sermonNotes || []).find(x => x.id === id);
