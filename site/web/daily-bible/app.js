@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'gp.list': "내 공동체", 'mc.count': "공동체 {n}개", 'hl.on': "{date}에 칠했어요", 'hl.del': "지우기", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'gp.list': "내 공동체", 'mc.count': "공동체 {n}개", 'hl.on': "{date}에 칠했어요", 'hl.del': "지우기", 'gc.open': "공동체 들어가기", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
@@ -179,7 +179,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'gp.list': "My communities", 'mc.count': "{n} communities", 'hl.on': "Highlighted {date}", 'hl.del': "Remove", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'gp.list': "My communities", 'mc.count': "{n} communities", 'hl.on': "Highlighted {date}", 'hl.del': "Remove", 'gc.open': "Open community", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
@@ -344,7 +344,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'gp.list': "Mis comunidades", 'mc.count': "{n} comunidades", 'hl.on': "Resaltado el {date}", 'hl.del': "Quitar", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'gp.list': "Mis comunidades", 'mc.count': "{n} comunidades", 'hl.on': "Resaltado el {date}", 'hl.del': "Quitar", 'gc.open': "Abrir comunidad", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
@@ -1723,7 +1723,7 @@ document.addEventListener('submit', e => {
 }, true);
 function close() {
   if (state.medRecOn) medRecStop();   // never leave the microphone running behind a closed sheet
-  sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = ''; sheet.classList.remove('sheet-full');
+  sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = ''; sheet.classList.remove('sheet-full', 'gc-sheet');
   if (state.verseChanged) { // verse frequency changed: rebuild the feed, staying near the same place
     state.verseChanged = false; const sc = $('#feed-scroll');
     render(sc ? Math.round(sc.scrollTop / Math.max(1, sc.clientHeight)) : 0);
@@ -2580,17 +2580,18 @@ const chBtn = ch => `${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'c
         : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
       <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}`;
 // 공동체 card, in the feel of the "오늘의 말씀을 다 읽었어요" card: a name pill, a check, who's with us today
-function groupCard(g, who, w, ch) {
+function groupCard(g, who, w, ch, full) {
   const nm = data.settings.names || {}, names = [];
   const add = n => { n = String(n || '').trim(); if (n && !names.includes(n)) names.push(n); };
   if (data.readDevo?.[today()] || data.posts.some(p => p.mine && inGroup(p, g.id) && p.date === today())) add(data.settings.myName || t('me'));
   (g.people || []).filter(m => (state.devoReaders || []).includes(m.id) && m.id !== Cloud.uid?.()).forEach(m => add(m.name || nm[m.id]));
   data.posts.filter(p => !p.mine && inGroup(p, g.id) && p.date === today() && !data.hidden.includes(p.id)).forEach(p => add(authorName(p)));
   const done = !!data.readDevo?.[today()], ref = todaysPassage(g.id)?.ref, cols = ['#8FA3B0', '#B59A8A', '#9AA88E', '#A897B0', '#B0A48F'];
-  return `<section class="g-block gc">
-    <div class="gc-top"><button class="gc-pill" data-action="open-group" data-id="${esc(g.id)}">${esc(L(g.name))}${unseenIn(g.id) ? `<i class="new-dot" aria-label="${t('gs.new')}"></i>` : ''}</button>
-      <button class="g-more" data-action="group-menu" data-id="${esc(g.id)}" aria-label="${t('more')}">${icon('more')}</button></div>
-    <button class="gc-body" data-action="open-group" data-id="${esc(g.id)}">
+  const go = full ? 'gc-open' : 'gc-full';
+  return `<section class="g-block gc${full ? ' gc-big' : ''}">
+    <div class="gc-top"><button class="gc-pill" data-action="${go}" data-id="${esc(g.id)}">${esc(L(g.name))}${unseenIn(g.id) ? `<i class="new-dot" aria-label="${t('gs.new')}"></i>` : ''}</button>
+      ${full ? '' : `<button class="g-more" data-action="group-menu" data-id="${esc(g.id)}" aria-label="${t('more')}">${icon('more')}</button>`}</div>
+    <button class="gc-body" data-action="${go}" data-id="${esc(g.id)}">
       <span class="gc-check${done ? ' on' : ''}">${icon(done ? 'check' : 'book')}</span>
       <span class="gc-title">${names.length ? t('gs.today').replace('{n}', names.length).replace('{total}', Math.max(groupSize(g.id), names.length)) : who}</span>
       ${ref ? `<span class="gc-sub">${esc(refText(ref))}</span>` : ''}
@@ -2598,6 +2599,7 @@ function groupCard(g, who, w, ch) {
       <span class="gc-foot">${t('gs.week')} · ${t('gs.counts').replace('{t}', w.thanks).replace('{m}', w.meditation).replace('{p}', w.prayer)}</span>
     </button>
     ${chBtn(ch)}
+    ${full ? `<button class="secondary gc-enter" data-action="gc-open" data-id="${esc(g.id)}">${t('gc.open')}</button>` : ''}
   </section>`;
 }
 function groupBlock(g) {
@@ -2605,7 +2607,7 @@ function groupBlock(g) {
   const todayPeople = new Set(data.posts.filter(p => inGroup(p, g.id) && p.date === today() && !data.hidden.includes(p.id)).map(p => p.mine ? 'me' : authorKey(p))).size;
   const who = (todayPeople ? t('gs.today').replace('{n}', todayPeople) : w.people ? t('gs.weekPeople').replace('{n}', w.people) : t('gs.quiet')).replace('{total}', groupSize(g.id));
   if (g.pending) return `<section class="g-block g-card g-pending"><div class="g-row"><span class="g-name">${esc(L(g.name))}</span></div><p class="g-people">${t('gr.pending')}</p></section>`;
-  if (BIBLE_MODE) return groupCard(g, who, w, ch);
+  if (BIBLE_MODE) return groupCard(g, who, w, ch, state.gcFull);
   return `<section class="g-block g-card">
     <div class="g-row"><button class="g-head" data-action="open-group" data-id="${esc(g.id)}"><span class="g-name">${esc(L(g.name))}</span>${unseenIn(g.id) ? `<i class="new-dot" aria-label="${t('gs.new')}"></i>` : ''}</button>
       <span class="g-tools"><button class="g-more" data-action="group-menu" data-id="${esc(g.id)}" aria-label="${t('more')}">${icon('more')}</button><button class="g-go" data-action="open-group" data-id="${esc(g.id)}" aria-label="${esc(L(g.name))}">›</button></span></div>
@@ -3200,8 +3202,7 @@ function renderGroups() {
     <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
   </div></div>`;
-  // Daily Journey: one community per screen, scrolled like the feed
-  if (BIBLE_MODE) { const sc = main.querySelector('.screen'); if (sc) { sc.classList.add('gc-snap'); sc.style.setProperty('--sh', sc.clientHeight + 'px'); } }
+
 }
 
 function renderGroupDetail(gid) {
@@ -6248,6 +6249,10 @@ const actions = {
     showSheet({ title: t('sn.share'), body: `<div class="list">${data.groups.some(g => !g.pending) ? row('note-group', 'people', t('share.toGroup')) : ''}${row('note-copy', 'copy', t('share.link'))}${row('note-send', 'share', t('nsh.other'))}</div>` }); },
   'note-more': id => { const row = (act, ic, label) => `<button class="list-row" data-action="${act}" data-id="${esc(id)}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span></button>`;
     showSheet({ title: '', body: `<div class="list">${row('note-share', 'share', t('sn.share'))}${row('note-del', 'trash', t('sn.delete'))}</div>` }); },
+  // tap a community: its card on the whole screen; from there into the community
+  'gc-full': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; state.gcFull = true; const html = groupBlock(g); state.gcFull = false;
+    showSheet({ title: '', body: html }); sheet.classList.add('sheet-full', 'gc-sheet'); },
+  'gc-open': gid => { close(); actions['open-group'](gid); },
   'mc-toggle': () => { state.mcOpen = !state.mcOpen; render(); },
   'g-pick': () => { const row = g => `<button class="list-row" data-action="g-pick-to" data-id="${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span></span>${unseenIn(g.id) ? '<i class="new-dot"></i>' : ''}${g.id === (data.groups.find(x => x.id === state.group) || data.groups[0])?.id ? `<span class="row-end">${icon('check')}</span>` : ''}</button>`;
     showSheet({ title: t('gp.list'), body: `<div class="list">${data.groups.map(row).join('')}</div>` }); },
