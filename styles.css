@@ -1882,3 +1882,6 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .sn-pen{position:absolute;left:2px;top:12px;color:#B9BDC0;pointer-events:none}
 .sn-pen svg{width:18px;height:18px}
 .sn-bodywrap textarea:not(:placeholder-shown) + .sn-pen{display:none}
+/* 공동체: list button with a dot when another community has something new */
+.g-pickwrap{position:relative;display:inline-flex}
+.g-pickwrap .new-dot{position:absolute;top:4px;right:4px}
