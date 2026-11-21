@@ -1,0 +1,140 @@
+# Daily Journey — send a new phone build to the App Store and Google Play with one button.
+# GitHub › Actions › "Store release" › Run workflow. Guide (Korean): store/STORE_RELEASE_KO.md
+#
+# Most changes (design, text, features in app.js/styles.css) do NOT need this: installed apps update themselves from
+# dailyjourney.org/app-update.json. Use this only for phone-level changes: icon, name, permissions, plugins, native.js.
+#
+# Keys live only in GitHub › Settings › Secrets and variables › Actions (never in the repo or in chat):
+#   Google Play: ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD, PLAY_SERVICE_ACCOUNT_JSON
+#   Apple:       APPLE_TEAM_ID, ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8
+name: Store release
+
+on:
+  workflow_dispatch:
+    inputs:
+      stores:
+        description: 'Which store'
+        type: choice
+        options: [both, google, apple]
+        default: both
+      play_track:
+        description: 'Google Play: internal = testers only; production = everyone after review; file-only = just make the .aab to download (first upload)'
+        type: choice
+        options: [internal, production, file-only]
+        default: internal
+
+permissions:
+  contents: read
+
+concurrency:
+  group: store-release
+  cancel-in-progress: false
+
+jobs:
+  google:
+    if: inputs.stores != 'apple'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check keys
+        env:
+          A: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          B: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          ONLY_FILE: ${{ inputs.play_track == 'file-only' }}
+        run: |
+          if [ -z "$A" ] || { [ -z "$B" ] && [ "$ONLY_FILE" != "true" ]; }; then
+            echo "::error::Google Play keys are not set yet. See store/STORE_RELEASE_KO.md (2. Google Play)."; exit 1; fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Version   # build number only goes up (100 + run number); the version is mobile/package.json
+        run: |
+          echo "APP_BUILD=$((100 + ${{ github.run_number }}))" >> $GITHUB_ENV
+          echo "APP_VERSION=$(node -p "require('./mobile/package.json').version")" >> $GITHUB_ENV
+      - name: Build the web app into the phone shell
+        working-directory: mobile
+        run: npm ci && node scripts/build-web.mjs && npx cap sync android
+      - name: Build the signed bundle (.aab)
+        working-directory: mobile/android
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          KS: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KS" | base64 -d > "$RUNNER_TEMP/upload.jks"
+          export ANDROID_KEYSTORE_FILE="$RUNNER_TEMP/upload.jks"
+          chmod +x gradlew && ./gradlew bundleRelease --no-daemon
+          rm -f "$RUNNER_TEMP/upload.jks"
+      - name: Keep the file (first upload is done by hand in Play Console)
+        if: inputs.play_track == 'file-only'
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-journey-aab
+          path: mobile/android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 7
+      - name: Send to Google Play
+        if: inputs.play_track != 'file-only'
+        uses: r0adkll/upload-google-play@v1.1.3
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: org.dailyjourney.app
+          releaseFiles: mobile/android/app/build/outputs/bundle/release/app-release.aab
+          track: ${{ inputs.play_track }}
+          status: completed
+
+  apple:
+    if: inputs.stores != 'google'
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check keys
+        env:
+          A: ${{ secrets.ASC_KEY_P8 }}
+          B: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          if [ -z "$A" ] || [ -z "$B" ]; then
+            echo "::error::Apple keys are not set yet. See store/STORE_RELEASE_KO.md (3. Apple)."; exit 1; fi
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Version   # build number only goes up (100 + run number); the version is mobile/package.json
+        run: |
+          echo "APP_BUILD=$((100 + ${{ github.run_number }}))" >> $GITHUB_ENV
+          echo "APP_VERSION=$(node -p "require('./mobile/package.json').version")" >> $GITHUB_ENV
+      - name: Build the web app into the phone shell
+        working-directory: mobile
+        run: npm ci && node scripts/build-web.mjs && npx cap sync ios
+      - name: Archive and send to App Store Connect (TestFlight)
+        working-directory: mobile/ios/App
+        env:
+          P8: ${{ secrets.ASC_KEY_P8 }}
+          KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ISSUER: ${{ secrets.ASC_ISSUER_ID }}
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          KEY="$RUNNER_TEMP/AuthKey.p8"; printf '%s' "$P8" > "$KEY"
+          AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$KEY" -authenticationKeyID "$KEY_ID" -authenticationKeyIssuerID "$ISSUER")
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" archive "${AUTH[@]}" \
+            DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic CURRENT_PROJECT_VERSION="$APP_BUILD" MARKETING_VERSION="$APP_VERSION"
+          cat > "$RUNNER_TEMP/export.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>$TEAM</string>
+            <key>signingStyle</key><string>automatic</string>
+          </dict></plist>
+          EOF
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/App.xcarchive" -exportOptionsPlist "$RUNNER_TEMP/export.plist" \
+            -exportPath "$RUNNER_TEMP/out" "${AUTH[@]}"
+          rm -f "$KEY"
