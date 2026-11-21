@@ -152,7 +152,7 @@ bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루<
 # on dailyjourney.org the Bible app is called "daily journey" (tools/build-live.py turns it back into "daily bible" for the github.io site)
 bb_html = bb_html.replace('<script>window.DT_APP = "bible";</script>', '<script>window.DT_APP = "bible"; window.DT_BRAND = "journey";</script>')
 # link previews (a shared verse link opens here): daily journey, not daily thanks
-bb_html = bb_html.replace('<meta name="theme-color"', '<meta property="og:title" content="daily journey">\n<meta property="og:description" content="말씀을 매일 · A day focused on the Word">\n<meta property="og:image" content="https://dailyjourney.org/og-journey.png">\n<meta name="theme-color"', 1)
+bb_html = bb_html.replace('<meta name="theme-color"', '<meta property="og:title" content="daily journey">\n<meta property="og:description" content="매일 한 장, 공동체와 함께 · With your community, one slide at a time">\n<meta property="og:image" content="https://dailyjourney.org/og-journey.png">\n<meta name="theme-color"', 1)
 # cache-busting (Safari keeps app.js otherwise): ask for app.js / styles.css by content version
 import hashlib
 for f_ in ('app.js', 'styles.css'):
