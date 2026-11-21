@@ -1922,3 +1922,12 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .gc-snap .gc-body{gap:10px}
 .gc-snap .gc{position:relative}
 .gc-snap .gc:not(:last-child)::after{content:'';position:absolute;left:50%;bottom:22px;width:9px;height:9px;border-right:1.5px solid #C9CCCE;border-bottom:1.5px solid #C9CCCE;transform:translateX(-50%) rotate(45deg)}
+/* 형광펜 */
+mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-break:clone;box-decoration-break:clone;cursor:pointer}
+.hl-yellow{background:#FFF0A6}.hl-green{background:#D7EFD1}.hl-blue{background:#D5E6F7}.hl-pink{background:#F7DAE3}.hl-violet{background:#E6DDF5}
+.hl-pal{position:absolute;left:50%;bottom:calc(96px + var(--safe-bottom, 0px));transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.12)}
+.hl-dot{width:28px;height:28px;border-radius:50%;border:1px solid rgba(0,0,0,.06);padding:0;cursor:pointer}
+.hl-x{width:28px;height:28px;border-radius:50%;border:0;background:#F3F4F5;display:grid;place-items:center;color:#8A9095;padding:0;cursor:pointer}
+.hl-x svg{width:14px;height:14px}
+.hl-tip{position:absolute;z-index:41;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;background:#2F3337;color:#fff;border-radius:999px;font-size:13px;white-space:nowrap}
+.hl-tip button{border:0;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer}
