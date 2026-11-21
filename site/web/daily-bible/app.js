@@ -2590,7 +2590,7 @@ function groupCard(g, who, w, ch, full) {
   (g.people || []).filter(m => (state.devoReaders || []).includes(m.id) && m.id !== Cloud.uid?.()).forEach(m => add(m.name || nm[m.id]));
   data.posts.filter(p => !p.mine && inGroup(p, g.id) && p.date === today() && !data.hidden.includes(p.id)).forEach(p => add(authorName(p)));
   const done = !!data.readDevo?.[today()], ref = todaysPassage(g.id)?.ref, cols = ['#8FA3B0', '#B59A8A', '#9AA88E', '#A897B0', '#B0A48F'];
-  const go = full ? 'gc-open' : 'gc-full';
+  const go = full ? 'gc-open' : 'open-group';
   return `<section class="g-block gc${full ? ' gc-big' : ''}">
     <div class="gc-top"><button class="gc-pill" data-action="${go}" data-id="${esc(g.id)}">${esc(L(g.name))}${unseenIn(g.id) ? `<i class="new-dot" aria-label="${t('gs.new')}"></i>` : ''}</button>
       ${full ? '' : `<button class="g-more" data-action="group-menu" data-id="${esc(g.id)}" aria-label="${t('more')}">${icon('more')}</button>`}</div>
@@ -3205,7 +3205,8 @@ function renderGroups() {
     <div class="g-list">${data.groups.map(groupBlock).join('')}</div>
     ${featureOn('groupShare') ? groupShareSection() : ''}
   </div></div>`;
-
+  // Daily Journey: one community per screen, scrolled like the feed
+  if (BIBLE_MODE) { const sc = main.querySelector('.screen'); if (sc) { sc.classList.add('gc-snap'); sc.style.setProperty('--sh', sc.clientHeight + 'px'); } }
 }
 
 function renderGroupDetail(gid) {
