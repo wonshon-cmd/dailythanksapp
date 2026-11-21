@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Journey</title><meta name="theme-color" content="#FFFFFF">
+<style>body{margin:0;background:#fff;font-family:system-ui,sans-serif;color:#9BA0A3;display:grid;place-items:center;height:100vh}</style>
+<script>
+// dailyjourney.org/get/ — where the QR code on shared cards points.
+// Once the apps are in the stores, put their links here: iPhone → App Store, Android → Google Play, everything else → the web app.
+var IOS = '';       // e.g. https://apps.apple.com/app/id0000000000
+var ANDROID = '';   // e.g. https://play.google.com/store/apps/details?id=org.dailyjourney.app
+var ua = navigator.userAgent || '';
+var to = /iPhone|iPad|iPod/.test(ua) && IOS ? IOS : /Android/.test(ua) && ANDROID ? ANDROID : '../daily-bible/';
+location.replace(to);
+</script></head>
+<body><a href="../daily-bible/">daily journey</a></body></html>

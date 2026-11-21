@@ -44,3 +44,7 @@ python3 tools/build-live.py <dailybible 저장소 경로>   # 공개 사이트 �
 1. Supabase 나머지: 기도제목/감사/묵상 나눔과 좋아요·기도했어요, 읽기 계획 함께하기,
    순장 도구·목사님 보기를 실제 권한으로 연결, 오늘의 본문(content.json) 매일 갱신
 2. 계정 삭제를 Supabase에서도 (Edge Function 필요 — 비밀 키는 앱에 넣지 않기)
+3. **앱스토어 출시하면 QR 주소 바꾸기:** 공유 카드의 QR은 `dailyjourney.org/get/`을 가리켜요.
+   지금은 웹 앱(`/daily-bible/`)으로 가요. 출시 후 `site/get.html`의 `IOS`(App Store 주소)와
+   `ANDROID`(Google Play 주소)만 채우면, 아이폰은 App Store로, 안드로이드는 Google Play로, 나머지는 웹으로 가요.
+   카드 이미지를 다시 만들 필요 없어요 — 이미 퍼진 카드의 QR도 같은 주소라 자동으로 바뀌어요.
