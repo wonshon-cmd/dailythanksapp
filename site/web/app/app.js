@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'gp.list': "내 공동체", 'mc.count': "공동체 {n}개", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'gp.list': "내 공동체", 'mc.count': "공동체 {n}개", 'hl.on': "{date}에 칠했어요", 'hl.del': "지우기", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
@@ -179,7 +179,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'gp.list': "My communities", 'mc.count': "{n} communities", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'gp.list': "My communities", 'mc.count': "{n} communities", 'hl.on': "Highlighted {date}", 'hl.del': "Remove", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
@@ -344,7 +344,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'gp.list': "Mis comunidades", 'mc.count': "{n} comunidades", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'gp.list': "Mis comunidades", 'mc.count': "{n} comunidades", 'hl.on': "Resaltado el {date}", 'hl.del': "Quitar", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
@@ -2765,7 +2765,70 @@ const FLOAT = [
   { sc: '#feed-scroll', card: 'fv-card', rail: '.post-rail', ref: '.fv-ref' },
   { sc: '#reader-scroll', card: 'vs-page', rail: '.vs-rail', ref: '.vs-ref' }
 ];
-function fvRail() { FLOAT.forEach(floatSync); fitVerses(); }
+function fvRail() { paintHighlights(); FLOAT.forEach(floatSync); fitVerses(); }
+/* ---------------- 형광펜 ----------------
+   Select words in a verse → pick a color. Each highlight keeps the day it was made: hover (or tap) it to see the date. */
+const HL_COLORS = ['yellow', 'green', 'blue', 'pink', 'violet'];
+const hlKeyOf = el => { const a = el.closest('.fv-card, .vs-page'); const m = a?.id?.match(/^v-(\d+)-(\d+)-(\d+)$/); return m ? verseKey(+m[1], +m[2], +m[3]) : null; };
+const hlDate = iso => { const d = new Date(iso), now = new Date();
+  return d.toLocaleDateString(lang() === 'ko' ? 'ko-KR' : lang() === 'es' ? 'es' : 'en-US', { ...(d.getFullYear() !== now.getFullYear() ? { year: 'numeric' } : {}), month: 'long', day: 'numeric' }); };
+function paintHighlights(root = document) {
+  const all = data.highlights || [];
+  root.querySelectorAll('.fv-card .fv-text, .vs-page .vs-text').forEach(el => {
+    const key = hlKeyOf(el); if (!key) return;
+    if (el.dataset.raw == null) el.dataset.raw = el.textContent;
+    const raw = el.dataset.raw, hs = all.filter(h => h.key === key && h.end > h.start).sort((a, b) => a.start - b.start);
+    if (!hs.length) { if (el.querySelector('mark')) el.textContent = raw; return; }
+    let out = '', at = 0;
+    hs.forEach(h => { const s0 = Math.max(at, h.start), e0 = Math.min(raw.length, h.end); if (e0 <= s0) return;
+      out += esc(raw.slice(at, s0)) + `<mark class="hl hl-${h.color}" data-hl="${esc(h.id)}" title="${esc(t('hl.on').replace('{date}', hlDate(h.at)))}">${esc(raw.slice(s0, e0))}</mark>`; at = e0; });
+    el.innerHTML = out + esc(raw.slice(at));
+  });
+}
+let hlSel = null;
+function hlPalette(show) {
+  let pal = document.getElementById('hl-pal');
+  if (!show) { pal?.remove(); hlSel = null; return; }
+  if (!pal) { pal = Object.assign(document.createElement('div'), { id: 'hl-pal', className: 'hl-pal' });
+    pal.innerHTML = HL_COLORS.map(c => `<button type="button" class="hl-dot hl-${c}" data-hl-color="${c}" aria-label="${c}"></button>`).join('') + `<button type="button" class="hl-x" data-hl-color="" aria-label="${esc(t('hl.del'))}">${icon('x')}</button>`;
+    document.getElementById('app').append(pal); }
+}
+document.addEventListener('selectionchange', () => {
+  clearTimeout(hlPalette.t); hlPalette.t = setTimeout(() => {
+    const sel = getSelection(); if (!sel || sel.isCollapsed || !sel.rangeCount) { if (!document.getElementById('hl-pal')?.matches(':hover')) hlPalette(false); return; }
+    const range = sel.getRangeAt(0), host = n => (n.nodeType === 1 ? n : n.parentElement)?.closest('.fv-text, .vs-text');
+    const el = host(range.startContainer); if (!el || el !== host(range.endContainer)) { hlPalette(false); return; }
+    const key = hlKeyOf(el); if (!key) return;
+    const pre = document.createRange(); pre.selectNodeContents(el); pre.setEnd(range.startContainer, range.startOffset);
+    const start = pre.toString().length, end = start + range.toString().length; if (end <= start) return;
+    hlSel = { key, start, end }; hlPalette(true);
+  }, 200);
+});
+document.addEventListener('pointerdown', e => { if (e.target.closest?.('#hl-pal')) e.preventDefault(); }, true);   // keep the selection while picking
+document.addEventListener('click', e => {
+  const b = e.target.closest?.('#hl-pal [data-hl-color]');
+  if (b) { e.preventDefault(); e.stopPropagation(); const sel = hlSel; if (!sel) return;
+    const keep = (data.highlights || []).filter(h => !(h.key === sel.key && h.start < sel.end && h.end > sel.start));
+    // parts of an older highlight outside the new range stay
+    (data.highlights || []).filter(h => h.key === sel.key && h.start < sel.end && h.end > sel.start).forEach(h => {
+      if (h.start < sel.start) keep.push({ ...h, id: h.id + 'a', end: sel.start });
+      if (h.end > sel.end) keep.push({ ...h, id: h.id + 'b', start: sel.end }); });
+    if (b.dataset.hlColor) keep.push({ id: 'h' + Date.now().toString(36), ...sel, color: b.dataset.hlColor, at: new Date().toISOString() });
+    data.highlights = keep; save(true); getSelection()?.removeAllRanges(); hlPalette(false); paintHighlights(); fitVerses(); return; }
+  const m = e.target.closest?.('mark.hl');
+  if (m && !getSelection()?.toString()) { e.stopPropagation(); hlTip(m); }
+}, true);
+// tap a highlight: the day it was made, and a way to take it off
+function hlTip(m) {
+  document.querySelector('.hl-tip')?.remove();
+  const h = (data.highlights || []).find(x => x.id === m.dataset.hl); if (!h) return;
+  const tip = Object.assign(document.createElement('div'), { className: 'hl-tip', innerHTML: `<span>${esc(t('hl.on').replace('{date}', hlDate(h.at)))}</span><button type="button" data-hl-del="${esc(h.id)}">${esc(t('hl.del'))}</button>` });
+  const app = document.getElementById('app'), r = m.getBoundingClientRect(), ar = app.getBoundingClientRect(); app.append(tip);
+  tip.style.left = Math.max(12, Math.min(ar.width - tip.offsetWidth - 12, r.left - ar.left + r.width / 2 - tip.offsetWidth / 2)) + 'px';
+  tip.style.top = Math.max(8, r.top - ar.top - tip.offsetHeight - 8) + 'px';
+  tip.querySelector('button').addEventListener('click', ev => { ev.stopPropagation(); data.highlights = (data.highlights || []).filter(x => x.id !== h.id); save(true); tip.remove(); paintHighlights(); });
+  setTimeout(() => document.addEventListener('click', function off(ev) { if (!tip.contains(ev.target)) { tip.remove(); document.removeEventListener('click', off, true); } }, true), 0);
+}
 // A long verse at a big text size: make its letters smaller until it fits above the reference line.
 function fitVerses() {
   document.querySelectorAll('.fv-card .fv-text, .vs-page .vs-text').forEach(el => {
