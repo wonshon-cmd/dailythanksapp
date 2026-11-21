@@ -216,6 +216,11 @@ function home(t) {
 // Answering a friend's thanks link: a quick word (sealed with the key in the link, so only the sender can read it)
 // and a way to connect with them in the app. Only the publishable key is here; the database rules decide the rest.
 const SUPA = { url: 'https://puhaycwpfpqsmxubvzkt.supabase.co', key: 'sb_publishable_NYYC9G102Ct3YYuY_unhVA_pGGXFGBa' };
+// Opening a shared link counts once toward the sender's reach (?s= is their random share code; this browser gets a random id).
+(() => { try { const sc = new URLSearchParams(location.search).get('s'); if (!sc || !/^[a-z0-9]{6,16}$/.test(sc)) return;
+  let who = localStorage.getItem('dt-oid'); if (!who) { who = Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join(''); localStorage.setItem('dt-oid', who); }
+  fetch(SUPA.url + '/rest/v1/rpc/record_open', { method: 'POST', headers: { apikey: SUPA.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ c: sc, who, k: 'thanks' }) }).catch(() => {});
+} catch {} })();
 const okBox = p => /^[a-z0-9]{8,24}$/.test(String(p.c || '')) && /^[A-Za-z0-9_-]{43}$/.test(String(p.g || ''));
 function replyBlock(t, p) {
   if (!okBox(p)) return '';
