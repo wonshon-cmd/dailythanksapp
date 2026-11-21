@@ -1825,3 +1825,12 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .an-mark { flex: none; width: 32px; height: 32px; border-radius: 9px; border: 1px solid #ECEDEE; display: grid; place-items: center; font-family: Newsreader, serif; font-style: italic; font-size: 13px; color: #6b7075; }
 .prayed-who { position: absolute; left: 40px; right: 80px; bottom: calc(150px + var(--safe-bottom)); border: 0; background: #F7F7F7; border-radius: 14px; padding: 10px 14px; text-align: left; font: inherit; font-size: 13px; color: #3a3f43; cursor: pointer; z-index: 2; }
 .prayed-list { font-size: 15px; color: var(--ink); margin: 6px 0 18px; }
+/* 받은 답장 (friends answering a thanks link) */
+.rp-list{display:flex;flex-direction:column}
+.rp-item{padding:14px 0;border-bottom:1px solid var(--line, #EEF0F1)}
+.rp-item:last-child{border-bottom:0}
+.rp-head{margin:0;display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink, #2B2F33)}
+.rp-head span{font-size:12px;color:var(--faint, #9BA0A3);white-space:nowrap}
+.rp-msg{margin:6px 0 0;font-size:15px;line-height:1.6;color:var(--ink, #2B2F33);white-space:pre-line}
+.rp-q{margin:6px 0 0;font-size:13px;color:var(--faint, #9BA0A3)}
+.rp-q::before{content:'“'}.rp-q::after{content:'”'}
