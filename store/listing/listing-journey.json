@@ -1,44 +1,44 @@
 {
-  "ko": {
-    "appstore": {
-      "name": "Daily Journey - 매일 성경",
-      "subtitle": "매일 성경 읽기, 공동체와 함께",
-      "promo": "오늘의 본문을 읽고, 친구와 같은 날 같은 말씀을 읽어요. 공동체의 기도제목을 받고, 말씀과 설교를 내 노트로 남겨요.",
-      "keywords": "성경,성경읽기,통독,큐티,묵상,설교노트,기도제목,교회,말씀,공동체",
-      "whatsnew": "Daily Journey를 처음 선보입니다. 매일 말씀을 읽고, 공동체와 함께 나눠 보세요."
-    },
-    "play": {
-      "title": "Daily Journey - 매일 성경",
-      "short": "오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 노트를 한곳에서."
-    },
-    "description": "말씀을 매일, 공동체와 함께.\n\nDaily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 가까운 공동체와 나누는 앱이에요. 화면은 하얗고 조용해서, 말씀에만 머물 수 있어요.\n\n■ 읽기\n· 오늘의 본문: 매일 정해진 본문을 바로 펼쳐요.\n· 이어 읽기: 마지막으로 읽은 곳에서 다시 시작해요. 창세기부터 요한계시록까지 통독할 수 있어요.\n· 성경 고르기: 책, 장, 절을 골라 원하는 본문으로 바로 가요.\n· 글자 크기를 바꿀 수 있고, 성경 본문은 앱 안에 들어 있어 인터넷이 없어도 읽어요.\n· 개역한글, KJV, Reina-Valera 1909 (모두 공공 저작물)\n\n■ 함께 읽기 계획\n어디서부터 어디까지, 며칠 동안 읽을지 정하면 날마다 읽을 만큼 나눠 드려요. 초대 링크를 보내면 친구와 가족이 같은 날 같은 본문을 함께 읽어요. 원하는 시간에 읽기 알림도 받을 수 있어요.\n\n■ 피드\n오늘의 말씀, 공동체의 기도제목, 함께 나눈 감사가 한 장씩 보여요. 옆으로 넘기며 말씀을 보고, 기도제목을 받으면 바로 함께 기도해요. 좋아요 숫자로 비교하지 않아요.\n\n■ 묵상\n읽은 본문 아래에 느낀 점과 기도를 적어 두세요. 나만 보거나, 공동체와 나누거나, 모두에게 나눌 수 있어요. 마지막으로 고른 공개 범위를 기억해요.\n\n■ 노트\n설교를 들으며, 혹은 말씀을 읽으며 내 노트를 남겨요. @잠언3:5-6처럼 적으면 그 구절이 바로 노트에 들어가요. 노트는 공동체에 나누거나 링크로 보낼 수 있어요.\n\n■ 형광펜\n마음에 닿은 구절을 골라 색을 칠해 두세요. 언제 칠했는지 날짜도 함께 남아요.\n\n■ 공동체\n교회 순모임, 가족, 친구와 공동체를 만들어요. 초대 링크나 초대 코드로 들어오고, 원하면 리더가 승인한 사람만 들어올 수 있어요. 알림이 많으면 조용히 해 두고, 언제든 나갈 수 있어요.\n\n■ 나의 선한 영향력\n내가 나눈 말씀과 감사가 몇 명에게 닿았는지 조용히 보여 드려요. 경쟁이 아니라, 나눔이 얼마나 멀리 퍼졌는지 보는 숫자예요.\n\n■ 올해의 말씀\n한 해 동안 읽은 장, 말씀 읽은 날, 가장 길게 이어 읽은 날, 올해의 말씀과 가장 많이 펼친 본문을 한 장의 스토리 카드로 만들어 인스타그램에 나눌 수 있어요.\n\n■ 안전하고 사적인 공간\n· 나만 보는 기록은 휴대폰에서 잠근 뒤 저장돼요. 운영자도 열어 볼 수 없어요.\n· 부적절한 글은 신고하고, 숨기고, 사람을 차단할 수 있어요.\n· 앱 안에서 언제든 계정을 삭제할 수 있어요.\n\n한국어 · English · Español\n\n문의: hi@dailyjourney.org"
+ "ko": {
+  "appstore": {
+   "name": "Daily Journey - 매일 성경",
+   "subtitle": "매일 한 장, 공동체와 함께",
+   "promo": "오늘의 본문을 읽고, 친구와 같은 날 같은 말씀을 읽어요. 공동체의 기도제목을 받고, 말씀과 설교를 내 노트로 남겨요.",
+   "keywords": "성경,성경읽기,통독,큐티,묵상,설교노트,기도제목,교회,말씀,공동체",
+   "whatsnew": "Daily Journey를 처음 선보입니다. 매일 말씀을 읽고, 공동체와 함께 나눠 보세요."
   },
-  "en": {
-    "appstore": {
-      "name": "Daily Journey - Bible Reading",
-      "subtitle": "Read the Bible daily, together",
-      "promo": "Read today’s passage, and read the same verses on the same day as your friends. Pray for your community, and keep your own notes on the Word and each sermon.",
-      "keywords": "Bible,scripture,reading plan,devotional,sermon notes,prayer,church,kjv,verse,community,faith",
-      "whatsnew": "Introducing Daily Journey. Read the Word every day and share it with your community."
-    },
-    "play": {
-      "title": "Daily Journey - Bible Reading",
-      "short": "Today’s passage, reading plans with friends, prayer requests and notes."
-    },
-    "description": "The Word every day, together.\n\nDaily Journey helps you read the Bible every day and share what you read, your prayers and your thanks with the people close to you. The screen is white and quiet, so you can stay with the text.\n\n■ READ\n· Today’s passage: open the set passage for the day in one tap.\n· Keep reading: pick up where you left off, and read the whole Bible from Genesis to Revelation.\n· Go anywhere: choose a book, chapter and verse.\n· Adjustable text size. The Bible text is built in, so it works offline.\n· King James Version, 개역한글 (Korean), Reina-Valera 1909 — all public domain.\n\n■ READING PLANS WITH FRIENDS\nChoose where to start and finish and how many days, and Daily Journey splits it into daily readings. Send an invite link and friends or family read the same passage on the same day. Set a reading reminder for the time you like.\n\n■ FEED\nToday’s verse, your community’s prayer requests and shared thanks, one card at a time. Swipe through verses, and pray as soon as a request comes in. No like counts, no comparing.\n\n■ REFLECTIONS\nWrite what you noticed and a prayer under the passage you read. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.\n\n■ NOTES\nKeep your own notes while you listen to a sermon or read the Word. Type @Proverbs3:5-6 and the verses drop right into your note. Share notes with your community or send them as a link.\n\n■ HIGHLIGHTS\nHighlight the verses that speak to you, in a soft color. The day you highlighted stays with it.\n\n■ COMMUNITIES\nStart a community for your church group, family or friends. People join with an invite link or code, and you can require approval. Mute a busy community, or leave at any time.\n\n■ MY GOOD INFLUENCE\nSee, quietly, how many people the verses and thanks you shared have reached. Not a contest — just how far your sharing has gone.\n\n■ MY YEAR IN THE WORD\nChapters read, days in the Word, your longest streak, your verse of the year and your most opened passage — on one story card to share on Instagram.\n\n■ SAFE AND PRIVATE\n· Entries only you can see are locked on your phone before they are saved. We can’t read them.\n· Report posts, hide them, and block people.\n· Delete your account in the app at any time.\n\nEnglish · 한국어 · Español\n\nContact: hi@dailyjourney.org"
+  "play": {
+   "title": "Daily Journey - 매일 성경",
+   "short": "오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 노트를 한곳에서."
   },
-  "es": {
-    "appstore": {
-      "name": "Daily Journey: Biblia diaria",
-      "subtitle": "Lee la Biblia cada día, juntos",
-      "promo": "Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu comunidad y guarda tus propias notas de la Palabra y de cada sermón.",
-      "keywords": "biblia,lectura,plan,devocional,sermon,notas,oracion,iglesia,versiculo,comunidad,fe",
-      "whatsnew": "Presentamos Daily Journey. Lee la Palabra cada día y compártela con tu comunidad."
-    },
-    "play": {
-      "title": "Daily Journey: Biblia diaria",
-      "short": "Pasaje de hoy, planes de lectura con amigos, peticiones de oración y notas."
-    },
-    "description": "La Palabra cada día, juntos.\n\nDaily Journey te ayuda a leer la Biblia cada día y a compartir lo que lees, tus oraciones y tu gratitud con las personas cercanas. La pantalla es blanca y tranquila, para que te quedes en el texto.\n\n■ LEER\n· Pasaje de hoy: abre el pasaje del día con un toque.\n· Seguir leyendo: continúa donde lo dejaste y lee toda la Biblia, de Génesis a Apocalipsis.\n· Ve a cualquier parte: elige libro, capítulo y versículo.\n· Tamaño de letra ajustable. El texto bíblico viene incluido y funciona sin conexión.\n· Reina-Valera 1909, King James Version y 개역한글 (coreano), todas de dominio público.\n\n■ PLANES DE LECTURA CON AMIGOS\nElige desde dónde hasta dónde y en cuántos días, y Daily Journey lo divide en lecturas diarias. Envía un enlace de invitación y tus amigos o tu familia leerán el mismo pasaje el mismo día. Pon un recordatorio a la hora que prefieras.\n\n■ INICIO\nEl versículo de hoy, las peticiones de oración de tu comunidad y la gratitud compartida, una tarjeta a la vez. Desliza los versículos y ora en cuanto llegue una petición. Sin contadores de “me gusta”, sin comparaciones.\n\n■ REFLEXIONES\nEscribe lo que notaste y una oración bajo el pasaje que leíste. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.\n\n■ NOTAS\nEscribe tus propias notas mientras escuchas un sermón o lees la Palabra. Escribe @Proverbios3:5-6 y los versículos entran directo en tu nota. Comparte las notas con tu comunidad o envíalas como enlace.\n\n■ RESALTADOS\nResalta los versículos que te hablan, con un color suave. El día en que los resaltaste queda guardado.\n\n■ COMUNIDADES\nCrea una comunidad para tu grupo de la iglesia, tu familia o tus amigos. Se entra con un enlace o un código de invitación, y puedes pedir aprobación. Silencia una comunidad muy activa o sal cuando quieras.\n\n■ MI BUENA INFLUENCIA\nMira, en silencio, a cuántas personas han llegado los versículos y la gratitud que compartiste. No es una competencia: es lo lejos que llegó lo que compartiste.\n\n■ MI AÑO EN LA PALABRA\nCapítulos leídos, días en la Palabra, tu racha más larga, tu versículo del año y el pasaje que más abriste, en una tarjeta de historia para compartir en Instagram.\n\n■ SEGURO Y PRIVADO\n· Lo que solo tú ves se cifra en tu teléfono antes de guardarse. Nosotros no podemos leerlo.\n· Denuncia publicaciones, ocúltalas y bloquea personas.\n· Elimina tu cuenta desde la app cuando quieras.\n\nEspañol · English · 한국어\n\nContacto: hi@dailyjourney.org"
-  }
+  "description": "매일 한 장, 공동체와 함께.\n\nDaily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 가까운 공동체와 나누는 앱이에요. 화면은 하얗고 조용해서, 말씀에만 머물 수 있어요.\n\n■ 읽기\n· 오늘의 본문: 매일 정해진 본문을 바로 펼쳐요.\n· 이어 읽기: 마지막으로 읽은 곳에서 다시 시작해요. 창세기부터 요한계시록까지 통독할 수 있어요.\n· 성경 고르기: 책, 장, 절을 골라 원하는 본문으로 바로 가요.\n· 글자 크기를 바꿀 수 있고, 성경 본문은 앱 안에 들어 있어 인터넷이 없어도 읽어요.\n· 개역한글, KJV, Reina-Valera 1909 등 무료 성경 13가지 (모두 공공 저작물). 받아 두면 인터넷 없이도 읽어요.\n\n■ 함께 읽기 계획\n어디서부터 어디까지, 며칠 동안 읽을지 정하면 날마다 읽을 만큼 나눠 드려요. 초대 링크를 보내면 친구와 가족이 같은 날 같은 본문을 함께 읽어요. 원하는 시간에 읽기 알림도 받을 수 있어요.\n\n■ 피드\n오늘의 말씀, 공동체의 기도제목, 함께 나눈 감사가 한 장씩 보여요. 옆으로 넘기며 말씀을 보고, 기도제목을 받으면 바로 함께 기도해요. 좋아요 숫자로 비교하지 않아요.\n\n■ 묵상\n오늘의 본문을 다 읽으면 바로 다음 장에서 묵상을 적어요. 쓰는 동안 저절로 저장돼요. 나만 보거나, 공동체와 나누거나, 모두에게 나눌 수 있어요. 마지막으로 고른 공개 범위를 기억해요.\n\n■ 노트\n설교를 들으며, 혹은 말씀을 읽으며 내 노트를 남겨요. @잠언3:5-6처럼 적으면 그 구절이 바로 노트에 들어가요. 노트는 공동체에 나누거나 링크로 보낼 수 있어요.\n\n■ 형광펜\n마음에 닿은 구절을 골라 색을 칠해 두세요. 언제 칠했는지 날짜도 함께 남아요.\n\n■ 공동체\n교회 순모임, 가족, 친구와 공동체를 만들어요. 초대 링크나 초대 코드로 들어오고, 원하면 리더가 승인한 사람만 들어올 수 있어요. 알림이 많으면 조용히 해 두고, 언제든 나갈 수 있어요.\n\n■ 나의 선한 영향력\n내가 나눈 말씀과 감사가 몇 명에게 닿았는지 조용히 보여 드려요. 경쟁이 아니라, 나눔이 얼마나 멀리 퍼졌는지 보는 숫자예요.\n\n■ 올해의 말씀\n한 해 동안 읽은 장, 말씀 읽은 날, 가장 길게 이어 읽은 날, 올해의 말씀과 가장 많이 펼친 본문을 한 장의 스토리 카드로 만들어 인스타그램에 나눌 수 있어요.\n\n■ 안전하고 사적인 공간\n· 나만 보는 기록은 휴대폰에서 잠근 뒤 저장돼요. 운영자도 열어 볼 수 없어요.\n· 부적절한 글은 신고하고, 숨기고, 사람을 차단할 수 있어요.\n· 앱 안에서 언제든 계정을 삭제할 수 있어요.\n\n한국어 · English · Español\n\n문의: hi@dailyjourney.org"
+ },
+ "en": {
+  "appstore": {
+   "name": "Daily Journey - Bible Reading",
+   "subtitle": "Read the Bible daily, together",
+   "promo": "Read today’s passage, and read the same verses on the same day as your friends. Pray for your community, and keep your own notes on the Word and each sermon.",
+   "keywords": "Bible,scripture,reading plan,devotional,sermon notes,prayer,church,kjv,verse,community,faith",
+   "whatsnew": "Introducing Daily Journey. Read the Word every day and share it with your community."
+  },
+  "play": {
+   "title": "Daily Journey - Bible Reading",
+   "short": "Today’s passage, reading plans with friends, prayer requests and notes."
+  },
+  "description": "With your community, one slide at a time.\n\nDaily Journey helps you read the Bible every day and share what you read, your prayers and your thanks with the people close to you. The screen is white and quiet, so you can stay with the text.\n\n■ READ\n· Today’s passage: open the set passage for the day in one tap.\n· Keep reading: pick up where you left off, and read the whole Bible from Genesis to Revelation.\n· Go anywhere: choose a book, chapter and verse.\n· Adjustable text size. The Bible text is built in, so it works offline.\n· 13 free Bibles, including the King James Version, ASV, WEB, Reina-Valera 1909 and 개역한글 (Korean) — all public domain. Download any of them to read offline.\n\n■ READING PLANS WITH FRIENDS\nChoose where to start and finish and how many days, and Daily Journey splits it into daily readings. Send an invite link and friends or family read the same passage on the same day. Set a reading reminder for the time you like.\n\n■ FEED\nToday’s verse, your community’s prayer requests and shared thanks, one card at a time. Swipe through verses, and pray as soon as a request comes in. No like counts, no comparing.\n\n■ REFLECTIONS\nFinish today’s passage and write your reflection on the very next page. It saves as you type. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.\n\n■ NOTES\nKeep your own notes while you listen to a sermon or read the Word. Type @Proverbs3:5-6 and the verses drop right into your note. Share notes with your community or send them as a link.\n\n■ HIGHLIGHTS\nHighlight the verses that speak to you, in a soft color. The day you highlighted stays with it.\n\n■ COMMUNITIES\nStart a community for your church group, family or friends. People join with an invite link or code, and you can require approval. Mute a busy community, or leave at any time.\n\n■ MY GOOD INFLUENCE\nSee, quietly, how many people the verses and thanks you shared have reached. Not a contest — just how far your sharing has gone.\n\n■ MY YEAR IN THE WORD\nChapters read, days in the Word, your longest streak, your verse of the year and your most opened passage — on one story card to share on Instagram.\n\n■ SAFE AND PRIVATE\n· Entries only you can see are locked on your phone before they are saved. We can’t read them.\n· Report posts, hide them, and block people.\n· Delete your account in the app at any time.\n\nEnglish · 한국어 · Español\n\nContact: hi@dailyjourney.org"
+ },
+ "es": {
+  "appstore": {
+   "name": "Daily Journey: Biblia diaria",
+   "subtitle": "Lee la Biblia cada día, juntos",
+   "promo": "Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu comunidad y guarda tus propias notas de la Palabra y de cada sermón.",
+   "keywords": "biblia,lectura,plan,devocional,sermon,notas,oracion,iglesia,versiculo,comunidad,fe",
+   "whatsnew": "Presentamos Daily Journey. Lee la Palabra cada día y compártela con tu comunidad."
+  },
+  "play": {
+   "title": "Daily Journey: Biblia diaria",
+   "short": "Pasaje de hoy, planes de lectura con amigos, peticiones de oración y notas."
+  },
+  "description": "Con tu comunidad, una página a la vez.\n\nDaily Journey te ayuda a leer la Biblia cada día y a compartir lo que lees, tus oraciones y tu gratitud con las personas cercanas. La pantalla es blanca y tranquila, para que te quedes en el texto.\n\n■ LEER\n· Pasaje de hoy: abre el pasaje del día con un toque.\n· Seguir leyendo: continúa donde lo dejaste y lee toda la Biblia, de Génesis a Apocalipsis.\n· Ve a cualquier parte: elige libro, capítulo y versículo.\n· Tamaño de letra ajustable. El texto bíblico viene incluido y funciona sin conexión.\n· 13 Biblias gratuitas, entre ellas Reina-Valera 1909, Reina-Valera 1858, King James Version y 개역한글 (coreano), todas de dominio público. Descárgalas para leer sin conexión.\n\n■ PLANES DE LECTURA CON AMIGOS\nElige desde dónde hasta dónde y en cuántos días, y Daily Journey lo divide en lecturas diarias. Envía un enlace de invitación y tus amigos o tu familia leerán el mismo pasaje el mismo día. Pon un recordatorio a la hora que prefieras.\n\n■ INICIO\nEl versículo de hoy, las peticiones de oración de tu comunidad y la gratitud compartida, una tarjeta a la vez. Desliza los versículos y ora en cuanto llegue una petición. Sin contadores de “me gusta”, sin comparaciones.\n\n■ REFLEXIONES\nTermina el pasaje de hoy y escribe tu reflexión en la página siguiente. Se guarda mientras escribes. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.\n\n■ NOTAS\nEscribe tus propias notas mientras escuchas un sermón o lees la Palabra. Escribe @Proverbios3:5-6 y los versículos entran directo en tu nota. Comparte las notas con tu comunidad o envíalas como enlace.\n\n■ RESALTADOS\nResalta los versículos que te hablan, con un color suave. El día en que los resaltaste queda guardado.\n\n■ COMUNIDADES\nCrea una comunidad para tu grupo de la iglesia, tu familia o tus amigos. Se entra con un enlace o un código de invitación, y puedes pedir aprobación. Silencia una comunidad muy activa o sal cuando quieras.\n\n■ MI BUENA INFLUENCIA\nMira, en silencio, a cuántas personas han llegado los versículos y la gratitud que compartiste. No es una competencia: es lo lejos que llegó lo que compartiste.\n\n■ MI AÑO EN LA PALABRA\nCapítulos leídos, días en la Palabra, tu racha más larga, tu versículo del año y el pasaje que más abriste, en una tarjeta de historia para compartir en Instagram.\n\n■ SEGURO Y PRIVADO\n· Lo que solo tú ves se cifra en tu teléfono antes de guardarse. Nosotros no podemos leerlo.\n· Denuncia publicaciones, ocúltalas y bloquea personas.\n· Elimina tu cuenta desde la app cuando quieras.\n\nEspañol · English · 한국어\n\nContacto: hi@dailyjourney.org"
+ }
 }

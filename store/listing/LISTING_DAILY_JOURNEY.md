@@ -9,10 +9,10 @@
 Daily Journey - 매일 성경
 ```
 
-### appstore.subtitle  (17/30)
+### appstore.subtitle  (15/30)
 
 ```
-매일 성경 읽기, 공동체와 함께
+매일 한 장, 공동체와 함께
 ```
 
 ### appstore.promo  (66/170)
@@ -45,10 +45,10 @@ Daily Journey - 매일 성경
 오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 노트를 한곳에서.
 ```
 
-### description  (1263/4000)
+### description  (1317/4000)
 
 ```
-말씀을 매일, 공동체와 함께.
+매일 한 장, 공동체와 함께.
 
 Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 가까운 공동체와 나누는 앱이에요. 화면은 하얗고 조용해서, 말씀에만 머물 수 있어요.
 
@@ -57,7 +57,7 @@ Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 �
 · 이어 읽기: 마지막으로 읽은 곳에서 다시 시작해요. 창세기부터 요한계시록까지 통독할 수 있어요.
 · 성경 고르기: 책, 장, 절을 골라 원하는 본문으로 바로 가요.
 · 글자 크기를 바꿀 수 있고, 성경 본문은 앱 안에 들어 있어 인터넷이 없어도 읽어요.
-· 개역한글, KJV, Reina-Valera 1909 (모두 공공 저작물)
+· 개역한글, KJV, Reina-Valera 1909 등 무료 성경 13가지 (모두 공공 저작물). 받아 두면 인터넷 없이도 읽어요.
 
 ■ 함께 읽기 계획
 어디서부터 어디까지, 며칠 동안 읽을지 정하면 날마다 읽을 만큼 나눠 드려요. 초대 링크를 보내면 친구와 가족이 같은 날 같은 본문을 함께 읽어요. 원하는 시간에 읽기 알림도 받을 수 있어요.
@@ -66,7 +66,7 @@ Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 �
 오늘의 말씀, 공동체의 기도제목, 함께 나눈 감사가 한 장씩 보여요. 옆으로 넘기며 말씀을 보고, 기도제목을 받으면 바로 함께 기도해요. 좋아요 숫자로 비교하지 않아요.
 
 ■ 묵상
-읽은 본문 아래에 느낀 점과 기도를 적어 두세요. 나만 보거나, 공동체와 나누거나, 모두에게 나눌 수 있어요. 마지막으로 고른 공개 범위를 기억해요.
+오늘의 본문을 다 읽으면 바로 다음 장에서 묵상을 적어요. 쓰는 동안 저절로 저장돼요. 나만 보거나, 공동체와 나누거나, 모두에게 나눌 수 있어요. 마지막으로 고른 공개 범위를 기억해요.
 
 ■ 노트
 설교를 들으며, 혹은 말씀을 읽으며 내 노트를 남겨요. @잠언3:5-6처럼 적으면 그 구절이 바로 노트에 들어가요. 노트는 공동체에 나누거나 링크로 보낼 수 있어요.
@@ -137,10 +137,10 @@ Daily Journey - Bible Reading
 Today’s passage, reading plans with friends, prayer requests and notes.
 ```
 
-### description  (2304/4000)
+### description  (2427/4000)
 
 ```
-The Word every day, together.
+With your community, one slide at a time.
 
 Daily Journey helps you read the Bible every day and share what you read, your prayers and your thanks with the people close to you. The screen is white and quiet, so you can stay with the text.
 
@@ -149,7 +149,7 @@ Daily Journey helps you read the Bible every day and share what you read, your p
 · Keep reading: pick up where you left off, and read the whole Bible from Genesis to Revelation.
 · Go anywhere: choose a book, chapter and verse.
 · Adjustable text size. The Bible text is built in, so it works offline.
-· King James Version, 개역한글 (Korean), Reina-Valera 1909 — all public domain.
+· 13 free Bibles, including the King James Version, ASV, WEB, Reina-Valera 1909 and 개역한글 (Korean) — all public domain. Download any of them to read offline.
 
 ■ READING PLANS WITH FRIENDS
 Choose where to start and finish and how many days, and Daily Journey splits it into daily readings. Send an invite link and friends or family read the same passage on the same day. Set a reading reminder for the time you like.
@@ -158,7 +158,7 @@ Choose where to start and finish and how many days, and Daily Journey splits it 
 Today’s verse, your community’s prayer requests and shared thanks, one card at a time. Swipe through verses, and pray as soon as a request comes in. No like counts, no comparing.
 
 ■ REFLECTIONS
-Write what you noticed and a prayer under the passage you read. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.
+Finish today’s passage and write your reflection on the very next page. It saves as you type. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.
 
 ■ NOTES
 Keep your own notes while you listen to a sermon or read the Word. Type @Proverbs3:5-6 and the verses drop right into your note. Share notes with your community or send them as a link.
@@ -229,10 +229,10 @@ Daily Journey: Biblia diaria
 Pasaje de hoy, planes de lectura con amigos, peticiones de oración y notas.
 ```
 
-### description  (2482/4000)
+### description  (2618/4000)
 
 ```
-La Palabra cada día, juntos.
+Con tu comunidad, una página a la vez.
 
 Daily Journey te ayuda a leer la Biblia cada día y a compartir lo que lees, tus oraciones y tu gratitud con las personas cercanas. La pantalla es blanca y tranquila, para que te quedes en el texto.
 
@@ -241,7 +241,7 @@ Daily Journey te ayuda a leer la Biblia cada día y a compartir lo que lees, tus
 · Seguir leyendo: continúa donde lo dejaste y lee toda la Biblia, de Génesis a Apocalipsis.
 · Ve a cualquier parte: elige libro, capítulo y versículo.
 · Tamaño de letra ajustable. El texto bíblico viene incluido y funciona sin conexión.
-· Reina-Valera 1909, King James Version y 개역한글 (coreano), todas de dominio público.
+· 13 Biblias gratuitas, entre ellas Reina-Valera 1909, Reina-Valera 1858, King James Version y 개역한글 (coreano), todas de dominio público. Descárgalas para leer sin conexión.
 
 ■ PLANES DE LECTURA CON AMIGOS
 Elige desde dónde hasta dónde y en cuántos días, y Daily Journey lo divide en lecturas diarias. Envía un enlace de invitación y tus amigos o tu familia leerán el mismo pasaje el mismo día. Pon un recordatorio a la hora que prefieras.
@@ -250,7 +250,7 @@ Elige desde dónde hasta dónde y en cuántos días, y Daily Journey lo divide e
 El versículo de hoy, las peticiones de oración de tu comunidad y la gratitud compartida, una tarjeta a la vez. Desliza los versículos y ora en cuanto llegue una petición. Sin contadores de “me gusta”, sin comparaciones.
 
 ■ REFLEXIONES
-Escribe lo que notaste y una oración bajo el pasaje que leíste. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.
+Termina el pasaje de hoy y escribe tu reflexión en la página siguiente. Se guarda mientras escribes. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.
 
 ■ NOTAS
 Escribe tus propias notas mientras escuchas un sermón o lees la Palabra. Escribe @Proverbios3:5-6 y los versículos entran directo en tu nota. Comparte las notas con tu comunidad o envíalas como enlace.
