@@ -5586,9 +5586,18 @@ function celebrate() {
     <button class="subtle-link" data-action="cel-share">${t('cel.share')}</button></div>` });
 }
 // The only yellow in the app: a small light that grows larger and deeper as reach grows (log scale, full at ~300 pts).
+// How much my sharing reached people lately: likes, saves, shares and prayers on what I posted in the last 7 / 30 days,
+// plus hearts on my thanks links. A big week makes the light clearly bigger, a big month makes it big; a quiet stretch and it shrinks back.
+function glowLevel() {
+  const touch = p => (p.likes || 0) + (p.saves || 0) + (p.shares || 0) + (p.prayedBy || []).length;
+  const mine = data.posts.filter(p => p.mine && p.scope !== 'private' && !p.status && p.date);
+  const w7 = daysAgo(6), w30 = daysAgo(29), hearts = data.settings.replies || [];
+  const reach = since => mine.filter(p => p.date >= since).reduce((a, p) => a + touch(p), 0) + hearts.filter(h => String(h.at || '').slice(0, 10) >= since).length;
+  const part = (n, full) => Math.min(1, Math.log(1 + n) / Math.log(1 + full));
+  return Math.min(1, 0.45 * Math.pow(part(reach(w7), 40), 1.3) + 0.55 * Math.pow(part(reach(w30), 200), 1.3));
+}
 function glow(score, scale = 1) {
-  // starts as a tiny, faint point; spreads slowly (log scale, full glow around 1,000 pts)
-  const g = Math.pow(Math.min(1, Math.log10(1 + Math.max(0, score)) / Math.log10(1001)), 1.3);
+  const g = glowLevel();
   return `<span class="glow" style="--g:${g.toFixed(3)};--s:${scale}" aria-hidden="true"></span>`;
 }
 // 나의 감사 top: just two quiet lines — how far your thanks reached, and this month. Details open on tap.
