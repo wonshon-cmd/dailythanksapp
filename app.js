@@ -803,6 +803,7 @@ const ICONS = {
   globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>',
   lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
   chevrons: '<path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/>',
+  up: '<path d="M12 19V5M5 12l7-7 7 7"/>',
   down: '<path d="M12 5v14M19 12l-7 7-7-7"/>',
   userplus: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>',
   bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
@@ -1010,6 +1011,23 @@ const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 // locked backup (sign in on another phone, enter the recovery key once)
+Object.assign(STR.ko, { 'tr.title': "성경 역본", 'tr.hint': "모두 무료(저작권이 끝난) 역본이에요. 누르면 그 역본으로 읽고, ‘받기’를 누르면 인터넷 없이도 읽을 수 있게 이 휴대폰에 저장해요.", 'tr.get': "받기", 'tr.got': "저장됨", 'tr.done': "{name} 저장했어요." });
+Object.assign(STR.en, { 'tr.title': "Bible translation", 'tr.hint': "All free, public-domain translations. Tap one to read in it; ‘Download’ keeps it on this phone for reading offline.", 'tr.get': "Download", 'tr.got': "Saved", 'tr.done': "{name} saved." });
+Object.assign(STR.es, { 'tr.title': "Traducción de la Biblia", 'tr.hint': "Todas son gratuitas, de dominio público. Toca una para leer en ella; ‘Descargar’ la guarda en este teléfono para leer sin conexión.", 'tr.get': "Descargar", 'tr.got': "Guardada", 'tr.done': "{name} guardada." });
+// Daily Journey: influence in the words of grace (Daily Thanks keeps its own wording)
+if (BIBLE_MODE) {
+  Object.assign(STR.ko, { 'inf.title': '나의 선한 영향력', 'inf.peopleSub': '내 마음이 닿은 사람들', 'inf.glow': '은혜를 나눌수록 빛은 더 밝아져요.' });
+  Object.assign(STR.en, { 'inf.title': 'My positive influence', 'inf.peopleSub': 'people your heart has reached', 'inf.glow': 'The more grace you share, the brighter the light.' });
+  Object.assign(STR.es, { 'inf.title': 'Mi influencia positiva', 'inf.peopleSub': 'personas a las que llegó tu corazón', 'inf.glow': 'Cuanta más gracia compartes, más brilla la luz.' });
+}
+// no note under "Everyone"
+Object.assign(STR.ko, { 'compose.publicNote': '' }); Object.assign(STR.en, { 'compose.publicNote': '' }); Object.assign(STR.es, { 'compose.publicNote': '' });
+Object.assign(STR.ko, { 'ty.toneSorry': "미안해요", 'ty.phSorry': "미안한 마음을 솔직하게 적어 보세요." });
+Object.assign(STR.en, { 'ty.toneSorry': "I’m sorry", 'ty.phSorry': "Say what you’re sorry for, honestly." });
+Object.assign(STR.es, { 'ty.toneSorry': "Lo siento", 'ty.phSorry': "Escribe con sinceridad lo que lamentas." });
+Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
+Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
+Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
 Object.assign(STR.ko, { 'inf.opens': "링크를 열어 본 사람" }); Object.assign(STR.en, { 'inf.opens': "Opened your links" }); Object.assign(STR.es, { 'inf.opens': "Abrieron tus enlaces" });
 Object.assign(STR.ko, { 'bk.title': "내 기록 열기", 'bk.body': "이 계정에 잠가 둔 기록이 있어요. 전에 쓰던 휴대폰의 나 › 설정 › 기록 보호에서 복구 키를 복사해 여기에 넣으면 그대로 열려요.", 'bk.open': "열기", 'bk.later': "나중에", 'bk.fresh': "이전 기록 없이 새로 시작", 'bk.freshQ': "이전 기록은 더 이상 열 수 없게 돼요. 새로 시작할까요?", 'bk.freshDone': "새로 시작했어요.", 'bk.done': "기록을 가져왔어요." });
 Object.assign(STR.en, { 'bk.title': "Open your records", 'bk.body': "This account has locked records. On your old phone, copy the recovery key from Me › Settings › Privacy lock and enter it here — everything opens as it was.", 'bk.open': "Open", 'bk.later': "Later", 'bk.fresh': "Start fresh without them", 'bk.freshQ': "Your earlier records can’t be opened after this. Start fresh?", 'bk.freshDone': "Started fresh.", 'bk.done': "Your records are here." });
@@ -1923,6 +1941,16 @@ const BOOKS = [
 const BIBLE_TR = { ko: 'korean', en: 'kjv', es: 'valera' };
 // the Bible version I read: my choice in Settings, or the one that goes with the app language
 const TR_NAME = { korean: '개역한글', kjv: 'KJV', valera: 'RV 1909' };
+// More free (public-domain) translations: listed in bible/index.json (made by tools/fetch-bible.py). Remembered on the
+// device so the list and the chosen one work offline too.
+const TR_LANG = { korean: 'ko', kjv: 'en', valera: 'es' }, TR_FULL = { korean: '개역한글 (1961)', kjv: 'King James Version', valera: 'Reina-Valera 1909' };
+function trAdd(list) { (Array.isArray(list) ? list : []).forEach(x => { if (x && /^[a-z0-9]+$/.test(x.id) && x.name) { TR_NAME[x.id] = String(x.name).slice(0, 24); TR_LANG[x.id] = x.lang; TR_FULL[x.id] = String(x.full || x.name).slice(0, 80); } }); }
+trAdd(data.settings.trList);
+async function trRefresh() {
+  for (const url of ['bible/index.json', `${LEGAL_BASE}/bible/index.json`]) {
+    try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) continue; const j = await r.json(); if (Array.isArray(j) && j.length) { const was = curTr(); trAdd(j); data.settings.trList = j; save(true); if (curTr() !== was) render(); return; } } catch {}
+  }
+}
 const curTr = () => TR_NAME[data.settings.bibleTr] ? data.settings.bibleTr : BIBLE_TR[lang()] || 'kjv';
 const TOTAL_CHAPTERS = 1189;
 const bookName = b => { const x = BOOKS[b - 1]; return x ? (lang() === 'ko' ? x[0] : lang() === 'es' ? x[3] : x[2]) : ''; };
@@ -2026,6 +2054,28 @@ const chapterMem = {}, bookMem = {};
 // dailyjourney.org/app), then on dailyjourney.org, then the getBible API as a last resort.
 // Bible text kept on the device (web): every book read once stays available offline; Settings can save all of it.
 const bibleCache = () => (window.caches ? caches.open('dt-bible-v1').catch(() => null) : Promise.resolve(null));
+// 역본 고르기: every free translation, my language first; tap to read in it, ↓ to keep it on this phone (offline).
+function trSheet() {
+  const back = sheet.dataset.kind === 'tr' ? state.sheetBack : null;   // redrawn after a pick: ✕ still goes back to Settings
+  const got = data.settings.trOffline || [], cur = curTr(), order = [lang(), ...['ko', 'en', 'es'].filter(x => x !== lang())];
+  const LN = { ko: '한국어', en: 'English', es: 'Español' };
+  const rowOf = id => `<div class="list-row tr-row${id === cur ? ' on' : ''}"><button class="tr-main" data-action="set-tr" data-id="${esc(id)}"><span class="row-main"><span class="row-title">${esc(TR_NAME[id])}${id === cur ? ` ${icon('check')}` : ''}</span><span class="row-sub">${esc(TR_FULL[id] || '')}</span></span></button>
+    ${got.includes(id) || (window.Capacitor?.isNativePlatform?.() && BIBLE_TR_CORE.includes(id)) ? `<span class="row-sub tr-got">${t('tr.got')}</span>` : `<button class="link-btn tr-get" data-action="tr-get" data-id="${esc(id)}" id="trg-${esc(id)}">${icon('download')}${t('tr.get')}</button>`}</div>`;
+  showSheet({ title: t('tr.title'), body: `<p class="hint">${t('tr.hint')}</p>${order.map(l => { const ids = Object.keys(TR_NAME).filter(id => (TR_LANG[id] || 'en') === l); return ids.length ? `<p class="field-label">${LN[l]}</p><div class="list">${ids.map(rowOf).join('')}</div>` : ''; }).join('')}` });
+  sheet.dataset.kind = 'tr'; if (back) state.sheetBack = back;
+}
+const BIBLE_TR_CORE = ['korean', 'kjv', 'valera'];   // inside the phone app already
+async function saveTrOffline(tr) {
+  const cache = await bibleCache(); if (!cache) { toast(t('off.fail')); return; }
+  const btn = () => document.getElementById('trg-' + tr); let fail = 0;
+  for (let b = 1; b <= 66; b++) {
+    if (!(await cache.match(`/dt-bible/${tr}/${b}.json`))) { if (!(await fetchBook(tr, b))) fail++; }
+    const el = btn(); if (el) el.textContent = `${Math.round(b / 66 * 100)}%`;
+  }
+  if (!fail) { data.settings.trOffline = [...new Set([...(data.settings.trOffline || []), tr])]; save(); }
+  const el = btn(); if (el) el.outerHTML = fail ? `<span class="row-sub">${t('off.fail')}</span>` : `<span class="row-sub tr-got">${t('tr.got')}</span>`;
+  toast(fail ? t('off.fail') : t('tr.done').replace('{name}', TR_NAME[tr]));
+}
 async function saveBibleOffline() {
   const box = $('#off-p'); const trs = ['korean', 'kjv', 'valera']; const total = trs.length * 66; let n = 0, fail = 0;
   const cache = await bibleCache(); if (!cache) { toast(t('off.fail')); return; }
@@ -2044,7 +2094,7 @@ async function fetchBook(tr, b) {
   const key = `${tr}/${b}`;
   if (!bookMem[key]) bookMem[key] = (async () => {
     const cache = await bibleCache();
-    for (const url of [`bible/${key}.json`, `${LEGAL_BASE}/bible/${key}.json`, `https://raw.githubusercontent.com/wonshon-cmd/dailythanksapp/5ca8dc9eb893cb76f362953c1a5e48b34324bc28/bible/${key}.json`]) {
+    for (const url of [`bible/${key}.json`, `${LEGAL_BASE}/bible/${key}.json`, `https://raw.githubusercontent.com/wonshon-cmd/dailythanksapp/5ca8dc9eb893cb76f362953c1a5e48b34324bc28/bible/${key}.json`, `https://raw.githubusercontent.com/wonshon-cmd/dailythanksapp/main/bible/${key}.json`]) {
       try { const r = await fetch(url); if (r.ok) { const j = await r.clone().json(); if (Array.isArray(j.chapters)) { cache?.put(`/dt-bible/${key}.json`, r).catch(() => {}); return j.chapters; } } } catch { /* next */ }
     }
     try { const r = await cache?.match(`/dt-bible/${key}.json`); if (r) { const j = await r.json(); if (Array.isArray(j.chapters)) return j.chapters; } } catch {}
@@ -3452,7 +3502,6 @@ function renderSermons() {
     ${recLive() ? `<button class="rec-bar" id="rec-bar" data-action="sermon-new"><i class="rec-dot"></i><span>${t('rec.bar').replace('{t}', fmtDur(Rec.seconds))}</span></button>` : ''}
     <label class="sn-search" ${state.snSearch || state.snQuery ? '' : 'hidden'}>${icon('search')}<input id="sn-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="${esc(t('ss.ph'))}" value="${esc(state.snQuery || '')}">
       <button type="button" class="link-btn sn-qx" data-action="sn-q-clear" ${state.snQuery ? '' : 'hidden'}>${t('ss.clear')}</button></label>
-    <p class="hint" ${state.snQuery ? 'hidden' : ''} id="sn-sub">${t('sn.sub')}</p>
     ${'' && `<div class="sn-quota"><span>${q.plan === 'free' ? t('sn.free').replace('{n}', q.used).replace('{t}', q.limit) : t('sn.plan').replace('{plan}', t('sn.' + q.plan)).replace('{n}', q.monthUsed).replace('{t}', q.monthLimit)}</span>
       ${q.plan === 'free' ? `<i class="sn-bar"><b style="width:${Math.min(100, q.used / q.limit * 100)}%"></b></i>` : ''}</div>`}
     <div id="sn-list">${noteList(notes, status)}</div>
@@ -4100,21 +4149,38 @@ function leaveGroup(gid) {
   });
 }
 function renderBibleMe() {
-  const saved = data.savedVerses || [], medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).sort((a, b) => chIndex(a.ref.b, a.ref.c) - chIndex(b.ref.b, b.ref.c));
-  const q = noteQuota(), d = readDays();
+  const q = noteQuota();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
     ${myCommunities()}
     ${readGauge()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
-    <p class="gd-label me-label"><span>${t('me.medi')}</span><span>${medi.length}</span></p>
-    <div class="notes">${medi.slice(0, 20).map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}"><span class="note-meta"><span>${esc(refText(p.ref))}</span></span><span class="note-text">${esc(L(p.text))}</span></button>`).join('') || `<p class="me-empty">${t('me.none')}</p>`}</div>
-    <p class="gd-label me-label"><span>${t('me.saved')}</span><span>${saved.length}</span></p>
-    <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="me-empty">${t('me.none')}</p>`}</div>
+    <div class="me-tools"><input id="me-q" class="field" type="search" placeholder="${esc(t('me.search'))}" value="${esc(state.meQ || '')}" autocomplete="off">
+      <button class="secondary me-sort" data-action="me-sort">${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}</button></div>
+    <div id="me-lists">${meLists()}</div>
     <div class="list" style="margin-top:18px">
       ${PAID ? `<button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>` : ''}
     </div>
   </div></div>`;
+  $('#me-q')?.addEventListener('input', e => { state.meQ = e.target.value; const box = $('#me-lists'); if (box) box.innerHTML = meLists(); });
+}
+// 나 › my reflections and saved verses: with their dates, newest or oldest first, and a search over words, passage and date
+const meDate = d => { if (!d) return ''; const x = new Date(String(d).slice(0, 10) + 'T12:00:00'), now = new Date();
+  return x.toLocaleDateString(lang() === 'ko' ? 'ko-KR' : lang() === 'es' ? 'es' : 'en-US', { ...(x.getFullYear() !== now.getFullYear() ? { year: 'numeric' } : {}), month: 'long', day: 'numeric' }); };
+function meLists() {
+  const q = fold(state.meQ || ''), dir = state.meOld ? 1 : -1;
+  const hit = (...xs) => !q || xs.some(x => fold(x).includes(q));
+  const byDate = (a, b) => dir * (String(a._d).localeCompare(String(b._d)));
+  const medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).map(p => ({ p, _d: p.date || '', ref: refText(p.ref), text: L(p.text) }))
+    .filter(x => hit(x.text, x.ref, x._d, meDate(x._d))).sort(byDate);
+  const saved = (data.savedVerses || []).map(x => ({ x, _d: x.date || '', ref: refText({ b: x.b, c: x.c, v: x.v, v2: x.v }), text: x.text }))
+    .filter(y => hit(y.text, y.ref, y._d, meDate(y._d))).sort(byDate);
+  const item = (action, id, y) => `<button class="note" data-action="${action}" data-id="${esc(id)}"><span class="note-meta"><span>${esc(y.ref)}</span>${y._d ? `<span>${esc(meDate(y._d))}</span>` : ''}</span><span class="note-text">${esc(y.text)}</span></button>`;
+  const none = `<p class="me-empty">${t(q ? 'me.noMatch' : 'me.none')}</p>`;
+  return `<p class="gd-label me-label"><span>${t('me.medi')}</span><span>${medi.length}</span></p>
+    <div class="notes">${medi.slice(0, 100).map(y => item('note', y.p.id, y)).join('') || none}</div>
+    <p class="gd-label me-label"><span>${t('me.saved')}</span><span>${saved.length}</span></p>
+    <div class="notes">${saved.slice(0, 100).map(y => item('open-saved-verse', y.x.key, y)).join('') || none}</div>`;
 }
 function renderChallenges() {
   main.innerHTML = `<div class="screen"><div class="page">
@@ -4364,7 +4430,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
       if (!to) { toast(t('ty.needName')); $('#ty-name').focus(); return; }
       if (!text) { $('#gratitude-text').focus(); return; }
       const from = (data.settings.myName || '').trim().slice(0, 30); // the name from sign-up
-      const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}), ...(state.tyTone === 'love' ? { tone: 'love' } : {}) };
+      const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}), ...(tyTone(state.tyTone) !== 'thanks' ? { tone: tyTone(state.tyTone) } : {}) };
       data.posts.unshift(p); state.tyName = ''; save(); render(); thanksCard(p.id);
     });
     return;
@@ -4375,7 +4441,6 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label">${t('med.felt')}</p>` : ''}
     <textarea id="gratitude-text" data-draft="compose" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${med ? medExtras() : ''}
-    ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
     <p class="field-label">${t('compose.who')}</p>
     ${visPicker('compose')}
     ${(() => { const kg = kind === 'meditation' ? 'meditation' : kind === 'prayer' ? 'prayer' : 'thanks', v = visOf('compose'), gids = v.mode === 'private' ? (v.targets || []) : [];
@@ -4885,7 +4950,7 @@ function postLink(p) {
   const kind = p.kind === 'thanks' || p.kind === 'ahead' || p.kind === 'meditation' ? p.kind : 'today';
   // my own thanks also carries my friend box: the friend can answer it, or connect with me (the key stays in the # part)
   const box = p.mine && CLOUD && Cloud.on() && data.settings.box?.ok && data.settings.box.uid === Cloud.uid() ? data.settings.box : null;
-  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.tone === 'love' ? { tn: 'love' } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
+  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(tyTone(p.tone) !== 'thanks' ? { tn: tyTone(p.tone) } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   // a reflection opens right in the app (passage + what they wrote); other posts open on their own web page
   if (kind === 'meditation') return withS(`${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`);
@@ -5314,11 +5379,10 @@ function bibleSettings() {
     <p class="field-label">${t('bs.size')}</p>
     ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
     <p class="field-label">${t('bs.tr')}</p>
-    ${seg(Object.entries(TR_NAME), 'set-tr', curTr(), 'seg-tr')}
+    <div class="list">${row('tr-pick', 'book', esc(TR_NAME[curTr()]), `<span class="row-sub">${esc(TR_FULL[curTr()] || '')}</span>${icon('chevron')}`)}</div>
     <p class="field-label">${t('bs.reading')}</p>
     <div class="list">
       ${row(data.settings.notificationEnabled ? 'notification' : 'notify-prime', 'bell', t('bs.remind'), `<span class="row-sub">${data.settings.notificationEnabled ? esc(data.settings.notificationTime) : t('bs.off')}</span>${icon('chevron')}`)}
-      ${window.Capacitor?.isNativePlatform?.() ? '' : row('bible-offline', 'book', t('off.title'))}
     </div>
     ${PAID ? `<p class="field-label">${t('bs.sermon')}</p>
     <div class="list">
@@ -5873,7 +5937,7 @@ function influenceSheet() {
     ${f.given.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.given.ext)}</p>` : ''}
     <p class="field-label">${t('inf.top')}</p>
     <div class="list">${topPosts(5).map((p, i) => `<div class="list-row static rank-row"><span class="rank">${i + 1}</span><span class="row-main"><span class="row-title clamp">${esc(L(p.text))}</span><span class="row-sub">${esc(p.mine ? t('me') : L(p.name))}${p.mine ? ` · ♡ ${likesOf(p)} · ${t('inf.saves')} ${savesOf(p)} · ${t('inf.shares')} ${sharesOf(p)}` : ''}</span></span></div>`).join('')}</div>
-    <p class="about">${icon('info')}<span>${t('inf.peopleNote')} ${t('inf.how')}</span></p>` });
+    <p class="about">${icon('info')}<span>${t('inf.peopleNote')}${BIBLE_MODE ? '' : ' ' + t('inf.how')}</span></p>` });
 }
 function countShare(id, external = false) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
@@ -5884,13 +5948,16 @@ function countShare(id, external = false) {
 
 /* ---------------- thank-you card (감사 전하기) ---------------- */
 // 마음 전하기: a thank-you or a love note (Thank you, … / Love you, …)
-const tyHead = p => (p?.tone === 'love' ? 'Love you' : 'Thank you');
+// 고마워요 · 미안해요 · 사랑해요
+const TY_HEAD = { thanks: 'Thank you', sorry: 'I’m sorry', love: 'Love you' };
+const tyTone = x => (x === 'love' || x === 'sorry' ? x : 'thanks');
+const tyHead = p => TY_HEAD[tyTone(p?.tone)];
 function thanksForm(keep = {}) {
-  const tone = state.tyTone === 'love' ? 'love' : 'thanks';
-  return `<div class="chips ty-tones">${[['thanks', t('ty.toneThanks')], ['love', t('ty.toneLove')]].map(([k, l]) => `<button type="button" class="chip ${tone === k ? 'active' : ''}" data-action="ty-tone" data-id="${k}">${l}</button>`).join('')}</div>
-    <div class="ty-head">${tone === 'love' ? 'Love you' : 'Thank you'},</div>
+  const tone = tyTone(state.tyTone);
+  return `<div class="chips ty-tones">${[['thanks', t('ty.toneThanks')], ['sorry', t('ty.toneSorry')], ['love', t('ty.toneLove')]].map(([k, l]) => `<button type="button" class="chip ${tone === k ? 'active' : ''}" data-action="ty-tone" data-id="${k}">${l}</button>`).join('')}</div>
+    <div class="ty-head">${TY_HEAD[tone]},</div>
     <input id="ty-name" class="ty-name" maxlength="30" placeholder="${esc(t('ty.to'))}" value="${esc(keep.name || '')}" aria-label="${esc(t('ty.to'))}">
-    <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t(tone === 'love' ? 'ty.phLove' : 'ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
+    <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t({ love: 'ty.phLove', sorry: 'ty.phSorry' }[tone] || 'ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
     <button class="primary block" type="submit">${icon('send')}${t('ty.make')}</button>`;
 }
 function thanksText(p) { return `${tyHead(p)}, ${p.to}\n\n${L(p.text)}\n\n— Daily Thanks`; }
@@ -6172,7 +6239,7 @@ const actions = {
     const text = `${v.text}\n— ${v.ref}${v.tr ? ' (' + v.tr + ')' : ''}\n\nGive thanks daily. · daily thanks`;
     if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
   },
-  'set-tr': id => { if (!TR_NAME[id]) return; data.settings.bibleTr = id; save(); document.querySelectorAll('[data-action="set-tr"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); state.trChanged = true; },
+  'set-tr': id => { if (!TR_NAME[id]) return; data.settings.bibleTr = id; save(); if (sheet.dataset.kind === 'tr') { trSheet(); } document.querySelectorAll('[data-action="set-tr"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); state.trChanged = true; },
   'set-size': id => { data.settings.textSize = id; save(); applyTextSize(); document.querySelectorAll('[data-action="set-size"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'read-more': id => { const p = data.posts.find(x => x.id === id); if (p) showSheet({ title: esc(p.mine ? t('me') : L(p.name)), body: `<p class="full-text">${esc(L(p.text))}</p>` }); },
   'save-post': toggleSave,
@@ -6228,6 +6295,9 @@ const actions = {
   'bk-fresh': () => { if (!confirm(t('bk.freshQ'))) return; close(); Backup.fresh(); toast(t('bk.freshDone')); },
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),
   'bible-offline-go': () => saveBibleOffline(),
+  'tr-pick': () => trSheet(),
+  'me-sort': () => { state.meOld = !state.meOld; const b = $('.me-sort'); if (b) b.innerHTML = `${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}`; const box = $('#me-lists'); if (box) box.innerHTML = meLists(); },
+  'tr-get': id => saveTrOffline(id),
   'vault-copy': async () => copyText((await Vault.recoveryCode()) || ''),
   'cp-join': pair => { const [id, how] = pair.split('|'); const c = [...(CONTENT.campaigns || []), ...CAMPAIGNS_BUILTIN].find(x => x.id === id); if (!c || data.challenges.some(x => x.campaign === id)) return;
     const g = how === 'group' ? (state.group && data.groups.some(x => x.id === state.group) ? state.group : data.groups[0]?.id) : 'pair';
@@ -6388,7 +6458,7 @@ const actions = {
   'gc-open': gid => { close(); actions['open-group'](gid); },
   // 매일 › 연속 기록 카드: 나의 말씀 기록 (dashboard)
   'dash-sheet': () => showSheet({ title: t('db.title'), body: dashHtml() }),
-  'ty-tone': k => { state.tyTone = k === 'love' ? 'love' : 'thanks'; state.tyName = $('#ty-name')?.value || state.tyName; const keep = $('#gratitude-text')?.value || ''; compose('thanks', null); setTimeout(() => { const ta = $('#gratitude-text'); if (ta && keep) ta.value = keep; }, 0); },
+  'ty-tone': k => { state.tyTone = tyTone(k); state.tyName = $('#ty-name')?.value || state.tyName; const keep = $('#gratitude-text')?.value || ''; compose('thanks', null); setTimeout(() => { const ta = $('#gratitude-text'); if (ta && keep) ta.value = keep; }, 0); },
   'mc-toggle': () => { state.mcOpen = !state.mcOpen; render(); },
   'g-pick': () => { const row = g => `<button class="list-row" data-action="g-pick-to" data-id="${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span></span>${unseenIn(g.id) ? '<i class="new-dot"></i>' : ''}${g.id === (data.groups.find(x => x.id === state.group) || data.groups[0])?.id ? `<span class="row-end">${icon('check')}</span>` : ''}</button>`;
     showSheet({ title: t('gp.list'), body: `<div class="list">${data.groups.map(row).join('')}</div>` }); },
@@ -6807,6 +6877,7 @@ function onbDone() {
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (BIBLE_MODE && !location.hash && data.settings.onboarded && !data.readDevo?.[today()]) goToday();
+if (BIBLE_MODE) setTimeout(trRefresh, data.settings.bibleTr && !TR_NAME[data.settings.bibleTr] ? 0 : 2500);   // newly added free translations show up in Settings
 if (location.hash.startsWith('#friend')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => friendLink(q), 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
 if (location.hash.startsWith('#pastor=')) { try { state.pastorView = unb64url(location.hash.slice(8)); state.immersive = false; state.tab = 'group'; document.getElementById('splash')?.remove(); setTimeout(render, 60); } catch {} }
