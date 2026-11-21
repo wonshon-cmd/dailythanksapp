@@ -98,6 +98,12 @@ footer nav a:hover{color:var(--ink)}
 .steps span{transition:color .3s}
 .steps span.on{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.reel,.pop,.finger{transition:none;animation:none}}
+/* the phone preview is off for now: the title sits centered on its own */
+.demo[hidden]{display:none}
+.top-row:has(.demo[hidden]){justify-content:center}
+.top-row:has(.demo[hidden]) .hero{text-align:center}
+.top-row:has(.demo[hidden]) .btns.center{justify-content:center}
+.top-row:has(.demo[hidden]) .hero .lead{margin-inline:auto}
 </style>
 </head>
 <body>
@@ -115,7 +121,7 @@ footer nav a:hover{color:var(--ink)}
     <div class="btns center"><a class="btn primary" href="/daily-bible/" data-k="open"></a></div>
   </section>
 
-  <section class="demo" aria-label="preview">
+  <section class="demo" aria-label="preview" hidden>
     <div class="phone" id="phone">
       <div class="bar"><span class="wm">daily <em>journey</em></span><span id="sz">가±</span></div>
       <div class="reel" id="reel"></div>
