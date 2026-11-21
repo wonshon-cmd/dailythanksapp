@@ -2568,11 +2568,37 @@ const pageHead = (title, desc, tools = '') => `<header class="page-head"><h1 cla
 const roundBtn = (action, ic, label) => `<button class="round-btn" data-action="${action}" aria-label="${esc(label)}">${icon(ic)}</button>`;
 
 // One group in the 공동체 tab: name (tap → swipe through its posts), this week together, and three actions.
+const chBtn = ch => `${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
+      ${chLen(ch) <= 7 ? `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => `<i class="${i < ch.days.length ? 'on' : ''}"></i>`).join('')}</span>`
+        : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
+      <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}`;
+// 공동체 card, in the feel of the "오늘의 말씀을 다 읽었어요" card: a name pill, a check, who's with us today
+function groupCard(g, who, w, ch) {
+  const nm = data.settings.names || {}, names = [];
+  const add = n => { n = String(n || '').trim(); if (n && !names.includes(n)) names.push(n); };
+  if (data.readDevo?.[today()] || data.posts.some(p => p.mine && inGroup(p, g.id) && p.date === today())) add(data.settings.myName || t('me'));
+  (g.people || []).filter(m => (state.devoReaders || []).includes(m.id) && m.id !== Cloud.uid?.()).forEach(m => add(m.name || nm[m.id]));
+  data.posts.filter(p => !p.mine && inGroup(p, g.id) && p.date === today() && !data.hidden.includes(p.id)).forEach(p => add(authorName(p)));
+  const done = !!data.readDevo?.[today()], ref = todaysPassage(g.id)?.ref, cols = ['#8FA3B0', '#B59A8A', '#9AA88E', '#A897B0', '#B0A48F'];
+  return `<section class="g-block gc">
+    <div class="gc-top"><button class="gc-pill" data-action="open-group" data-id="${esc(g.id)}">${esc(L(g.name))}${unseenIn(g.id) ? `<i class="new-dot" aria-label="${t('gs.new')}"></i>` : ''}</button>
+      <button class="g-more" data-action="group-menu" data-id="${esc(g.id)}" aria-label="${t('more')}">${icon('more')}</button></div>
+    <button class="gc-body" data-action="open-group" data-id="${esc(g.id)}">
+      <span class="gc-check${done ? ' on' : ''}">${icon(done ? 'check' : 'book')}</span>
+      <span class="gc-title">${names.length ? t('gs.today').replace('{n}', names.length).replace('{total}', Math.max(groupSize(g.id), names.length)) : who}</span>
+      ${ref ? `<span class="gc-sub">${esc(refText(ref))}</span>` : ''}
+      ${names.length ? `<span class="gc-faces">${names.slice(0, 6).map((n, i) => `<i style="background:${cols[i % 5]}">${esc(n.slice(0, 1))}</i>`).join('')}${names.length > 6 ? `<i class="more">+${names.length - 6}</i>` : ''}</span>` : ''}
+      <span class="gc-foot">${t('gs.week')} · ${t('gs.counts').replace('{t}', w.thanks).replace('{m}', w.meditation).replace('{p}', w.prayer)}</span>
+    </button>
+    ${chBtn(ch)}
+  </section>`;
+}
 function groupBlock(g) {
   const w = groupWeek(g.id), ch = data.challenges.find(c => c.group === g.id);
   const todayPeople = new Set(data.posts.filter(p => inGroup(p, g.id) && p.date === today() && !data.hidden.includes(p.id)).map(p => p.mine ? 'me' : authorKey(p))).size;
   const who = (todayPeople ? t('gs.today').replace('{n}', todayPeople) : w.people ? t('gs.weekPeople').replace('{n}', w.people) : t('gs.quiet')).replace('{total}', groupSize(g.id));
   if (g.pending) return `<section class="g-block g-card g-pending"><div class="g-row"><span class="g-name">${esc(L(g.name))}</span></div><p class="g-people">${t('gr.pending')}</p></section>`;
+  if (BIBLE_MODE) return groupCard(g, who, w, ch);
   return `<section class="g-block g-card">
     <div class="g-row"><button class="g-head" data-action="open-group" data-id="${esc(g.id)}"><span class="g-name">${esc(L(g.name))}</span>${unseenIn(g.id) ? `<i class="new-dot" aria-label="${t('gs.new')}"></i>` : ''}</button>
       <span class="g-tools"><button class="g-more" data-action="group-menu" data-id="${esc(g.id)}" aria-label="${t('more')}">${icon('more')}</button><button class="g-go" data-action="open-group" data-id="${esc(g.id)}" aria-label="${esc(L(g.name))}">›</button></span></div>
@@ -2581,10 +2607,7 @@ function groupBlock(g) {
       <span class="gs-week" aria-hidden="true">${w.days.map((on, i) => { const d = new Date(); d.setDate(d.getDate() - (6 - i));
         return `<span class="gs-day${i === 6 ? ' today' : ''}"><i class="${on ? 'on' : ''}"></i><small>${i === 6 ? t('gs.todayShort') : esc(d.toLocaleDateString(lang(), { weekday: 'narrow' }))}</small></span>`; }).join('')}</span>
       <span class="gs-counts"><b>${t('gs.week')}</b> ${t('gs.counts').replace('{t}', w.thanks).replace('{m}', w.meditation).replace('{p}', w.prayer)}</span></button>
-    ${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
-      ${chLen(ch) <= 7 ? `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => `<i class="${i < ch.days.length ? 'on' : ''}"></i>`).join('')}</span>`
-        : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
-      <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}
+    ${chBtn(ch)}
   </section>`;
 }
 // The rest of a group's actions, out of sight until asked for.
