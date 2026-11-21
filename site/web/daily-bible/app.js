@@ -2575,8 +2575,11 @@ const pageHead = (title, desc, tools = '') => `<header class="page-head"><h1 cla
 const roundBtn = (action, ic, label) => `<button class="round-btn" data-action="${action}" aria-label="${esc(label)}">${icon(ic)}</button>`;
 
 // One group in the 공동체 tab: name (tap → swipe through its posts), this week together, and three actions.
+// up to 7 days: a check for each day done, with a tiny weekday under it (월 화 수 …)
+const chDayChecks = ch => `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => { const d = new Date((ch.start || today()) + 'T12:00:00'); d.setDate(d.getDate() + i); const on = i < ch.days.length;
+  return `<span class="${on ? 'on' : ''}"><i>${on ? icon('check') : ''}</i><small>${esc(d.toLocaleDateString(lang() === 'ko' ? 'ko-KR' : lang(), { weekday: 'narrow' }))}</small></span>`; }).join('')}</span>`;
 const chBtn = ch => `${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
-      ${chLen(ch) <= 7 ? `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => `<i class="${i < ch.days.length ? 'on' : ''}"></i>`).join('')}</span>`
+      ${chLen(ch) <= 7 ? chDayChecks(ch)
         : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
       <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}`;
 // 공동체 card, in the feel of the "오늘의 말씀을 다 읽었어요" card: a name pill, a check, who's with us today
@@ -3230,7 +3233,7 @@ function renderGroupDetail(gid) {
     <p class="gd-label">${t('gd.week')}</p>
     <div class="gd-tiles">${tile(w.thanks, t('gd.thanks'), 'thanks')}${tile(w.meditation, t('gd.med'), 'meditation')}${tile(w.prayer, t('gd.prayer'), 'prayer')}</div>
     ${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
-      ${chLen(ch) <= 7 ? `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => `<i class="${i < ch.days.length ? 'on' : ''}"></i>`).join('')}</span>`
+      ${chLen(ch) <= 7 ? chDayChecks(ch)
         : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
       <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}
     ${ch ? chTopHtml(ch) : ''}
