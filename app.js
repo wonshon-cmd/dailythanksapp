@@ -3272,7 +3272,7 @@ function streakHtml() {
   const days = readDaySet(), n = readDays(), done = days.has(today()), best = readDash().longest;
   const week = Array.from({ length: 7 }, (_, i) => daysAgo(6 - i));
   const wd = d => new Date(d + 'T00:00:00').toLocaleDateString(lang(), { weekday: 'narrow' });
-  return `<section class="stk ${done ? 'done' : ''}">
+  return `<section class="stk ${done ? 'done' : ''}" data-action="dash-sheet" role="button">
     <div class="stk-main"><span class="stk-flame">${icon('book')}</span><div><b class="stk-n">${n ? esc(t('stk.n').replace('{n}', n)) : esc(t('stk.sub'))}</b>
       <span class="stk-sub">${n ? (done ? t('stk.todayDone') : t('stk.todayNot')) : t('stk.start')}${best > n ? ' · ' + esc(t('stk.best').replace('{n}', best)) : ''}</span></div></div>
     <div class="stk-week">${week.map(d => `<span class="${days.has(d) ? 'on' : ''} ${d === today() ? 'today' : ''}"><i>${days.has(d) ? icon('check') : ''}</i><small>${esc(wd(d))}</small></span>`).join('')}</div>
@@ -4062,7 +4062,7 @@ function renderBibleMe() {
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
     ${myCommunities()}
-    ${readGauge()}${dashHtml()}
+    ${readGauge()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
     ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
     <p class="gd-label">${t('me.medi')} · ${medi.length}</p>
@@ -6259,6 +6259,8 @@ const actions = {
   'gc-full': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; state.gcFull = true; const html = groupBlock(g); state.gcFull = false;
     showSheet({ title: '', body: html }); sheet.classList.add('sheet-full', 'gc-sheet'); },
   'gc-open': gid => { close(); actions['open-group'](gid); },
+  // 매일 › 연속 기록 카드: 나의 말씀 기록 (dashboard)
+  'dash-sheet': () => showSheet({ title: t('db.title'), body: dashHtml() }),
   'mc-toggle': () => { state.mcOpen = !state.mcOpen; render(); },
   'g-pick': () => { const row = g => `<button class="list-row" data-action="g-pick-to" data-id="${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span></span>${unseenIn(g.id) ? '<i class="new-dot"></i>' : ''}${g.id === (data.groups.find(x => x.id === state.group) || data.groups[0])?.id ? `<span class="row-end">${icon('check')}</span>` : ''}</button>`;
     showSheet({ title: t('gp.list'), body: `<div class="list">${data.groups.map(row).join('')}</div>` }); },
