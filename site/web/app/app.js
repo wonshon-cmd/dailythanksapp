@@ -14,6 +14,8 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
+    'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'rp.notice': "{name}님이 내 감사에 답했어요 · {r}", 'rp.someone': "누군가", 'lr.title': "받은 답장", 'rp.thanks': "고마워요", 'rp.pray': "함께 기도할게요", 'rp.me': "나도 감사해요",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
     'wl.apple': "Apple로 계속하기", 'wl.tag': "One slide at a time, with your community", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
@@ -177,6 +179,8 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
+    'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'rp.notice': "{name} answered your thanks · {r}", 'rp.someone': "Someone", 'lr.title': "Replies", 'rp.thanks': "Thank you", 'rp.pray': "Praying with you", 'rp.me': "Thankful too",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
     'wl.apple': "Continue with Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
@@ -340,6 +344,8 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
+    'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'rp.notice': "{name} respondió a tu gratitud · {r}", 'rp.someone': "Alguien", 'lr.title': "Respuestas", 'rp.thanks': "Gracias", 'rp.pray': "Oro contigo", 'rp.me': "Yo también agradezco",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
     'wl.apple': "Continuar con Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
@@ -1283,6 +1289,7 @@ function sync() {
   if (!Cloud.on()) return Promise.resolve();
   return syncing = syncing || (async () => {
     const uid = Cloud.uid(); clearSamples();
+    if (data.settings.pendingFriend) { const f = data.settings.pendingFriend; delete data.settings.pendingFriend; await connectFriend(f, true); }
     if (data.settings.myName) Cloud.rest('profiles?id=eq.' + uid, { method: 'PATCH', body: { name: data.settings.myName } }).catch(() => {});
     for (const g of data.groups.filter(x => x.cloud && !x.sid)) {
       try {
@@ -1306,9 +1313,10 @@ function sync() {
       const ids = new Set(mine.map(m => m.group_id));
       for (const m of mine) {
         let g = data.groups.find(x => x.sid === m.group_id);
-        if (!g) { g = { id: 'g' + m.group_id.slice(0, 8), sid: m.group_id, cloud: true, name: m.groups?.name || '', invite: m.groups?.invite_code || newCode(), owner: m.role === 'owner' }; data.groups.push(g); }
+        if (!g) { g = { id: 'g' + m.group_id.slice(0, 8), sid: m.group_id, cloud: true, name: m.groups?.pair_box ? '' : m.groups?.name || '', invite: m.groups?.invite_code || newCode(), owner: m.role === 'owner' }; data.groups.push(g); }
         g.pending = m.status === 'pending'; g.role = m.role;
-        if (m.groups) { g.name = m.groups.name; if (m.groups.invite_code) g.invite = m.groups.invite_code; g.approve = !!m.groups.approve; g.membersInvite = m.groups.members_invite !== false; g.topToLeaders = !!m.groups.top_to_leaders; }
+        if (m.groups?.pair_box) { g.pair = true; const pb = m.groups.pair_box; if (!g.key) g.key = data.settings.box?.code === pb ? data.settings.box.key : (data.settings.pairKeys || {})[pb]; }
+        if (m.groups) { if (!g.pair) g.name = m.groups.name; if (m.groups.invite_code) g.invite = m.groups.invite_code; g.approve = !!m.groups.approve; g.membersInvite = m.groups.members_invite !== false; g.topToLeaders = !!m.groups.top_to_leaders; }
       }
       // removed from a group (or a pending request turned down)
       data.groups = data.groups.filter(g => !(g.cloud && g.sid && !ids.has(g.sid)));
@@ -1317,6 +1325,11 @@ function sync() {
         if (!people) continue;
         g.size = people.filter(p => p.status === 'active').length;
         g.people = people.map(p => ({ id: p.user_id, name: p.profiles?.name || '', role: p.role, pending: p.status === 'pending' }));
+        if (g.pair) { // 1:1: the space is called by the other person's name
+          const other = g.people.find(p => p.id !== uid); if (other?.name) g.name = other.name;
+          const seen = data.settings.seenNotes = data.settings.seenNotes || {};
+          if (other && !seen['pair:' + g.sid]) { seen['pair:' + g.sid] = 1; if (g.owner) notice(t('fr.joined').replace('{name}', other.name || t('pl.someone')), () => { state.tab = 'group'; state.immersive = false; state.group = g.id; render(); }); }
+        }
       }
     } catch {}
     await pushPosts(); await pullPosts(); await pullTogether();
@@ -1412,6 +1425,24 @@ async function pullTogether() {
       });
     } catch {}
   }
+  // 링크 답장: friends who answered one of my thanks links (sealed with my box key, so only I can read them)
+  const box = await ensureBox();
+  if (box) {
+    try {
+      const rows = await Cloud.rest(`link_replies?code=eq.${box.code}&select=id,sealed,created_at&order=created_at.desc&limit=30`);
+      const got = data.settings.replies = data.settings.replies || []; let shown = 0;
+      for (const r of (Array.isArray(rows) ? rows : []).reverse()) {
+        if (got.some(x => x.id === r.id)) continue;
+        try {
+          const o = await Vault.openForGroup(box.key, r.sealed);
+          const it = { id: r.id, at: r.created_at, r: ['thanks', 'pray', 'me'].includes(o.r) ? o.r : '', n: String(o.n || '').slice(0, 20), q: String(o.q || '').slice(0, 60) };
+          got.unshift(it);
+          if (shown++ < 3) notice(t('rp.notice').replace('{name}', it.n || t('rp.someone')).replace('{r}', t('rp.' + (it.r || 'thanks'))), repliesSheet);
+        } catch {}
+      }
+      data.settings.replies = got.slice(0, 30);
+    } catch {}
+  }
   // 기도해 줬어요: new people praying for my prayer requests
   const mine = data.posts.filter(p => p.mine && p.kind === 'prayer' && (p.prayedBy || []).length);
   const fresh = mine.flatMap(p => p.prayedBy.filter(id => !(p.prayedSeen || []).includes(id)).map(id => ({ p, id })));
@@ -1431,6 +1462,49 @@ function prayedSheet(id) {
   showSheet({ title: t('tg.prayedTitle'), body: `<p class="hint">${esc(L(p.text)).slice(0, 140)}</p>
     <p class="prayed-list">${list.length ? esc(list.join(', ')) + ' ' + t('tg.prayedTail') : esc(t('tg.prayedCount').replace('{n}', (p.prayedBy || []).length))}</p>
     <button class="primary block" data-action="tg-thank" data-id="${esc(list[0] || '')}">${t('tg.thank')}</button>` });
+}
+/* ---------------- 1:1 연결 · 링크 답장 ----------------
+   My "friend box": a code and a key made on this device. Only the code goes to Supabase (so replies and connections
+   can find me); the key travels only in the # part of my thanks links, so a reply is sealed and only I can open it. */
+const boxCode = () => Array.from(crypto.getRandomValues(new Uint8Array(10)), b => 'abcdefghjkmnpqrstuvwxyz23456789'[b % 31]).join('');
+async function ensureBox() {
+  if (!CLOUD || !Cloud.on()) return null;
+  let b = data.settings.box;
+  if (b?.ok && b.uid === Cloud.uid()) return b;
+  if (!b || b.uid !== Cloud.uid()) b = data.settings.box = { code: boxCode(), key: Vault.newGroupKey(), uid: Cloud.uid() };
+  if (ensureBox.busy) return null; ensureBox.busy = true;
+  try { await Cloud.rest('friend_boxes', { method: 'POST', prefer: 'return=minimal', body: { code: b.code } }); b.ok = true; save(true); return b; }
+  catch (err) { if (err.code === '23505') b.code = boxCode(); save(true); return null; }
+  finally { ensureBox.busy = false; }
+}
+// a friend's link: #friend?c=CODE&n=NAME&k=KEY → a space just for the two of us
+function friendLink(q) {
+  const code = String(q.get('c') || '').replace(/[^a-z0-9]/g, '').slice(0, 24), name = String(q.get('n') || '').trim().slice(0, 30);
+  const key = /^[A-Za-z0-9_-]{43}$/.test(q.get('k') || '') ? q.get('k') : '';
+  try { history.replaceState(null, '', location.pathname + location.search); } catch {}
+  if (code.length < 8 || !key) { toast(t('fr.bad')); return; }
+  if (data.settings.box?.code === code) { toast(t('fr.self')); return; }
+  state.pendingFriend = { code, name, key };
+  showSheet({ title: esc(name ? t('fr.title').replace('{name}', name) : t('fr.titleAnon')), body: `<p class="hint">${t('fr.body')}</p>
+    <div class="sheet-actions"><button class="primary" data-action="friend-ok">${t('fr.ok')}</button><button class="secondary" data-action="close">${t('cancel')}</button></div>` });
+}
+async function connectFriend(f, inSync) {
+  (data.settings.pairKeys = data.settings.pairKeys || {})[f.code] = f.key;
+  if (!Cloud.on()) { data.settings.pendingFriend = f; save(); welcomeSheet(t('fr.need')); return; }
+  try {
+    const sid = String(await Cloud.rpc('connect_friend', { box: f.code }) || '');
+    if (!/^[0-9a-f-]{36}$/.test(sid)) throw new Error('invalid_code');
+    let g = data.groups.find(x => x.sid === sid);
+    if (!g) { g = { id: 'g' + sid.slice(0, 8), sid, cloud: true, name: f.name, invite: newCode(), owner: false, pair: true, key: f.key }; data.groups.push(g); }
+    else { g.pair = true; g.key = g.key || f.key; }
+    (data.settings.seenNotes = data.settings.seenNotes || {})['pair:' + sid] = 1;
+    state.group = g.id; save(); render(); toast(t('fr.done').replace('{name}', f.name || t('pl.someone')));
+    if (!inSync) { await syncing; sync(); }
+  } catch (err) { save(); toast(/self/.test(err.message) ? t('fr.self') : t('fr.bad')); }
+}
+function repliesSheet() {
+  const list = data.settings.replies || [];
+  showSheet({ title: t('lr.title'), body: `<div class="rp-list">${list.map(x => `<div class="rp-item"><p class="rp-head">${esc(x.n || t('rp.someone'))}${x.r ? ' · ' + t('rp.' + x.r) : ''}<span>${esc(dayLabel(String(x.at || '').slice(0, 10)))}</span></p>${x.q ? `<p class="rp-q">${esc(x.q)}</p>` : ''}</div>`).join('')}</div>` });
 }
 // a small banner at the top; tap to act
 const noticeQ = [];
@@ -1574,7 +1648,7 @@ const inGroup = (p, gid) => p.scope === 'group' && postGroups(p).includes(gid) &
 // Who may invite: the admin always; members only while the admin allows it (on by default).
 // open / close the full-screen view: a small red dot shows where it is until it's been used once
 const fsDot = () => data.settings.fsUsed ? '' : '<i class="new-dot rail-dot fs-dot"></i>';
-const canInvite = g => !!g && (g.owner || g.membersInvite !== false);
+const canInvite = g => !!g && !g.pair && (g.owner || g.membersInvite !== false);
 // A small red dot (on the 공동체 tab and on the group) while a group has posts you haven't caught up on.
 const unseenIn = gid => data.groups.find(g => g.id === gid)?.muted ? 0 : data.posts.filter(p => !p.mine && inGroup(p, gid) && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
 const unseenKind = (gid, kind) => data.posts.filter(p => !p.mine && inGroup(p, gid) && kindGroup(p) === kind && !data.hidden.includes(p.id) && !(data.groupSeen || []).includes(p.id)).length;
@@ -4595,7 +4669,9 @@ async function shareImage(id, external = true) {
    The words travel inside the link's # part, so no server is needed and nothing is stored anywhere. */
 function postLink(p) {
   const kind = p.kind === 'thanks' || p.kind === 'ahead' || p.kind === 'meditation' ? p.kind : 'today';
-  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.ref ? { r: refText(p.ref) } : {}) };
+  // my own thanks also carries my friend box: the friend can answer it, or connect with me (the key stays in the # part)
+  const box = p.mine && CLOUD && Cloud.on() && data.settings.box?.ok && data.settings.box.uid === Cloud.uid() ? data.settings.box : null;
+  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   // a reflection opens right in the app (passage + what they wrote); other posts open on their own web page
   if (kind === 'meditation') return `${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`;
@@ -4616,6 +4692,7 @@ const withLink = (text, p) => `${text}\n\n${postLink(p)}`;
 function share(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
   if (protectedPost(p)) { toast(t('prot.noShare')); return; }
+  if (p.mine) ensureBox();
   state.cardKind = state.cardKind || 'feed';
   showSheet({ title: t('share.title'), body: `<button class="link-first" data-action="send-link" data-id="${esc(id)}"><span class="lf-ic">${icon('send')}</span><span class="lf-main"><span>${t('share.sendLink')}</span><small>${t('share.linkSub')}</small></span>${icon('chevron')}</button>
     <div class="card-frame"><img id="card-img" alt="" class="card-img"></div>
@@ -6019,6 +6096,7 @@ const actions = {
     state.rmArm = null;
     const name = L(data.posts.find(p => authorKey(p) === k)?.name) || ''; g.removed = [...new Set([...(g.removed || []), k])]; g.size = Math.max(1, (g.size || groupSize(gid)) - 1); save();
     document.dispatchEvent(new CustomEvent('dt:group-remove', { detail: { code: g.invite, member: k } })); groupAdmin(gid); toast(t('adm.removed').replace('{name}', name)); },
+  'friend-ok': () => { const f = state.pendingFriend; state.pendingFriend = null; close(); if (f) connectFriend(f); },
   'join-ok': () => {
     const j = state.pendingJoin; if (!j) return close();
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}), ...(j.approve ? { pending: true } : {}) }; data.groups.push(g); state.pendingJoin = null;
@@ -6277,7 +6355,7 @@ function doubleTap(el, x, y) {
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
-  if (!back && !Cloud.on() && !/^#(join|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) { if (!data.settings.onboarded) introCards(() => welcomeSheet('', true)); else welcomeSheet(); } }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+  if (!back && !Cloud.on() && !/^#(join|friend|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) { if (!data.settings.onboarded) introCards(() => welcomeSheet('', true)); else welcomeSheet(); } }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 // Reading: a drag that starts on the reader's top or bottom bar doesn't pull the page (iPhone rubber-band); only the verses scroll.
 document.addEventListener('touchmove', e => { if ((document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) || e.target.closest?.('.screen.fit')) e.preventDefault(); }, { passive: false });
 /* First steps after the first sign-in: today's passage (scroll; a faint arrow shows the way) → ✓ done →
@@ -6345,6 +6423,7 @@ function onbDone() {
     const [b, c, v] = m.slice(1).map(Number); if (b >= 1 && b <= 66) setTimeout(() => openReader({ b, c, v }), 120); } }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
+if (location.hash.startsWith('#friend')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => friendLink(q), 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
 if (location.hash.startsWith('#pastor=')) { try { state.pastorView = unb64url(location.hash.slice(8)); state.immersive = false; state.tab = 'group'; document.getElementById('splash')?.remove(); setTimeout(render, 60); } catch {} }
 if (location.hash.startsWith('#m=')) { const b64 = location.hash.slice(3); document.getElementById('splash')?.remove(); setTimeout(() => openSharedMeditation(b64), 120); }
