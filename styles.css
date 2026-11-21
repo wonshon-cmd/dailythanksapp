@@ -1953,3 +1953,5 @@ mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-bre
 .g-ch > span:first-child{flex-shrink:0;white-space:nowrap}
 .g-ch-days{gap:3px;flex:0 1 auto;justify-content:center;margin:0 auto}
 .g-ch-days i{width:15px;height:15px}
+.stk[data-action]{cursor:pointer}
+#sheet .db > .gd-label:first-child{display:none}
