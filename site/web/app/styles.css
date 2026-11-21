@@ -1957,6 +1957,9 @@ mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-bre
 /* settings: a little air between each label and its switch */
 #sheet .seg + .field-label{margin-top:24px!important}
 #sheet .field-label + .seg{margin-top:10px!important}
+/* labels in sheets never sit on top of the box under them (the tight -6px is only for labels inside a form's gap) */
+.sheet .field-label{margin:18px 0 8px;line-height:1.4}
+.sheet .sheet-form .field-label{margin:4px 0 -6px}
 .seg-tr button{font-size:13.5px}
 /* + lines up under the icon rail (same center), a little higher */
 .imm-plus{right:24px;bottom:calc(32px + var(--safe-bottom))}
