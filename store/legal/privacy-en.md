@@ -19,7 +19,7 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"
 | Device | App version | When you open the app |
 
 - Reading reminders are scheduled on your device; no notification token is sent to us.
-- Your own notes and highlights are locked on your device and are not sent to our servers.
+- Your own notes and highlights are locked (encrypted) on your device; only that locked copy is backed up, and we cannot open it.
 
 - We do **not** track you across other apps or websites.
 - We do **not** collect location.

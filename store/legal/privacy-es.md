@@ -18,7 +18,7 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "
 | Dispositivo | Versión de la app | Al abrir la app |
 
 - Los recordatorios de lectura se programan en tu dispositivo; no nos envía ningún token de notificaciones.
-- Tus notas y resaltados se bloquean en tu dispositivo y no se envían a nuestros servidores.
+- Tus notas y resaltados se bloquean (cifran) en tu dispositivo; solo se respalda esa copia cifrada y no podemos abrirla.
 
 - **No** te rastreamos en otras apps o sitios web.
 - **No** recogemos tu ubicación.
