@@ -2154,7 +2154,9 @@ function immBack() {
   if (!state.immersive) return false;
   if (history.state?.dt === 'imm') { try { history.replaceState(null, ''); } catch {} }
   if (state.immFeed === 'prayer') { data.settings.prayerBackHint = true; state.immFeed = state.prevFeed || 'public'; state.showOthers = false; save(); render(0); return true; }
-  if (state.immFeed === 'group') { toggleFullscreen(); return true; }
+  if (state.immFeed === 'group') {   // back to the community it belongs to
+    const gid = state.group; state.immersive = false; state.immFeed = state.prevFeed && state.prevFeed !== 'group' ? state.prevFeed : 'public'; state.groupKind = null;
+    state.tab = 'group'; state.groupDetail = data.groups.some(g => g.id === gid) ? gid : null; render(0); return true; }
   return false;
 }
 // Phone / browser back gesture: reader first, then a group or the prayer lane.
