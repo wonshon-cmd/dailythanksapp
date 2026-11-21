@@ -1010,6 +1010,7 @@ const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 // locked backup (sign in on another phone, enter the recovery key once)
+Object.assign(STR.ko, { 'inf.opens': "링크를 열어 본 사람" }); Object.assign(STR.en, { 'inf.opens': "Opened your links" }); Object.assign(STR.es, { 'inf.opens': "Abrieron tus enlaces" });
 Object.assign(STR.ko, { 'bk.title': "내 기록 열기", 'bk.body': "이 계정에 잠가 둔 기록이 있어요. 전에 쓰던 휴대폰의 나 › 설정 › 기록 보호에서 복구 키를 복사해 여기에 넣으면 그대로 열려요.", 'bk.open': "열기", 'bk.later': "나중에", 'bk.fresh': "이전 기록 없이 새로 시작", 'bk.freshQ': "이전 기록은 더 이상 열 수 없게 돼요. 새로 시작할까요?", 'bk.freshDone': "새로 시작했어요.", 'bk.done': "기록을 가져왔어요." });
 Object.assign(STR.en, { 'bk.title': "Open your records", 'bk.body': "This account has locked records. On your old phone, copy the recovery key from Me › Settings › Privacy lock and enter it here — everything opens as it was.", 'bk.open': "Open", 'bk.later': "Later", 'bk.fresh': "Start fresh without them", 'bk.freshQ': "Your earlier records can’t be opened after this. Start fresh?", 'bk.freshDone': "Started fresh.", 'bk.done': "Your records are here." });
 Object.assign(STR.es, { 'bk.title': "Abrir tus registros", 'bk.body': "Esta cuenta tiene registros bloqueados. En tu teléfono anterior, copia la llave de recuperación en Yo › Ajustes › Bloqueo de privacidad e ingrésala aquí: todo se abre tal como estaba.", 'bk.open': "Abrir", 'bk.later': "Más tarde", 'bk.fresh': "Empezar de nuevo sin ellos", 'bk.freshQ': "Después no podrás abrir tus registros anteriores. ¿Empezar de nuevo?", 'bk.freshDone': "Empezaste de nuevo.", 'bk.done': "Tus registros ya están aquí." });
@@ -1289,6 +1290,17 @@ function emailSent(email, name) {
 /* Keeps this device's 공동체 in step with Supabase: registers groups made here, finishes joins made from a link
    (also ones made before signing in), and brings in names, member counts and people waiting for approval. */
 let syncing = null;
+// My share code (made once per account) and how many different people opened my links.
+async function shareCodeSync() {
+  try {
+    if (!data.settings.shareCode) {
+      const [mine] = await Cloud.rest(`share_codes?owner=eq.${Cloud.uid()}&select=code`).catch(() => []);
+      if (mine?.code) data.settings.shareCode = mine.code;
+      else { const code = (newCode() + newCode()).slice(0, 9); await Cloud.rest('share_codes', { method: 'POST', body: { code, owner: Cloud.uid() } }); data.settings.shareCode = code; }
+    }
+    const n = await Cloud.rpc('my_link_opens', {}); if (typeof n === 'number') data.linkOpens = n;
+  } catch {}   // (tables not set up yet: links simply go without a code)
+}
 function sync() {
   if (!Cloud.on()) return Promise.resolve();
   return syncing = syncing || (async () => {
@@ -1338,6 +1350,7 @@ function sync() {
     } catch {}
     await pushPosts(); await pullPosts(); await pullTogether();
     await Backup.pull();   // my own records, locked, from the last phone I used
+    await shareCodeSync();
     save(); render();
   })().finally(() => { syncing = null; });
 }
@@ -2056,8 +2069,10 @@ function verseFromKey(k) {
   const text = $(`#v-${b}-${c}-${v} .vs-text`)?.textContent || data.savedVerses.find(s => s.key === k)?.text || '';
   return { key: k, b, c, v, text, tr: TR_NAME[curTr()] };
 }
+// A share link carries my share code (?s=…, a random code — not my name or account), so opening it counts toward my reach.
+const withS = url => { const c = BIBLE_MODE && data.settings.shareCode; return c && !/[?&]s=/.test(url) ? url.replace(/(#|$)/, `?s=${c}$1`) : url; };
 function verseLink(x) {
-  if (BIBLE_MODE) return `${LEGAL_BASE}/daily-bible/#v=${x.b}-${x.c}-${x.v}`;   // short: opens the app at this verse
+  if (BIBLE_MODE) return withS(`${LEGAL_BASE}/daily-bible/#v=${x.b}-${x.c}-${x.v}`);   // short: opens the app at this verse
   const payload = { t: x.text, n: refText({ b: x.b, c: x.c, v: x.v, v2: x.v }) + ' · ' + x.tr, k: 'verse', d: today(), l: lang() };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   return `${LEGAL_BASE}/t/#${b64}`;
@@ -4859,8 +4874,8 @@ function postLink(p) {
   const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.tone === 'love' ? { tn: 'love' } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   // a reflection opens right in the app (passage + what they wrote); other posts open on their own web page
-  if (kind === 'meditation') return `${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`;
-  return `${LEGAL_BASE}/t/#${b64}`;
+  if (kind === 'meditation') return withS(`${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`);
+  return withS(`${LEGAL_BASE}/t/#${b64}`);
 }
 async function openSharedMeditation(b64) {
   let x; try { x = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0)))); } catch { toast(t('smd.bad')); return; }
@@ -5451,11 +5466,13 @@ function influence() {
   // everything that reached someone: likes, saves, shares, people praying for my prayer requests, hearts on my thanks links
   const prayed = sum(p => (p.prayedBy || []).length), hearts = (data.settings.replies || []).length;
   const received = { likes: sum(p => p.likes || 0), saves: sum(p => p.saves || 0), shares: sum(sharesOf), ext: sum(extOf), prayed, hearts };
-  const score = received.likes + 2 * received.saves + 3 * (received.shares - received.ext) + 5 * received.ext + 3 * prayed + 2 * hearts;
+  // people who opened a link I shared: the clearest sign it reached someone outside the app, so it weighs most
+  const opens = received.opens = data.linkOpens || 0;
+  const score = received.likes + 2 * received.saves + 3 * (received.shares - received.ext) + 5 * received.ext + 3 * prayed + 2 * hearts + 6 * opens;
   const given = { likes: data.liked.length, saves: data.saved.length, shares: data.sharesGiven, ext: data.extSharesGiven };
   let li = 0; LEVELS.forEach((l, i) => { if (score >= l[1]) li = i; });
   const next = LEVELS[li + 1];
-  const people = received.likes + received.saves + received.shares + prayed + hearts; // people my thanks, prayers and links reached
+  const people = received.likes + received.saves + received.shares + prayed + hearts + opens; // people my thanks, prayers and links reached
   return { received, given, score, people, level: LEVELS[li], next, progress: next ? (score - LEVELS[li][1]) / (next[1] - LEVELS[li][1]) : 1 };
 }
 // Top public posts this week by score; the top 3 get a quiet "reached many" mark in the feed.
@@ -5835,7 +5852,7 @@ function influenceSheet() {
       return `<div class="db reach"><div class="db-tiles">${tile(t('rc2.peopleV').replace('{n}', r.people), t('rc2.people'))}${tile(t('rc2.timesV').replace('{n}', r.outside), t('rc2.outside'))}${tile(t('rc2.timesV').replace('{n}', r.inside), t('rc2.inside'))}${tile(t('rc2.timesV').replace('{n}', r.shared), t('rc2.shared'))}</div>
       <p class="db-foot">${t('rc2.foot').replace('{p}', r.posts).replace('{e}', r.ext)}</p></div>`; })()}
     <p class="field-label">${t('inf.received')}</p>
-    <div class="stats">${stat('heart', t('inf.likes'), f.received.likes)}${stat('bookmark', t('inf.saves'), f.received.saves)}${stat('upload', t('inf.shares'), f.received.shares)}</div>
+    <div class="stats">${BIBLE_MODE ? stat('eye', t('inf.opens'), f.received.opens) : ''}${stat('heart', t('inf.likes'), f.received.likes)}${stat('bookmark', t('inf.saves'), f.received.saves)}${stat('upload', t('inf.shares'), f.received.shares)}</div>
     ${f.received.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.received.ext)}</p>` : ''}
     <p class="field-label">${t('inf.given')}</p>
     <div class="stats">${stat('heart', t('inf.likes'), f.given.likes)}${stat('bookmark', t('inf.saves'), f.given.saves)}${stat('upload', t('inf.shares'), f.given.shares)}</div>
@@ -6763,6 +6780,13 @@ function onbDone() {
   setTimeout(check, 5000);
 })();
 // a shared verse: #v=BOOK-CHAPTER-VERSE opens the Bible at that verse
+{ const sc = new URLSearchParams(location.search).get('s');
+  if (CLOUD && sc && /^[a-z0-9]{6,16}$/.test(sc)) {
+    let who = null; try { who = localStorage.getItem('dt-oid'); if (!who) { who = Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join(''); localStorage.setItem('dt-oid', who); } } catch {}
+    const k = location.hash.startsWith('#v=') ? 'verse' : location.hash.startsWith('#m=') ? 'reflection' : 'link';
+    if (who && sc !== data.settings.shareCode) fetch(SUPA.url + '/rest/v1/rpc/record_open', { method: 'POST', headers: { apikey: SUPA.key, 'Content-Type': 'application/json' }, body: JSON.stringify({ c: sc, who, k }) }).catch(() => {});
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch {}
+  } }
 { const m = location.hash.match(/^#v=(\d+)-(\d+)-(\d+)$/);
   if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch {} document.getElementById('splash')?.remove();
     const [b, c, v] = m.slice(1).map(Number); if (b >= 1 && b <= 66) setTimeout(() => openReader({ b, c, v }), 120); } }
