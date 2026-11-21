@@ -3899,7 +3899,7 @@ async function yearReel() {
 // 나 › 나눔이 닿은 곳: how many people my posts reached — inside my communities and beyond — and how much I shared.
 function reachStats() {
   const mine = data.posts.filter(p => p.mine && p.scope !== 'private' && !p.status);
-  const touch = p => (p.likes || 0) + (p.saves || 0) + (p.shares || 0) + (p.prayedBy || 0);
+  const touch = p => (p.likes || 0) + (p.saves || 0) + (p.shares || 0) + (p.prayedBy || []).length;
   const inside = mine.filter(p => p.scope === 'group').reduce((a, p) => a + touch(p), 0);
   const outside = mine.filter(p => p.scope === 'public').reduce((a, p) => a + touch(p), 0) + mine.reduce((a, p) => a + (p.extShares || 0), 0);
   return { people: influence().people, inside, outside, shared: (data.sharesGiven || 0) + (data.verseShares || 0), ext: data.extSharesGiven || 0, posts: mine.length };
@@ -5249,12 +5249,14 @@ const LEVELS = [['candle', 0, 'candle'], ['lantern', 10, 'lantern'], ['sunlight'
 function influence() {
   const mine = data.posts.filter(p => p.mine && p.scope !== 'private' && !p.status);
   const sum = f => mine.reduce((a, p) => a + f(p), 0);
-  const received = { likes: sum(p => p.likes || 0), saves: sum(p => p.saves || 0), shares: sum(sharesOf), ext: sum(extOf) };
-  const score = received.likes + 2 * received.saves + 3 * (received.shares - received.ext) + 5 * received.ext;
+  // everything that reached someone: likes, saves, shares, people praying for my prayer requests, hearts on my thanks links
+  const prayed = sum(p => (p.prayedBy || []).length), hearts = (data.settings.replies || []).length;
+  const received = { likes: sum(p => p.likes || 0), saves: sum(p => p.saves || 0), shares: sum(sharesOf), ext: sum(extOf), prayed, hearts };
+  const score = received.likes + 2 * received.saves + 3 * (received.shares - received.ext) + 5 * received.ext + 3 * prayed + 2 * hearts;
   const given = { likes: data.liked.length, saves: data.saved.length, shares: data.sharesGiven, ext: data.extSharesGiven };
   let li = 0; LEVELS.forEach((l, i) => { if (score >= l[1]) li = i; });
   const next = LEVELS[li + 1];
-  const people = received.likes + received.saves + received.shares; // people who responded to my thanks
+  const people = received.likes + received.saves + received.shares + prayed + hearts; // people my thanks, prayers and links reached
   return { received, given, score, people, level: LEVELS[li], next, progress: next ? (score - LEVELS[li][1]) / (next[1] - LEVELS[li][1]) : 1 };
 }
 // Top public posts this week by score; the top 3 get a quiet "reached many" mark in the feed.
