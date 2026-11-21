@@ -2025,3 +2025,7 @@ details.ch-top:not([open]){gap:0}
 .me-sort svg{width:14px;height:14px}
 .notes .note-meta{display:flex;justify-content:space-between;gap:10px}
 .vis-note:empty{display:none}
+.me-rows{margin-top:22px}
+.me-rows .row-end{display:flex;align-items:center;gap:6px}
+#sheet .me-tools{margin-top:4px}
+#me-lists{min-height:40vh}
