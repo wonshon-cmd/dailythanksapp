@@ -3362,7 +3362,7 @@ function bibleShell() {
   const sp = document.getElementById('splash'); if (sp) sp.setAttribute('aria-label', BRAND);
   const tag = document.querySelector('#splash .splash-tag'); if (tag) tag.innerHTML = '<span>Read the Word daily.</span><span>Take notes.</span><span>Live it.</span>';
   const pill = document.querySelector('.write-pill'); if (pill) { pill.dataset.action = 'bible-write'; pill.classList.add('plus-only'); pill.setAttribute('aria-label', '+'); pill.querySelector('.label').remove(); } // sermon notes have their own tab; + is for writing
-  const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.dataset.icon = 'book';
+  const brand = document.querySelector('.topbar .brand-sun'); if (brand) brand.remove();   // just the wordmark at the top (the book stays on the streak card)
   // language switch beside the + (shown on every screen for the first few visits)
   if (pill && !document.querySelector('.top-right')) { const box = document.createElement('div'); box.className = 'top-right'; pill.before(box);
     box.innerHTML = `<button class="top-lang" data-action="lang-menu" hidden></button>`; }
