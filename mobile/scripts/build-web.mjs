@@ -15,7 +15,9 @@ for (const f of ['styles.css', 'app.js', 'qrcode.js']) fs.copyFileSync(path.join
 for (const f of fs.readdirSync(path.join(root, 'i18n'))) fs.copyFileSync(path.join(root, 'i18n', f), path.join(www, 'i18n', f));
 fs.copyFileSync(path.resolve(here, '../src/native.js'), path.join(www, 'native.js'));
 // Bible text travels with the app, so read-through works offline.
-if (fs.existsSync(path.join(root, 'bible'))) fs.cpSync(path.join(root, 'bible'), path.join(www, 'bible'), { recursive: true });
+// Only the three default translations ship inside the app; the other free ones download from dailyjourney.org in Settings.
+for (const tr of ['korean', 'kjv', 'valera']) { const d = path.join(root, 'bible', tr); if (fs.existsSync(d)) fs.cpSync(d, path.join(www, 'bible', tr), { recursive: true }); }
+if (fs.existsSync(path.join(root, 'bible', 'index.json'))) fs.copyFileSync(path.join(root, 'bible', 'index.json'), path.join(www, 'bible', 'index.json'));
 
 // This shell ships the Bible app: the same web app in Bible mode (window.DT_APP = "bible", as build-site.py does for /daily-bible/).
 // native.js must run before app.js (it sets the content URL and fills in share/notification APIs).

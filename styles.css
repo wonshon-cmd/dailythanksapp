@@ -2011,3 +2011,10 @@ details.ch-top:not([open]){gap:0}
 .page,.gc{max-width:100%;min-width:0}
 .mc-head{display:flex;justify-content:space-between;align-items:baseline}
 .mc-head .link-btn{font-size:12.5px}
+/* 성경 역본: name + full name on the left, 받기 / 저장됨 on the right */
+.tr-row{display:flex;align-items:center;gap:10px}
+.tr-row .tr-main{flex:1;display:flex;align-items:center;background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;min-width:0}
+.tr-row .row-title .ico,.tr-row .row-title svg{width:14px;height:14px;vertical-align:-2px;margin-left:4px}
+.tr-row .tr-get{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.tr-row .tr-get svg{width:14px;height:14px}
+.tr-row .tr-got{white-space:nowrap}

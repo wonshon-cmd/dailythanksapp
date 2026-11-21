@@ -1010,6 +1010,15 @@ const $ = s => document.querySelector(s);
 const main = $('#main'), sheet = $('#sheet'), backdrop = $('#backdrop');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 // locked backup (sign in on another phone, enter the recovery key once)
+Object.assign(STR.ko, { 'tr.title': "성경 역본", 'tr.hint': "모두 무료(저작권이 끝난) 역본이에요. 누르면 그 역본으로 읽고, ‘받기’를 누르면 인터넷 없이도 읽을 수 있게 이 휴대폰에 저장해요.", 'tr.get': "받기", 'tr.got': "저장됨", 'tr.done': "{name} 저장했어요." });
+Object.assign(STR.en, { 'tr.title': "Bible translation", 'tr.hint': "All free, public-domain translations. Tap one to read in it; ‘Download’ keeps it on this phone for reading offline.", 'tr.get': "Download", 'tr.got': "Saved", 'tr.done': "{name} saved." });
+Object.assign(STR.es, { 'tr.title': "Traducción de la Biblia", 'tr.hint': "Todas son gratuitas, de dominio público. Toca una para leer en ella; ‘Descargar’ la guarda en este teléfono para leer sin conexión.", 'tr.get': "Descargar", 'tr.got': "Guardada", 'tr.done': "{name} guardada." });
+// Daily Journey: influence in the words of grace (Daily Thanks keeps its own wording)
+if (BIBLE_MODE) {
+  Object.assign(STR.ko, { 'inf.title': '나의 선한 영향력', 'inf.peopleSub': '내 마음이 닿은 사람들', 'inf.glow': '은혜를 나눌수록 빛은 더 밝아져요.' });
+  Object.assign(STR.en, { 'inf.title': 'My positive influence', 'inf.peopleSub': 'people your heart has reached', 'inf.glow': 'The more grace you share, the brighter the light.' });
+  Object.assign(STR.es, { 'inf.title': 'Mi influencia positiva', 'inf.peopleSub': 'personas a las que llegó tu corazón', 'inf.glow': 'Cuanta más gracia compartes, más brilla la luz.' });
+}
 Object.assign(STR.ko, { 'inf.opens': "링크를 열어 본 사람" }); Object.assign(STR.en, { 'inf.opens': "Opened your links" }); Object.assign(STR.es, { 'inf.opens': "Abrieron tus enlaces" });
 Object.assign(STR.ko, { 'bk.title': "내 기록 열기", 'bk.body': "이 계정에 잠가 둔 기록이 있어요. 전에 쓰던 휴대폰의 나 › 설정 › 기록 보호에서 복구 키를 복사해 여기에 넣으면 그대로 열려요.", 'bk.open': "열기", 'bk.later': "나중에", 'bk.fresh': "이전 기록 없이 새로 시작", 'bk.freshQ': "이전 기록은 더 이상 열 수 없게 돼요. 새로 시작할까요?", 'bk.freshDone': "새로 시작했어요.", 'bk.done': "기록을 가져왔어요." });
 Object.assign(STR.en, { 'bk.title': "Open your records", 'bk.body': "This account has locked records. On your old phone, copy the recovery key from Me › Settings › Privacy lock and enter it here — everything opens as it was.", 'bk.open': "Open", 'bk.later': "Later", 'bk.fresh': "Start fresh without them", 'bk.freshQ': "Your earlier records can’t be opened after this. Start fresh?", 'bk.freshDone': "Started fresh.", 'bk.done': "Your records are here." });
@@ -1923,6 +1932,16 @@ const BOOKS = [
 const BIBLE_TR = { ko: 'korean', en: 'kjv', es: 'valera' };
 // the Bible version I read: my choice in Settings, or the one that goes with the app language
 const TR_NAME = { korean: '개역한글', kjv: 'KJV', valera: 'RV 1909' };
+// More free (public-domain) translations: listed in bible/index.json (made by tools/fetch-bible.py). Remembered on the
+// device so the list and the chosen one work offline too.
+const TR_LANG = { korean: 'ko', kjv: 'en', valera: 'es' }, TR_FULL = { korean: '개역한글 (1961)', kjv: 'King James Version', valera: 'Reina-Valera 1909' };
+function trAdd(list) { (Array.isArray(list) ? list : []).forEach(x => { if (x && /^[a-z0-9]+$/.test(x.id) && x.name) { TR_NAME[x.id] = String(x.name).slice(0, 24); TR_LANG[x.id] = x.lang; TR_FULL[x.id] = String(x.full || x.name).slice(0, 80); } }); }
+trAdd(data.settings.trList);
+async function trRefresh() {
+  for (const url of ['bible/index.json', `${LEGAL_BASE}/bible/index.json`]) {
+    try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) continue; const j = await r.json(); if (Array.isArray(j) && j.length) { trAdd(j); data.settings.trList = j; save(true); return; } } catch {}
+  }
+}
 const curTr = () => TR_NAME[data.settings.bibleTr] ? data.settings.bibleTr : BIBLE_TR[lang()] || 'kjv';
 const TOTAL_CHAPTERS = 1189;
 const bookName = b => { const x = BOOKS[b - 1]; return x ? (lang() === 'ko' ? x[0] : lang() === 'es' ? x[3] : x[2]) : ''; };
@@ -2026,6 +2045,28 @@ const chapterMem = {}, bookMem = {};
 // dailyjourney.org/app), then on dailyjourney.org, then the getBible API as a last resort.
 // Bible text kept on the device (web): every book read once stays available offline; Settings can save all of it.
 const bibleCache = () => (window.caches ? caches.open('dt-bible-v1').catch(() => null) : Promise.resolve(null));
+// 역본 고르기: every free translation, my language first; tap to read in it, ↓ to keep it on this phone (offline).
+function trSheet() {
+  const back = sheet.dataset.kind === 'tr' ? state.sheetBack : null;   // redrawn after a pick: ✕ still goes back to Settings
+  const got = data.settings.trOffline || [], cur = curTr(), order = [lang(), ...['ko', 'en', 'es'].filter(x => x !== lang())];
+  const LN = { ko: '한국어', en: 'English', es: 'Español' };
+  const rowOf = id => `<div class="list-row tr-row${id === cur ? ' on' : ''}"><button class="tr-main" data-action="set-tr" data-id="${esc(id)}"><span class="row-main"><span class="row-title">${esc(TR_NAME[id])}${id === cur ? ` ${icon('check')}` : ''}</span><span class="row-sub">${esc(TR_FULL[id] || '')}</span></span></button>
+    ${got.includes(id) || (window.Capacitor?.isNativePlatform?.() && BIBLE_TR_CORE.includes(id)) ? `<span class="row-sub tr-got">${t('tr.got')}</span>` : `<button class="link-btn tr-get" data-action="tr-get" data-id="${esc(id)}" id="trg-${esc(id)}">${icon('download')}${t('tr.get')}</button>`}</div>`;
+  showSheet({ title: t('tr.title'), body: `<p class="hint">${t('tr.hint')}</p>${order.map(l => { const ids = Object.keys(TR_NAME).filter(id => (TR_LANG[id] || 'en') === l); return ids.length ? `<p class="field-label">${LN[l]}</p><div class="list">${ids.map(rowOf).join('')}</div>` : ''; }).join('')}` });
+  sheet.dataset.kind = 'tr'; if (back) state.sheetBack = back;
+}
+const BIBLE_TR_CORE = ['korean', 'kjv', 'valera'];   // inside the phone app already
+async function saveTrOffline(tr) {
+  const cache = await bibleCache(); if (!cache) { toast(t('off.fail')); return; }
+  const btn = () => document.getElementById('trg-' + tr); let fail = 0;
+  for (let b = 1; b <= 66; b++) {
+    if (!(await cache.match(`/dt-bible/${tr}/${b}.json`))) { if (!(await fetchBook(tr, b))) fail++; }
+    const el = btn(); if (el) el.textContent = `${Math.round(b / 66 * 100)}%`;
+  }
+  if (!fail) { data.settings.trOffline = [...new Set([...(data.settings.trOffline || []), tr])]; save(); }
+  const el = btn(); if (el) el.outerHTML = fail ? `<span class="row-sub">${t('off.fail')}</span>` : `<span class="row-sub tr-got">${t('tr.got')}</span>`;
+  toast(fail ? t('off.fail') : t('tr.done').replace('{name}', TR_NAME[tr]));
+}
 async function saveBibleOffline() {
   const box = $('#off-p'); const trs = ['korean', 'kjv', 'valera']; const total = trs.length * 66; let n = 0, fail = 0;
   const cache = await bibleCache(); if (!cache) { toast(t('off.fail')); return; }
@@ -2044,7 +2085,7 @@ async function fetchBook(tr, b) {
   const key = `${tr}/${b}`;
   if (!bookMem[key]) bookMem[key] = (async () => {
     const cache = await bibleCache();
-    for (const url of [`bible/${key}.json`, `${LEGAL_BASE}/bible/${key}.json`, `https://raw.githubusercontent.com/wonshon-cmd/dailythanksapp/5ca8dc9eb893cb76f362953c1a5e48b34324bc28/bible/${key}.json`]) {
+    for (const url of [`bible/${key}.json`, `${LEGAL_BASE}/bible/${key}.json`, `https://raw.githubusercontent.com/wonshon-cmd/dailythanksapp/5ca8dc9eb893cb76f362953c1a5e48b34324bc28/bible/${key}.json`, `https://raw.githubusercontent.com/wonshon-cmd/dailythanksapp/main/bible/${key}.json`]) {
       try { const r = await fetch(url); if (r.ok) { const j = await r.clone().json(); if (Array.isArray(j.chapters)) { cache?.put(`/dt-bible/${key}.json`, r).catch(() => {}); return j.chapters; } } } catch { /* next */ }
     }
     try { const r = await cache?.match(`/dt-bible/${key}.json`); if (r) { const j = await r.json(); if (Array.isArray(j.chapters)) return j.chapters; } } catch {}
@@ -5314,11 +5355,10 @@ function bibleSettings() {
     <p class="field-label">${t('bs.size')}</p>
     ${seg([['s', t('size.s')], ['m', t('size.m')], ['l', t('size.l')]], 'set-size', data.settings.textSize || 'm', 'seg-size')}
     <p class="field-label">${t('bs.tr')}</p>
-    ${seg(Object.entries(TR_NAME), 'set-tr', curTr(), 'seg-tr')}
+    <div class="list">${row('tr-pick', 'book', esc(TR_NAME[curTr()]), `<span class="row-sub">${esc(TR_FULL[curTr()] || '')}</span>${icon('chevron')}`)}</div>
     <p class="field-label">${t('bs.reading')}</p>
     <div class="list">
       ${row(data.settings.notificationEnabled ? 'notification' : 'notify-prime', 'bell', t('bs.remind'), `<span class="row-sub">${data.settings.notificationEnabled ? esc(data.settings.notificationTime) : t('bs.off')}</span>${icon('chevron')}`)}
-      ${window.Capacitor?.isNativePlatform?.() ? '' : row('bible-offline', 'book', t('off.title'))}
     </div>
     ${PAID ? `<p class="field-label">${t('bs.sermon')}</p>
     <div class="list">
@@ -5873,7 +5913,7 @@ function influenceSheet() {
     ${f.given.ext ? `<p class="hint">${t('inf.ext').replace('{n}', f.given.ext)}</p>` : ''}
     <p class="field-label">${t('inf.top')}</p>
     <div class="list">${topPosts(5).map((p, i) => `<div class="list-row static rank-row"><span class="rank">${i + 1}</span><span class="row-main"><span class="row-title clamp">${esc(L(p.text))}</span><span class="row-sub">${esc(p.mine ? t('me') : L(p.name))}${p.mine ? ` · ♡ ${likesOf(p)} · ${t('inf.saves')} ${savesOf(p)} · ${t('inf.shares')} ${sharesOf(p)}` : ''}</span></span></div>`).join('')}</div>
-    <p class="about">${icon('info')}<span>${t('inf.peopleNote')} ${t('inf.how')}</span></p>` });
+    <p class="about">${icon('info')}<span>${t('inf.peopleNote')}${BIBLE_MODE ? '' : ' ' + t('inf.how')}</span></p>` });
 }
 function countShare(id, external = false) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
@@ -6172,7 +6212,7 @@ const actions = {
     const text = `${v.text}\n— ${v.ref}${v.tr ? ' (' + v.tr + ')' : ''}\n\nGive thanks daily. · daily thanks`;
     if (navigator.share) navigator.share({ title: 'daily thanks', text }).catch(() => {}); else copyText(text);
   },
-  'set-tr': id => { if (!TR_NAME[id]) return; data.settings.bibleTr = id; save(); document.querySelectorAll('[data-action="set-tr"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); state.trChanged = true; },
+  'set-tr': id => { if (!TR_NAME[id]) return; data.settings.bibleTr = id; save(); if (sheet.dataset.kind === 'tr') { trSheet(); } document.querySelectorAll('[data-action="set-tr"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); state.trChanged = true; },
   'set-size': id => { data.settings.textSize = id; save(); applyTextSize(); document.querySelectorAll('[data-action="set-size"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); },
   'read-more': id => { const p = data.posts.find(x => x.id === id); if (p) showSheet({ title: esc(p.mine ? t('me') : L(p.name)), body: `<p class="full-text">${esc(L(p.text))}</p>` }); },
   'save-post': toggleSave,
@@ -6228,6 +6268,8 @@ const actions = {
   'bk-fresh': () => { if (!confirm(t('bk.freshQ'))) return; close(); Backup.fresh(); toast(t('bk.freshDone')); },
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),
   'bible-offline-go': () => saveBibleOffline(),
+  'tr-pick': () => trSheet(),
+  'tr-get': id => saveTrOffline(id),
   'vault-copy': async () => copyText((await Vault.recoveryCode()) || ''),
   'cp-join': pair => { const [id, how] = pair.split('|'); const c = [...(CONTENT.campaigns || []), ...CAMPAIGNS_BUILTIN].find(x => x.id === id); if (!c || data.challenges.some(x => x.campaign === id)) return;
     const g = how === 'group' ? (state.group && data.groups.some(x => x.id === state.group) ? state.group : data.groups[0]?.id) : 'pair';
@@ -6807,6 +6849,7 @@ function onbDone() {
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (BIBLE_MODE && !location.hash && data.settings.onboarded && !data.readDevo?.[today()]) goToday();
+if (BIBLE_MODE) setTimeout(trRefresh, 2500);   // newly added free translations show up in Settings
 if (location.hash.startsWith('#friend')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => friendLink(q), 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
 if (location.hash.startsWith('#pastor=')) { try { state.pastorView = unb64url(location.hash.slice(8)); state.immersive = false; state.tab = 'group'; document.getElementById('splash')?.remove(); setTimeout(render, 60); } catch {} }

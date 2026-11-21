@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Download 개역한글, KJV, Reina-Valera 1909
+      - name: Download the free Bibles (개역한글, KJV, RV 1909 and every other public-domain one in Korean, English, Spanish)
         run: python3 tools/fetch-bible.py bible
       - name: Commit the text
         run: |

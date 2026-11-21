@@ -142,8 +142,15 @@ app_dir = WEB / 'app'; app_dir.mkdir(exist_ok=True)
 for f in ('index.html', 'styles.css', 'app.js', 'qrcode.js'): shutil.copy(ROOT / f, app_dir / f)
 bible = ROOT / 'bible'
 if bible.exists():  # public-domain Bible text: dailyjourney.org/bible/… and dailyjourney.org/app/bible/…
-    shutil.copytree(bible, WEB / 'bible', dirs_exist_ok=True)
-    shutil.copytree(bible, app_dir / 'bible', dirs_exist_ok=True)
+    shutil.copytree(bible, WEB / 'bible', dirs_exist_ok=True)   # every free translation lives once at dailyjourney.org/bible/
+# next to each app copy only the three default ones (the others load from /bible/, see fetchBook in app.js)
+CORE_TR = ['korean', 'kjv', 'valera']
+def copy_core(dest):
+    if not bible.exists(): return
+    for tr in CORE_TR:
+        if (bible / tr).exists(): shutil.copytree(bible / tr, dest / 'bible' / tr, dirs_exist_ok=True)
+    if (bible / 'index.json').exists(): (dest / 'bible').mkdir(parents=True, exist_ok=True); shutil.copy(bible / 'index.json', dest / 'bible' / 'index.json')
+copy_core(app_dir)
 # daily bible on the web: dailyjourney.org/daily-bible/ (same files, Bible mode; shares data with /app/ on this site)
 bb_dir = WEB / 'daily-bible'; bb_dir.mkdir(exist_ok=True)
 for f in ('styles.css', 'app.js', 'qrcode.js'): shutil.copy(ROOT / f, bb_dir / f)
@@ -164,7 +171,7 @@ _v = hashlib.sha1((ROOT / 'app.js').read_bytes() + (ROOT / 'styles.css').read_by
 import json as _json
 (WEB / 'app-update.json').write_text(_json.dumps({'v': _v, 'js': f'/daily-bible/app.js?v={_v}', 'css': f'/daily-bible/styles.css?v={_v}', 'minNative': 1}) + '\n')
 shutil.copy(ROOT / 'brand' / 'og-journey.png', WEB / 'og-journey.png')
-if bible.exists(): shutil.copytree(bible, bb_dir / 'bible', dirs_exist_ok=True)
+copy_core(bb_dir)
 # daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
 db_site = WEB / 'dailybible'
 shutil.copytree(ROOT / 'brand' / 'daily-bible' / 'web', db_site, dirs_exist_ok=True)   # icon, favicon, og image, app screenshots
