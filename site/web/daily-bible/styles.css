@@ -1834,3 +1834,4 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .rp-msg{margin:6px 0 0;font-size:15px;line-height:1.6;color:var(--ink, #2B2F33);white-space:pre-line}
 .rp-q{margin:6px 0 0;font-size:13px;color:var(--faint, #9BA0A3)}
 .rp-q::before{content:'“'}.rp-q::after{content:'”'}
+.rp-head .rp-heart{color:#E0565B;font-size:15px;margin-right:auto}

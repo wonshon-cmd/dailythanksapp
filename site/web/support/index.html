@@ -117,15 +117,11 @@ th{font-weight:500;color:var(--ink)}
 .shared-cta{margin-top:clamp(56px,9vw,90px);padding-top:32px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:16px}
 .shared-cta p{margin:0;color:var(--sub)}
 .shared-cta .stores{justify-content:flex-start;margin-top:4px}
-.rb{margin-top:clamp(40px,7vw,64px);display:flex;flex-direction:column;align-items:flex-start;gap:12px}
-.rb-ask{margin:0;font-size:15px;color:var(--sub)}
-.rb-chips{display:flex;flex-wrap:wrap;gap:8px}
-.rb-chip{font:inherit;font-size:14px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
-.rb-chip.on{background:#F1F2F3;border-color:#D9DBDD}
-.rb-field{font:inherit;font-size:15px;width:100%;max-width:420px;padding:11px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);resize:none;box-sizing:border-box}
-.rb-field:focus{outline:none;border-color:#C9CCCE}
-#rb-send:disabled{opacity:.4;cursor:default}
-.rb.sent .rb-chips,.rb.sent .rb-field,.rb.sent #rb-send{display:none}
+.rb{margin-top:clamp(36px,6vw,56px);display:flex;align-items:center;gap:14px}
+.rb-heart{width:52px;height:52px;border-radius:999px;border:0;background:var(--pill);display:grid;place-items:center;cursor:pointer;padding:0;flex:none}
+.rb-heart svg{width:24px;height:24px;fill:none;stroke:#5B6064;stroke-width:1.6;transition:transform .25s}
+.rb.sent .rb-heart svg{fill:#E0565B;stroke:#E0565B;transform:scale(1.12)}
+.rb-heart:disabled{cursor:default}
 .rb-note{margin:0;font-size:13px;color:var(--faint)}
 .rb-connect{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 /* group invite page */
@@ -189,7 +185,7 @@ const S = {
     s3t:'기쁨을 나눠요', s3:'고마운 사람에게 감사 카드를 보내거나, 문자·WhatsApp·카카오톡·인스타그램으로 나눠요.',
     reach:'내 감사가 닿을수록 작은 빛이 조금씩 퍼져요. <span style="color:var(--text)">12명에게 닿았어요</span>',
     tyFrom:'{name}님이 당신에게 감사를 전했어요', tyAnon:'누군가 당신에게 감사를 전했어요', tyReply:'{name}님에게 답장 감사 보내기', tyReplyAnon:'답장 감사 보내기', tyInApp:'앱에서 답장하기', tyWhat:'daily thanks는 매일 감사 한 줄을 남기고 나누는 앱이에요.',
-    postTitle:'감사 한 줄', postBad:'링크가 올바르지 않아요.', postWrite:'나도 감사 한 줄 쓰기', postAsk:'오늘 감사한 것은?', kToday:'오늘의 감사', kAhead:'미리 감사', kThanks:'감사 전하기', kMed:'묵상', kVerse:'말씀', joinTitle:'공동체 초대', joinGroup:'공동체', joinBody:'daily thanks에서 함께 감사를 나눠요.', joinOpen:'앱에서 참여하기', joinNoApp:'앱이 아직 없다면 먼저 설치해 주세요.', joinAfter:'설치한 뒤 이 링크를 다시 누르면 바로 참여할 수 있어요.', joinBad:'초대 링크가 올바르지 않아요. 보낸 사람에게 다시 받아 주세요.', rbAsk:'{name}님에게 한마디', rbAskAnon:'한마디 남기기', rbThanks:'고마워요', rbPray:'함께 기도할게요', rbMe:'나도 감사해요', rbName:'내 이름 (선택)', rbSend:'보내기', rbSent:'보냈어요. {name}님에게 전해졌어요.', rbSentAnon:'보냈어요.', rbFail:'보내지 못했어요. 잠시 뒤 다시 해 주세요.', cnBtn:'{name}님과 연결하기', cnBtnAnon:'연결하기', cnBody:'연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.', today:'오늘의 감사', titles:{privacy:'개인정보처리방침', terms:'이용약관', support:'문의하기', 'delete-account':'계정 삭제'} },
+    postTitle:'감사 한 줄', postBad:'링크가 올바르지 않아요.', postWrite:'나도 감사 한 줄 쓰기', postAsk:'오늘 감사한 것은?', kToday:'오늘의 감사', kAhead:'미리 감사', kThanks:'감사 전하기', kMed:'묵상', kVerse:'말씀', joinTitle:'공동체 초대', joinGroup:'공동체', joinBody:'daily thanks에서 함께 감사를 나눠요.', joinOpen:'앱에서 참여하기', joinNoApp:'앱이 아직 없다면 먼저 설치해 주세요.', joinAfter:'설치한 뒤 이 링크를 다시 누르면 바로 참여할 수 있어요.', joinBad:'초대 링크가 올바르지 않아요. 보낸 사람에게 다시 받아 주세요.', rbHeart:'하트', rbAsk:'하트로 {name}님에게 마음을 전해요', rbAskAnon:'하트로 마음을 전해요', rbSent:'{name}님에게 하트를 보냈어요', rbSentAnon:'하트를 보냈어요', rbFail:'보내지 못했어요. 잠시 뒤 다시 해 주세요.', cnBtn:'{name}님과 연결하기', cnBtnAnon:'연결하기', cnBody:'연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.', today:'오늘의 감사', titles:{privacy:'개인정보처리방침', terms:'이용약관', support:'문의하기', 'delete-account':'계정 삭제'} },
   en: { privacy:'Privacy', terms:'Terms', support:'Support', delete:'Delete account', copy:'Copy', copied:'Copied', back:'← daily thanks',
     nonprofit:'A New Jersey nonprofit corporation · 501(c)(3) application pending with the IRS', soon:'Coming soon', read:'Today’s thanks', how:'Thirty seconds a day. One line is enough.',
     s1t:'Read', s1:'Open the app and read warm, everyday thanks from others, one at a time.',
@@ -197,7 +193,7 @@ const S = {
     s3t:'Share the joy', s3:'Send a thank-you card to someone, or share via text, WhatsApp, KakaoTalk and Instagram.',
     reach:'As your thanks reaches people, a small light slowly spreads. <span style="color:var(--text)">Reached 12 people</span>',
     tyFrom:'{name} sent you a thank-you', tyAnon:'Someone sent you a thank-you', tyReply:'Thank {name} back', tyReplyAnon:'Send thanks back', tyInApp:'Reply in the app', tyWhat:'daily thanks is a simple way to write down and share one line of thanks each day.',
-    postTitle:'A line of thanks', postBad:'This link isn’t valid.', postWrite:'Write your own thanks', postAsk:'What are you thankful for today?', kToday:'Today’s thanks', kAhead:'Thanks ahead', kThanks:'Thank-you note', kMed:'Reflection', kVerse:'Bible verse', joinTitle:'Group invite', joinGroup:'A group', joinBody:'Share gratitude together on daily thanks.', joinOpen:'Join in the app', joinNoApp:'Don’t have the app yet? Install it first.', joinAfter:'After installing, tap this link again to join.', joinBad:'This invite link isn’t valid. Ask the sender for a new one.', rbAsk:'Say something to {name}', rbAskAnon:'Leave a word', rbThanks:'Thank you', rbPray:'Praying with you', rbMe:'Thankful too', rbName:'Your name (optional)', rbSend:'Send', rbSent:'Sent. {name} will see it.', rbSentAnon:'Sent.', rbFail:'Couldn’t send. Please try again in a moment.', cnBtn:'Connect with {name}', cnBtnAnon:'Connect', cnBody:'You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.', today:'Today’s thanks', titles:{privacy:'Privacy Policy', terms:'Terms of Use', support:'Support', 'delete-account':'Delete your account'} },
+    postTitle:'A line of thanks', postBad:'This link isn’t valid.', postWrite:'Write your own thanks', postAsk:'What are you thankful for today?', kToday:'Today’s thanks', kAhead:'Thanks ahead', kThanks:'Thank-you note', kMed:'Reflection', kVerse:'Bible verse', joinTitle:'Group invite', joinGroup:'A group', joinBody:'Share gratitude together on daily thanks.', joinOpen:'Join in the app', joinNoApp:'Don’t have the app yet? Install it first.', joinAfter:'After installing, tap this link again to join.', joinBad:'This invite link isn’t valid. Ask the sender for a new one.', rbHeart:'Heart', rbAsk:'Send {name} a heart', rbAskAnon:'Send a heart', rbSent:'{name} will see your heart', rbSentAnon:'Heart sent', rbFail:'Couldn’t send. Please try again in a moment.', cnBtn:'Connect with {name}', cnBtnAnon:'Connect', cnBody:'You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.', today:'Today’s thanks', titles:{privacy:'Privacy Policy', terms:'Terms of Use', support:'Support', 'delete-account':'Delete your account'} },
   es: { privacy:'Privacidad', terms:'Términos', support:'Soporte', delete:'Eliminar cuenta', copy:'Copiar', copied:'Copiado', back:'← daily thanks',
     nonprofit:'Corporación sin fines de lucro de Nueva Jersey · solicitud 501(c)(3) pendiente ante el IRS', soon:'Muy pronto', read:'Gratitud de hoy', how:'Treinta segundos al día. Una línea es suficiente.',
     s1t:'Lee', s1:'Abre la app y lee, una por una, gracias cotidianas y cálidas de otras personas.',
@@ -205,7 +201,7 @@ const S = {
     s3t:'Comparte la alegría', s3:'Envía una tarjeta de agradecimiento o comparte por mensaje de texto, WhatsApp, KakaoTalk e Instagram.',
     reach:'Cuanto más llega tu gratitud, más se extiende una pequeña luz. <span style="color:var(--text)">Llegó a 12 personas</span>',
     tyFrom:'{name} te envió una nota de gracias', tyAnon:'Alguien te envió una nota de gracias', tyReply:'Agradécele a {name}', tyReplyAnon:'Enviar gracias de vuelta', tyInApp:'Responder en la app', tyWhat:'daily thanks es una forma sencilla de escribir y compartir una línea de gratitud cada día.',
-    postTitle:'Una línea de gratitud', postBad:'Este enlace no es válido.', postWrite:'Escribe tu propia gratitud', postAsk:'¿Por qué estás agradecido hoy?', kToday:'Gratitud de hoy', kAhead:'Gracias de antemano', kThanks:'Nota de gracias', kMed:'Reflexión', kVerse:'Versículo', joinTitle:'Invitación al grupo', joinGroup:'Un grupo', joinBody:'Compartamos gratitud juntos en daily thanks.', joinOpen:'Unirme en la app', joinNoApp:'¿Aún no tienes la app? Instálala primero.', joinAfter:'Después de instalarla, toca este enlace otra vez para unirte.', joinBad:'Este enlace no es válido. Pide uno nuevo a quien te lo envió.', rbAsk:'Dile algo a {name}', rbAskAnon:'Deja unas palabras', rbThanks:'Gracias', rbPray:'Oro contigo', rbMe:'Yo también agradezco', rbName:'Tu nombre (opcional)', rbSend:'Enviar', rbSent:'Enviado. {name} lo verá.', rbSentAnon:'Enviado.', rbFail:'No se pudo enviar. Inténtalo de nuevo en un momento.', cnBtn:'Conectar con {name}', cnBtnAnon:'Conectar', cnBody:'Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.', today:'Gratitud de hoy', titles:{privacy:'Política de privacidad', terms:'Términos de uso', support:'Soporte', 'delete-account':'Eliminar tu cuenta'} }
+    postTitle:'Una línea de gratitud', postBad:'Este enlace no es válido.', postWrite:'Escribe tu propia gratitud', postAsk:'¿Por qué estás agradecido hoy?', kToday:'Gratitud de hoy', kAhead:'Gracias de antemano', kThanks:'Nota de gracias', kMed:'Reflexión', kVerse:'Versículo', joinTitle:'Invitación al grupo', joinGroup:'Un grupo', joinBody:'Compartamos gratitud juntos en daily thanks.', joinOpen:'Unirme en la app', joinNoApp:'¿Aún no tienes la app? Instálala primero.', joinAfter:'Después de instalarla, toca este enlace otra vez para unirte.', joinBad:'Este enlace no es válido. Pide uno nuevo a quien te lo envió.', rbHeart:'Corazón', rbAsk:'Envíale un corazón a {name}', rbAskAnon:'Envía un corazón', rbSent:'{name} verá tu corazón', rbSentAnon:'Corazón enviado', rbFail:'No se pudo enviar. Inténtalo de nuevo en un momento.', cnBtn:'Conectar con {name}', cnBtnAnon:'Conectar', cnBody:'Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.', today:'Gratitud de hoy', titles:{privacy:'Política de privacidad', terms:'Términos de uso', support:'Soporte', 'delete-account':'Eliminar tu cuenta'} }
 };
 const READS = [
   { name:{ko:'영숙',en:'Margaret',es:'Carmen'}, text:{ko:'오늘 손주가 처음으로 "할머니 사랑해요"라고 또박또박 말해 줬어요. 평생 들은 말 중에 제일 예쁜 말이었어요. 이렇게 오래 살게 하셔서 이 말을 듣게 하시니 감사합니다.', en:'Today my grandson said “Grandma, I love you” clearly for the first time. It was the most beautiful thing I’ve heard in my life. Thank you for letting me live long enough to hear it.', es:'Hoy mi nieto me dijo por primera vez, clarito, “Abuela, te quiero”. Fue lo más bonito que he escuchado en mi vida. Gracias por dejarme vivir tanto como para oírlo.'} },
@@ -239,36 +235,30 @@ function replyBlock(t, p) {
   if (!okBox(p)) return '';
   const from = String(p.n || '').slice(0, 30);
   const app = `../${p.a === 't' ? 'app' : 'daily-bible'}/#friend?c=${encodeURIComponent(p.c)}&n=${encodeURIComponent(from)}&k=${p.g}`;
-  return `<div class="rb" id="rb">
-    <p class="rb-ask">${esc(from ? t.rbAsk.replace('{name}', from) : t.rbAskAnon)}</p>
-    <div class="rb-chips">${[['thanks', t.rbThanks], ['pray', t.rbPray], ['me', t.rbMe]].map(([k, l]) => `<button type="button" class="rb-chip" data-r="${k}">${esc(l)}</button>`).join('')}</div>
-    <input id="rb-name" class="rb-field" maxlength="20" placeholder="${esc(t.rbName)}" autocomplete="name">
-    <button type="button" class="pill pill-dark" id="rb-send" disabled>${esc(t.rbSend)}</button>
-    <p class="rb-note" id="rb-note" hidden></p></div>
+  const heart = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
+  return `<div class="rb" id="rb"><button type="button" class="rb-heart" id="rb-send" aria-label="${esc(t.rbHeart)}">${heart}</button>
+    <p class="rb-note" id="rb-note">${esc(from ? t.rbAsk.replace('{name}', from) : t.rbAskAnon)}</p></div>
   <div class="rb-connect"><a class="pill" id="rb-connect" href="${esc(app)}">${esc(from ? t.cnBtn.replace('{name}', from) : t.cnBtnAnon)}</a><p class="rb-note">${esc(t.cnBody)}</p></div>`;
 }
 function wireReply(t, p) {
   const box = document.getElementById('rb'); if (!box) return;
-  let pick = '';
   const send = document.getElementById('rb-send'), note = document.getElementById('rb-note');
-  const ready = () => { send.disabled = !pick; };
-  box.querySelectorAll('.rb-chip').forEach(b => b.addEventListener('click', () => { pick = pick === b.dataset.r ? '' : b.dataset.r; box.querySelectorAll('.rb-chip').forEach(x => x.classList.toggle('on', x.dataset.r === pick)); ready(); }));
   const b64 = u => btoa(String.fromCharCode(...new Uint8Array(u)));
   const raw = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '='), c => c.charCodeAt(0));
   send.addEventListener('click', async () => {
-    send.disabled = true;
+    send.disabled = true; box.classList.add('sent');
     try {
       const key = await crypto.subtle.importKey('raw', raw(p.g), 'AES-GCM', false, ['encrypt']);
       const iv = crypto.getRandomValues(new Uint8Array(12));
-      const body = { r: pick, n: document.getElementById('rb-name').value.trim().slice(0, 20), q: String(p.t || '').slice(0, 60), at: new Date().toISOString() };
+      const body = { r: 'heart', q: String(p.t || '').slice(0, 60), at: new Date().toISOString() };
       const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify(body)));
       const res = await fetch(SUPA.url + '/rest/v1/link_replies', { method: 'POST', headers: { apikey: SUPA.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
         body: JSON.stringify({ code: p.c, sealed: { v: 1, iv: b64(iv), ct: b64(ct) } }) });
       if (!res.ok) throw new Error(res.status);
       const from = String(p.n || '').slice(0, 30);
-      box.classList.add('sent'); note.hidden = false; note.textContent = from ? t.rbSent.replace('{name}', from) : t.rbSentAnon;
+      box.classList.add('sent'); note.textContent = from ? t.rbSent.replace('{name}', from) : t.rbSentAnon;
       document.getElementById('rb-connect')?.classList.add('pill-dark');
-    } catch { note.hidden = false; note.textContent = t.rbFail; send.disabled = false; }
+    } catch { box.classList.remove('sent'); note.textContent = t.rbFail; send.disabled = false; }
   });
 }
 let SHARED = null;
