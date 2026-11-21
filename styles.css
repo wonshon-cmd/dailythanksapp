@@ -2018,3 +2018,10 @@ details.ch-top:not([open]){gap:0}
 .tr-row .tr-get{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .tr-row .tr-get svg{width:14px;height:14px}
 .tr-row .tr-got{white-space:nowrap}
+/* 나: search + newest/oldest above my reflections and saved verses */
+.me-tools{display:flex;gap:8px;align-items:center;margin:22px 0 4px}
+.me-tools .field{flex:1;min-width:0;margin:0;height:40px}
+.me-sort{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;height:40px;padding:0 14px}
+.me-sort svg{width:14px;height:14px}
+.notes .note-meta{display:flex;justify-content:space-between;gap:10px}
+.vis-note:empty{display:none}

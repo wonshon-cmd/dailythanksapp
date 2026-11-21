@@ -260,7 +260,7 @@ function thanksPage(t, p) {
   const appReply = `daily-thanks://reply?to=${encodeURIComponent(from)}&from=${encodeURIComponent(to)}`;
   return `<section class="shared ty-page col">
     <p class="ty-kicker">${esc(from ? t.tyFrom.replace('{name}', from) : t.tyAnon)}</p>
-    <div class="ty-letter"><p class="ty-hello">${p.tn === 'love' ? 'Love you' : 'Thank you'}, <em>${esc(to)}</em></p><p class="shared-text">${esc(text)}</p>
+    <div class="ty-letter"><p class="ty-hello">${p.tn === 'love' ? 'Love you' : p.tn === 'sorry' ? 'I’m sorry' : 'Thank you'}, <em>${esc(to)}</em></p><p class="shared-text">${esc(text)}</p>
       <p class="shared-by">${from ? '— ' + esc(from) + ' · ' : ''}${esc(String(p.d || '').slice(0, 10))}</p></div>
     ${replyBlock(t, p)}
     <div class="shared-cta"><a class="pill pill-dark" href="${esc(reply)}">${esc(from ? t.tyReply.replace('{name}', from) : t.tyReplyAnon)}</a>
@@ -285,7 +285,7 @@ function post(t) {
   const text = String(p.t).slice(0, 1500), name = String(p.n || '').slice(0, 40);
   return `<section class="shared col">
     <p class="shared-kind">${esc(kind)}${p.r ? ' · ' + esc(String(p.r).slice(0, 60)) : ''}</p>
-    ${p.to ? `<p class="shared-to">${p.tn === 'love' ? 'Love you' : 'Thank you'}, ${esc(String(p.to).slice(0, 40))}</p>` : ''}
+    ${p.to ? `<p class="shared-to">${p.tn === 'love' ? 'Love you' : p.tn === 'sorry' ? 'I’m sorry' : 'Thank you'}, ${esc(String(p.to).slice(0, 40))}</p>` : ''}
     <p class="shared-text">${esc(text)}</p>
     <p class="shared-by">${name ? esc(name) + ' · ' : ''}${esc(String(p.d || '').slice(0, 10))}</p>
     ${replyBlock(t, p)}

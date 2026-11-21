@@ -12,11 +12,15 @@ import json, pathlib, re, sys, urllib.request
 
 OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else 'bible')
 CORE = ['korean', 'kjv', 'valera']
+# left out: kjva (same KJV text again, with Strong's data), koreankjv (Hangul KJV — still under copyright in Korea)
+SKIP = {'kjva', 'koreankjv'}
+FULL = {'korean': '개역한글 (1961)', 'kjv': 'King James Version', 'valera': 'Reina-Valera 1909', 'rv1858': 'Reina-Valera 1858',
+        'wycliffe': 'John Wycliffe Bible (c.1395)', 'douayrheims': 'Douay-Rheims (Catholic)', 'sse': 'Sagradas Escrituras (1569)'}
 LANGS = {'korean': 'ko', 'english': 'en', 'spanish': 'es', 'español': 'es', 'espanol': 'es', 'ko': 'ko', 'en': 'en', 'es': 'es'}
 # short names people know; anything else uses the name getBible gives
 NAMES = {'korean': '개역한글', 'kjv': 'KJV', 'valera': 'RV 1909', 'akjv': 'AKJV', 'asv': 'ASV 1901', 'web': 'WEB', 'ylt': 'YLT',
          'darby': 'Darby', 'basicenglish': 'BBE', 'wb': 'Webster', 'douayrheims': 'Douay-Rheims', 'rv1858': 'RV 1858',
-         'sparv1865': 'RV 1865', 'rva': 'RVA', 'sse': 'SSE'}
+         'sparv1865': 'RV 1865', 'rva': 'RVA', 'sse': 'SSE 1569', 'wycliffe': 'Wycliffe'}
 CHAPTERS = [50,40,27,36,34,24,21,4,31,24,22,25,29,36,10,13,10,42,150,31,12,8,66,52,5,48,12,14,3,9,1,4,7,3,3,3,2,14,4,
             28,16,24,21,28,16,16,13,6,6,4,4,5,3,6,4,3,1,13,5,5,3,5,1,1,1,22]
 
@@ -62,7 +66,7 @@ for v in items:
     lic = str(v.get('distribution_license') or v.get('license') or '')
     print(f'  available: {ab:14} {lg:12} {name}  [{lic[:60]}]')
     code = LANGS.get(lg) or LANGS.get(lg.split()[0] if lg else '')
-    if ab and code and re.fullmatch(r'[a-z0-9]+', ab): found[ab] = {'lang': code, 'full': name}
+    if ab and code and ab not in SKIP and re.fullmatch(r'[a-z0-9]+', ab): found[ab] = {'lang': code, 'full': name}
 
 index = []
 for tr in CORE + sorted(k for k in found if k not in CORE):
@@ -70,7 +74,7 @@ for tr in CORE + sorted(k for k in found if k not in CORE):
     try: total = save(tr)
     except Exception as e: print(f'{tr}: failed ({e})'); total = 0
     if tr in CORE and total < 1180: raise SystemExit(f'{tr}: only {total} chapters')
-    if total >= 1180: index.append({'id': tr, 'name': NAMES.get(tr, meta['full']), 'full': meta['full'], 'lang': meta['lang'], 'chapters': total})
+    if total >= 1180: index.append({'id': tr, 'name': NAMES.get(tr, meta['full']), 'full': FULL.get(tr, meta['full']), 'lang': meta['lang'], 'chapters': total})
 
 (OUT / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
 print('index:', ', '.join(f"{x['id']} ({x['lang']})" for x in index))

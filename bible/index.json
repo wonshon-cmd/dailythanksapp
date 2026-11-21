@@ -2,7 +2,7 @@
  {
   "id": "korean",
   "name": "개역한글",
-  "full": "Korean",
+  "full": "개역한글 (1961)",
   "lang": "ko",
   "chapters": 1189
  },
@@ -16,7 +16,7 @@
  {
   "id": "valera",
   "name": "RV 1909",
-  "full": "Reina Valera (1909)",
+  "full": "Reina-Valera 1909",
   "lang": "es",
   "chapters": 1189
  },
@@ -44,34 +44,20 @@
  {
   "id": "douayrheims",
   "name": "Douay-Rheims",
-  "full": "Douay Rheims",
+  "full": "Douay-Rheims (Catholic)",
   "lang": "en",
   "chapters": 1197
  },
  {
-  "id": "kjva",
-  "name": "King James Version (1769) with Strongs Numbers and Morphology and CatchWords, including Apocrypha (without glosses)",
-  "full": "King James Version (1769) with Strongs Numbers and Morphology and CatchWords, including Apocrypha (without glosses)",
-  "lang": "en",
-  "chapters": 1189
- },
- {
-  "id": "koreankjv",
-  "name": "Hangul King James Version",
-  "full": "Hangul King James Version",
-  "lang": "ko",
-  "chapters": 1189
- },
- {
   "id": "rv1858",
   "name": "RV 1858",
-  "full": "Reina Valera NT (1858)",
+  "full": "Reina-Valera 1858",
   "lang": "es",
   "chapters": 1189
  },
  {
   "id": "sse",
-  "name": "SSE",
+  "name": "SSE 1569",
   "full": "Sagradas Escrituras (1569)",
   "lang": "es",
   "chapters": 1189
@@ -92,7 +78,7 @@
  },
  {
   "id": "wycliffe",
-  "name": "John Wycliffe Bible (c.1395)",
+  "name": "Wycliffe",
   "full": "John Wycliffe Bible (c.1395)",
   "lang": "en",
   "chapters": 1197

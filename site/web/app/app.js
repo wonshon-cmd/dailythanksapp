@@ -803,6 +803,7 @@ const ICONS = {
   globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>',
   lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
   chevrons: '<path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/>',
+  up: '<path d="M12 19V5M5 12l7-7 7 7"/>',
   down: '<path d="M12 5v14M19 12l-7 7-7-7"/>',
   userplus: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>',
   bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
@@ -1019,6 +1020,14 @@ if (BIBLE_MODE) {
   Object.assign(STR.en, { 'inf.title': 'My positive influence', 'inf.peopleSub': 'people your heart has reached', 'inf.glow': 'The more grace you share, the brighter the light.' });
   Object.assign(STR.es, { 'inf.title': 'Mi influencia positiva', 'inf.peopleSub': 'personas a las que llegó tu corazón', 'inf.glow': 'Cuanta más gracia compartes, más brilla la luz.' });
 }
+// no note under "Everyone"
+Object.assign(STR.ko, { 'compose.publicNote': '' }); Object.assign(STR.en, { 'compose.publicNote': '' }); Object.assign(STR.es, { 'compose.publicNote': '' });
+Object.assign(STR.ko, { 'ty.toneSorry': "미안해요", 'ty.phSorry': "미안한 마음을 솔직하게 적어 보세요." });
+Object.assign(STR.en, { 'ty.toneSorry': "I’m sorry", 'ty.phSorry': "Say what you’re sorry for, honestly." });
+Object.assign(STR.es, { 'ty.toneSorry': "Lo siento", 'ty.phSorry': "Escribe con sinceridad lo que lamentas." });
+Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
+Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
+Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
 Object.assign(STR.ko, { 'inf.opens': "링크를 열어 본 사람" }); Object.assign(STR.en, { 'inf.opens': "Opened your links" }); Object.assign(STR.es, { 'inf.opens': "Abrieron tus enlaces" });
 Object.assign(STR.ko, { 'bk.title': "내 기록 열기", 'bk.body': "이 계정에 잠가 둔 기록이 있어요. 전에 쓰던 휴대폰의 나 › 설정 › 기록 보호에서 복구 키를 복사해 여기에 넣으면 그대로 열려요.", 'bk.open': "열기", 'bk.later': "나중에", 'bk.fresh': "이전 기록 없이 새로 시작", 'bk.freshQ': "이전 기록은 더 이상 열 수 없게 돼요. 새로 시작할까요?", 'bk.freshDone': "새로 시작했어요.", 'bk.done': "기록을 가져왔어요." });
 Object.assign(STR.en, { 'bk.title': "Open your records", 'bk.body': "This account has locked records. On your old phone, copy the recovery key from Me › Settings › Privacy lock and enter it here — everything opens as it was.", 'bk.open': "Open", 'bk.later': "Later", 'bk.fresh': "Start fresh without them", 'bk.freshQ': "Your earlier records can’t be opened after this. Start fresh?", 'bk.freshDone': "Started fresh.", 'bk.done': "Your records are here." });
@@ -1939,7 +1948,7 @@ function trAdd(list) { (Array.isArray(list) ? list : []).forEach(x => { if (x &&
 trAdd(data.settings.trList);
 async function trRefresh() {
   for (const url of ['bible/index.json', `${LEGAL_BASE}/bible/index.json`]) {
-    try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) continue; const j = await r.json(); if (Array.isArray(j) && j.length) { trAdd(j); data.settings.trList = j; save(true); return; } } catch {}
+    try { const r = await fetch(url, { cache: 'no-cache' }); if (!r.ok) continue; const j = await r.json(); if (Array.isArray(j) && j.length) { const was = curTr(); trAdd(j); data.settings.trList = j; save(true); if (curTr() !== was) render(); return; } } catch {}
   }
 }
 const curTr = () => TR_NAME[data.settings.bibleTr] ? data.settings.bibleTr : BIBLE_TR[lang()] || 'kjv';
@@ -3493,7 +3502,6 @@ function renderSermons() {
     ${recLive() ? `<button class="rec-bar" id="rec-bar" data-action="sermon-new"><i class="rec-dot"></i><span>${t('rec.bar').replace('{t}', fmtDur(Rec.seconds))}</span></button>` : ''}
     <label class="sn-search" ${state.snSearch || state.snQuery ? '' : 'hidden'}>${icon('search')}<input id="sn-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="${esc(t('ss.ph'))}" value="${esc(state.snQuery || '')}">
       <button type="button" class="link-btn sn-qx" data-action="sn-q-clear" ${state.snQuery ? '' : 'hidden'}>${t('ss.clear')}</button></label>
-    <p class="hint" ${state.snQuery ? 'hidden' : ''} id="sn-sub">${t('sn.sub')}</p>
     ${'' && `<div class="sn-quota"><span>${q.plan === 'free' ? t('sn.free').replace('{n}', q.used).replace('{t}', q.limit) : t('sn.plan').replace('{plan}', t('sn.' + q.plan)).replace('{n}', q.monthUsed).replace('{t}', q.monthLimit)}</span>
       ${q.plan === 'free' ? `<i class="sn-bar"><b style="width:${Math.min(100, q.used / q.limit * 100)}%"></b></i>` : ''}</div>`}
     <div id="sn-list">${noteList(notes, status)}</div>
@@ -4141,21 +4149,38 @@ function leaveGroup(gid) {
   });
 }
 function renderBibleMe() {
-  const saved = data.savedVerses || [], medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).sort((a, b) => chIndex(a.ref.b, a.ref.c) - chIndex(b.ref.b, b.ref.c));
-  const q = noteQuota(), d = readDays();
+  const q = noteQuota();
   main.innerHTML = `<div class="screen"><div class="page bb">
     ${pageHead(t('me.title'), '', roundBtn('settings', 'more', t('aria.settings')))}
     ${myCommunities()}
     ${readGauge()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
-    <p class="gd-label me-label"><span>${t('me.medi')}</span><span>${medi.length}</span></p>
-    <div class="notes">${medi.slice(0, 20).map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}"><span class="note-meta"><span>${esc(refText(p.ref))}</span></span><span class="note-text">${esc(L(p.text))}</span></button>`).join('') || `<p class="me-empty">${t('me.none')}</p>`}</div>
-    <p class="gd-label me-label"><span>${t('me.saved')}</span><span>${saved.length}</span></p>
-    <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="me-empty">${t('me.none')}</p>`}</div>
+    <div class="me-tools"><input id="me-q" class="field" type="search" placeholder="${esc(t('me.search'))}" value="${esc(state.meQ || '')}" autocomplete="off">
+      <button class="secondary me-sort" data-action="me-sort">${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}</button></div>
+    <div id="me-lists">${meLists()}</div>
     <div class="list" style="margin-top:18px">
       ${PAID ? `<button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>` : ''}
     </div>
   </div></div>`;
+  $('#me-q')?.addEventListener('input', e => { state.meQ = e.target.value; const box = $('#me-lists'); if (box) box.innerHTML = meLists(); });
+}
+// 나 › my reflections and saved verses: with their dates, newest or oldest first, and a search over words, passage and date
+const meDate = d => { if (!d) return ''; const x = new Date(String(d).slice(0, 10) + 'T12:00:00'), now = new Date();
+  return x.toLocaleDateString(lang() === 'ko' ? 'ko-KR' : lang() === 'es' ? 'es' : 'en-US', { ...(x.getFullYear() !== now.getFullYear() ? { year: 'numeric' } : {}), month: 'long', day: 'numeric' }); };
+function meLists() {
+  const q = fold(state.meQ || ''), dir = state.meOld ? 1 : -1;
+  const hit = (...xs) => !q || xs.some(x => fold(x).includes(q));
+  const byDate = (a, b) => dir * (String(a._d).localeCompare(String(b._d)));
+  const medi = data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref).map(p => ({ p, _d: p.date || '', ref: refText(p.ref), text: L(p.text) }))
+    .filter(x => hit(x.text, x.ref, x._d, meDate(x._d))).sort(byDate);
+  const saved = (data.savedVerses || []).map(x => ({ x, _d: x.date || '', ref: refText({ b: x.b, c: x.c, v: x.v, v2: x.v }), text: x.text }))
+    .filter(y => hit(y.text, y.ref, y._d, meDate(y._d))).sort(byDate);
+  const item = (action, id, y) => `<button class="note" data-action="${action}" data-id="${esc(id)}"><span class="note-meta"><span>${esc(y.ref)}</span>${y._d ? `<span>${esc(meDate(y._d))}</span>` : ''}</span><span class="note-text">${esc(y.text)}</span></button>`;
+  const none = `<p class="me-empty">${t(q ? 'me.noMatch' : 'me.none')}</p>`;
+  return `<p class="gd-label me-label"><span>${t('me.medi')}</span><span>${medi.length}</span></p>
+    <div class="notes">${medi.slice(0, 100).map(y => item('note', y.p.id, y)).join('') || none}</div>
+    <p class="gd-label me-label"><span>${t('me.saved')}</span><span>${saved.length}</span></p>
+    <div class="notes">${saved.slice(0, 100).map(y => item('open-saved-verse', y.x.key, y)).join('') || none}</div>`;
 }
 function renderChallenges() {
   main.innerHTML = `<div class="screen"><div class="page">
@@ -4405,7 +4430,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
       if (!to) { toast(t('ty.needName')); $('#ty-name').focus(); return; }
       if (!text) { $('#gratitude-text').focus(); return; }
       const from = (data.settings.myName || '').trim().slice(0, 30); // the name from sign-up
-      const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}), ...(state.tyTone === 'love' ? { tone: 'love' } : {}) };
+      const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}), ...(tyTone(state.tyTone) !== 'thanks' ? { tone: tyTone(state.tyTone) } : {}) };
       data.posts.unshift(p); state.tyName = ''; save(); render(); thanksCard(p.id);
     });
     return;
@@ -4416,7 +4441,6 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
     ${med ? `<div class="med-passage" id="med-passage"></div><p class="field-label">${t('med.felt')}</p>` : ''}
     <textarea id="gratitude-text" data-draft="compose" class="big-input" maxlength="1500" rows="4" placeholder="${esc(ahead ? t('compose.phAhead') : med ? t('devo.ph2') : kind === 'prayer' ? t('pr.ph') : t('compose.qToday'))}" aria-label="${esc(ahead ? t('compose.qAhead') : t('compose.qToday'))}">${esc(keepText)}</textarea>
     ${med ? medExtras() : ''}
-    ${ahead ? `<div class="chips">${['work', 'relationship', 'everyday'].map(k => `<button type="button" class="chip" data-action="sample" data-id="${k}">${t('sample.' + k)}</button>`).join('')}</div>` : ''}
     <p class="field-label">${t('compose.who')}</p>
     ${visPicker('compose')}
     ${(() => { const kg = kind === 'meditation' ? 'meditation' : kind === 'prayer' ? 'prayer' : 'thanks', v = visOf('compose'), gids = v.mode === 'private' ? (v.targets || []) : [];
@@ -4926,7 +4950,7 @@ function postLink(p) {
   const kind = p.kind === 'thanks' || p.kind === 'ahead' || p.kind === 'meditation' ? p.kind : 'today';
   // my own thanks also carries my friend box: the friend can answer it, or connect with me (the key stays in the # part)
   const box = p.mine && CLOUD && Cloud.on() && data.settings.box?.ok && data.settings.box.uid === Cloud.uid() ? data.settings.box : null;
-  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.tone === 'love' ? { tn: 'love' } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
+  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(tyTone(p.tone) !== 'thanks' ? { tn: tyTone(p.tone) } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   // a reflection opens right in the app (passage + what they wrote); other posts open on their own web page
   if (kind === 'meditation') return withS(`${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`);
@@ -5924,13 +5948,16 @@ function countShare(id, external = false) {
 
 /* ---------------- thank-you card (감사 전하기) ---------------- */
 // 마음 전하기: a thank-you or a love note (Thank you, … / Love you, …)
-const tyHead = p => (p?.tone === 'love' ? 'Love you' : 'Thank you');
+// 고마워요 · 미안해요 · 사랑해요
+const TY_HEAD = { thanks: 'Thank you', sorry: 'I’m sorry', love: 'Love you' };
+const tyTone = x => (x === 'love' || x === 'sorry' ? x : 'thanks');
+const tyHead = p => TY_HEAD[tyTone(p?.tone)];
 function thanksForm(keep = {}) {
-  const tone = state.tyTone === 'love' ? 'love' : 'thanks';
-  return `<div class="chips ty-tones">${[['thanks', t('ty.toneThanks')], ['love', t('ty.toneLove')]].map(([k, l]) => `<button type="button" class="chip ${tone === k ? 'active' : ''}" data-action="ty-tone" data-id="${k}">${l}</button>`).join('')}</div>
-    <div class="ty-head">${tone === 'love' ? 'Love you' : 'Thank you'},</div>
+  const tone = tyTone(state.tyTone);
+  return `<div class="chips ty-tones">${[['thanks', t('ty.toneThanks')], ['sorry', t('ty.toneSorry')], ['love', t('ty.toneLove')]].map(([k, l]) => `<button type="button" class="chip ${tone === k ? 'active' : ''}" data-action="ty-tone" data-id="${k}">${l}</button>`).join('')}</div>
+    <div class="ty-head">${TY_HEAD[tone]},</div>
     <input id="ty-name" class="ty-name" maxlength="30" placeholder="${esc(t('ty.to'))}" value="${esc(keep.name || '')}" aria-label="${esc(t('ty.to'))}">
-    <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t(tone === 'love' ? 'ty.phLove' : 'ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
+    <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t({ love: 'ty.phLove', sorry: 'ty.phSorry' }[tone] || 'ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
     <button class="primary block" type="submit">${icon('send')}${t('ty.make')}</button>`;
 }
 function thanksText(p) { return `${tyHead(p)}, ${p.to}\n\n${L(p.text)}\n\n— Daily Thanks`; }
@@ -6269,6 +6296,7 @@ const actions = {
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),
   'bible-offline-go': () => saveBibleOffline(),
   'tr-pick': () => trSheet(),
+  'me-sort': () => { state.meOld = !state.meOld; const b = $('.me-sort'); if (b) b.innerHTML = `${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}`; const box = $('#me-lists'); if (box) box.innerHTML = meLists(); },
   'tr-get': id => saveTrOffline(id),
   'vault-copy': async () => copyText((await Vault.recoveryCode()) || ''),
   'cp-join': pair => { const [id, how] = pair.split('|'); const c = [...(CONTENT.campaigns || []), ...CAMPAIGNS_BUILTIN].find(x => x.id === id); if (!c || data.challenges.some(x => x.campaign === id)) return;
@@ -6430,7 +6458,7 @@ const actions = {
   'gc-open': gid => { close(); actions['open-group'](gid); },
   // 매일 › 연속 기록 카드: 나의 말씀 기록 (dashboard)
   'dash-sheet': () => showSheet({ title: t('db.title'), body: dashHtml() }),
-  'ty-tone': k => { state.tyTone = k === 'love' ? 'love' : 'thanks'; state.tyName = $('#ty-name')?.value || state.tyName; const keep = $('#gratitude-text')?.value || ''; compose('thanks', null); setTimeout(() => { const ta = $('#gratitude-text'); if (ta && keep) ta.value = keep; }, 0); },
+  'ty-tone': k => { state.tyTone = tyTone(k); state.tyName = $('#ty-name')?.value || state.tyName; const keep = $('#gratitude-text')?.value || ''; compose('thanks', null); setTimeout(() => { const ta = $('#gratitude-text'); if (ta && keep) ta.value = keep; }, 0); },
   'mc-toggle': () => { state.mcOpen = !state.mcOpen; render(); },
   'g-pick': () => { const row = g => `<button class="list-row" data-action="g-pick-to" data-id="${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span></span>${unseenIn(g.id) ? '<i class="new-dot"></i>' : ''}${g.id === (data.groups.find(x => x.id === state.group) || data.groups[0])?.id ? `<span class="row-end">${icon('check')}</span>` : ''}</button>`;
     showSheet({ title: t('gp.list'), body: `<div class="list">${data.groups.map(row).join('')}</div>` }); },
@@ -6849,7 +6877,7 @@ function onbDone() {
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
 if (BIBLE_MODE && !location.hash && data.settings.onboarded && !data.readDevo?.[today()]) goToday();
-if (BIBLE_MODE) setTimeout(trRefresh, 2500);   // newly added free translations show up in Settings
+if (BIBLE_MODE) setTimeout(trRefresh, data.settings.bibleTr && !TR_NAME[data.settings.bibleTr] ? 0 : 2500);   // newly added free translations show up in Settings
 if (location.hash.startsWith('#friend')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => friendLink(q), 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
 if (location.hash.startsWith('#pastor=')) { try { state.pastorView = unb64url(location.hash.slice(8)); state.immersive = false; state.tab = 'group'; document.getElementById('splash')?.remove(); setTimeout(render, 60); } catch {} }
