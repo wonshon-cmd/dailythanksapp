@@ -3411,10 +3411,10 @@ function fitScreen() {
     if (over()) sc.classList.add('t1');
     if (over() && sc.clientHeight / sc.scrollHeight < 0.92) sc.classList.add('t2');   // only a little too tall: just scale it a touch
     if (over() && pg) pg.style.zoom = Math.max(0.75, sc.clientHeight / sc.scrollHeight).toFixed(3);
-    sc.classList.add('fit');
+    if (!over()) sc.classList.add('fit');   // (still too tall even small: it scrolls instead of cutting things off)
   });
 }
-window.addEventListener('resize', () => { if (state.tab === 'read' && main.querySelector('.page.bb .stk, .page.bb .bb-cont')) fitScreen(); });
+window.addEventListener('resize', () => { if ((state.tab === 'read' && main.querySelector('.page.bb .stk, .page.bb .bb-cont')) || state.tab === 'me') fitScreen(); });
 function planSection(plans) {
   return `<section class="pl">
       <div class="pl-head"><p class="gd-label">${t('pl.title')}</p><button class="secondary pl-new" data-action="plan-new">${icon('plus')}${t('pl.new')}</button></div>
@@ -4160,13 +4160,23 @@ function renderBibleMe() {
     ${myCommunities()}
     ${readGauge()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
-    <div class="me-tools"><input id="me-q" class="field" type="search" placeholder="${esc(t('me.search'))}" value="${esc(state.meQ || '')}" autocomplete="off">
-      <button class="secondary me-sort" data-action="me-sort">${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}</button></div>
-    <div id="me-lists">${meLists()}</div>
+    <div class="list me-rows">
+      <button class="list-row" data-action="me-list" data-id="medi"><span class="row-icon">${icon('note')}</span><span class="row-main"><span class="row-title">${t('me.medi')}</span></span><span class="row-end"><span class="row-sub">${meMedi().length}</span>${icon('chevron')}</span></button>
+      <button class="list-row" data-action="me-list" data-id="saved"><span class="row-icon">${icon('bookmark')}</span><span class="row-main"><span class="row-title">${t('me.saved')}</span></span><span class="row-end"><span class="row-sub">${(data.savedVerses || []).length}</span>${icon('chevron')}</span></button>
+    </div>
     <div class="list" style="margin-top:18px">
       ${PAID ? `<button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>` : ''}
     </div>
   </div></div>`;
+  fitScreen();   // 나 stays still (the lists open in their own sheet)
+}
+const meMedi = () => data.posts.filter(p => p.mine && p.kind === 'meditation' && p.ref);
+// 묵상 노트 / 저장한 구절: in a sheet, with dates, newest or oldest first, and search
+function meListSheet(kind) {
+  state.meKind = kind === 'saved' ? 'saved' : 'medi';
+  showSheet({ title: t(state.meKind === 'saved' ? 'me.saved' : 'me.medi'), body: `<div class="me-tools"><input id="me-q" class="field" type="search" placeholder="${esc(t('me.search'))}" value="${esc(state.meQ || '')}" autocomplete="off">
+      <button class="secondary me-sort" data-action="me-sort">${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}</button></div>
+    <div id="me-lists">${meLists()}</div>` });
   $('#me-q')?.addEventListener('input', e => { state.meQ = e.target.value; const box = $('#me-lists'); if (box) box.innerHTML = meLists(); });
 }
 // 나 › my reflections and saved verses: with their dates, newest or oldest first, and a search over words, passage and date
@@ -4182,10 +4192,8 @@ function meLists() {
     .filter(y => hit(y.text, y.ref, y._d, meDate(y._d))).sort(byDate);
   const item = (action, id, y) => `<button class="note" data-action="${action}" data-id="${esc(id)}"><span class="note-meta"><span>${esc(y.ref)}</span>${y._d ? `<span>${esc(meDate(y._d))}</span>` : ''}</span><span class="note-text">${esc(y.text)}</span></button>`;
   const none = `<p class="me-empty">${t(q ? 'me.noMatch' : 'me.none')}</p>`;
-  return `<p class="gd-label me-label"><span>${t('me.medi')}</span><span>${medi.length}</span></p>
-    <div class="notes">${medi.slice(0, 100).map(y => item('note', y.p.id, y)).join('') || none}</div>
-    <p class="gd-label me-label"><span>${t('me.saved')}</span><span>${saved.length}</span></p>
-    <div class="notes">${saved.slice(0, 100).map(y => item('open-saved-verse', y.x.key, y)).join('') || none}</div>`;
+  return state.meKind === 'saved' ? `<div class="notes">${saved.slice(0, 200).map(y => item('open-saved-verse', y.x.key, y)).join('') || none}</div>`
+    : `<div class="notes">${medi.slice(0, 200).map(y => item('note', y.p.id, y)).join('') || none}</div>`;
 }
 function renderChallenges() {
   main.innerHTML = `<div class="screen"><div class="page">
@@ -6301,6 +6309,7 @@ const actions = {
   'bible-offline': () => showSheet({ title: t('off.title'), body: `<p class="hint">${t('off.body')}</p><p class="hint" id="off-p">${data.settings.bibleOffline ? t('off.done') : ''}</p><button class="primary block" data-action="bible-offline-go">${icon('download')}${t('off.go')}</button>` }),
   'bible-offline-go': () => saveBibleOffline(),
   'tr-pick': () => trSheet(),
+  'me-list': k => meListSheet(k),
   'me-sort': () => { state.meOld = !state.meOld; const b = $('.me-sort'); if (b) b.innerHTML = `${t(state.meOld ? 'me.oldest' : 'me.newest')}${icon(state.meOld ? 'up' : 'down')}`; const box = $('#me-lists'); if (box) box.innerHTML = meLists(); },
   'tr-get': id => saveTrOffline(id),
   'vault-copy': async () => copyText((await Vault.recoveryCode()) || ''),
@@ -6572,7 +6581,7 @@ const actions = {
     if (navigator.share) navigator.share({ text }).catch(() => {}); else copyText(text);
     data.verseShares = (data.verseShares || 0) + 1; data.extSharesGiven = (data.extSharesGiven || 0) + 1; save();
   },
-  'open-saved-verse': k => { const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
+  'open-saved-verse': k => { if (!sheet.hidden) close(); const [b, c, v] = k.split(':').map(Number); openReader({ b, c, v }); },
   'verse-read': ref => { const r = parseRef(ref); openReader(r ? { ...r } : {}); },
   'reader-close': () => { if (!data.settings.readerClosed) { data.settings.readerClosed = true; save(true); } closeReader(); if (state.immersive) toggleFullscreen(); }, // ✕ goes to the regular app; swiping right still returns to the feed
   'reader-pick': () => biblePicker({ mode: 'reader', start: state.reader?.loaded?.length ? { b: data.reading?.b, c: data.reading?.c } : null }),
