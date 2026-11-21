@@ -3011,7 +3011,16 @@ function devoMedCard(p) {
       <p class="fv-ref"><b class="fv-lab">${icon('note')}${t('dm.done')}</b>${esc(refText(p.ref))}</p>
     </div><aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>`;
 }
-const dmGrow = el => { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, innerHeight * 0.55) + 'px'; };
+// Writing window (F): the box grows to about six lines, then stays put — the line you're writing keeps its place,
+// earlier lines slide up and fade, and a finger scroll brings them back (no scroll bar).
+const dmGrow = el => {
+  const cs = getComputedStyle(el), lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.65, max = Math.round(lh * 6);
+  el.style.height = 'auto'; const full = el.scrollHeight;
+  if (full > max + 2) { el.style.height = max + 'px'; el.classList.add('dm-window'); if (document.activeElement !== el || el.selectionStart >= el.value.length - 1) el.scrollTop = el.scrollHeight; }
+  else { el.style.height = full + 'px'; el.classList.remove('dm-window'); }
+  el.classList.toggle('dm-up', el.scrollTop > 4);
+};
+document.addEventListener('scroll', e => { const el = e.target; if (el?.classList?.contains('dm-window')) el.classList.toggle('dm-up', el.scrollTop > 4); }, true);
 let dmTimer = null;
 document.addEventListener('input', e => {
   const el = e.target; if (!el.matches?.('.dm-input')) return; dmGrow(el);

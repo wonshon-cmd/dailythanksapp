@@ -2054,3 +2054,10 @@ details.ch-top:not([open]){gap:0}
 .med-calm #med-prayer{font-size:var(--read);line-height:1.6;min-height:2.4em;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
 .med-calm #gratitude-text::placeholder,.med-calm #med-prayer::placeholder{color:#B4B8BA}
 .med-calm .draft-saved{display:none}
+/* writing window: no scroll bar; earlier lines fade out at the top once they've slid up */
+.dm-window{overflow-y:auto!important;scrollbar-width:none;overscroll-behavior:contain}
+.dm-window::-webkit-scrollbar{display:none}
+.dm-window.dm-up{-webkit-mask-image:linear-gradient(transparent,#000 34%);mask-image:linear-gradient(transparent,#000 34%)}
+.dm-input,#gratitude-text,#med-prayer{scrollbar-width:none}
+.dm-input::-webkit-scrollbar,.med-calm textarea::-webkit-scrollbar{display:none}
+.dm-input:not(.dm-window){overflow:hidden}
