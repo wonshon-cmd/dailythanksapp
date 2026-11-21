@@ -1943,3 +1943,13 @@ mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-bre
 .gc-enter{margin:26px auto 0;padding:0 22px}
 .gc-sheet .sheet-top{border:0;box-shadow:none}.gc-sheet .sheet-top h2:empty{display:none}
 .gc-sheet .gc-big{border-top:0}
+/* 동행 days: checks like the streak card, tiny weekday under each */
+.g-ch-days{gap:5px;align-items:flex-start}
+.g-ch-days > span{display:grid;justify-items:center;gap:2px}
+.g-ch-days i{width:16px;height:16px;border-radius:50%;background:#E6E8EA;display:grid;place-items:center;color:#3A3F44}
+.g-ch-days .on i{background:#E6E8EA}
+.g-ch-days i svg{width:10px;height:10px;stroke-width:2.6}
+.g-ch-days small{font-size:9px;line-height:1;color:#A9AEB1}
+.g-ch > span:first-child{flex-shrink:0;white-space:nowrap}
+.g-ch-days{gap:3px;flex:0 1 auto;justify-content:center;margin:0 auto}
+.g-ch-days i{width:15px;height:15px}
