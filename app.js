@@ -1696,6 +1696,9 @@ function applyStatic() {
 }
 
 function showSheet({ title, body }) {
+  // a sheet opened from Settings remembers it, so ✕ goes back to Settings instead of closing everything
+  const fromSettings = (!sheet.hidden && sheet.dataset.kind === 'settings') || Date.now() - (state.settingsClosedAt || 0) < 600;
+  sheet.dataset.kind = title === t('s.title') ? 'settings' : ''; state.sheetBack = fromSettings && title !== t('s.title') ? 'settings' : null;
   sheet.innerHTML = `<div class="sheet-top"><h2>${title}</h2><button class="close" data-action="close" aria-label="${t('aria.close')}">${icon('x')}</button></div>${body}`;
   sheet.setAttribute('aria-label', title);
   sheet.hidden = false; backdrop.hidden = false;
@@ -1725,8 +1728,12 @@ document.addEventListener('input', e => {
 document.addEventListener('submit', e => {
   e.target.querySelectorAll?.('textarea[data-draft]').forEach(el => { if (data.drafts) delete data.drafts[el.dataset.draft]; });
 }, true);
+// ✕ or a tap outside: back to Settings if that's where this sheet came from
+function closeBack() { const back = state.sheetBack; state.sheetBack = null; close(); if (back === 'settings') { state.settingsClosedAt = 0; actions.settings(); } }
 function close() {
   if (state.medRecOn) medRecStop();   // never leave the microphone running behind a closed sheet
+  if (sheet.dataset.kind === 'settings') state.settingsClosedAt = Date.now();
+  sheet.dataset.kind = '';
   sheet.hidden = true; backdrop.hidden = true; sheet.innerHTML = ''; sheet.classList.remove('sheet-full', 'gc-sheet');
   if (state.trChanged) { state.trChanged = false; render(0); }   // another Bible version: the verses on screen follow
   if (state.verseChanged) { // verse frequency changed: rebuild the feed, staying near the same place
@@ -5935,7 +5942,7 @@ const actions = {
   'feed-group': () => { state.feed = 'group'; renderFeed(); },
   challenges: () => { close(); state.tab = 'challenges'; render(); },
   next: () => { const sc = $('#feed-scroll'); sc?.scrollBy({ top: sc.clientHeight, behavior: 'smooth' }); },
-  settings, notification: notifications, widget, close,
+  settings, notification: notifications, widget, close: () => closeBack(),
   'toggle-lang': () => setLang(lang() === 'ko' ? 'en' : 'ko'),
   'set-lang': id => setLang(id),
   like, share, 'send-group': sendToGroup, reflect, recap,
@@ -6441,7 +6448,7 @@ document.addEventListener('change', e => {
   }
   if (e.target.matches('[data-action="change-group"]')) { state.group = e.target.value; renderFeed(); }
 });
-backdrop.addEventListener('click', close);
+backdrop.addEventListener('click', () => closeBack());
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !passageViewClose() && !closePicker()) close(); });
 ['copy', 'cut', 'contextmenu', 'dragstart'].forEach(ev => document.addEventListener(ev, e => { if (e.target.closest?.('.post.protected, .gd-recent')) { e.preventDefault(); if (ev === 'copy') toast(t('prot.noShare')); } }));
 
