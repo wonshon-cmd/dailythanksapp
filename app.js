@@ -1030,6 +1030,7 @@ Object.assign(STR.ko, { 'compose.publicNote': '' }); Object.assign(STR.en, { 'co
 Object.assign(STR.ko, { 'ty.toneSorry': "미안해요", 'ty.phSorry': "미안한 마음을 솔직하게 적어 보세요." });
 Object.assign(STR.en, { 'ty.toneSorry': "I’m sorry", 'ty.phSorry': "Say what you’re sorry for, honestly." });
 Object.assign(STR.es, { 'ty.toneSorry': "Lo siento", 'ty.phSorry': "Escribe con sinceridad lo que lamentas." });
+Object.assign(STR.ko, { 'pl.with': "누구와 함께 할까요?" }); Object.assign(STR.en, { 'pl.with': "Who’s reading with you?" }); Object.assign(STR.es, { 'pl.with': "¿Con quién lo leerás?" });
 Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
 Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
 Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
@@ -5251,13 +5252,16 @@ function createGroup() {
 function createChallenge() {
   state.sheetWith = state.sheetWith || 'pair';
   const planOnly = BIBLE_MODE; if (planOnly) state.chType = 'bible';
+  // who it's with comes first (a reading plan keeps its usual name, so there's no name box)
+  const withBlock = `${state.chFromGroup ? '' : `<p class="field-label">${planOnly ? t('pl.with') : t('ch.with')}</p>`}
+    <div class="chips" ${state.chFromGroup ? 'hidden' : ''}>${[['pair', t('ch.pairShort')], ...data.groups.map(g => [g.id, L(g.name)])].map(([id, label]) => `<button type="button" class="chip ${state.sheetWith === id ? 'active' : ''}" data-action="pick-with" data-id="${esc(id)}">${esc(label)}</button>`).join('')}</div>`;
   showSheet({ title: planOnly ? t('pl.new') : t('ch.createTitle'), body: `<form id="challenge-form" class="sheet-form">
-    <input id="challenge-name" class="field" value="${esc(planOnly ? t('chn.bible') : t('ch.defaultName'))}" maxlength="50" aria-label="${esc(t('ch.name'))}" required>
+    <input id="challenge-name" class="field" value="${esc(planOnly ? t('chn.bible') : t('ch.defaultName'))}" maxlength="50" aria-label="${esc(t('ch.name'))}" required ${planOnly ? 'type="hidden"' : ''}>
+    ${planOnly ? withBlock : ''}
     <p class="field-label" ${planOnly ? 'hidden' : ''}>${t('ch.type')}</p>
     <div class="chips ch-types" ${planOnly ? 'hidden' : ''}>${[['thanks', t('ch.t.thanks')], ['prayer', t('f.prayer')], ['meditation', t('kind.meditation')], ['bible', t('ch.t.bible')]].map(([k, l]) => `<button type="button" class="chip ${(state.chType || 'thanks') === k ? 'active' : ''}" data-action="pick-chtype" data-id="${k}">${l}</button>`).join('')}</div>
     <div id="ch-opts">${chOpts()}</div>
-    ${state.chFromGroup ? '' : `<p class="field-label">${t('ch.with')}</p>`}
-    <div class="chips" ${state.chFromGroup ? 'hidden' : ''}>${[['pair', t('ch.pairShort')], ...data.groups.map(g => [g.id, L(g.name)])].map(([id, label]) => `<button type="button" class="chip ${state.sheetWith === id ? 'active' : ''}" data-action="pick-with" data-id="${esc(id)}">${esc(label)}</button>`).join('')}</div>
+    ${planOnly ? '' : withBlock}
     <p class="hint">${t('ch.rest')}</p>
     <button class="primary block" type="submit">${t('ch.start')}</button></form>` });
   $('#challenge-form').addEventListener('submit', e => {
