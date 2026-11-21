@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'gp.list': "내 공동체", 'mc.count': "공동체 {n}개", 'hl.on': "{date}에 칠했어요", 'hl.del': "지우기", 'gc.open': "공동체 들어가기", 'bs.tr': "성경 역본", 'mail.copy': "복사", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'nsh.other': "다른 앱으로 보내기", 'gp.list': "내 공동체", 'mc.count': "공동체 {n}개", 'hl.on': "{date}에 칠했어요", 'hl.del': "지우기", 'gc.open': "공동체 들어가기", 'bs.tr': "성경 역본", 'mail.copy': "복사", 'ty.toneThanks': "고마워요", 'ty.toneLove': "사랑해요", 'ty.phLove': "전하고 싶은 사랑의 마음을 적어 보세요.", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
@@ -69,7 +69,7 @@ const STR = {
     'ms.title': '감사 {n}개를 모았어요', 'ms.body': '하나하나가 하루를 비춘 작은 빛이에요. 앞으로도 천천히 함께 쌓아가요.',
     'share.kakao': '카카오톡으로 보내기', 'share.insta': '인스타그램에 공유하기', 'share.outNote': '카카오톡·인스타그램 공유는 더 많은 사람에게 닿아서 영향력이 크게 올라가요.', 'share.copied': '복사했어요. 인스타그램에 붙여 넣어 공유해 보세요.',
     'inf.ext': '그중 카카오톡·인스타그램 공유 {n}번',
-    'kind.thanks': '감사 전하기', 'ty.to': '받는 사람 이름', 'ty.ph': '전하고 싶은 감사 인사를 적어 보세요.', 'ty.make': '감사 카드 만들기', 'ty.card': '감사 카드', 'ty.send': '보내기',
+    'kind.thanks': '마음 전하기', 'ty.to': '받는 사람 이름', 'ty.ph': '전하고 싶은 감사 인사를 적어 보세요.', 'ty.make': '마음 카드 만들기', 'ty.card': '마음 카드', 'ty.send': '보내기',
     'ty.copy': '텍스트 복사', 'ty.toGroup': '공동체에 나누기', 'ty.saved': '감사 카드를 나의 감사에 남겨 두었어요.', 'ty.needName': '받는 사람 이름을 적어 주세요.',
     'inf.title': '나의 감사 영향력', 'inf.received': '받은 마음', 'inf.given': '건넨 마음', 'inf.likes': '좋아요', 'inf.shares': '공유', 'inf.saves': '저장', 'inf.score': '점',
     'inf.candle': '촛불', 'inf.lantern': '등불', 'inf.sunlight': '햇살', 'inf.starlight': '별빛', 'inf.glow': '감사가 퍼질수록 빛이 밝아져요.', 'inf.next': '{level}까지 {n}점', 'inf.max': '가장 높은 단계예요',
@@ -179,7 +179,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'gp.list': "My communities", 'mc.count': "{n} communities", 'hl.on': "Highlighted {date}", 'hl.del': "Remove", 'gc.open': "Open community", 'bs.tr': "Bible version", 'mail.copy': "Copy", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'nsh.other': "Share to other apps", 'gp.list': "My communities", 'mc.count': "{n} communities", 'hl.on': "Highlighted {date}", 'hl.del': "Remove", 'gc.open': "Open community", 'bs.tr': "Bible version", 'mail.copy': "Copy", 'ty.toneThanks': "Thank you", 'ty.toneLove': "Love you", 'ty.phLove': "Write what you’d love them to hear.", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
@@ -234,7 +234,7 @@ const STR = {
     'ms.title': '{n} notes of thanks', 'ms.body': 'Each one is a small light in a day. Let’s keep gathering them, gently.',
     'share.kakao': 'Send via KakaoTalk', 'share.insta': 'Share to Instagram', 'share.outNote': 'Sharing to KakaoTalk or Instagram reaches more people, so it raises your reach the most.', 'share.copied': 'Copied. Paste it into Instagram to share.',
     'inf.ext': '{n} of them on KakaoTalk / Instagram',
-    'kind.thanks': 'Give thanks to', 'ty.to': 'Their name', 'ty.ph': 'Write your thank-you message.', 'ty.make': 'Make a thank-you card', 'ty.card': 'Thank-you card', 'ty.send': 'Send',
+    'kind.thanks': 'Send your heart', 'ty.to': 'Their name', 'ty.ph': 'Write your thank-you message.', 'ty.make': 'Make a card', 'ty.card': 'Your card', 'ty.send': 'Send',
     'ty.copy': 'Copy text', 'ty.toGroup': 'Share with a group', 'ty.saved': 'Your card is kept in My Thanks.', 'ty.needName': 'Add their name.',
     'inf.title': 'My gratitude influence', 'inf.received': 'Received', 'inf.given': 'Given', 'inf.likes': 'Likes', 'inf.shares': 'Shares', 'inf.saves': 'Saves', 'inf.score': 'pts',
     'inf.candle': 'Candle', 'inf.lantern': 'Lantern', 'inf.sunlight': 'Sunlight', 'inf.starlight': 'Starlight', 'inf.glow': 'The further your thanks travels, the brighter it glows.', 'inf.next': '{n} pts to {level}', 'inf.max': 'Top level reached',
@@ -344,7 +344,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'gp.list': "Mis comunidades", 'mc.count': "{n} comunidades", 'hl.on': "Resaltado el {date}", 'hl.del': "Quitar", 'gc.open': "Abrir comunidad", 'bs.tr': "Versión de la Biblia", 'mail.copy': "Copiar", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'nsh.other': "Compartir en otras apps", 'gp.list': "Mis comunidades", 'mc.count': "{n} comunidades", 'hl.on': "Resaltado el {date}", 'hl.del': "Quitar", 'gc.open': "Abrir comunidad", 'bs.tr': "Versión de la Biblia", 'mail.copy': "Copiar", 'ty.toneThanks': "Gracias", 'ty.toneLove': "Te quiero", 'ty.phLove': "Escribe el cariño que quieres darle.", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
@@ -477,11 +477,11 @@ const STR = {
     'share.outNote': 'Compartir en KakaoTalk o Instagram llega a más personas, por eso es lo que más aumenta tu alcance.',
     'share.copied': 'Copiado. Pégalo en Instagram para compartir.',
     'inf.ext': '{n} de ellas en KakaoTalk / Instagram',
-    'kind.thanks': 'Dar gracias a',
+    'kind.thanks': 'Envía tu cariño',
     'ty.to': 'Su nombre',
     'ty.ph': 'Escribe tu mensaje de agradecimiento.',
-    'ty.make': 'Crear tarjeta de agradecimiento',
-    'ty.card': 'Tarjeta de agradecimiento',
+    'ty.make': 'Crear tarjeta',
+    'ty.card': 'Tu tarjeta',
     'ty.send': 'Enviar',
     'ty.copy': 'Copiar texto',
     'ty.toGroup': 'Compartir con un grupo',
@@ -4110,7 +4110,7 @@ function renderJournal() {
       <span class="note-meta">${icon('book')}<span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))} · ${esc(x.tr)}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('')}</div>` : ''}
     ${mine.length ? `<div class="notes">${mine.map((p, i) => `${byBible && (i === 0 || (mine[i - 1].ref?.b !== p.ref?.b)) ? `<p class="note-book">${p.ref ? esc(bookName(p.ref.b)) : '—'}</p>` : ''}<button class="note" data-action="${savedView ? 'post-menu' : 'note'}" data-id="${esc(p.id)}">
       <span class="note-meta"><span>${savedView ? esc(authorName(p)) + ' · ' : ''}${p.kind && p.kind !== 'today' ? esc(kindLabel(p)) + ' · ' : ''}${esc(dayLabel(p.date))}</span>${p.status ? `<span class="badge ${p.status}">${t(p.status === 'review' ? 'mod.review' : 'mod.rejected')}</span>` : ''}${p.scope === 'private' ? `<span class="note-scope">${icon('lock')}</span>` : ''}</span>
-      ${p.kind === 'thanks' ? `<span class="note-to">Thank you, ${esc(p.to)}</span>` : ''}<span class="note-text">${esc(L(p.text))}</span>
+      ${p.kind === 'thanks' ? `<span class="note-to">${tyHead(p)}, ${esc(p.to)}</span>` : ''}<span class="note-text">${esc(L(p.text))}</span>
       ${p.reflection ? `<span class="note-reflect">${t('reflect.prefix')} · ${esc(p.reflection)}</span>` : ''}
     </button>`).join('')}</div>`
       : savedView && (data.savedVerses || []).length ? '' : savedView ? `<div class="empty-state">${icon('bookmark')}<p>${t('j.savedEmpty')}</p></div>`
@@ -4331,7 +4331,7 @@ function compose(kind = state.composeKind, chId = state.challenge, keepText = ''
       if (!to) { toast(t('ty.needName')); $('#ty-name').focus(); return; }
       if (!text) { $('#gratitude-text').focus(); return; }
       const from = (data.settings.myName || '').trim().slice(0, 30); // the name from sign-up
-      const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}) };
+      const p = { id: 'p' + Date.now(), mine: true, scope: 'private', kind: 'thanks', to, text, date: today(), likes: 0, ...(from ? { from } : {}), ...(state.tyTone === 'love' ? { tone: 'love' } : {}) };
       data.posts.unshift(p); state.tyName = ''; save(); render(); thanksCard(p.id);
     });
     return;
@@ -4626,7 +4626,7 @@ async function renderCard(p, kind = 'feed') {
   x.font = `400 40px ${serif}`; x.fillText('daily', M, M + 30);
   const dw = x.measureText('daily ').width; x.font = `italic 400 40px ${serif}`; x.fillText('thanks', M + dw, M + 30);
   // body: shrink until it fits
-  const text = L(p.kind === 'thanks' ? `Thank you, ${p.to}\n\n${L(p.text)}` : p.text);
+  const text = L(p.kind === 'thanks' ? `${tyHead(p)}, ${p.to}\n\n${L(p.text)}` : p.text);
   const maxH = H * (kind === 'story' ? .52 : .50);
   let size = kind === 'story' ? 64 : 58, lines, lh;
   for (; size >= 44; size -= 2) { x.font = `300 ${size}px ${sans}`; lines = wrapLines(x, text, maxW); lh = size * 1.72; if (lines.length * lh <= maxH) break; }
@@ -4702,7 +4702,7 @@ async function renderCollection(id, kind = 'feed') {
   out.push(c0);
   // pages: up to 9 more (Instagram carousels take 10); long periods pick evenly through the time
   const size = kind === 'story' ? 46 : 42, lh = size * 1.66, top = M + 170, bottom = H - M - 80, maxLines = 4;
-  const measure = (x, p) => { x.font = `300 ${size}px ${sans}`; let lines = wrapLines(x, L(p.kind === 'thanks' ? `Thank you, ${p.to}\n${L(p.text)}` : p.text), maxW);
+  const measure = (x, p) => { x.font = `300 ${size}px ${sans}`; let lines = wrapLines(x, L(p.kind === 'thanks' ? `${tyHead(p)}, ${p.to}\n${L(p.text)}` : p.text), maxW);
     if (lines.length > maxLines) { lines = lines.slice(0, maxLines); let l = lines[maxLines - 1]; while (l && x.measureText(l + '…').width > maxW) l = l.slice(0, -1); lines[maxLines - 1] = l + '…'; }
     return lines; };
   const [, probe] = page(), packs = []; let cur = [], h = 0;
@@ -4784,7 +4784,7 @@ function drawReel(x, W, H, sc, time) {
     const i = Math.floor((time - COVER) / EACH), t0 = COVER + i * EACH, p = sc.pick[i];
     const a = fade(t0, EACH), rise = (1 - ease((time - t0) / .8)) * 30, size = 56, lh = size * 1.7;
     x.font = `300 ${size}px ${sans}`;
-    let lines = wrapLines(x, L(p.kind === 'thanks' ? `Thank you, ${p.to}\n${L(p.text)}` : p.text), maxW);
+    let lines = wrapLines(x, L(p.kind === 'thanks' ? `${tyHead(p)}, ${p.to}\n${L(p.text)}` : p.text), maxW);
     if (lines.length > 7) { lines = lines.slice(0, 7); lines[6] = lines[6].replace(/.$/, '…'); }
     const top = H * .46 - lines.length * lh / 2;
     x.globalAlpha = a;
@@ -4852,7 +4852,7 @@ function postLink(p) {
   const kind = p.kind === 'thanks' || p.kind === 'ahead' || p.kind === 'meditation' ? p.kind : 'today';
   // my own thanks also carries my friend box: the friend can answer it, or connect with me (the key stays in the # part)
   const box = p.mine && CLOUD && Cloud.on() && data.settings.box?.ok && data.settings.box.uid === Cloud.uid() ? data.settings.box : null;
-  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
+  const payload = { t: L(p.text), n: p.mine ? (p.from || data.settings.myName || '') : authorName(p), k: kind, d: p.date, l: lang(), ...(p.to ? { to: p.to } : {}), ...(p.tone === 'love' ? { tn: 'love' } : {}), ...(p.ref ? { r: refText(p.ref) } : {}), ...(box ? { c: box.code, g: box.key, a: BIBLE_MODE ? 'b' : 't' } : {}) };
   const b64 = btoa(binStr(new TextEncoder().encode(JSON.stringify(payload)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   // a reflection opens right in the app (passage + what they wrote); other posts open on their own web page
   if (kind === 'meditation') return `${LEGAL_BASE}/${BIBLE_MODE ? 'daily-bible' : 'app'}/#m=${b64}`;
@@ -5780,16 +5780,20 @@ function countShare(id, external = false) {
 }
 
 /* ---------------- thank-you card (감사 전하기) ---------------- */
+// 마음 전하기: a thank-you or a love note (Thank you, … / Love you, …)
+const tyHead = p => (p?.tone === 'love' ? 'Love you' : 'Thank you');
 function thanksForm(keep = {}) {
-  return `<div class="ty-head">Thank you,</div>
+  const tone = state.tyTone === 'love' ? 'love' : 'thanks';
+  return `<div class="chips ty-tones">${[['thanks', t('ty.toneThanks')], ['love', t('ty.toneLove')]].map(([k, l]) => `<button type="button" class="chip ${tone === k ? 'active' : ''}" data-action="ty-tone" data-id="${k}">${l}</button>`).join('')}</div>
+    <div class="ty-head">${tone === 'love' ? 'Love you' : 'Thank you'},</div>
     <input id="ty-name" class="ty-name" maxlength="30" placeholder="${esc(t('ty.to'))}" value="${esc(keep.name || '')}" aria-label="${esc(t('ty.to'))}">
-    <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t('ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
+    <textarea id="gratitude-text" data-draft="ty" class="big-input" maxlength="800" rows="4" placeholder="${esc(t(tone === 'love' ? 'ty.phLove' : 'ty.ph'))}" aria-label="${esc(t('ty.ph'))}">${esc(keep.text || '')}</textarea>
     <button class="primary block" type="submit">${icon('send')}${t('ty.make')}</button>`;
 }
-function thanksText(p) { return `Thank you, ${p.to}\n\n${L(p.text)}\n\n— Daily Thanks`; }
+function thanksText(p) { return `${tyHead(p)}, ${p.to}\n\n${L(p.text)}\n\n— Daily Thanks`; }
 function thanksCard(id) {
   const p = data.posts.find(x => x.id === id); if (!p) return;
-  showSheet({ title: t('ty.card'), body: `<div class="ty-card"><span class="ty-card-head">Thank you, <em>${esc(p.to)}</em></span><p>${esc(L(p.text))}</p><span class="wordmark">daily <em>thanks</em></span></div>
+  showSheet({ title: t('ty.card'), body: `<div class="ty-card"><span class="ty-card-head">${tyHead(p)}, <em>${esc(p.to)}</em></span><p>${esc(L(p.text))}</p><span class="wordmark">daily <em>thanks</em></span></div>
     <button class="primary block" data-action="ty-send" data-id="${esc(id)}">${icon('send')}${t('ty.send')}</button>
     <div class="list" style="margin-top:8px">
       ${listRow('ty-copy', id, 'copy', t('ty.copy'))}
@@ -6048,7 +6052,7 @@ const actions = {
     location.href = `sms:${x.phone}${ios ? '&' : '?'}body=${body}`; },
   'ty-send': id => {
     const p = data.posts.find(x => x.id === id); if (!p) return;
-    if (navigator.share) navigator.share({ title: 'Thank you', text: withLink(thanksText(p), p) }).then(() => { close(); cheer(t('ty.saved')); }).catch(() => {});
+    if (navigator.share) navigator.share({ title: tyHead(p), text: withLink(thanksText(p), p) }).then(() => { close(); cheer(t('ty.saved')); }).catch(() => {});
     else { copyText(thanksText(p)); }
   },
   'set-verse': id => {
@@ -6277,6 +6281,7 @@ const actions = {
   'gc-open': gid => { close(); actions['open-group'](gid); },
   // 매일 › 연속 기록 카드: 나의 말씀 기록 (dashboard)
   'dash-sheet': () => showSheet({ title: t('db.title'), body: dashHtml() }),
+  'ty-tone': k => { state.tyTone = k === 'love' ? 'love' : 'thanks'; state.tyName = $('#ty-name')?.value || state.tyName; const keep = $('#gratitude-text')?.value || ''; compose('thanks', null); setTimeout(() => { const ta = $('#gratitude-text'); if (ta && keep) ta.value = keep; }, 0); },
   'mc-toggle': () => { state.mcOpen = !state.mcOpen; render(); },
   'g-pick': () => { const row = g => `<button class="list-row" data-action="g-pick-to" data-id="${esc(g.id)}"><span class="row-icon">${icon('people')}</span><span class="row-main"><span class="row-title">${esc(L(g.name) || t('mc.joining'))}</span></span>${unseenIn(g.id) ? '<i class="new-dot"></i>' : ''}${g.id === (data.groups.find(x => x.id === state.group) || data.groups[0])?.id ? `<span class="row-end">${icon('check')}</span>` : ''}</button>`;
     showSheet({ title: t('gp.list'), body: `<div class="list">${data.groups.map(row).join('')}</div>` }); },

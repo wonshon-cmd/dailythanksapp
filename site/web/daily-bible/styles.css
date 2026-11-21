@@ -1981,3 +1981,4 @@ details.ch-top:not([open]){gap:0}
 .list-row .row-sub.selectable{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .list-row .row-main{min-width:0}
 .copy-mail{flex:none;padding:0 14px;white-space:nowrap}
+.ty-tones{margin:0 0 -4px}
