@@ -94,3 +94,6 @@ python3 tools/build-single.py && node tools/make-journey-screenshots.js
 - 로그인 버튼은 Google·Apple·메일 세 개예요. 휴대폰 번호·Microsoft 로그인은 뺐어요(방침·약관·심사 메모도 같이 고침).
 - 마이크는 묵상에 목소리로 남길 때만 써요(`Info.plist` 문구도 바꿈).
 - 남은 확인: 오늘의 본문 일정에 다른 회사 큐티 책 이름이 화면에 보이지는 않아요(이름은 숨김). 일정 자체를 써도 되는지는 한 번 확인하세요.
+
+## 출시 후 업데이트
+대부분은 자동으로 업데이트돼요. 스토어에 새로 올리는 법과 처음 한 번 넣을 열쇠: `store/STORE_RELEASE_KO.md`
