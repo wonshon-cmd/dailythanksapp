@@ -1034,6 +1034,7 @@ Object.assign(STR.ko, { 'pl.with': "누구와 함께 할까요?" }); Object.assi
 Object.assign(STR.ko, { 'sn.edit': "수정하기", 'sn.saveEdit': "저장", 'sn.edited': "수정했어요.", 'tr.hint': "‘받기’를 누르면 인터넷 없이도 읽을 수 있게 저장해요." });
 Object.assign(STR.en, { 'sn.edit': "Edit", 'sn.saveEdit': "Save", 'sn.edited': "Saved.", 'tr.hint': "‘Download’ saves it for reading offline." });
 Object.assign(STR.es, { 'sn.edit': "Editar", 'sn.saveEdit': "Guardar", 'sn.edited': "Guardado.", 'tr.hint': "‘Descargar’ la guarda para leer sin conexión." });
+Object.assign(STR.ko, { 'dm.ph': "오늘 말씀을 묵상하며 적어 보세요", 'dm.done': "오늘의 묵상" }); Object.assign(STR.en, { 'dm.ph': "Write your reflection on today’s passage", 'dm.done': "Today’s reflection" }); Object.assign(STR.es, { 'dm.ph': "Escribe tu reflexión sobre el pasaje de hoy", 'dm.done': "Reflexión de hoy" });
 Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
 Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
 Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
@@ -2996,6 +2997,15 @@ document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.ma
 document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(() => FLOAT.forEach(floatSync), 0); });
 window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
 // daily bible with no reading plan today: today's passage, one verse per card
+// After today's passage: a page to write today's 묵상 (opens the reflection writer with the passage attached)
+function devoMedCard(p) {
+  const key = p.ref ? `${p.ref.b}:${p.ref.c}` : '', mine = data.posts.find(x => x.mine && x.kind === 'meditation' && x.date === today() && x.ref && `${x.ref.b}:${x.ref.c}` === key);
+  return `<article class="post card-page devo-med"><div class="card-inner">
+      <p class="card-title">${t(mine ? 'dm.done' : 'devo.ph2')}</p><p class="card-sub">${esc(refText(p.ref))}</p>
+      ${mine ? `<button class="dm-mine" data-action="note" data-id="${esc(mine.id)}">${esc(L(mine.text)).slice(0, 160)}</button>`
+        : `<button class="dm-box" data-action="devo-med">${t('dm.ph')}</button>`}
+    </div><aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>`;
+}
 async function fillDevoCards() {
   const slot = document.querySelector('.devo-load'); if (!slot) return;
   const p = todaysPassage(data.groups[0]?.id); if (!p?.ref) { slot.remove(); return; }
@@ -3005,7 +3015,7 @@ async function fillDevoCards() {
   slot.outerHTML = verseCards(verses, '', '', `${icon('sun')}${esc(t('bf.devo'))}${p.source ? ' · ' + esc(p.source) : ''}`) +
     `<article class="post card-page devo-end"><div class="card-inner"><span class="done-check">${icon('check')}</span><p class="card-title">${t('ob.doneTitle')}</p><p class="card-sub">${esc(refText(p.ref))}</p>
       <div class="card-actions"><button class="primary" data-action="share-done">${icon('share')}${t('tg.share')}</button></div></div>
-      <aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>`;   // open/close the full screen here too; "오늘의 말씀" sits with the verse reference at the bottom
+      <aside class="post-rail card-close"><button class="rail-btn" data-action="fullscreen" aria-label="${t('fs.closeAria')}">${icon('minimize')}<span class="rl">${t('fs.close')}</span></button></aside></article>` + devoMedCard(p);   // open/close the full screen here too; "오늘의 말씀" sits with the verse reference at the bottom
   fvRail();
 }
 // A prayer request seen as its own card no longer comes first next time.
@@ -6422,6 +6432,7 @@ const actions = {
     showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sermon-new', 'note', t('bp.sermon'))}${row('bp-write', 'book', t('bp.med'), 'meditation')}${row('bp-write', 'sun', t('bp.thanks'), 'today')}${row('bp-write', 'pray', t('bp.prayer'), 'prayer')}${row('plan-new', 'calendar', t('bp.plan'))}</div>` }); },
   'bible-write': () => { const row = (ic, label, kind) => `<button class="list-row" data-action="bp-write" data-id="${kind}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
     showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sun', t('bp.thanks'), 'today')}${row('pray', t('bp.prayer'), 'prayer')}${row('book', t('bp.med'), 'meditation')}${row('heart', t('bp.thankSomeone'), 'thanks')}</div>` }); },
+  'devo-med': () => devoShare(data.groups[0]?.id),
   'bp-write': kind => { close(); state.medRef = null; state.medSource = null; state.medNote = false; compose(kind, null); },
   'size-cycle': () => { const order = ['s', 'm', 'l'], cur = data.settings.textSize || 'm'; data.settings.textSize = order[(order.indexOf(cur) + 1) % order.length]; save(); applyTextSize(); toast(`${t('size.btn')} · ${t('size.' + data.settings.textSize)}`); },
   'imm-streak': () => { if (anyUnseen() && !BIBLE_MODE) { state.immersive = false; state.tab = 'group'; render(); } else if (anyUnseen()) { state.prevFeed = 'public'; state.immFeed = 'prayer'; render(0); } else toast(t('stk.write').replace('{n}', BIBLE_MODE ? readDays() : writeStreak())); },
