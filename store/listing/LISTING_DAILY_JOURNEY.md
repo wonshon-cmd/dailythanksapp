@@ -45,7 +45,7 @@ Daily Journey - 매일 성경
 오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 노트를 한곳에서.
 ```
 
-### description  (1291/4000)
+### description  (1263/4000)
 
 ```
 말씀을 매일, 공동체와 함께.
@@ -85,7 +85,6 @@ Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 �
 
 ■ 안전하고 사적인 공간
 · 나만 보는 기록은 휴대폰에서 잠근 뒤 저장돼요. 운영자도 열어 볼 수 없어요.
-· 묵상에 남긴 목소리 녹음은 휴대폰에만 남아요.
 · 부적절한 글은 신고하고, 숨기고, 사람을 차단할 수 있어요.
 · 앱 안에서 언제든 계정을 삭제할 수 있어요.
 
@@ -138,7 +137,7 @@ Daily Journey - Bible Reading
 Today’s passage, reading plans with friends, prayer requests and notes.
 ```
 
-### description  (2358/4000)
+### description  (2304/4000)
 
 ```
 The Word every day, together.
@@ -178,7 +177,6 @@ Chapters read, days in the Word, your longest streak, your verse of the year and
 
 ■ SAFE AND PRIVATE
 · Entries only you can see are locked on your phone before they are saved. We can’t read them.
-· Voice notes on your reflections stay on your phone.
 · Report posts, hide them, and block people.
 · Delete your account in the app at any time.
 
@@ -231,7 +229,7 @@ Daily Journey: Biblia diaria
 Pasaje de hoy, planes de lectura con amigos, peticiones de oración y notas.
 ```
 
-### description  (2546/4000)
+### description  (2482/4000)
 
 ```
 La Palabra cada día, juntos.
@@ -271,7 +269,6 @@ Capítulos leídos, días en la Palabra, tu racha más larga, tu versículo del 
 
 ■ SEGURO Y PRIVADO
 · Lo que solo tú ves se cifra en tu teléfono antes de guardarse. Nosotros no podemos leerlo.
-· Las notas de voz de tus reflexiones se quedan en tu teléfono.
 · Denuncia publicaciones, ocúltalas y bloquea personas.
 · Elimina tu cuenta desde la app cuando quieras.
 
