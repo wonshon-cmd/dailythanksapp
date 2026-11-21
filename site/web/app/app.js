@@ -3303,9 +3303,8 @@ function renderBibleHome() {
     ${streakHtml()}
     ${plans.some(c => c.lastDay !== today()) ? planSection(plans) : ''}
     <section class="bb-cont">
-      <p class="gd-label">${t('bb.where')}</p>
+      <p class="gd-label bb-where"><span>${t('bb.where')}</span>${r?.at ? `<span class="bb-when">${esc(dayLabel(r.at.slice(0, 10)))}</span>` : ''}</p>
       <p class="bb-ref">${r ? esc(refText({ b: r.b, c: r.c, v: r.v || 1, v2: r.v || 1 })) : t('bb.start')}</p>
-      ${r?.at ? `<p class="gd-sub">${esc(dayLabel(r.at.slice(0, 10)))}</p>` : ''}
       <div class="gd-acts"><button class="primary" data-action="bb-continue">${icon('book')}${t('bb.continue')}</button><button class="secondary" data-action="reader-pick">${t('bb.pick')}</button></div>
     </section>
     ${p?.ref ? `<button class="gd-devo gd-devo-btn" data-action="bb-today"><p class="gd-kicker">${icon('sun')}<span>${t('bb.today')}${p.source ? ' · ' + esc(p.source) : ''}</span>${data.readDevo?.[today()] ? `<span class="devo-done">${icon('check')}</span>` : ''}</p>
