@@ -4543,7 +4543,6 @@ function chResult(id) {
     <p class="cel-title">${t('chr.title').replace('{name}', esc(chName(ch)))}</p>
     <p class="cel-body">${t('chr.sub').replace('{n}', chLen(ch))}</p>
     <div class="chr-nums"><span><b>${st.mine}/${chLen(ch)}</b><small>${t('me')}</small></span>${g ? `<span><b>${st.people}</b><small>${esc(L(g.name))}</small></span><span><b>${st.total}</b><small>${t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[ch.type || 'thanks'] || 'thanks')}</small></span>` : ''}</div>
-    ${seesTop(ch) && st.top.length > 1 ? `<div class="ch-top">${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''}
     ${g ? `<button class="primary block" data-action="chr-post" data-id="${esc(id)}">${icon('people')}${t('chr.toGroup')}</button>` : ''}
     <button class="secondary block" data-action="chr-card" data-id="${esc(id)}" style="margin-top:8px">${icon('share')}${t('chr.shareCard')}</button>
   </div>` });
@@ -5162,7 +5161,7 @@ function chStats(ch) {
 }
 // "가장 꾸준한 사람": the group's admin only; 순장 too when the admin turns it on (off by default)
 const seesTop = ch => { if (!ch?.group || ch.group === 'pair') return true; const g = data.groups.find(x => x.id === ch.group); return !!g && (g.owner || (g.role === 'leader' && !!g.topToLeaders)); };
-const chTopHtml = ch => { const st = chStats(ch); return seesTop(ch) && st.top.length > 1 ? `<div class="ch-top"><p class="gd-label">${icon('sparkle')}${t('chr.top')}</p>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''; };
+const chTopHtml = () => '';   // "가장 꾸준한 사람" ranking: taken out (no ranking people against each other)
 const chTypeLabel = ch => ch.type === 'meditation' ? t('kind.meditation') : ch.type === 'prayer' ? t('kind.prayer') : ch.type === 'bible' ? t('ch.t.bible') : t('ch.t.thanks');
 const chLen = ch => ch.length || 7;
 function challengeDetail(id) {
