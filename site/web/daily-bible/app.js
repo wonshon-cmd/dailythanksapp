@@ -18,7 +18,7 @@ const STR = {
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
-    'wl.apple': "Apple로 계속하기", 'wl.tag': "One slide at a time, with your community", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
+    'wl.apple': "Apple로 계속하기", 'wl.tag': "매일 한 장, 공동체와 함께", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
     'emp.noneYet': "아직 모두에게 나눈 감사가 없어요. 먼저 하나 나눠 보세요.",
     'mc.code': "코드",
     'inv.code': "코드 만들기", 'inv.qr': "QR 코드", 'inv.codeTitle': "공동체 코드", 'inv.codeDesc': "받은 사람이 나 › 내 공동체에 이 코드를 넣으면 ‘{name}’에 들어와요.", 'inv.codeCopy': "코드 복사", 'inv.qrTitle': "QR 코드", 'inv.qrDesc': "휴대폰 카메라로 찍으면 ‘{name}’ 초대가 열려요.",
@@ -183,7 +183,7 @@ const STR = {
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
-    'wl.apple': "Continue with Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
+    'wl.apple': "Continue with Apple", 'wl.tag': "With your community, one slide at a time", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
     'emp.noneYet': "No one has shared thanks with everyone yet. Be the first.",
     'mc.code': "Code",
     'inv.code': "Make a code", 'inv.qr': "QR code", 'inv.codeTitle': "Community code", 'inv.codeDesc': "Anyone who enters this code in Me › My communities joins “{name}”.", 'inv.codeCopy': "Copy code", 'inv.qrTitle': "QR code", 'inv.qrDesc': "Point a phone camera here to open the invite to “{name}”.",
@@ -348,7 +348,7 @@ const STR = {
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
-    'wl.apple': "Continuar con Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
+    'wl.apple': "Continuar con Apple", 'wl.tag': "Con tu comunidad, una página a la vez", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
     'emp.noneYet': "Aún nadie ha compartido gratitud con todos. Sé el primero.",
     'mc.code': "Código",
     'inv.code': "Crear un código", 'inv.qr': "Código QR", 'inv.codeTitle': "Código de la comunidad", 'inv.codeDesc': "Quien ponga este código en Yo › Mis comunidades se une a “{name}”.", 'inv.codeCopy': "Copiar código", 'inv.qrTitle': "Código QR", 'inv.qrDesc': "Apunta la cámara del teléfono aquí para abrir la invitación a “{name}”.",
@@ -1183,7 +1183,7 @@ function introCards(done) {
   const app = document.getElementById('app'); if (!app || $('#intro')) return done();
   const v = [];
   const el = Object.assign(document.createElement('div'), { id: 'intro', className: 'intro' });
-  el.innerHTML = `<div class="intro-reel"><section class="intro-page intro-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p class="intro-tag">One slide at a time, with your community</p></section>
+  el.innerHTML = `<div class="intro-reel"><section class="intro-page intro-logo"><span class="wordmark">daily <em>${BRAND2}</em></span><p class="intro-tag">${esc(t('wl.tag'))}</p></section>
     ${v.map(([text, ref]) => `<section class="intro-page"><p class="intro-text">${esc(text)}</p><p class="intro-ref">${esc(ref)}</p></section>`).join('')}</div>
     <div class="intro-hint">${icon('down')}</div>`;
   app.append(el);
@@ -6440,7 +6440,7 @@ function doubleTap(el, x, y) {
 }
 // Invite link opened in the web app: #join?c=CODE&n=NAME
 if (CLOUD) { const back = Cloud.fromRedirect(); if (!back) Cloud.resume();
-  if (!back && !Cloud.on() && !/^#(join|friend|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) setTimeout(() => { if (!Cloud.on() && sheet.hidden) { if (!data.settings.onboarded) introCards(() => welcomeSheet('', true)); else welcomeSheet(); } }, 2600); } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
+  if (!back && !Cloud.on() && !/^#(join|friend|plan|m=|reply|pastor|v=)/.test(location.hash)) { let later = false; try { later = !!sessionStorage.getItem('wl-later'); } catch {} if (!later) { if (!data.settings.onboarded) welcomeSheet('', true); else setTimeout(() => { if (!Cloud.on() && sheet.hidden) welcomeSheet(); }, 2600); } } document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - (sync.last || 0) > 60e3) { sync.last = Date.now(); sync(); } }); }
 // Reading: a drag that starts on the reader's top or bottom bar doesn't pull the page (iPhone rubber-band); only the verses scroll.
 document.addEventListener('touchmove', e => { if ((document.body.classList.contains('reading') && e.target.closest?.('.reader') && !e.target.closest('#reader-scroll')) || e.target.closest?.('.screen.fit')) e.preventDefault(); }, { passive: false });
 /* First steps after the first sign-in: today's passage (scroll; a faint arrow shows the way) → ✓ done →
