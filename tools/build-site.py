@@ -159,7 +159,7 @@ bb_html = bb_html.replace('<title>Daily Thanks · 감사가 이어지는 하루<
 # on dailyjourney.org the Bible app is called "daily journey" (tools/build-live.py turns it back into "daily bible" for the github.io site)
 bb_html = bb_html.replace('<script>window.DT_APP = "bible";</script>', '<script>window.DT_APP = "bible"; window.DT_BRAND = "journey";</script>')
 # link previews (a shared verse link opens here): daily journey, not daily thanks
-bb_html = bb_html.replace('<meta name="theme-color"', '<meta property="og:title" content="daily journey">\n<meta property="og:description" content="매일 한 장, 공동체와 함께 · With your community, one slide at a time">\n<meta property="og:image" content="https://dailyjourney.org/og-journey.png">\n<meta name="theme-color"', 1)
+bb_html = bb_html.replace('<meta name="theme-color"', '<meta property="og:title" content="daily journey">\n<meta property="og:description" content="With your community, one slide at a time · 매일 한 장, 공동체와 함께">\n<meta property="og:image" content="https://dailyjourney.org/og-dj.png">\n<meta name="theme-color"', 1)
 # cache-busting (Safari keeps app.js otherwise): ask for app.js / styles.css by content version
 import hashlib
 for f_ in ('app.js', 'styles.css'):
@@ -170,7 +170,7 @@ for f_ in ('app.js', 'styles.css'):
 _v = hashlib.sha1((ROOT / 'app.js').read_bytes() + (ROOT / 'styles.css').read_bytes()).hexdigest()[:10]
 import json as _json
 (WEB / 'app-update.json').write_text(_json.dumps({'v': _v, 'js': f'/daily-bible/app.js?v={_v}', 'css': f'/daily-bible/styles.css?v={_v}', 'minNative': 1}) + '\n')
-shutil.copy(ROOT / 'brand' / 'og-journey.png', WEB / 'og-journey.png')
+shutil.copy(ROOT / 'brand' / 'og-dj.png', WEB / 'og-dj.png')
 copy_core(bb_dir)
 # daily bible website: dailyjourney.org/dailybible/ (site/dailybible.html + brand files from tools/bible-brand.cjs)
 db_site = WEB / 'dailybible'
