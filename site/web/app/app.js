@@ -2580,7 +2580,7 @@ const roundBtn = (action, ic, label) => `<button class="round-btn" data-action="
 // up to 7 days: a check for each day done, with a tiny weekday under it (월 화 수 …)
 const chDayChecks = ch => `<span class="g-ch-days">${Array.from({ length: chLen(ch) }, (_, i) => { const d = new Date((ch.start || today()) + 'T12:00:00'); d.setDate(d.getDate() + i); const on = i < ch.days.length;
   return `<span class="${on ? 'on' : ''}"><i>${on ? icon('check') : ''}</i><small>${esc(d.toLocaleDateString(lang() === 'ko' ? 'ko-KR' : lang(), { weekday: 'narrow' }))}</small></span>`; }).join('')}</span>`;
-const chBtn = ch => `${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
+const chBtn = ch => `${ch ? `<button class="g-ch${!chDone(ch) && ch.lastDay !== today() ? ' todo' : ''}" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
       ${chLen(ch) <= 7 ? chDayChecks(ch)
         : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
       <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}`;
@@ -3219,7 +3219,7 @@ function renderGroupDetail(gid) {
   const recent = data.posts.filter(x => inGroup(x, gid) && !data.hidden.includes(x.id)).sort((a, b) => a.date < b.date ? 1 : -1).slice(0, 3);
   const chOf = kind => data.challenges.find(c => c.group === gid && (c.type || 'thanks') === kind && c.days.length < chLen(c));
   const tile = (n, label, kind) => { const c = chOf(kind);
-    return `<button class="gd-tile${c ? ' has-ch' : ''}" data-action="gd-all" data-id="${esc(gid)}|${kind}"><b>${n}</b><span>${label}</span>${unseenKind(gid, kind) ? `<i class="new-dot tile-dot" aria-label="${t('gs.new')}"></i>` : ''}
+    return `<button class="gd-tile${c ? ' has-ch' : ''}" data-action="gd-all" data-id="${esc(gid)}|${kind}"><b>${n}</b><span>${label}</span>${unseenKind(gid, kind) || (c && c.lastDay !== today()) ? `<i class="new-dot tile-dot" aria-label="${t('gs.new')}"></i>` : ''}
       ${c ? `<small class="tile-ch">${icon('sparkle')}${t('ch.title')} ${c.days.length}/${chLen(c)}</small><i class="tile-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></i>` : ''}</button>`; };
   main.innerHTML = `<div class="screen"><div class="page gd">
     <div class="gd-top"><button class="gd-back" data-action="gd-back">${icon('chevron')}<span>${t('gd.back')}</span></button>
@@ -3235,7 +3235,7 @@ function renderGroupDetail(gid) {
       <div class="gd-acts"><button class="primary" data-action="devo-read" data-id="${esc(gid)}">${t('devo.read')}</button><button class="secondary" data-action="devo-share" data-id="${esc(gid)}">${t('devo.share')}</button></div></section>` : ''}
     <p class="gd-label">${t('gd.week')}</p>
     <div class="gd-tiles">${tile(w.thanks, t('gd.thanks'), 'thanks')}${tile(w.meditation, t('gd.med'), 'meditation')}${tile(w.prayer, t('gd.prayer'), 'prayer')}</div>
-    ${ch ? `<button class="g-ch" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
+    ${ch ? `<button class="g-ch${!chDone(ch) && ch.lastDay !== today() ? ' todo' : ''}" data-action="${chDone(ch) ? 'ch-result' : 'challenge-write'}" data-id="${esc(ch.id)}"><span>${chName(ch)} <em class="g-ch-d${chDone(ch) ? ' done' : ''}">${chDday(ch)}</em></span>
       ${chLen(ch) <= 7 ? chDayChecks(ch)
         : `<span class="g-ch-bar"><b style="width:${Math.round(ch.days.length / chLen(ch) * 100)}%"></b></span><span class="g-ch-n">${ch.days.length}/${chLen(ch)}</span>`}
       <span class="g-ch-go">${chDone(ch) ? t('chr.see') : ch.type === 'bible' ? (ch.plan ? esc(chPlanText(chPlanDay(ch, Math.min(ch.days.length, chLen(ch) - 1)))) : t('ch.read')) : t('gs.chToday')} ›</span></button>` : ''}
@@ -3313,7 +3313,7 @@ window.addEventListener('resize', () => { if (state.tab === 'read' && main.query
 function planSection(plans) {
   return `<section class="pl">
       <div class="pl-head"><p class="gd-label">${t('pl.title')}</p><button class="secondary pl-new" data-action="plan-new">${icon('plus')}${t('pl.new')}</button></div>
-      ${plans.map(c => `<div class="pl-row"><button class="g-ch${c.lastDay === today() ? ' today-done' : ''}" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${c.lastDay === today() ? icon('check') : ''}${chDday(c)}</em></span>
+      ${plans.map(c => `<div class="pl-row"><button class="g-ch${c.lastDay === today() ? ' today-done' : ' todo'}" data-action="challenge-write" data-id="${esc(c.id)}"><span>${esc(L(c.name) || chName(c))} <em class="g-ch-d">${c.lastDay === today() ? icon('check') : ''}${chDday(c)}</em></span>
         <span class="g-ch-bar"><b style="width:${Math.round(c.days.length / chLen(c) * 100)}%"></b></span><span class="g-ch-go">${c.plan ? esc(chPlanText(chPlanDay(c, Math.min(c.days.length, chLen(c) - 1)))) : t('ch.read')} ›</span>
         ${planBehind(c) && c.cuDismissed !== today() ? `<span class="pl-behind" data-action="cu-ask" data-id="${esc(c.id)}">${esc(t('cu.short').replace('{n}', planBehind(c).behind))} ›</span>` : ''}
         ${(c.partners || []).length ? `<span class="pl-with">${icon('people')}${c.partners.map(pt => `${esc(pt.name || t('pl.someone'))}${(c.partnerDays?.[pt.id] || []).includes(today()) ? ' ✓' : ''}`).join(', ')}${c.lastDay === today() ? ` · ${t('tg.me')} ✓` : ''}</span>`
@@ -4543,7 +4543,6 @@ function chResult(id) {
     <p class="cel-title">${t('chr.title').replace('{name}', esc(chName(ch)))}</p>
     <p class="cel-body">${t('chr.sub').replace('{n}', chLen(ch))}</p>
     <div class="chr-nums"><span><b>${st.mine}/${chLen(ch)}</b><small>${t('me')}</small></span>${g ? `<span><b>${st.people}</b><small>${esc(L(g.name))}</small></span><span><b>${st.total}</b><small>${t('gd.' + ({ thanks: 'thanks', meditation: 'med', prayer: 'prayer' })[ch.type || 'thanks'] || 'thanks')}</small></span>` : ''}</div>
-    ${seesTop(ch) && st.top.length > 1 ? `<div class="ch-top">${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''}
     ${g ? `<button class="primary block" data-action="chr-post" data-id="${esc(id)}">${icon('people')}${t('chr.toGroup')}</button>` : ''}
     <button class="secondary block" data-action="chr-card" data-id="${esc(id)}" style="margin-top:8px">${icon('share')}${t('chr.shareCard')}</button>
   </div>` });
@@ -5162,7 +5161,7 @@ function chStats(ch) {
 }
 // "가장 꾸준한 사람": the group's admin only; 순장 too when the admin turns it on (off by default)
 const seesTop = ch => { if (!ch?.group || ch.group === 'pair') return true; const g = data.groups.find(x => x.id === ch.group); return !!g && (g.owner || (g.role === 'leader' && !!g.topToLeaders)); };
-const chTopHtml = ch => { const st = chStats(ch); return seesTop(ch) && st.top.length > 1 ? `<div class="ch-top"><p class="gd-label">${icon('sparkle')}${t('chr.top')}</p>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</div>` : ''; };
+const chTopHtml = () => '';   // "가장 꾸준한 사람" ranking: taken out (no ranking people against each other)
 const chTypeLabel = ch => ch.type === 'meditation' ? t('kind.meditation') : ch.type === 'prayer' ? t('kind.prayer') : ch.type === 'bible' ? t('ch.t.bible') : t('ch.t.thanks');
 const chLen = ch => ch.length || 7;
 function challengeDetail(id) {
