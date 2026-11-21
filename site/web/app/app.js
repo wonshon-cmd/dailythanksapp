@@ -15,7 +15,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 const STR = {
   ko: {
     'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
-    'rp.notice': "{name}님이 내 감사에 답했어요 · {r}", 'rp.someone': "누군가", 'lr.title': "받은 답장", 'rp.thanks': "고마워요", 'rp.pray': "함께 기도할게요", 'rp.me': "나도 감사해요",
+    'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
     'wl.apple': "Apple로 계속하기", 'wl.tag': "One slide at a time, with your community", 'wl.look': "먼저 둘러볼게요", 'ob.doneTitle': "오늘의 말씀을 다 읽었어요", 'ob.nameTitle': "이름을 알려 주세요", 'ob.nameSub': "공동체와 감사 카드에 이 이름이 보여요.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "오른쪽 아래 빨간 점을 누르면 읽기로 가요.",
@@ -180,7 +180,7 @@ const STR = {
   },
   en: {
     'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
-    'rp.notice': "{name} answered your thanks · {r}", 'rp.someone': "Someone", 'lr.title': "Replies", 'rp.thanks': "Thank you", 'rp.pray': "Praying with you", 'rp.me': "Thankful too",
+    'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
     'wl.apple': "Continue with Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Look around first", 'ob.doneTitle': "You read today’s passage", 'ob.nameTitle': "What’s your name?", 'ob.nameSub': "Your community and thank-you cards show this name.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Tap the red dot at the bottom right to go to Read.",
@@ -345,7 +345,7 @@ const STR = {
   },
   es: {
     'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
-    'rp.notice': "{name} respondió a tu gratitud · {r}", 'rp.someone': "Alguien", 'lr.title': "Respuestas", 'rp.thanks': "Gracias", 'rp.pray': "Oro contigo", 'rp.me': "Yo también agradezco",
+    'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
     'wl.apple': "Continuar con Apple", 'wl.tag': "One slide at a time, with your community", 'wl.look': "Primero quiero mirar", 'ob.doneTitle': "Leíste el pasaje de hoy", 'ob.nameTitle': "¿Cómo te llamas?", 'ob.nameSub': "Tu comunidad y las tarjetas de gratitud muestran este nombre.", 'ob.welcome': "Welcome, {name}", 'ob.welcomeSub': "Toca el punto rojo abajo a la derecha para ir a Leer.",
@@ -1435,9 +1435,9 @@ async function pullTogether() {
         if (got.some(x => x.id === r.id)) continue;
         try {
           const o = await Vault.openForGroup(box.key, r.sealed);
-          const it = { id: r.id, at: r.created_at, r: ['thanks', 'pray', 'me'].includes(o.r) ? o.r : '', n: String(o.n || '').slice(0, 20), q: String(o.q || '').slice(0, 60) };
+          const it = { id: r.id, at: r.created_at, q: String(o.q || '').slice(0, 60) };
           got.unshift(it);
-          if (shown++ < 3) notice(t('rp.notice').replace('{name}', it.n || t('rp.someone')).replace('{r}', t('rp.' + (it.r || 'thanks'))), repliesSheet);
+          if (shown++ < 3) notice(t('rp.notice'), repliesSheet);
         } catch {}
       }
       data.settings.replies = got.slice(0, 30);
@@ -1504,7 +1504,7 @@ async function connectFriend(f, inSync) {
 }
 function repliesSheet() {
   const list = data.settings.replies || [];
-  showSheet({ title: t('lr.title'), body: `<div class="rp-list">${list.map(x => `<div class="rp-item"><p class="rp-head">${esc(x.n || t('rp.someone'))}${x.r ? ' · ' + t('rp.' + x.r) : ''}<span>${esc(dayLabel(String(x.at || '').slice(0, 10)))}</span></p>${x.q ? `<p class="rp-q">${esc(x.q)}</p>` : ''}</div>`).join('')}</div>` });
+  showSheet({ title: t('lr.title'), body: `<div class="rp-list">${list.map(x => `<div class="rp-item"><p class="rp-head"><span class="rp-heart">♥</span><span>${esc(dayLabel(String(x.at || '').slice(0, 10)))}</span></p>${x.q ? `<p class="rp-q">${esc(x.q)}</p>` : ''}</div>`).join('')}</div>` });
 }
 // a small banner at the top; tap to act
 const noticeQ = [];
