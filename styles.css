@@ -1910,3 +1910,15 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 /* influence card: this week's checks on their own line at the left, likes · saves · shares under them */
 .inf-week-row{display:flex;align-items:center;margin-left:0;gap:8px;font-size:12px;color:var(--faint)}
 .screen.t1 .inf-stats{display:flex}
+/* 공동체: one card per screen, snapping like the feed */
+.screen.gc-snap{scroll-snap-type:y mandatory}
+.gc-snap .gc{min-height:var(--sh,600px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;scroll-snap-align:start;border-bottom:0;padding:24px 0 40px}
+.gc-snap .page-head{scroll-snap-align:start}
+.gc-snap .gc-check{width:72px;height:72px}
+.gc-snap .gc-check svg{width:30px;height:30px}
+.gc-snap .gc-title{font-size:21px;margin-top:12px}
+.gc-snap .gc-sub{font-size:15px}
+.gc-snap .gc-faces i{width:36px;height:36px;font-size:14px}
+.gc-snap .gc-body{gap:10px}
+.gc-snap .gc{position:relative}
+.gc-snap .gc:not(:last-child)::after{content:'';position:absolute;left:50%;bottom:22px;width:9px;height:9px;border-right:1.5px solid #C9CCCE;border-bottom:1.5px solid #C9CCCE;transform:translateX(-50%) rotate(45deg)}
