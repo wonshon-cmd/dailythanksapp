@@ -2009,3 +2009,5 @@ details.ch-top:not([open]){gap:0}
 .gc .g-ch .g-ch-n{grid-area:days;justify-self:end}
 .screen{overflow-x:hidden}
 .page,.gc{max-width:100%;min-width:0}
+.mc-head{display:flex;justify-content:space-between;align-items:baseline}
+.mc-head .link-btn{font-size:12.5px}
