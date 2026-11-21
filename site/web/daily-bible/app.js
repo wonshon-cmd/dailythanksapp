@@ -3568,7 +3568,7 @@ function renderSermons() {
   if (state.noteOpen) return renderSermonNote(state.noteOpen);
   const q = noteQuota(), notes = sermonNotes();
   const status = n => n.example ? t('sn.example') : n.aiBusy ? t('sn.working') : n.recPending && autoNotes() ? t('sn.offline') : n.status === 'done' ? '' : n.status === 'error' ? t('sn.failed') : !state.snOnline && n.status === 'waiting' && false ? t('sn.offline') : n.status === 'queued' ? t('sn.queued') : t('sn.working');
-  main.innerHTML = `<div class="screen"><div class="page bb">
+  main.innerHTML = `<div class="screen still"><div class="page bb">
     ${pageHead(t('sn.title'), '', roundBtn('sn-search', 'search', t('ss.ph')))}
     ${recLive() ? `<button class="rec-bar" id="rec-bar" data-action="sermon-new"><i class="rec-dot"></i><span>${t('rec.bar').replace('{t}', fmtDur(Rec.seconds))}</span></button>` : ''}
     <label class="sn-search" ${state.snSearch || state.snQuery ? '' : 'hidden'}>${icon('search')}<input id="sn-q" type="search" enterkeyhint="search" autocomplete="off" placeholder="${esc(t('ss.ph'))}" value="${esc(state.snQuery || '')}">

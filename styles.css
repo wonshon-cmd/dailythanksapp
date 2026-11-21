@@ -2066,3 +2066,16 @@ details.ch-top:not([open]){gap:0}
 #sn-form .dm-status{margin-top:4px}
 .sn-bodywrap .dm-window ~ .sn-pen,.sn-bodywrap textarea:focus ~ .sn-pen{display:none}
 .sheet-top .sn-tstatus{margin-left:auto;margin-right:12px;font-size:13px;color:#B4B8BA;white-space:nowrap}
+/* 노트: the page stays still; only the list of notes scrolls (up/down) when it gets long */
+.screen.still { overflow: hidden; overscroll-behavior: none; touch-action: none; display: flex; flex-direction: column; }
+.screen.still > .page { flex: 1; min-height: 0; display: flex; flex-direction: column; padding-bottom: 0; }
+.screen.still > .page > * { flex-shrink: 0; }
+.screen.still #sn-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; scrollbar-width: none; padding-bottom: 96px; }
+.screen.still #sn-list::-webkit-scrollbar { display: none; }
+.screen.still button, .screen.still a, .screen.still input { touch-action: manipulation; }
+.screen.still #sn-list button { touch-action: pan-y; }
+.screen.still #sn-list { -webkit-mask-image: linear-gradient(transparent, #000 14px); mask-image: linear-gradient(transparent, #000 14px); }
+/* the frame never moves: the top bar, the + button and the bottom tabs (매일 · 동행 · 공동체 · 노트 · 나) stay put; only lists inside scroll */
+html, body { overflow: hidden; overscroll-behavior: none; }
+.topbar, .bottom-nav, .write-pill.fab-plus { touch-action: none; }
+.topbar button, .topbar a, .topbar select, .bottom-nav button, .bottom-nav a, .write-pill.fab-plus { touch-action: none; -webkit-user-select: none; user-select: none; }
