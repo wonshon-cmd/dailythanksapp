@@ -1875,7 +1875,7 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .screen.t2 .stk-sub{display:none}
 .screen.t2 .bb-cont > .gd-label,.screen.t2 .bb-cont > .gd-sub{display:none}
 .screen.t2 .bb-ref{font-size:21px;margin-top:0}
-.screen.t2 .inf-stats{display:none}
+.screen.t2 .inf-week-row{display:none}
 .screen.t2 .db.reach > .gd-label{display:none}
 /* 노트: a pencil instead of a placeholder, gone once you write */
 .sn-bodywrap{position:relative}
@@ -1907,3 +1907,6 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .gc-faces i.more{background:#E6E8EA;color:#5B6064}
 .gc-foot{margin-top:6px;font-size:12.5px;color:#9BA0A3}
 .gc .g-ch{margin-top:16px;text-align:left}
+/* influence card: this week's checks on their own line at the left, likes · saves · shares under them */
+.inf-week-row{display:flex;align-items:center;margin-left:0;gap:8px;font-size:12px;color:var(--faint)}
+.screen.t1 .inf-stats{display:flex}

@@ -3227,7 +3227,7 @@ function fitScreen() {
   requestAnimationFrame(() => {
     const over = () => sc.scrollHeight > sc.clientHeight + 4;
     if (over()) sc.classList.add('t1');
-    if (over()) sc.classList.add('t2');
+    if (over() && sc.clientHeight / sc.scrollHeight < 0.92) sc.classList.add('t2');   // only a little too tall: just scale it a touch
     if (over() && pg) pg.style.zoom = Math.max(0.75, sc.clientHeight / sc.scrollHeight).toFixed(3);
     sc.classList.add('fit');
   });
@@ -5660,8 +5660,8 @@ function influenceCard() {
   const f = influence(), dots = weekDots();
   return `<button class="inf-card" data-action="influence">
     <span class="inf-top"><span class="glow-wrap">${glow(f.score)}</span><span class="inf-label"><span class="inf-people">${t('inf.people').replace('{n}', f.people)}</span><span class="row-sub">${t('inf.title')} · ${f.score}${t('inf.score')}</span></span><span class="row-end">${icon('chevron')}</span></span>
-    <span class="inf-stats"><span>${icon('heart')}${f.received.likes}</span><span>${icon('bookmark')}${f.received.saves}</span><span>${icon('upload')}${f.received.shares}</span>
-      <span class="inf-week">${t('inf.week')}<span class="mini-dots">${dots.map(on => `<i class="${on ? 'on' : ''}">${on ? icon('check') : ''}</i>`).join('')}</span></span></span>
+    <span class="inf-week inf-week-row">${t('inf.week')}<span class="mini-dots">${dots.map(on => `<i class="${on ? 'on' : ''}">${on ? icon('check') : ''}</i>`).join('')}</span></span>
+    <span class="inf-stats"><span>${icon('heart')}${f.received.likes}</span><span>${icon('bookmark')}${f.received.saves}</span><span>${icon('upload')}${f.received.shares}</span></span>
   </button>`;
 }
 function influenceSheet() {
