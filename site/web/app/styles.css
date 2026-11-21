@@ -1835,3 +1835,12 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .rp-q{margin:6px 0 0;font-size:13px;color:var(--faint, #9BA0A3)}
 .rp-q::before{content:'“'}.rp-q::after{content:'”'}
 .rp-head .rp-heart{color:#E0565B;font-size:15px;margin-right:auto}
+/* @ 구절 넣기 */
+.at-pop{margin:6px 0 2px;padding:6px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:2px}
+.at-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;padding:10px 12px;border-radius:12px;font:inherit;font-size:15px;color:var(--ink, #2B2F33);cursor:pointer}
+.at-item:active,.at-item:hover{background:#F3F4F5}
+.at-item svg{width:16px;height:16px;flex:none;color:#9BA0A3}
+.at-ref{flex-direction:column;align-items:flex-start;gap:3px}
+.at-r{font-weight:500}
+.at-v{font-size:13px;color:#8A8F93;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.at-hint{margin:0;padding:8px 12px;font-size:13px;color:#9BA0A3}

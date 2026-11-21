@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
@@ -179,7 +179,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
@@ -344,7 +344,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
@@ -820,6 +820,7 @@ const ICONS = {
   chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.3 9.3 0 0 1-3.6-.7L3 21l1.6-4.3A8 8 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>',
   camera: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>',
   pray: '<path d="M12 7.4V20"/><path d="M12 7.4c0-1.4-2.1-1.5-2.3 0L8 15.4 6.8 17.2"/><path d="M12 7.4c0-1.4 2.1-1.5 2.3 0l1.7 8 1.2 1.8"/><path d="M10.6 16.4v-2.9c0-1.4 2.8-1.4 2.8 0v2.9"/><path d="M6.8 17.2 3 18.4M17.2 17.2l3.8 1.2"/><path d="M6.8 17.2l1.6 2.9M17.2 17.2l-1.6 2.9"/><path d="M8 19.6c1.8 0 4-.4 4-1.3 0 .9 2.2 1.3 4 1.3"/><path d="M12 1.8v2.2M7.6 3.2l1 1.4M16.4 3.2l-1 1.4M5.2 6.6h1.8M17 6.6h1.8"/>',   // praying hands
+  note: '<path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/>',
   mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
   send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
   candle: '<path d="M12 2.5c1.4 1.8 1.9 3 1.9 3.9a1.9 1.9 0 0 1-3.8 0c0-.9.5-2.1 1.9-3.9z"/><rect x="9" y="10" width="6" height="11" rx="1"/><path d="M7 21h10"/>',
@@ -1134,7 +1135,7 @@ function startTour() {
   }
   function features() {
     clearInterval(timer);
-    const f = k => `<div class="tour-f"><span class="row-icon">${icon({ read: 'book', notes: 'mic', group: 'people' }[k])}</span><span><b>${t('tour.f.' + k)}</b><small>${t('tour.f.' + k + 'Sub')}</small></span></div>`;
+    const f = k => `<div class="tour-f"><span class="row-icon">${icon({ read: 'book', notes: 'note', group: 'people' }[k])}</span><span><b>${t('tour.f.' + k)}</b><small>${t('tour.f.' + k + 'Sub')}</small></span></div>`;
     el.innerHTML = `<div class="tour-demo tour-feat"><span class="wordmark tour-mark">daily <em>${BRAND2}</em></span>
       <p class="tour-title">${t('tour.f.title')}</p>
       <div class="tour-fs">${f('read')}${f('notes')}${f('group')}</div>
@@ -1895,6 +1896,58 @@ function parseRef(input) {
   return { b: best, c, v, v2: Math.max(v, v2) };
 }
 const refText = r => !r ? '' : r.c2 > r.c ? `${bookName(r.b)} ${r.c}:${r.v}-${r.c2}:${r.e2}` : `${bookName(r.b)} ${r.c}${r.v ? `:${r.v}${r.v2 > r.v ? '-' + r.v2 : ''}` : (lang() === 'ko' ? '장' : '')}`;
+/* ---------------- @ 구절 넣기 ----------------
+   Writing a note: type @ and a book (@잠 → 잠언), then chapter:verse (3:5-6) — tap and the passage drops in,
+   in the Bible version I read with. Works in every text box with more than one line. */
+const atState = { ta: null, key: '', seq: 0 };
+const atBooks = q => { const f = fold(q); if (!f) return [];
+  const hit = []; BOOKS.forEach((x, i) => { if ([x[0], x[1], x[2], x[3]].some(n => fold(n).startsWith(f))) hit.push(i + 1); });
+  return hit.slice(0, 6); };
+function atHide() { document.querySelector('.at-pop')?.remove(); atState.ta = null; atState.key = ''; }
+function atFind(ta) {
+  const pre = ta.value.slice(0, ta.selectionStart), m = pre.match(/@([^\s@\d][^@\n]{0,30})$/);
+  return m ? { q: m[1], start: pre.length - m[0].length, end: pre.length } : null;
+}
+function atPop(ta, html) {
+  let pop = document.querySelector('.at-pop');
+  if (!pop || pop.nextElementSibling !== ta) { pop?.remove(); pop = Object.assign(document.createElement('div'), { className: 'at-pop' }); ta.before(pop); }
+  pop.innerHTML = html; atState.ta = ta;
+}
+async function atUpdate(ta) {
+  const hit = atFind(ta); if (!hit) { atHide(); return; }
+  const book = hit.q.match(/^[^\d]*/)[0].trim(), nums = hit.q.slice(hit.q.match(/^[^\d]*/)[0].length).trim();
+  if (!nums) { // still typing the book: show matching books
+    const list = atBooks(book); if (!list.length) { atHide(); return; }
+    if (/\s$/.test(hit.q)) { atState.key = ''; atPop(ta, `<p class="at-hint">${esc(t('at.hint'))}</p>`); return; }
+    atState.key = 'b:' + hit.q;
+    atPop(ta, list.map(b => `<button type="button" class="at-item" data-at-book="${b}">${icon('book')}<span>${esc(bookName(b))}</span></button>`).join('')); return;
+  }
+  const ref = parseRef(`${book} ${nums}`);
+  if (!ref || !ref.v) { atPop(ta, `<p class="at-hint">${esc(t('at.hint'))}</p>`); atState.key = ''; return; }
+  const key = 'r:' + JSON.stringify(ref); if (key === atState.key) return; atState.key = key;
+  const seq = ++atState.seq;
+  atPop(ta, `<button type="button" class="at-item at-ref" data-at-ref="1"><span class="at-r">${esc(refText(ref))}</span><span class="at-v">${t('rd.loading')}</span></button>`);
+  try { const vs = await passageVerses(ref); if (seq !== atState.seq) return; atState.vs = vs; atState.ref = ref;
+    const v = document.querySelector('.at-pop .at-v'); if (v) v.textContent = vs.map(x => x.text).join(' ').slice(0, 90) + (vs.length ? '' : ''); }
+  catch { const v = document.querySelector('.at-pop .at-v'); if (v) v.textContent = t('rd.offline'); atState.vs = null; }
+}
+function atReplace(ta, text) {
+  const hit = atFind(ta); if (!hit) return;
+  ta.value = ta.value.slice(0, hit.start) + text + ta.value.slice(hit.end);
+  const pos = hit.start + text.length; ta.focus(); ta.setSelectionRange(pos, pos);
+  ta.dispatchEvent(new Event('input', { bubbles: true }));
+}
+document.addEventListener('input', e => { if (e.target.matches?.('textarea')) atUpdate(e.target); });
+document.addEventListener('focusout', e => { if (e.target === atState.ta) setTimeout(() => { if (document.activeElement !== atState.ta) atHide(); }, 200); });
+document.addEventListener('pointerdown', e => { if (e.target.closest?.('.at-pop')) e.preventDefault(); });   // keep the keyboard up
+document.addEventListener('click', e => {
+  const it = e.target.closest?.('.at-pop .at-item'), ta = atState.ta; if (!it || !ta) return;
+  if (it.dataset.atBook) { atReplace(ta, '@' + bookName(+it.dataset.atBook) + ' '); return; }
+  const vs = atState.vs, ref = atState.ref; if (!vs?.length || !ref) return;
+  const body = vs.map(x => (vs.length > 1 ? `${x.v} ` : '') + x.text).join(' ');
+  const pre = ta.value.slice(0, atFind(ta)?.start || 0);
+  atReplace(ta, `${pre && !pre.endsWith('\n') ? '\n' : ''}${refText(ref)}\n${body}\n`); atHide();
+});
 // The verses of a passage, even when it runs into the next chapter (each verse keeps its chapter in .c).
 async function passageVerses(r) {
   const out = [];
@@ -3100,7 +3153,7 @@ function bibleShell() {
   const tabBtn = ([id, ic, k]) => `<button data-tab="${id}"><span class="nav-ico" data-icon="${ic}"></span><span data-i18n="${k}"></span></button>`;
   if (nav) { nav.classList.add('bb-nav'); nav.innerHTML = `<button data-action="fullscreen" class="nav-feed"><span class="nav-ico" data-icon="sun"></span><span data-i18n="bn.feed"></span></button>`
     + tabBtn(['read', 'book', 'bb.read'])
-    + [['notes', 'mic', 'bb.notes'], ['group', 'people', 'bn.group'], ['me', 'user', 'bb.me']].map(tabBtn).join(''); }
+    + [['notes', 'note', 'bb.notes'], ['group', 'people', 'bn.group'], ['me', 'user', 'bb.me']].map(tabBtn).join(''); }
 }
 // A reading day: a chapter finished, or at least a minute spent reading (same rule as the dashboard).
 const readDaySet = () => new Set([...Object.values(data.readLog || {}), ...Object.entries(data.readTime || {}).filter(([, sec]) => sec >= 60).map(([d]) => d)]);
@@ -3427,7 +3480,7 @@ function sermonNew() {
     <div id="sn-placebox">${placeField()}</div>
     <label class="sn-date"><span>${t('sn.date')}</span><input id="sn-date" type="date" class="field" value="${state.snDate && keep ? state.snDate : today()}" max="${today()}"></label>
     <div id="sn-servicebox">${serviceField(state.snService && keep ? state.snService : guessService(state.snDate && keep ? state.snDate : today()))}</div>
-    <div id="rec-card" class="rec-card">${recCard()}</div>
+    ${recLive() || Rec.blob ? `<div id="rec-card" class="rec-card">${recCard()}</div>` : ''}
     <div id="sn-input">${snInput()}</div>
     <button class="primary block" type="submit">${t('sn.make')}</button></form>` });
   $('#sn-form').addEventListener('submit', e => { e.preventDefault(); sermonSubmit(); });
@@ -5996,7 +6049,7 @@ const actions = {
   'ps-close': () => { state.pastorView = null; if (location.hash.startsWith('#pastor=')) { try { history.replaceState(null, '', location.pathname); } catch {} } render(); },
   usage: () => usageSheet(),
   'bible-plus': () => { const row = (action, ic, label, id = '') => `<button class="list-row" data-action="${action}"${id ? ` data-id="${id}"` : ''}><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
-    showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sermon-new', 'mic', t('bp.sermon'))}${row('bp-write', 'book', t('bp.med'), 'meditation')}${row('bp-write', 'sun', t('bp.thanks'), 'today')}${row('bp-write', 'pray', t('bp.prayer'), 'prayer')}${row('plan-new', 'calendar', t('bp.plan'))}</div>` }); },
+    showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sermon-new', 'note', t('bp.sermon'))}${row('bp-write', 'book', t('bp.med'), 'meditation')}${row('bp-write', 'sun', t('bp.thanks'), 'today')}${row('bp-write', 'pray', t('bp.prayer'), 'prayer')}${row('plan-new', 'calendar', t('bp.plan'))}</div>` }); },
   'bible-write': () => { const row = (ic, label, kind) => `<button class="list-row" data-action="bp-write" data-id="${kind}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span>${icon('chevron')}</button>`;
     showSheet({ title: t('bp.title2'), body: `<div class="list">${row('sun', t('bp.thanks'), 'today')}${row('pray', t('bp.prayer'), 'prayer')}${row('book', t('bp.med'), 'meditation')}${row('heart', t('bp.thankSomeone'), 'thanks')}</div>` }); },
   'bp-write': kind => { close(); state.medRef = null; state.medSource = null; state.medNote = false; compose(kind, null); },
