@@ -17,6 +17,7 @@ Daily Journey · Supabase 프로젝트 `puhaycwpfpqsmxubvzkt`
    - `supabase/friends.sql` — 감사 링크 하트, 1:1 연결
    - `supabase/backups.sql` — 잠근 백업(새 휴대폰에서 기록 이어 보기)
    - `supabase/link_opens.sql` — 공유 링크를 연 사람 수(영향력)
+   - `supabase/security.sql` — 보안 강화(코드 여러 번 틀리면 15분 대기, 글자 수 제한 등) **맨 마지막에 실행**
    - 파일 위치: https://github.com/wonshon-cmd/dailythanksapp/tree/main/supabase
 3. 각각 "Success. No rows returned"가 나오면 끝.
 
@@ -52,6 +53,8 @@ Supabase 기본 메일은 **프로젝트 팀원 주소로만** 가고 시간당 
 3. Save.
 4. 발송 한도 올리기: https://supabase.com/dashboard/project/puhaycwpfpqsmxubvzkt/auth/rate-limits
    → "Rate limit for sending emails"를 `100`(시간당) 정도로 → Save.
+   → 같은 화면 **"Rate limit for token verifications"**(코드 확인)는 `30`(5분당, IP 하나 기준) 이하로 두세요. 6자리 코드를 마구 넣어 보는 공격을 막아요.
+   → **"Rate limit for sign ups and sign ins"**도 기본값(30) 그대로 두면 돼요.
 
 ### 3-3. 메일 내용에 코드 넣기
 앱은 메일 속 **6자리 코드**를 입력받아요. 메일 양식에 코드가 꼭 있어야 해요.
