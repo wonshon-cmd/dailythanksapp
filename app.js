@@ -1031,6 +1031,9 @@ Object.assign(STR.ko, { 'ty.toneSorry': "미안해요", 'ty.phSorry': "미안한
 Object.assign(STR.en, { 'ty.toneSorry': "I’m sorry", 'ty.phSorry': "Say what you’re sorry for, honestly." });
 Object.assign(STR.es, { 'ty.toneSorry': "Lo siento", 'ty.phSorry': "Escribe con sinceridad lo que lamentas." });
 Object.assign(STR.ko, { 'pl.with': "누구와 함께 할까요?" }); Object.assign(STR.en, { 'pl.with': "Who’s reading with you?" }); Object.assign(STR.es, { 'pl.with': "¿Con quién lo leerás?" });
+Object.assign(STR.ko, { 'sn.edit': "수정하기", 'sn.saveEdit': "저장", 'sn.edited': "수정했어요.", 'tr.hint': "‘받기’를 누르면 인터넷 없이도 읽을 수 있게 저장해요." });
+Object.assign(STR.en, { 'sn.edit': "Edit", 'sn.saveEdit': "Save", 'sn.edited': "Saved.", 'tr.hint': "‘Download’ saves it for reading offline." });
+Object.assign(STR.es, { 'sn.edit': "Editar", 'sn.saveEdit': "Guardar", 'sn.edited': "Guardado.", 'tr.hint': "‘Descargar’ la guarda para leer sin conexión." });
 Object.assign(STR.ko, { 'me.search': "묵상·저장한 구절 검색", 'me.newest': "최신순", 'me.oldest': "오래된순", 'me.noMatch': "찾는 내용이 없어요" });
 Object.assign(STR.en, { 'me.search': "Search reflections and saved verses", 'me.newest': "Newest", 'me.oldest': "Oldest", 'me.noMatch': "Nothing found" });
 Object.assign(STR.es, { 'me.search': "Buscar reflexiones y versículos", 'me.newest': "Recientes", 'me.oldest': "Antiguos", 'me.noMatch': "No se encontró nada" });
@@ -3543,11 +3546,29 @@ function noteList(notes, status) {
   if (terms.length && !rows.length) return `<p class="hint sn-none">${esc(t('ss.none').replace('{q}', state.snQuery.trim()))}</p>`;
   const m = x => terms.length ? markTerms(x, terms) : esc(x);
   return `${terms.length ? `<p class="sn-count">${esc(t('ss.count').replace('{n}', rows.length))}</p>` : ''}<div class="notes">${rows.map(({ n, hit }) => `<button class="note" data-action="note-open" data-id="${esc(n.id)}">
-      <span class="note-meta"><span>${m([dayLabel(n.date || today()), n.preacher, n.church, serviceName(n.service)].filter(Boolean).join(' · '))}</span>${status(n) ? `<span class="badge">${esc(status(n))}</span>` : ''}</span>
+      <span class="note-meta"><span>${m([dayLabel(n.date || today()), n.preacher, n.church, serviceName(n.service)].filter(Boolean).join(' · '))}</span>${status(n) ? `<span class="badge">${esc(status(n))}</span>` : ''}${n.example ? '' : `<span class="note-dots" role="button" tabindex="0" data-action="note-more" data-id="${esc(n.id)}" aria-label="${esc(t('aria.more') || '⋯')}">${icon('more')}</span>`}</span>
       <span class="note-text">${m(n.title || n.summary?.title || t('sn.title'))}</span>
       ${terms.length && (n.summary?.passages || []).length ? `<span class="note-ref">${m(n.summary.passages.join(', '))}</span>` : ''}
       ${hit?.snip ? `<span class="note-reflect">${hit.where === 'tr' ? `<small class="sn-where">${t('ss.inTr')}</small> ` : ''}${m(hit.snip)}</span>`
         : n.summary?.main_message ? `<span class="note-reflect">${m(n.summary.main_message)}</span>` : ''}</button>`).join('')}</div>`;
+}
+// 수정하기: title, date, pastor, church, main message and what I wrote
+function noteEdit(id) {
+  const n = (data.sermonNotes || []).find(x => x.id === id); if (!n) return;
+  const S = n.summary || {};
+  showSheet({ title: t('sn.edit'), body: `<form id="ne-form" class="sheet-form">
+    <label class="field-label" for="ne-title">${t('sn.titleF')}</label><input id="ne-title" class="field" maxlength="120" value="${esc(n.title || S.title || '')}">
+    <label class="field-label" for="ne-date">${t('sn.date')}</label><input id="ne-date" class="field" type="date" max="${today()}" value="${esc(n.date || today())}">
+    <div class="ne-two"><span><label class="field-label" for="ne-pastor">${t('sn.pastor')}</label><input id="ne-pastor" class="field" maxlength="40" value="${esc(n.preacher || '')}"></span>
+      <span><label class="field-label" for="ne-church">${t('sn.church')}</label><input id="ne-church" class="field" maxlength="40" value="${esc(n.church || '')}"></span></div>
+    ${S.main_message != null ? `<label class="field-label" for="ne-main">${t('sn.main')}</label><textarea id="ne-main" class="field" rows="2" maxlength="300">${esc(S.main_message || '')}</textarea>` : ''}
+    <label class="field-label" for="ne-body">${t('sn.body')}</label><textarea id="ne-body" class="big-input" rows="8">${esc(n.body || '')}</textarea>
+    <button class="primary block" type="submit">${t('sn.saveEdit')}</button></form>` });
+  $('#ne-form').addEventListener('submit', e => { e.preventDefault();
+    const v = k => $('#' + k)?.value.trim() ?? '';
+    n.title = v('ne-title') || n.title; if (n.summary) { n.summary.title = n.title; if ($('#ne-main')) n.summary.main_message = v('ne-main'); }
+    n.date = v('ne-date') || n.date; n.preacher = v('ne-pastor'); n.church = v('ne-church'); n.body = $('#ne-body').value; n.edited = new Date().toISOString();
+    save(); close(); render(); toast(t('sn.edited')); });
 }
 // a note as text (title, passage, what I wrote) and as a link that opens it as a reflection
 function noteText(n, noRef) {
@@ -6473,7 +6494,9 @@ const actions = {
     const row = (act, ic, label) => `<button class="list-row" data-action="${act}" data-id="${esc(id)}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span></button>`;
     showSheet({ title: t('sn.share'), body: `<div class="list">${data.groups.some(g => !g.pending) ? row('note-group', 'people', t('share.toGroup')) : ''}${row('note-copy', 'copy', t('share.link'))}${row('note-send', 'share', t('nsh.other'))}</div>` }); },
   'note-more': id => { const row = (act, ic, label) => `<button class="list-row" data-action="${act}" data-id="${esc(id)}"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${label}</span></span></button>`;
-    showSheet({ title: '', body: `<div class="list">${row('note-share', 'share', t('sn.share'))}${row('note-del', 'trash', t('sn.delete'))}</div>` }); },
+    const n = sermonNotes().find(x => x.id === id), mine = n && (data.sermonNotes || []).some(x => x.id === id);
+    showSheet({ title: '', body: `<div class="list">${mine ? row('note-edit', 'pencil', t('sn.edit')) : ''}${row('note-share', 'share', t('sn.share'))}${row('note-del', 'trash', t('sn.delete'))}</div>` }); },
+  'note-edit': id => noteEdit(id),
   // tap a community: its card on the whole screen; from there into the community
   'gc-full': gid => { const g = data.groups.find(x => x.id === gid); if (!g) return; state.gcFull = true; const html = groupBlock(g); state.gcFull = false;
     showSheet({ title: '', body: html }); sheet.classList.add('sheet-full', 'gc-sheet'); },
