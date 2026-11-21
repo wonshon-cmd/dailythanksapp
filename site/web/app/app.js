@@ -1546,7 +1546,7 @@ async function shareDone() {
   }
   // a small QR code above the footer: dailyjourney.org/get/ (App Store / Google Play once the apps are out, the web app for now)
   try { const qrcode = await loadQr(), q = qrcode(0, 'M'); q.addData('https://dailyjourney.org/get/'); q.make();
-    const n = q.getModuleCount(), cell = Math.round(132 / n), size = cell * n, top = H - 480, left = Math.round((W - size) / 2);
+    const n = q.getModuleCount(), cell = Math.round(132 / n), size = cell * n, top = H - 530, left = Math.round((W - size) / 2);
     if (y < top - 30) { x.fillStyle = '#6E7378';
       for (let r = 0; r < n; r++) for (let cc = 0; cc < n; cc++) if (q.isDark(r, cc)) x.fillRect(left + cc * cell, top + r * cell, cell, cell); } } catch {}
   x.fillStyle = '#B4B8BA'; x.font = '300 30px "Noto Sans KR"'; x.fillText(g ? t('tg.footer') : 'dailyjourney.org', W / 2, H - 270);
