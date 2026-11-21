@@ -5161,7 +5161,9 @@ function chStats(ch) {
 }
 // "가장 꾸준한 사람": the group's admin only; 순장 too when the admin turns it on (off by default)
 const seesTop = ch => { if (!ch?.group || ch.group === 'pair') return true; const g = data.groups.find(x => x.id === ch.group); return !!g && (g.owner || (g.role === 'leader' && !!g.topToLeaders)); };
-const chTopHtml = () => '';   // "가장 꾸준한 사람" ranking: taken out (no ranking people against each other)
+// "가장 꾸준한 사람": only the community's admin sees it, folded away until opened
+const chTopHtml = ch => { const g = data.groups.find(x => x.id === ch?.group), st = g?.owner ? chStats(ch) : null;
+  return st && st.top.length > 1 ? `<details class="ch-top"><summary class="gd-label">${icon('sparkle')}${t('chr.top')}${icon('chevron')}</summary>${st.top.map((x, i) => `<span class="ch-top-row"><i>${i + 1}</i>${esc(x.name)}<small>${t('chr.days').replace('{n}', x.n)}</small></span>`).join('')}</details>` : ''; };
 const chTypeLabel = ch => ch.type === 'meditation' ? t('kind.meditation') : ch.type === 'prayer' ? t('kind.prayer') : ch.type === 'bible' ? t('ch.t.bible') : t('ch.t.thanks');
 const chLen = ch => ch.length || 7;
 function challengeDetail(id) {
