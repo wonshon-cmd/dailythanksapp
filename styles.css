@@ -1862,3 +1862,18 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
     rgba(255,214,110,calc(.28 + var(--g) * .35)) 30%,
     rgba(255,226,150,calc(.08 + var(--g) * .20)) 62%,
     rgba(255,240,200,0) 100%)}
+/* 매일: tighter steps on short screens (the tab never scrolls) */
+.screen.t1 .stk{padding:10px 14px;margin-bottom:10px}
+.screen.t1 .bb-cont{padding:0 0 10px}
+.screen.t1 .bb-ref{font-size:23px}
+.screen.t1 .gd-acts{margin-top:8px}
+.screen.t1 .bb .gd-devo{padding:12px 16px;margin-bottom:10px}
+.screen.t1 .stk + .pl,.screen.t1 .pl{margin-bottom:8px}
+.screen.t1 .db.reach{margin-top:0}
+.screen.t1 .inf-card{gap:8px;padding-top:6px;padding-bottom:4px;margin-bottom:0}
+.screen.t1 .stk-week small{display:none}
+.screen.t2 .stk-sub{display:none}
+.screen.t2 .bb-cont > .gd-label,.screen.t2 .bb-cont > .gd-sub{display:none}
+.screen.t2 .bb-ref{font-size:21px;margin-top:0}
+.screen.t2 .inf-stats{display:none}
+.screen.t2 .db.reach > .gd-label{display:none}
