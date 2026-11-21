@@ -15,10 +15,10 @@ Daily Journey - 매일 성경
 매일 성경 읽기, 공동체와 함께
 ```
 
-### appstore.promo  (74/170)
+### appstore.promo  (66/170)
 
 ```
-오늘의 본문을 읽고, 친구와 같은 날 같은 말씀을 읽어요. 공동체의 기도제목을 받고, 설교는 녹음하며 본문과 함께 내 노트로 남겨요.
+오늘의 본문을 읽고, 친구와 같은 날 같은 말씀을 읽어요. 공동체의 기도제목을 받고, 말씀과 설교를 내 노트로 남겨요.
 ```
 
 ### appstore.keywords  (90/100)
@@ -39,10 +39,10 @@ Daily Journey를 처음 선보입니다. 매일 말씀을 읽고, 공동체와 �
 Daily Journey - 매일 성경
 ```
 
-### play.short  (40/80)
+### play.short  (37/80)
 
 ```
-오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 설교 노트를 한곳에서.
+오늘의 본문, 함께 읽기 계획, 공동체 기도제목, 노트를 한곳에서.
 ```
 
 ### description  (1291/4000)
@@ -68,8 +68,11 @@ Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 �
 ■ 묵상
 읽은 본문 아래에 느낀 점과 기도를 적어 두세요. 나만 보거나, 공동체와 나누거나, 모두에게 나눌 수 있어요. 마지막으로 고른 공개 범위를 기억해요.
 
-■ 설교 노트
-본문을 고르고 설교를 녹음하면서, 들은 말씀을 내 노트로 적어 두세요. 지원되는 기기에서는 실시간 받아쓰기도 볼 수 있어요(기기·브라우저 음성 인식 사용). 교회와 목사님은 한 번 적으면 기억해서, 다음 주일에는 미리 채워져요. 노트는 공동체에 나눌 수 있어요.
+■ 노트
+설교를 들으며, 혹은 말씀을 읽으며 내 노트를 남겨요. @잠언3:5-6처럼 적으면 그 구절이 바로 노트에 들어가요. 노트는 공동체에 나누거나 링크로 보낼 수 있어요.
+
+■ 형광펜
+마음에 닿은 구절을 골라 색을 칠해 두세요. 언제 칠했는지 날짜도 함께 남아요.
 
 ■ 공동체
 교회 순모임, 가족, 친구와 공동체를 만들어요. 초대 링크나 초대 코드로 들어오고, 원하면 리더가 승인한 사람만 들어올 수 있어요. 알림이 많으면 조용히 해 두고, 언제든 나갈 수 있어요.
@@ -82,7 +85,7 @@ Daily Journey는 성경을 매일 읽고, 읽은 말씀과 기도와 감사를 �
 
 ■ 안전하고 사적인 공간
 · 나만 보는 기록은 휴대폰에서 잠근 뒤 저장돼요. 운영자도 열어 볼 수 없어요.
-· 설교 녹음 파일은 휴대폰에만 남아요.
+· 묵상에 남긴 목소리 녹음은 휴대폰에만 남아요.
 · 부적절한 글은 신고하고, 숨기고, 사람을 차단할 수 있어요.
 · 앱 안에서 언제든 계정을 삭제할 수 있어요.
 
@@ -105,10 +108,10 @@ Daily Journey - Bible Reading
 Read the Bible daily, together
 ```
 
-### appstore.promo  (168/170)
+### appstore.promo  (157/170)
 
 ```
-Read today’s passage, and read the same verses on the same day as your friends. Pray for your community, and record each sermon alongside your own notes on the passage.
+Read today’s passage, and read the same verses on the same day as your friends. Pray for your community, and keep your own notes on the Word and each sermon.
 ```
 
 ### appstore.keywords  (92/100)
@@ -129,13 +132,13 @@ Introducing Daily Journey. Read the Word every day and share it with your commun
 Daily Journey - Bible Reading
 ```
 
-### play.short  (78/80)
+### play.short  (71/80)
 
 ```
-Today’s passage, reading plans with friends, prayer requests and sermon notes.
+Today’s passage, reading plans with friends, prayer requests and notes.
 ```
 
-### description  (2337/4000)
+### description  (2358/4000)
 
 ```
 The Word every day, together.
@@ -158,8 +161,11 @@ Today’s verse, your community’s prayer requests and shared thanks, one card 
 ■ REFLECTIONS
 Write what you noticed and a prayer under the passage you read. Keep it to yourself, share it with your community or with everyone. Daily Journey remembers your last choice.
 
-■ SERMON NOTES
-Pick the passage, record the sermon, and write your own notes. On supported devices you can also see live captions (using your device or browser speech recognition). Your church and pastor are remembered, so next Sunday they are already filled in. Share notes with your community.
+■ NOTES
+Keep your own notes while you listen to a sermon or read the Word. Type @Proverbs3:5-6 and the verses drop right into your note. Share notes with your community or send them as a link.
+
+■ HIGHLIGHTS
+Highlight the verses that speak to you, in a soft color. The day you highlighted stays with it.
 
 ■ COMMUNITIES
 Start a community for your church group, family or friends. People join with an invite link or code, and you can require approval. Mute a busy community, or leave at any time.
@@ -172,7 +178,7 @@ Chapters read, days in the Word, your longest streak, your verse of the year and
 
 ■ SAFE AND PRIVATE
 · Entries only you can see are locked on your phone before they are saved. We can’t read them.
-· Sermon recordings stay on your phone.
+· Voice notes on your reflections stay on your phone.
 · Report posts, hide them, and block people.
 · Delete your account in the app at any time.
 
@@ -195,10 +201,10 @@ Daily Journey: Biblia diaria
 Lee la Biblia cada día, juntos
 ```
 
-### appstore.promo  (141/170)
+### appstore.promo  (144/170)
 
 ```
-Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu comunidad y graba el sermón junto a tus propias notas del pasaje.
+Lee el pasaje de hoy y lee lo mismo el mismo día que tus amigos. Ora por tu comunidad y guarda tus propias notas de la Palabra y de cada sermón.
 ```
 
 ### appstore.keywords  (82/100)
@@ -219,13 +225,13 @@ Presentamos Daily Journey. Lee la Palabra cada día y compártela con tu comunid
 Daily Journey: Biblia diaria
 ```
 
-### play.short  (78/80)
+### play.short  (75/80)
 
 ```
-Pasaje de hoy, planes de lectura con amigos, peticiones de oración y sermones.
+Pasaje de hoy, planes de lectura con amigos, peticiones de oración y notas.
 ```
 
-### description  (2536/4000)
+### description  (2546/4000)
 
 ```
 La Palabra cada día, juntos.
@@ -248,8 +254,11 @@ El versículo de hoy, las peticiones de oración de tu comunidad y la gratitud c
 ■ REFLEXIONES
 Escribe lo que notaste y una oración bajo el pasaje que leíste. Guárdalo para ti, compártelo con tu comunidad o con todos. Daily Journey recuerda tu última elección.
 
-■ NOTAS DEL SERMÓN
-Elige el pasaje, graba el sermón y escribe tus propias notas. En dispositivos compatibles también verás subtítulos en vivo (con el reconocimiento de voz del dispositivo o del navegador). Tu iglesia y tu pastor se recuerdan, así que el próximo domingo ya están puestos. Comparte las notas con tu comunidad.
+■ NOTAS
+Escribe tus propias notas mientras escuchas un sermón o lees la Palabra. Escribe @Proverbios3:5-6 y los versículos entran directo en tu nota. Comparte las notas con tu comunidad o envíalas como enlace.
+
+■ RESALTADOS
+Resalta los versículos que te hablan, con un color suave. El día en que los resaltaste queda guardado.
 
 ■ COMUNIDADES
 Crea una comunidad para tu grupo de la iglesia, tu familia o tus amigos. Se entra con un enlace o un código de invitación, y puedes pedir aprobación. Silencia una comunidad muy activa o sal cuando quieras.
@@ -262,7 +271,7 @@ Capítulos leídos, días en la Palabra, tu racha más larga, tu versículo del 
 
 ■ SEGURO Y PRIVADO
 · Lo que solo tú ves se cifra en tu teléfono antes de guardarse. Nosotros no podemos leerlo.
-· Las grabaciones de sermones se quedan en tu teléfono.
+· Las notas de voz de tus reflexiones se quedan en tu teléfono.
 · Denuncia publicaciones, ocúltalas y bloquea personas.
 · Elimina tu cuenta desde la app cuando quieras.
 

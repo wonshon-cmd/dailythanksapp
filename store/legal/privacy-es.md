@@ -3,7 +3,7 @@
 > Para Squarespace: pega este texto en dailyjourney.org/privacy (versión en español).
 > Reemplaza todo lo que esté entre `[corchetes]`. Pide una revisión profesional antes del lanzamiento.
 
-**Fecha de vigencia: 17 de noviembre de 2026**
+**Fecha de vigencia: 21 de noviembre de 2026**
 
 Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "Servicio"). Esta política explica qué datos recogemos, para qué, cómo los protegemos y qué opciones tienes.
 
@@ -11,12 +11,14 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "
 
 | Categoría | Datos | Cuándo |
 |---|---|---|
-| Cuenta | Correo o número de teléfono y tu nombre / si entras con Google o Microsoft, el identificador y correo de esa cuenta | Al iniciar sesión |
+| Cuenta | Correo y tu nombre / si entras con Google o Apple, el identificador y correo de esa cuenta | Al iniciar sesión |
 | Tu contenido | Notas de gratitud, tarjetas de agradecimiento (incluido el nombre que escribas), reflexiones, visibilidad | Al escribir |
-| Actividad | Me gusta, guardados, compartidos, reportes, bloqueos, ocultos, publicaciones vistas, fechas | Al usar el Servicio |
+| Actividad | Me gusta, guardados, compartidos, reportes, bloqueos, ocultos, publicaciones vistas, fechas, si terminaste el pasaje de hoy o un día de un plan (sin texto) | Al usar el Servicio |
 | Ajustes | Idioma, tamaño de texto, hora del recordatorio, funciones activadas | Al cambiarlos |
-| Dispositivo | Token de notificaciones, tipo de dispositivo, versión del sistema y de la app | Al permitir notificaciones o abrir la app |
-| Opcional: notas de sermón | Grabación o transcripción y las notas ordenadas | Solo si usas las notas de sermón automáticas |
+| Dispositivo | Versión de la app | Al abrir la app |
+
+- Los recordatorios de lectura se programan en tu dispositivo; no nos envía ningún token de notificaciones.
+- Tus notas, resaltados y notas de voz en reflexiones se bloquean en tu dispositivo y no se envían a nuestros servidores.
 
 - **No** te rastreamos en otras apps o sitios web.
 - **No** recogemos tu ubicación.
@@ -27,10 +29,9 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "
 
 1. Crear tu cuenta y mantener tu sesión
 2. Guardar tus notas y mostrarlas solo al público que elijas (Solo yo, un grupo o Todos)
-3. Enviar un recordatorio a la hora que elijas (no se envía si ya escribiste ese día)
+3. Enviar un recordatorio de lectura a la hora que elijas (no se envía si ya leíste ese día)
 4. Mantener la comunidad segura: filtrar lenguaje ofensivo, atender reportes, bloquear y ocultar
 5. Corregir errores y mejorar el Servicio
-6. Opcional: transcribir y resumir un sermón que envíes
 
 ## 3. Cuánto tiempo los guardamos
 
@@ -40,7 +41,7 @@ Daily Journey, Inc. ("nosotros") opera la app Daily Journey y su sitio web (el "
 ## 4. Compartir
 
 - No vendemos tus datos.
-- Solo los comparten nuestros proveedores, para prestar el Servicio (Supabase, Google, Microsoft, Apple y, en funciones opcionales, Anthropic y un proveedor de reconocimiento de voz: NAVER Cloud, Returnzero u OpenAI, según el idioma), o cuando la ley lo exige.
+- Solo los comparten nuestros proveedores, para prestar el Servicio (Supabase y su proveedor de correo; Google y Apple solo si inicias sesión con ellos), o cuando la ley lo exige.
 - Los datos viajan cifrados.
 - **Notas solo para ti:** se bloquean (cifran) en tu dispositivo y no se envían a nuestros servidores. La llave queda en tu dispositivo; ni nosotros podemos leerlas.
 - **Lo que compartes con una comunidad o con todos:** se guarda en nuestros servidores (Supabase). Las reglas de acceso permiten leerlo solo a los miembros de esa comunidad (o a usuarios registrados). No tiene cifrado de extremo a extremo, así que podemos leerlo para operar el servicio y atender reportes.

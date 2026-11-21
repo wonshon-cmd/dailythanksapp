@@ -152,6 +152,11 @@ const DT_NATIVE_VERSION = 1;
   // daily-journey://write (daily-bible:// and daily-thanks:// too) → writing sheet; daily-journey://join?c=CODE&n=NAME (group invite) → join sheet
   const route = url => {
     if (!url) return;
+    if (/^daily-(?:journey|bible|thanks):\/\/auth/.test(url)) {   // back from Google / Apple sign-in
+      P.Browser?.close?.().catch(() => {});
+      const frag = url.includes('#') ? url.split('#')[1] : (url.split('?')[1] || '');
+      ready(DT => DT.authReturn && DT.authReturn(frag)); return;
+    }
     if (/join/.test(url)) { const q = new URL(url.replace(/^daily-(?:journey|bible|thanks):\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.joinGroup(q.get('c'), q.get('n'), q.get('k')), 300)); }
     else if (/reply/.test(url)) { const q = new URL(url.replace(/^daily-(?:journey|bible|thanks):\/\//, 'https://x/')).searchParams; ready(DT => setTimeout(() => DT.replyThanks(q.get('to'), q.get('from')), 300)); }
     else if (/meditat/.test(url)) ready(DT => setTimeout(() => DT.openMeditation(), 300));

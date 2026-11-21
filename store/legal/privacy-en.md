@@ -3,7 +3,7 @@
 > For Squarespace: paste into the dailyjourney.org/privacy page.
 > Replace every `[bracket]`. Have it reviewed by a privacy professional before launch.
 
-**Effective date: November 17, 2026**
+**Effective date: November 21, 2026**
 
 Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"). This policy explains what we collect, why, how we protect it, and the choices you have.
 
@@ -11,13 +11,15 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"
 
 | Category | Data | When |
 |---|---|---|
-| Account | Email address or phone number, and your name / if you sign in with Google or Microsoft, that account’s identifier and email | When you sign in |
+| Account | Email address and your name / if you sign in with Google or Apple, that account’s identifier and email | When you sign in |
 | Your content | Notes of thanks, thank-you cards (including the recipient name you type), prayer requests, reflections, visibility setting | When you write |
 | Communities | Communities you create or join, your role (admin, leader, member), join requests | When you create or join one |
-| Activity | Likes, saves, shares, reports, blocks, hidden posts, posts viewed, dates written | When you use the Service |
+| Activity | Likes, saves, shares, reports, blocks, hidden posts, posts viewed, dates written, whether you finished today’s passage or a reading-plan day (no text) | When you use the Service |
 | Settings | Language, text size, reminder time, features turned on or off | When you change them |
-| Device | Push notification token, device type, OS version, app version | When you allow notifications or open the app |
-| Optional: sermon notes | Sermon recording or transcript, and the tidy notes | Only if you use automatic sermon notes |
+| Device | App version | When you open the app |
+
+- Reading reminders are scheduled on your device; no notification token is sent to us.
+- Your own notes, highlights and voice notes on reflections are locked on your device and are not sent to our servers.
 
 - We do **not** track you across other apps or websites.
 - We do **not** collect location.
@@ -28,10 +30,9 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"
 
 1. Create and keep your account signed in
 2. Store your notes and show them only to the audience you choose (Only me, a group, or Everyone)
-3. Send one reminder at your chosen time (skipped on days you've already written)
+3. Send one reading reminder at your chosen time (skipped on days you’ve already read)
 4. Keep the community safe: filtering abusive language, handling reports, blocking and hiding
 5. Fix bugs and improve the Service
-6. Optional: transcribe and summarize a sermon you submit
 
 ## 3. How long we keep it
 
@@ -49,11 +50,8 @@ Daily Journey, Inc. ("we") runs the Daily Journey app and website (the "Service"
 | Provider | Purpose |
 |---|---|
 | Supabase, Inc. | Sign-in, storage |
-| Google LLC · Microsoft Corp. (optional) | Confirming who you are if you sign in with them |
-| Apple Inc. · Google LLC | App notifications |
-| Text-message provider used by Supabase (only if you sign in with your phone) | Sending sign-in codes by text |
-| Anthropic PBC (optional feature) | Tidying sermon notes |
-| Speech-recognition provider: NAVER Cloud, Returnzero or OpenAI, depending on language (optional feature) | Sermon transcription |
+| Google LLC · Apple Inc. (optional) | Confirming who you are if you sign in with them |
+| Email provider used by Supabase | Sending sign-in codes by email |
 
 Data is encrypted in transit.
 

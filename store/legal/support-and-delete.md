@@ -87,12 +87,12 @@ Daily Journey, Inc. · 105 Challenger Rd, Suite 401, Ridgefield Park, NJ 07660, 
 - **앱에서 바로 삭제하기 (권장):** 앱을 열고 「나」 › ⋯(설정) › **계정 삭제**를 누르세요. 누르는 즉시 계정이 지워져요.
 - **앱이 없을 때:** hi@dailyjourney.org로 아래 내용을 보내 주세요.
   - 제목: 계정 삭제 요청
-  - 로그인 방법: 메일 / 휴대폰 번호 / Google / Microsoft
-  - 로그인에 쓴 메일 주소 또는 휴대폰 번호
+  - 로그인 방법: 메일 / Google / Apple
+  - 로그인에 쓴 메일 주소
 - 본인 확인 후 **7일 안에** 삭제하고 결과를 알려 드려요.
 
 **삭제되는 정보**
-- 계정 정보(이름, 메일 또는 휴대폰 번호)
+- 계정 정보(이름, 메일)
 - 내가 올린 감사 · 기도제목 · 묵상
 - 공동체 참여 기록, 좋아요 · 기도했어요 기록
 - 기기에만 있던 기록은 앱을 지우면 함께 지워져요
@@ -107,12 +107,12 @@ Daily Journey, Inc. · 105 Challenger Rd, Suite 401, Ridgefield Park, NJ 07660, 
 - **In the app (fastest):** Me › ⋯ (Settings) › **Delete account**. Your account is deleted right away.
 - **Without the app:** email hi@dailyjourney.org with:
   - Subject: Delete my account
-  - How you sign in: email, phone, Google or Microsoft
-  - The email address or phone number you sign in with
+  - How you sign in: email, Google or Apple
+  - The email address you sign in with
 - We verify and delete within **7 days**, then confirm by email.
 
 **Deleted:**
-- Your account (name, email or phone number)
+- Your account (name, email)
 - The thanks, prayer requests and reflections you shared
 - Your community memberships, likes and prayers
 - Anything kept only on your device is removed when you delete the app
