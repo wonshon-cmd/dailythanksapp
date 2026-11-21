@@ -8,7 +8,7 @@
 
 | 보내요 (Supabase) | 안 보내요 |
 |---|---|
-| 메일 주소 (메일 코드 로그인, 또는 Google·Apple 로그인이 알려 주는 주소) | 묵상에 남긴 목소리 녹음 — 휴대폰에만 남아요 |
+| 메일 주소 (메일 코드 로그인, 또는 Google·Apple 로그인이 알려 주는 주소) | 음성·녹음 — 첫 출시에는 녹음 기능이 없어요 |
 | 표시 이름 | 형광펜·노트 — 나만 보는 기록과 함께 휴대폰에서 잠가 둬요 |
 | 사용자 ID | 나만 보는 글의 내용 — 휴대폰에서 잠가 두고 서버로 보내지 않아요 |
 | 공동체 가입·승인 상태 | 위치, 연락처 목록, 광고 ID, 결제 정보 |
@@ -34,7 +34,7 @@
 | 식별자 › 사용자 ID | 계정 ID |
 | 사용 데이터 › 제품 상호작용 | 좋아요·저장·함께 기도, 공동체 가입, 읽음 표시 |
 
-- 오디오 데이터: **수집 안 함** (묵상 목소리 녹음은 휴대폰에만).
+- 오디오 데이터: **수집 안 함** (첫 출시에는 녹음 기능이 없어요).
 - 나만 보는 글: 휴대폰에서 암호화되어 우리가 읽을 수 없으므로 수집으로 보지 않아요.
 - 추적: **아니요**. 앱 추적 투명성(ATT) 팝업 필요 없음.
 
@@ -52,7 +52,7 @@
 | 메시지 › 기타 인앱 메시지 (나눈 글) | 선택 | 앱 기능 |
 | 앱 활동 › 앱 상호작용 (반응, 공동체 가입, 읽음 표시) | 선택 | 앱 기능 |
 
-권한: 마이크 (묵상에 목소리로 남길 때만. 녹음은 휴대폰에만), 알림 (읽기 알림).
+권한: 알림 (읽기 알림). 마이크는 쓰지 않아요.
 
 ## 3. 사용자 생성 콘텐츠 (Apple 1.2 · Google UGC 정책)
 
@@ -91,8 +91,7 @@ User-generated content (Guideline 1.2):
 - Community owners can require approval before someone joins; members can mute or leave.
 - Reports are reviewed within 24 hours. Contact: hi@dailyjourney.org, https://dailyjourney.org/support
 
-Microphone: used only when the user records a voice note on a reflection. Recordings stay on
-the device. There is no sermon recording, transcription or automatic summary in this version.
+Microphone: not used in this version (no recording, transcription or automatic summary).
 Notifications: optional daily reading reminder, scheduled on the device.
 No ads, no tracking, no in-app purchases.
 ```

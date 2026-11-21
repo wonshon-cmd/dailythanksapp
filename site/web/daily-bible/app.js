@@ -4416,6 +4416,7 @@ function tidySpeech(txt) {
   return x;
 }
 function recMini(k) {
+  return '';   // voice notes on reflections are off for now (no microphone in this version)
   if (state.medRecOn === k) return `<button type="button" class="rec-mini on" data-action="med-rec" data-id="${k}"><i class="rec-dot"></i><b id="med-rect">0:00</b><span>${t('med.recStop')}</span></button>`;
   if (recSlot(k)) return '';
   return `<button type="button" class="rec-mini" data-action="med-rec" data-id="${k}" ${state.medRecOn ? 'disabled' : ''}>${icon('mic')}<span>${t('med.recShort')}</span></button>`;
@@ -5912,8 +5913,10 @@ function setLang(l) {
   render(); if (wasSettings) settings();
 }
 
+// a heart or "함께 기도" also counts as having seen it — in the feed and in the community alike (same post, same state)
+function markSeen(id) { const gs = data.groupSeen = data.groupSeen || []; if (!gs.includes(id)) { gs.push(id); if (gs.length > 2000) gs.shift(); } }
 function like(id) {
-  const p = data.posts.find(x => x.id === id); if (!p) return;
+  const p = data.posts.find(x => x.id === id); if (!p) return; markSeen(id);
   const i = data.liked.indexOf(id); i >= 0 ? data.liked.splice(i, 1) : data.liked.push(id); save(); cloudReact(id, 'like', i < 0);
   const sc = $('#feed-scroll'), idx = sc ? Math.round(sc.scrollTop / sc.clientHeight) : 0;
   render(idx);
@@ -5992,7 +5995,7 @@ const actions = {
   'wg-os': id => { state.wgOs = id; document.querySelectorAll('[data-action="wg-os"]').forEach(b => b.classList.toggle('active', b.dataset.id === id)); $('#wg-steps').innerHTML = state.wgSteps(id); },
   'wg-ok': () => { close(); toast(t('wg.okToast')); },
   'wg-later': () => { close(); toast(t('wg.laterToast')); },
-  pray: togglePray,
+  pray: id => { markSeen(id); togglePray(id); },
   'prayed-who': prayedWho,
   'gs-write': gsWrite,
   'gs-view': gsView,
