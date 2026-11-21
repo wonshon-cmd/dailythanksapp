@@ -5914,6 +5914,8 @@ const methodName = m => m === 'email' ? (session?.email || 'Email') : ({ apple: 
 
 /* ---------------- actions ---------------- */
 function setLang(l) {
+  // a new language brings its own Bible along (a translation picked by hand was for the old language)
+  if (data.settings.bibleTr && data.settings.bibleTr !== BIBLE_TR[l]) { delete data.settings.bibleTr; state.trChanged = true; }
   data.settings.lang = l; save(); applyStatic();
   if (session) setSession({ ...session, lang: l }); // remembered with the account for the next sign-in
   const wasSettings = !sheet.hidden && sheet.querySelector('.seg');
