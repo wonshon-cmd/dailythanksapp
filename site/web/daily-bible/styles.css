@@ -1844,3 +1844,6 @@ body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: no
 .at-r{font-weight:500}
 .at-v{font-size:13px;color:#8A8F93;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .at-hint{margin:0;padding:8px 12px;font-size:13px;color:#9BA0A3}
+/* 노트 title: the date next to it, tap to change */
+.sn-tdate{position:relative;display:inline-block;margin-left:10px;font-size:15px;font-weight:400;color:#9BA0A3;vertical-align:middle}
+.sn-tdate input{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;padding:0;cursor:pointer}
