@@ -980,7 +980,10 @@ if (typeof data.extSharesGiven !== 'number') data.extSharesGiven = 0;
 for (const k of ['liked', 'saved', 'hidden', 'blocked', 'reports', 'celebrated']) if (!Array.isArray(data[k])) data[k] = [];
 const LANGS = [['ko', '한국어'], ['en', 'English'], ['es', 'Español']];
 const deviceLang = () => { const l = (navigator.language || 'en').toLowerCase(); return l.startsWith('ko') ? 'ko' : l.startsWith('es') ? 'es' : 'en'; };
-if (!data.settings.lang) data.settings.lang = deviceLang();
+// Language: the phone's language, until I pick one myself (then that one stays, on every visit and after sign-in).
+// Earlier installs: a language different from the phone's was picked by hand, so it's kept as the choice.
+if (data.settings.lang && !data.settings.langChoice && data.settings.lang !== deviceLang()) data.settings.langChoice = data.settings.lang;
+data.settings.lang = LANGS.some(([id]) => id === data.settings.langChoice) ? data.settings.langChoice : deviceLang();
 
 /* Sign-in session. Saved once, kept until the user signs out ("always signed in").
    In the prototype only the state is stored; see fullstack/README.md for wiring real Apple / Google / SMS auth. */
@@ -994,7 +997,7 @@ let SUPPORT_EMAIL = 'hi@dailyjourney.org';
 const APP_VERSION = '1.0.0';
 let session = null;
 try { session = JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { session = null; }
-if (session?.lang) data.settings.lang = session.lang;
+if (session?.langChoice && !data.settings.langChoice) data.settings.lang = data.settings.langChoice = session.langChoice;
 function setSession(next) {
   session = next;
   try { next ? localStorage.setItem(SESSION_KEY, JSON.stringify(next)) : localStorage.removeItem(SESSION_KEY); } catch {}
@@ -5093,7 +5096,7 @@ const Backup = (() => {
     if (row.key_id !== await kid()) { ok = false; if (!asked) { asked = true; setTimeout(keySheet, 600); } return; }
     if (row.updated_at !== data.settings.backupAt) {
       try { const b = await Vault.open(JSON.parse(row.sealed)); const bNewer = (b.savedAt || '') > (data.savedAt || '');
-        const lang0 = data.settings.lang; data = merge(data, b, bNewer); data.settings.lang = lang0; data.settings.backupAt = row.updated_at; last = ''; }
+        const lang0 = data.settings.lang; data = merge(data, b, bNewer); data.settings.lang = data.settings.langChoice || lang0; data.settings.backupAt = row.updated_at; last = ''; }
       catch { return; }
     }
     ok = true;
@@ -6084,8 +6087,8 @@ const methodName = m => m === 'email' ? (session?.email || 'Email') : ({ apple: 
 function setLang(l) {
   // a new language brings its own Bible along (a translation picked by hand was for the old language)
   if (data.settings.bibleTr && data.settings.bibleTr !== BIBLE_TR[l]) { delete data.settings.bibleTr; state.trChanged = true; }
-  data.settings.lang = l; save(); applyStatic();
-  if (session) setSession({ ...session, lang: l }); // remembered with the account for the next sign-in
+  data.settings.lang = data.settings.langChoice = l; save(); applyStatic();
+  if (session) setSession({ ...session, lang: l, langChoice: l }); // remembered with the account for the next sign-in
   const wasSettings = !sheet.hidden && sheet.querySelector('.seg');
   render(); if (wasSettings) settings();
 }
@@ -6605,7 +6608,7 @@ const actions = {
   'gate-later': () => { const sc = $('#feed-scroll'), card = $('#compose-card'); if (sc && card) sc.scrollTo({ top: card.offsetTop + sc.clientHeight, behavior: 'smooth' }); },
   'intro-again': () => { Object.assign(data.settings, { gestureHint: false, hintArmed: false, triedLeft: false, triedRight: false, swipedBack: false, prayerBackHint: false, quiz: {}, readerOpened: false }); save(); close(); state.tab = 'feed'; state.immersive = true; render(0); toast(t('toast.intro')); },
   reset: () => confirmSheet(t('s.reset'), t('s.confirmReset'), t('s.reset'), () => {
-    const l = lang(); data = clone(seed); data.settings.lang = l; state.group = data.groups[0].id;
+    const l = lang(), lc = data.settings.langChoice; data = clone(seed); data.settings.lang = l; if (lc) data.settings.langChoice = lc; state.group = data.groups[0].id;
     save(); state.tab = 'feed'; state.immersive = true; render(); toast(t('toast.reset')); setTimeout(() => location.reload(), 600);
   })
 };
