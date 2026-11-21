@@ -1954,6 +1954,9 @@ mark.hl{color:inherit;border-radius:3px;padding:0 1px;-webkit-box-decoration-bre
 .g-ch-days{gap:3px;flex:0 1 auto;justify-content:center;margin:0 auto}
 .g-ch-days i{width:15px;height:15px}
 .stk[data-action]{cursor:pointer}
+/* + lines up under the icon rail (same center), a little higher */
+.imm-plus{right:24px;bottom:calc(32px + var(--safe-bottom))}
+.write-pill.fab-plus{right:24px}
 /* 가장 꾸준한 사람 (admin only): a fold-down */
 details.ch-top summary{list-style:none;cursor:pointer}
 details.ch-top summary::-webkit-details-marker{display:none}
