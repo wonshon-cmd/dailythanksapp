@@ -14,7 +14,7 @@ const KEY = 'daily-thanks-v4'; // v3: seeds include share/save counts and a week
 /* ---------------- strings ---------------- */
 const STR = {
   ko: {
-    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
+    'at.hint': "장:절을 적어 주세요 · 예: 3:5-6", 'rm.title': "내일도 이 시간에 알려드릴까요?", 'rm.sub': "{time}에 오늘의 말씀을 살짝 알려드려요. 이미 읽은 날은 알리지 않아요.", 'rm.yes': "알려 주세요", 'rm.no': "괜찮아요", 'rm.done': "매일 {time}에 알려드릴게요", 'rm.denied': "알림이 꺼져 있어요. 설정에서 켤 수 있어요.", 'rm.nTitle': "오늘의 말씀", 'fr.title': "{name}님과 연결할까요?", 'fr.titleAnon': "연결할까요?", 'fr.body': "연결하면 둘만의 공간이 생겨요. 서로의 감사와 기도제목, 오늘 읽은 말씀을 나눠요.", 'fr.ok': "연결하기", 'fr.done': "{name}님과 연결됐어요", 'fr.self': "내 링크예요. 친구에게 보내 주세요.", 'fr.bad': "링크가 올바르지 않아요.", 'fr.need': "연결하려면 먼저 로그인해 주세요.", 'fr.joined': "{name}님과 연결됐어요. 이제 둘이서 나눌 수 있어요.",
     'rp.notice': "누군가 내 감사에 하트를 보냈어요 ♥", 'lr.title': "받은 하트",
     'tg.share': "공유하기", 'tg.together': "함께 읽기", 'tg.streak': "{n}일 연속", 'tg.readCount': "오늘 {n}명이 함께 읽었어요", 'tg.footer': "우리 공동체와 함께 읽기 · dailyjourney.org", 'tg.shareText': "‘{name}’에서 오늘의 말씀을 함께 읽었어요. 같이 읽어요:", 'tg.partnerRead': "{name}님이 오늘 ‘{plan}’을 읽었어요 ✓", 'tg.prayed': "{who}이 내 기도제목에 기도했어요", 'tg.andMore': "{name}님 외 {n}명", 'tg.one': "{name}님", 'tg.prayedTitle': "기도해 준 사람", 'tg.prayedTail': "님이 기도했어요.", 'tg.prayedCount': "{n}명이 기도했어요", 'tg.thank': "고마운 마음 전하기", 'tg.me': "나", 'tg.who': "{names}님이 기도했어요", 'tg.whoMore': "{names} 외 {n}명이 기도했어요",
     'sv.label': "예배", 'sv.none': "예배 고르기", 'sv.sun': "주일 예배", 'sv.wed': "수요 예배", 'sv.fri': "금요 예배", 'sv.dawn': "새벽 예배", 'sv.other': "직접 쓰기…", 'sv.otherQ': "어떤 예배인가요? (예: 청년 예배, 수련회)",
@@ -179,7 +179,7 @@ const STR = {
     'acct.signedIn': '로그인됨', 'acct.logout': '로그아웃', 'acct.loggedOut': '로그아웃했어요.', 'fs.ios': '아이폰에서는 Safari 공유 버튼 → 「홈 화면에 추가」로 열면 앱처럼 전체 화면으로 보여요.', 'fs.blocked': '이 환경에서는 전체 화면을 쓸 수 없어요.', 's.fine': '현재의 기록은 이 브라우저에만 저장됩니다. 새 브라우저나 기기로 자동 동기화되지 않습니다.', 's.confirmReset': '내가 쓴 기록과 설정을 모두 지우고 처음 상태로 되돌릴까요? 되돌릴 수 없어요.', 'toast.reset': '데모가 초기화되었어요.', 'toast.noStore': '현재 브라우저에 저장할 수 없어요.'
   },
   en: {
-    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
+    'at.hint': "Type chapter:verse · e.g. 3:5-6", 'rm.title': "Remind you at this time tomorrow?", 'rm.sub': "A quiet reminder of today’s passage at {time}. Never on days you’ve already read.", 'rm.yes': "Remind me", 'rm.no': "No thanks", 'rm.done': "We’ll remind you every day at {time}", 'rm.denied': "Notifications are off. You can turn them on in Settings.", 'rm.nTitle': "Today’s passage", 'fr.title': "Connect with {name}?", 'fr.titleAnon': "Connect?", 'fr.body': "You’ll get a space just for the two of you to share thanks, prayer requests and today’s reading.", 'fr.ok': "Connect", 'fr.done': "You’re connected with {name}", 'fr.self': "This is your own link. Send it to a friend.", 'fr.bad': "This link isn’t valid.", 'fr.need': "Sign in first to connect.", 'fr.joined': "{name} connected with you. Now you can share with each other.",
     'rp.notice': "Someone sent a heart to your thanks ♥", 'lr.title': "Hearts",
     'tg.share': "Share", 'tg.together': "reading together", 'tg.streak': "{n}-day streak", 'tg.readCount': "{n} read it together today", 'tg.footer': "Read with our community · dailyjourney.org", 'tg.shareText': "I read today’s passage with “{name}”. Read with us:", 'tg.partnerRead': "{name} read “{plan}” today ✓", 'tg.prayed': "{who} prayed for your prayer request", 'tg.andMore': "{name} and {n} more", 'tg.one': "{name}", 'tg.prayedTitle': "Who prayed", 'tg.prayedTail': "prayed for you.", 'tg.prayedCount': "{n} prayed", 'tg.thank': "Say thank you", 'tg.me': "Me", 'tg.who': "{names} prayed", 'tg.whoMore': "{names} and {n} more prayed",
     'sv.label': "Service", 'sv.none': "Choose a service", 'sv.sun': "Sunday service", 'sv.wed': "Wednesday service", 'sv.fri': "Friday service", 'sv.dawn': "Early morning prayer", 'sv.other': "Type your own…", 'sv.otherQ': "Which service? (e.g. youth service, retreat)",
@@ -344,7 +344,7 @@ const STR = {
     'acct.signedIn': 'Signed in', 'acct.logout': 'Sign out', 'acct.loggedOut': 'Signed out.', 'fs.ios': 'On iPhone, open it from Safari’s Share button → “Add to Home Screen” to see it full screen like an app.', 'fs.blocked': 'Full screen isn’t available here.', 's.fine': 'Your notes are stored only in this browser and don’t sync to other browsers or devices.', 's.confirmReset': 'Erase your notes and settings and start over? This can’t be undone.', 'toast.reset': 'Demo reset.', 'toast.noStore': 'This browser can’t save data right now.'
   },
   es: {
-    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
+    'at.hint': "Escribe capítulo:versículo · p. ej. 3:5-6", 'rm.title': "¿Te lo recordamos mañana a esta hora?", 'rm.sub': "Un aviso tranquilo del pasaje de hoy a las {time}. Nunca los días que ya leíste.", 'rm.yes': "Recuérdamelo", 'rm.no': "No, gracias", 'rm.done': "Te lo recordaremos cada día a las {time}", 'rm.denied': "Las notificaciones están desactivadas. Puedes activarlas en Ajustes.", 'rm.nTitle': "Pasaje de hoy", 'fr.title': "¿Conectar con {name}?", 'fr.titleAnon': "¿Conectar?", 'fr.body': "Tendrán un espacio solo para los dos: gratitud, peticiones de oración y la lectura de hoy.", 'fr.ok': "Conectar", 'fr.done': "Ya estás conectado con {name}", 'fr.self': "Este es tu propio enlace. Envíalo a un amigo.", 'fr.bad': "Este enlace no es válido.", 'fr.need': "Inicia sesión primero para conectar.", 'fr.joined': "{name} se conectó contigo. Ya pueden compartir entre los dos.",
     'rp.notice': "Alguien envió un corazón a tu gratitud ♥", 'lr.title': "Corazones",
     'tg.share': "Compartir", 'tg.together': "leyendo juntos", 'tg.streak': "{n} días seguidos", 'tg.readCount': "Hoy {n} lo leyeron juntos", 'tg.footer': "Lee con nuestra comunidad · dailyjourney.org", 'tg.shareText': "Leí el pasaje de hoy con “{name}”. Lee con nosotros:", 'tg.partnerRead': "{name} leyó “{plan}” hoy ✓", 'tg.prayed': "{who} oró por tu petición", 'tg.andMore': "{name} y {n} más", 'tg.one': "{name}", 'tg.prayedTitle': "Quién oró", 'tg.prayedTail': "oraron por ti.", 'tg.prayedCount': "{n} oraron", 'tg.thank': "Dar las gracias", 'tg.me': "Yo", 'tg.who': "{names} oraron", 'tg.whoMore': "{names} y {n} más oraron",
     'sv.label': "Culto", 'sv.none': "Elige el culto", 'sv.sun': "Culto dominical", 'sv.wed': "Culto del miércoles", 'sv.fri': "Culto del viernes", 'sv.dawn': "Oración de madrugada", 'sv.other': "Escribir otro…", 'sv.otherQ': "¿Qué culto? (p. ej. jóvenes, retiro)",
@@ -2771,7 +2771,7 @@ function floatSync(o) {
 document.addEventListener('scroll', e => { const o = FLOAT.find(x => e.target.matches?.(x.sc)); if (o) floatSync(o);
   if (e.target.id === 'feed-scroll') { const sc = e.target, cur = sc.children[Math.round(sc.scrollTop / Math.max(1, sc.clientHeight))];
     if (cur?.classList.contains('fv-card') && cur.nextElementSibling?.classList.contains('devo-end') && !data.readDevo?.[today()]) { markDevoRead(); save(true); }
-    if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { markDevoRead(); save(true); } onbDone(); } } }, true);
+    if (cur?.classList.contains('devo-end')) { if (!data.readDevo?.[today()]) { markDevoRead(); save(true); } if (state.onb === 'passage') onbDone(); else setTimeout(remindAsk, 1200); } } }, true);
 // a tap on a floating copy changes the verse's own buttons; show their new state
 document.addEventListener('click', e => { if (e.target.closest('.fl-rail,.fl-ref')) setTimeout(() => FLOAT.forEach(floatSync), 0); });
 window.addEventListener('resize', () => { document.querySelectorAll('.fl-rail,.fl-ref').forEach(x => x.remove()); fvRail(); });
@@ -6163,6 +6163,7 @@ const actions = {
     const name = L(data.posts.find(p => authorKey(p) === k)?.name) || ''; g.removed = [...new Set([...(g.removed || []), k])]; g.size = Math.max(1, (g.size || groupSize(gid)) - 1); save();
     document.dispatchEvent(new CustomEvent('dt:group-remove', { detail: { code: g.invite, member: k } })); groupAdmin(gid); toast(t('adm.removed').replace('{name}', name)); },
   'friend-ok': () => { const f = state.pendingFriend; state.pendingFriend = null; close(); if (f) connectFriend(f); },
+  'rm-yes': hhmm => remindOn(hhmm),
   'join-ok': () => {
     const j = state.pendingJoin; if (!j) return close();
     const g = { id: 'g' + j.code, name: j.name, invite: j.code, ...(j.key ? { key: j.key } : {}), ...(j.approve ? { pending: true } : {}) }; data.groups.push(g); state.pendingJoin = null;
@@ -6325,6 +6326,7 @@ window.DailyThanks = {
   closeReader: () => closeReader(),
   back: () => closePicker() || closeReader() || immBack() || (state.groupDetail && !state.immersive ? (state.groupDetail = null, render(), true) : false),
   parseRef, refText,
+  reminderFor: day => reminderFor(day), openToday: () => goToday(true),
   openWrite: () => { document.getElementById('splash')?.remove(); close(); compose('today', null); },
   openMeditation: () => { document.getElementById('splash')?.remove(); close(); const g = data.groups[0]?.id; if (g) devoShare(g); else compose('meditation', null); },
   widgetData: () => widgetData()
@@ -6432,6 +6434,50 @@ document.addEventListener('dt:signed-in', () => {
   data.settings.onboardStarted = true; data.settings.toured = true; save(true);
   setTimeout(onbPassage, 400);
 });
+/* ---------------- 매일 읽기 알림 ----------------
+   Opening the app on a day I haven't read yet lands on today's passage. The first time I finish it, one quiet
+   question: remind me at this time tomorrow? (the phone app then sends "오늘의 말씀 · 잠언 3:5-6" — never on a day I've read). */
+const hhmmLabel = hhmm => { const [h, m] = hhmm.split(':').map(Number), d = new Date(); d.setHours(h, m, 0, 0);
+  return d.toLocaleTimeString(lang() === 'ko' ? 'ko-KR' : lang() === 'es' ? 'es' : 'en-US', { hour: 'numeric', minute: '2-digit' }); };
+function remindAsk() {
+  const s = data.settings;
+  if (!BIBLE_MODE || s.notifyAsked || s.notificationEnabled || !('Notification' in window) || !sheet.hidden || state.onb) return;
+  s.notifyAsked = today(); save(true);
+  const d = new Date(); d.setMinutes(Math.round(d.getMinutes() / 5) * 5, 0, 0); const hhmm = d.toTimeString().slice(0, 5);
+  showSheet({ title: t('rm.title'), body: `<p class="hint">${esc(t('rm.sub').replace('{time}', hhmmLabel(hhmm)))}</p>
+    <div class="sheet-actions"><button class="primary" data-action="rm-yes" data-id="${hhmm}">${t('rm.yes')}</button><button class="secondary" data-action="close">${t('rm.no')}</button></div>` });
+}
+async function remindOn(hhmm) {
+  close(); Object.assign(data.settings, { notificationEnabled: true, notificationTime: hhmm, notificationTimes: [hhmm] }); save();
+  let perm = 'granted'; try { perm = await Notification.requestPermission(); } catch {}
+  if (perm !== 'granted') { data.settings.notificationEnabled = false; save(); toast(t('rm.denied')); return; }
+  toast(t('rm.done').replace('{time}', hhmmLabel(hhmm)));
+}
+// the passage for any day (today's may be one a community picked)
+function passageOn(day) {
+  if (day === today()) return todaysPassage(data.groups[0]?.id)?.ref || null;
+  const planFor = CONTENT.qtPlan?.[lang()] && typeof CONTENT.qtPlan[lang()] === 'object' ? CONTENT.qtPlan[lang()] : CONTENT.qtPlan;
+  const plan = planFor?.[day] || QT_BUILTIN[lang()]?.[day]; if (plan) return parseRef(plan);
+  const gospel = [[40, 28], [41, 16], [42, 24], [43, 21]], all = gospel.flatMap(([b, n]) => Array.from({ length: n }, (_, i) => [b, i + 1]));
+  const d = new Date(day + 'T12:00:00'), n = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 864e5);
+  const [b, c] = all[(n - 1) % all.length]; return { b, c, v: 0, v2: 0 };
+}
+// for the phone app's reminders: what to say on a given day, and whether to skip it
+async function reminderFor(day) {
+  const ref = passageOn(day); let first = '';
+  try { if (ref) first = (await passageVerses(ref.v ? { ...ref, v2: ref.v } : { ...ref, v: 1, v2: 1 }))[0]?.text || ''; } catch {}
+  return { title: t('rm.nTitle'), body: ref ? `${refText(ref)}${first ? ' · ' + (first.length > 60 ? first.slice(0, 60) + '…' : first) : ''}` : '', skip: !!data.readDevo?.[day] };
+}
+// open on today's passage (app start on an unread day, or a reminder tap)
+function goToday(force) {
+  if (!BIBLE_MODE) return;
+  if (force) { document.getElementById('splash')?.remove(); if (!sheet.hidden) close(); state.tab = 'feed'; state.immersive = true; render(0); }
+  let mine = null;
+  const go = () => { if (!state.immersive) return; const sc = $('#feed-scroll'); if (!sc) return;
+    if (mine && mine.el === sc && sc.scrollTop !== mine.top) return;   // they've scrolled on their own: leave it
+    const i = [...sc.children].findIndex(c => c.matches('.fv-card, .devo-load')); if (i > 0) { sc.scrollTop = i * sc.clientHeight; mine = { el: sc, top: sc.scrollTop }; } };
+  [120, 700, 1500, 2600].forEach(ms => setTimeout(go, ms));
+}
 function onbPassage() {
   if (!sheet.hidden) close();
   state.onb = 'passage'; state.tab = 'feed'; state.immersive = true; render(0);
@@ -6489,6 +6535,7 @@ function onbDone() {
     const [b, c, v] = m.slice(1).map(Number); if (b >= 1 && b <= 66) setTimeout(() => openReader({ b, c, v }), 120); } }
 if (location.hash.startsWith('#reply')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove();
   setTimeout(() => { state.tyName = (q.get('to') || '').slice(0, 30); if (q.get('from') && !data.settings.myName) data.settings.myName = q.get('from').slice(0, 30); compose('thanks', null); }, 80); }
+if (BIBLE_MODE && !location.hash && data.settings.onboarded && !data.readDevo?.[today()]) goToday();
 if (location.hash.startsWith('#friend')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => friendLink(q), 80); }
 if (location.hash.startsWith('#join')) { const q = new URLSearchParams(location.hash.split('?')[1] || ''); document.getElementById('splash')?.remove(); setTimeout(() => joinGroup(q.get('c'), q.get('n'), q.get('k')), 80); }
 if (location.hash.startsWith('#pastor=')) { try { state.pastorView = unb64url(location.hash.slice(8)); state.immersive = false; state.tab = 'group'; document.getElementById('splash')?.remove(); setTimeout(render, 60); } catch {} }
