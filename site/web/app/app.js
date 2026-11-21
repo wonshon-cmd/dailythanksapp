@@ -4073,11 +4073,10 @@ function renderBibleMe() {
     ${myCommunities()}
     ${readGauge()}
     <button class="secondary block yr-btn" data-action="yr-share">${icon('camera')}${t('yr.btn')}</button>
-    ${d ? `<p class="bb-streak">${icon('sparkle')}${t('me.days').replace('{n}', d)}</p>` : ''}
-    <p class="gd-label">${t('me.medi')} · ${medi.length}</p>
-    <div class="notes">${medi.slice(0, 20).map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}"><span class="note-meta"><span>${esc(refText(p.ref))}</span></span><span class="note-text">${esc(L(p.text))}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
-    <p class="gd-label">${t('me.saved')} · ${saved.length}</p>
-    <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="hint">${t('me.none')}</p>`}</div>
+    <p class="gd-label me-label"><span>${t('me.medi')}</span><span>${medi.length}</span></p>
+    <div class="notes">${medi.slice(0, 20).map(p => `<button class="note" data-action="note" data-id="${esc(p.id)}"><span class="note-meta"><span>${esc(refText(p.ref))}</span></span><span class="note-text">${esc(L(p.text))}</span></button>`).join('') || `<p class="me-empty">${t('me.none')}</p>`}</div>
+    <p class="gd-label me-label"><span>${t('me.saved')}</span><span>${saved.length}</span></p>
+    <div class="notes">${saved.slice(0, 20).map(x => `<button class="note" data-action="open-saved-verse" data-id="${esc(x.key)}"><span class="note-meta"><span>${esc(refText({ b: x.b, c: x.c, v: x.v, v2: x.v }))}</span></span><span class="note-text">${esc(x.text)}</span></button>`).join('') || `<p class="me-empty">${t('me.none')}</p>`}</div>
     <div class="list" style="margin-top:18px">
       ${PAID ? `<button class="list-row" data-action="usage"><span class="row-icon">${icon('star')}</span><span class="row-main"><span class="row-title">${t('bs.sub')}</span>${q.limit && q.used / q.limit >= 0.8 ? `<span class="row-sub">${t('bs.almost')}</span>` : ''}</span></button>` : ''}
     </div>

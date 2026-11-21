@@ -1982,3 +1982,7 @@ details.ch-top:not([open]){gap:0}
 .list-row .row-main{min-width:0}
 .copy-mail{flex:none;padding:0 14px;white-space:nowrap}
 .ty-tones{margin:0 0 -4px}
+/* 나: section title with its count on the right; an empty section is one quiet line */
+.me-label{display:flex;justify-content:space-between;align-items:baseline;margin:28px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.me-label + .notes{margin-top:0}
+.me-empty{margin:0;padding:12px 0;font-size:13px;color:var(--faint)}
