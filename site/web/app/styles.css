@@ -1707,7 +1707,7 @@ button.rg:focus:not(:focus-visible) { outline: none; }
 .reader:has(.vs-page) .reader-x { visibility: hidden; }
 .fv-lab { display: inline-flex; align-items: center; gap: 5px; font-weight: 400; color: #8A9094; }
 .fv-lab .ico { font-size: 14px; }
-.fv-lab::after { content: '·'; margin-left: 5px; color: #C4C8CB; }
+.fv-lab::after { content: '↓'; margin-left: 6px; color: #B4B8BA; font-size: 12px; }
 /* reading: the top (page count, text size, translation) and the bottom (묵상 나누기) never move; only the verses scroll */
 body.reading, html:has(body.reading) { overflow: hidden; overscroll-behavior: none; }
 .reader-top, .reader-foot { touch-action: none; }
