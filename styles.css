@@ -1,3 +1,4 @@
+/* © 2026 Daily Journey, Inc. All rights reserved. Proprietary — not for reuse. */
 /* Daily Thanks — Soft White design.
    Fonts: Newsreader (serif wordmark, "thanks" in italic) + Noto Sans KR Light (body, ko & en).
    Both fall back to system fonts when offline. */
@@ -2084,3 +2085,8 @@ html, body { overflow: hidden; overscroll-behavior: none; }
 .me-name::placeholder { color: var(--faint); }
 .me-name:focus { border-bottom-color: #E2E2E0; }
 .nm-inline { margin-top: 6px; }
+
+/* copyright line under Settings; brand marks can't be selected or dragged out */
+.cr-line { margin: 22px 0 6px; text-align: center; font-size: 11px; line-height: 1.6; color: var(--faint); }
+.wordmark, .splash, .wl-logo, .reader-brand, .imm-brand { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+img, svg { -webkit-user-drag: none; -webkit-touch-callout: none; }
