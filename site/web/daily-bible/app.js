@@ -1,4 +1,5 @@
-/* Daily Thanks — dependency-free offline prototype (Korean / English).
+/* © 2026 Daily Journey, Inc. All rights reserved. Proprietary and confidential — no copying, modifying or redistributing without written permission.
+   Daily Thanks — dependency-free offline prototype (Korean / English).
    No accounts, server, push, Kakao or Instagram integration. Data lives in this browser's localStorage. */
 (() => {
 'use strict';
@@ -1047,6 +1048,9 @@ Object.assign(STR.es, { 'bk.title': "Abrir tus registros", 'bk.body': "Esta cuen
 Object.assign(STR.ko, { 'nm.title': "공동체에 보일 이름", 'nm.sub': "공동체와 마음 카드에 이렇게 보여요. 나에서 언제든 바꿀 수 있어요.", 'nm.ph': "이름", 'nm.add': "이름 추가", 'nm.saved': "이름을 바꿨어요" });
 Object.assign(STR.en, { 'nm.title': "Name others will see", 'nm.sub': "Your community and cards show this name. You can change it anytime in Me.", 'nm.ph': "Name", 'nm.add': "Add your name", 'nm.saved': "Name updated" });
 Object.assign(STR.es, { 'nm.title': "Nombre que verán los demás", 'nm.sub': "Tu comunidad y tus tarjetas muestran este nombre. Puedes cambiarlo cuando quieras en Yo.", 'nm.ph': "Nombre", 'nm.add': "Agrega tu nombre", 'nm.saved': "Nombre actualizado" });
+Object.assign(STR.ko, { 'cr.line': "© 2026 Daily Journey, Inc. All rights reserved.<br>Daily Journey™ 이름과 로고, 앱 디자인은 Daily Journey, Inc.의 자산이에요." });
+Object.assign(STR.en, { 'cr.line': "© 2026 Daily Journey, Inc. All rights reserved.<br>Daily Journey™, its logo and the app’s design belong to Daily Journey, Inc." });
+Object.assign(STR.es, { 'cr.line': "© 2026 Daily Journey, Inc. Todos los derechos reservados.<br>Daily Journey™, su logotipo y el diseño de la app pertenecen a Daily Journey, Inc." });
 const lang = () => data.settings.lang;
 const t = k => STR[lang()]?.[k] ?? STR.en[k] ?? STR.ko[k] ?? k;
 const L = v => (v && typeof v === 'object') ? (v[lang()] ?? (lang() === 'es' ? v.en : undefined) ?? v.ko ?? v.en) : (v ?? '');
@@ -5592,6 +5596,7 @@ function bibleSettings() {
       <div class="list-row static"><span class="row-icon">${icon('chat')}</span><span class="row-main"><span class="row-title">${t('s.support')}</span><span class="row-sub selectable">${SUPPORT_EMAIL}</span></span><button class="secondary copy-mail" data-action="copy-support">${t('mail.copy')}</button></div>
       ${session ? row('delete-account', 'trash', t('s.delete'), '', 'danger') : ''}
       <div class="list-row static"><span class="row-icon">${icon('info')}</span><span class="row-main"><span class="row-title">${t('s.version')}</span></span><span class="row-end row-sub">${APP_VERSION}</span></div>
+      <p class="cr-line">${t('cr.line')}</p>
     </div>` });
 }
 // Saved church + pastor pairs, with the day and hour each is usually used.
@@ -5634,6 +5639,7 @@ function settings() {
       <div class="list-row static"><span class="row-icon">${icon('chat')}</span><span class="row-main"><span class="row-title">${t('s.support')}</span><span class="row-sub selectable">${SUPPORT_EMAIL}</span></span><button class="secondary copy-mail" data-action="copy-support">${t('mail.copy')}</button></div>
       ${session ? row('delete-account', 'trash', t('s.delete'), '', 'danger') : ''}
       <div class="list-row static"><span class="row-icon">${icon('info')}</span><span class="row-main"><span class="row-title">${t('s.version')}</span></span><span class="row-end row-sub">${APP_VERSION}</span></div>
+      <p class="cr-line">${t('cr.line')}</p>
     </div>
     <p class="field-label">${t('ft.title')}</p>
     <div class="list">${[['groupShare', 'people'], ['prayer', 'pray'], ['sermon', 'mic'], ['leader', 'star']].filter(([k]) => featureAvailable(k)).map(([k, ic]) => `<label class="list-row"><span class="row-icon">${icon(ic)}</span><span class="row-main"><span class="row-title">${t('ft.' + k)}</span><span class="row-sub">${t('ft.' + k + 'Sub')}</span></span><input class="switch" type="checkbox" data-feature="${k}" ${featureOn(k) ? 'checked' : ''}></label>`).join('')}</div>
@@ -7102,4 +7108,12 @@ if (splash) {
   const held = el => el.closest('.topbar, .bottom-nav, .write-pill.fab-plus') ||
     (el.closest('.screen.fit, .screen.still') && !el.closest('#sn-list, .sheet, textarea, input, select, [contenteditable]'));
   document.addEventListener('touchmove', e => { if (e.cancelable && e.target instanceof Element && held(e.target)) e.preventDefault(); }, { passive: false });
+})();
+
+/* The brand stays ours: the logo, wordmark and icons can't be dragged out or saved with a long-press / right-click.
+   (Bible text and your own writing stay selectable and copyable.) */
+(() => {
+  const brand = el => el instanceof Element && el.closest('.wordmark, .splash, .wl-logo, img, svg, .reader-brand, .imm-brand');
+  document.addEventListener('contextmenu', e => { if (brand(e.target) && !e.target.closest('input, textarea, [contenteditable]')) e.preventDefault(); });
+  document.addEventListener('dragstart', e => { if (brand(e.target)) e.preventDefault(); });
 })();

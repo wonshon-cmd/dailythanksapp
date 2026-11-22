@@ -3,6 +3,8 @@
 <head>
 <script>if (/(^#|&)(access_token|error_description)=/.test(location.hash)) location.replace('/daily-bible/' + location.hash);</script>
 <meta charset="utf-8">
+<meta name="copyright" content="© 2026 Daily Journey, Inc. All rights reserved.">
+<meta name="robots" content="noai, noimageai">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Daily Journey</title>
 <meta name="description" content="daily journey — With your community, one slide at a time · 매일 한 장, 공동체와 함께">
@@ -149,7 +151,7 @@ footer nav a:hover{color:var(--ink)}
       105 Challenger Rd, Suite 401<br>Ridgefield Park, NJ 07660<br>United States<br>
       <a href="mailto:hi@dailyjourney.org">hi@dailyjourney.org</a>
     </address>
-    <p class="cr">© <span id="yr">2026</span> Daily Journey, Inc.</p>
+    <p class="cr">© <span id="yr">2026</span> Daily Journey, Inc. All rights reserved.<br><span data-k="tm"></span></p>
   </footer>
 </div>
 <script>
@@ -163,7 +165,7 @@ const S = {
     f6: '내 기록은 내 것', f6d: '나만 보는 기록은 휴대폰에서 잠근 뒤에 보관해요. 같은 메일로 로그인하면 새 휴대폰에서도 이어지고, 운영자는 읽을 수 없어요.',
     d1: '넘기고', d2: '마음에 담고', d3: '오늘 완료 ✓', today: '오늘의 말씀', done: '오늘의 말씀을 다 읽었어요', book: '시편 23',
     vs: ['여호와는 나의 목자시니 내가 부족함이 없으리로다', '그가 나를 푸른 초장에 누이시며 쉴만한 물 가으로 인도하시는도다', '내 영혼을 소생시키시고 자기 이름을 위하여 의의 길로 인도하시는도다'],
-    np: '미국 뉴저지주에 설립된 비영리 법인 · 미국 국세청(IRS) 501(c)(3) 승인 신청 중', privacy: '개인정보 처리방침', terms: '이용약관', support: '고객지원', delete: '계정 삭제' },
+    np: '미국 뉴저지주에 설립된 비영리 법인 · 미국 국세청(IRS) 501(c)(3) 승인 신청 중', privacy: '개인정보 처리방침', terms: '이용약관', support: '고객지원', delete: '계정 삭제', tm: 'Daily Journey™ 이름과 로고, 앱과 웹사이트 디자인은 Daily Journey, Inc.의 자산이며 허락 없이 복제·사용할 수 없어요.' },
   en: { lead: 'With your community, one slide at a time', tag: 'A day focused on the Word', sub: 'Read one verse at a time, keep your sermons, and pray with your community.', open: 'Open on the web', note: 'No download needed. On your phone, add it to your Home Screen to use it like an app.',
     f1: 'One verse at a time', f1d: 'Scroll through Scripture one verse per screen, on a quiet white page.',
     f2: 'Sermon notes', f2d: 'Pick the passage and keep your own notes on the sermon, right beside it.',
@@ -173,7 +175,7 @@ const S = {
     f6: 'Your notes stay yours', f6d: 'Only-me records are locked on your phone before they’re kept. Sign in with the same e-mail and they follow you to a new phone — and even we can’t read them.',
     d1: 'Scroll', d2: 'Keep what speaks', d3: 'Done for today ✓', today: 'Today’s passage', done: 'You read today’s passage', book: 'Psalm 23',
     vs: ['The LORD is my shepherd; I shall not want.', 'He maketh me to lie down in green pastures: he leadeth me beside the still waters.', 'He restoreth my soul: he leadeth me in the paths of righteousness for his name’s sake.'],
-    np: 'A New Jersey nonprofit corporation · 501(c)(3) application pending with the IRS', privacy: 'Privacy', terms: 'Terms', support: 'Support', delete: 'Delete account' },
+    np: 'A New Jersey nonprofit corporation · 501(c)(3) application pending with the IRS', privacy: 'Privacy', terms: 'Terms', support: 'Support', delete: 'Delete account', tm: 'Daily Journey™, its logo and the design of the app and website belong to Daily Journey, Inc. and may not be copied or used without permission.' },
   es: { lead: 'Con tu comunidad, una página a la vez', tag: 'Un día centrado en la Palabra', sub: 'Lee versículo a versículo, guarda tus sermones y ora con tu comunidad.', open: 'Abrir en la web', note: 'Sin descargas. En tu teléfono, añádela a la pantalla de inicio para usarla como app.',
     f1: 'Versículo a versículo', f1d: 'La Escritura un versículo por pantalla, en una página blanca y tranquila.',
     f2: 'Notas de sermón', f2d: 'Elige el pasaje y guarda tus propias notas del sermón junto a él.',
@@ -183,7 +185,7 @@ const S = {
     f6: 'Tus notas son tuyas', f6d: 'Lo que guardas solo para ti se cifra en tu teléfono antes de guardarse. Entra con el mismo correo y te sigue a un teléfono nuevo; ni nosotros podemos leerlo.',
     d1: 'Desliza', d2: 'Guarda lo que te habla', d3: 'Hecho por hoy ✓', today: 'Pasaje de hoy', done: 'Leíste el pasaje de hoy', book: 'Salmos 23',
     vs: ['Jehová es mi pastor; nada me faltará.', 'En lugares de delicados pastos me hará yacer: Junto á aguas de reposo me pastoreará.', 'Confortará mi alma; Guiaráme por sendas de justicia por amor de su nombre.'],
-    np: 'Corporación sin fines de lucro de Nueva Jersey · solicitud 501(c)(3) pendiente ante el IRS', privacy: 'Privacidad', terms: 'Términos', support: 'Soporte', delete: 'Eliminar cuenta' }
+    np: 'Corporación sin fines de lucro de Nueva Jersey · solicitud 501(c)(3) pendiente ante el IRS', privacy: 'Privacidad', terms: 'Términos', support: 'Soporte', delete: 'Eliminar cuenta', tm: 'Daily Journey™, su logotipo y el diseño de la app y del sitio pertenecen a Daily Journey, Inc. y no pueden copiarse ni usarse sin permiso.' }
 };
 let lang = 'ko';
 try { lang = localStorage.getItem('dj-lang') || ''; } catch (e) {}
@@ -224,5 +226,6 @@ sel.addEventListener('change', () => { lang = sel.value; try { localStorage.setI
 document.getElementById('yr').textContent = new Date().getFullYear();
 paint();
 </script>
+<script>/* brand marks: no right-click save or drag */document.addEventListener("contextmenu",e=>{if(e.target.closest&&e.target.closest("h1,.mark,img,svg,.wm"))e.preventDefault()});document.addEventListener("dragstart",e=>{if(e.target.closest&&e.target.closest("h1,.mark,img,svg,.wm"))e.preventDefault()});</script>
 </body>
 </html>
